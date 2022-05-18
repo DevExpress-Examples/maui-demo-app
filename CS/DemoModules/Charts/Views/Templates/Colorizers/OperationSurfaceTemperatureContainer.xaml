@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.OperationSurfaceTemperatureContainer">
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                    Text="{Binding ChartModel.Title}"
+                    FontFamily="Roboto"
+                    TextColor="{DynamicResource TextThemeColor}"
+                    BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+
+            <dxc:ChartView Grid.Row="1">
+                <dxc:ChartView.Series>
+                    <dxc:SplineSeries LegendTextPattern="Surface Temperature">
+                        <dxc:SplineSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.TemperaturePoints}" ArgumentDataMember="Time">
+                                <dxc:ValueDataMember Type="Value" Member="Temperature"/>
+                            </dxc:SeriesDataAdapter>
+                        </dxc:SplineSeries.Data>
+                        <dxc:SplineSeries.Style>
+                            <dxc:LineSeriesStyle Stroke="#7546B7"/>
+                        </dxc:SplineSeries.Style>
+                        <dxc:SplineSeries.HintOptions>
+                            <dxc:SeriesCrosshairOptions PointTextPattern="{}{A$mm:ss}, {V}°C"/>
+                        </dxc:SplineSeries.HintOptions>
+                    </dxc:SplineSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.AxisX>
+                    <dxc:DateTimeAxisX MeasureUnit="Second"
+                                          GridAlignment="Second">
+                        <dxc:DateTimeAxisX.Style>
+                            <dxc:AxisStyle MajorTickmarksVisible="True"
+                                              MinorTickmarksVisible="True"/>
+                        </dxc:DateTimeAxisX.Style>
+                        <dxc:DateTimeAxisX.Label>
+                            <dxc:AxisLabel TextFormat="mm:ss"/>
+                        </dxc:DateTimeAxisX.Label>
+                    </dxc:DateTimeAxisX>
+                </dxc:ChartView.AxisX>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY GridAlignment="5" AlwaysShowZeroLevel="False">
+                        <dxc:NumericAxisY.Style>
+                            <dxc:AxisStyle MajorTickmarksVisible="True"
+                                              MinorTickmarksVisible="True"/>
+                        </dxc:NumericAxisY.Style>
+                        <dxc:NumericAxisY.Range>
+                            <dxc:NumericRange Min="30" Max="90" SideMargin="0"/>
+                        </dxc:NumericAxisY.Range>
+                        <dxc:NumericAxisY.Title>
+                           <dxc:AxisTitle Text="°C" Alignment="Outside"/>
+                        </dxc:NumericAxisY.Title>
+                        <dxc:NumericAxisY.ConstantLines>
+                            <dxc:NumericConstantLine AxisValue="{Binding ChartModel.OptimalTemperature}"
+                                                        LegendText="Optimal Temperature">
+                                <dxc:NumericConstantLine.Style>
+                                    <dxc:ConstantLineStyle Stroke="#4B626C"/>
+                                </dxc:NumericConstantLine.Style>
+                                <dxc:NumericConstantLine.Title>
+                                    <dxc:ConstantLineTitle Text="Optimal Temperature" Alignment="Far"/>
+                                </dxc:NumericConstantLine.Title>
+                            </dxc:NumericConstantLine>
+                        </dxc:NumericAxisY.ConstantLines>
+                        <dxc:NumericAxisY.Strips>
+                            <dxc:NumericStrip MinLimit="30" MaxLimit="43" LegendText="Low Temperature">
+                                <dxc:NumericStrip.Style>
+                                    <dxc:StripStyle Fill="#BFCECE"/>
+                                </dxc:NumericStrip.Style>
+                            </dxc:NumericStrip>
+                            <dxc:NumericStrip MinLimit="43" MaxLimit="63" LegendText="Normal Temperature">
+                                <dxc:NumericStrip.Style>
+                                    <dxc:StripStyle Fill="#C1D0BD"/>
+                                </dxc:NumericStrip.Style>
+                            </dxc:NumericStrip>
+                            <dxc:NumericStrip MinLimit="63" MaxLimit="83" LegendText="High Temperature">
+                                <dxc:NumericStrip.Style>
+                                    <dxc:StripStyle Fill="#DDBF9A"/>
+                                </dxc:NumericStrip.Style>
+                            </dxc:NumericStrip>
+                            <dxc:NumericStrip MinLimit="83" MaxLimit="90" LegendText="Extremely High Temperature">
+                                <dxc:NumericStrip.Style>
+                                    <dxc:StripStyle Fill="#DCA598"/>
+                                </dxc:NumericStrip.Style>
+                            </dxc:NumericStrip>
+                        </dxc:NumericAxisY.Strips>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend/>
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint>
+                        <dxc:Hint.Behavior>
+                            <dxc:CrosshairHintBehavior GroupHeaderVisible="False"
+                                                          ArgumentLabelVisible="False"
+                                                          ValueLabelVisible="False"/>
+                        </dxc:Hint.Behavior>
+                    </dxc:Hint>
+                </dxc:ChartView.Hint>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

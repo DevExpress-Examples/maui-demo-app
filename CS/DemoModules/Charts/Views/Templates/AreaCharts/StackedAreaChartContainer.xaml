@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.StackedAreaChartContainer">
+    <ContentView.Resources>
+        <dxc:SeriesHintOptions x:Key="stackedAreaSeriesHintOptions"
+                                  PointTextPattern="{}{S}&#x0a;{A$yyyy}: ${V}M"/>
+        <dxc:MarkerSeriesLabel x:Key="stackedAreaSeriesLabel"
+                                  TextPattern="${V$#.#}M"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding ChartModel.Title}"
+                   FontFamily="Roboto"
+                   TextColor="{DynamicResource TextThemeColor}"
+                   BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            <dxc:ChartView Grid.Row="1"
+                              SelectionMode="Single"
+                              SelectionKind="Series">
+                <dxc:ChartView.Series>
+                    <dxc:StackedAreaSeries DisplayName="{Binding ChartModel.NorthAmerica.Name}"
+                                              HintOptions="{StaticResource stackedAreaSeriesHintOptions}"
+                                              Label="{StaticResource stackedAreaSeriesLabel}"
+                                              MarkersVisible="true">
+                        <dxc:StackedAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.NorthAmerica.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:StackedAreaSeries.Data>
+                    </dxc:StackedAreaSeries>
+                    <dxc:StackedAreaSeries DisplayName="{Binding ChartModel.Europe.Name}"
+                                              HintOptions="{StaticResource stackedAreaSeriesHintOptions}"
+                                              Label="{StaticResource stackedAreaSeriesLabel}"
+                                              MarkersVisible="true">
+                        <dxc:StackedAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.Europe.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:StackedAreaSeries.Data>
+                    </dxc:StackedAreaSeries>    
+                    <dxc:StackedAreaSeries DisplayName="{Binding ChartModel.Australia.Name}"
+                                              HintOptions="{StaticResource stackedAreaSeriesHintOptions}"
+                                              Label="{StaticResource stackedAreaSeriesLabel}"
+                                              MarkersVisible="true">
+                        <dxc:StackedAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.Australia.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:StackedAreaSeries.Data>
+                    </dxc:StackedAreaSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend HorizontalPosition="Center"
+                                   VerticalPosition="BottomOutside"
+                                   Orientation="LeftToRight"/>
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint/>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.AxisX>
+                    <dxc:DateTimeAxisX MeasureUnit="Year">
+                        <dxc:DateTimeAxisX.Label>
+                            <dxc:AxisLabel TextFormat="yyyy"/>
+                        </dxc:DateTimeAxisX.Label>
+                    </dxc:DateTimeAxisX>
+                </dxc:ChartView.AxisX>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY>
+                        <dxc:NumericAxisY.Title>
+                            <dxc:AxisTitle Text="Millions US$"
+                                              Alignment="Outside"/>
+                        </dxc:NumericAxisY.Title>
+                        <dxc:NumericAxisY.Label>
+                            <dxc:AxisLabel TextFormat="$#M"/>
+                        </dxc:NumericAxisY.Label>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

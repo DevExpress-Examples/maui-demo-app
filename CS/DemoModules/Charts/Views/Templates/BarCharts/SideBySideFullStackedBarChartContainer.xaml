@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:RotationHandleView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+                          xmlns:local="clr-namespace:DemoCenter.Maui"
+                          x:Class="DemoCenter.Maui.Charts.Views.SideBySideFullStackedBarChartContainer"
+                          x:Name="sideBySideFullStackedBarChartContainer">
+    <ContentView.Resources>
+        <dxc:SeriesHintOptions x:Key="stackedBarSeriesHintOptions"
+                                  PointTextPattern="{}{A}: {V$#,###}"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding ChartModel.Title}"
+                   FontFamily="Roboto"
+                   TextColor="{DynamicResource TextThemeColor}"
+                   BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            <dxc:ChartView Grid.Row="1">
+                <dxc:ChartView.Series>
+                    <dxc:SideBySideFullStackedBarSeries DisplayName="{Binding ChartModel.Male0to14and65SeriesData.Name}"
+                                                           HintOptions="{StaticResource stackedBarSeriesHintOptions}"
+                                                           StackedGroup="1">
+                        <dxc:SideBySideFullStackedBarSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.Male0to14and65SeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:SideBySideFullStackedBarSeries.Data>
+                    </dxc:SideBySideFullStackedBarSeries>
+                    <dxc:SideBySideFullStackedBarSeries DisplayName="{Binding ChartModel.Male15to64SeriesData.Name}"
+                                                           HintOptions="{StaticResource stackedBarSeriesHintOptions}"
+                                                           StackedGroup="1">
+                        <dxc:SideBySideFullStackedBarSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.Male15to64SeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:SideBySideFullStackedBarSeries.Data>
+                    </dxc:SideBySideFullStackedBarSeries>
+                    <dxc:SideBySideFullStackedBarSeries DisplayName="{Binding ChartModel.Female0to14and65SeriesData.Name}"
+                                                           HintOptions="{StaticResource stackedBarSeriesHintOptions}"
+                                                           StackedGroup="2">
+                        <dxc:SideBySideFullStackedBarSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.Female0to14and65SeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:SideBySideFullStackedBarSeries.Data>
+                    </dxc:SideBySideFullStackedBarSeries>
+                    <dxc:SideBySideFullStackedBarSeries DisplayName="{Binding ChartModel.Female15to64SeriesData.Name}"
+                                                           HintOptions="{StaticResource stackedBarSeriesHintOptions}"
+                                                           StackedGroup="2">
+                        <dxc:SideBySideFullStackedBarSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.Female15to64SeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:SideBySideFullStackedBarSeries.Data>
+                    </dxc:SideBySideFullStackedBarSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend HorizontalPosition="Center"
+                                   VerticalPosition="BottomOutside"
+                                   Orientation="TopToBottom"/>
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint/>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY>
+                        <dxc:NumericAxisY.Label>
+                            <dxc:AxisLabel TextFormat="#%"/>
+                        </dxc:NumericAxisY.Label>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+                <dxc:ChartView.ChartStyle>
+                    <dxc:ChartStyle Palette="{Binding ChartModel.Palette}"/>
+                </dxc:ChartView.ChartStyle>
+                <dxc:ChartView.Triggers>
+                    <DataTrigger TargetType="dxc:ChartView"
+                                 Binding="{Binding Source={x:Reference Name=sideBySideFullStackedBarChartContainer}, Path=IsLandscape}"
+                                 Value="true">
+                        <Setter Property="Legend">
+                            <Setter.Value>
+                                <dxc:Legend Orientation="TopToBottom"
+                                               VerticalPosition="Top"
+                                               HorizontalPosition="RightOutside"/>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </dxc:ChartView.Triggers>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</local:RotationHandleView>

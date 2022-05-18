@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:forms="clr-namespace:DemoCenter.Maui;assembly=DemoCenter.Maui"
+             x:Class="DemoCenter.Maui.DemoModules.TabView.Pages.ContactDetailPage"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}"
+             Title="{Binding Name}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <forms:InverseBoolConverter x:Key="inverseBoolConverter"/>
+            <Style TargetType="dxg:DataGridView">
+                <Setter Property="BorderColor">Transparent</Setter>
+                <Setter Property="BorderThickness">0</Setter>
+                <Setter Property="SelectionMode">None</Setter>
+                <Setter Property="IndicatorColor">Transparent</Setter>
+                <Setter Property="VerticalLineThickness">0</Setter>
+                <Setter Property="IsColumnHeaderVisible">False</Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">Roboto</Setter>
+                <Setter Property="FontSize">14</Setter>
+            </Style>
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundThemeColor}"/>
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <demo:TabPageResources/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <demo:IconView VerticalOptions="Fill"
+                           HorizontalOptions="Fill"
+                           Icon="drawerbackground"
+                           Grid.ColumnSpan="2"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Aspect="Fill"/>
+            <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="15,25">
+                <Grid>
+                    <Ellipse Margin="0"
+                             IsVisible="{Binding HasPhoto}"
+                             Fill="White"
+                             Stroke="{DynamicResource DrawerTopPanelBorderColor}" 
+                             StrokeThickness="1"
+                             HeightRequest="80"
+                             WidthRequest="80"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center">
+                    </Ellipse>
+                    <Image Source="{Binding Photo}"
+                           IsVisible="{Binding HasPhoto}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           WidthRequest="78"
+                           HeightRequest="78">
+                        <Image.Clip>
+                            <EllipseGeometry RadiusX="39" RadiusY="39" Center="39, 39" />
+                        </Image.Clip>
+                    </Image>
+
+                </Grid>
+
+                <Grid VerticalOptions="Center"
+                      HorizontalOptions="Start"
+                      WidthRequest="80"
+                      HeightRequest="80"
+                      IsVisible="{Binding HasPhoto,Converter={StaticResource inverseBoolConverter}}"
+                      Margin="0"
+                      BackgroundColor="Transparent"
+                      ColumnSpacing="22"
+                      RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse Grid.RowSpan="2" Margin="0"
+                             Fill="{Binding CategoryColor}"
+                             HeightRequest="80"
+                             WidthRequest="80"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="Center">
+                    </Ellipse>
+
+                    <Label Grid.RowSpan="2"
+                           Margin="0"
+                           Text="{Binding Initials}"
+                           TextColor="White"
+                           BackgroundColor="Transparent"
+                           FontSize="20"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           WidthRequest="80"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Start"/>
+                </Grid>
+                <StackLayout Grid.Column="1"
+                             Orientation="Vertical"
+                             Padding="15,25">
+                    <Label Text="{Binding Name}" TextColor="{DynamicResource NavigationTextColor}" FontSize="16"/>
+                    <Label Text="{Binding Phone}" TextColor="{DynamicResource NavigationTextColor}"/>
+                    <Label Text="{Binding Email}" TextColor="{DynamicResource NavigationTextColor}"/>
+                </StackLayout>
+            </StackLayout>
+            <ContentView Grid.Row="1"
+                         Grid.ColumnSpan="2"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Padding="18,10"
+                         Margin="0"
+                         BackgroundColor="{StaticResource BackgroundThemeColor}">
+                <dxg:DataGridView AllowGroupCollapse="False"
+                                     ShowGroupedColumns="True"
+                                     IsColumnHeaderVisible="False"
+                                     GroupRowTemplate="{StaticResource dateTemplate}"
+                                     ItemsSource="{Binding CallsHistory}">
+                    <dxg:DataGridView.CellStyle>
+                        <dxg:CellStyle FontFamily="Roboto"
+                                          Padding="15"
+                                          FontColor="{DynamicResource DrawerGrayFontColor}"
+                                          HorizontalLineThickness="0"
+                                          SelectionColor="Transparent"
+                                          FontSize="{OnPlatform Android='16', iOS='14'}"/>
+                    </dxg:DataGridView.CellStyle>
+                    <dxg:DataGridView.GroupRowStyle>
+                        <dxg:GroupRowStyle Padding="0"
+                                              FontSize="14"
+                                              BorderColor="{DynamicResource TabPageSeparatorColor}"
+                                              BackgroundColor="Transparent"/>
+                    </dxg:DataGridView.GroupRowStyle>
+                    <dxg:DataGridView.Columns>
+                        <dxg:TemplateColumn FieldName="CallType"
+                                               Width="35"
+                                               HorizontalContentAlignment="End"
+                                               DisplayTemplate="{StaticResource callTypeIconTemplate}"
+                                               IsReadOnly="True"/>
+                        <dxg:TextColumn FieldName="CallType"
+                                           VerticalContentAlignment="Start"
+                                           Width="*"
+                                           IsReadOnly="True"/>
+                        <dxg:TimeColumn SortOrder="Descending"
+                                           FieldName="Date"
+                                           DisplayFormat="t"
+                                           Width="100"
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="End"
+                                           IsGrouped="true"
+                                           GroupInterval="DateRange"
+                                           IsReadOnly="True"/>
+                    </dxg:DataGridView.Columns>
+                </dxg:DataGridView>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:converters="clr-namespace:DemoCenter.Maui.DemoModules.Editors.Converters"
+    x:Class="DemoCenter.Maui.Views.AccountFormView"
+    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+    ios:Page.UseSafeArea="True">
+     <ContentPage.Resources>
+        <ResourceDictionary>
+             <ResourceDictionary.MergedDictionaries>
+                <demo:EditorsAndControlsResources/>
+             </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView Margin="12">
+        <StackLayout>
+            <dxe:ComboBoxEdit
+                LabelText="Box Mode"
+                BoxMode="{Binding SelectedBoxMode}"
+                SelectedItem="{Binding SelectedBoxMode}"
+                StartIcon="{Binding SelectedBoxMode, Converter={converters:BoxModeToImageSourceConverter Outlined='boxmodeoutlined', Filled='boxmodefilled'}}"
+                ItemsSource="{Binding BoxModes}"
+                ItemTemplate="{StaticResource BoxModeComboBoxItemTemplate}"
+                ReserveBottomTextLine="True"/>
+            <dxe:TextEdit
+                BoxMode="{Binding SelectedBoxMode}"
+                StartIcon="editorsname"
+                Text="{Binding Login, Mode=TwoWay}"
+                HasError="{Binding LoginHasError}"
+                LabelText="Login"
+                AutofillContentType="Username"
+                HelpText="*Required"
+                ErrorText="Login is required"/>
+            <dxe:PasswordEdit
+                BoxMode="{Binding SelectedBoxMode}"
+                StartIcon="editorspassword"
+                Text="{Binding Password, Mode=TwoWay}"
+                HasError="{Binding PasswordHasError}"
+                LabelText="Password"
+                AutofillContentType="Password"
+                HelpText="*Required"
+                ErrorText="The password should contain more than 5 characters, have at least one uppercase and one lowercase letter, and one number."/>
+            <dxe:TextEdit
+                BoxMode="{Binding SelectedBoxMode}"
+                StartIcon="editorsemail"
+                Text="{Binding Email, Mode=TwoWay}"
+                HasError="{Binding EmailHasError}"
+                LabelText="Email"
+                TextHorizontalAlignment="End"
+                ErrorText="Email is required"
+                AutofillContentType="EmailAddress"
+                HelpText="*Required"
+                Suffix="@devexpress.com"
+                AffixIndent="0"
+                ClearIconVisibility="Never"/>
+            <dxe:DateEdit
+                BoxMode="{Binding SelectedBoxMode}"
+                StartIcon="editorsage"
+                Date="{Binding BirthDate, Mode=TwoWay}"
+                HasError="{Binding BirthDateHasError}"
+                LabelText="Birth date"
+                TextHorizontalAlignment="End"
+                ErrorText="Birth date is required"
+                AutofillContentType="AndroidBirthDate"
+                HelpText="*Required"
+                IsDateIconVisible="False"
+                ClearIconVisibility="Auto"
+                DisplayFormat="d"/>
+            <dxe:TextEdit
+                BoxMode="{Binding SelectedBoxMode}"
+                StartIcon="editorsphone"
+                Text="{Binding Phone, Mode=TwoWay}"
+                HasError="{Binding PhoneHasError}"
+                LabelText="Phone"
+                Mask="(000) 000-0000"
+                AutofillContentType="PhoneNumber"
+                ErrorText="Incorrect phone number"
+                HelpText="Do not include a country code"
+                Keyboard="Telephone"/>
+            <dxe:MultilineEdit
+                BoxMode="{Binding SelectedBoxMode}"
+                StartIcon="editorsnotes"
+                Text="{Binding Notes, Mode=TwoWay}"
+                HasError="{Binding NotesHasError}"
+                MinLineCount="2"
+                MaxLineCount="4"
+                LabelText="Notes"
+                MaxCharacterCount="100"/>
+             <dxco:SimpleButton Text="SUBMIT" Clicked="OnSubmitClicked" FontAttributes="Bold" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

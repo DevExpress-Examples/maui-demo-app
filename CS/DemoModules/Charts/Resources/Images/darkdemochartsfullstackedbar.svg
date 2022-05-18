@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+<rect opacity="0.5" fill="none" width="32" height="32"/>
+<g>
+	<g>
+		<path  fill="#DEDEDE" d="M4,32h7v-9H4V32z M13,32h7V19h-7V32z M22,13v19h7V13H22z"/>
+	</g>
+</g>
+<rect x="4" y="4" opacity="0.5" fill="#DEDEDE" enable-background="new" width="7" height="19"/>
+<rect x="13" y="4" opacity="0.5" fill="#DEDEDE" enable-background="new" width="7" height="15"/>
+<rect x="22" y="4" opacity="0.5" fill="#DEDEDE" enable-background="new" width="7" height="9"/>
+</svg>

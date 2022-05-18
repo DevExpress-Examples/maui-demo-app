@@ -1,0 +1,185 @@
+﻿{
+  "QualitativeDataSets": {
+    "DataSets": [
+        {
+          "Name": "Male",
+          "DataSet": [
+              {
+                "Argument": "0-4",
+                "Value": "-349432556"
+              },
+              {
+                "Argument": "5-9",
+                "Value": "-342927577"
+              },
+              {
+                "Argument": "10-14",
+                "Value": "-331497486"
+              },
+              {
+                "Argument": "15-19",
+                "Value": "-316642222"
+              },
+              {
+                "Argument": "20-24",
+                "Value": "-308286775"
+              },
+              {
+                "Argument": "25-29",
+                "Value": "-306059387"
+              },
+              {
+                "Argument": "30-34",
+                "Value": "-309236984"
+              },
+              {
+                "Argument": "35-39",
+                "Value": "-276447037"
+              },
+              {
+                "Argument": "40-44",
+                "Value": "-249389688"
+              },
+              {
+                "Argument": "45-49",
+                "Value": "-241232877"
+              },
+              {
+                "Argument": "50-54",
+                "Value": "-222609691"
+              },
+              {
+                "Argument": "55-59",
+                "Value": "-192215395"
+              },
+              {
+                "Argument": "60-64",
+                "Value": "-157180267"
+              },
+              {
+                "Argument": "65-69",
+                "Value": "-128939392"
+              },
+              {
+                "Argument": "70-74",
+                "Value": "-87185982"
+              },
+              {
+                "Argument": "75-79",
+                "Value": "-54754941"
+              },
+              {
+                "Argument": "80-84",
+                "Value": "-33648953"
+              },
+              {
+                "Argument": "85-89",
+                "Value": "-15756942"
+              },
+              {
+                "Argument": "90-94",
+                "Value": "-5327866"
+              },
+              {
+                "Argument": "95-99",
+                "Value": "-1077791"
+              },
+              {
+                "Argument": "100+",
+                "Value": "-124144"
+              }
+            ]          
+        },
+        {
+          "Name": "Female",
+          "DataSet": [
+              {
+                "Argument": "0-4",
+                "Value": "328509234"
+              },
+              {
+                "Argument": "5-9",
+                "Value": "321511867"
+              },
+              {
+                "Argument": "10-14",
+                "Value": "309769906"
+              },
+              {
+                "Argument": "15-19",
+                "Value": "295553758"
+              },
+              {
+                "Argument": "20-24",
+                "Value": "289100903"
+              },
+              {
+                "Argument": "25-29",
+                "Value": "288632766"
+              },
+              {
+                "Argument": "30-34",
+                "Value": "296293748"
+              },
+              {
+                "Argument": "35-39",
+                "Value": "268371754"
+              },
+              {
+                "Argument": "40-44",
+                "Value": "244399176"
+              },
+              {
+                "Argument": "45-49",
+                "Value": "238133282"
+              },
+              {
+                "Argument": "50-54",
+                "Value": "223162982"
+              },
+              {
+                "Argument": "55-59",
+                "Value": "195633743"
+              },
+              {
+                "Argument": "60-64",
+                "Value": "164961323"
+              },
+              {
+                "Argument": "65-69",
+                "Value": "140704320"
+              },
+              {
+                "Argument": "70-74",
+                "Value": "101491347"
+              },
+              {
+                "Argument": "75-79",
+                "Value": "69026831"
+              },
+              {
+                "Argument": "80-84",
+                "Value": "48281201"
+              },
+              {
+                "Argument": "85-89",
+                "Value": "26429329"
+              },
+              {
+                "Argument": "90-94",
+                "Value": "11352182"
+              },
+              {
+                "Argument": "95-99",
+                "Value": "3055845"
+              },
+              {
+                "Argument": "100+",
+                "Value": "449279"
+              }
+            ]          
+        }
+      ]
+    
+  }
+}

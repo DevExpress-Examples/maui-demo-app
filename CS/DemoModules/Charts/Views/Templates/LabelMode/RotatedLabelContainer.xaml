@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+    x:Class="DemoCenter.Maui.Charts.Views.RotatedLabelContainer"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentView.Content>
+        <demo:Panel x:Name="panel">
+            <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+                <Label Text="Population By Country"
+                        FontFamily="Roboto"
+                        TextColor="{DynamicResource TextThemeColor}"
+                        Margin="0,8"
+                        BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                        HorizontalTextAlignment="Center"/>
+            
+                <dxc:ChartView x:Name="chart"
+                               Grid.Row="1"
+                               Rotated="True">
+                    <dxc:ChartView.Series>
+                        <dxc:BarSeries>
+                            <dxc:BarSeries.Data>
+                                <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.PopulationByCountry}"
+                                                       ArgumentDataMember="Argument">
+                                    <dxc:ValueDataMember Type="Value" Member="Value"/>
+                                </dxc:SeriesDataAdapter>
+                            </dxc:BarSeries.Data>
+                        </dxc:BarSeries>
+                    </dxc:ChartView.Series>
+                    <dxc:ChartView.AxisX>
+                        <dxc:QualitativeAxisX>
+                            <dxc:QualitativeAxisX.Style>
+                                <dxc:AxisStyle MajorTickmarksVisible="True"/>
+                            </dxc:QualitativeAxisX.Style>
+                            <dxc:QualitativeAxisX.Label>
+                                <dxc:AxisLabel Angle="30"/>
+                            </dxc:QualitativeAxisX.Label>
+                        </dxc:QualitativeAxisX>
+                    </dxc:ChartView.AxisX>
+                    <dxc:ChartView.AxisY>
+                        <dxc:NumericAxisY GridAlignment="2e8">
+                            <dxc:NumericAxisY.Label>
+                                <dxc:AxisLabel Staggered="True" TextFormat="#.##E+0"/>
+                            </dxc:NumericAxisY.Label>
+                            <dxc:NumericAxisY.LabelValueNotation>
+                                <dxc:AxisLabelScientificNotation ScientificNotation="E"/>
+                            </dxc:NumericAxisY.LabelValueNotation>
+                        </dxc:NumericAxisY>
+                    </dxc:ChartView.AxisY>
+                    <dxc:ChartView.Hint>
+                        <dxc:Hint>
+                            <dxc:Hint.Behavior>
+                                <dxc:TooltipHintBehavior/>
+                            </dxc:Hint.Behavior>
+                        </dxc:Hint>
+                    </dxc:ChartView.Hint>
+                </dxc:ChartView>
+            </Grid>
+        </demo:Panel>
+    </ContentView.Content>
+</ContentView>

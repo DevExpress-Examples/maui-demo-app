@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
+    xmlns:dcIOs="clr-namespace:DemoCenter.PlatformConfiguration.iOSSpecific;assembly=DemoCenter.Maui"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:views="clr-namespace:DemoCenter.Maui.Views"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:local="clr-namespace:DemoCenter.Maui"
+    xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+    x:Class="DemoCenter.Maui.Views.MainPage"
+    x:Name="mainPage"
+    dcIOs:Page.DisablePopInteractive="True"
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+    Shell.NavBarHasShadow="False">
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <DataTemplate x:Key="headerTemplate">
+                    <StackLayout
+                        Margin="0,0,0,0"
+                        BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                        <Label
+                            Text="{Binding Title}"
+                            FontFamily="Univia-Pro"
+                            FontSize="Medium"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Center"
+                            HeightRequest="35"
+                            TextColor="{DynamicResource TextThemeColor}"
+                            BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                        <BoxView Color="{DynamicResource MainPageBackgroundColor}"
+                                    HeightRequest="10" />
+                    </StackLayout>
+                </DataTemplate>
+                <DataTemplate x:Key="itemTemplate">
+                    <Frame
+                        Padding="10,0,10,10"
+                        HasShadow="False"
+                        BorderColor="{DynamicResource MainPageBackgroundColor}"
+                        CornerRadius="0"
+                        BackgroundColor="{DynamicResource MainPageBackgroundColor}">
+                        <AbsoluteLayout
+                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                            HeightRequest="201"
+                            Padding="0">
+                            <demo:DXDCLabel
+                                AbsoluteLayout.LayoutBounds="15,21"
+                                HeightRequest="32"
+                                Text="{Binding Title}"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemTextStyle}"
+                                TextColor="{DynamicResource TextThemeColor}"
+                                FontFamily="Univia-Pro"
+                                FontSize="22"
+                                BackgroundColor="Transparent"/>
+                            <dxc:SimpleButton
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                AbsoluteLayout.LayoutBounds="0.957,0.146"
+                                Text="MORE"
+                                TextColor="{DynamicResource TextThemeColor}"
+                                FontFamily="Univia-Pro Medium"
+                                FontSize="16"
+                                HeightRequest="22"
+                                WidthRequest="54"
+                                Padding="0"
+                                Command="{Binding BindingContext.NavigationControlCommand, Source={Reference mainPage}}"
+                                CommandParameter="{Binding Module}"
+                                BackgroundColor="Transparent"/>
+                                <dxcv:DXCollectionView
+                                    AbsoluteLayout.LayoutBounds="0,44"
+                                    Margin="10"
+                                    ItemsSource="{Binding DemoItems}"
+                                    Orientation="Horizontal"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="FillAndExpand"
+                                    HeightRequest="140"
+                                    ItemSize="90"
+                                    IsScrollBarVisible="false"
+                                    BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                                    <dxcv:DXCollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <views:GroupItemView TappedControlShortcut="DemoItem_TappedControlShortcut"/>
+                                        </DataTemplate>
+                                    </dxcv:DXCollectionView.ItemTemplate>
+                                </dxcv:DXCollectionView>
+                        </AbsoluteLayout>
+                    </Frame>
+                </DataTemplate>
+
+                <demo:CollectionViewHeaderTemplateSelector x:Key="itemTemplateSelector"
+                                            HeaderTemplate="{StaticResource headerTemplate}"
+                                            ItemTemplate="{StaticResource itemTemplate}"/>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <Grid
+            Margin="0"
+            ColumnSpacing="0"
+            RowSpacing="0"
+            BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <demo:IconView 
+                Grid.Column="0"
+                HeightRequest="24"
+                WidthRequest="24"
+                HorizontalOptions="StartAndExpand"
+                Source="info"
+                VerticalOptions="CenterAndExpand">
+                <demo:IconView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnInfoClicked" />
+                </demo:IconView.GestureRecognizers>
+            </demo:IconView>
+            <demo:IconView
+                Grid.Column="2"
+                HeightRequest="24"
+                WidthRequest="24"
+                Source="theme_palette"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <demo:IconView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ThemeCommand}" CommandParameter="{Binding}" />
+                </demo:IconView.GestureRecognizers>
+                <demo:IconView.Margin>
+                    <OnPlatform x:TypeArguments="maui:Thickness">
+                        <On Platform="Android">0,0,16,0</On>
+                        <On Platform="iOS">0</On>
+                    </OnPlatform>
+                </demo:IconView.Margin>
+            </demo:IconView>
+            <Label 
+                Grid.Column="1"
+                Text="{Binding TitleText}"
+                FontSize="Large"
+                FontFamily="Univia-Pro Medium"
+                HorizontalOptions="Center"
+                TextColor="{DynamicResource TextThemeColor}"
+                BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                <Label.Margin>
+                    <OnPlatform x:TypeArguments="maui:Thickness">
+                        <On Platform="Android">0</On>
+                        <On Platform="iOS">0,4,0,0</On>
+                    </OnPlatform>
+                </Label.Margin>
+            </Label>
+        </Grid>
+    </NavigationPage.TitleView>
+        <dxcv:DXCollectionView
+            SelectionMode="None"
+            IsScrollBarVisible="false"
+            ItemTemplate="{StaticResource itemTemplateSelector}"
+            ItemsSource="{Binding Items}">
+            <!--ItemTemplate="{StaticResource itemTemplateSelector}"-->
+        </dxcv:DXCollectionView>
+</ContentPage>

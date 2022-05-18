@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+<rect y="0" opacity="0.5" fill="none" width="32" height="32"/>
+<rect x="24" y="4" opacity="0.5" fill="#DEDEDE" enable-background="new" width="5" height="17"/>
+<rect x="3" y="6" opacity="0.5" fill="#DEDEDE" enable-background="new" width="5" height="10"/>
+<rect x="18" y="15" fill="#DEDEDE" width="3" height="9"/>
+<rect x="17" y="8" opacity="0.5" fill="#DEDEDE" enable-background="new" width="5" height="8"/>
+<rect x="11" y="21" fill="#DEDEDE" width="3" height="7"/>
+<rect x="10" y="12" opacity="0.5" fill="#DEDEDE" enable-background="new" width="5" height="7"/>
+<rect x="25" y="14" fill="#DEDEDE" width="3" height="15"/>
+<rect x="4" y="14" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 11 39)" fill="#DEDEDE" width="3" height="11"/>
+</svg>

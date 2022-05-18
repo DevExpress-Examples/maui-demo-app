@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:local="clr-namespace:DemoCenter.Maui"
+             x:Class="DemoCenter.Maui.Charts.Views.BarChartContainer">
+    <ContentView.Resources>
+        <dxc:SeriesHintOptions x:Key="barSeriesHintOptions"
+                                  PointTextPattern="{}{A}, {S}:&#x0a;{V$#,###}"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding ChartModel.Title}"
+                   FontFamily="Roboto"
+                   TextColor="{DynamicResource TextThemeColor}"
+                   BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            <dxc:ChartView Grid.Row="1">
+                <dxc:ChartView.Series>
+                    <dxc:BarSeries DisplayName="{Binding ChartModel.MaleSeriesData.Name}"
+                                      HintOptions="{StaticResource barSeriesHintOptions}">
+                        <dxc:BarSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.MaleSeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:BarSeries.Data>
+                    </dxc:BarSeries>                    
+                    <dxc:BarSeries DisplayName="{Binding ChartModel.FemaleSeriesData.Name}"
+                                      HintOptions="{StaticResource barSeriesHintOptions}">
+                        <dxc:BarSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.FemaleSeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:BarSeries.Data>
+                    </dxc:BarSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend HorizontalPosition="Right"
+                                   VerticalPosition="Top"
+                                   Orientation="TopToBottom" />
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint/>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY LabelTextFormatter="{local:BarChartAxisLabelTextFormatter}">
+                        <dxc:NumericAxisY.Title>
+                            <dxc:AxisTitle Text="Population, millions"/>
+                        </dxc:NumericAxisY.Title>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

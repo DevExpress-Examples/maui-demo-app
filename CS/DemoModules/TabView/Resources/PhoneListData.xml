@@ -1,0 +1,156 @@
+<?xml version="1.0" standalone="yes"?>
+<PhoneListData>
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Contact">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="ID" type="xs:int"/>
+          <xs:element name="FirstName" type="xs:string"/>
+          <xs:element name="LastName" type="xs:string"/>
+          <xs:element name="Phone" type="xs:string"/>
+          <xs:element name="ContactCategory" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Contact>
+    <ID>18</ID>
+    <FirstName>Mickey</FirstName>
+    <LastName>Alcorn</LastName>
+    <Phone>(818) 555-1233</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>13</ID>
+    <FirstName>June</FirstName>
+    <LastName>Alessandro</LastName>
+    <Phone>(847) 555-3395</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>8</ID>
+    <FirstName>Christa</FirstName>
+    <LastName>Christie</LastName>
+    <Phone>(818) 555-6902</Phone>
+    <ContactCategory>Work</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>1</ID>
+    <FirstName>John</FirstName>
+    <LastName>Doe</LastName>
+    <Phone>(914) 555-0627</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>20</ID>
+    <FirstName>Leticia</FirstName>
+    <LastName>Ford</LastName>
+    <Phone>(845) 555-7329</Phone>
+    <ContactCategory>Family</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>7</ID>
+    <FirstName>Francis</FirstName>
+    <LastName>Gallagher</LastName>
+    <Phone>(815) 555-3939</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>2</ID>
+    <FirstName>Sam</FirstName>
+    <LastName>Hill</LastName>
+    <Phone>(607) 555-2918</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>3</ID>
+    <FirstName>Karen</FirstName>
+    <LastName>Holmes</LastName>
+    <Phone>(212) 555-5555</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>9</ID>
+    <FirstName>Jimmie</FirstName>
+    <LastName>Jones</LastName>
+    <Phone>(775) 555-3344</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>11</ID>
+    <FirstName>James</FirstName>
+    <LastName>Johnson</LastName>
+    <Phone>(650) 555-2064</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>12</ID>
+    <FirstName>Robert</FirstName>
+    <LastName>James</LastName>
+    <Phone>(323) 555-1017</Phone>
+    <ContactCategory>Work</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>14</ID>
+    <FirstName>Mildred</FirstName>
+    <LastName>Johansson</LastName>
+    <Phone>(732) 555-2687</Phone>
+    <ContactCategory>Work</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>16</ID>
+    <FirstName>Michael</FirstName>
+    <LastName>Jeffers</LastName>
+    <Phone>(818) 555-1564</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>6</ID>
+    <FirstName>Ricardo</FirstName>
+    <LastName>Menendez</LastName>
+    <Phone>(732) 555-2651</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>15</ID>
+    <FirstName>Henry</FirstName>
+    <LastName>McAllister</LastName>
+    <Phone>(775) 555-4768</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>17</ID>
+    <FirstName>Scott</FirstName>
+    <LastName>Mathewson</LastName>
+    <Phone>(702) 555-5356</Phone>
+    <ContactCategory>Family</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>19</ID>
+    <FirstName>Roger</FirstName>
+    <LastName>Michelson</LastName>
+    <Phone>(212) 555-1740</Phone>
+    <ContactCategory>Star</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>10</ID>
+    <FirstName>Alfred</FirstName>
+    <LastName>Newman</LastName>
+    <Phone>(702) 555-4817</Phone>
+    <ContactCategory>Work</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>4</ID>
+    <FirstName>Bobbie</FirstName>
+    <LastName>Valentine</LastName>
+    <Phone>(309) 555-8145</Phone>
+    <ContactCategory>Family</ContactCategory>
+  </Contact>
+  <Contact>
+    <ID>5</ID>
+    <FirstName>Jennie</FirstName>
+    <LastName>Valentine</LastName>
+    <Phone>(973) 555-8561</Phone>
+    <ContactCategory>Family</ContactCategory>
+  </Contact>
+</PhoneListData>

@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:coreeditors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:utils="clr-namespace:DemoCenter.Maui" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+             ios:Page.UseSafeArea="True"
+             x:Class="DemoCenter.Maui.Views.NestedTabView"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Resources>
+        <utils:BoolToColorConverter x:Key="addToCartConverter" TrueSource="#FF000000" FalseSource="{StaticResource NestedTabViewCartColor}"/>
+        <utils:BoolToColorConverter x:Key="addToWishListConverter" TrueSource="#FF000000" FalseSource="{StaticResource NestedTabViewFavoriteColor}"/>
+        <DataTemplate x:Key="allListItemTemplate">
+            <ViewCell>
+                <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                      VerticalOptions="FillAndExpand"
+                      ColumnSpacing="27">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{OnIdiom Phone='200', Tablet='300'}"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.RowSpan="2"
+                           Padding="16"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Start"
+                           CornerRadius="0"
+                           HasShadow="False"
+                           BackgroundColor="White"
+                           BorderColor="{DynamicResource TabItemBorderColor}"
+                           WidthRequest="{OnIdiom Phone='150', Tablet='250', Default='150'}"
+                           HeightRequest="{OnIdiom Phone='100', Tablet='170', Default='100'}"
+                           Margin="{OnIdiom Phone='16', Tablet='16,32,32,32'}">
+                        <Image Margin="0,0,0,0"
+                               Source="{Binding ImageSource}"
+                               Aspect="AspectFit"/>
+                    </Frame>
+                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     Margin="{OnIdiom Phone='0,20,0,0', Tablet='0,30,0,0'}"
+                                     Orientation="{OnIdiom Phone='Vertical', Tablet='Horizontal'}">
+                            <Label Text="{Binding Name}"
+                                   FontFamily="Roboto"
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="{DynamicResource NavigationTextColor}"
+                                   BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                   FontSize="{OnIdiom Phone='16', Tablet='18'}">
+                            </Label>
+                            <Label Text="{Binding Price}"
+                                   FontFamily="Roboto"
+                                   LineBreakMode="NoWrap"
+                                   TextColor="{DynamicResource NavigationTextColor}"
+                                   BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                   Margin="{OnIdiom Phone='0,0,0,15', Tablet='0'}"
+                                   FontSize="{OnIdiom Phone='18', Tablet='20'}"
+                                   HorizontalOptions="{OnIdiom Phone='Start', Tablet='EndAndExpand'}">
+                            </Label>
+                        </StackLayout>
+                        <Label Margin="0"
+                               Text="{Binding Description}"
+                               FontSize="16"
+                               FontFamily="Roboto"
+                               LineBreakMode="WordWrap"
+                               MaxLines="4"
+                               TextColor="{DynamicResource NavigationTextColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               IsVisible="{OnIdiom Phone='False', Tablet='True'}">
+                        </Label>
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="0"
+                                     Spacing="15"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="End"
+                                     Margin="{OnIdiom Phone='0', Tablet='60', Default='0'}"
+                                     HeightRequest="{OnIdiom Phone='50', Tablet='60'}">
+                            <Grid Grid.Column="0">
+                                <Ellipse Grid.Column="0"
+                                                   Grid.Row="0"
+                                                   Fill="{DynamicResource TabItemBorderColor}"
+                                                   WidthRequest="{OnIdiom Phone='50', Tablet='60'}"
+                                                   HeightRequest="{OnIdiom Phone='50', Tablet='60'}">
+                                    <Ellipse.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeCart}"/>
+                                    </Ellipse.GestureRecognizers>
+                                </Ellipse>
+                                <demo:IconView Grid.Column="0"
+                                               Grid.Row="0"
+                                               VerticalOptions="CenterAndExpand"
+                                               HorizontalOptions="CenterAndExpand"
+                                               Source="demotabview_cartbutton"
+                                               ForegroundColor="{Binding CanAddToCart, Converter={StaticResource addToCartConverter}}"
+                                               WidthRequest="{OnIdiom Phone='24', Tablet='29'}"
+                                               HeightRequest="{OnIdiom Phone='24', Tablet='29'}">
+                                    <demo:IconView.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeCart}"/>
+                                    </demo:IconView.GestureRecognizers>
+                                </demo:IconView>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Ellipse Grid.Column="0"
+                                                       Grid.Row="0"
+                                                       Fill="{DynamicResource TabItemBorderColor}"
+                                                       WidthRequest="{OnIdiom Phone='50', Tablet='60'}"
+                                                       HeightRequest="{OnIdiom Phone='50', Tablet='60'}">
+                                    <Ellipse.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeWishList}"/>
+                                    </Ellipse.GestureRecognizers>
+                                </Ellipse>
+                                <demo:IconView Grid.Column="0"
+                                               Grid.Row="0"
+                                               VerticalOptions="CenterAndExpand"
+                                               HorizontalOptions="CenterAndExpand"
+                                               Source="demotabview_favoritebutton"
+                                               ForegroundColor="{Binding CanAddToWishList, Converter={StaticResource addToWishListConverter}}"
+                                               WidthRequest="{OnIdiom Phone='24', Tablet='29'}"
+                                               HeightRequest="{OnIdiom Phone='24', Tablet='29'}">
+                                    <demo:IconView.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeWishList}"/>
+                                    </demo:IconView.GestureRecognizers>
+                                </demo:IconView>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+        <DataTemplate x:Key="cartListItemTemplate">
+            <ViewCell>
+                <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                      VerticalOptions="FillAndExpand"
+                      ColumnSpacing="27">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{OnIdiom Phone='200', Tablet='300'}"/>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.RowSpan="2"
+                           Padding="16"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Start"
+                           CornerRadius="0"
+                           HasShadow="False"
+                           BackgroundColor="White"
+                           BorderColor="{DynamicResource TabItemBorderColor}"
+                           WidthRequest="{OnIdiom Phone='150', Tablet='250'}"
+                           HeightRequest="{OnIdiom Phone='100', Tablet='170'}">
+                        <Frame.Margin>
+                            <OnIdiom x:TypeArguments="maui:Thickness" Phone="16" Tablet="16,32,32,32"/>
+                        </Frame.Margin>
+                        <Image Margin="0,0,0,0"
+                               Source="{Binding ImageSource}"
+                               Aspect="AspectFit"/>
+                    </Frame>
+                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <StackLayout.Margin>
+                            <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,20,0,0" Tablet="0,30,0,0"/>
+                        </StackLayout.Margin>
+                        <Label Text="{Binding Name}"
+                               FontFamily="Roboto"
+                               LineBreakMode="TailTruncation"
+                               TextColor="{DynamicResource NavigationTextColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               FontSize="{OnIdiom Phone='16', Tablet='22'}">
+                        </Label>
+                        <Label Margin="0"
+                               Text="{Binding Category}"
+                               FontFamily="Roboto"
+                               LineBreakMode="WordWrap"
+                               MaxLines="4"
+                               TextColor="{DynamicResource NavigationTextColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               IsVisible="{OnIdiom Phone='False', Tablet='True'}">
+                        </Label>
+                        <Label HorizontalOptions="Start"
+                               Text="{Binding Price}"
+                               FontFamily="Roboto"
+                               TextColor="{DynamicResource NavigationTextColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               FontSize="{OnIdiom Phone='18', Tablet='26'}">
+                            <Label.Margin>
+                                <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,0,15" Tablet="0,10,0,0"/>
+                            </Label.Margin>
+                        </Label>
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="0"
+                                     Spacing="15"
+                                     VerticalOptions="EndAndExpand"
+                                     HorizontalOptions="Start"
+                                     HeightRequest="{OnIdiom Phone='50', Tablet='60'}">
+                            <StackLayout.Margin>
+                                <OnIdiom x:TypeArguments="maui:Thickness" Phone="0" Tablet="0,20,16,0"/>
+                            </StackLayout.Margin>
+                            <Grid Grid.Column="1">
+                                <Ellipse Grid.Column="0"
+                                                       Grid.Row="0"
+                                                       Fill="{DynamicResource TabItemBorderColor}"
+                                                       WidthRequest="{OnIdiom Phone='50', Tablet='60'}"
+                                                       HeightRequest="{OnIdiom Phone='50', Tablet='60'}">
+                                    <Ellipse.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeWishList}"/>
+                                    </Ellipse.GestureRecognizers>
+                                </Ellipse>
+                                <demo:IconView Grid.Column="0"
+                                               Grid.Row="0"
+                                               VerticalOptions="CenterAndExpand"
+                                               HorizontalOptions="CenterAndExpand"
+                                               Source="demotabview_favoritebutton"
+                                               ForegroundColor="{Binding CanAddToWishList, Converter={StaticResource addToWishListConverter}}"
+                                               WidthRequest="{OnIdiom Phone='24', Tablet='29'}"
+                                               HeightRequest="{OnIdiom Phone='24', Tablet='29'}">
+                                    <demo:IconView.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeWishList}"/>
+                                    </demo:IconView.GestureRecognizers>
+                                </demo:IconView>
+                            </Grid>
+                            <Grid Grid.Column="0">
+                                <Ellipse Grid.Column="0"
+                                                       Grid.Row="0"
+                                                       Fill="{DynamicResource TabItemBorderColor}"
+                                                       WidthRequest="{OnIdiom Phone='50', Tablet='60'}"
+                                                       HeightRequest="{OnIdiom Phone='50', Tablet='60'}">
+                                    <Ellipse.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeCart}"/>
+                                    </Ellipse.GestureRecognizers>
+                                </Ellipse>
+                                <demo:IconView Grid.Column="0"
+                                               Grid.Row="0"
+                                               VerticalOptions="CenterAndExpand"
+                                               HorizontalOptions="CenterAndExpand"
+                                               Source="demotabview_deletebutton"
+                                               WidthRequest="{OnIdiom Phone='24', Tablet='29'}"
+                                               HeightRequest="{OnIdiom Phone='24', Tablet='29'}">
+                                    <demo:IconView.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeCart}"/>
+                                    </demo:IconView.GestureRecognizers>
+                                </demo:IconView>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+        <DataTemplate x:Key="wishListItemTemplate">
+            <ViewCell>
+                <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                      VerticalOptions="FillAndExpand"
+                      ColumnSpacing="27">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{OnIdiom Phone='200', Tablet='300'}"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.RowSpan="2"
+                           Padding="16"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Start"
+                           CornerRadius="0"
+                           HasShadow="False"
+                           BackgroundColor="White"
+                           BorderColor="{DynamicResource TabItemBorderColor}"
+                           WidthRequest="{OnIdiom Phone='150', Tablet='250'}"
+                           HeightRequest="{OnIdiom Phone='100', Tablet='170'}">
+                        <Frame.Margin>
+                            <OnIdiom x:TypeArguments="maui:Thickness" Phone="16" Tablet="16,32,32,32"/>
+                        </Frame.Margin>
+                        <Image Margin="0,0,0,0"
+                               Source="{Binding ImageSource}"
+                               Aspect="AspectFit"/>
+                    </Frame>
+                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <StackLayout.Margin>
+                            <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,20,0,0" Tablet="0,30,0,0"/>
+                        </StackLayout.Margin>
+                        <Label Text="{Binding Name}"
+                               FontFamily="Roboto"
+                               LineBreakMode="TailTruncation"
+                               TextColor="{DynamicResource NavigationTextColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               FontSize="{OnIdiom Phone='16', Tablet='22'}">
+                        </Label>
+                        <Label Margin="0"
+                               Text="{Binding Category}"
+                               FontSize="18"
+                               FontFamily="Roboto"
+                               LineBreakMode="WordWrap"
+                               MaxLines="4"
+                               TextColor="{DynamicResource NavigationTextColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               IsVisible="{OnIdiom Phone='False', Tablet='True'}">
+                        </Label>
+                        <Label HorizontalOptions="Start"
+                               Text="{Binding Price}"
+                               FontFamily="Roboto"
+                               TextColor="{DynamicResource NavigationTextColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               FontSize="{OnIdiom Phone='18', Tablet='26'}">
+                            <Label.Margin>
+                                <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,0,15" Tablet="0,10,0,0"/>
+                            </Label.Margin>
+                        </Label>
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="0"
+                                     Spacing="15"
+                                     VerticalOptions="EndAndExpand"
+                                     HorizontalOptions="Start"
+                                     HeightRequest="{OnIdiom Phone='50', Tablet='60'}">
+                            <StackLayout.Margin>
+                                <OnIdiom x:TypeArguments="maui:Thickness" Phone="0" Tablet="0,20,16,0"/>
+                            </StackLayout.Margin>
+                            <Grid Grid.Column="1">
+                                <Ellipse Grid.Column="0"
+                                                       Grid.Row="0"
+                                                       Fill="{DynamicResource TabItemBorderColor}"
+                                                       WidthRequest="{OnIdiom Phone='50', Tablet='60'}"
+                                                       HeightRequest="{OnIdiom Phone='50', Tablet='60'}">
+                                    <Ellipse.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeCart}"/>
+                                    </Ellipse.GestureRecognizers>
+                                </Ellipse>
+                                <demo:IconView Grid.Column="0"
+                                               Grid.Row="0"
+                                               VerticalOptions="CenterAndExpand"
+                                               HorizontalOptions="CenterAndExpand"
+                                               Source="demotabview_cartbutton"
+                                               ForegroundColor="{Binding CanAddToCart, Converter={StaticResource addToCartConverter}}"
+                                               WidthRequest="{OnIdiom Phone='24', Tablet='29'}"
+                                               HeightRequest="{OnIdiom Phone='24', Tablet='29'}">
+                                    <demo:IconView.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeCart}"/>
+                                    </demo:IconView.GestureRecognizers>
+                                </demo:IconView>
+                            </Grid>
+                            <Grid Grid.Column="0">
+                                <Ellipse Grid.Column="0"
+                                                   Grid.Row="0"
+                                                   Fill="{DynamicResource TabItemBorderColor}"
+                                                   WidthRequest="{OnIdiom Phone='50', Tablet='60'}"
+                                                   HeightRequest="{OnIdiom Phone='50', Tablet='60'}">
+                                    <Ellipse.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeWishList}"/>
+                                    </Ellipse.GestureRecognizers>
+                                </Ellipse>
+                                <demo:IconView Grid.Column="0"
+                                               Grid.Row="0"
+                                               VerticalOptions="CenterAndExpand"
+                                               HorizontalOptions="CenterAndExpand"
+                                               Source="demotabview_deletebutton"
+                                               WidthRequest="{OnIdiom Phone='24', Tablet='29'}"
+                                               HeightRequest="{OnIdiom Phone='24', Tablet='29'}">
+                                    <demo:IconView.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ChangeWishList}"/>
+                                    </demo:IconView.GestureRecognizers>
+                                </demo:IconView>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+        <DataTemplate x:Key="listTemplate">
+            <Grid ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.12*'}"/>
+                    <ColumnDefinition Width="{OnIdiom Phone='*', Tablet='0.76*'}"/>
+                    <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.12*'}"/>
+                </Grid.ColumnDefinitions>
+                <demo:NonSelectableListView Grid.Column="1"
+                                            Margin="0,0,16,0"
+                                            ItemsSource="{Binding Products}"
+                                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                            SeparatorColor="{DynamicResource NestedTabViewSeparatorColor}"
+                                            ItemTemplate="{x:StaticResource Key=allListItemTemplate}"
+                                            VerticalScrollBarVisibility="Never"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            SizeChanged="UpdateSizeChanged">
+                    <ListView.RowHeight>
+                        <OnIdiom x:TypeArguments="x:Int32" Phone="150" Tablet="250"/>
+                    </ListView.RowHeight>
+                </demo:NonSelectableListView>
+            </Grid>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <dxco:TabView ScrollAnimationEnabled="False"
+                            SwipeEnabled="False"
+                            HeaderPanelPosition="Bottom"
+                            ItemHeaderWidth="*"
+                            HeaderPanelBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
+                            ItemHeaderIconColor="{DynamicResource TabViewItemTextColor}"
+                            ItemHeaderTextColor="{DynamicResource TabViewItemTextColor}"
+                            SelectedItemHeaderBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
+                            SelectedItemHeaderTextColor="{DynamicResource TabViewIndicatorColor}"
+                            SelectedItemHeaderIconColor="{DynamicResource TabViewIndicatorColor}"
+                            IsSelectedItemIndicatorVisible="False"
+                            IsHeaderPanelShadowVisible="False"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+            <dxco:TabView.HeaderPanelHeight>
+                <OnIdiom x:TypeArguments="dxco:TabHeaderLength" Phone="60" Tablet="90"/>
+            </dxco:TabView.HeaderPanelHeight>
+            <dxco:TabViewItem HeaderText="All"
+                                    HeaderIcon="nested_all"
+                                    HeaderPadding="0">
+                <dxco:TabView x:Name="nestedTabView"
+                                    HeaderPanelPosition="Top"
+                                    ItemsSource="{Binding AllProducts}"
+                                    SelectedItem="{Binding SelectedCategory}"
+                                    ItemTemplate="{x:StaticResource Key=listTemplate}"
+                                    ItemHeaderTextDataMember="Name"
+                                    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                    HeaderPanelBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
+                                    ItemHeaderTextColor="{DynamicResource TabViewItemTextColor}"
+                                    SelectedItemHeaderTextColor="{DynamicResource TabViewIndicatorColor}"
+                                    SelectedItemHeaderBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
+                                    ItemHeaderFontFamily="Roboto"
+                                    SelectedItemIndicatorColor="{DynamicResource TabViewIndicatorColor}"
+                                    IsSelectedItemIndicatorVisible="True"
+                                    IsHeaderPanelShadowVisible="true"
+                                    HeaderPanelShadowColor="#26000000"
+                                    HeaderPanelHeight="53"
+                                    HeaderPanelItemSpacing="20"
+                                    HeaderPanelIndent="30"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    HeaderPanelShadowHeight="{OnPlatform Android='5', iOS='3'}"
+                                    HeaderPanelShadowRadius="{OnPlatform Android='5', iOS='5'}"
+                                    ItemHeaderFontSize="{OnIdiom Phone='16', Tablet='18'}">
+                </dxco:TabView>
+            </dxco:TabViewItem>
+            <dxco:TabViewItem HeaderText="Cart"
+                                    HeaderIcon="nested_cart"
+                                    HeaderPadding="0">
+                <Grid ColumnSpacing="0" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.15*'}"/>
+                        <ColumnDefinition Width="{OnIdiom Phone='*', Tablet='0.7*'}"/>
+                        <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.15*'}"/>
+                    </Grid.ColumnDefinitions>
+                    <demo:NonSelectableListView x:Name="cartList"
+                                                Grid.Column="1"
+                                                BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                                SeparatorColor="{DynamicResource NestedTabViewSeparatorColor}"
+                                                ItemsSource="{Binding Cart}"
+                                                ItemTemplate="{x:StaticResource Key=cartListItemTemplate}"
+                                                VerticalScrollBarVisibility="Never"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand">
+                        <ListView.RowHeight>
+                            <OnIdiom x:TypeArguments="x:Int32" Phone="150" Tablet="250"/>
+                        </ListView.RowHeight>
+                        <ListView.Margin>
+                            <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,16,0" Tablet="0"/>
+                        </ListView.Margin>
+                    </demo:NonSelectableListView>
+                </Grid>
+            </dxco:TabViewItem>
+            <dxco:TabViewItem HeaderText="Wish list"
+                                    HeaderIcon="nested_wish_list"
+                                    HeaderPadding="0">
+                <Grid ColumnSpacing="0" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.15*'}"/>
+                        <ColumnDefinition Width="{OnIdiom Phone='*', Tablet='0.7*'}"/>
+                        <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.15*'}"/>
+                    </Grid.ColumnDefinitions>
+                    <demo:NonSelectableListView x:Name="wishList"
+                                                Grid.Column="1"
+                                                BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                                SeparatorColor="{DynamicResource NestedTabViewSeparatorColor}"
+                                                ItemsSource="{Binding WishList}"
+                                                ItemTemplate="{x:StaticResource Key=wishListItemTemplate}"
+                                                VerticalScrollBarVisibility="Never"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand">
+                        <ListView.RowHeight>
+                            <OnIdiom x:TypeArguments="x:Int32" Phone="150" Tablet="250"/>
+                        </ListView.RowHeight>
+                        <ListView.Margin>
+                            <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,16,0" Tablet="0"/>
+                        </ListView.Margin>
+                    </demo:NonSelectableListView>
+                </Grid>
+            </dxco:TabViewItem>
+        </dxco:TabView>
+    </ContentPage.Content>
+</ContentPage>

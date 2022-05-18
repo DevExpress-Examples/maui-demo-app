@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<AbsoluteLayout
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:views="clr-namespace:DemoCenter.Maui.Views;assembly=DemoCenter.Maui"
+             x:Class="DemoCenter.Maui.Views.GroupItemView"
+             VerticalOptions="FillAndExpand"
+             WidthRequest="90"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <AbsoluteLayout.GestureRecognizers>
+        <TapGestureRecognizer x:Name="gestureRecognizer" NumberOfTapsRequired="1" Tapped="GroupItemViewTapped" />
+    </AbsoluteLayout.GestureRecognizers>
+    <demo:IconView
+        AbsoluteLayout.LayoutBounds="25,12,39,39"
+        Icon="{Binding Icon}"/>
+    <demo:IconView
+        AbsoluteLayout.LayoutBounds="54, 0, 25, 12"
+        IsVisible="{Binding ShowBadge}"
+        Source ="{Binding BadgeIcon}"/>
+    <Label
+        AbsoluteLayout.LayoutBounds="0,64,90,-1"
+        Margin="0"
+        HorizontalTextAlignment="Center"
+        Text="{Binding Title}"
+        FontSize="16"
+        FontFamily="Univia-Pro"
+        MaxLines="2"
+        LineHeight="1"
+        LineBreakMode="WordWrap"
+        TextColor="{DynamicResource TextThemeColor}"
+        BackgroundColor="Transparent" />
+</AbsoluteLayout>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+<rect opacity="0.5" fill="none" width="32" height="32"/>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="#8F8E93" cx="5" cy="23" r="3"/>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="#8F8E93" cx="19" cy="14" r="3"/>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="#8F8E93" cx="11" cy="17" r="3"/>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="#8F8E93" cx="27" cy="16" r="3"/>
+<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#8F8E93" cx="4" cy="15" r="2"/>
+<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#8F8E93" cx="18" cy="6" r="2"/>
+<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#8F8E93" cx="10" cy="9" r="2"/>
+<circle opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#8F8E93" cx="26" cy="8" r="2"/>
+</svg>

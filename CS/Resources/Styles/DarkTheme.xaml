@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+                    xmlns:app="clr-namespace:DemoCenter.Maui.Resources.Styles"
+                    x:Class="DemoCenter.Maui.Resources.Styles.DarkTheme"
+                    xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+                    xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls">
+    <Color x:Key="AccentColor">#2088ff</Color>
+    <Color x:Key="MainThemeColor">#9D7DE8</Color>
+
+    <Color x:Key="BackgroundThemeColor">#303030</Color>
+    <Color x:Key="GridCellLinesColor">#454545</Color>
+
+    <Color x:Key="GridAdvancedLayoutRowBorderColor">#696969</Color>
+
+    <Color x:Key="GridCustomAppearanceOddRowBackgroundColor">#3A3A3A</Color>
+    <Color x:Key="GridCustomAppearanceFontColor">#E7E7E7</Color>
+    <Color x:Key="GridCustomAppearancePositiveFontColor">#00AE00</Color>
+    <Color x:Key="GridCustomAppearanceNegativeFontColor">#FF5458</Color>
+
+    <Color x:Key="GridHorizontalVirtualizationSelectionColor">#2B4B6F</Color>
+    <Color x:Key="GridHorizontalVirtualizationQuarterBarColor">#6E5091</Color>
+    <Color x:Key="GridHorizontalVirtualizationYearBarColor">#A675E4</Color>
+
+    <Color x:Key="CalendarViewBackgroundColor">#272727</Color>
+    <Color x:Key="CalendarViewSeparatorColor">#454545</Color>
+    <Color x:Key="CalendarViewTextColor">#E7E7E7</Color>
+    <Color x:Key="CalendarViewHolidayTextColor">#F44848</Color>
+
+    <Color x:Key="TabItemBackgroundColor">#454545</Color>
+    <Color x:Key="MainPageBackgroundColor">#454545</Color>
+    <Color x:Key="TabItemBorderColor">#555555</Color>
+    <Color x:Key="TextThemeColor">#e7e7e7</Color>
+    <Color x:Key="TextButtonColor">#42a5f6</Color>
+    <Color x:Key="TitleIconColor">#e7e7e7</Color>
+    <Color x:Key="DemoIconColor">#9D7DE8</Color>
+    <Color x:Key="SecondElementsColor">#42a5f6</Color>
+
+    <Color x:Key="SecondaryTextColor">#8e8e8e</Color>
+
+    <Color x:Key="NavigationTextColor">#e7e7e7</Color>
+    <Color x:Key="PhoneListTabTextColor">#b7b7b7</Color>
+    <Color x:Key="PhoneListTabIconColor">#b7b7b7</Color>
+    
+    <Color x:Key="TabViewCompaniesIconColor">#b7b7b7</Color>
+    <Color x:Key="TabViewHeaderBackgroundColor">#424242</Color>
+    <Color x:Key="TabViewItemTextColor">#b7b7b7</Color>
+    <Color x:Key="TabViewItemSelectedBackgroundColor">#2b4b6f</Color>
+    <Color x:Key="TabViewIndicatorColor">#2088ff</Color>
+    <Color x:Key="TabViewPhoneListShadowColor">#555555</Color>
+    
+    <Color x:Key="PhoneThemeColor">#959aa0</Color>
+    
+    <Color x:Key="DrawerTopPanelBackgroundColor">#212121</Color>
+    <Color x:Key="DrawerTopPanelFontColor">#e7e7e7</Color>
+    <Color x:Key="DrawerTopPanelBorderColor">#212121</Color>
+    <Color x:Key="DrawerBackGroundColor">#303030</Color>
+    <Color x:Key="DrawerGrayFontColor">#8e8e8e</Color>
+    <Color x:Key="DrawerScrimColor">#A0000000</Color>
+
+    <Color x:Key="EditorSettingsSeparatorColor">#555555</Color>
+    <Color x:Key="EditorSettingsTextColor">#dee7e7e7</Color>
+    
+    <Color x:Key="CollectionViewGrayFontColor">#8e8e8e</Color>
+    <Color x:Key="CollectionViewBoldGrayFontColor">#ababab</Color>
+    <Color x:Key="CollectionViewItemBorderColor">#424242</Color>
+    <Color x:Key="CollectionViewItemFontColor">#e7e7e7</Color>
+    <Color x:Key="CollectionViewStrikedItemFontColor">#747474</Color>
+    <Color x:Key="CollectionViewUrgentItemBackgroundColor">#594827</Color>
+
+    <Color x:Key="NestedTabViewSeparatorColor">#303030</Color>
+    <Color x:Key="NestedTabViewFavoriteColor">#de6d6f</Color>
+    <Color x:Key="NestedTabViewCartColor">#27b24f</Color>
+    <Color x:Key="DrawerSettingsSeparatorColor">#454545</Color>
+    <Color x:Key="ReminderButtonBackgroundColor">#2088FF</Color>
+
+    <Color x:Key="AvatarBorderColor">Transparent</Color>
+
+    <Color x:Key="ShadowedBackgroundColor">#7d000000</Color>
+
+    <Color x:Key="TabPagesHeaderSelectedBackground">#2d4259</Color>
+    <Color x:Key="TabPagesHeaderSelectedTextColor">#2088FF</Color>
+    <Color x:Key="TabPageHeaderShadowColor">#555555</Color>
+    <Color x:Key="TabPageDetailIconColor">#b7b7b7</Color>
+    <Color x:Key="TabPageFavoriteColor">#e39b29</Color>
+    <Color x:Key="TabPageSeparatorColor">#555555</Color>
+
+    <Color x:Key="SliderMaximumTrackColor-iOS">#dfe0e2</Color>
+
+    <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource BackgroundThemeColor}"/>
+        <Setter Property="BarTextColor" Value="{StaticResource TextThemeColor}"/>
+    </Style>
+    <Style TargetType="demo:IconView">
+        <Setter Property="ThemeName" Value="Dark" />
+    </Style>
+    <Style TargetType="dxc:ChartView">
+        <Setter Property="Theme" Value="Dark"/>
+    </Style>
+    <Style TargetType="dxc:PieChartView">
+        <Setter Property="Theme" Value="Dark"/>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,41 @@
+﻿<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
+             x:Class="DemoCenter.Maui.Demo.ColorPicker"
+             Padding="0"/>
+<!--<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
+             x:Class="DemoCenter.Maui.Demo.ColorPicker"
+             Padding="0">
+    <ContentView  HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="30" Padding="25,20"
+                BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <StackLayout>
+            <Label Text="{Binding Title}"/>
+            <editors:ColorSelector x:Name="colorsSelector" Margin="23"
+                                         Items="{Binding LabelModels}" SelectedItem="{Binding SelectedItem}" ItemSize="48"
+                                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            </editors:ColorSelector>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="End">
+                <Button Text="CANCEL" 
+                        Clicked="OnCloseClicked"
+                        Margin="10,0"
+                        HeightRequest="20"
+                        Padding="0"
+                        FontFamily="Roboto"
+                        FontSize="Medium"
+                        TextColor="{DynamicResource TextButtonColor}"
+                        BackgroundColor="Transparent"/>
+                <Button Text="OK" 
+                        Clicked="OnSaveClicked" 
+                        Margin="10,0" 
+                        HeightRequest="20" 
+                        Padding="0"
+                        FontFamily="Roboto"
+                        FontSize="Medium"
+                        TextColor="{DynamicResource TextButtonColor}"
+                        BackgroundColor="Transparent"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView>
+</ContentView>-->

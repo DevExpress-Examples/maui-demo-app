@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                           x:Class="DemoCenter.Maui.Views.GroupingView"
+                           xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Content>
+        <dxg:DataGridView x:Name="grid" ItemsSource="{Binding Invoices}" IsReadOnly="true">
+            <dxg:DataGridView.Columns>
+                <dxg:NumberColumn FieldName="OrderID" Caption="OrderID" IsGrouped="true">
+                </dxg:NumberColumn>
+                <dxg:TextColumn FieldName="ProductName" MinWidth="110"/>
+                <dxg:DateColumn FieldName="OrderDate" MinWidth="105" IsVisible="{StaticResource IsTablet}">
+                    <!--<dxg:DateColumn.IsVisible>
+                        <OnIdiom x:TypeArguments="x:Boolean" Phone="false" Tablet="true"/>
+                    </dxg:DateColumn.IsVisible>-->
+                </dxg:DateColumn>
+                <dxg:DateColumn FieldName="ShippedDate" MinWidth="105" IsVisible="{StaticResource IsTablet}">
+                    <!--<dxg:DateColumn.IsVisible>
+                        <OnIdiom x:TypeArguments="x:Boolean" Phone="false" Tablet="true"/>
+                    </dxg:DateColumn.IsVisible>-->
+                </dxg:DateColumn>
+                <dxg:NumberColumn FieldName="UnitPriceInt" MinWidth="85" Caption="Price" DisplayFormat="C0"/>
+                <dxg:NumberColumn FieldName="Quantity" MinWidth="100"/>
+                <dxg:NumberColumn FieldName="Total"
+                                  UnboundType="Decimal"
+                                  UnboundExpression="[UnitPriceInt] * [Quantity]"
+                                  DisplayFormat="C0"
+                                  MinWidth="{StaticResource MinWidth}">
+                    <!--<dxg:NumberColumn.MinWidth>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="120" Tablet="135"/>
+                    </dxg:NumberColumn.MinWidth>-->
+                </dxg:NumberColumn>
+            </dxg:DataGridView.Columns>
+            <dxg:DataGridView.GroupSummaries>
+                <dxg:GridColumnSummary FieldName="Total" Type="Sum" />
+            </dxg:DataGridView.GroupSummaries>
+            <dxg:DataGridView.TotalSummaries>
+                <dxg:GridColumnSummary FieldName="ProductName" Type="Count"/>
+                <dxg:GridColumnSummary FieldName="Total" Type="Sum" />
+            </dxg:DataGridView.TotalSummaries>
+        </dxg:DataGridView>
+    </ContentPage.Content>
+</local:BaseGridContentPage>

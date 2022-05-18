@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="DemoCenter.Maui.Views.EmployeeFormView"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+    ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <Style TargetType="dxe:MultilineEdit">
+            <Setter Property="ClearIconVisibility" Value="Never" />
+        </Style>
+        <Style TargetType="dxe:TextEdit">
+            <Setter Property="ClearIconVisibility" Value="Never" />
+        </Style>
+
+        <Style TargetType="dxdf:DataFormView">
+            <Setter Property="IsAutoGenerationEnabled" Value="False" />
+            <Setter Property="EditorLabelFontAttributes" Value="Bold"/>
+            <Setter Property="EditorLabelFontFamily" Value="Roboto"/>
+            <Setter Property="ContentPadding" Value="0"/>
+            <Setter Property="EditorLabelFontSize" Value="{StaticResource EditorLabelFontSize}">
+                <!--<Setter.Value>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="16"/>
+                </Setter.Value>-->
+            </Setter>
+            <Setter Property="EditorLabelWidth" Value="{OnIdiom Phone='*', Tablet='90'}"/>
+            <Setter Property="EditorPadding" Value="{OnIdiom Phone='0,5', Tablet='0,10'}"/>
+            <Setter Property="EditorHorizontalSpacing" Value="{StaticResource EditorHorizontalSpacing}">
+                <!--<Setter.Value>
+                    <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="24"/>
+                </Setter.Value>-->
+            </Setter>
+            <Setter Property="EditorLabelPosition">
+                <Setter.Value>
+                    <OnIdiom x:TypeArguments="dxdf:DataFormLabelPosition" Phone="Top" Tablet="Left"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CommitMode" Value="Manually" />
+            <Setter Property="ValidationMode" Value="LostFocus" />
+            <Setter Property="DataObject" Value="{Binding Model}" />
+            <Setter Property="EditorBoxMode" Value="Outlined" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="{OnIdiom Phone='3*', Tablet='1*'}"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+
+        <dxdf:DataFormView x:Name="dataForm" Grid.Column="1" PickerSourceProvider="{Binding .}">
+            <dxdf:DataFormView.ContentPadding>
+                <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,12" Tablet="0,18"/>
+            </dxdf:DataFormView.ContentPadding>
+
+            <dxdf:DataFormCustomItem x:Name="photoItem"
+                                     FieldName="Photo"
+                                     RowOrder="0"
+                                     EditorWidth="0.1*"
+                                     IsLabelVisible="False"
+                                     Padding="0"
+                                     EditorMinWidth="{StaticResource EditorMinWidth}">
+                <Border StrokeThickness="1"
+                        Stroke="{DynamicResource AvatarBorderColor}"
+                        x:Name="photoContainer"
+                        WidthRequest="{StaticResource PhotoFrameSizeRequest}"
+                        HeightRequest="{StaticResource PhotoFrameSizeRequest}">
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Image Source="{Binding Photo}"
+                           VerticalOptions="FillAndExpand"
+                           WidthRequest="{StaticResource InternalPhotoFrameSizeRequest}"
+                           HeightRequest="{StaticResource InternalPhotoFrameSizeRequest}"/>
+                </Border>
+            </dxdf:DataFormCustomItem>
+
+            <dxdf:DataFormTextItem
+                        LabelText="First Name:"
+                        FieldName="FirstName"
+                        Placeholder="First name"
+                        RowOrder="1"/>
+
+            <dxdf:DataFormTextItem
+                        LabelText="Last Name:"
+                        FieldName="LastName"
+                        Placeholder="Last name"
+                        RowOrder="2"/>
+
+            <dxdf:DataFormDateItem
+                        LabelText="Birth Date:"
+                        FieldName="BirthDate"
+                        RowOrder="3"
+                        DisplayFormat="d" />
+
+            <dxdf:DataFormComboBoxItem
+                    LabelText="Position:"
+                    FieldName="Position"
+                    Placeholder="Select..."
+                    RowOrder="4"/>
+
+            <dxdf:DataFormDateItem
+                    LabelText="Hire Date:"
+                    FieldName="HireDate"
+                    RowOrder="5"
+                    DisplayFormat="d" />
+
+            <dxdf:DataFormMultilineItem
+                    LabelText="Notes:"
+                    FieldName="Notes"
+                    MinLineCount="4"
+                    MaxLineCount="4"
+                    RowOrder="6" />
+
+            <dxdf:DataFormTextItem
+                    LabelText="Address:"
+                    FieldName="Address"
+                    RowOrder="7">
+            </dxdf:DataFormTextItem>
+
+            <dxdf:DataFormTextItem
+                    LabelText="City:"
+                    FieldName="City"
+                    RowOrder="8">
+            </dxdf:DataFormTextItem>
+
+            <dxdf:DataFormTextItem
+                    LabelText="State:"
+                    FieldName="State"
+                    RowOrder="9">
+            </dxdf:DataFormTextItem>
+
+            <dxdf:DataFormTextItem
+                    LabelText="Zip Code:"
+                    FieldName="Zip"
+                    RowOrder="10">
+            </dxdf:DataFormTextItem>
+
+            <dxdf:DataFormMaskedItem
+                    LabelText="Home:"
+                    FieldName="HomePhoneNumber"
+                    Placeholder="Phone number"
+                    RowOrder="11"
+                    Keyboard="Telephone"
+                    Mask="+1 (000) 000-0000"/>
+
+            <dxdf:DataFormMaskedItem
+                    LabelText="Mobile:"
+                    FieldName="MobilePhoneNumber"
+                    Placeholder="Phone number"
+                    RowOrder="12"
+                    Keyboard="Telephone"
+                    Mask="+1 (000) 000-0000"/>
+
+            <dxdf:DataFormTextItem
+                    LabelText="Email:"
+                    FieldName="Email"
+                    RowOrder="13"
+                    Keyboard="Email"/>
+
+            <dxdf:DataFormTextItem
+                    LabelText="Skype:"
+                    FieldName="Skype"
+                    RowOrder="14">
+            </dxdf:DataFormTextItem>
+        </dxdf:DataFormView>
+    </Grid>
+</ContentPage>

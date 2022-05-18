@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
+             x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewDragDropView"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:CollectionViewResources/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="itemTemplate">
+                <StackLayout Margin="0" Spacing="0" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                    <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="strikethroughItemTemplate">
+                <StackLayout Margin="0" Spacing="0">
+                    <Label Style="{StaticResource DragDropTemplateStyle}"
+                            Text="{Binding Name}"
+                            TextDecorations="Strikethrough"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+
+            <local:ItemTemplateSelector x:Key="itemTemplateSelector"
+                                        CompletedDataTemplate="{StaticResource strikethroughItemTemplate}"
+                                        UncompletedDataTemplate="{StaticResource itemTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <dxcv:DXCollectionView x:Name="collectionView"
+                              AllowDragDropItems="True"
+                              DragItem="DragItem"
+                              DragItemOver="DragItemOver"
+                              ItemTemplate="{StaticResource itemTemplateSelector}"
+                              ItemsSource="{Binding ItemSource}">
+        </dxcv:DXCollectionView>
+    </ContentPage.Content>
+</ContentPage>

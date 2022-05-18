@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.StepLineChartContainer">
+    <ContentView.Resources>
+        <dxc:SeriesHintOptions x:Key="lineSeriesHintOptions"
+                                  PointTextPattern="{}{A$yyyy}: {V}M"/>
+        <dxc:ConstantLineTitle x:Key="emptyConstantLineTitle" Visible="false"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding ChartModel.Title}"
+                   FontFamily="Roboto"
+                   TextColor="{DynamicResource TextThemeColor}"
+                   BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            <dxc:ChartView Grid.Row="1"
+                              SelectionMode="None">
+                <dxc:ChartView.Series>
+                    <dxc:StepLineSeries DisplayName="{Binding ChartModel.DieselPrices.DisplayName}"
+                                           MarkersVisible="true">
+                        <dxc:StepLineSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.DieselPrices.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:StepLineSeries.Data>
+                        <dxc:StepLineSeries.Label>
+                            <dxc:MarkerSeriesLabel Angle="-45"
+                                                      TextPattern="{}{V$#.##}"/>
+                        </dxc:StepLineSeries.Label>
+                        <dxc:StepLineSeries.HintOptions>
+                            <dxc:SeriesHintOptions PointTextPattern="{}{A$LLLL yyyy}: ${V}/gallon"/>
+                        </dxc:StepLineSeries.HintOptions>
+                    </dxc:StepLineSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY AlwaysShowZeroLevel="false">
+                        <dxc:NumericAxisY.Title>
+                            <dxc:AxisTitle Text="$/gallon"
+                                              Alignment="Outside"/>
+                        </dxc:NumericAxisY.Title>
+                        <dxc:NumericAxisY.Label>
+                            <dxc:AxisLabel TextFormat="#.##"/>
+                        </dxc:NumericAxisY.Label>
+                    </dxc:NumericAxisY >
+                </dxc:ChartView.AxisY>
+                <dxc:ChartView.AxisX>
+                    <dxc:DateTimeAxisX MeasureUnit="Month">
+                        <dxc:DateTimeAxisX.Label>
+                            <dxc:AxisLabel TextFormat="LLLL yyyy"/>
+                        </dxc:DateTimeAxisX.Label>
+                    </dxc:DateTimeAxisX>
+                </dxc:ChartView.AxisX>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

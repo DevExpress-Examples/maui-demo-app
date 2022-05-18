@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true"
+             x:Class="DemoCenter.Maui.Views.Colorizer">
+    <ContentPage.Resources>
+        <local:ColorizerTypeToImageSourceConverter x:Key="colorizerTypeToImageSourceConverter"/>
+        <DataTemplate x:Key="headerItemTemplate">
+            <demo:TabButton ImageSource="{Binding CustomAppearanceModuleType, Converter={StaticResource colorizerTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
+        </DataTemplate>
+        
+        <local:ColorizerTemplateSelector x:Key="colorizerTemplateSelector"
+                                         AreaGradientFillEffectTemplate="{StaticResource areaGradientFillEffectTemplate}"
+                                         BubbleColorizerTemplate="{StaticResource bubbleColorizerTemplate}"
+                                         BarColorizerTemplate="{StaticResource barColorizerTemplate}"
+                                         GradientSegmentColorizerTemplate="{StaticResource gradientSegmentColorizerTemplate}"
+                                         OperationSurfaceTemperatureTemplate="{StaticResource operationSurfaceTemperatureTemplate}" />
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,8,0,0"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <dxco:TabView x:Name="dxTabView"
+                     BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                     HeaderPanelBackgroundColor="{DynamicResource TabItemBackgroundColor}"
+                
+                     HorizontalOptions="FillAndExpand"
+                     ScrollAnimationEnabled="True"
+                     SwipeEnabled="False"
+                
+                     ItemsSource="{Binding Content}"
+                     ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                     ItemTemplate="{StaticResource colorizerTemplateSelector}"
+                
+                     HeaderPanelContentAlignment="Start"
+                     HeaderPanelIndent="0"
+                     IsSelectedItemIndicatorVisible="False"
+                     IsHeaderPanelShadowVisible="False"
+                
+                     SelectedItem="{Binding SelectedItem}"/>
+    </Grid>
+</ContentPage>

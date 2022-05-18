@@ -1,0 +1,56 @@
+﻿{
+  "QualitativeDataSets": {
+    "DataSets": [
+        {
+          "Name": "Male",
+          "DataSet": [
+              {
+                "Argument": "US",
+                "Value": "159690758"
+              },
+              {
+                "Argument": "Brazil",
+                "Value": "101498768"
+              },
+              {
+                "Argument": "Russia",
+                "Value": "101498768"
+              },
+              {
+                "Argument": "Japan",
+                "Value": "61451347"
+              },
+              {
+                "Argument": "UK",
+                "Value": "32056265"
+              }
+            ]          
+        },
+        {
+          "Name": "Female",
+          "DataSet": [
+              {
+                "Argument": "US",
+                "Value": "164304770"
+              },
+              {
+                "Argument": "Brazil",
+                "Value": "104324897"
+              },
+              {
+                "Argument": "Russia",
+                "Value": "76490902"
+              },
+              {
+                "Argument": "Japan",
+                "Value": "65250786"
+              },
+              {
+                "Argument": "UK",
+                "Value": "32374163"
+              }
+            ]          
+        }
+      ]    
+  }
+}

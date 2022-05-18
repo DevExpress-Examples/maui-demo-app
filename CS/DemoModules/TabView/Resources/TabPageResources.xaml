@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+                    xmlns:editors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
+                    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+                    xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                    x:Class="DemoCenter.Maui.Demo.TabPageResources">
+    <Style TargetType="Label">
+        <Setter Property="FontFamily">Roboto</Setter>
+        <Setter Property="FontSize">14</Setter>
+    </Style>
+    <Style TargetType="ContentPage">
+        <Setter Property="BackgroundColor"
+                Value="{DynamicResource BackgroundThemeColor}"/>
+    </Style>
+    <Style TargetType="dxg:CellStyle">
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <local:CallTypeToIconConverter x:Key="callTypeIconConverter"/>
+    <local:UpperCaseConverter x:Key="upperCaseConverter"/>
+    <DataTemplate x:Key="iconTemplate">
+        <Grid Margin="0"
+              BackgroundColor="{DynamicResource BackgroundThemeColor}"
+              ColumnSpacing="22"
+              RowSpacing="0">
+              <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="auto"/>
+                  <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <editors:ColorItem Grid.Column="0"
+                                 Grid.Row="0"
+                                 Grid.RowSpan="2"
+                                 VerticalOptions="CenterAndExpand"
+                                 PickerColor="{Binding Item.CategoryColor}"
+                                 ShowFlag="False"
+                                 MinimumWidthRequest="50"
+                                 MinimumHeightRequest="50"
+                                 WidthRequest="50"
+                                 HeightRequest="50"/>
+              <Label Grid.Column="0"
+                     Grid.Row="0"
+                     Grid.RowSpan="2"
+                     Margin="0"
+                     Text="{Binding Item.Initials}"
+                     TextColor="White"
+                     BackgroundColor="Transparent"
+                     FontSize="20"
+                     VerticalTextAlignment="Center"
+                     HorizontalTextAlignment="Center"
+                     WidthRequest="50"
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="Start"/>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="photoTemplate">
+        <Frame HasShadow="False"
+               BackgroundColor="{DynamicResource AvatarBorderColor}"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               CornerRadius="25"
+               WidthRequest="50"
+               HeightRequest="50"
+               Padding="1">
+            <Frame BackgroundColor="White"
+                   Padding="0"
+                   HeightRequest="48"
+                   WidthRequest="48"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   HasShadow="False"
+                   IsClippedToBounds="True"
+                   CornerRadius="24">
+                <Image Source="{Binding Value}"
+                       VerticalOptions="{OnPlatform Android='FillAndExpand', iOS='EndAndExpand'}">
+                </Image>
+            </Frame>
+        </Frame>
+    </DataTemplate>
+    <DataTemplate x:Key="callTypeIconTemplate">
+        <demo:IconView Source="{Binding Value, Converter={StaticResource callTypeIconConverter}}"
+                       HorizontalOptions="EndAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       HeightRequest="20"
+                       WidthRequest="20"/>
+    </DataTemplate>
+    <DataTemplate x:Key="dateTemplate">
+        <Label FontFamily="Roboto-Medium"
+               Margin="0,10,0,7"
+               TextColor="{DynamicResource PhoneListTabTextColor}"
+               Text="{Binding Value, StringFormat='{0:d}', Converter={StaticResource upperCaseConverter}}"/>
+    </DataTemplate>
+    <local:ContactIconTemplateSelector x:Key="contactIconTemplateSelector"
+                                       PhotoTemplate="{StaticResource photoTemplate}"
+                                       IconTemplate="{StaticResource iconTemplate}"/>
+</ResourceDictionary>

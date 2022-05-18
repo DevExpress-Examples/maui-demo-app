@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="DemoCenter.Maui.Views.FinancialChart"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Content>
+        <dxc:ChartView x:Name="chart"
+                          SelectionMode="None"
+                          AxisXNavigationMode="ScrollingAndZooming">
+            <dxc:ChartView.Legend>
+                <dxc:Legend HorizontalPosition="Left"
+                               VerticalPosition="Top"/>
+            </dxc:ChartView.Legend>
+            <dxc:ChartView.Series>
+                <dxc:CandleStickSeries DisplayName="Google Inc."
+                                          VisibleInLegend="false">
+                    <dxc:CandleStickSeries.HintOptions>
+                        <dxc:SeriesCrosshairOptions PointTextPattern="High: ${H$###.##}&#10;Open: ${O$###.##}&#10;Low: ${L$###.##}&#10;Close: ${C$###.##}"/>
+                    </dxc:CandleStickSeries.HintOptions>
+                    <dxc:CandleStickSeries.Data>
+                        <dxc:SeriesDataAdapter DataSource="{Binding StockPrices}" ArgumentDataMember="Date">
+                            <dxc:ValueDataMember Type="High" Member="High" />
+                            <dxc:ValueDataMember Type="Low" Member="Low" />
+                            <dxc:ValueDataMember Type="Open" Member="Open" />
+                            <dxc:ValueDataMember Type="Close" Member="Close" />
+                        </dxc:SeriesDataAdapter>
+                    </dxc:CandleStickSeries.Data>
+                </dxc:CandleStickSeries>
+
+                <dxc:BollingerBandsIndicator DisplayName="Bollinger Bands 10"
+                                                PointsCount="10">
+                    <dxc:BollingerBandsIndicator.Data>
+                        <dxc:CalculatedSeriesDataAdapter Series="{Binding Series[0], Source={x:Reference chart}}"/>
+                    </dxc:BollingerBandsIndicator.Data>
+                    <dxc:BollingerBandsIndicator.Style>
+                        <dxc:BollingerBandsIndicatorStyle Stroke="#e95ddc" UpperStroke="#e95ddc" LowerStroke="#e95ddc"
+                                                             StrokeThickness="1"  LowerStrokeThickness="1" UpperStrokeThickness="1" />
+                    </dxc:BollingerBandsIndicator.Style>
+                    <dxc:BollingerBandsIndicator.HintOptions>
+                        <dxc:SeriesCrosshairOptions PointTextPattern="{}{S}: &#10;Upper: ${UV$###.##}&#10;Value: ${V$###.##}&#10;Lower: ${LV$###.##}"
+                                                       AxisLineVisible="false"
+                                                       AxisLabelVisible="false" />
+                    </dxc:BollingerBandsIndicator.HintOptions>
+                </dxc:BollingerBandsIndicator>
+
+                <dxc:MovingAverageIndicator DisplayName="SMA 50"
+                                               PointsCount="50">
+                    <dxc:MovingAverageIndicator.Data>
+                        <dxc:CalculatedSeriesDataAdapter Series="{Binding Series[0], Source={x:Reference chart}}"/>
+                    </dxc:MovingAverageIndicator.Data>
+                    <dxc:MovingAverageIndicator.Style>
+                        <dxc:LineIndicatorStyle Stroke="#9859c9" StrokeThickness="1" />
+                    </dxc:MovingAverageIndicator.Style>
+                    <dxc:MovingAverageIndicator.HintOptions>
+                        <dxc:SeriesCrosshairOptions PointTextPattern="{}{S}: ${V$###.##}"
+                                                       AxisLineVisible="false"
+                                                       AxisLabelVisible="false" />
+                    </dxc:MovingAverageIndicator.HintOptions>
+                </dxc:MovingAverageIndicator>
+                <dxc:BarSeries DisplayName="Volume">
+                    <dxc:BarSeries.HintOptions>
+                        <dxc:SeriesCrosshairOptions PointTextPattern="Volume: ${V$#,###}" />
+                    </dxc:BarSeries.HintOptions>
+                    <dxc:BarSeries.Style>
+                        <dxc:BarSeriesStyle Fill="#ff2196F3"/>
+                    </dxc:BarSeries.Style>
+                    <dxc:BarSeries.Data>
+                        <dxc:SeriesDataAdapter DataSource="{Binding StockPrices}"
+                                                  ArgumentDataMember="Date">
+                            <dxc:ValueDataMember Type="Value" Member="Volume" />
+                        </dxc:SeriesDataAdapter>
+                    </dxc:BarSeries.Data>
+                    <dxc:BarSeries.AxisY>
+                        <dxc:NumericAxisY>
+                            <dxc:NumericAxisY.LabelValueNotation>
+                                <dxc:AxisLabelEngineeringNotation/>
+                            </dxc:NumericAxisY.LabelValueNotation>
+                            <dxc:NumericAxisY.Layout>
+                                <dxc:AxisLayout Anchor1="0" Anchor2="0.25" />
+                            </dxc:NumericAxisY.Layout>
+                            <dxc:NumericAxisY.DisplayPosition>
+                                <dxc:AxisDisplayPositionNear/>
+                            </dxc:NumericAxisY.DisplayPosition>
+                            <dxc:NumericAxisY.Label>
+                                <dxc:AxisLabel Position="Inside" TextFormat="$#"/>
+                            </dxc:NumericAxisY.Label>
+                            <dxc:NumericAxisY.Style>
+                                <dxc:AxisStyle MajorGridlinesVisible="True"
+                                                  LineColor="#8f2196F3"
+                                                  MajorGridlinesColor="#8f2196F3"/>
+                            </dxc:NumericAxisY.Style>
+                        </dxc:NumericAxisY>
+                    </dxc:BarSeries.AxisY>
+                </dxc:BarSeries>
+            </dxc:ChartView.Series>
+            <dxc:ChartView.AxisY>
+                <dxc:NumericAxisY AlwaysShowZeroLevel="false"
+                                     AutoRangeMode="VisibleValues">
+                    <dxc:NumericAxisY.DisplayPosition>
+                        <dxc:AxisDisplayPositionFar/>
+                    </dxc:NumericAxisY.DisplayPosition>
+                    <dxc:NumericAxisY.Label>
+                        <dxc:AxisLabel Position="Inside"
+                                          TextFormat="$#"/>
+                    </dxc:NumericAxisY.Label>
+                </dxc:NumericAxisY>
+            </dxc:ChartView.AxisY>
+            <dxc:ChartView.AxisX>
+                <dxc:DateTimeAxisX Range="{Binding VisualRange}"
+                                      MeasureUnit="Day"
+                                      EmptyRangesVisible="False">
+                </dxc:DateTimeAxisX>
+            </dxc:ChartView.AxisX>
+            <dxc:ChartView.Hint>
+                <dxc:Hint>
+                    <dxc:Hint.Behavior>
+                        <dxc:CrosshairHintBehavior MaxSeriesCount="4" GroupHeaderTextPattern="{}{A$MM/dd/yy}"/>
+                    </dxc:Hint.Behavior>
+                </dxc:Hint>
+            </dxc:ChartView.Hint>
+
+        </dxc:ChartView>
+    </ContentPage.Content>
+</ContentPage>

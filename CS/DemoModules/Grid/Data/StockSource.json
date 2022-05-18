@@ -1,0 +1,529 @@
+{
+  "StockItems": [
+      {
+        "CompanyName": "MSFT",
+        "Price": "30.6600",
+        "Volume": "49662740",
+        "LowPrice": "30.2200",
+        "HighPrice": "30.6700"
+      },
+      {
+        "CompanyName": "EBAY",
+        "Price": "33.0500",
+        "Volume": "9859718",
+        "LowPrice": "32.7300",
+        "HighPrice": "33.3800"
+      },
+      {
+        "CompanyName": "ERTS",
+        "Price": "18.2400",
+        "Volume": "10341104",
+        "LowPrice": "18.2100",
+        "HighPrice": "18.7600"
+      },
+      {
+        "CompanyName": "YHOO",
+        "Price": "15.7800",
+        "Volume": "13448816",
+        "LowPrice": "15.7200",
+        "HighPrice": "15.9700"
+      },
+      {
+        "CompanyName": "CSCO",
+        "Price": "20.4300",
+        "Volume": "91349111",
+        "LowPrice": "20.0900",
+        "HighPrice": "20.4500"
+      },
+      {
+        "CompanyName": "AAPL",
+        "Price": "476.6800",
+        "Volume": "14567040",
+        "LowPrice": "469.7000",
+        "HighPrice": "476.7900"
+      },
+      {
+        "CompanyName": "IBM",
+        "Price": "192.9500",
+        "Volume": "3804288",
+        "LowPrice": "191.7300",
+        "HighPrice": "193.5800"
+      },
+      {
+        "CompanyName": "MSI",
+        "Price": "47.1100",
+        "Volume": "4113556",
+        "LowPrice": "46.8200",
+        "HighPrice": "47.2000"
+      },
+      {
+        "CompanyName": "ORCL",
+        "Price": "28.7300",
+        "Volume": "29842639",
+        "LowPrice": "28.3800",
+        "HighPrice": "28.9900"
+      },
+      {
+        "CompanyName": "AMZN",
+        "Price": "185.4800",
+        "Volume": "5477425",
+        "LowPrice": "182.9100",
+        "HighPrice": "186.4900"
+      },
+      {
+        "CompanyName": "INTC",
+        "Price": "26.8500",
+        "Volume": "37072047",
+        "LowPrice": "26.6100",
+        "HighPrice": "26.9900"
+      },
+      {
+        "CompanyName": "SNE",
+        "Price": "19.8900",
+        "Volume": "1195501",
+        "LowPrice": "19.7800",
+        "HighPrice": "20.0100"
+      },
+      {
+        "CompanyName": "DELL",
+        "Price": "18.0500",
+        "Volume": "17557363",
+        "LowPrice": "17.7400",
+        "HighPrice": "18.1200"
+      },
+      {
+        "CompanyName": "HPQ",
+        "Price": "29.4600",
+        "Volume": "13190540",
+        "LowPrice": "28.8900",
+        "HighPrice": "29.5600"
+      },
+      {
+        "CompanyName": "ADBE",
+        "Price": "32.1000",
+        "Volume": "3607644",
+        "LowPrice": "31.9300",
+        "HighPrice": "32.3900"
+      },
+      {
+        "CompanyName": "ATVI",
+        "Price": "12.5500",
+        "Volume": "7439707",
+        "LowPrice": "12.4400",
+        "HighPrice": "12.6000"
+      },
+      {
+        "CompanyName": "NOK",
+        "Price": "5.2100",
+        "Volume": "15460936",
+        "LowPrice": "5.1500",
+        "HighPrice": "5.2400"
+      },
+      {
+        "CompanyName": "SYMC",
+        "Price": "17.7500",
+        "Volume": "5080836",
+        "LowPrice": "17.5000",
+        "HighPrice": "17.7500"
+      },
+      {
+        "CompanyName": "PHG",
+        "Price": "20.9300",
+        "Volume": "375701",
+        "LowPrice": "20.7300",
+        "HighPrice": "21.0000"
+      },
+      {
+        "CompanyName": "NVLS",
+        "Price": "48.4400",
+        "Volume": "1114442",
+        "LowPrice": "48.1000",
+        "HighPrice": "48.8100"
+      },
+      {
+        "CompanyName": "CAJ",
+        "Price": "44.6200",
+        "Volume": "409082",
+        "LowPrice": "44.5000",
+        "HighPrice": "44.8700"
+      },
+      {
+        "CompanyName": "XRX",
+        "Price": "8.0100",
+        "Volume": "12334759",
+        "LowPrice": "7.9000",
+        "HighPrice": "8.0300"
+      },
+      {
+        "CompanyName": "UIS",
+        "Price": "19.3500",
+        "Volume": "1007904",
+        "LowPrice": "18.6200",
+        "HighPrice": "19.3700"
+      },
+      {
+        "CompanyName": "QCOM",
+        "Price": "61.4700",
+        "Volume": "11456266",
+        "LowPrice": "60.9400",
+        "HighPrice": "61.6700"
+      },
+      {
+        "CompanyName": "LXK",
+        "Price": "37.2300",
+        "Volume": "1037525",
+        "LowPrice": "36.7500",
+        "HighPrice": "37.4500"
+      },
+      {
+        "CompanyName": "AXE",
+        "Price": "70.6200",
+        "Volume": "119671",
+        "LowPrice": "70.1000",
+        "HighPrice": "70.9100"
+      },
+      {
+        "CompanyName": "WDC",
+        "Price": "39.7700",
+        "Volume": "4710385",
+        "LowPrice": "39.2900",
+        "HighPrice": "40.5800"
+      },
+      {
+        "CompanyName": "NVDA",
+        "Price": "16.3100",
+        "Volume": "21191229",
+        "LowPrice": "15.6600",
+        "HighPrice": "16.6200"
+      },
+      {
+        "CompanyName": "ATML",
+        "Price": "10.1000",
+        "Volume": "10468992",
+        "LowPrice": "10.0700",
+        "HighPrice": "10.4900"
+      },
+      {
+        "CompanyName": "XLNX",
+        "Price": "36.6000",
+        "Volume": "1801851",
+        "LowPrice": "36.2100",
+        "HighPrice": "36.7900"
+      },
+      {
+        "CompanyName": "LOGI",
+        "Price": "8.5400",
+        "Volume": "1012366",
+        "LowPrice": "8.4800",
+        "HighPrice": "8.8500"
+      },
+      {
+        "CompanyName": "CDNS",
+        "Price": "11.7600",
+        "Volume": "2237691",
+        "LowPrice": "11.6400",
+        "HighPrice": "11.7900"
+      },
+      {
+        "CompanyName": "ADSK",
+        "Price": "38.3600",
+        "Volume": "2203299",
+        "LowPrice": "38.1500",
+        "HighPrice": "38.8500"
+      },
+      {
+        "CompanyName": "ALTR",
+        "Price": "40.7700",
+        "Volume": "3906491",
+        "LowPrice": "40.3200",
+        "HighPrice": "41.2000"
+      },
+      {
+        "CompanyName": "ERIC",
+        "Price": "9.4800",
+        "Volume": "19971807",
+        "LowPrice": "9.3800",
+        "HighPrice": "9.6200"
+      },
+      {
+        "CompanyName": "AMAT",
+        "Price": "13.0000",
+        "Volume": "17889343",
+        "LowPrice": "12.7100",
+        "HighPrice": "13.0900"
+      },
+      {
+        "CompanyName": "RIMM",
+        "Price": "16.4900",
+        "Volume": "16315718",
+        "LowPrice": "16.4400",
+        "HighPrice": "17.0800"
+      },
+      {
+        "CompanyName": "SIRI",
+        "Price": "2.1900",
+        "Volume": "104175315",
+        "LowPrice": "2.1000",
+        "HighPrice": "2.1900"
+      },
+      {
+        "CompanyName": "HBAN",
+        "Price": "6.0500",
+        "Volume": "16232223",
+        "LowPrice": "5.9100",
+        "HighPrice": "6.0500"
+      },
+      {
+        "CompanyName": "NLY",
+        "Price": "16.5500",
+        "Volume": "54332165",
+        "LowPrice": "16.5000",
+        "HighPrice": "16.9300"
+      },
+      {
+        "CompanyName": "ALXN",
+        "Price": "76.6900",
+        "Volume": "2024032",
+        "LowPrice": "75.0400",
+        "HighPrice": "78.8600"
+      },
+      {
+        "CompanyName": "AMGN",
+        "Price": "68.0600",
+        "Volume": "10922599",
+        "LowPrice": "67.7000",
+        "HighPrice": "69.0100"
+      },
+      {
+        "CompanyName": "ADP",
+        "Price": "54.5900",
+        "Volume": "2176720",
+        "LowPrice": "54.5000",
+        "HighPrice": "54.9200"
+      },
+      {
+        "CompanyName": "CHRW",
+        "Price": "63.6000",
+        "Volume": "1149051",
+        "LowPrice": "63.4300",
+        "HighPrice": "64.2000"
+      },
+      {
+        "CompanyName": "CERN",
+        "Price": "70.8800",
+        "Volume": "4488311",
+        "LowPrice": "67.7700",
+        "HighPrice": "71.8000"
+      },
+      {
+        "CompanyName": "CTXS",
+        "Price": "71.3100",
+        "Volume": "2246510",
+        "LowPrice": "70.1200",
+        "HighPrice": "71.4900"
+      },
+      {
+        "CompanyName": "CTSH",
+        "Price": "70.7500",
+        "Volume": "6504046",
+        "LowPrice": "69.6500",
+        "HighPrice": "72.6700"
+      },
+      {
+        "CompanyName": "CMCSA",
+        "Price": "27.2500",
+        "Volume": "12718508",
+        "LowPrice": "26.8400",
+        "HighPrice": "27.2900"
+      },
+      {
+        "CompanyName": "XRAY",
+        "Price": "37.8500",
+        "Volume": "531205",
+        "LowPrice": "37.5400",
+        "HighPrice": "37.8900"
+      },
+      {
+        "CompanyName": "DTV",
+        "Price": "44.9200",
+        "Volume": "4157008",
+        "LowPrice": "44.5600",
+        "HighPrice": "45.2000"
+      },
+      {
+        "CompanyName": "ESRX",
+        "Price": "50.7800",
+        "Volume": "5637596",
+        "LowPrice": "50.3300",
+        "HighPrice": "51.2900"
+      },
+      {
+        "CompanyName": "FLEX",
+        "Price": "6.9400",
+        "Volume": "5955973",
+        "LowPrice": "6.8900",
+        "HighPrice": "7.0200"
+      },
+      {
+        "CompanyName": "INTU",
+        "Price": "57.5600",
+        "Volume": "1752267",
+        "LowPrice": "56.4400",
+        "HighPrice": "57.6800"
+      },
+      {
+        "CompanyName": "LRCX",
+        "Price": "43.6200",
+        "Volume": "2377816",
+        "LowPrice": "43.3000",
+        "HighPrice": "43.9500"
+      },
+      {
+        "CompanyName": "LLTC",
+        "Price": "34.2500",
+        "Volume": "1238316",
+        "LowPrice": "33.9900",
+        "HighPrice": "34.5000"
+      },
+      {
+        "CompanyName": "MXIM",
+        "Price": "27.4800",
+        "Volume": "1869144",
+        "LowPrice": "27.1600",
+        "HighPrice": "27.5800"
+      },
+      {
+        "CompanyName": "MCHP",
+        "Price": "37.2800",
+        "Volume": "2625149",
+        "LowPrice": "36.9200",
+        "HighPrice": "37.4200"
+      },
+      {
+        "CompanyName": "MYL",
+        "Price": "22.8900",
+        "Volume": "4689547",
+        "LowPrice": "22.4400",
+        "HighPrice": "22.9100"
+      },
+      {
+        "CompanyName": "NTAP",
+        "Price": "39.7800",
+        "Volume": "5125327",
+        "LowPrice": "39.3400",
+        "HighPrice": "40.0000"
+      },
+      {
+        "CompanyName": "ORLY",
+        "Price": "83.4400",
+        "Volume": "1596290",
+        "LowPrice": "82.3500",
+        "HighPrice": "84.0000"
+      },
+      {
+        "CompanyName": "PCAR",
+        "Price": "43.7900",
+        "Volume": "3028060",
+        "LowPrice": "43.3500",
+        "HighPrice": "43.9500"
+      },
+      {
+        "CompanyName": "PAYX",
+        "Price": "31.6500",
+        "Volume": "2020591",
+        "LowPrice": "31.5000",
+        "HighPrice": "31.8400"
+      },
+      {
+        "CompanyName": "QGEN",
+        "Price": "15.6900",
+        "Volume": "984321",
+        "LowPrice": "15.6400",
+        "HighPrice": "15.9400"
+      },
+      {
+        "CompanyName": "ROST",
+        "Price": "51.6400",
+        "Volume": "1479308",
+        "LowPrice": "51.3100",
+        "HighPrice": "52.2100"
+      },
+      {
+        "CompanyName": "SIAL",
+        "Price": "71.5100",
+        "Volume": "736283",
+        "LowPrice": "70.9300",
+        "HighPrice": "71.5300"
+      },
+      {
+        "CompanyName": "SPLS",
+        "Price": "14.8900",
+        "Volume": "7703742",
+        "LowPrice": "14.8600",
+        "HighPrice": "15.0000"
+      },
+      {
+        "CompanyName": "SBUX",
+        "Price": "48.7200",
+        "Volume": "3837014",
+        "LowPrice": "48.2800",
+        "HighPrice": "48.8100"
+      },
+      {
+        "CompanyName": "C",
+        "Price": "34.2300",
+        "Volume": "49495226",
+        "LowPrice": "33.2500",
+        "HighPrice": "34.2800"
+      },
+      {
+        "CompanyName": "TEVA",
+        "Price": "44.9400",
+        "Volume": "4912296",
+        "LowPrice": "44.1100",
+        "HighPrice": "45.1800"
+      },
+      {
+        "CompanyName": "URBN",
+        "Price": "27.1400",
+        "Volume": "3476880",
+        "LowPrice": "26.8000",
+        "HighPrice": "27.3500"
+      },
+      {
+        "CompanyName": "VRSN",
+        "Price": "36.5200",
+        "Volume": "1066173",
+        "LowPrice": "36.0800",
+        "HighPrice": "36.6300"
+      },
+      {
+        "CompanyName": "BAC",
+        "Price": "8.1300",
+        "Volume": "436439603",
+        "LowPrice": "7.9300",
+        "HighPrice": "8.1500"
+      },
+      {
+        "CompanyName": "RMBS",
+        "Price": "8.2400",
+        "Volume": "5256967",
+        "LowPrice": "8.0200",
+        "HighPrice": "8.4100"
+      },
+      {
+        "CompanyName": "BYD",
+        "Price": "9.2700",
+        "Volume": "988249",
+        "LowPrice": "9.2000",
+        "HighPrice": "9.4300"
+      },
+      {
+        "CompanyName": "EMC",
+        "Price": "26.3300",
+        "Volume": "13212298",
+        "LowPrice": "26.0700",
+        "HighPrice": "26.4000"
+      }
+  ]
+}

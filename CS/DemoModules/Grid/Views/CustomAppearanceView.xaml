@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                           x:Class="DemoCenter.Maui.Views.CustomAppearanceView"
+                           xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <dxg:DataGridView x:Name="dataGridView" ItemsSource="{Binding}" SelectionMode="None" CustomCellStyle="DataGridView_CustomCellStyle">
+        <dxg:TextColumn FieldName="Country"/>
+        <dxg:NumberColumn FieldName="ActualSales" DisplayFormat="C2"/>
+        <dxg:NumberColumn FieldName="TargetSales" DisplayFormat="C2"/>
+        <dxg:NumberColumn FieldName="AverageMonthlySales" Caption="Monthly Sales" DisplayFormat="C2" Width="1.2*" IsVisible="{StaticResource IsAverageMonthlySalesVisible}">
+            <!--<dxg:NumberColumn.IsVisible>
+                <OnIdiom x:TypeArguments="x:Boolean" Phone="False" Tablet="True"/>
+            </dxg:NumberColumn.IsVisible>-->
+        </dxg:NumberColumn>
+    </dxg:DataGridView>
+</local:BaseGridContentPage>

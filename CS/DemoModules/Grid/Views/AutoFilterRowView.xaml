@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           x:Class="DemoCenter.Maui.Views.AutoFilterRowView"
+                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                           xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+                           xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    
+    <ContentPage.Content>
+        <dxg:DataGridView x:Name="dataGridView"
+                          EditorShowMode="Tap"
+                          ItemsSource="{Binding Path=OutlookData}"
+                          ShowAutoFilterRow="True">
+            <dxg:DataGridView.Columns>
+                <dxg:NumberColumn FieldName="Id" Width="70" IsReadOnly="true" AutoFilterCondition="Equals"/>
+                <dxg:ComboBoxColumn FieldName="Priority" MinWidth="120" AutoFilterCondition="Equals"/>
+                <dxg:TextColumn FieldName="From.Name" Caption="From" MinWidth="150" AutoFilterCondition="Contains"/>
+                <dxg:DateColumn FieldName="Sent" MinWidth="110"/>
+                <dxg:NumberColumn FieldName="Size" Width="90" DisplayFormat="{}{0} B"/>
+                <dxg:CheckBoxColumn FieldName="HasAttachment" EditFormCaption="Has Attachment" Width="70">
+                    <dxg:CheckBoxColumn.HeaderContentTemplate>
+                        <DataTemplate>
+                            <demo:IconView HeightRequest="24" WidthRequest="24" HorizontalOptions="CenterAndExpand" Source="demogridattachment" VerticalOptions="Center"/>
+                        </DataTemplate>
+                    </dxg:CheckBoxColumn.HeaderContentTemplate>
+                </dxg:CheckBoxColumn>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </ContentPage.Content>
+</local:BaseGridContentPage>
+

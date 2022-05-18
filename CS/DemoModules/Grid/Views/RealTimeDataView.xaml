@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                           xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+                           xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+                           xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+                           x:Class="DemoCenter.Maui.Views.RealTimeDataView"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Resources>
+        <local:DeltaToColorConverter x:Key="DeltaToColorConverter"/>
+        <local:DeltaToImageConverter x:Key="DeltaToImageConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <dxg:DataGridView x:Name="grid"
+                          AllowCascadeUpdate="false"
+                          ItemsSource="{Binding Quotes}"
+                          IsUpdateLocked="{Binding IsUpdateLocked}"
+                          IsReadOnly="true"
+                          SelectionMode="None">
+            <dxg:DataGridView.Columns>
+                <dxg:TextColumn FieldName="CompanyName" Caption="Quote" MinWidth="70"/>
+                <dxg:TemplateColumn FieldName="Price" Caption="Value" MinWidth="90" HorizontalContentAlignment="End">
+                    <dxg:TemplateColumn.DisplayTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="{DynamicResource GridCellBackgroundColor}"
+                                  RowSpacing="0"
+                                  ColumnSpacing="0">
+                                <Grid.Margin>
+                                    <OnIdiom x:TypeArguments="maui:Thickness" Phone="0, 0, 9, 0" Tablet="0, 0, 10, 0"/>
+                                </Grid.Margin>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="16" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Value, StringFormat='{0:0.00}'}"
+                                       Grid.Column="0"
+                                       Margin="0, 0, 7, 0"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="End"
+                                       FontFamily="{DynamicResource GridHeaderFontFamily}"
+                                       BackgroundColor="{DynamicResource GridCellBackgroundColor}"
+                                       TextColor="{Binding Path=Item.Delta, Converter={StaticResource DeltaToColorConverter}}"
+                                       FontSize="{StaticResource FontSize}">
+                                    <!--<Label.FontSize>
+                                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14"/>
+                                    </Label.FontSize>-->
+                                </Label>
+                                <demo:IconView Grid.Column="1" HeightRequest="8" WidthRequest="16" HorizontalOptions="StartAndExpand" Source="{Binding Path=Item.Delta, Converter={StaticResource DeltaToImageConverter}}" VerticalOptions="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </dxg:TemplateColumn.DisplayTemplate>
+                </dxg:TemplateColumn>
+                <dxg:NumberColumn FieldName="LowPrice" Caption="Low" DisplayFormat="{}{0:0.00}" MinWidth="70"/>
+                <dxg:NumberColumn FieldName="HighPrice" Caption="High" DisplayFormat="{}{0:0.00}" MinWidth="70"/>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </ContentPage.Content>
+</local:BaseGridContentPage>

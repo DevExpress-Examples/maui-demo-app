@@ -1,0 +1,69 @@
+<?xml version="1.0" standalone="yes"?>
+<CompaniesData>
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="CompanyData">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="ID" type="xs:int"/>
+          <xs:element name="CompanyBanner" type="xs:string"/>
+          <xs:element name="CompanyName" type="xs:string"/>
+          <xs:element name="Address" type="xs:string"/>
+          <xs:element name="City" type="xs:string"/>
+          <xs:element name="State" type="xs:string"/>
+          <xs:element name="Zipcode" type="xs:int"/>
+          <xs:element name="Phone" type="xs:string"/>
+          <xs:element name="Fax" type="xs:string"/>
+          <xs:element name="Website" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <CompanyData>
+    <ID>1</ID>
+    <CompanyName>SuprMart</CompanyName>
+    <CompanyBanner>Companies_SuprMart.jpg</CompanyBanner>
+    <Address>702 SW 8th Street</Address>
+    <City>Bentonville</City>
+    <State>Arkansas</State>
+    <Zipcode>72716</Zipcode>
+    <Phone>(870) 555-2797</Phone>
+    <Fax>(870) 555-2171</Fax>
+    <Website>http://www.nositesupermart.com</Website>
+  </CompanyData>
+  <CompanyData>
+    <ID>2</ID>
+    <CompanyName>El'Depot</CompanyName>
+    <CompanyBanner>Companies_ElDepot.jpg</CompanyBanner>
+    <Address>2455 Paces Ferry Road NW</Address>
+    <City>Atlanta</City>
+    <State>Georgia</State>
+    <Zipcode>30339</Zipcode>
+    <Phone>(678) 555-3232</Phone>
+    <Fax>(678) 555-3231</Fax>
+    <Website>http://www.nositedepot.com</Website>
+  </CompanyData>
+  <CompanyData>
+    <ID>3</ID>
+    <CompanyName>K&#38;S Music</CompanyName>
+    <CompanyBanner>Companies_KSMusic.jpg</CompanyBanner>
+    <Address>1000 Nicllet Mall</Address>
+    <City>Minneapolis</City>
+    <State>Minnesota</State>
+    <Zipcode>55403</Zipcode>
+    <Phone>(763) 555-6073</Phone>
+    <Fax>(763) 555-6074</Fax>
+    <Website>http://www.nositemusic.com</Website>
+  </CompanyData>
+  <CompanyData>
+    <ID>4</ID>
+    <CompanyName>Tom Club</CompanyName>
+    <CompanyBanner>Companies_TomClub.jpg</CompanyBanner>
+    <Address>999 Lake Drive</Address>
+    <City>Issaquah</City>
+    <State>Washington</State>
+    <Zipcode>98027</Zipcode>
+    <Phone>(509) 555-2292</Phone>
+    <Fax>(509) 555-2293</Fax>
+    <Website>http://www.nositetomsclub.com</Website>
+  </CompanyData>
+</CompaniesData>

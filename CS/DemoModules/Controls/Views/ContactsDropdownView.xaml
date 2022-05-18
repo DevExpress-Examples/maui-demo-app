@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:views="clr-namespace:DemoCenter.Maui.Views" 
+    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:core="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
+    xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
+    xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+    x:Class="DemoCenter.Maui.DemoModules.Popup.Views.ContactsDropdownView"
+    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+    x:Name="contentPage"
+    ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:CollectionViewResources/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">Roboto</Setter>
+                <Setter Property="FontSize">14</Setter>
+            </Style>
+
+            <views:CallTypeToIconConverter x:Key="callTypeIconConverter"/>
+            <views:UpperCaseConverter x:Key="upperCaseConverter"/>
+
+            <DataTemplate x:Key="iconItemTemplate">
+                <Grid Padding="2, 8, 6, 7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="48"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0"
+                          Margin="0"
+                          BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                          ColumnSpacing="22"
+                          RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Grid.RowSpan="2" Margin="0"
+                                Fill="{Binding CategoryColor}"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="Center">
+                        </Ellipse>
+                        <Label Grid.Column="0"
+                               Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Margin="0"
+                               Text="{Binding Initials}"
+                               TextColor="White"
+                               BackgroundColor="Transparent"
+                               FontSize="20"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               WidthRequest="50"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="Start"/>
+                    </Grid>
+                    <StackLayout Grid.Column="1"
+                                 Padding="18,1,18,7"
+                                 Orientation="Vertical">
+                        <Label Text="{Binding Name}"
+                               Margin="0,2"
+                               TextColor="{DynamicResource NavigationTextColor}"/>
+                        <Label Text="{Binding Phone}"
+                               TextColor="{DynamicResource CollectionViewGrayFontColor}"/>
+                    </StackLayout>
+                    <demo:IconView Grid.Column="2"
+                                   Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
+                                   HorizontalOptions="EndAndExpand"
+                                   VerticalOptions="CenterAndExpand"
+                                   HeightRequest="20"
+                                   WidthRequest="20"/>
+                    <dxco:SimpleButton Grid.Column="3"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Center"
+                                 BackgroundColor="Transparent"
+                                 IconColor="{DynamicResource TabPageDetailIconColor}"
+                                 PressedBackgroundColor="{StaticResource MainPageBackgroundColor}"
+                                 Command="{Binding ItemCommand, Source={x:Reference contentPage}}"
+                                 CommandParameter="{Binding}"
+                                 Clicked="OnContactClick"
+                                 Icon="demotabviewdetail"/>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="photoItemTemplate">
+                <Grid Padding="2, 8, 6, 7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="48"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse Margin="0"
+                                Fill="White"
+                                Stroke="{DynamicResource AvatarBorderColor}" 
+                                StrokeThickness="1"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center">
+                    </Ellipse>
+                    <Image Source="{Binding Contact.Photo}" VerticalOptions="Center"
+                                    HorizontalOptions="Center" WidthRequest="48" HeightRequest="48">
+                        <Image.Clip>
+                            <EllipseGeometry RadiusX="24" RadiusY="24" Center="24, 24" />
+                        </Image.Clip>
+                    </Image>
+                    <StackLayout Grid.Column="1"
+                                 Padding="18,1,18,7"
+                                 Orientation="Vertical">
+                        <Label Text="{Binding Name}"
+                               Margin="0,2"
+                               TextColor="{DynamicResource NavigationTextColor}"/>
+                        <Label Text="{Binding Phone}"
+                               TextColor="{DynamicResource CollectionViewGrayFontColor}"/>
+                    </StackLayout>
+                    <demo:IconView Grid.Column="2"
+                                   Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
+                                   HorizontalOptions="EndAndExpand"
+                                   VerticalOptions="CenterAndExpand"
+                                   HeightRequest="20"
+                                   WidthRequest="20"/>
+                    <dxco:SimpleButton Grid.Column="3"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Center"
+                                 BackgroundColor="Transparent"
+                                 IconColor="{DynamicResource TabPageDetailIconColor}"
+                                 PressedBackgroundColor="{StaticResource MainPageBackgroundColor}"
+                                 Command="{Binding ItemCommand, Source={x:Reference contentPage}}"
+                                 CommandParameter="{Binding}"
+                                 Clicked="OnContactClick"
+                                 Icon="demotabviewdetail"/>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="groupItemTemplate">
+                <StackLayout Padding="2, 0, 18, 10">
+                    <Label FontFamily="Roboto-Medium"
+                           Margin="0,20,0,1"
+                           TextColor="{DynamicResource PhoneListTabTextColor}"
+                           Text="{Binding Value, StringFormat='{0:d}', Converter={StaticResource upperCaseConverter}}"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+
+            <views:ContactItemTemplateSelector x:Key="contactItemTemplateSelector"
+                                       PhotoTemplate="{StaticResource photoItemTemplate}"
+                                       IconTemplate="{StaticResource iconItemTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <dxcv:DXCollectionView x:Name="collectionView"
+                              AllowGroupCollapse="False"
+                              GroupHeaderTemplate="{StaticResource groupItemTemplate}"
+                              ItemTemplate="{StaticResource contactItemTemplateSelector}"
+                              ItemsSource="{Binding Recent}"
+                              Tap="ItemSelected">
+                <dxcv:DXCollectionView.GroupDescription>
+                    <dxcv:GroupDescription FieldName="Date" SortOrder="Descending"/>
+                </dxcv:DXCollectionView.GroupDescription>
+                <dxcv:DXCollectionView.Margin>
+                    <OnIdiom x:TypeArguments="maui:Thickness" Phone="16,0,0,0" Tablet="71,0,0,0"/>
+                </dxcv:DXCollectionView.Margin>
+            </dxcv:DXCollectionView>
+
+            <dxco:DXPopup IsOpen="{Binding IsOpenPopup}"
+                         PlacementTarget="{Binding PlacementTarget}"
+                         ShadowColor="#9e000000" 
+                         Placement="Bottom"
+                         CornerRadius="8"
+                         HorizontalAlignment="Left">
+                <StackLayout Orientation="Vertical" Padding="8,2">
+                    <dxco:SimpleButton Text="Call"
+                                      Icon="popupphone"
+                                      TextColor="#81c95a"
+                                      IconColor="#81c95a"
+                                      PressedBackgroundColor="{StaticResource MainPageBackgroundColor}"
+                                      IconIndent="16"
+                                      HorizontalOptions="Start"
+                                      Clicked="OnCallClick"
+                                      BackgroundColor="Transparent"/>
+                    <dxco:SimpleButton Text="Remove"
+                                      Icon="collectionviewdeletetask"
+                                      TextColor="#ff5e61"
+                                      IconColor="#ff5e61"
+                                      PressedBackgroundColor="{StaticResource MainPageBackgroundColor}"
+                                      IconIndent="16"
+                                      HorizontalOptions="Start"
+                                      Clicked="OnRemoveClick"
+                                      BackgroundColor="Transparent"/>
+                </StackLayout>
+            </dxco:DXPopup>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

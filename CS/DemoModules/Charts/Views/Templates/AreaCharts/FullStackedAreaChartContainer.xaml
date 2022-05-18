@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.FullStackedAreaChartContainer">
+    <ContentView.Resources>
+        <dxc:MarkerSeriesLabel x:Key="stackedAreaSeriesLabel"
+                                  TextPattern="${V$#.#}M"/>
+        <dxc:SeriesHintOptions x:Key="fullStackedAreaSeriesHintOptions"
+                                  PointTextPattern="{}{S}&#x0a;{A$yyyy}: {VP$0.##}%"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding ChartModel.Title}"
+                   FontFamily="Roboto"
+                   TextColor="{DynamicResource TextThemeColor}"
+                   BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            <dxc:ChartView Grid.Row="1"
+                              SelectionMode="Single"
+                              SelectionKind="Series">
+                <dxc:ChartView.Series>
+                    <dxc:FullStackedAreaSeries DisplayName="{Binding ChartModel.DevAVEast.Name}"
+                                                  HintOptions="{StaticResource fullStackedAreaSeriesHintOptions}"
+                                                  Label="{StaticResource stackedAreaSeriesLabel}"
+                                                  MarkersVisible="true">
+                        <dxc:FullStackedAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.DevAVEast.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:FullStackedAreaSeries.Data>
+                    </dxc:FullStackedAreaSeries>
+                    <dxc:FullStackedAreaSeries DisplayName="{Binding ChartModel.DevAVWest.Name}"
+                                                  HintOptions="{StaticResource fullStackedAreaSeriesHintOptions}"
+                                                  Label="{StaticResource stackedAreaSeriesLabel}"
+                                                  MarkersVisible="true">
+                        <dxc:FullStackedAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.DevAVWest.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:FullStackedAreaSeries.Data>
+                    </dxc:FullStackedAreaSeries>
+                    <dxc:FullStackedAreaSeries DisplayName="{Binding ChartModel.DevAVSouth.Name}"
+                                                  HintOptions="{StaticResource fullStackedAreaSeriesHintOptions}"
+                                                  Label="{StaticResource stackedAreaSeriesLabel}"
+                                                  MarkersVisible="true">
+                        <dxc:FullStackedAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.DevAVSouth.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:FullStackedAreaSeries.Data>
+                    </dxc:FullStackedAreaSeries>
+                    <dxc:FullStackedAreaSeries DisplayName="{Binding ChartModel.DevAVCenter.Name}"
+                                                  HintOptions="{StaticResource fullStackedAreaSeriesHintOptions}"
+                                                  Label="{StaticResource stackedAreaSeriesLabel}"
+                                                  MarkersVisible="true">
+                        <dxc:FullStackedAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.DevAVCenter.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:FullStackedAreaSeries.Data>
+                    </dxc:FullStackedAreaSeries>
+                    <dxc:FullStackedAreaSeries DisplayName="{Binding ChartModel.DevAVNorth.Name}"
+                                                  HintOptions="{StaticResource fullStackedAreaSeriesHintOptions}"
+                                                  Label="{StaticResource stackedAreaSeriesLabel}"
+                                                  MarkersVisible="true">
+                        <dxc:FullStackedAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.DevAVNorth.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:FullStackedAreaSeries.Data>
+                    </dxc:FullStackedAreaSeries>    
+                </dxc:ChartView.Series>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend HorizontalPosition="Center"
+                                   VerticalPosition="BottomOutside"
+                                   Orientation="LeftToRight"/>
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint/>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.AxisX>
+                    <dxc:DateTimeAxisX MeasureUnit="Year">
+                        <dxc:DateTimeAxisX.Label>
+                            <dxc:AxisLabel TextFormat="yyyy"/>
+                        </dxc:DateTimeAxisX.Label>
+                    </dxc:DateTimeAxisX>
+                </dxc:ChartView.AxisX>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY>
+                        <dxc:NumericAxisY.Label>
+                            <dxc:AxisLabel TextFormat="#%"/>
+                        </dxc:NumericAxisY.Label>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

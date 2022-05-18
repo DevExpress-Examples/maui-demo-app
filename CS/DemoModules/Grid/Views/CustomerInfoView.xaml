@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="DemoCenter.Maui.Views.CustomerOrdersView"
+             BackgroundColor="{DynamicResource GridCellBackgroundColor}"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource GridCellFontColor}"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <OnIdiom x:TypeArguments="View">
+            <OnIdiom.Phone>
+                <StackLayout Margin="14" Spacing="0">
+                    <Grid RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                                            
+                        <ContentView Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" BackgroundColor="{DynamicResource GridCellBorderColor}">
+                            <Image Margin="1" Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="120" WidthRequest="100" />
+                        </ContentView>
+                        <Label Text="{Binding Name}" Grid.Row="0" Grid.Column="1" Margin="14, 0, 0, 7"/>
+                        <Label Text="{Binding Position}" Grid.Row="1" Grid.Column="1" Margin="14, 0, 0, 7"/>
+                        <Label Text="{Binding Phone}" Grid.Row="2" Grid.Column="1" Margin="14, 0, 0, 0"/>
+                    </Grid>
+                                        
+                    <Label Text="{Binding Notes}" Margin="0, 14, 0, 0" />
+                </StackLayout>
+            </OnIdiom.Phone>
+
+            <OnIdiom.Tablet>
+                <StackLayout Spacing="0" Margin="20">
+                    <Grid RowSpacing="0" ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                                        
+                        <ContentView Grid.Row="0" Grid.Column="0" BackgroundColor="{DynamicResource GridCellBorderColor}">
+                            <Image Margin="1" Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="120" WidthRequest="100" />
+                        </ContentView>
+                                            
+                        <Grid Grid.Row="0" Grid.Column="1" Margin="20, 0, 0, 0" RowSpacing="0" ColumnSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                                            
+                            <Label Margin="0, 0, 0, 10" Text="Name:" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
+                            <Label Margin="0, 0, 0, 10" Text="{Binding Name}" Grid.Row="0" Grid.Column="1"/>
+                                                
+                            <Label Margin="0, 0, 0, 10" Text="Position:" FontAttributes="Bold" Grid.Row="1" Grid.Column="0"/>
+                            <Label Margin="0, 0, 0, 10" Text="{Binding Position}" Grid.Row="1" Grid.Column="1"/>
+                                                
+                            <Label Margin="0, 0, 0, 10" Text="Phone:" FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
+                            <Label Margin="0, 0, 0, 10" Text="{Binding Phone}" Grid.Row="2" Grid.Column="1"/>
+                                                
+                            <Label Margin="0, 0, 0, 10" Text="Email:" FontAttributes="Bold" Grid.Row="3" Grid.Column="0"/>
+                            <Label Margin="0, 0, 0, 10" Text="{Binding Email}" Grid.Row="3" Grid.Column="1"/>
+                                                
+                            <Label Text="Address:" FontAttributes="Bold" Grid.Row="4" Grid.Column="0"/>
+                            <Label Text="{Binding Address}" Grid.Row="4" Grid.Column="1"/>
+                        </Grid>
+                    </Grid>
+                                        
+                    <Label Text="{Binding Notes}" Margin="0, 20, 0, 0" Grid.Row="1"/>
+                </StackLayout>
+            </OnIdiom.Tablet>
+        </OnIdiom>
+    </ContentPage.Content>
+</ContentPage>

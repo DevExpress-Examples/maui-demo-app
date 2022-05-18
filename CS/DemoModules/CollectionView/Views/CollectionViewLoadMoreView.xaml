@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:editors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources" xmlns:compatibility="clr-namespace:Microsoft.Maui.Controls.Compatibility;assembly=Microsoft.Maui.Controls"
+             x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewLoadMoreView"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:CollectionViewResources/>
+            </ResourceDictionary.MergedDictionaries>
+            <!--<x:String x:Key="formatTime">{0:HH:mm}</x:String>-->
+            <DataTemplate x:Key="mailTemplate">
+                <Grid Style="{StaticResource MailTemplateStyle}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="46" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <compatibility:RelativeLayout Grid.Column="0">
+                        <Ellipse Style="{StaticResource MailColorItemStyle}"
+                                           Fill="{Binding CategoryColor}" />
+                        <Label Style="{StaticResource SenderAvatarTextStyle}"
+                               Text="{Binding SenderAvatarText}" />
+                    </compatibility:RelativeLayout>
+                    <StackLayout Grid.Column="1"
+                                 Orientation="Vertical"
+                                 VerticalOptions="StartAndExpand"
+                                 BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                        <Label Text="{Binding SenderName}"
+                               MaxLines="1"
+                               FontAttributes="Bold"
+                               TextColor="{DynamicResource NavigationTextColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}" />
+                        <Label Text="{Binding Subject}"
+                               MaxLines="1"
+                               LineBreakMode="TailTruncation"
+                               TextColor="{DynamicResource NavigationTextColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}" />
+                        <Label Text="{Binding Body}"
+                               MaxLines="1"
+                               LineBreakMode="TailTruncation"
+                               TextColor="{DynamicResource CollectionViewGrayFontColor}"
+                               BackgroundColor="{DynamicResource BackgroundThemeColor}" />
+                    </StackLayout>
+                    <Label Grid.Column="2"
+                           TextColor="{DynamicResource CollectionViewGrayFontColor}"
+                           Text="{Binding SentDate, StringFormat={StaticResource formatTime}}"
+                           VerticalOptions="StartAndExpand" />
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <dxcv:DXCollectionView x:Name="collectionView"
+                              ItemTemplate="{StaticResource mailTemplate}"
+                              IsLoadMoreEnabled="True"
+                              IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                              LoadMoreCommand="{Binding LoadMoreCommand}"
+                              ItemsSource="{Binding ItemSource}"
+                              Margin="{OnIdiom Tablet='66,0,0,0'}">
+        </dxcv:DXCollectionView>
+    </ContentPage.Content>
+</ContentPage>

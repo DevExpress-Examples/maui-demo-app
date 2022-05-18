@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Class="DemoCenter.Maui.Views.BarCharts"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Resources>
+        <local:BarTypeToImageSourceConverter x:Key="barTypeToImageSourceConverter"/>
+        <DataTemplate x:Key="headerItemTemplate">
+            <demo:TabButton ImageSource="{Binding BarType, Converter={StaticResource barTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
+        </DataTemplate>
+        <local:BarChartTemplateSelector x:Key="barChartTemplateSelector"
+                                        SideBySideRangeBarChartTemplate="{StaticResource sideBySideRangeBarChartTemplate}"
+                                        RangeBarChartTemplate="{StaticResource rangeBarChartTemplate}"
+                                        PopulationPyramidTemplate="{StaticResource populationPyramidTemplate}"
+                                        BarChartTemplate="{StaticResource barChartTemplate}"
+                                        StackedBarChartTemplate="{StaticResource stackedBarChartTemplate}"
+                                        SideBySideStackedBarChartTemplate="{StaticResource sideBySideStackedBarChartTemplate}"
+                                        FullStackedBarChartTemplate="{StaticResource fullStackedBarChartTemplate}"
+                                        SideBySideFullStackedBarChartTemplate="{StaticResource sideBySideFullStackedBarChartTemplate}"
+                                        RotatedStackedBarChartTemplate="{StaticResource rotatedStackedBarChartTemplate}"
+                                        RotatedSideBySideStackedBarChartTemplate="{StaticResource rotatedSideBySideStackedBarChartTemplate}"/>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,8,0,0"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <dxco:TabView x:Name="dxTabView"
+                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                            HeaderPanelBackgroundColor="{DynamicResource TabItemBackgroundColor}"
+                
+                            HorizontalOptions="FillAndExpand"
+                            ScrollAnimationEnabled="True"
+                            SwipeEnabled="False"
+                
+                            ItemsSource="{Binding Content}"
+                            ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                            ItemTemplate="{StaticResource barChartTemplateSelector}"
+                
+                            HeaderPanelContentAlignment="Start"
+                            HeaderPanelIndent="0"
+                            IsSelectedItemIndicatorVisible="False"
+                            IsHeaderPanelShadowVisible="False"
+                
+                            SelectedItem="{Binding SelectedItem}"/>
+    </Grid>
+</ContentPage>

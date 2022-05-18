@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
+    xmlns:local="clr-namespace:DemoCenter.Maui"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+    x:Class="DemoCenter.Maui.DemoModules.Popup.Views.PopupDialogView"
+    ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:CollectionViewResources/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="urgentItemTemplate">
+                <StackLayout Margin="0" Spacing="0" BackgroundColor="{DynamicResource CollectionViewUrgentItemBackgroundColor}">
+                    <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" TextColor="#e59601"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+
+
+            <DataTemplate x:Key="itemTemplate">
+                <StackLayout Margin="0" Spacing="0" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                    <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+
+
+            <DataTemplate x:Key="strikethroughItemTemplate">
+                <StackLayout Margin="0" Spacing="0">
+                    <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" TextDecorations="Strikethrough"
+                           TextColor="{DynamicResource CollectionViewStrikedItemFontColor}"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+
+            <Style x:Key="ButtonStyle" TargetType="dxco:SimpleButton">
+                <Setter Property="IconColor" Value="{StaticResource TextThemeColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource TextThemeColor}"/>
+                <Setter Property="Padding" Value="24,8"/>
+                <Setter Property="IconIndent" Value="16"/>
+                <Setter Property="HorizontalContentAlignment" Value="Start"/>
+                <Setter Property="PressedBackgroundColor" Value="{StaticResource MainPageBackgroundColor}"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            
+            <local:ItemDataTemplateSelector x:Key="itemDataTemplateSelector"
+                                        UrgentDataTemplate="{StaticResource urgentItemTemplate}"
+                                        CompletedDataTemplate="{StaticResource strikethroughItemTemplate}"
+                                        UncompletedDataTemplate="{StaticResource itemTemplate}"/>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <dxcv:DXCollectionView x:Name="collectionView"
+                                Tap="OnTap"
+                                ItemTemplate="{StaticResource itemDataTemplateSelector}"
+                                ItemsSource="{Binding ItemSource}">
+            </dxcv:DXCollectionView>
+
+            <dxco:DXPopup IsOpen="{Binding IsOpenPopup}"
+                         AllowScrim="True"
+                         VerticalAlignment="Bottom"
+                         HorizontalAlignment="Stretch"
+                         Margin="16"
+                         CornerRadius="16">
+                <VerticalStackLayout>
+                    <Label Text="{Binding PopupTitle}"
+                           TextColor="{StaticResource TextThemeColor}"
+                           Margin="24,16,24,14"
+                           HorizontalTextAlignment="Center"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
+                    <Grid IsVisible="{Binding ButtonPinVisible}">
+                        <dxco:SimpleButton Style="{StaticResource ButtonStyle}"
+                                    Text="Pin"
+                                    Icon="collectionviewpintotop"
+                                    Clicked="PinClick"/>
+                    </Grid>
+
+                    <Grid IsVisible="{Binding ButtonDoneVisible}">
+                        <dxco:SimpleButton Style="{StaticResource ButtonStyle}"
+                                      Text="Done"
+                                      Icon="collectionviewcompletetask"
+                                      Clicked="DoneClick"/>
+                    </Grid>
+
+                    <Grid IsVisible="{Binding ButtonToDoVisible}">
+                        <dxco:SimpleButton Style="{StaticResource ButtonStyle}"
+                                      Text="To Do"
+                                      Icon="collectionviewuncompletetask"
+                                      Clicked="ToDoClick"/>
+                    </Grid>
+
+                    <dxco:SimpleButton Style="{StaticResource ButtonStyle}" Text="Delete"
+                                      Icon="collectionviewdeletetask"
+                                      IconColor="#ff5e61"
+                                      TextColor="#ff5e61"
+                                      Clicked="DeleteClick"/>
+
+                    <BoxView Style="{StaticResource SeparatorStyle}" Margin="24,0"/>
+                    <dxco:SimpleButton Text="Cancel"
+                                      TextColor="{StaticResource AccentColor}"
+                                      PressedBackgroundColor="{StaticResource MainPageBackgroundColor}"
+                                      BackgroundColor="Transparent"
+                                      Clicked="DismissPopup"
+                                      Margin="0,0,0,6"/>
+                </VerticalStackLayout>
+            </dxco:DXPopup>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

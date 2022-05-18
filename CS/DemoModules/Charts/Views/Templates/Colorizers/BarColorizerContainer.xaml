@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.BarColorizerContainer"
+             xmlns:local="clr-namespace:DemoCenter.Maui.Data">
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                    Text="{Binding ChartModel.Title}"
+                    FontFamily="Roboto"
+                    TextColor="{DynamicResource TextThemeColor}"
+                    BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            
+            <dxc:ChartView x:Name="chart"
+                              Grid.Row="1"
+                              Rotated="True">
+                <dxc:ChartView.Series>
+                    <dxc:BarSeries>
+                        <dxc:BarSeries.PointColorizer>
+                            <dxc:ColorDataAdapter ColorDataMember="Color"
+                                                  LegendTextDataMember="Region"
+                                                  DataSource="{Binding ChartModel.CountriesStatisticData}">
+                            </dxc:ColorDataAdapter>
+                        </dxc:BarSeries.PointColorizer>
+                        <dxc:BarSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.CountriesStatisticData}" ArgumentDataMember="Country">
+                                <dxc:ValueDataMember Type="Value" Member="Gdp"/>
+                            </dxc:SeriesDataAdapter>
+                        </dxc:BarSeries.Data>
+                        <dxc:BarSeries.HintOptions>
+                            <dxc:SeriesHintOptions PointTextPattern="{}{A}: ${V}M"/>
+                        </dxc:BarSeries.HintOptions>
+                    </dxc:BarSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.AxisX>
+                    <dxc:QualitativeAxisX>
+                        <dxc:QualitativeAxisX.Style>
+                            <dxc:AxisStyle MajorTickmarksVisible="True"/>
+                        </dxc:QualitativeAxisX.Style>
+                    </dxc:QualitativeAxisX>
+                </dxc:ChartView.AxisX>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY>
+                        <dxc:NumericAxisY.Style>
+                            <dxc:AxisStyle MajorTickmarksVisible="True"
+                                              MinorTickmarksVisible="True"/>
+                        </dxc:NumericAxisY.Style>
+                        <dxc:NumericAxisY.Title>
+                            <dxc:AxisTitle Text="GDP per capita, millions USD"/>
+                        </dxc:NumericAxisY.Title>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+
+                <dxc:ChartView.Legend>
+                    <dxc:Legend/>
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint>
+                        <dxc:Hint.Behavior>
+                            <dxc:TooltipHintBehavior/>
+                        </dxc:Hint.Behavior>
+                    </dxc:Hint>
+                </dxc:ChartView.Hint>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

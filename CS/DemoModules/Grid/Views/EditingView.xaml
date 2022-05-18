@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           x:Class="DemoCenter.Maui.Views.EditingView"
+                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                           xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+                           xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+                           xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Resources>
+        <local:DoubleToProgressConverter MaxValue="1000" x:Key="DoubleToProgressConverter"/>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <!-- <ToolbarItem Text="Change Mode" Clicked="OnItemClicked"/> -->
+        <ToolbarItem Clicked="OnItemClicked" IconImageSource="verticalelipsize" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <dxg:DataGridView x:Name="dataGridView"
+                          Grid.Row="1"
+                          EditorShowMode="Tap"
+                          ItemsSource="{Binding Path=OutlookData}"
+                          Tap="Handle_Tap"
+                          ValidateCell="DataGridView_ValidateCell"
+                          ValidationError="DataGridView_ValidationError">
+            <dxg:DataGridView.Columns>
+                <dxg:NumberColumn FieldName="Id" Width="70" IsReadOnly="true"/>
+                <dxg:ComboBoxColumn FieldName="Priority" MinWidth="120"/>
+                <dxg:TextColumn FieldName="From.Name" Caption="From" MinWidth="150" ClearIconVisibility="Auto"/>
+                <dxg:DateColumn FieldName="Sent" Width="110" PickerDisableDate="DateColumn_PickerDisableDate" PickerShowTrailingDays="True"/>
+                <dxg:TimeColumn FieldName="Time" Width="100"/>
+                <dxg:NumberColumn FieldName="Size" Width="120" DisplayFormat="{}{0} B" IsUpDownIconVisible="True" UpDownIconAlignment="Start"/>
+                <dxg:TemplateColumn FieldName="HoursActive" MinWidth="180">
+                    <dxg:TemplateColumn.DisplayTemplate>
+                        <DataTemplate>
+                            <ProgressBar Progress="{Binding Path=Value, Converter={StaticResource DoubleToProgressConverter}}"
+                                         ProgressColor="#2088ff"
+                                         VerticalOptions="CenterAndExpand">
+                                <ProgressBar.Margin>
+                                    <OnIdiom x:TypeArguments="maui:Thickness" Phone="14, 0, 14, 0" Tablet="15, 0, 15, 0"/>
+                                </ProgressBar.Margin>
+                            </ProgressBar>
+                        </DataTemplate>
+                    </dxg:TemplateColumn.DisplayTemplate>
+                    <dxg:TemplateColumn.EditTemplate>
+                        <DataTemplate>
+                            <Slider Minimum="0"
+                                    Maximum="1000"
+                                    Value="{Binding Path=Value}" 
+                                    MaximumTrackColor="Silver"
+                                    MinimumTrackColor="Silver"
+                                    ThumbColor="#2088ff">
+                                <Slider.Margin>
+                                    <OnIdiom x:TypeArguments="maui:Thickness" Phone="14, 0, 14, 0" Tablet="15, 0, 15, 0"/>
+                                </Slider.Margin>
+                            </Slider>
+                        </DataTemplate>
+                    </dxg:TemplateColumn.EditTemplate>
+                </dxg:TemplateColumn>
+                <dxg:CheckBoxColumn FieldName="HasAttachment" EditFormCaption="Has Attachment" Width="70">
+                    <dxg:CheckBoxColumn.HeaderContentTemplate>
+                        <DataTemplate>
+                            <demo:IconView HeightRequest="24" WidthRequest="24" HorizontalOptions="CenterAndExpand" Source="demogridattachment" VerticalOptions="Center"/>
+                        </DataTemplate>
+                    </dxg:CheckBoxColumn.HeaderContentTemplate>
+                </dxg:CheckBoxColumn>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </ContentPage.Content>
+</local:BaseGridContentPage>

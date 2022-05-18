@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:templateView="clr-namespace:DemoCenter.Maui.Charts.Views"
+                    x:Class="DemoCenter.Maui.Charts.Templates.AreaChartTemplates">
+
+    <DataTemplate x:Key="rangeAreaChartTemplate">
+        <templateView:RangeAreaChartContainer/>
+    </DataTemplate>
+    <DataTemplate x:Key="areaChartTemplate">
+        <templateView:AreaChartContainer/>
+    </DataTemplate>
+    <DataTemplate x:Key="stackedAreaChartTemplate">
+        <templateView:StackedAreaChartContainer/>
+    </DataTemplate>
+    <DataTemplate x:Key="fullStackedAreaChartTemplate">
+        <templateView:FullStackedAreaChartContainer/>
+    </DataTemplate>
+    <DataTemplate x:Key="stepAreaChartTemplate">
+        <templateView:StepAreaChartContainer/>
+    </DataTemplate>
+
+</ResourceDictionary>

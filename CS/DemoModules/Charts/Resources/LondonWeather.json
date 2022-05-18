@@ -1,0 +1,114 @@
+﻿{
+  "DateTimeDataSets": {
+    "DataSets": [
+        {
+          "Name": "Night (min)",
+          "DataSet": [
+              {
+                "Argument": "2001-01-01",
+                "Value": "2"
+              },
+              {
+                "Argument": "2001-02-01",
+                "Value": "2"
+              },
+              {
+                "Argument": "2001-03-01",
+                "Value": "3"
+              },
+              {
+                "Argument": "2001-04-01",
+                "Value": "5"
+              },
+              {
+                "Argument": "2001-05-01",
+                "Value": "8"
+              },
+              {
+                "Argument": "2001-06-01",
+                "Value": "11"
+              },
+              {
+                "Argument": "2001-07-01",
+                "Value": "13"
+              },
+              {
+                "Argument": "2001-08-01",
+                "Value": "13"
+              },
+              {
+                "Argument": "2001-09-01",
+                "Value": "11"
+              },
+              {
+                "Argument": "2001-10-01",
+                "Value": "8"
+              },
+              {
+                "Argument": "2001-11-01",
+                "Value": "5"
+              },
+              {
+                "Argument": "2001-12-01",
+                "Value": "2"
+              }
+            ]
+          
+        },
+        {
+          "Name": "Day (max)",
+          "DataSet": [
+              {
+                "Argument": "2001-01-01",
+                "Value": "6"
+              },
+              {
+                "Argument": "2001-02-01",
+                "Value": "7"
+              },
+              {
+                "Argument": "2001-03-01",
+                "Value": "10"
+              },
+              {
+                "Argument": "2001-04-01",
+                "Value": "14"
+              },
+              {
+                "Argument": "2001-05-01",
+                "Value": "18"
+              },
+              {
+                "Argument": "2001-06-01",
+                "Value": "21"
+              },
+              {
+                "Argument": "2001-07-01",
+                "Value": "22"
+              },
+              {
+                "Argument": "2001-08-01",
+                "Value": "22"
+              },
+              {
+                "Argument": "2001-09-01",
+                "Value": "19"
+              },
+              {
+                "Argument": "2001-10-01",
+                "Value": "15"
+              },
+              {
+                "Argument": "2001-11-01",
+                "Value": "10"
+              },
+              {
+                "Argument": "2001-12-01",
+                "Value": "7"
+              }
+            ]
+          
+        }
+      ]    
+  }
+}

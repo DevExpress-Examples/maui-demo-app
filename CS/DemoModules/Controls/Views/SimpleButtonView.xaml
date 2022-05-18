@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
+    x:Class="DemoCenter.Maui.Views.SimpleButtonView"
+    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+    ios:Page.UseSafeArea="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+             <ResourceDictionary.MergedDictionaries>
+                <demo:EditorsAndControlsResources/>
+             </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <viewModel:SimpleButtonViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid Padding="0,16" RowDefinitions="Auto, *">
+            <Grid Style="{StaticResource EditorContainerStyle}" Grid.Row="0">
+                <dxco:SimpleButton Text="Button"
+                        CornerMode="{Binding SelectedCornerMode}"
+                        CornerRadius="{Binding CornerRadius}"
+                        TextColor="{Binding SelectedTextColor.Color}"
+                        BackgroundColor="{Binding SelectedBackgroundColor.Color}"
+                        Icon="smile"
+                        IconColor="{Binding SelectedIconColor.Color}"
+                        IconIndent="7"
+                        IconVisible="{Binding ShouldShowIcon}"
+                        BorderColor="{Binding SelectedBorderColor.Color}"
+                        BorderThickness="{Binding BorderWidth}"
+                        ShowShadow="{Binding ShouldShowShadow}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                <BoxView Grid.Row="1" Style="{StaticResource SeparatorStyle}"/>
+            </Grid>
+            <ScrollView Grid.Row="1">
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <Label Text="Text Color" Style="{StaticResource TextStyle}"/>
+                        <dxe:ComboBoxEdit StartIconColor="{Binding SelectedTextColor.Color}"
+                                      SelectedItem="{Binding SelectedTextColor}"
+                                      Style="{StaticResource ColorComboBoxStyle}"/>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <Label Text="Background Color" Style="{StaticResource TextStyle}"/>
+                        <dxe:ComboBoxEdit StartIconColor="{Binding SelectedBackgroundColor.Color}"
+                                          SelectedItem="{Binding SelectedBackgroundColor}"
+                                          Style="{StaticResource ColorComboBoxStyle}"/>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <Label Text="Corner Radius" Style="{StaticResource TextStyle}"/>
+                        <Grid ColumnSpacing="0" RowSpacing="0" RowDefinitions="auto, auto" ColumnDefinitions="0.5*, 0.5*">
+                            <StackLayout Style="{StaticResource SliderItemContainerStyle}">
+                                <demo:IconView Source="topleftcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
+                                <Slider Value="{Binding TopLeftCornerRadius}" Style="{StaticResource SliderStyle}"/>
+                            </StackLayout>
+
+                            <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Column="1">
+                                <demo:IconView Source="toprightcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
+                                <Slider Value="{Binding TopRightCornerRadius}" Style="{StaticResource SliderStyle}"/>
+                            </StackLayout>
+
+                            <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Row="1">
+                                <demo:IconView Source="bottomleftcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
+                                <Slider Value="{Binding BottomLeftCornerRadius}" Style="{StaticResource SliderStyle}"/>
+                            </StackLayout>
+
+                            <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Column="1" Grid.Row="1">
+                                <demo:IconView Source="bottomrightcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
+                                <Slider Value="{Binding BottomRightCornerRadius}" Style="{StaticResource SliderStyle}"/>
+                            </StackLayout>
+
+                        </Grid>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                            <Label Text="Icon" Style="{StaticResource TextStyle}" />
+                            <Switch IsToggled="{Binding ShouldShowIcon}" Style="{DynamicResource SwitchStyle}"/>
+                        </StackLayout>
+                        <dxe:ComboBoxEdit StartIconColor="{Binding SelectedIconColor.Color}" IsVisible="{Binding ShouldShowIcon}"
+                                          SelectedItem="{Binding SelectedIconColor}"
+                                          Style="{StaticResource ColorComboBoxStyle}"/>
+
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                            <Label Text="Border" Style="{StaticResource TextStyle}"/>
+                            <Switch IsToggled="{Binding ShouldShowBorder}" Style="{DynamicResource SwitchStyle}"/>
+                        </StackLayout>
+                        <dxe:ComboBoxEdit StartIconColor="{Binding SelectedBorderColor.Color}" IsVisible="{Binding ShouldShowBorder}"
+                                          SelectedItem="{Binding SelectedBorderColor}"
+                                          Style="{StaticResource ColorComboBoxStyle}"/>
+                        <StackLayout Style="{StaticResource SliderItemContainerStyle}" IsVisible="{Binding ShouldShowBorder}">
+                            <Label Text="Border Size" Style="{StaticResource TextStyle}"/>
+                            <Slider Value="{Binding BorderWidth}" Style="{StaticResource SliderStyle}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                            <Label Text="Shadow" Style="{StaticResource TextStyle}"/>
+                            <Switch IsToggled="{Binding ShouldShowShadow}" Style="{DynamicResource SwitchStyle}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

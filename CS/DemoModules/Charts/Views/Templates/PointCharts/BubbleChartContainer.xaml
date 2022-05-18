@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.BubbleChartContainer">
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding ChartModel.Title}"
+                   FontFamily="Roboto"
+                   TextColor="{DynamicResource TextThemeColor}"
+                   BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            <dxc:ChartView x:Name="bubbleChart"
+                              Grid.Row="1"
+                              SelectionKind="Point"
+                              SelectionMode="Single"
+                              SelectionChanged="OnBubbleSelectionChanged">
+                
+                <dxc:ChartView.Series>
+                    <dxc:BubbleSeries x:Name="bubbleSeries">
+                        <dxc:BubbleSeries.Label>
+                            <dxc:BubbleSeriesLabel Position="Outside"
+                                                      TextPattern="{}{W$$#.##B}"
+                                                      Angle="90"/>
+                        </dxc:BubbleSeries.Label>
+                        <dxc:BubbleSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.SeriesData}" ArgumentDataMember="Date">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                                <dxc:ValueDataMember Type="Weight" Member="WorldwideGrosses" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:BubbleSeries.Data>
+                        <dxc:BubbleSeries.PointColorizer>
+                            <dxc:ColorEachPointColorizer />
+                        </dxc:BubbleSeries.PointColorizer>
+                    </dxc:BubbleSeries>
+                </dxc:ChartView.Series>
+                
+                <dxc:ChartView.AxisX>
+                    <dxc:DateTimeAxisX MeasureUnit="Year"
+                                          GridAlignment="Year"
+                                          GridSpacing="2">
+                        <dxc:DateTimeAxisX.Label>
+                            <dxc:AxisLabel TextFormat="yyyy"/>
+                        </dxc:DateTimeAxisX.Label>
+                    </dxc:DateTimeAxisX>
+                </dxc:ChartView.AxisX>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY AlwaysShowZeroLevel="false">
+                        <dxc:NumericAxisY.Title>
+                            <dxc:AxisTitle Text="Production Budget, Millions of Dollars"/>
+                        </dxc:NumericAxisY.Title>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+                <dxc:ChartView.ChartStyle>
+                    <dxc:ChartStyle Palette="{Binding ChartModel.Palette}"/>
+                </dxc:ChartView.ChartStyle>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint/>
+                </dxc:ChartView.Hint>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

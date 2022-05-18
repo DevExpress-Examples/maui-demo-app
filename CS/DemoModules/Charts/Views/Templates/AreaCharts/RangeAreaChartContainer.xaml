@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.RangeAreaChartContainer">
+    <ContentView.Resources>
+        <dxc:SeriesHintOptions x:Key="rangeAreaSeriesHintOptions"
+                                  PointTextPattern="{}{S}&#x0a;{A$LLLL}&#x0a;Maximum: {V1} °C&#x0a;Minimum: {V2} °C"/>
+        <dxc:RangeAreaSeriesLabel x:Key="rangeAreaSeriesLabel"
+                                     Visible="True"
+                                     Kind="TwoLabels"
+                                     LowValueAngle="-90"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label
+                Text="{Binding ChartModel.Title}"
+                FontFamily="Roboto"
+                TextColor="{DynamicResource TextThemeColor}"
+                BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            <dxc:ChartView Grid.Row="1"
+                              SelectionMode="Single"
+                              SelectionKind="Series">
+                <dxc:ChartView.Series>
+                    <dxc:RangeAreaSeries HintOptions="{StaticResource rangeAreaSeriesHintOptions}"
+                                            Label="{StaticResource rangeAreaSeriesLabel}"
+                                            Line1MarkersVisible="true"
+                                            Line2MarkersVisible="true"
+                                            DisplayName="Richmond Temperature">
+                        <dxc:RangeAreaSeries.Style>
+                            <dxc:RangeAreaSeriesStyle Fill="#FF81C1F6"
+                                                         Alpha="0.5">
+                                <dxc:RangeAreaSeriesStyle.Line1Style>
+                                    <dxc:LineSeriesStyle Stroke="#ff327bb7"/>
+                                </dxc:RangeAreaSeriesStyle.Line1Style>
+                                <dxc:RangeAreaSeriesStyle.Line2Style>
+                                    <dxc:LineSeriesStyle Stroke="#FF42a5f6"/>
+                                </dxc:RangeAreaSeriesStyle.Line2Style>
+                            </dxc:RangeAreaSeriesStyle>
+                        </dxc:RangeAreaSeries.Style>
+                        <dxc:RangeAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.RichmondWeatherData}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value1" Member="Value1" />
+                                <dxc:ValueDataMember Type="Value2" Member="Value2" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:RangeAreaSeries.Data>
+                    </dxc:RangeAreaSeries>
+                    <dxc:RangeAreaSeries HintOptions="{StaticResource rangeAreaSeriesHintOptions}"
+                                            Label="{StaticResource rangeAreaSeriesLabel}"
+                                            Line1MarkersVisible="true"
+                                            Line2MarkersVisible="true"
+                                            DisplayName="Houston Temperature">
+                        <dxc:RangeAreaSeries.Style>
+                            <dxc:RangeAreaSeriesStyle Fill="#ffff9090"
+                                                         Alpha="0.5">
+                                <dxc:RangeAreaSeriesStyle.Line1Style>
+                                    <dxc:LineSeriesStyle Stroke="#ffff6363"/>
+                                </dxc:RangeAreaSeriesStyle.Line1Style>
+                                <dxc:RangeAreaSeriesStyle.Line2Style>
+                                    <dxc:LineSeriesStyle Stroke="#FFff9090"/>
+                                </dxc:RangeAreaSeriesStyle.Line2Style>
+                            </dxc:RangeAreaSeriesStyle>
+                        </dxc:RangeAreaSeries.Style>
+                        <dxc:RangeAreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.HoustonWeatherData}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value1" Member="Value1" />
+                                <dxc:ValueDataMember Type="Value2" Member="Value2" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:RangeAreaSeries.Data>
+                    </dxc:RangeAreaSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint/>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend Visible="True"/>
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.AxisX>
+                    <dxc:DateTimeAxisX MeasureUnit="Month"
+                                          GridSpacing="2">
+                        <dxc:DateTimeAxisX.Label>
+                            <dxc:AxisLabel TextFormat="LLLL"/>
+                        </dxc:DateTimeAxisX.Label>
+                    </dxc:DateTimeAxisX>
+                </dxc:ChartView.AxisX>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY AlwaysShowZeroLevel="True">
+                        <dxc:NumericAxisY.Title>
+                            <dxc:AxisTitle Text="°C"
+                                              Alignment="Outside"/>
+                        </dxc:NumericAxisY.Title>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

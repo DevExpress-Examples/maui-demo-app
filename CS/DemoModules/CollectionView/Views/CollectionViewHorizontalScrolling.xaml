@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewHorizontalScrolling"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="itemTemplate">
+            <Grid WidthRequest="300" Margin="15, 0, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ContentView Grid.Row="0">
+                    <Image Margin="1" Source="{Binding ImageSource}" Aspect="Fill"/>
+                </ContentView>
+                <Label Grid.Row="1"
+                       Margin="0, 10, 0, 0"
+                       Text="{Binding Price, StringFormat='${0:N0}'}"
+                       TextColor="#2088ff"
+                       FontAttributes="Bold"
+                       FontSize="18"/>
+                <Label Grid.Row="2"
+                       Margin="0, 8, 0, 0"
+                       Text="{Binding Address}"
+                       TextColor="{DynamicResource CollectionViewBoldGrayFontColor}"
+                       FontAttributes="Bold"
+                       FontSize="14"/>
+                <ScrollView Grid.Row="3"
+                            Margin="0, 10, 0, 0"
+                            Orientation="Vertical">
+                    <Label Text="{Binding Description}"
+                           TextColor="{DynamicResource CollectionViewItemFontColor}"
+                           FontSize="14"/> <!--IsTabStop="False" TO DO-->
+                </ScrollView>
+            </Grid>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <dxcv:DXCollectionView x:Name="collectionView"
+                               Orientation="Horizontal"
+                               ItemsSource="{Binding ItemSource}"
+                               ItemTemplate="{StaticResource Key=itemTemplate}"
+                               Margin="0, 15, 0, 15">
+        </dxcv:DXCollectionView>
+    </ContentPage.Content>
+</ContentPage>

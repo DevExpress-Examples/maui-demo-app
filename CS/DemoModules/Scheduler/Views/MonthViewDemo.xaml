@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
+             x:Class="DemoCenter.Maui.Views.MonthViewDemo"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <dxsch:MonthView x:Name="monthView" Start="{Binding Start, Mode=TwoWay}" Tap="MonthView_OnTap">
+        <dxsch:MonthView.DataStorage>
+            <dxsch:SchedulerDataStorage>
+                <dxsch:SchedulerDataStorage.DataSource>
+                    <dxsch:DataSource AppointmentsSource="{Binding Appointments}">
+                        <dxsch:DataSource.AppointmentMappings>
+                            <dxsch:AppointmentMappings Type="AppointmentType"
+                                                       AllDay="AllDay"
+                                                       Start="Start"
+                                                       End="End"
+                                                       Id="Id" 
+                                                       Description="Description" 
+                                                       Location="Location" 
+                                                       RecurrenceInfo="RecurrenceInfo"
+                                                       StatusId="Status" 
+                                                       Subject="Subject"
+                                                       LabelId="Label" />
+                        </dxsch:DataSource.AppointmentMappings>
+                    </dxsch:DataSource>
+                </dxsch:SchedulerDataStorage.DataSource>                
+            </dxsch:SchedulerDataStorage>
+        </dxsch:MonthView.DataStorage>
+    </dxsch:MonthView>
+</ContentPage>

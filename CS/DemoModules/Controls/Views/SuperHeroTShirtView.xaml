@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Class="DemoCenter.Maui.Views.SuperHeroTShirtView"
+    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+    ios:Page.UseSafeArea="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ColorChipStyle" TargetType="dxe:Chip">
+                <Setter Property="SelectedBackgroundColor" Value="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
+                <Setter Property="PressedBackgroundColor" Value="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
+                <Setter Property="WidthRequest" Value="40"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="Icon" Value="chip_checkicon"/>
+                <Setter Property="Padding" Value="8,0"/>
+                <Setter Property="IsIconVisible" Value="{Binding Source={RelativeSource Self}, Path=IsSelected}"/>
+            </Style>
+            <Style x:Key="ChoiceChipGroupStyle" TargetType="dxe:ChoiceChipGroup">
+                <Setter Property="ChipBorderColor" Value="{DynamicResource ChoiceChipGroupChipBorderColor}"/>
+                <Setter Property="ChipSelectedBorderColor" Value="{DynamicResource ChoiceChipGroupChipBorderColor}"/>
+                <Setter Property="HorizontalSpacing" Value="12"/>
+                <Setter Property="Padding" Value="0,14,0,10"/>
+                <Setter Property="AllowDeselect" Value="False"/>
+            </Style>
+            <Style x:Key="ChipGroupLayoutItemContainerStyle" TargetType="StackLayout">
+                <Setter Property="Margin" Value="0,16"/>
+                <Setter Property="Spacing" Value="0"/>
+            </Style>
+             <ResourceDictionary.MergedDictionaries>
+                <demo:EditorsAndControlsResources/> 
+             </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+   <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+             <ScrollView.Margin>
+                    <x:OnIdiom Phone="10, 0" Tablet="20, 0"/>
+             </ScrollView.Margin>
+            <StackLayout Spacing="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.4*"/>
+                        <RowDefinition Height="0.6*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="tshirt.png"/>
+                    <Image x:Name="superhero" Source="{Binding SelectedSuperhero}"/>
+
+                    <StackLayout Grid.Row="1" Spacing="0" Padding="0">
+                        <StackLayout Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
+                            <Label Text="SuperHero T-Shirt" Style="{StaticResource TextStyle}" />
+                            <Label Text="$ 30" Style="{StaticResource TextStyle}" FontSize="Title"/>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
+                            <Label Text="PICK A COLOR" Style="{StaticResource TextStyle}"/>
+                            <dxe:ChoiceChipGroup x:Name="colorChoiceChipGroup"
+                                             SelectedIndex="{Binding SelectedColorIndex}"
+                                             Style="{StaticResource ChoiceChipGroupStyle}">
+                                <dxe:Chip BackgroundColor="#f15558" Style="{StaticResource ColorChipStyle}"/>
+                                <dxe:Chip BackgroundColor="#ff7c11" Style="{StaticResource ColorChipStyle}"/>
+                                <dxe:Chip BackgroundColor="#ffbf22" Style="{StaticResource ColorChipStyle}"/>
+                                <dxe:Chip BackgroundColor="#00c831" Style="{StaticResource ColorChipStyle}"/>
+                                <dxe:Chip BackgroundColor="#2088ff" Style="{StaticResource ColorChipStyle}"/>
+                                <dxe:Chip BackgroundColor="#9865b0" Style="{StaticResource ColorChipStyle}"/>
+                            </dxe:ChoiceChipGroup>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
+                            <Label Text="CHOOSE SIZE" Style="{StaticResource TextStyle}"/>
+                            <dxe:ChoiceChipGroup ItemsSource="{Binding Sizes}" SelectedItem="{Binding SelectedSize}"
+                                                Style="{StaticResource ChoiceChipGroupStyle}" ChipPadding="23,10"/>
+                        </StackLayout>
+
+                        <dxco:SimpleButton Text="ADD TO CART" Icon="shopping_cart"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

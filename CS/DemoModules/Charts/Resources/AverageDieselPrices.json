@@ -1,0 +1,62 @@
+﻿{
+  "DateTimeDataSets": {
+    "DataSets": [
+        {
+
+            "Name": "U.S.Average Diesel Prices",
+            "DataSet": [
+                {
+                    "Argument": "2016-01-01",
+                    "Value": "2.14"
+                },
+                {
+                    "Argument": "2016-02-01",
+                    "Value": "1.99"
+                },
+                {
+                    "Argument": "2016-03-01",
+                    "Value": "2.09"
+                },
+                {
+                    "Argument": "2016-04-01",
+                    "Value": "2.15"
+                },
+                {
+                    "Argument": "2016-05-01",
+                    "Value": "2.31"
+                },
+                {
+                    "Argument": "2016-06-01",
+                    "Value": "2.42"
+                },
+                {
+                    "Argument": "2016-07-01",
+                    "Value": "2.4"
+                },
+                {
+                    "Argument": "2016-08-01",
+                    "Value": "2.35"
+                },
+                {
+                    "Argument": "2016-09-01",
+                    "Value": "2.39"
+                },
+                {
+                    "Argument": "2016-10-01",
+                    "Value": "2.45"
+                },
+                {
+                    "Argument": "2016-11-01",
+                    "Value": "2.44"
+                },
+                {
+                    "Argument": "2016-12-01",
+                    "Value": "2.5"
+                }
+            ]
+
+        }
+    ]
+    
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+<rect opacity="0.5" fill="none" width="32" height="32"/>
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#DEDEDE" d="M19.5,20c2.4,0,4.5,1.9,4.5,4.5S21.9,29,19.5,29S15,26.9,15,24.5S17.1,20,19.5,20z"/>
+<path opacity="0.75" fill-rule="evenodd" clip-rule="evenodd" fill="#DEDEDE" d="M22,3c3.8,0,7,3.2,7,7s-3.2,7-7,7s-7-3.2-7-7S18.2,3,22,3z"/>
+<path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" fill="#DEDEDE" d="M8.5,12c3.1,0,5.5,2.4,5.5,5.5S11.6,23,8.5,23S3,20.4,3,17.5S5.4,12,8.5,12z"/>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             x:Class="DemoCenter.Maui.Demo.TabHeaderButton"
+             BackgroundColor="Transparent">
+    <demo:IconView HeightRequest="24"
+                   WidthRequest="24"
+                   x:Name="icon"
+                   HorizontalOptions="Center"
+                   VerticalOptions="FillAndExpand"/>
+    <Label x:Name="label"
+           BackgroundColor="Transparent"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="FillAndExpand"/>
+</StackLayout>

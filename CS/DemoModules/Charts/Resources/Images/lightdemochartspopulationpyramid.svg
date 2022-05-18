@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 32 32">
+<rect opacity="0.5" fill="none" width="32" height="32"/>
+<g>
+	<g>
+		<path fill="#8F8E93" d="M22,18v-5h-5v5H22z"/>
+	</g>
+</g>
+<rect x="17" y="20" fill="#8F8E93" width="9" height="5"/>
+<rect x="17" y="27" fill="#8F8E93" width="13" height="5"/>
+<rect x="17" y="6" fill="#8F8E93" width="3" height="5"/>
+<g class="st5">
+	<g>
+		<path fill="#8F8E93" d="M12,18v-5h5v5H12z"/>
+	</g>
+</g>
+<rect x="8" y="20" opacity="0.5" fill="#8F8E93" enable-background="new" width="9" height="5"/>
+<rect x="4" y="27" opacity="0.5" fill="#8F8E93" enable-background="new" width="13" height="5"/>
+<rect x="14" y="6" opacity="0.5" fill="#8F8E93" enable-background="new" width="3" height="5"/>
+</svg>

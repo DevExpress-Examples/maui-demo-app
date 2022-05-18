@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.LineChartContainer">
+    <ContentView.Resources>
+        <dxc:SeriesHintOptions x:Key="lineSeriesHintOptions"
+                                  PointTextPattern="{}{A$yyyy}: {V}M"/>
+        <dxc:ConstantLineTitle x:Key="emptyConstantLineTitle" Visible="false"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <dxc:ChartView Grid.Row="1" x:Name="ch"
+                              SelectionMode="Single"
+                              SelectionKind="Series">
+                <dxc:ChartView.Series>
+                    <dxc:LineSeries DisplayName="{Binding ChartModel.Europe.Name}"
+                                       MarkersVisible="true"
+                                       HintOptions="{StaticResource lineSeriesHintOptions}">
+                        <dxc:LineSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.Europe.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:LineSeries.Data>
+                    </dxc:LineSeries>
+                    
+                    <dxc:LineSeries DisplayName="{Binding ChartModel.Americas.Name}"
+                                       MarkersVisible="true"
+                                       HintOptions="{StaticResource lineSeriesHintOptions}">
+                        <dxc:LineSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.Americas.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:LineSeries.Data>
+                    </dxc:LineSeries>
+                    
+                    <dxc:LineSeries DisplayName="{Binding ChartModel.Africa.Name}"
+                                       MarkersVisible="true"
+                                       HintOptions="{StaticResource lineSeriesHintOptions}">
+                        <dxc:LineSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.Africa.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:LineSeries.Data>
+                    </dxc:LineSeries>
+                    
+                </dxc:ChartView.Series>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint>
+                        <dxc:Hint.Behavior>
+                            <dxc:TooltipHintBehavior/>
+                        </dxc:Hint.Behavior>
+                    </dxc:Hint>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend HorizontalPosition="Center"
+                                   VerticalPosition="BottomOutside"
+                                   Orientation="LeftToRight"/>
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.AxisX>
+                    <dxc:DateTimeAxisX>
+                        <dxc:DateTimeAxisX.Strips>
+                            <dxc:DateTimeStrip MaxLimitEnabled="false"
+                                                  VisibleInLegend="false"
+                                                  MinLimit="{Binding ChartModel.CurrentDate}"/>
+                        </dxc:DateTimeAxisX.Strips>
+                        <dxc:DateTimeAxisX.ConstantLines>
+                            <dxc:DateTimeConstantLine AxisValue="{Binding ChartModel.CurrentDate}"
+                                                      VisibleInLegend="false">
+                                <dxc:DateTimeConstantLine.Title>
+                                    <dxc:ConstantLineTitle Text="{Binding ChartModel.CurrentDate, StringFormat='{0:yyyy}'}" />
+                                </dxc:DateTimeConstantLine.Title>
+                                <dxc:DateTimeConstantLine.Style>
+                                    <dxc:ConstantLineStyle Dashes="5 5"/>
+                                </dxc:DateTimeConstantLine.Style>
+                            </dxc:DateTimeConstantLine>
+                        </dxc:DateTimeAxisX.ConstantLines>
+                        <dxc:DateTimeAxisX.Label>
+                            <dxc:AxisLabel TextFormat="yyyy" />
+                        </dxc:DateTimeAxisX.Label>
+                    </dxc:DateTimeAxisX>
+                </dxc:ChartView.AxisX>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY>
+                        <dxc:NumericAxisY.Label>
+                            <dxc:AxisLabel TextFormat="#M"/>
+                        </dxc:NumericAxisY.Label>
+                        <dxc:NumericAxisY.Title>
+                            <dxc:AxisTitle Text="Population mid-year, millions"/>
+                        </dxc:NumericAxisY.Title>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

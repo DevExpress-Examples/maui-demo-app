@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                           x:Class="DemoCenter.Maui.Views.LoadMoreView"
+                           xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Content>
+        <dxg:DataGridView x:Name="grid"
+                          ItemsSource="{Binding OutlookData}"
+                          LoadMoreCommand="{Binding LoadMoreCommand}"
+                          IsLoadMoreEnabled="True"
+                          IsReadOnly="true"
+                          IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                          AllowSort="false">
+            <dxg:DataGridView.Columns>
+                <dxg:NumberColumn FieldName="Id" Width="70"/>
+                <dxg:TextColumn FieldName="From.Name" Caption="From" MinWidth="140"/>
+                <dxg:PickerColumn FieldName="Priority" MinWidth="120"/>
+                <dxg:DateColumn FieldName="Sent" MinWidth="100"/>
+                <dxg:NumberColumn FieldName="Size" Width="90" DisplayFormat="{}{0} B" IsVisible="{StaticResource IsTablet}">
+                    <!--<dxg:NumberColumn.IsVisible>
+                        <OnIdiom x:TypeArguments="x:Boolean" Phone="false" Tablet="true"/>
+                    </dxg:NumberColumn.IsVisible>-->
+                </dxg:NumberColumn>
+                <dxg:CheckBoxColumn FieldName="HasAttachment" Caption="&#x1F4CE;" Width="70" IsVisible="{StaticResource IsTablet}">
+                    <!--<dxg:CheckBoxColumn.IsVisible>
+                        <OnIdiom x:TypeArguments="x:Boolean" Phone="false" Tablet="true"/>
+                    </dxg:CheckBoxColumn.IsVisible>-->
+                </dxg:CheckBoxColumn>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </ContentPage.Content>
+</local:BaseGridContentPage>

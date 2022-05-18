@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.FullStackedBarChartContainer">
+    <ContentView.Resources>
+        <dxc:SeriesHintOptions x:Key="fullStackedBarSeriesHintOptions"
+                                  PointTextPattern="{}{S}: {V}K"/>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding ChartModel.Title}"
+                   FontFamily="Roboto"
+                   TextColor="{DynamicResource TextThemeColor}"
+                   BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            <dxc:ChartView Grid.Row="1">
+                <dxc:ChartView.Series>
+                    <dxc:FullStackedBarSeries DisplayName="{Binding ChartModel.ProjectorsSeriesData.Name}"
+                                                 HintOptions="{StaticResource fullStackedBarSeriesHintOptions}">
+                        <dxc:FullStackedBarSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.ProjectorsSeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:FullStackedBarSeries.Data>
+                    </dxc:FullStackedBarSeries>
+                    <dxc:FullStackedBarSeries DisplayName="{Binding ChartModel.TelevisionsSeriesData.Name}"
+                                                 HintOptions="{StaticResource fullStackedBarSeriesHintOptions}">
+                        <dxc:FullStackedBarSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.TelevisionsSeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:FullStackedBarSeries.Data>
+                    </dxc:FullStackedBarSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend HorizontalPosition="Center"
+                                   VerticalPosition="BottomOutside"
+                                   Orientation="LeftToRight"/>
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint/>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY>
+                        <dxc:NumericAxisY.Label>
+                            <dxc:AxisLabel TextFormat="#%"/>
+                        </dxc:NumericAxisY.Label>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

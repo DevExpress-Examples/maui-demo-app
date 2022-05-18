@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                           x:Class="DemoCenter.Maui.Views.AdvancedLayoutView"
+                           xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <dxg:DataGridView ItemsSource="{Binding Path=Employees}">
+        <dxg:DataGridView.CellStyle>
+            <dxg:CellStyle Padding="6, 12" BottomBorderColor="{DynamicResource GridAdvancedLayoutRowBorderColor}"/>
+        </dxg:DataGridView.CellStyle>
+        <dxg:DataGridView.ColumnHeaderStyle>
+            <dxg:ColumnHeaderStyle Padding="6, 12" BottomBorderColor="{DynamicResource GridAdvancedLayoutRowBorderColor}"/>
+        </dxg:DataGridView.ColumnHeaderStyle>
+        <dxg:DataGridView.AdvancedColumnLayout>
+            <dxg:AdvancedColumnLayout>
+                <dxg:AdvancedColumnLayout.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="9*"/>
+                </dxg:AdvancedColumnLayout.ColumnDefinitions>
+                <dxg:AdvancedColumnLayout.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </dxg:AdvancedColumnLayout.RowDefinitions>
+            </dxg:AdvancedColumnLayout>
+        </dxg:DataGridView.AdvancedColumnLayout>
+
+        <dxg:ImageColumn FieldName="Image" Caption="Photo" RowSpan="3"/>
+
+        <dxg:TextColumn FieldName="FullName" Column="1" ColumnSpan="2"/>
+        <dxg:TextColumn FieldName="Phone" Column="3" ColumnSpan="2"/>
+
+        <dxg:TextColumn FieldName="JobTitle" Row="1" Column="1" ColumnSpan="4"/>
+
+        <dxg:DateColumn FieldName="BirthDate" Row="2" Column="1" ColumnSpan="2"/>
+        <dxg:DateColumn FieldName="HireDate" Row="2" Column="3" ColumnSpan="2"/>
+
+        <dxg:TextColumn FieldName="AddressLine1" Caption="Address" Row="3" ColumnSpan="2"/>
+        <dxg:TextColumn FieldName="City"  Row="3" Column="2"/>
+        <dxg:TextColumn FieldName="PostalCode" Caption="Code" Row="3" Column="3"/>
+        <dxg:TextColumn FieldName="CountryRegionName" Caption="Country" Row="3" Column="4"/>
+
+    </dxg:DataGridView>
+</local:BaseGridContentPage>

@@ -1,0 +1,84 @@
+﻿{
+    "QualitativeDataSets": {
+        "DataSets": [
+            {
+                "Name": "Profit",
+                "DataSet": [
+                    {
+                        "Argument": "NEO",
+                        "Value": "13"
+                    },
+                    {
+                        "Argument": "HT",
+                        "Value": "-12"
+                    },
+                    {
+                        "Argument": "DASH",
+                        "Value": "9"
+                    },
+                    {
+                        "Argument": "LINK",
+                        "Value": "-3"
+                    },
+                    {
+                        "Argument": "ETC",
+                        "Value": "-8"
+                    },
+                    {
+                        "Argument": "XMR",
+                        "Value": "10"
+                    },
+                    {
+                        "Argument": "TRX",
+                        "Value": "5"
+                    },
+                    {
+                        "Argument": "ADA",
+                        "Value": "-7"
+                    },
+                    {
+                        "Argument": "XTZ",
+                        "Value": "2"
+                    },
+                    {
+                        "Argument": "BNB",
+                        "Value": "10"
+                    },
+                    {
+                        "Argument": "USDT",
+                        "Value": "-7"
+                    },
+                    {
+                        "Argument": "EOS",
+                        "Value": "20"
+                    },
+                    {
+                        "Argument": "LTC",
+                        "Value": "-13"
+                    },
+                    {
+                        "Argument": "BSV",
+                        "Value": "-7"
+                    },
+                    {
+                        "Argument": "BCH",
+                        "Value": "42"
+                    },
+                    {
+                        "Argument": "XRP",
+                        "Value": "-8"
+                    },
+                    {
+                        "Argument": "ETH",
+                        "Value": "12"
+                    },
+                    {
+                        "Argument": "BTC",
+                        "Value": "24"
+                    }
+                ]
+            }
+        ]
+    
+    }
+}

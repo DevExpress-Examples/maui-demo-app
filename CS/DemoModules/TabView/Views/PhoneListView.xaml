@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Class="DemoCenter.Maui.Views.PhoneListView"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             ios:Page.UseSafeArea="true"
+             x:Name="phoneListView"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="headerTemplate">
+                <demo:TabHeaderButton Margin="0,10"
+                                      Text="{Binding GroupName}"
+                                      TextColor="{DynamicResource PhoneListTabTextColor}"
+                                      IconColor="{DynamicResource PhoneListTabIconColor}"
+                                      FontFamily="Roboto"
+                                      FontSize="16"
+                                      IsSelected="{Binding IsSelected}"
+                                      SelectedColor="#2088ff"
+                                      ShowIcon="{Binding ShowGroupIcon}"
+                                      IconSource="{Binding GroupIconSource}"/>
+            </DataTemplate>
+            <DataTemplate x:Key="itemTemplate">
+                <dxc:DXCollectionView ItemsSource="{Binding Contacts}"
+                                            SelectionMode="None"
+                                            ItemSize="70"
+                                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                            ItemSpacing="1"
+                                            IsScrollBarVisible="False"
+                                            Margin="{OnIdiom Phone='16,0,0,0', Tablet='71,0,0,0'}">
+                    <dxc:DXCollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0"
+                                    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                    Padding="10"
+                                    ColumnSpacing="22"
+                                    RowSpacing="0"
+                                    ColumnDefinitions="auto,*"
+                                    RowDefinitions="auto,auto">
+                                <Ellipse Grid.RowSpan="2"
+                                        Fill="{Binding CategoryColor}"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center">
+                                </Ellipse>
+                                <Label 
+                                        Grid.RowSpan="2"
+                                        Margin="0"
+                                        Text="{Binding Initials}"
+                                        TextColor="White"
+                                        BackgroundColor="Transparent"
+                                        FontSize="20"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        WidthRequest="50"
+                                        HorizontalOptions="Start"/>
+                                <Label Grid.Column="1"
+                                        Text="{Binding FullName}"
+                                        FontFamily="Roboto"
+                                        FontSize="16"
+                                        TextColor="{DynamicResource TextThemeColor}"
+                                        BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                <Label Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding Phone}"
+                                        FontFamily="Roboto"
+                                        FontSize="16"
+                                        TextColor="{DynamicResource PhoneThemeColor}"
+                                        BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </dxc:DXCollectionView.ItemTemplate>
+                </dxc:DXCollectionView>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="OnItemClicked"
+                     Order="Primary"
+                     />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <dxco:TabView x:Name="dxTabView"
+                            HeaderPanelPosition="Right"
+                            HeaderPanelContentAlignment="Start"
+                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                            HeaderPanelBackgroundColor="{DynamicResource BackgroundThemeColor}"
+                            IsSelectedItemIndicatorVisible = "False"
+                            ItemsSource="{Binding PhoneListData}"
+                            ItemHeaderTemplate="{StaticResource headerTemplate}"
+                            ItemTemplate="{StaticResource itemTemplate}"
+                            IsHeaderPanelShadowVisible="True"
+                            HeaderPanelShadowHeight="1"
+                            HeaderPanelShadowColor="{DynamicResource TabViewPhoneListShadowColor}"
+                            ItemHeaderHeight = "40"
+                            HeaderPanelHeight="72"
+                            HeaderPanelIndent="0"
+                            ItemHeaderWidth="*"
+                            ItemHeaderMaxWidth="130"
+                            SwipeEnabled="False"
+                            ScrollAnimationEnabled="False"
+                            SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
+                            HeaderPanelShadowRadius="{OnPlatform Android='1', iOS='0'}">
+        </dxco:TabView>
+    </ContentPage.Content>
+</ContentPage>

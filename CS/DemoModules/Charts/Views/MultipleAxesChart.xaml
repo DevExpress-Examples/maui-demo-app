@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Class="DemoCenter.Maui.Views.MultipleAxes"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
+             xmlns:views="clr-namespace:DemoCenter.Maui.Views"
+             xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.BindingContext>
+        <vm:MultipleAxesViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <views:ChartTitleConverter x:Key="chartTitleConverter"/>
+        <local:BoolToStackOrientationConverter x:Key="boolToStackOrientationConverter"/>
+        <dxc:NumericAxisX x:Key="RPMaxis">
+            <dxc:NumericAxisX.Label>
+                <dxc:AxisLabel TextFormat="#.#"/>
+            </dxc:NumericAxisX.Label>
+            <dxc:NumericAxisX.Title>
+                <dxc:AxisTitle Text="RPM (1/min)"/>
+            </dxc:NumericAxisX.Title>
+            <dxc:NumericAxisX.Style>
+                <dxc:AxisStyle MajorTickmarksVisible="True"
+                                  MinorTickmarksVisible="True"/>
+            </dxc:NumericAxisX.Style>
+            <dxc:NumericAxisX.Range>
+                <dxc:NumericRange SideMargin="100"/>
+            </dxc:NumericAxisX.Range>
+        </dxc:NumericAxisX>
+        
+        <dxc:NumericAxisY x:Key="powerAxis"
+                             AlwaysShowZeroLevel="false">
+            <dxc:NumericAxisY.Layout>
+                <dxc:AxisLayout Anchor1="0.35" Anchor2="1.0" />
+            </dxc:NumericAxisY.Layout>
+            <dxc:NumericAxisY.DisplayPosition>
+                <dxc:AxisDisplayPositionNear/>
+            </dxc:NumericAxisY.DisplayPosition>
+            <dxc:NumericAxisY.Label>
+                <dxc:AxisLabel TextFormat="#"/>
+            </dxc:NumericAxisY.Label>
+            <dxc:NumericAxisY.Title>
+                <dxc:AxisTitle Text="Power (hp)" 
+                                  Alignment="Center"/>
+            </dxc:NumericAxisY.Title>
+        </dxc:NumericAxisY>
+
+        <dxc:NumericAxisY x:Key="fuelRateAxis"
+                             GridAlignment="10"
+                             AlwaysShowZeroLevel="false">
+            <dxc:NumericAxisY.Layout>
+                <dxc:AxisLayout Anchor1="0.0" Anchor2="0.3" />
+            </dxc:NumericAxisY.Layout>
+            <dxc:NumericAxisY.DisplayPosition>
+                <dxc:AxisDisplayPositionNear/>
+            </dxc:NumericAxisY.DisplayPosition>
+            <dxc:NumericAxisY.Label>
+                <dxc:AxisLabel TextFormat="#.#"/>
+            </dxc:NumericAxisY.Label>
+            <dxc:NumericAxisY.Title>
+                <dxc:AxisTitle Text="Fuel Rate (MPG)" 
+                                  Alignment="Center"/>
+            </dxc:NumericAxisY.Title>
+            <dxc:NumericAxisY.Style>
+                <dxc:AxisStyle MajorGridlinesVisible="True"
+                                  LineVisible="True"/>
+            </dxc:NumericAxisY.Style>
+        </dxc:NumericAxisY>
+            
+        <dxc:NumericAxisY x:Key="torqueAxis"
+                             GridAlignment="25"
+                             AlwaysShowZeroLevel="false">
+            <dxc:NumericAxisY.Label>
+                <dxc:AxisLabel TextFormat="#"/>
+            </dxc:NumericAxisY.Label>
+            <dxc:NumericAxisY.DisplayPosition>
+                <dxc:AxisDisplayPositionFar/>
+            </dxc:NumericAxisY.DisplayPosition>
+            <dxc:NumericAxisY.Title>
+                <dxc:AxisTitle Text="Torque (N*m)"
+                                  Alignment="Center"/>
+            </dxc:NumericAxisY.Title>
+        </dxc:NumericAxisY>
+                
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <demo:Panel x:Name="panel">
+            <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="Tuned engine characteristics"
+                   FontFamily="Roboto"
+                   TextColor="{DynamicResource TextThemeColor}"
+                   Margin="0,8"
+                   BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                   HorizontalTextAlignment="Center"/>
+            
+            <dxc:ChartView x:Name="chart"
+                              Grid.Row="1"
+                              SelectionMode="None"
+                              AxisX="{StaticResource Key=RPMaxis}"
+                              AxisY="{StaticResource Key=powerAxis}">
+                <dxc:ChartView.Series>
+                    <dxc:AreaSeries DisplayName="{Binding Names[2]}"
+                                       MarkersVisible="True"
+                                       AxisY="{StaticResource Key=fuelRateAxis}">
+                        <dxc:AreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding NEFuelRate}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value"/>
+                            </dxc:SeriesDataAdapter>
+                        </dxc:AreaSeries.Data>
+                        <dxc:AreaSeries.HintOptions>
+                            <dxc:SeriesHintOptions PointTextPattern="NE FuelRate - {V} MPG"/>
+                        </dxc:AreaSeries.HintOptions>
+                        <dxc:AreaSeries.Style>
+                            <dxc:AreaSeriesStyle Stroke="{Binding Palette[8]}"
+                                                    Fill="{Binding Palette[4]}">
+                                <dxc:AreaSeriesStyle.MarkerStyle>
+                                    <dxc:MarkerStyle Fill="{Binding Palette[6]}"/>
+                                </dxc:AreaSeriesStyle.MarkerStyle>
+                            </dxc:AreaSeriesStyle>   
+                        </dxc:AreaSeries.Style>
+                    </dxc:AreaSeries>
+
+                    <dxc:AreaSeries DisplayName="{Binding Names[5]}"
+                                       MarkersVisible="True"
+                                       AxisY="{StaticResource Key=fuelRateAxis}">
+                        <dxc:AreaSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding MKRFuelRate}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value"/>
+                            </dxc:SeriesDataAdapter>
+                        </dxc:AreaSeries.Data>
+                        <dxc:AreaSeries.HintOptions>
+                            <dxc:SeriesHintOptions PointTextPattern="MKR FuelRate - {V} MPG"/>
+                        </dxc:AreaSeries.HintOptions>
+                        <dxc:AreaSeries.Style>
+                            <dxc:AreaSeriesStyle Stroke="{Binding Palette[8]}"
+                                                    Fill="{Binding Palette[5]}">
+                                <dxc:AreaSeriesStyle.MarkerStyle>
+                                    <dxc:MarkerStyle Fill="{Binding Palette[7]}"/>
+                                </dxc:AreaSeriesStyle.MarkerStyle>
+                            </dxc:AreaSeriesStyle>   
+                        </dxc:AreaSeries.Style>
+                    </dxc:AreaSeries>
+
+                    <dxc:LineSeries DisplayName="{Binding Names[0]}"
+                                       MarkersVisible="true">
+                        <dxc:LineSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding NEPower}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:LineSeries.Data>
+                        <dxc:LineSeries.HintOptions>
+                            <dxc:SeriesHintOptions PointTextPattern="NE Power - {V} hp"/>
+                        </dxc:LineSeries.HintOptions>
+                        <dxc:LineSeries.Style>
+                            <dxc:LineSeriesStyle Stroke="{Binding Palette[0]}">
+                                <dxc:LineSeriesStyle.MarkerStyle>
+                                    <dxc:MarkerStyle Fill="{Binding Palette[0]}"/>
+                                </dxc:LineSeriesStyle.MarkerStyle>
+                            </dxc:LineSeriesStyle>   
+                        </dxc:LineSeries.Style>
+                    </dxc:LineSeries>
+
+                    <dxc:LineSeries DisplayName="{Binding Names[3]}"
+                                       MarkersVisible="true">
+                        <dxc:LineSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding MKRPower}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:LineSeries.Data>
+                        <dxc:LineSeries.HintOptions>
+                            <dxc:SeriesHintOptions PointTextPattern="MKR Power - {V} hp"/>
+                        </dxc:LineSeries.HintOptions>
+                        <dxc:LineSeries.Style>
+                            <dxc:LineSeriesStyle Stroke="{Binding Palette[1]}">
+                                <dxc:LineSeriesStyle.MarkerStyle>
+                                    <dxc:MarkerStyle Fill="{Binding Palette[1]}"/>
+                                </dxc:LineSeriesStyle.MarkerStyle>
+                            </dxc:LineSeriesStyle>   
+                        </dxc:LineSeries.Style>
+                    </dxc:LineSeries>
+
+                    <dxc:LineSeries DisplayName="{Binding Names[1]}"
+                                       MarkersVisible="true"
+                                       AxisY="{StaticResource Key=torqueAxis}">
+                        <dxc:LineSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding NETorque}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:LineSeries.Data>
+                        <dxc:LineSeries.HintOptions>
+                            <dxc:SeriesHintOptions PointTextPattern="NE Torque - {V} N*m"/>
+                        </dxc:LineSeries.HintOptions>
+                        <dxc:LineSeries.Style>
+                            <dxc:LineSeriesStyle Stroke="{Binding Palette[2]}">
+                                <dxc:LineSeriesStyle.MarkerStyle>
+                                    <dxc:MarkerStyle Fill="{Binding Palette[2]}"/>
+                                </dxc:LineSeriesStyle.MarkerStyle>
+                            </dxc:LineSeriesStyle>   
+                        </dxc:LineSeries.Style>
+                    </dxc:LineSeries>
+                        
+                    <dxc:LineSeries DisplayName="{Binding Names[4]}"
+                                       MarkersVisible="true"
+                                       AxisY="{StaticResource Key=torqueAxis}">
+                        <dxc:LineSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding MKRTorque}" ArgumentDataMember="Argument">
+                                <dxc:ValueDataMember Type="Value" Member="Value" />
+                            </dxc:SeriesDataAdapter>
+                        </dxc:LineSeries.Data>
+                        <dxc:LineSeries.HintOptions>
+                            <dxc:SeriesHintOptions PointTextPattern="MKR Torque - {V} N*m"/>
+                        </dxc:LineSeries.HintOptions>
+                        <dxc:LineSeries.Style>
+                            <dxc:LineSeriesStyle Stroke="{Binding Palette[3]}">
+                                <dxc:LineSeriesStyle.MarkerStyle>
+                                    <dxc:MarkerStyle Fill="{Binding Palette[3]}"/>
+                                </dxc:LineSeriesStyle.MarkerStyle>
+                            </dxc:LineSeriesStyle>
+                        </dxc:LineSeries.Style>
+                    </dxc:LineSeries>
+                    
+                </dxc:ChartView.Series>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint ShowMode="OnTap">
+                        <dxc:Hint.Behavior>
+                            <dxc:CrosshairHintBehavior GroupHeaderTextPattern="{}{A} RPM"
+                                                          GroupHeaderVisible="True"
+                                                          MaxSeriesCount="6"/>
+                        </dxc:Hint.Behavior>
+                    </dxc:Hint>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend HorizontalPosition="Center"
+                                   VerticalPosition="BottomOutside"
+                                   Orientation="LeftToRight"/>
+                </dxc:ChartView.Legend>
+            </dxc:ChartView>
+            </Grid>
+        </demo:Panel>
+    </ContentPage.Content>
+</ContentPage>

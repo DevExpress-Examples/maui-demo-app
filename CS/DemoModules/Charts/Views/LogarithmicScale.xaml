@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
+             xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
+             ios:Page.UseSafeArea="true"
+             x:Class="DemoCenter.Maui.Views.LogarithmicScale"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.BindingContext>
+        <vm:HeadphoneComparisonViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <demo:Panel>
+            <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="Headphone Comparison"
+                        FontFamily="Roboto"
+                        TextColor="{DynamicResource TextThemeColor}"
+                        Margin="0,8"
+                        BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                        HorizontalTextAlignment="Center"/>
+                <dxc:ChartView x:Name="chart"
+                                  Grid.Row="1"
+                                  AxisXNavigationMode="ScrollingAndZooming"
+                                  AxisYNavigationMode="ScrollingAndZooming">
+                    <dxc:ChartView.Series>
+                        <dxc:LineSeries DisplayName="{Binding Names[0]}">
+                            <dxc:LineSeries.Style>
+                                <dxc:LineSeriesStyle Stroke="{Binding Palette[0]}" />
+                            </dxc:LineSeries.Style>
+                            <dxc:LineSeries.Data>
+                                <dxc:SeriesDataAdapter DataSource="{Binding FirstHeadphones90}" ArgumentDataMember="Argument">
+                                    <dxc:ValueDataMember Type="Value" Member="Value" />
+                                </dxc:SeriesDataAdapter>
+                            </dxc:LineSeries.Data>
+                        </dxc:LineSeries>
+                        <dxc:LineSeries DisplayName="{Binding Names[1]}">
+                            <dxc:LineSeries.Style>
+                                <dxc:LineSeriesStyle Stroke="{Binding Palette[1]}" />
+                            </dxc:LineSeries.Style>
+                            <dxc:LineSeries.Data>
+                                <dxc:SeriesDataAdapter DataSource="{Binding FirstHeadphones100}" ArgumentDataMember="Argument">
+                                    <dxc:ValueDataMember Type="Value" Member="Value" />
+                                </dxc:SeriesDataAdapter>
+                            </dxc:LineSeries.Data>
+                        </dxc:LineSeries>
+                        <dxc:LineSeries DisplayName="{Binding Names[2]}">
+                            <dxc:LineSeries.Style>
+                                <dxc:LineSeriesStyle Stroke="{Binding Palette[2]}" />
+                            </dxc:LineSeries.Style>
+                            <dxc:LineSeries.Data>
+                                <dxc:SeriesDataAdapter DataSource="{Binding SecondHeadphones90}" ArgumentDataMember="Argument">
+                                    <dxc:ValueDataMember Type="Value" Member="Value" />
+                                </dxc:SeriesDataAdapter>
+                            </dxc:LineSeries.Data>
+                        </dxc:LineSeries>
+                        <dxc:LineSeries DisplayName="{Binding Names[3]}">
+                            <dxc:LineSeries.Style>
+                                <dxc:LineSeriesStyle Stroke="{Binding Palette[3]}" />
+                            </dxc:LineSeries.Style>
+                            <dxc:LineSeries.Data>
+                                <dxc:SeriesDataAdapter DataSource="{Binding SecondHeadphones100}" ArgumentDataMember="Argument">
+                                    <dxc:ValueDataMember Type="Value" Member="Value" />
+                                </dxc:SeriesDataAdapter>
+                            </dxc:LineSeries.Data>
+                        </dxc:LineSeries>
+                    </dxc:ChartView.Series>
+                    <dxc:ChartView.AxisY>
+                        <dxc:NumericAxisY AlwaysShowZeroLevel="False" GridAlignment="1" LabelTextFormatter="{local:PercentAxisLabelTextFormatter}">
+                            <dxc:NumericAxisY.Range>
+                                <dxc:NumericRange SideMargin="0" Min="0.01" Max="100"/>
+                            </dxc:NumericAxisY.Range>
+                            <dxc:NumericAxisY.Title>
+                                <dxc:AxisTitle Text="Total Hamonic Distortion" />
+                            </dxc:NumericAxisY.Title>
+                            <dxc:NumericAxisY.Style>
+                                <dxc:AxisStyle MajorGridlinesVisible="True"
+                                                  MinorGridLinesVisible="True"
+                                                  MajorTickmarksVisible="True"
+                                                  MinorTickmarksVisible="True" />
+                            </dxc:NumericAxisY.Style>
+                            <dxc:NumericAxisY.LogarithmicOptions>
+                                <dxc:AxisLogarithmicOptions Enabled="True" Base="10"/>
+                            </dxc:NumericAxisY.LogarithmicOptions>
+                        </dxc:NumericAxisY>
+                    </dxc:ChartView.AxisY>
+                    <dxc:ChartView.AxisX>
+                        <dxc:NumericAxisX GridAlignment="1">
+                            <dxc:NumericAxisX.Range>
+                                <dxc:NumericRange SideMargin="0"/>
+                            </dxc:NumericAxisX.Range>
+                            <dxc:NumericAxisX.Title>
+                                <dxc:AxisTitle Text="Frequency" />
+                            </dxc:NumericAxisX.Title>
+                            <dxc:NumericAxisX.Label>
+                                <dxc:AxisLabel TextFormat="# Hz"/>
+                            </dxc:NumericAxisX.Label>
+                            <dxc:NumericAxisX.Style>
+                                <dxc:AxisStyle MajorGridlinesVisible="True"
+                                                  MajorTickmarksVisible="True"
+                                                  MinorGridLinesVisible="True"
+                                                  MinorTickmarksVisible="True" />
+                            </dxc:NumericAxisX.Style>
+                            <dxc:NumericAxisX.LabelValueNotation>
+                                <dxc:AxisLabelScientificNotation ScientificNotation="Logarithmic"/>
+                            </dxc:NumericAxisX.LabelValueNotation>
+                            <dxc:NumericAxisX.LogarithmicOptions>
+                                <dxc:AxisLogarithmicOptions Enabled="True" Base="10"/>
+                            </dxc:NumericAxisX.LogarithmicOptions>
+                        </dxc:NumericAxisX>
+                    </dxc:ChartView.AxisX>
+                    <dxc:ChartView.Legend>
+                        <dxc:Legend HorizontalPosition="Center" VerticalPosition="TopOutside"/>
+                    </dxc:ChartView.Legend>
+                </dxc:ChartView>
+            </Grid>
+        </demo:Panel>
+    </ContentPage.Content>
+</ContentPage>

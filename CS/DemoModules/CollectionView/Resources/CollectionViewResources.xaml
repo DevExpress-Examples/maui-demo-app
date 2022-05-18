@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
+             xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+             x:Class="DemoCenter.Maui.DemoModules.Resources.CollectionViewResources">
+
+    <Style x:Key="SeparatorStyle" TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="{DynamicResource EditorSettingsSeparatorColor}"/>
+        <Setter Property="HeightRequest" Value="1"/>
+    </Style>
+
+    <Style x:Key="MailColorItemStyle" TargetType="Ellipse">
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+        <Setter Property="WidthRequest" Value="46"/>
+        <Setter Property="HeightRequest" Value="46"/>
+    </Style>
+
+    <Style x:Key="SenderAvatarTextStyle" TargetType="Label">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="FontAttributes" Value="None" />
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="HeightRequest" Value="46"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="WidthRequest" Value="46"/>
+    </Style>
+
+    <Style x:Key="MailTemplateStyle" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="{StaticResource BackgroundThemeColor}" />
+        <Setter Property="ColumnSpacing" Value="16" />
+        <Setter Property="Padding" Value="16,14" />
+    </Style>
+
+    <Style x:Key="DragDropTemplateStyle" TargetType="Label">
+        <Setter Property="Margin" Value="20" />
+        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="Padding">
+            <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,0,0" Tablet="60,0,0,0"/>
+        </Setter>
+        <Setter Property="TextColor" Value="{DynamicResource CollectionViewItemFontColor}"/>
+    </Style>
+</ResourceDictionary>

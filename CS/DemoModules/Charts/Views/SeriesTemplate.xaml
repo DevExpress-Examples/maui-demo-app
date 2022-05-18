@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Class="DemoCenter.Maui.Views.SeriesTemplate"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+
+    <ContentPage.BindingContext>
+        <vm:SeriesTemplateViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="OnItemClicked" IconImageSource="verticalelipsize" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <dxc:DateTimeAxisX x:Key="dateTimeAxisX" MeasureUnit="Year" GridSpacing="1"/>
+            <dxc:QualitativeAxisX x:Key="qualitativeAxisX"/>
+
+            <DataTemplate x:Key="yearSeries">
+                 <dxc:BarSeries DisplayName="{Binding Path=SeriesDataMemberValue}"
+                                AxisX="{StaticResource dateTimeAxisX}">
+                     <dxc:BarSeries.HintOptions>
+                         <dxc:SeriesHintOptions PointTextPattern="{}{S} {A$YYYY}: ${V}"/>
+                     </dxc:BarSeries.HintOptions>
+                 </dxc:BarSeries>
+            </DataTemplate>
+
+            <DataTemplate x:Key="countrySeries">
+                 <dxc:BarSeries DisplayName="{Binding Path=SeriesDataMemberValue, StringFormat=\{0:yyyy\}}"
+                                AxisX="{StaticResource qualitativeAxisX}">
+                     <dxc:BarSeries.HintOptions>
+                         <dxc:SeriesHintOptions PointTextPattern="{}{A} {S}: ${V}" />
+                     </dxc:BarSeries.HintOptions>
+                 </dxc:BarSeries>
+            </DataTemplate>
+
+            <local:SeriesTemplateSelector x:Key="seriesTemplateSelector"
+                                            YearSeriesTemplate="{StaticResource yearSeries}"
+                                            CountrySeriesTemplate="{StaticResource countrySeries}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <demo:Panel x:Name="panel">
+            <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="G7 GDP per capita in 2017-2019"
+                       FontFamily="Roboto"
+                       TextColor="{DynamicResource TextThemeColor}"
+                       Margin="0,8"
+                       BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                       HorizontalTextAlignment="Center"/>
+
+                <dxc:ChartView Grid.Row="1" SelectionMode="Single">
+                    <dxc:ChartView.SeriesDataTemplate>
+                        <dxc:SeriesTemplateAdapter DataSource="{Binding SeriesData}"
+                                                   SeriesDataMember="{Binding SeriesDataMember}"
+                                                   ArgumentDataMember="{Binding ArgumentDataMember}"
+                                                   SeriesTemplate="{StaticResource seriesTemplateSelector}">
+                            <dxc:SeriesTemplateAdapter.ValueDataMembers>
+                                 <dxc:ValueDataMember Type="Value" Member="Gdp"/>
+                            </dxc:SeriesTemplateAdapter.ValueDataMembers>
+                        </dxc:SeriesTemplateAdapter>
+                    </dxc:ChartView.SeriesDataTemplate>
+
+                    <dxc:ChartView.AxisY>
+                        <dxc:NumericAxisY AlwaysShowZeroLevel="False">
+                            <dxc:NumericAxisY.Style>
+                                <dxc:AxisStyle MajorTickmarksVisible="True"
+                                               MinorTickmarksVisible="True"/>
+                            </dxc:NumericAxisY.Style>
+                            <dxc:NumericAxisY.Title>
+                                <dxc:AxisTitle Text="Total GDP per capita, USD"/>
+                            </dxc:NumericAxisY.Title>
+                        </dxc:NumericAxisY>
+                    </dxc:ChartView.AxisY>
+
+                    <dxc:ChartView.Legend>
+                        <dxc:Legend/>
+                    </dxc:ChartView.Legend>
+
+                    <dxc:ChartView.Hint>
+                        <dxc:Hint>
+                            <dxc:Hint.Behavior>
+                                <dxc:TooltipHintBehavior />
+                            </dxc:Hint.Behavior>
+                        </dxc:Hint>
+                    </dxc:ChartView.Hint>
+
+                </dxc:ChartView>
+
+            </Grid>
+        </demo:Panel>
+    </ContentPage.Content>
+</ContentPage>

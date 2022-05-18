@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Class="DemoCenter.Maui.Views.CompaniesTabView"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="headerTemplate">
+                <demo:TabHeaderButton Padding="16,0"
+                                      VerticalOptions="CenterAndExpand"
+                                      HeightRequest="52"
+                                      ShowIcon="False"
+                                      Text="{Binding CompanyName}"
+                                      TextColor="#ffffff"
+                                      FontFamily="Roboto"
+                                      FontSize="16"
+                                      IsSelected="{Binding IsSelected}"
+                                      SelectedBackgroundColor="{DynamicResource TabViewItemSelectedBackgroundColor}"/>
+            </DataTemplate>
+            <DataTemplate x:Key="itemTemplate">
+                <ScrollView>
+                    <Grid ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.15*'}"/>
+                            <ColumnDefinition Width="{OnIdiom Phone='*', Tablet='0.7*'}"/>
+                            <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.15*'}"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0"
+                                   SizeChanged="UpdateSizeChanged"
+                                   Source="{Binding ImageSource}"
+                                   VerticalOptions="StartAndExpand" 
+                                   HorizontalOptions="FillAndExpand"/>
+                            <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                  Grid.Row="1"
+                                  RowSpacing="30"
+                                  ColumnSpacing="10"
+                                  Margin="16,30,0,0"
+                                  ColumnDefinitions="0.5*,280,0.5*"
+                                  RowDefinitions="35,35,35">
+                                <demo:IconView Grid.Column="0"
+                                               Grid.Row="0"
+                                               WidthRequest="24"
+                                               HeightRequest="24"
+                                               Source="demotabview_location"
+                                               VerticalOptions="Start"
+                                               HorizontalOptions="End"
+                                               Margin="{OnPlatform Android='0,3,0,0', iOS='0'}"/>
+                                <demo:IconView Grid.Column="0"
+                                               Grid.Row="1"
+                                               WidthRequest="24"
+                                               HeightRequest="24"
+                                               Source="demotabview_phone"
+                                               VerticalOptions="Start"
+                                               HorizontalOptions="End"
+                                               Margin="{OnPlatform Android='0,3,0,0', iOS='0'}"/>
+                                <demo:IconView Grid.Column="0"
+                                               Grid.Row="2"
+                                               WidthRequest="24"
+                                               HeightRequest="24"
+                                               Source="demotabview_www"
+                                               VerticalOptions="Start"
+                                               HorizontalOptions="End"
+                                               Margin="{OnPlatform Android='0,3,0,0', iOS='0'}"/>
+                                <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                             Grid.Column="1"
+                                             Grid.Row="0"
+                                             VerticalOptions="Start">
+                                    <Label Text="{Binding ViewCity}"
+                                           VerticalTextAlignment="Start"
+                                           HorizontalTextAlignment="Start"
+                                           FontFamily="Roboto"
+                                           FontSize="Medium"
+                                           TextColor="{DynamicResource NavigationTextColor}"
+                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                    <Label Text="{Binding ViewAddress}"
+                                           VerticalTextAlignment="Start"
+                                           HorizontalTextAlignment="Start"
+                                           FontFamily="Roboto"
+                                           FontSize="Medium"
+                                           TextColor="{DynamicResource NavigationTextColor}"
+                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                </StackLayout>
+                                <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                             Grid.Column="1"
+                                             Grid.Row="1"
+                                             VerticalOptions="Start">
+                                    <Label Text="{Binding Phone}"
+                                           VerticalTextAlignment="Start"
+                                           HorizontalTextAlignment="Start"
+                                           FontFamily="Roboto"
+                                           FontSize="Medium"
+                                           TextColor="{DynamicResource NavigationTextColor}"
+                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                    <Label Text="{Binding Fax}"
+                                           VerticalTextAlignment="Start"
+                                           HorizontalTextAlignment="Start"
+                                           FontFamily="Roboto"
+                                           FontSize="Medium"
+                                           TextColor="{DynamicResource NavigationTextColor}"
+                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                </StackLayout>
+                                <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             VerticalOptions="Start">
+                                    <Label Text="{Binding Website}"
+                                           VerticalTextAlignment="Start"
+                                           HorizontalTextAlignment="Start"
+                                           FontFamily="Roboto"
+                                           FontSize="Medium"
+                                           TextColor="{DynamicResource NavigationTextColor}"
+                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ScrollView>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <dxco:TabView x:Name="tabControl"
+                            IsHeaderPanelShadowVisible="False"
+                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                            HeaderPanelBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
+                            SelectedItemIndicatorColor="{DynamicResource TabViewIndicatorColor}"
+                            HeaderPanelIndent="16"
+                            HeaderPanelHeight="52"
+                            ItemHeaderMinWidth="100"
+                            ItemHeaderWidth="Auto"
+                            ItemsSource="{Binding CompaniesData}"
+                            ItemHeaderTemplate="{StaticResource headerTemplate}"
+                            ItemTemplate="{StaticResource itemTemplate}"
+                            SelectedItem="{Binding SelectedItem}"/>
+    </ContentPage.Content>
+</ContentPage>

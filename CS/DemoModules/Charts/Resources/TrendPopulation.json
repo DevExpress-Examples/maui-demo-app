@@ -1,0 +1,156 @@
+﻿{
+    "DateTimeDataSets": {
+        "DataSets":  [
+                {
+                    "Name": "Europe",
+                    "DataSet": [
+                        {
+                            "Argument": "1950-01-01",
+                            "Value": "546"
+                        },
+                        {
+                            "Argument": "1960-01-01",
+                            "Value": "605"
+                        },
+                        {
+                            "Argument": "1970-01-01",
+                            "Value": "656"
+                        },
+                        {
+                            "Argument": "1980-01-01",
+                            "Value": "694"
+                        },
+                        {
+                            "Argument": "1990-01-01",
+                            "Value": "721"
+                        },
+                        {
+                            "Argument": "2000-01-01",
+                            "Value": "730"
+                        },
+                        {
+                            "Argument": "2010-01-01",
+                            "Value": "728"
+                        },
+                        {
+                            "Argument": "2020-01-01",
+                            "Value": "721"
+                        },
+                        {
+                            "Argument": "2030-01-01",
+                            "Value": "704"
+                        },
+                        {
+                            "Argument": "2040-01-01",
+                            "Value": "680"
+                        },
+                        {
+                            "Argument": "2050-01-01",
+                            "Value": "650"
+                        }
+                    ]
+
+                },
+                {
+                    "Name": "Americas",
+                    "DataSet": [
+                        {
+                            "Argument": "1950-01-01",
+                            "Value": "332"
+                        },
+                        {
+                            "Argument": "1960-01-01",
+                            "Value": "417"
+                        },
+                        {
+                            "Argument": "1970-01-01",
+                            "Value": "513"
+                        },
+                        {
+                            "Argument": "1980-01-01",
+                            "Value": "614"
+                        },
+                        {
+                            "Argument": "1990-01-01",
+                            "Value": "721"
+                        },
+                        {
+                            "Argument": "2000-01-01",
+                            "Value": "836"
+                        },
+                        {
+                            "Argument": "2010-01-01",
+                            "Value": "935"
+                        },
+                        {
+                            "Argument": "2020-01-01",
+                            "Value": "1027"
+                        },
+                        {
+                            "Argument": "2030-01-01",
+                            "Value": "1110"
+                        },
+                        {
+                            "Argument": "2040-01-01",
+                            "Value": "1178"
+                        },
+                        {
+                            "Argument": "2050-01-01",
+                            "Value": "1231"
+                        }
+                    ]
+
+                },
+                {
+                    "Name": "Africa",
+                    "DataSet": [
+                        {
+                            "Argument": "1950-01-01",
+                            "Value": "227"
+                        },
+                        {
+                            "Argument": "1960-01-01",
+                            "Value": "283"
+                        },
+                        {
+                            "Argument": "1970-01-01",
+                            "Value": "361"
+                        },
+                        {
+                            "Argument": "1980-01-01",
+                            "Value": "471"
+                        },
+                        {
+                            "Argument": "1990-01-01",
+                            "Value": "623"
+                        },
+                        {
+                            "Argument": "2000-01-01",
+                            "Value": "797"
+                        },
+                        {
+                            "Argument": "2010-01-01",
+                            "Value": "982"
+                        },
+                        {
+                            "Argument": "2020-01-01",
+                            "Value": "1189"
+                        },
+                        {
+                            "Argument": "2030-01-01",
+                            "Value": "1416"
+                        },
+                        {
+                            "Argument": "2040-01-01",
+                            "Value": "1665"
+                        },
+                        {
+                            "Argument": "2050-01-01",
+                            "Value": "1937"
+                        }
+                    ]
+                }
+            ]
+        
+    }
+}

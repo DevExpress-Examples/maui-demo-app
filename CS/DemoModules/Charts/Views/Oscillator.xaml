@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Class="DemoCenter.Maui.Views.Oscillator"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts" 
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Content>
+        <demo:Panel>
+            <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <dxc:ChartView Grid.Row="1" x:Name="chart" AxisXNavigationMode="ScrollingAndZooming" AxisYNavigationMode="ScrollingAndZooming">
+                    <dxc:ChartView.Series>
+                        <dxc:ScatterLineSeries DisplayName="X Axis">
+                            <dxc:ScatterLineSeries.Data>
+                                <dxc:SeriesDataAdapter DataSource="{Binding OscillatorSeriesData}" ArgumentDataMember="Argument">
+                                    <dxc:ValueDataMember Type="Value" Member="Value" />
+                                </dxc:SeriesDataAdapter>
+                            </dxc:ScatterLineSeries.Data>
+                        </dxc:ScatterLineSeries>
+                    </dxc:ChartView.Series>
+                    <dxc:ChartView.AxisX>
+                        <dxc:NumericAxisX>
+                            <dxc:NumericAxisX.DisplayPosition>
+                                <dxc:AxisDisplayPositionRelative NumericPosition="0" RelativeAxis="{Binding AxisY, Source={x:Reference chart}}"/>
+                            </dxc:NumericAxisX.DisplayPosition>
+                            <dxc:NumericAxisX.Style>
+                                <dxc:AxisStyle MajorGridlinesVisible="True"
+                                                  MinorGridLinesVisible="True"
+                                                  MajorTickmarksVisible="True"
+                                                  MinorTickmarksVisible="True"
+                                                  InterlacedVisible="True"
+                                                  InterlacedColor="#22DDDDDD"
+                                                  LineColor="#33000000" />
+                            </dxc:NumericAxisX.Style>
+                            <dxc:NumericAxisX.Range>
+                                <dxc:NumericRange Min="-1.0" Max="1.0"/>
+                            </dxc:NumericAxisX.Range>
+                        </dxc:NumericAxisX>
+                    </dxc:ChartView.AxisX>
+                    <dxc:ChartView.AxisY>
+                        <dxc:NumericAxisY>
+                            <dxc:NumericAxisY.DisplayPosition>
+                                <dxc:AxisDisplayPositionRelative NumericPosition="0" RelativeAxis="{Binding AxisX, Source={x:Reference chart}}"/>
+                            </dxc:NumericAxisY.DisplayPosition>
+                            <dxc:NumericAxisY.Style>
+                                <dxc:AxisStyle MajorGridlinesVisible="True"
+                                                  MinorGridLinesVisible="True"
+                                                  MajorTickmarksVisible="True"
+                                                  MinorTickmarksVisible="True"
+                                                  InterlacedVisible="True"
+                                                  InterlacedColor="#22DDDDDD"
+                                                  LineColor="#33000000" />
+                            </dxc:NumericAxisY.Style>
+                            <dxc:NumericAxisY.Range>
+                                <dxc:NumericRange Min="-1.0" Max="1.0"/>
+                            </dxc:NumericAxisY.Range>
+                        </dxc:NumericAxisY>
+                    </dxc:ChartView.AxisY>
+                </dxc:ChartView>
+            </Grid>
+        </demo:Panel>
+    </ContentPage.Content>
+</ContentPage>

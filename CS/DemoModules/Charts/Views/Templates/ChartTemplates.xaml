@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:local="clr-namespace:DemoCenter.Maui.Charts.Templates"
+                    x:Class="DemoCenter.Maui.Charts.Templates.ChartTemplates">
+    <ResourceDictionary.MergedDictionaries>
+        <local:AreaChartTemplates/>
+        <local:BarChartTemplates/>
+        <local:LineChartTemplates/>
+        <local:PieChartTemplates/>
+        <local:PointChartTemplates/>
+        <local:ColorizerTemplates/>
+        <local:LabelModeTemplates/>
+        <!--<ResourceDictionary MergedWith="local:Charts.Templates.AreaChartTemplates" />
+        <ResourceDictionary MergedWith="local:Charts.Templates.BarChartTemplates" />
+        <ResourceDictionary MergedWith="local:Charts.Templates.LineChartTemplates" />
+        <ResourceDictionary MergedWith="local:Charts.Templates.PieChartTemplates" />
+        <ResourceDictionary MergedWith="local:Charts.Templates.PointChartTemplates" />
+        <ResourceDictionary MergedWith="local:Charts.Templates.ColorizerTemplates" />
+        <ResourceDictionary MergedWith="local:Charts.Templates.LabelModeTemplates" />-->
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<views:BaseGridContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+    xmlns:views="clr-namespace:DemoCenter.Maui.Views;assembly=DemoCenter.Maui"
+    xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+    x:Class="DemoCenter.Maui.Views.SwipeButtonsView"
+    BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Content>
+        <dxg:DataGridView x:Name="grid" ItemsSource="{Binding OutlookData}">
+            <dxg:DataGridView.StartSwipeItems>
+                <dxg:SwipeItem Caption="Sender Info" BackgroundColor="#26a95e" Tap="OnShowCustomerInfo" />
+            </dxg:DataGridView.StartSwipeItems>
+            <dxg:DataGridView.EndSwipeItems>
+                <dxg:SwipeItem Caption="Reply" BackgroundColor="#797bff" Tap="OnReply" />
+                <dxg:SwipeItem Caption="Remove" BackgroundColor="#ff3b30" Tap="OnDelete" />
+            </dxg:DataGridView.EndSwipeItems>
+            <dxg:DataGridView.Columns>
+                <dxg:TextColumn FieldName="From.Name" Caption="From" Width="{OnIdiom Phone='110', Tablet='150', Default='150'}"/>
+                <dxg:TextColumn FieldName="Subject" />
+                <dxg:DateColumn FieldName="Sent" Width="150" IsVisible="{StaticResource IsTablet}">
+                    <!--<dxg:DateColumn.IsVisible>
+                        <OnIdiom x:TypeArguments="x:Boolean" Phone="false" Tablet="true"/>
+                    </dxg:DateColumn.IsVisible>-->
+                </dxg:DateColumn>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </ContentPage.Content>
+</views:BaseGridContentPage>

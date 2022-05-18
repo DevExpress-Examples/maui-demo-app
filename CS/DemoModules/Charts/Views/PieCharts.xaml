@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Class="DemoCenter.Maui.Views.PieCharts"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Resources>
+        <local:PieTypeToImageSourceConverter x:Key="pieTypeToImageSourceConverter"/>
+        <DataTemplate x:Key="headerItemTemplate">
+            <demo:TabButton ImageSource="{Binding PieType, Converter={StaticResource pieTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
+        </DataTemplate>
+        <local:PieChartTemplateSelector x:Key="pieChartTemplateSelector"
+                                        DonutChartTemplate="{StaticResource donutChartTemplate}"
+                                        PieChartTemplate="{StaticResource pieChartTemplate}"/>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,8,0,0"/>
+        </Style>
+    </ContentPage.Resources>
+    <dxco:TabView x:Name="dxTabView"
+                        BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                        HeaderPanelBackgroundColor="{DynamicResource TabItemBackgroundColor}"
+                        HorizontalOptions="FillAndExpand"
+
+                        ScrollAnimationEnabled="True"
+                        SwipeEnabled="False"
+                
+                        ItemsSource="{Binding Content}"
+                        ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                        ItemTemplate="{StaticResource pieChartTemplateSelector}"
+                
+                        HeaderPanelContentAlignment="Start"
+                        HeaderPanelIndent="0"
+                
+                        IsSelectedItemIndicatorVisible="False"
+                        IsHeaderPanelShadowVisible="False"
+                
+                        SelectedItem="{Binding SelectedItem}"/>
+</ContentPage>

@@ -1,0 +1,26 @@
+﻿<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
+             x:Class="DemoCenter.Maui.Demo.RadioButton"
+             Padding="0">
+
+
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" Spacing="14">
+            <demo:IconView
+                
+                HorizontalOptions="Start"
+                Source="{Binding BackgroundImage}"    
+                WidthRequest="20"
+                HeightRequest="20" />
+            <!--VerticalOptions="CenterAndExpand"
+            -->
+            <Label Text="{Binding LabelText}"
+                   MaxLines="1"
+                   LineBreakMode="NoWrap"
+                    />
+            <!--VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="StartAndExpand"-->
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

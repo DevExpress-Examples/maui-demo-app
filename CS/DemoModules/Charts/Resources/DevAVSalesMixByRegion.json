@@ -1,0 +1,59 @@
+﻿{
+  "QualitativeDataSets": {
+    "DataSets": [
+            {
+                "Name": "Projectors",
+                "DataSet": [
+                        {
+                            "Argument": "Asia",
+                            "Value": "1325"
+                        },
+                        {
+                            "Argument": "Australia",
+                            "Value": "963"
+                        },
+                        {
+                            "Argument": "Europe",
+                            "Value": "565"
+                        },
+                        {
+                            "Argument": "N.America",
+                            "Value": "787"
+                        },
+                        {
+                            "Argument": "S.America",
+                            "Value": "1125"
+                        }
+                    ]
+                
+            },
+            {
+                "Name": "Televisions",
+                "DataSet": [
+                        {
+                            "Argument": "Asia",
+                            "Value": "653"
+                        },
+                        {
+                            "Argument": "Australia",
+                            "Value": "123"
+                        },
+                        {
+                            "Argument": "Europe",
+                            "Value": "532"
+                        },
+                        {
+                            "Argument": "N.America",
+                            "Value": "332"
+                        },
+                        {
+                            "Argument": "S.America",
+                            "Value": "865"
+                        }
+                    ]
+                
+            }
+        
+    ]
+  }
+}

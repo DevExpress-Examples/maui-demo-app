@@ -1,0 +1,111 @@
+﻿{
+  "QualitativeDataSets": {
+    "DataSets": [
+        {
+          "Name": "Male: 0-14 and 65+ years old",
+          "DataSet": [
+              {
+                "Argument": "US",
+                "Value": "53077788"
+              },
+              {
+                "Argument": "Brazil",
+                "Value": "30965129"
+              },
+              {
+                "Argument": "Russia",
+                "Value": "18537533"
+              },
+              {
+                "Argument": "Japan",
+                "Value": "23553607"
+              },
+              {
+                "Argument": "UK",
+                "Value": "10931853"
+              }
+            ]
+          
+        },
+        {
+          "Name": "Male: 15-64 years",
+          "DataSet": [
+              {
+                "Argument": "US",
+                "Value": "106612970"
+              },
+              {
+                "Argument": "Brazil",
+                "Value": "70533639"
+              },
+              {
+                "Argument": "Russia",
+                "Value": "47326980"
+              },
+              {
+                "Argument": "Japan",
+                "Value": "37897740"
+              },
+              {
+                "Argument": "UK",
+                "Value": "21124412"
+              }
+            ]
+          
+        },
+        {
+          "Name": "Female: 0-14 and 65+ years old",
+          "DataSet": [
+              {
+                "Argument": "US",
+                "Value": "57379942"
+              },
+              {
+                "Argument": "Brazil",
+                "Value": "32517934"
+              },
+              {
+                "Argument": "Russia",
+                "Value": "25391403"
+              },
+              {
+                "Argument": "Japan",
+                "Value": "27452017"
+              },
+              {
+                "Argument": "UK",
+                "Value": "11839696"
+              }
+            ]
+          
+        },
+        {
+          "Name": "Female: 15-64 years",
+          "DataSet": [
+              {
+                "Argument": "US",
+                "Value": "106924828"
+              },
+              {
+                "Argument": "Brazil",
+                "Value": "71806963"
+              },
+              {
+                "Argument": "Russia",
+                "Value": "51099499"
+              },
+              {
+                "Argument": "Japan",
+                "Value": "37798769"
+              },
+              {
+                "Argument": "UK",
+                "Value": "20534467"
+              }
+            ]
+          
+        }
+      ]
+    
+  }
+}

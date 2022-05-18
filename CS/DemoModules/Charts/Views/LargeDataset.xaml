@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Class="DemoCenter.Maui.Views.LargeDataset"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="{DynamicResource TextThemeColor}"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <demo:Panel>
+            <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Margin="0,8">
+                    <Label Text="Total Points Count:"
+                           FontFamily="Roboto"
+                           TextColor="{DynamicResource TextThemeColor}"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                    <Label Text="{Binding TotalPointsCount}"
+                           FontFamily="Roboto"
+                           TextColor="{DynamicResource TextThemeColor}"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1"
+                             Orientation="Horizontal"
+                             HorizontalOptions="Center">
+                    <Button Text="+100K"
+                            Style="{StaticResource buttonStyle}"
+                            Command="{Binding AddSeries}"
+                            CommandParameter="100000"/>
+                    <Grid WidthRequest="10"/>
+                    <Button Text="+250K"
+                            Style="{StaticResource buttonStyle}"
+                            Command="{Binding AddSeries}"
+                            CommandParameter="250000"/>
+                    <Grid WidthRequest="10"/>
+                    <Button Text="+500K"
+                            Style="{StaticResource buttonStyle}"
+                            Command="{Binding AddSeries}"
+                            CommandParameter="500000"/>
+                </StackLayout>
+                <dxc:ChartView x:Name="chart"
+                                  Grid.Row="2"
+                                  AxisXNavigationMode="ScrollingAndZooming"
+                                  AxisYNavigationMode="ScrollingAndZooming"/>
+            </Grid>
+        </demo:Panel>
+    </ContentPage.Content>
+</ContentPage>

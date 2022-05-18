@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                           xmlns:views="clr-namespace:DemoCenter.Maui.Views;assembly=DemoCenter.Maui"
+                           x:Class="DemoCenter.Maui.Views.RowAutoHeightView"
+                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <ContentPage.Content>
+        <dxg:DataGridView ItemsSource="{Binding Path=Customers}" IsReadOnly="true" IsColumnHeaderVisible="false">
+            <dxg:DataGridView.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="TextColor" Value="{DynamicResource GridCellFontColor}"/>
+                </Style>
+            </dxg:DataGridView.Resources>
+            <dxg:DataGridView.Columns>
+                <dxg:TemplateColumn FieldName="Name">
+                    <dxg:TemplateColumn.DisplayTemplate>
+                        <OnIdiom x:TypeArguments="DataTemplate">
+                            <OnIdiom.Phone>
+                                <DataTemplate>
+                                    <StackLayout Margin="14" Spacing="0">
+                                        <Grid RowSpacing="0" ColumnSpacing="0" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+                                            <Border Grid.RowSpan="3" Stroke="{DynamicResource GridCellBorderColor}" StrokeThickness="1" WidthRequest="62">
+                                                <Border.StrokeShape>
+                                                    <Rectangle/>
+                                                </Border.StrokeShape>
+                                                <Image Source="{Binding Item.Photo}" Aspect="AspectFill" />
+                                            </Border>
+                                            <Label Text="{Binding Value}" Grid.Row="0" Grid.Column="1" Margin="14, 0, 0, 7"/>
+                                            <Label Text="{Binding Item.Position}" Grid.Row="1" Grid.Column="1" Margin="14, 0, 0, 7"/>
+                                            <Label Text="{Binding Item.Phone}" Grid.Row="2" Grid.Column="1" Margin="14, 0, 0, 0"/>
+                                        </Grid>
+
+                                        <Label Text="{Binding Item.Notes}" Margin="0, 14, 0, 0" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </OnIdiom.Phone>
+                            <OnIdiom.Tablet>
+                                <DataTemplate>
+                                    <StackLayout Spacing="0" Margin="20">
+                                        <Grid RowSpacing="0" ColumnSpacing="0" ColumnDefinitions="Auto,*"> 
+                                            <Border Stroke="{DynamicResource GridCellBorderColor}" StrokeThickness="1" WidthRequest="102">
+                                                <Border.StrokeShape>
+                                                    <Rectangle/>
+                                                </Border.StrokeShape>
+                                                <Image Source="{Binding Item.Photo}" Aspect="AspectFill" />
+                                            </Border>
+                                            <Grid Grid.Row="0" Grid.Column="1" Margin="20, 0, 0, 0" RowSpacing="0" ColumnSpacing="0"
+                                                  RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="80,*">
+                                                <Label Margin="0, 0, 0, 10" Text="Name:" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
+                                                <Label Margin="0, 0, 0, 10" Text="{Binding Value}" Grid.Row="0" Grid.Column="1"/>
+
+                                                <Label Margin="0, 0, 0, 10" Text="Position:" FontAttributes="Bold" Grid.Row="1" Grid.Column="0"/>
+                                                <Label Margin="0, 0, 0, 10" Text="{Binding Item.Position}" Grid.Row="1" Grid.Column="1"/>
+
+                                                <Label Margin="0, 0, 0, 10" Text="Phone:" FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
+                                                <Label Margin="0, 0, 0, 10" Text="{Binding Item.Phone}" Grid.Row="2" Grid.Column="1"/>
+
+                                                <Label Margin="0, 0, 0, 10" Text="Email:" FontAttributes="Bold" Grid.Row="3" Grid.Column="0"/>
+                                                <Label Margin="0, 0, 0, 10" Text="{Binding Item.Email}" Grid.Row="3" Grid.Column="1"/>
+
+                                                <Label Text="Address:" FontAttributes="Bold" Grid.Row="4" Grid.Column="0"/>
+                                                <Label Text="{Binding Item.Address}" Grid.Row="4" Grid.Column="1"/>
+                                            </Grid>
+                                        </Grid>
+
+                                        <Label Text="{Binding Item.Notes}" Margin="0, 20, 0, 0" Grid.Row="1"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </OnIdiom.Tablet>
+                        </OnIdiom>
+                    </dxg:TemplateColumn.DisplayTemplate>
+                </dxg:TemplateColumn>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </ContentPage.Content>
+</views:BaseGridContentPage>

@@ -1,0 +1,68 @@
+﻿{
+  "DateTimeDataSets": {
+    "DataSets": [
+        {
+          "Name": "DevAV North",
+          "DataSet": 
+            [
+              {
+                "Argument": "2012-01-01",
+                "Value": "362.5"
+              },
+              {
+                "Argument": "2013-01-01",
+                "Value": "348.4"
+              },
+              {
+                "Argument": "2014-01-01",
+                "Value": "279.0"
+              },
+              {
+                "Argument": "2015-01-01",
+                "Value": "230.9"
+              },
+              {
+                "Argument": "2016-01-01",
+                "Value": "203.5"
+              },
+              {
+                "Argument": "2017-01-01",
+                "Value": "197.1"
+              }
+            ]
+          
+        },
+        {
+          "Name": "DevAV South",
+          "DataSet": 
+            [
+              {
+                "Argument": "2012-01-01",
+                "Value": "277.0"
+              },
+              {
+                "Argument": "2013-01-01",
+                "Value": "328.5"
+              },
+              {
+                "Argument": "2014-01-01",
+                "Value": "297.0"
+              },
+              {
+                "Argument": "2015-01-01",
+                "Value": "255.3"
+              },
+              {
+                "Argument": "2016-01-01",
+                "Value": "173.5"
+              },
+              {
+                "Argument": "2017-01-01",
+                "Value": "131.8"
+              }
+            ]
+          
+        }
+      ]
+    }
+  }

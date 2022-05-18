@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             x:Class="DemoCenter.Maui.Charts.Views.BubbleColorizerContainer"
+             xmlns:local="clr-namespace:DemoCenter.Maui.Data">
+    <ContentView.Content>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                    Text="{Binding ChartModel.Title}"
+                    FontFamily="Roboto"
+                    TextColor="{DynamicResource TextThemeColor}"
+                    BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+            
+            <dxc:ChartView x:Name="chart"
+                              Grid.Row="1"
+                              SelectionKind="Point"
+                              SelectionMode="Single"
+                              SelectionChanged="OnBubbleColorizerChanged"
+                              Rotated="True">
+                <dxc:ChartView.Series>
+                    <dxc:BubbleSeries x:Name="series"
+                                         DisplayName="Happy Planet Index for G20"
+                                         LegendTextPattern="{}{CLV} - {CHV} HPI">
+                        <dxc:BubbleSeries.Data>
+                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.CountriesStatisticData}" ArgumentDataMember="Country">
+                                <dxc:ValueDataMember Type="Value" Member="Gdp"/>
+                                <dxc:ValueDataMember Type="Weight" Member="Population"/>
+                            </dxc:SeriesDataAdapter>
+                        </dxc:BubbleSeries.Data>
+                        <dxc:BubbleSeries.PointColorizer>
+                            <dxc:CustomValueBandPointColorizer ValueProvider="{local:HpiIndexCustomColorizerAdapter}">
+                                <dxc:CustomValueBandPointColorizer.ColorStops>
+                                    <dxc:ColorStop Color="#CCff5a19" Value1="22" Value2="30"/>
+                                    <dxc:ColorStop Color="#CCfead2d" Value1="30" Value2="38"/>
+                                    <dxc:ColorStop Color="#CCe5e335" Value1="38" Value2="46"/>
+                                    <dxc:ColorStop Color="#CCace45c" Value1="46" Value2="54"/>
+                                    <dxc:ColorStop Color="#CC6ec95b" Value1="54" Value2="64"/>
+                                </dxc:CustomValueBandPointColorizer.ColorStops>
+                            </dxc:CustomValueBandPointColorizer>
+                        </dxc:BubbleSeries.PointColorizer>
+                    </dxc:BubbleSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.AxisX>
+                    <dxc:QualitativeAxisX>
+                        <dxc:QualitativeAxisX.Style>
+                            <dxc:AxisStyle MajorTickmarksVisible="True" MajorGridlinesVisible="True"/>
+                        </dxc:QualitativeAxisX.Style>
+                        <dxc:QualitativeAxisX.Title>
+                            <dxc:AxisTitle/>
+                        </dxc:QualitativeAxisX.Title>
+                    </dxc:QualitativeAxisX>
+                </dxc:ChartView.AxisX>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY>
+                        <dxc:NumericAxisY.Style>
+                            <dxc:AxisStyle MajorTickmarksVisible="True"/>
+                         </dxc:NumericAxisY.Style>
+                        <dxc:NumericAxisY.Title>
+                            <dxc:AxisTitle Text="GDP per capita, $"/>
+                        </dxc:NumericAxisY.Title>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint>
+                        <dxc:Hint.Behavior>
+                            <dxc:TooltipHintBehavior/>
+                        </dxc:Hint.Behavior>
+                    </dxc:Hint>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend HorizontalPosition="Center"/>
+                </dxc:ChartView.Legend>
+            </dxc:ChartView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
