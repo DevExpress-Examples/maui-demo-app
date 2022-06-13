@@ -26,7 +26,7 @@ namespace DemoCenter.Maui {
             };
             ControlPage detailsPage = new ControlPage();
             (detailsPage.BindingContext as ControlViewModel).ApplyQueryAttributes(parameters);
-            await Navigation.PushAsync(detailsPage);
+            await NavigationService.NavigateToPage(detailsPage);
         }
 
         public async void DemoItemTappedControlShortcut(object sender, EventArgs e) {

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-                    xmlns:app="clr-namespace:DemoCenter.Maui.Resources.Styles"
                     x:Class="DemoCenter.Maui.Resources.Styles.LightTheme"
                     xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
-                    xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls">
-    <Color x:Key="AccentColor">#2088ff</Color>
-    <Color x:Key="MainThemeColor">#5B27D9</Color>
+                    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+                    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+                    xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler">
+    <Color x:Key="AccentColor">#5B27D9</Color>
 
     <Color x:Key="BackgroundThemeColor">#ffffff</Color>
     <Color x:Key="GridCellLinesColor">#ebebeb</Color>
@@ -60,6 +60,11 @@
 
     <Color x:Key="EditorSettingsSeparatorColor">#EBEBEB</Color>
     <Color x:Key="EditorSettingsTextColor">#de000000</Color>
+    <Color x:Key="ChoiceChipGroupChipTextColor">#505050</Color>
+    <Color x:Key="ChoiceChipGroupChipBorderColor">#E5E5E1</Color>
+    <Color x:Key="ChoiceChipGroupChipPressedBorderColor">#F5F5F1</Color>
+    <Color x:Key="ChoiceChipGroupChipSelectedBackgroundColor">#DFD8F7</Color>
+    <Color x:Key="ChoiceChipGroupChipPressedBackgroundColor">#CFC8E7</Color>
     
     <Color x:Key="CollectionViewGrayFontColor">#959aa0</Color>
     <Color x:Key="CollectionViewBoldGrayFontColor">#404144</Color>
@@ -100,4 +105,83 @@
     <Style TargetType="dxc:PieChartView">
         <Setter Property="Theme" Value="Light"/>
     </Style>
+
+    
+    <Style TargetType="dxco:SimpleButton">
+        <Setter Property="BackgroundColor" Value="{DynamicResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="dxe:EditBase" ApplyToDerivedTypes="True" CanCascade="True">
+        <Setter Property="FocusedBorderColor" Value="{DynamicResource AccentColor}" />
+        <Setter Property="FocusedLabelColor" Value="{DynamicResource AccentColor}" />
+        <Setter Property="CursorColor" Value="{DynamicResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="dxe:CheckEdit">
+        <Setter Property="CheckedCheckBoxColor" Value="{DynamicResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="CheckBox">
+        <Setter Property="Color" Value="{DynamicResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="dxe:CalendarDayCellStyle" >
+        <Setter Property="TodayEllipseBackgroundColor" Value="#7F5B27D9" />
+        <Setter Property="TodayTextColor" Value="#EBEBEB" />
+        <Setter Property="SelectedEllipseBackgroundColor" Value="{DynamicResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="dxe:CalendarMonthCellStyle" >
+        <Setter Property="SelectedEllipseBackgroundColor" Value="{DynamicResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="dxe:CalendarYearCellStyle" >
+        <Setter Property="SelectedEllipseBackgroundColor" Value="{DynamicResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="dxe:CalendarHeaderStyle" >
+        <Setter Property="TextColor" Value="{DynamicResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="Slider">
+        <Setter Property="ThumbColor" Value="{DynamicResource AccentColor}" />
+    </Style>
+
+    <Style TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{DynamicResource AccentColor}" />
+    </Style>
+    
+    <Style x:Key="SwitchStyle-iOS" TargetType="Switch">
+        <Setter Property="OnColor" Value="{DynamicResource AccentColor}"/>
+    </Style>
+
+    <Style x:Key="SwitchStyle-Android" TargetType="Switch">
+        <Setter Property="ThumbColor" Value="{DynamicResource AccentColor}"/>
+    </Style>
+
+    <Style TargetType="Switch">
+        <Style.BasedOn>
+            <OnPlatform x:TypeArguments="Style">
+                <On Platform="iOS" Value="{StaticResource SwitchStyle-iOS}"/>
+                <On Platform="Android" Value="{StaticResource SwitchStyle-Android}"/>
+            </OnPlatform>
+        </Style.BasedOn>
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+    </Style>
+
+    <Style TargetType="dxsch:DayViewHeaderItemStyle">
+        <Setter Property="TodayDayNumberBackgroundColor" Value="{DynamicResource AccentColor}" />
+        <Setter Property="TodayWeekDayTextStyle">
+            <dxsch:TextStyle Color="{DynamicResource AccentColor}" />
+        </Setter>
+    </Style>
+
+    <Style TargetType="dxsch:MonthViewHeaderItemStyle">
+        <Setter Property="TodayWeekDayTextStyle">
+            <dxsch:TextStyle Color="{DynamicResource AccentColor}" />
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

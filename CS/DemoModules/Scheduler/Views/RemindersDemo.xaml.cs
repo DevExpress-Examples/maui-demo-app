@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using DemoCenter.Maui.Services;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.Scheduler;
 using Microsoft.Maui.Controls;
@@ -30,7 +31,7 @@ namespace DemoCenter.Maui.Views {
 
         Task OpenAppointmentEditForm(Page appointmentPage) {
             inNavigation = true;
-            return Navigation.PushAsync(appointmentPage);
+            return NavigationService.NavigateToPage(appointmentPage);
         }
         Task OpenAppointmentEditForm(AppointmentItem appointment) {
             return OpenAppointmentEditForm(new AppointmentDetailPage(appointment, storage, true));
@@ -58,7 +59,7 @@ namespace DemoCenter.Maui.Views {
             Page appointmentPage = storage.CreateAppointmentPageOnTap(e, true);
             if (appointmentPage != null) {
                 inNavigation = true;
-                await Navigation.PushAsync(appointmentPage);
+                await NavigationService.NavigateToPage(appointmentPage);
             }
         }
     }

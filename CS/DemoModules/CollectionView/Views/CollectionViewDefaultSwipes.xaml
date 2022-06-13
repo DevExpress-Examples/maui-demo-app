@@ -28,16 +28,16 @@
                     </dxcv:SwipeContainer.ItemView>
                     <dxcv:SwipeContainer.StartSwipeItems>
                         <dxcv:SwipeItem Command="{Binding CompleteTaskCommand}"
-                                                 Invoked="OnStatusChanged"
-                                                 Caption="Done"
-                                                 BackgroundColor="#1e8d3e"
-                                                 Image="collectionviewcompletetask"/>
+                                        Invoked="OnStatusChanged"
+                                        Caption="Done"
+                                        BackgroundColor="#BCCC3E"
+                                        Image="collectionviewcompletetask"/>
                     </dxcv:SwipeContainer.StartSwipeItems>
                     <dxcv:SwipeContainer.EndSwipeItems>
                         <dxcv:SwipeItem Invoked="OnDeleteTask"
-                                                 Caption="Delete"
-                                                 BackgroundColor="#ff3b30"
-                                                 Image="collectionviewdeletetask"/>
+                                        Caption="Delete"
+                                        BackgroundColor="#FA5E54"
+                                        Image="collectionviewdeletetask"/>
                     </dxcv:SwipeContainer.EndSwipeItems>
                 </dxcv:SwipeContainer>
             </DataTemplate>
@@ -52,21 +52,21 @@
                     </dxcv:SwipeContainer.ItemView>
                     <dxcv:SwipeContainer.StartSwipeItems>
                         <dxcv:SwipeItem Command="{Binding CompleteTaskCommand}"
-                                                 Invoked="OnStatusChanged"
-                                                 Caption="Done"
-                                                 BackgroundColor="#1e8d3e"
-                                                 Image="collectionviewcompletetask"/>
+                                        Invoked="OnStatusChanged"
+                                        Caption="Done"
+                                        BackgroundColor="#BCCC3E"
+                                        Image="collectionviewcompletetask"/>
                         <dxcv:SwipeItem Command="{Binding UrgentTaskCommand}"
-                                                 Invoked="OnStatusChanged"
-                                                 Caption="Pin"
-                                                 BackgroundColor="#fda601"
-                                                 Image="collectionviewpintotop"/>
+                                        Invoked="OnStatusChanged"
+                                        Caption="Pin"
+                                        BackgroundColor="#FF8F00"
+                                        Image="collectionviewpintotop"/>
                     </dxcv:SwipeContainer.StartSwipeItems>
                     <dxcv:SwipeContainer.EndSwipeItems>
                         <dxcv:SwipeItem Invoked="OnDeleteTask"
-                                                 Caption="Delete"
-                                                 BackgroundColor="#ff3b30"
-                                                 Image="collectionviewdeletetask"/>
+                                        Caption="Delete"
+                                        BackgroundColor="#FA5E54"
+                                        Image="collectionviewdeletetask"/>
                     </dxcv:SwipeContainer.EndSwipeItems>
                 </dxcv:SwipeContainer>
             </DataTemplate>
@@ -84,31 +84,31 @@
                     </dxcv:SwipeContainer.ItemView>
                     <dxcv:SwipeContainer.StartSwipeItems>
                         <dxcv:SwipeItem Command="{Binding UnCompleteTaskCommand}"
-                                                 Invoked="OnStatusChanged"
-                                                 Caption="To Do"
-                                                 BackgroundColor="#007df6"
-                                                 Image="collectionviewuncompletetask"/>
+                                        Invoked="OnStatusChanged"
+                                        Caption="To Do"
+                                        BackgroundColor="#4799DF"
+                                        Image="collectionviewuncompletetask"/>
                     </dxcv:SwipeContainer.StartSwipeItems>
                     <dxcv:SwipeContainer.EndSwipeItems>
                         <dxcv:SwipeItem Invoked="OnDeleteTask"
-                                                 Caption="Delete"
-                                                 BackgroundColor="#ff3b30"
-                                                 Image="collectionviewdeletetask"/>
+                                        Caption="Delete"
+                                        BackgroundColor="#FA5E54"
+                                        Image="collectionviewdeletetask"/>
                     </dxcv:SwipeContainer.EndSwipeItems>
                 
                 </dxcv:SwipeContainer>
             </DataTemplate>
 
             <local:ItemDataTemplateSelector x:Key="itemDataTemplateSelector"
-                                        UrgentDataTemplate="{StaticResource urgentItemTemplate}"
-                                        CompletedDataTemplate="{StaticResource strikethroughItemTemplate}"
-                                        UncompletedDataTemplate="{StaticResource itemTemplate}"/>
+                                            UrgentDataTemplate="{StaticResource urgentItemTemplate}"
+                                            CompletedDataTemplate="{StaticResource strikethroughItemTemplate}"
+                                            UncompletedDataTemplate="{StaticResource itemTemplate}"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <dxcv:DXCollectionView x:Name="collectionView"
-                                ItemTemplate="{StaticResource itemDataTemplateSelector}"
-                                ItemsSource="{Binding ItemSource}">
+                               ItemTemplate="{StaticResource itemDataTemplateSelector}"
+                               ItemsSource="{Binding ItemSource}">
         </dxcv:DXCollectionView>
     </ContentPage.Content>
 </ContentPage>

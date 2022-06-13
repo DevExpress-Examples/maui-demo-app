@@ -11,11 +11,11 @@
     <ContentPage.Content>
         <dxg:DataGridView x:Name="grid" ItemsSource="{Binding OutlookData}">
             <dxg:DataGridView.StartSwipeItems>
-                <dxg:SwipeItem Caption="Sender Info" BackgroundColor="#26a95e" Tap="OnShowCustomerInfo" />
+                <dxg:SwipeItem Caption="Sender Info" BackgroundColor="#BCCC3E" Tap="OnShowCustomerInfo" />
             </dxg:DataGridView.StartSwipeItems>
             <dxg:DataGridView.EndSwipeItems>
                 <dxg:SwipeItem Caption="Reply" BackgroundColor="#797bff" Tap="OnReply" />
-                <dxg:SwipeItem Caption="Remove" BackgroundColor="#ff3b30" Tap="OnDelete" />
+                <dxg:SwipeItem Caption="Remove" BackgroundColor="#FA5E54" Tap="OnDelete" />
             </dxg:DataGridView.EndSwipeItems>
             <dxg:DataGridView.Columns>
                 <dxg:TextColumn FieldName="From.Name" Caption="From" Width="{OnIdiom Phone='110', Tablet='150', Default='150'}"/>

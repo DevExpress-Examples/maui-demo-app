@@ -5,7 +5,6 @@
                            x:Class="DemoCenter.Maui.Views.FirstLookView"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views"
                            xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-                           xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
                            BackgroundColor="{DynamicResource BackgroundThemeColor}">
     <ContentPage.Resources>
         <local:DepartmentToImageConverter x:Key="DepartmentToImageConverter"/>

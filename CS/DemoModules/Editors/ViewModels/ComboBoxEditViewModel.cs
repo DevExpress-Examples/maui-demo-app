@@ -162,7 +162,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             SelectedBoxMode = BoxModes[0];
             SelectedCornerMode = CornerModes[0];
             SelectedFilterMode = FilterModes[0];
-            SelectedAccentColor = Colors[5];
+            SelectedAccentColor = Colors[6];
             TopLeftCornerRadius = DefaultCornerRadius;
             TopRightCornerRadius = DefaultCornerRadius;
             BottomLeftCornerRadius = DefaultCornerRadius;

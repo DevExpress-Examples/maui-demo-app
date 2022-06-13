@@ -74,7 +74,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
                 new ChipDataObject("Chip 6")
             };
             SelectedTextColor = Colors[0];
-            SelectedBackgroundColor = Colors[5];
+            SelectedBackgroundColor = Colors[6];
             SelectedIconColor = Colors[0];
             SelectedBorderColor = Colors[1];
         }

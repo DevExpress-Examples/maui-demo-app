@@ -23,6 +23,7 @@
                     Style="{StaticResource ComboBoxItemContainer}">
                     <Label
                         Text="{Binding LabelText}"
+                        TextColor="{DynamicResource TextThemeColor}"
                         VerticalOptions="Center"
                         HorizontalOptions="FillAndExpand"/>
                     <demo:IconView Grid.Column="1"

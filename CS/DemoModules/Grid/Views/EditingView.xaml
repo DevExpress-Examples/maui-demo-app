@@ -35,7 +35,7 @@
                     <dxg:TemplateColumn.DisplayTemplate>
                         <DataTemplate>
                             <ProgressBar Progress="{Binding Path=Value, Converter={StaticResource DoubleToProgressConverter}}"
-                                         ProgressColor="#2088ff"
+                                         ProgressColor="{DynamicResource AccentColor}"
                                          VerticalOptions="CenterAndExpand">
                                 <ProgressBar.Margin>
                                     <OnIdiom x:TypeArguments="maui:Thickness" Phone="14, 0, 14, 0" Tablet="15, 0, 15, 0"/>
@@ -50,7 +50,7 @@
                                     Value="{Binding Path=Value}" 
                                     MaximumTrackColor="Silver"
                                     MinimumTrackColor="Silver"
-                                    ThumbColor="#2088ff">
+                                    ThumbColor="{DynamicResource AccentColor}">
                                 <Slider.Margin>
                                     <OnIdiom x:TypeArguments="maui:Thickness" Phone="14, 0, 14, 0" Tablet="15, 0, 15, 0"/>
                                 </Slider.Margin>

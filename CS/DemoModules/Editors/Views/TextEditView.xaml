@@ -33,6 +33,7 @@
                     CornerMode="{Binding SelectedCornerMode}"
                     CharacterCasing="{Binding SelectedCharacterCasing}"
                     CornerRadius="{Binding CornerRadius}"
+                    CursorColor="{Binding SelectedAccentColor.Color}"
                     FocusedBorderColor="{Binding SelectedAccentColor.Color}"
                     FocusedLabelColor="{Binding SelectedAccentColor.Color}"
                     ErrorText="{Binding ActualErrorText}"
