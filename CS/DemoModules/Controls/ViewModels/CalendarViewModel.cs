@@ -52,7 +52,7 @@ namespace DemoCenter.Maui.ViewModels {
         }
 
         void UpdateHolidaysAndObservancesListVisible() {
-            IsHolidaysAndObservancesListVisible = ActiveViewType == DXCalendarViewType.Day;
+            IsHolidaysAndObservancesListVisible = ActiveViewType == DXCalendarViewType.Month;
         }
 
         void UpdateCurrentCalendarIfNeeded() {
