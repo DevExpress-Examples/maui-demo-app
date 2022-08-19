@@ -20,10 +20,8 @@ namespace DemoCenter.Maui.Views {
 
         void AddResources() {
             if (DeviceInfo.Idiom == DeviceIdiom.Tablet) {
-                Resources.Add("CalendarCellMinSize", 68.0);
                 Resources.Add("ListItemTextSize", 24.0);
             } else {
-                Resources.Add("CalendarCellMinSize", 40.0);
                 Resources.Add("ListItemTextSize", 16.0);
             }
         }

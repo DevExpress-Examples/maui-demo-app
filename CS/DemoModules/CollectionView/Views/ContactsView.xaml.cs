@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using DemoCenter.Maui.DemoModules.TabView.Pages;
+using DemoCenter.Maui.Services;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.CollectionView;
 using Microsoft.Maui.Controls;
@@ -37,7 +38,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
                 return Task.CompletedTask;
 
             this.inNavigation = true;
-            return Navigation.PushAsync(new ContactDetailPage(contact));
+            return NavigationService.NavigateToPage(new ContactDetailPage(contact));
         }
     }
 }

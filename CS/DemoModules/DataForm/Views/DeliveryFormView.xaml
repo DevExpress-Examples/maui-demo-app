@@ -35,6 +35,6 @@
             EditorHorizontalSpacing="10"
             ReserveBottomTextLine="True"
             Margin="0,0,10,0"/>
-        <dxco:SimpleButton Grid.Row="1" TextColor="White" Padding="22" BackgroundColor="#2088ff" Text="SUBMIT" Clicked="SubmitOnClicked" />
+        <dxco:SimpleButton Grid.Row="1" TextColor="White" Padding="22" Text="SUBMIT" Clicked="SubmitOnClicked" />
     </Grid>    
 </ContentPage>

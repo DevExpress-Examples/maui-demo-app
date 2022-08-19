@@ -88,7 +88,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             AvailableCheckedColors = ColorViewModel.CreateDefaultColors();
 
             this.selectedGlyph = AvailableGlyphs[0];
-            this.selectedColor = AvailableCheckedColors.Single(it => it.Name == "Blue").Color;
+            this.selectedColor = AvailableCheckedColors.Single(it => it.Name == "Purple").Color;
         }
     }
 

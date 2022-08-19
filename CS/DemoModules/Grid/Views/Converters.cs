@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using DevExpress.Maui.Core.Themes;
 using DevExpress.Maui.DataGrid;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
@@ -45,7 +46,7 @@ namespace DemoCenter.Maui.Views {
             if (rowData == null)
                 return "";
 
-            return "demogrid" + rowData.Value.ToString().Replace(" ", "").ToLowerInvariant();
+            return ThemeManager.ThemeName.ToLowerInvariant() + "demogrid" + rowData.Value.ToString().Replace(" ", "").ToLowerInvariant();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {

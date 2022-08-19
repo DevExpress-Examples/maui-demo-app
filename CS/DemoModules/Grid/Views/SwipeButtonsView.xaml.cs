@@ -1,5 +1,6 @@
 ﻿using System;
 using DemoCenter.Maui.DemoModules.Grid.Data;
+using DemoCenter.Maui.Services;
 using DevExpress.Maui.DataGrid;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Devices;
@@ -20,7 +21,7 @@ namespace DemoCenter.Maui.Views {
             CustomerOrdersView customerOrdersView = new CustomerOrdersView(customer) {
                 Title = customer.Name
             };
-            Navigation.PushAsync(customerOrdersView);
+            NavigationService.NavigateToPage(customerOrdersView);
         }
         
         void OnDelete(object sender, SwipeItemTapEventArgs e) {

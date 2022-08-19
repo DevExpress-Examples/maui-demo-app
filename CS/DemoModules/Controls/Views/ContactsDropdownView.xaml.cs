@@ -5,6 +5,7 @@ using Microsoft.Maui.Controls;
 using DevExpress.Maui.CollectionView;
 using DemoCenter.Maui.DemoModules.TabView.Pages;
 using DemoCenter.Maui.ViewModels;
+using DemoCenter.Maui.Services;
 
 namespace DemoCenter.Maui.DemoModules.Popup.Views {
     public partial class ContactsDropdownView : ContentPage {
@@ -45,7 +46,7 @@ namespace DemoCenter.Maui.DemoModules.Popup.Views {
                 return Task.CompletedTask;
 
             this.inNavigation = true;
-            return Navigation.PushAsync(new ContactDetailPage(contact));
+            return NavigationService.NavigateToPage(new ContactDetailPage(contact));
         }
 
         void OnRemoveClick(object sender, EventArgs e) {

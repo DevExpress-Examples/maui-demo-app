@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using DemoCenter.Maui.Demo.ThemeLoader;
 using DemoCenter.Maui.Styles.ThemeLoader;
 using DevExpress.Maui.Core.Themes;
@@ -13,6 +15,9 @@ namespace DemoCenter.Maui {
         readonly ThemeEnvironment themeEnvironment;
         public App() {
 			InitializeComponent();
+
+            PlatformLocale locale = new PlatformLocale();
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(locale.GetPlatformLocale());
 
             AppShell rootPage = new AppShell();
             MainPage = rootPage;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DemoCenter.Maui.DemoModules.Grid.Data;
+using DevExpress.Maui.Core.Themes;
 using DevExpress.Maui.DataGrid;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
@@ -13,6 +14,14 @@ namespace DemoCenter.Maui.Views {
 
         public DragDropView() {
             InitializeComponent();
+
+            Color checkedCheckBoxColor;
+            if (ThemeManager.ThemeName == Theme.Light) {
+                checkedCheckBoxColor = Color.FromArgb("#5B27D9");
+            } else {
+                checkedCheckBoxColor = Color.FromArgb("#9D7DE8");
+            }
+            Resources.Add("GridCellCheckedCheckBoxColor", checkedCheckBoxColor);
         }
 
         protected override object LoadData() {

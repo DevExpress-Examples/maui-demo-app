@@ -92,7 +92,6 @@
             VerticalOptions="EndAndExpand"
             TextColor="White"
             Padding="22"
-            BackgroundColor="#2088ff"
             Text="SUBMIT"
             Clicked="SubmitOnClicked" />
     </Grid>

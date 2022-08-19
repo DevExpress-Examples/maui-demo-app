@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:local="clr-namespace:DemoCenter.Maui.Charts.Templates"
-             xmlns:styles="clr-namespace:DemoCenter.Maui.Resources.Styles"
              x:Class="DemoCenter.Maui.App"
              windows:Application.ImageDirectory="Assets">
 <Application.Resources>

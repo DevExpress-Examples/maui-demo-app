@@ -73,9 +73,12 @@
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Custom Corner Radius" Style="{StaticResource TextStyle}"/>
-                            <Switch IsToggled="{Binding UseCustomCornerRadius}" Style="{DynamicResource SwitchStyle}"/>
+                            <Switch IsToggled="{Binding UseCustomCornerRadius}" Style="{DynamicResource SwitchStyle}" Toggled="OnSwitchToggled"/>
                         </StackLayout>
-                        <Grid ColumnSpacing="0" RowSpacing="0" IsVisible="{Binding UseCustomCornerRadius}">
+                        <Grid x:Name="chipsCornerRadiusContainer"
+                              ColumnSpacing="0"
+                              RowSpacing="0"
+                              IsVisible="{Binding UseCustomCornerRadius}">
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}">
                                 <demo:IconView Source="chips_corner_radius" ForegroundColor="{StaticResource IconForegroundColor}" Style="{StaticResource CornerRadiusIconStyle}"/>
                                 <Slider Value="{Binding CustomCornerRadius}" Style="{StaticResource SliderStyle}"/>

@@ -165,25 +165,6 @@
         <Setter Property="Spacing" Value="0"/>
     </Style>
 
-    <Style x:Key="SwitchStyle-iOS" TargetType="Switch">
-        <Setter Property="OnColor" Value="{DynamicResource AccentColor}"/>
-    </Style>
-
-    <Style x:Key="SwitchStyle-Android" TargetType="Switch">
-        <Setter Property="ThumbColor" Value="{DynamicResource AccentColor}"/>
-    </Style>
-
-    <Style x:Key="SwitchStyle" TargetType="Switch">
-        <Style.BasedOn>
-            <OnPlatform x:TypeArguments="Style">
-                <On Platform="iOS" Value="{StaticResource SwitchStyle-iOS}"/>
-                <On Platform="Android" Value="{StaticResource SwitchStyle-Android}"/>
-            </OnPlatform>
-        </Style.BasedOn>
-        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-        <Setter Property="HorizontalOptions" Value="End"/>
-    </Style>
-
     <Style x:Key="EditorContainerStyle" TargetType="Grid">
         <Setter Property="ColumnSpacing" Value="0"/>
         <Setter Property="RowSpacing" Value="0"/>

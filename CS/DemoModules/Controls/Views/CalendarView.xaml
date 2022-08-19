@@ -10,14 +10,10 @@
     x:Name="calendarView"
     ios:Page.UseSafeArea="True">
     <ContentPage.Resources>
-        <!--<OnIdiom x:Key="CalendarCellMinSize" x:TypeArguments="x:Double" Phone="40" Tablet="68"/>-->
         <!--<OnIdiom x:Key="ListItemTextSize" x:TypeArguments="x:Double" Phone="16" Tablet="24"/>-->
         <OnIdiom x:Key="SeparatorMargin" x:TypeArguments="maui:Thickness" Phone="0,16,0,0" Tablet="0,24,0,0"/>
         <OnIdiom x:Key="ItemPadding" x:TypeArguments="maui:Thickness" Phone="16" Tablet="24"/>
         <OnIdiom x:Key="DayNumberPadding" x:TypeArguments="maui:Thickness" Phone="0,16" Tablet="0,24"/>
-        <Style TargetType="dxe:DXCalendar">
-            <Setter Property="CellMinSize" Value="{DynamicResource CalendarCellMinSize}"/>
-        </Style>
         <Style TargetType="Label" x:Key="HolidayListItemTextStyle">
             <Setter Property="TextColor" Value="{DynamicResource CalendarViewTextColor}"/>
             <Setter Property="FontSize" Value="{DynamicResource ListItemTextSize}"/>

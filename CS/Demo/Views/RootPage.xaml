@@ -41,35 +41,42 @@
                         BorderColor="{DynamicResource MainPageBackgroundColor}"
                         CornerRadius="0"
                         BackgroundColor="{DynamicResource MainPageBackgroundColor}">
-                        <AbsoluteLayout
-                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                            HeightRequest="201"
-                            Padding="0">
+                        <Grid ColumnDefinitions="*, 40"
+                              RowDefinitions="41, 160"
+                              BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                              HeightRequest="201"
+                              Padding="0"
+                              Margin="0"
+                              RowSpacing="0"
+                              ColumnSpacing="0">
                             <demo:DXDCLabel
-                                AbsoluteLayout.LayoutBounds="15,21"
+                                Margin="15, 0, 0, 0"
+                                Padding="0"
                                 HeightRequest="32"
                                 Text="{Binding Title}"
-                                LineBreakMode="NoWrap"
+                                LineBreakMode="TailTruncation"
                                 Style="{DynamicResource ListItemTextStyle}"
                                 TextColor="{DynamicResource TextThemeColor}"
                                 FontFamily="Univia-Pro"
                                 FontSize="22"
-                                BackgroundColor="Transparent"/>
+                                BackgroundColor="Transparent"
+                                VerticalOptions="End"/>
                             <dxco:SimpleButton
-                                AbsoluteLayout.LayoutFlags="PositionProportional"
-                                AbsoluteLayout.LayoutBounds="0.957,0.146"
-                                Text="MORE"
-                                TextColor="{DynamicResource TextThemeColor}"
+                                Grid.Column="1"
+                                Text="⋮"
+                                TextColor="{DynamicResource AccentColor}"
                                 FontFamily="Univia-Pro Medium"
-                                FontSize="16"
-                                HeightRequest="22"
-                                WidthRequest="54"
+                                FontSize="22"
+                                HeightRequest="32"
+                                WidthRequest="30"
                                 Padding="0"
                                 Command="{Binding NavigationCommand, Source={Reference appShell}}"
                                 CommandParameter="{Binding}"
-                                BackgroundColor="Transparent"/>
+                                BackgroundColor="Transparent"
+                                VerticalOptions="End" />
                                 <dxcv:DXCollectionView
-                                    AbsoluteLayout.LayoutBounds="0,44"
+                                    Grid.ColumnSpan="2"
+                                    Grid.Row="1"
                                     Margin="10"
                                     ItemsSource="{Binding DemoItems}"
                                     Orientation="Horizontal"
@@ -84,7 +91,7 @@
                                         </DataTemplate>
                                     </dxcv:DXCollectionView.ItemTemplate>
                                 </dxcv:DXCollectionView>
-                        </AbsoluteLayout>
+                        </Grid>
                     </Frame>
                 </DataTemplate>
                 <demo:CollectionViewHeaderTemplateSelector x:Key="itemTemplateSelector"
@@ -101,7 +108,7 @@
                                VerticalOptions="Center"
                                HeightRequest="24"/>
                 <Label Text="{Binding Title}"
-                       TextColor="{DynamicResource SecondaryTextColor}"
+                       TextColor="{DynamicResource TextThemeColor}"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        VerticalTextAlignment="Center"
@@ -118,7 +125,7 @@
                    FontFamily="Roboto"
                    Text="{Binding TitleText}" />
             <Label Margin="16,10"
-                   TextColor="{DynamicResource SecondaryTextColor}"
+                   TextColor="{DynamicResource TextThemeColor}"
                    Text="{Binding Description}"
                    VerticalOptions="End"
                    FontSize="14"/>
