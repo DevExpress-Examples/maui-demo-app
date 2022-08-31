@@ -172,12 +172,12 @@
 	  <Folder Include="Demo\Images\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="DevExpress.Maui.Charts" Version="22.1.2-beta-22159" />
-	  <PackageReference Include="DevExpress.Maui.CollectionView" Version="22.1.2-beta-22159" />
-	  <PackageReference Include="DevExpress.Maui.Controls" Version="22.1.2-beta-22159" />
-	  <PackageReference Include="DevExpress.Maui.DataGrid" Version="22.1.2-beta-22159" />
-	  <PackageReference Include="DevExpress.Maui.Editors" Version="22.1.2-beta-22159" />
-	  <PackageReference Include="DevExpress.Maui.Scheduler" Version="22.1.2-beta-22159" />
+	  <PackageReference Include="DevExpress.Maui.Charts" Version="22.1.*" />
+	  <PackageReference Include="DevExpress.Maui.CollectionView" Version="22.1.*" />
+	  <PackageReference Include="DevExpress.Maui.Controls" Version="22.1.*" />
+	  <PackageReference Include="DevExpress.Maui.DataGrid" Version="22.1.*" />
+	  <PackageReference Include="DevExpress.Maui.Editors" Version="22.1.*" />
+	  <PackageReference Include="DevExpress.Maui.Scheduler" Version="22.1.*" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	  <PackageReference Include="SQLite" Version="3.13.0" />
