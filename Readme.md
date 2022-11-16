@@ -7,7 +7,7 @@
 
 [DevExpress Mobile UI](https://www.devexpress.com/maui/) allows you to use a .NET cross-platform UI toolkit and C# to build native apps for iOS and Android.
 
-![DevExpress Mobile UI for .NET MAUI](./Images/maui.png)
+![DevExpress Mobile UI for .NET MAUI](./Images/OverviewDemo.png)
 
 The **DevExpress Mobile UI for Xamarin.Forms and .NET MAUI** is free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/xamarin-free).
 
