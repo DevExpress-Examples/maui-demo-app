@@ -19,7 +19,7 @@ Please register the DevExpress NuGet Gallery in Visual Studio to restore the NuG
 
 A demo application in this repository demonstrates the capabilities of the **DevExpress Mobile UI for .NET MAUI**: Data Grid, Editors, Charts, Scheduler, Data Form, and other controls.
 
-![DevExpress Mobile UI for .NET MAUI](./Images/demo-center.png)
+![DevExpress Mobile UI for .NET MAUI](./Images/demos.png)
 
 ## Documentation
 
