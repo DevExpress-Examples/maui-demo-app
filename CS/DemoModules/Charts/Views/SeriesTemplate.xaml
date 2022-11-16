@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="DemoCenter.Maui.Views.SeriesTemplate"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.SeriesTemplate"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
              xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:local="clr-namespace:DemoCenter.Maui"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
-
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False">
     <ContentPage.BindingContext>
         <vm:SeriesTemplateViewModel/>
     </ContentPage.BindingContext>
@@ -103,4 +101,4 @@
             </Grid>
         </demo:Panel>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
@@ -87,6 +87,7 @@
 
     <Style x:Key="ComboBoxItemLabelStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="Roboto"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="TextColor" Value="{DynamicResource EditorSettingsTextColor}"/>
         <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
         <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
@@ -114,7 +115,7 @@
                    Grid.Column="1"/>
         </Grid>
     </DataTemplate>
-    <!--ForegroundColor="{StaticResource IconForegroundColor}"-->
+    
     <DataTemplate x:Key="CornerModeComboBoxItemTemplate">
         <Grid Style="{StaticResource ComboBoxItemContainer}">
             <demo:IconView Style="{StaticResource ComboBoxItemIconViewStyle}"
@@ -133,21 +134,21 @@
         <Setter Property="ItemTemplate" Value="{StaticResource ColorComboBoxItemTemplate}" />
     </Style>
 
-    <!--<Style x:Key="BoxModeComboBoxStyle" TargetType="dxe:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
+    <Style x:Key="BoxModeComboBoxStyle" TargetType="dxe:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
         <Setter Property="SelectedItem" Value="{Binding SelectedBoxMode}"/>
-        <Setter Property="StartIcon" Value="{Binding SelectedBoxMode, Converter={converters:BoxModeToImageSourceConverter Outlined='boxmodeoutlined', Filled='boxmodefilled'}}"/>
-        <Setter Property="IconColor" Value="{StaticResource IconForegroundColor}"/>
         <Setter Property="ItemsSource" Value="{Binding BoxModes}"/>
         <Setter Property="ItemTemplate" Value="{StaticResource BoxModeComboBoxItemTemplate}" />
-    </Style>-->
+        <Setter Property="StartIcon" Value="{Binding SelectedBoxMode, Converter={converters:BoxModeToImageSourceConverter Outlined='boxmodeoutlined', Filled='boxmodefilled'}}" />
+        <Setter Property="StartIconColor" Value="{StaticResource IconForegroundColor}" />
+    </Style>
 
-    <!--<Style x:Key="CornerModeComboBoxStyle" TargetType="dxe:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
+    <Style x:Key="CornerModeComboBoxStyle" TargetType="dxe:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
         <Setter Property="SelectedItem" Value="{Binding SelectedCornerMode}"/>
-        <Setter Property="StartIcon" Value="{Binding SelectedCornerMode, Converter={converters:CornerModeToImageSourceConverter Cut='cornermodecut', Round='cornermoderound'}}"/>
-        <Setter Property="IconColor" Value="{StaticResource IconForegroundColor}"/>
         <Setter Property="ItemsSource" Value="{Binding CornerModes}"/>
         <Setter Property="ItemTemplate" Value="{StaticResource CornerModeComboBoxItemTemplate}" />
-    </Style>-->
+        <Setter Property="StartIcon" Value="{Binding SelectedCornerMode, Converter={converters:CornerModeToImageSourceConverter Cut='cornermodecut', Round='cornermoderound'}}" />
+        <Setter Property="StartIconColor" Value="{StaticResource IconForegroundColor}" />
+    </Style>
 
     <Style x:Key="LayoutItemContainerStyle" TargetType="StackLayout">
         <Setter Property="Margin" Value="16"/>

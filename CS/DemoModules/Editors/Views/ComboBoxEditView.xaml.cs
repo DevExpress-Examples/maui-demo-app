@@ -1,7 +1,7 @@
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class ComboBoxEditView : ContentPage {
+    public partial class ComboBoxEditView : Demo.DemoPage {
         public ComboBoxEditView() {
             InitializeComponent();
         }

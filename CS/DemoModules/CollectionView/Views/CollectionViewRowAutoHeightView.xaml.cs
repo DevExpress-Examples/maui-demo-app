@@ -3,7 +3,7 @@ using DemoCenter.Maui.ViewModels;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
-    public partial class CollectionViewRowAutoHeightView : ContentPage {
+    public partial class CollectionViewRowAutoHeightView : Demo.DemoPage {
         public CollectionViewRowAutoHeightView() {
             InitializeComponent();
             BindingContext = new AutoHeightViewModel(new GridOrdersRepository());

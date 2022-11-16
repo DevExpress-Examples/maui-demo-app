@@ -7,6 +7,7 @@ using System.Windows.Input;
 using DemoCenter.Maui.DemoModules.Grid.Data;
 using DemoCenter.Maui.ViewModels;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Dispatching;
 
 namespace DemoCenter.Maui.DemoModules.Grid.ViewModels {
     public class MainGridViewModel : NotificationObject {
@@ -62,7 +63,12 @@ namespace DemoCenter.Maui.DemoModules.Grid.ViewModels {
         public Command SwipeButtonCommand { get; set; }
         public Command RefreshCommand { get { return this.refreshCommand; } }
 
+        IDispatcherTimer marketSimulationTimer;
         public MainGridViewModel(OrdersRepository repository) {
+            this.marketSimulationTimer = Application.Current.Dispatcher.CreateTimer();
+            this.marketSimulationTimer.Interval = TimeSpan.FromSeconds(0.5);
+            this.marketSimulationTimer.Tick += OnSimulateMarketTimerTick;
+
             this.repository = repository;
             Orders = repository.Orders;
             this.refreshCommand = new Command(ExecuteRefreshCommand);
@@ -81,34 +87,23 @@ namespace DemoCenter.Maui.DemoModules.Grid.ViewModels {
             Console.WriteLine("after" + Orders.Count);
         }
 
-        bool marketSimulationOn;
         public void StartMarketSimulation() {
-            if (this.marketSimulationOn)
-                return;
-
-            this.marketSimulationOn = true;
-            Device.StartTimer(TimeSpan.FromSeconds(0.5), SimulateMarketWorker);
+            if (this.marketSimulationTimer.IsRunning) return;
+            this.marketSimulationTimer.Start();
         }
-
         public void StopMarketSimulation() {
-            this.marketSimulationOn = false;
+            this.marketSimulationTimer.Stop();
         }
-
         public void ForceSimulateMarketWorker() {
             SimulateNextStep();
         }
-
-        bool SimulateMarketWorker() {
-            if (!this.marketSimulationOn)
-                return false;
-
+        void OnSimulateMarketTimerTick(object sender, EventArgs e) {
             SimulateNextStep();
-            return true;
         }
 
         void SimulateNextStep() {
             IsUpdateLocked = true;
-            Device.BeginInvokeOnMainThread(() => {
+            Application.Current.Dispatcher.Dispatch(() => {
                 this.market.SimulateNextStep();
                 IsUpdateLocked = false;
             });

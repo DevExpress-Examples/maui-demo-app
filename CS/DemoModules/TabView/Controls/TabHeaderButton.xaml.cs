@@ -1,4 +1,4 @@
-using DevExpress.Utils;
+using DevExpress.Maui.Core.Internal;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui;
@@ -93,9 +93,9 @@ namespace DemoCenter.Maui.Demo {
                 this.Children.Add(icon);
                 this.Children.Add(label);
             } else {
-                label.VerticalOptions = LayoutOptions.CenterAndExpand;
+                label.VerticalOptions = LayoutOptions.Center;
                 label.VerticalTextAlignment = TextAlignment.Center;
-                
+
                 this.Children.Add(label);
             }
         }

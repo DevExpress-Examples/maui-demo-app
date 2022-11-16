@@ -1,5 +1,5 @@
-﻿using System;
-using DevExpress.Utils;
+using System;
+using DevExpress.Maui.Core.Internal;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 
@@ -7,7 +7,7 @@ namespace DemoCenter.Maui.Views {
     public class BarControl : ContentView {
         public static readonly BindableProperty ValueProperty = BindableProperty.Create("Value", typeof(double), typeof(BarControl), 0d, propertyChanged: OnLayoutChanged);
         public static readonly BindableProperty MaxValueProperty = BindableProperty.Create("MaxValue", typeof(double), typeof(BarControl), 0d, propertyChanged: OnLayoutChanged);
-        public static readonly BindableProperty ColorProperty = BindableProperty.Create("Color", typeof(Color), typeof(BarControl), DXColor.Cyan, propertyChanged: OnColorChanged);// TO DO LightCyan
+        public static readonly BindableProperty ColorProperty = BindableProperty.Create("Color", typeof(Color), typeof(BarControl), DXColor.Cyan, propertyChanged: OnColorChanged);
 
         static void OnLayoutChanged(BindableObject bindable, object oldValue, object newValue) {
             ((BarControl)bindable).InvalidateLayout();

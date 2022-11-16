@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Maui.Controls;
 using DemoCenter.Maui.DemoModules.CollectionView.Data;
 using DemoCenter.Maui.ViewModels;
-using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.Popup.Views {
-    public partial class PopupDialogView : ContentPage {
+    public partial class PopupDialogView : Demo.DemoPage {
 
         PopupDialogViewModel viewModel;
         bool isAnimated;
 
         public PopupDialogView() {
             InitializeComponent();
-
             this.viewModel = new PopupDialogViewModel(new EmployeeTasksRepository());
-
             BindingContext = this.viewModel;
         }
 
@@ -72,9 +70,7 @@ namespace DemoCenter.Maui.DemoModules.Popup.Views {
                 return;
 
             this.isAnimated = true;
-            Device.BeginInvokeOnMainThread(() =>
-                this.collectionView.MoveItem(this.viewModel.ItemHandle, newItemHandle, () => this.isAnimated = false)
-            );
+            Dispatcher.Dispatch(() => this.collectionView.MoveItem(this.viewModel.ItemHandle, newItemHandle, () => this.isAnimated = false));
         }
     }
 }

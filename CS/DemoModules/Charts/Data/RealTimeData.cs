@@ -9,8 +9,7 @@ namespace DemoCenter.Maui.Data {
 
         readonly IAccelerometer sensor;
         readonly ChartView chart;
-        bool isRunning = false;
-
+        
         public BindingList<DateTimeData> XAxisSeriesData { get; } = new BindingList<DateTimeData>();
         public BindingList<DateTimeData> YAxisSeriesData { get; } = new BindingList<DateTimeData>();
         public BindingList<DateTimeData> ZAxisSeriesData { get; } = new BindingList<DateTimeData>();

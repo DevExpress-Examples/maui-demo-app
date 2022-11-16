@@ -17,9 +17,9 @@ namespace DemoCenter.Maui.ViewModels {
         string recurrenceInfo;
         string timeZoneId;
 
-        // keyword 'virtual' fails on AOT mode (ios) -> Microsoft bug on rc3
-        //[PrimaryKey, AutoIncrement, Column("_id")]
-        //public override int Id { get => base.Id; set => base.Id = value; }
+        
+        
+        
 
         public int AppointmentType {
             get => appointmentType;

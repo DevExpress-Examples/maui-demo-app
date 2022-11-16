@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DemoCenter.Maui.Resources.Styles;
-using DevExpress.Maui.Core.Themes;
+using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Styles.ThemeLoader {
@@ -9,7 +9,7 @@ namespace DemoCenter.Maui.Styles.ThemeLoader {
         Task<bool> IsLightOperatingSystemTheme();
     }
 
-    internal class ThemeLoader : IThemeChangingHandler {
+    internal class ThemeLoader {
         static ThemeLoader instance = null;
         IThemeLoader platformLoader = null;
         public static ThemeLoader Instance {
@@ -20,29 +20,27 @@ namespace DemoCenter.Maui.Styles.ThemeLoader {
                 return instance;
             }
         }
+        public static bool IsLightTheme => Application.Current.RequestedTheme == AppTheme.Light;
+        public static string ThemeName => IsLightTheme ? nameof(AppTheme.Light) : nameof(AppTheme.Dark);
 
         private ThemeLoader() {
             platformLoader = PlatformThemeLoader.Instance;
-            ThemeManager.AddThemeChangedHandler(this);
+            Application.Current.RequestedThemeChanged += CurrentOnRequestedThemeChanged;
         }
 
         public void LoadTheme() {
-            bool isLightTheme = ThemeManager.ThemeName == Theme.Light;
             ResourceDictionary theme = null;
-            if (isLightTheme) {
+            if (IsLightTheme)
                 theme = new LightTheme();
-            } else {
+            else
                 theme = new DarkTheme();
-            }
+
             if (theme != null) {
                 Application.Current.Resources.MergedDictionaries.Add(theme);
-                this.platformLoader?.LoadTheme(theme, isLightTheme);
+                this.platformLoader?.LoadTheme(theme, IsLightTheme);
             }
         }
-
-        void IThemeChangingHandler.OnThemeChanged() {
-            LoadTheme();
-        }
+        void CurrentOnRequestedThemeChanged(object sender, AppThemeChangedEventArgs e) => LoadTheme();
     }
     public interface IThemeLoader {
         void LoadTheme(ResourceDictionary theme, bool isLightTheme);

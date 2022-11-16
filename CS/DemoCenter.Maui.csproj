@@ -1,291 +1,191 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
-		<OutputType>Exe</OutputType>
-		<UseMaui>true</UseMaui>
-		<SingleProject>true</SingleProject>
-		<RootNamespace>DemoCenter.Maui</RootNamespace>
-		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
-
-		<!-- Display name -->
-		<ApplicationTitle>DemoCenter.Maui</ApplicationTitle>
-
-		<!-- App Identifier -->
-		<ApplicationId>com.companyname.DemoCenter.Maui</ApplicationId>
-
-		<!-- Versions -->
-		<AndroidVersionCode>1</AndroidVersionCode>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
-		<!-- Required for C# Hot Reload -->
-	</PropertyGroup>
-
-	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
-		<!-- App Icon -->
-		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_android.svg" Color="#5B27D9" />
-	</ItemGroup>
-
-	<ItemGroup Condition="$(TargetFramework.Contains('-ios'))">
-		<!-- App Icon -->
-		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_ios.svg" Color="#5B27D9" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\splashscreen.svg" Color="#5B27D9" />
-		
-		<!-- Images -->
-		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Include="DemoModules\DataForm\Images\*" />
-		<MauiImage Include="Demo\Images\Charts\*" />
-		<MauiImage Include="Demo\Images\Controls\*" />
-		<MauiImage Include="Demo\Images\smile.png" BaseSize="24,24" />
-		<MauiImage Include="Demo\Images\DataGrid\*" />
-		<MauiImage Include="Demo\Images\Editors\*" />
-		<MauiImage Include="Demo\Images\CollectionView\*" />
-		<MauiImage Include="Demo\Images\DataForm\*" />
-		<MauiImage Include="Demo\Images\Scheduler\*" />
-		<MauiImage Include="Demo\Images\Demo\*" />
-		<MauiImage Include="DemoModules\Charts\Resources\Images\*" />
-		<MauiImage Include="DemoModules\Controls\Images\*" />
-		<MauiImage Include="DemoModules\TabView\Images\demotabview_location.svg" />
-		<MauiImage Include="DemoModules\TabView\Images\demotabview_phone.svg" />
-		<MauiImage Include="DemoModules\TabView\Images\demotabview_www.svg" />
-		<MauiImage Include="DemoModules\TabView\Images\demotabview_cartbutton.svg" />
-		<MauiImage Include="DemoModules\TabView\Images\demotabview_deletebutton.svg" />
-		<MauiImage Include="DemoModules\TabView\Images\demotabview_favoritebutton.svg" />
-		<MauiImage Include="DemoModules\TabView\Images\menu_dots.svg" />
-		<MauiImage Include="DemoModules\TabView\Images\nested_all.svg" />
-		<MauiImage Include="DemoModules\TabView\Images\nested_cart.svg" />
-		<MauiImage Include="DemoModules\TabView\Images\nested_wish_list.svg" />
-
-		<!-- Custom Fonts -->
-		<MauiFont Include="Resources\Fonts\*" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
-	  <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.6.21" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Demo\" />
-	  <None Remove="DevExpress.Maui.Core" />
-	  <None Remove="DevExpress.Maui.iOS.Navigation" />
-	  <None Remove="DevExpress.Maui.Navigation" />
-	  <None Remove="Demo\ThemeLoader\" />
-	  <None Remove="DemoModules\" />
-	  <None Remove="DemoModules\Editors\" />
-	  <None Remove="DemoModules\Editors\ViewModels\" />
-	  <None Remove="DemoModules\Editors\Views\" />
-	  <None Remove="DemoModules\Grid\" />
-	  <None Remove="Newtonsoft.Json" />
-	  <None Remove="DemoModules\Controls\" />
-	  <None Remove="DemoModules\TabView\" />
-	  <None Remove="DemoModules\CollectionView\" />
-	  <None Remove="DemoModules\Grid\Data\Employees.json" />
-	  <None Remove="DemoModules\Grid\Data\EmployeeTasks.json" />
-	  <None Remove="DemoModules\Grid\Data\Invoices.json" />
-	  <None Remove="DemoModules\Grid\Data\StockSource.json" />
-	  <None Remove="DemoModules\TabView\Utils\" />
-	  <None Remove="DemoModules\CollectionView\Utils\" />
-	  <None Remove="sqlite-net-pcl" />
-	  <None Remove="DemoModules\Grid\Images\nancydavolio.jpg" />
-	  <None Remove="DemoModules\Grid\Images\michaelsuyama.jpg" />
-	  <None Remove="DemoModules\Grid\Images\margaretpeacock.jpg" />
-	  <None Remove="DemoModules\Grid\Images\lauracallahan.jpg" />
-	  <None Remove="DemoModules\Grid\Images\janetleverling.jpg" />
-	  <None Remove="DemoModules\Grid\Images\annedodsworth.jpg" />
-	  <None Remove="DemoModules\Grid\Images\andrewfuller.jpg" />
-	  <None Remove="DemoModules\Grid\Images\robertking.jpg" />
-	  <None Remove="DemoModules\Grid\Images\stevenbuchanan.jpg" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\1.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\10.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\12.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\13.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\14.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\15.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\2.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\4.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\5.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\6.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\7.png" />
-	  <None Remove="DemoModules\TabView\Resources\NestedTabViewImages\9.png" />
-	  <None Remove="DemoModules\Charts\Resources\CryptocurrencyPortfolio.xml" />
-	  <None Remove="DemoModules\Charts\Resources\PopulationPyramid.xml" />
-	  <None Remove="DemoModules\Charts\Resources\PopulationStructure.xml" />
-	  <None Remove="DemoModules\Charts\Resources\AgeStructure.xml" />
-	  <None Remove="DemoModules\Charts\Resources\AverageDieselPrices.xml" />
-	  <None Remove="DemoModules\Charts\Resources\DevAVSalesMixByRegion.xml" />
-	  <None Remove="DemoModules\Charts\Resources\GoogleStock.xml" />
-	  <None Remove="DemoModules\Charts\Resources\LondonWeather.xml" />
-	  <None Remove="DemoModules\Charts\Resources\OutsideVendorCosts.xml" />
-	  <None Remove="DemoModules\Charts\Resources\TrendPopulation.xml" />
-	  <None Remove="DemoModules\Charts\Resources\sound.bin" />
-	  <None Remove="DemoModules\Charts\Resources\LightSpector.dat" />
-	  <None Remove="DemoModules\Charts\Resources\CryptocurrencyPortfolio.json" />
-	  <None Remove="DemoModules\Charts\Resources\HeadphoneComparison.dat" />
-	  <None Remove="SQLite" />
-	  <None Remove="SQLitePCLRaw.core" />
-	  <None Remove="SQLitePCLRaw.bundle_green" />
-	</ItemGroup>
-
-
-	<ItemGroup Condition="$(TargetFramework.Contains('-ios'))">
-	  <None Include="Demo\ThemeLoader\PlatformThemeLoader.Android.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-	  <None Include="Demo\ThemeLoader\ThemeEnvironment.Android.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-	  <None Include="DemoModules\Scheduler\Data\Reminders\StoragePathProvider.Android.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-	  <None Include="DemoModules\Scheduler\Data\Reminders\NotificationCenter.Android.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-	  <None Include="DemoModules\Scheduler\Data\Reminders\NotificationAlarmHandler.Android.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-	</ItemGroup>
-	<ItemGroup Condition="$(TargetFramework.Contains('-ios'))">
-	  <Compile Remove="Demo\ThemeLoader\PlatformThemeLoader.Android.cs" />
-	  <Compile Remove="Demo\ThemeLoader\ThemeEnvironment.Android.cs" />
-	  <Compile Remove="DemoModules\Scheduler\Data\Reminders\StoragePathProvider.Android.cs" />
-	  <Compile Remove="DemoModules\Scheduler\Data\Reminders\NotificationCenter.Android.cs" />
-	  <Compile Remove="DemoModules\Scheduler\Data\Reminders\NotificationAlarmHandler.Android.cs" />
-	</ItemGroup>
-
-	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
-	  <None Include="Demo\ThemeLoader\PlatformThemeLoader.iOS.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-	  <None Include="Demo\ThemeLoader\ThemeEnvironment.iOS.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-	  <None Include="DemoModules\Scheduler\Data\Reminders\StoragePathProvider.iOS.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-	  <None Include="DemoModules\Scheduler\Data\Reminders\NotificationCenter.iOS.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-	</ItemGroup>
-	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
-	  <Compile Remove="Demo\ThemeLoader\PlatformThemeLoader.iOS.cs" />
-	  <Compile Remove="Demo\ThemeLoader\ThemeEnvironment.iOS.cs" />
-	  <Compile Remove="DemoModules\Scheduler\Data\Reminders\StoragePathProvider.iOS.cs" />
-	  <Compile Remove="DemoModules\Scheduler\Data\Reminders\NotificationCenter.iOS.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="DemoModules\" />
-	  <Folder Include="DemoModules\Editors\" />
-	  <Folder Include="DemoModules\Editors\ViewModels\" />
-	  <Folder Include="DemoModules\Editors\Views\" />
-	  <Folder Include="DemoModules\Grid\" />
-	  <Folder Include="DemoModules\Controls\" />
-	  <Folder Include="DemoModules\TabView\" />
-	  <Folder Include="DemoModules\CollectionView\" />
-	  <Folder Include="DemoModules\TabView\Utils\" />
-	  <Folder Include="DemoModules\CollectionView\Utils\" />
-	  <Folder Include="Demo\Images\" />
-	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Include="DevExpress.Maui.Charts" Version="22.1.*" />
-	  <PackageReference Include="DevExpress.Maui.CollectionView" Version="22.1.*" />
-	  <PackageReference Include="DevExpress.Maui.Controls" Version="22.1.*" />
-	  <PackageReference Include="DevExpress.Maui.DataGrid" Version="22.1.*" />
-	  <PackageReference Include="DevExpress.Maui.Editors" Version="22.1.*" />
-	  <PackageReference Include="DevExpress.Maui.Scheduler" Version="22.1.*" />
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-	  <PackageReference Include="SQLite" Version="3.13.0" />
-	  <PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836" />
-	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836" />
-	</ItemGroup>
-	<ItemGroup>
-	  <EmbeddedResource Include="DemoModules\Grid\Data\Employees.json">
-	    <LogicalName>Employees.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Grid\Data\EmployeeTasks.json">
-	    <LogicalName>EmployeeTasks.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Grid\Data\Invoices.json">
-	    <LogicalName>Invoices.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Grid\Data\StockSource.json">
-	    <LogicalName>StockSource.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\DataForm\Images\arvil.jpg" />
-	  <EmbeddedResource Include="DemoModules\Grid\Images\nancydavolio.jpg" />
-	  <EmbeddedResource Include="DemoModules\Grid\Images\michaelsuyama.jpg" />
-	  <EmbeddedResource Include="DemoModules\Grid\Images\margaretpeacock.jpg" />
-	  <EmbeddedResource Include="DemoModules\Grid\Images\lauracallahan.jpg" />
-	  <EmbeddedResource Include="DemoModules\Grid\Images\janetleverling.jpg" />
-	  <EmbeddedResource Include="DemoModules\Grid\Images\annedodsworth.jpg" />
-	  <EmbeddedResource Include="DemoModules\Grid\Images\andrewfuller.jpg" />
-	  <EmbeddedResource Include="DemoModules\Grid\Images\robertking.jpg" />
-	  <EmbeddedResource Include="DemoModules\Grid\Images\stevenbuchanan.jpg" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\1.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\10.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\12.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\13.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\14.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\15.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\2.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\4.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\5.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\6.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\7.png" />
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\9.png" />
-	  
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\PopulationPyramid.json">
-	    <LogicalName>Resources.PopulationPyramid.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\PopulationStructure.json">
-	    <LogicalName>Resources.PopulationStructure.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\AgeStructure.json">
-	    <LogicalName>Resources.AgeStructure.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\AverageDieselPrices.json">
-	    <LogicalName>Resources.AverageDieselPrices.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\DevAVSalesMixByRegion.json">
-	    <LogicalName>Resources.DevAVSalesMixByRegion.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\GoogleStock.xml">
-	    <LogicalName>Resources.GoogleStock.xml</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\LondonWeather.json">
-	    <LogicalName>Resources.LondonWeather.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\OutsideVendorCosts.json">
-	    <LogicalName>Resources.OutsideVendorCosts.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\TrendPopulation.json">
-	    <LogicalName>Resources.TrendPopulation.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\sound.bin">
-	    <LogicalName>Resources.sound.bin</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\LightSpector.dat">
-	    <LogicalName>Resources.LightSpector.dat</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\CryptocurrencyPortfolio.json">
-	    <LogicalName>Resources.CryptocurrencyPortfolio.json</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\Charts\Resources\HeadphoneComparison.dat">
-	    <LogicalName>Resources.HeadphoneComparison.dat</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\TabView\Images\Companies_ElDepot.jpg">
-		  <LogicalName>Companies_ElDepot.jpg</LogicalName>
-	   </EmbeddedResource>
-	   <EmbeddedResource Include="DemoModules\TabView\Images\Companies_KSMusic.jpg">
-		  <LogicalName>Companies_KSMusic.jpg</LogicalName>
-	   </EmbeddedResource>
-	   <EmbeddedResource Include="DemoModules\TabView\Images\Companies_SuprMart.jpg">
-		  <LogicalName>Companies_SuprMart.jpg</LogicalName>
-	   </EmbeddedResource>
-	   <EmbeddedResource Include="DemoModules\TabView\Images\Companies_TomClub.jpg">
-		  <LogicalName>Companies_TomClub.jpg</LogicalName>
-	   </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\CompaniesData.xml">
-		<LogicalName>Resources.CompaniesData.xml</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\TabView\Resources\PhoneListData.xml">
-		<LogicalName>Resources.PhoneListData.xml</LogicalName>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="DemoModules\CollectionView\Images\house1.jpg" />
-	  <EmbeddedResource Include="DemoModules\CollectionView\Images\house2.jpg" />
-	  <EmbeddedResource Include="DemoModules\CollectionView\Images\house3.jpg" />
-	  <EmbeddedResource Include="DemoModules\CollectionView\Images\house4.jpg" />
-	  <EmbeddedResource Include="DemoModules\CollectionView\Images\house5.jpg" />
-	  <EmbeddedResource Include="DemoModules\CollectionView\Images\house6.jpg" />
-	  <EmbeddedResource Include="DemoModules\CollectionView\Images\house7.jpg" />
-	  <EmbeddedResource Include="DemoModules\CollectionView\Images\house8.jpg" />
-	  <EmbeddedResource Include="DemoModules\CollectionView\Images\house9.jpg" />
-	  <EmbeddedResource Include="DemoModules\Controls\Images\tshirt.png" />
-	</ItemGroup>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-android;net7.0-ios;</TargetFrameworks>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <OutputType>Exe</OutputType>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+    <ApplicationTitle>DevExpress UI</ApplicationTitle>
+    <ApplicationId>com.devexpress.mauigallery</ApplicationId>
+    <DXVer>22.2.1</DXVer>
+    <AssemblyVersion>$(DXVer)</AssemblyVersion>
+    <AssemblyFileVersion>$(DXVer)</AssemblyFileVersion>
+    <Company>Developer Express Inc.</Company>
+    <ApplicationIdGuid>06FD4F07-07FF-4FEF-A6EA-8B6FA3A99898</ApplicationIdGuid>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <RootNamespace>DemoCenter.Maui</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>CA1422;CA1416;NU1603</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116"/>
+    <PackageReference Include="SQLite" Version="3.13.0"/>
+    <PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836"/>
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836"/>
+    <PackageReference Include="DevExpress.Maui.DataGrid" Version="22.2.2-beta"/>
+    <PackageReference Include="DevExpress.Maui.Charts" Version="22.2.2-beta"/>
+    <PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.2-beta"/>
+  </ItemGroup>
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <PackageReference Include="Xamarin.AndroidX.AutoFill" Version="1.1.0.14"/>
+  </ItemGroup>
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_android.svg" Color="#5B27D9"/>
+    <MauiSplashScreen Include="Resources\splashscreen_android.svg" Color="#5B27D9"/>
+  </ItemGroup>
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+    <MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_ios.svg" Color="#5B27D9"/>
+    <MauiSplashScreen Include="Resources\splashscreen.svg" Color="#5B27D9"/>
+  </ItemGroup>
+  <ItemGroup>
+    <MauiImage Include="Resources\Images\*"/>
+    <MauiImage Include="DemoModules\DataForm\Images\*"/>
+    <MauiImage Include="Demo\Images\Charts\*"/>
+    <MauiImage Include="Demo\Images\Controls\*"/>
+    <MauiImage Include="Demo\Images\smile.png" BaseSize="24,24"/>
+    <MauiImage Include="Demo\Images\DataGrid\*"/>
+    <MauiImage Include="Demo\Images\Editors\*"/>
+    <MauiImage Include="Demo\Images\CollectionView\*"/>
+    <MauiImage Include="Demo\Images\DataForm\*"/>
+    <MauiImage Include="Demo\Images\Scheduler\*"/>
+    <MauiImage Include="Demo\Images\Demo\*"/>
+    <MauiImage Include="DemoModules\Charts\Resources\Images\*"/>
+    <MauiImage Include="DemoModules\Controls\Images\*"/>
+    <MauiFont Include="Resources\Fonts\*"/>
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_location.svg"/>
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_phone.svg"/>
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_www.svg"/>
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_cartbutton.svg"/>
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_deletebutton.svg"/>
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_favoritebutton.svg"/>
+    <MauiImage Include="DemoModules\TabView\Images\menu_dots.svg"/>
+    <MauiImage Include="DemoModules\TabView\Images\nested_all.svg"/>
+    <MauiImage Include="DemoModules\TabView\Images\nested_cart.svg"/>
+    <MauiImage Include="DemoModules\TabView\Images\nested_wish_list.svg"/>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DemoModules\Grid\Data\Employees.json">
+      <LogicalName>Employees.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Grid\Data\EmployeeTasks.json">
+      <LogicalName>EmployeeTasks.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Grid\Data\Invoices.json">
+      <LogicalName>Invoices.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Grid\Data\StockSource.json">
+      <LogicalName>StockSource.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\DataForm\Images\arvil.jpg"/>
+    <EmbeddedResource Include="DemoModules\Grid\Images\nancydavolio.jpg"/>
+    <EmbeddedResource Include="DemoModules\Grid\Images\michaelsuyama.jpg"/>
+    <EmbeddedResource Include="DemoModules\Grid\Images\margaretpeacock.jpg"/>
+    <EmbeddedResource Include="DemoModules\Grid\Images\lauracallahan.jpg"/>
+    <EmbeddedResource Include="DemoModules\Grid\Images\janetleverling.jpg"/>
+    <EmbeddedResource Include="DemoModules\Grid\Images\annedodsworth.jpg"/>
+    <EmbeddedResource Include="DemoModules\Grid\Images\andrewfuller.jpg"/>
+    <EmbeddedResource Include="DemoModules\Grid\Images\robertking.jpg"/>
+    <EmbeddedResource Include="DemoModules\Grid\Images\stevenbuchanan.jpg"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\1.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\10.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\12.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\13.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\14.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\15.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\2.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\4.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\5.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\6.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\7.png"/>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\9.png"/>
+    <!--<EmbeddedResource Include="Demo\Resources\Images\default.png">
+			<LogicalName>default</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Demo\Resources\Images\radiobutton.png">
+			<LogicalName>radiobutton</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Demo\Resources\Images\radiobuttonchecked.png">
+			<LogicalName>radiobuttonchecked</LogicalName>
+		</EmbeddedResource>-->
+    <!--<EmbeddedResource Include="DemoModules\Charts\Resources\CryptocurrencyPortfolio.xml">
+			<LogicalName>Resources.CryptocurrencyPortfolio.xml</LogicalName>
+		</EmbeddedResource>-->
+    <EmbeddedResource Include="DemoModules\Charts\Resources\PopulationPyramid.json">
+      <LogicalName>Resources.PopulationPyramid.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\PopulationStructure.json">
+      <LogicalName>Resources.PopulationStructure.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\AgeStructure.json">
+      <LogicalName>Resources.AgeStructure.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\AverageDieselPrices.json">
+      <LogicalName>Resources.AverageDieselPrices.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\DevAVSalesMixByRegion.json">
+      <LogicalName>Resources.DevAVSalesMixByRegion.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\GoogleStock.xml">
+      <LogicalName>Resources.GoogleStock.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\LondonWeather.json">
+      <LogicalName>Resources.LondonWeather.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\OutsideVendorCosts.json">
+      <LogicalName>Resources.OutsideVendorCosts.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\TrendPopulation.json">
+      <LogicalName>Resources.TrendPopulation.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\sound.bin">
+      <LogicalName>Resources.sound.bin</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\LightSpector.dat">
+      <LogicalName>Resources.LightSpector.dat</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\CryptocurrencyPortfolio.json">
+      <LogicalName>Resources.CryptocurrencyPortfolio.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\Charts\Resources\HeadphoneComparison.dat">
+      <LogicalName>Resources.HeadphoneComparison.dat</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\TabView\Images\Companies_ElDepot.jpg">
+      <LogicalName>Companies_ElDepot.jpg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\TabView\Images\Companies_KSMusic.jpg">
+      <LogicalName>Companies_KSMusic.jpg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\TabView\Images\Companies_SuprMart.jpg">
+      <LogicalName>Companies_SuprMart.jpg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\TabView\Images\Companies_TomClub.jpg">
+      <LogicalName>Companies_TomClub.jpg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\CompaniesData.xml">
+      <LogicalName>Resources.CompaniesData.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\TabView\Resources\PhoneListData.xml">
+      <LogicalName>Resources.PhoneListData.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house1.jpg"/>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house2.jpg"/>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house3.jpg"/>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house4.jpg"/>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house5.jpg"/>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house6.jpg"/>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house7.jpg"/>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house8.jpg"/>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house9.jpg"/>
+    <EmbeddedResource Include="DemoModules\Controls\Images\tshirt.png"/>
+  </ItemGroup>
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Data.v22.2'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
 </Project>

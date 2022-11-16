@@ -10,8 +10,6 @@ namespace DemoCenter.Maui.Styles.ThemeLoader {
                 return instance;
             }
         }
-        //public PlatformThemeLoader() {
-        //}
     }
 }
 

@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
-    xmlns:views="clr-namespace:DemoCenter.Maui.DemoModules.Editors.Views"
+    xmlns:views="clr-namespace:DemoCenter.Maui.Views"
     x:Class="DemoCenter.Maui.Views.ChipView"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-    ios:Page.UseSafeArea="True">
+    ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
@@ -17,42 +15,42 @@
              </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-     <ContentPage.BindingContext>
-        <viewModel:ChipViewModel/>
-    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid Padding="0,16" RowDefinitions="Auto, *">
-            <Grid Style="{StaticResource EditorContainerStyle}" Grid.Row="0">
-                <views:CustomChipGroup VerticalOptions="Center"
-                                     ItemsSource="{Binding Items}"
-                                     IconMember="Image"
-                                     DisplayMember="Text"
-                                     ChipCornerRadius="{Binding CornerRadius}"
-                                     ChipTextColor="{Binding SelectedTextColor.Color}"
-                                     ChipBackgroundColor="{Binding SelectedBackgroundColor.Color}"
-                                     ChipIconColor="{Binding SelectedIconColor.Color}"
-                                     ChipIsIconVisible="{Binding ShouldShowIcon}"
-                                     ChipBorderColor="{Binding SelectedBorderColor.Color}"
-                                     ChipBorderThickness="{Binding BorderWidth}"
-                                     ChipIsRemoveIconVisible="{Binding RemoveIconVisible}"
-                                     ChipTap="OnChipTap">
+        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}">
+            <views:CustomChipGroup
+                demo:DockLayout.Dock="Top"
+                x:Name="chipGroup"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                ItemsSource="{Binding Items}"
+                IconMember="Image"
+                DisplayMember="Text"
+                ChipIconColor="{Binding SelectedIconColor.Color}"
+                ChipIsIconVisible="{Binding ShouldShowIcon}"
+                ChipIsRemoveIconVisible="{Binding RemoveIconVisible}"
+                ChipTap="OnChipTap"
+                Margin="16,32,16,32" />
+            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
 
-                </views:CustomChipGroup>
-                <BoxView Grid.Row="1" Style="{StaticResource SeparatorStyle}"/>
-            </Grid>
-            <ScrollView Grid.Row="1">
+            <ScrollView>
                 <StackLayout Spacing="0" Padding="0">
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <Label Text="Text Color" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit StartIconColor="{Binding SelectedTextColor.Color}"
+                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                            <Label Text="Text Color" Style="{StaticResource TextStyle}"/>
+                            <Switch IsToggled="{Binding AllowCustomTextColor}" Style="{DynamicResource SwitchStyle}"/>
+                        </StackLayout>
+                        <dxe:ComboBoxEdit IsVisible="{Binding AllowCustomTextColor}" StartIconColor="{Binding SelectedTextColor.Color}"
                                       SelectedItem="{Binding SelectedTextColor}"
                                       Style="{StaticResource ColorComboBoxStyle}"/>
                     </StackLayout>
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <Label Text="Background Color" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit StartIconColor="{Binding SelectedBackgroundColor.Color}"
+                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                            <Label Text="Background Color" Style="{StaticResource TextStyle}"/>
+                            <Switch IsToggled="{Binding AllowCustomBackgroundColor}" Style="{DynamicResource SwitchStyle}"/>
+                        </StackLayout>
+                        <dxe:ComboBoxEdit IsVisible="{Binding AllowCustomBackgroundColor}" StartIconColor="{Binding SelectedBackgroundColor.Color}"
                                           SelectedItem="{Binding SelectedBackgroundColor}"
                                           Style="{StaticResource ColorComboBoxStyle}"/>
                     </StackLayout>
@@ -73,15 +71,15 @@
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Custom Corner Radius" Style="{StaticResource TextStyle}"/>
-                            <Switch IsToggled="{Binding UseCustomCornerRadius}" Style="{DynamicResource SwitchStyle}" Toggled="OnSwitchToggled"/>
+                            <Switch IsToggled="{Binding AllowCustomCornerRadius}" Style="{DynamicResource SwitchStyle}" Toggled="OnSwitchToggled"/>
                         </StackLayout>
                         <Grid x:Name="chipsCornerRadiusContainer"
                               ColumnSpacing="0"
                               RowSpacing="0"
-                              IsVisible="{Binding UseCustomCornerRadius}">
+                              IsVisible="{Binding AllowCustomCornerRadius}">
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}">
-                                <demo:IconView Source="chips_corner_radius" ForegroundColor="{StaticResource IconForegroundColor}" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding CustomCornerRadius}" Style="{StaticResource SliderStyle}"/>
+                                <demo:IconView Source="cornermoderound" ForegroundColor="{StaticResource IconForegroundColor}" Style="{StaticResource CornerRadiusIconStyle}"/>
+                                <Slider Value="{Binding CornerRadius}" Style="{StaticResource SliderStyle}"/>
                             </StackLayout>
                         </Grid>
                     </StackLayout>
@@ -112,6 +110,6 @@
 
                 </StackLayout>
             </ScrollView>
-        </Grid>
+        </demo:DockLayout>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

@@ -8,7 +8,7 @@ using DemoCenter.Maui.ViewModels;
 using DemoCenter.Maui.Services;
 
 namespace DemoCenter.Maui.DemoModules.Popup.Views {
-    public partial class ContactsDropdownView : ContentPage {
+    public partial class ContactsDropdownView : Demo.DemoPage {
 
         ContactsDropdownViewModel viewModel = new ContactsDropdownViewModel();
         bool inNavigation = false;
@@ -66,7 +66,7 @@ namespace DemoCenter.Maui.DemoModules.Popup.Views {
     }
 
     public class ActiveItemCommand: ICommand {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged { add { } remove { } }
 
         readonly ContactsDropdownViewModel vm;
         CallInfo activeItem;

@@ -1,29 +1,27 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:editors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources" xmlns:compatibility="clr-namespace:Microsoft.Maui.Controls.Compatibility;assembly=Microsoft.Maui.Controls"
              x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewPullToRefreshView"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}"
-             ios:Page.UseSafeArea="True">
+             ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <resources:CollectionViewResources/>
             </ResourceDictionary.MergedDictionaries>
-            <!--<x:String x:Key="FormatTime">{0:HH:mm}</x:String>-->
             <DataTemplate x:Key="mailTemplate">
                 <Grid Style="{StaticResource MailTemplateStyle}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="46" />
+                        <ColumnDefinition Width="50" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <compatibility:RelativeLayout Grid.Column="0">
                         <Ellipse Style="{StaticResource MailColorItemStyle}"
-                                           Fill="{Binding CategoryColor}" />
+                                 Fill="{Binding CategoryColor}" />
                         <Label Style="{StaticResource SenderAvatarTextStyle}"
                                Text="{Binding SenderAvatarText}" />
                     </compatibility:RelativeLayout>
@@ -56,13 +54,15 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <dxcv:DXCollectionView x:Name="collectionView"
-                              ItemTemplate="{StaticResource mailTemplate}"
-                              IsPullToRefreshEnabled="True"
-                              IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                              PullToRefreshCommand="{Binding PullToRefreshCommand}"
-                              ItemsSource="{Binding ItemSource}" AllowCascadeUpdate="False"
-                              Margin="{OnIdiom Tablet='66,0,0,0'}">
-        </dxcv:DXCollectionView>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <dxcv:DXCollectionView x:Name="collectionView"
+                                   ItemTemplate="{StaticResource mailTemplate}"
+                                   IsPullToRefreshEnabled="True"
+                                   IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                                   PullToRefreshCommand="{Binding PullToRefreshCommand}"
+                                   ItemsSource="{Binding ItemSource}" AllowCascadeUpdate="False"
+                                   Margin="{OnIdiom Tablet='37,0,0,0'}">
+            </dxcv:DXCollectionView>
+        </Grid>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -62,12 +62,6 @@ namespace DemoCenter.Maui.ViewModels {
 
         static void AddFederalHolidayTo(List<SpecialDate> specialDates, DateTime holiday, string description) {
             specialDates.Add(new FederalHoliday(holiday, description));
-            // DateTime prevHoliday = holiday.AddDays(-1);
-            // if (IsFriday(prevHoliday))
-            //     specialDates.Add(new FederalHoliday(prevHoliday, description));
-            // DateTime nextHoliday = holiday.AddDays(1);
-            // if (IsMonday(nextHoliday))
-            //     specialDates.Add(new FederalHoliday(nextHoliday, description));
         }
 
         static DateTime GetEasterSunday(int year) {
@@ -90,7 +84,7 @@ namespace DemoCenter.Maui.ViewModels {
         static List<SpecialDate> GetSpecialDates(int year) {
             List<SpecialDate> specialDates = new List<SpecialDate>();
 
-            //Federal holidays
+            
             AddFederalHolidayTo(specialDates, new DateTime(year, 1, 1), "New Year's Day");
             AddFederalHolidayTo(specialDates, new DateTime(year + 1, 1, 1), "New Year's Day");
 
@@ -119,7 +113,7 @@ namespace DemoCenter.Maui.ViewModels {
 
             AddFederalHolidayTo(specialDates, new DateTime(year, 12, 25), "Christmas Day");
 
-            //Observances
+            
             date = new DateTime(year, 2, 14);
             specialDates.Add(new Observance(date, "Valentine's Day"));
 

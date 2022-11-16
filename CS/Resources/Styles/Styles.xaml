@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo">
+    <Style TargetType="demo:DemoPage" ApplyToDerivedTypes="True">
+        <Setter Property="Padding" >
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,1,0,0" />
+                    <On Platform="Android" Value="0,1,0,0" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BackgroundColor" Value="{DynamicResource DividerColor}"/>
+    </Style>
+</ResourceDictionary>

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using DemoCenter.Maui.Data;
 using DemoCenter.Maui.DemoModules.Grid.Data;
-using DevExpress.Utils;
+using DevExpress.Maui.Core.Internal;
 using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui.ViewModels {
@@ -46,7 +46,7 @@ namespace DemoCenter.Maui.ViewModels {
             Contacts = new ObservableCollection<PhoneContact>(customersList);
         }
 
-        
+
         void GenerateCallList(IList<PhoneContact> contacts) {
             int recordsCount = this.rand.Next(2, 10);
             Recent = new ObservableCollection<CallInfo>();

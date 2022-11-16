@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.Views {
-    public partial class NestedTabView : ContentPage {
+    public partial class NestedTabView : Demo.DemoPage {
         public NestedTabView() {
             BindingContext = new NestedTabViewModel();
             ((NestedTabViewModel)BindingContext).PropertyChanged += OnModelPropertyChanged;

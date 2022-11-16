@@ -5,8 +5,7 @@
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views"
                            xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                            xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
-                           x:Class="DemoCenter.Maui.Views.RealTimeDataView"
-                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                           x:Class="DemoCenter.Maui.Views.RealTimeDataView">
     <ContentPage.Resources>
         <local:DeltaToColorConverter x:Key="DeltaToColorConverter"/>
         <local:DeltaToImageConverter x:Key="DeltaToImageConverter"/>
@@ -15,7 +14,7 @@
         <dxg:DataGridView x:Name="grid"
                           AllowCascadeUpdate="false"
                           ItemsSource="{Binding Quotes}"
-                          IsUpdateLocked="{Binding IsUpdateLocked}"
+
                           IsReadOnly="true"
                           SelectionMode="None">
             <dxg:DataGridView.Columns>
@@ -25,10 +24,8 @@
                         <DataTemplate>
                             <Grid BackgroundColor="{DynamicResource GridCellBackgroundColor}"
                                   RowSpacing="0"
-                                  ColumnSpacing="0">
-                                <Grid.Margin>
-                                    <OnIdiom x:TypeArguments="maui:Thickness" Phone="0, 0, 9, 0" Tablet="0, 0, 10, 0"/>
-                                </Grid.Margin>
+                                  ColumnSpacing="0"
+                                  Margin="0, 0, 9, 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="16" />
@@ -40,12 +37,7 @@
                                        HorizontalTextAlignment="End"
                                        FontFamily="{DynamicResource GridHeaderFontFamily}"
                                        BackgroundColor="{DynamicResource GridCellBackgroundColor}"
-                                       TextColor="{Binding Path=Item.Delta, Converter={StaticResource DeltaToColorConverter}}"
-                                       FontSize="{StaticResource FontSize}">
-                                    <!--<Label.FontSize>
-                                        <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14"/>
-                                    </Label.FontSize>-->
-                                </Label>
+                                       TextColor="{Binding Path=Item.Delta, Converter={StaticResource DeltaToColorConverter}}" />
                                 <demo:IconView Grid.Column="1" HeightRequest="8" WidthRequest="16" HorizontalOptions="StartAndExpand" Source="{Binding Path=Item.Delta, Converter={StaticResource DeltaToImageConverter}}" VerticalOptions="Center"/>
                             </Grid>
                         </DataTemplate>

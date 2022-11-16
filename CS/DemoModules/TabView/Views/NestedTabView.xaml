@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-             xmlns:coreeditors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:utils="clr-namespace:DemoCenter.Maui" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
-             ios:Page.UseSafeArea="True"
+             ios:Page.UseSafeArea="False"
              x:Class="DemoCenter.Maui.Views.NestedTabView"
              BackgroundColor="{DynamicResource BackgroundThemeColor}">
     <ContentPage.Resources>
@@ -381,8 +380,6 @@
                 <demo:NonSelectableListView Grid.Column="1"
                                             Margin="0,0,16,0"
                                             ItemsSource="{Binding Products}"
-                                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                                            SeparatorColor="{DynamicResource NestedTabViewSeparatorColor}"
                                             ItemTemplate="{x:StaticResource Key=allListItemTemplate}"
                                             VerticalScrollBarVisibility="Never"
                                             HorizontalOptions="FillAndExpand"
@@ -400,12 +397,6 @@
                             SwipeEnabled="False"
                             HeaderPanelPosition="Bottom"
                             ItemHeaderWidth="*"
-                            HeaderPanelBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
-                            ItemHeaderIconColor="{DynamicResource TabViewItemTextColor}"
-                            ItemHeaderTextColor="{DynamicResource TabViewItemTextColor}"
-                            SelectedItemHeaderBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
-                            SelectedItemHeaderTextColor="{DynamicResource TabViewIndicatorColor}"
-                            SelectedItemHeaderIconColor="{DynamicResource TabViewIndicatorColor}"
                             IsSelectedItemIndicatorVisible="False"
                             IsHeaderPanelShadowVisible="False"
                             HorizontalOptions="FillAndExpand"
@@ -422,29 +413,17 @@
                                     SelectedItem="{Binding SelectedCategory}"
                                     ItemTemplate="{x:StaticResource Key=listTemplate}"
                                     ItemHeaderTextDataMember="Name"
-                                    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                                    HeaderPanelBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
-                                    ItemHeaderTextColor="{DynamicResource TabViewItemTextColor}"
-                                    SelectedItemHeaderTextColor="{DynamicResource TabViewIndicatorColor}"
-                                    SelectedItemHeaderBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
-                                    ItemHeaderFontFamily="Roboto"
-                                    SelectedItemIndicatorColor="{DynamicResource TabViewIndicatorColor}"
                                     IsSelectedItemIndicatorVisible="True"
                                     IsHeaderPanelShadowVisible="true"
-                                    HeaderPanelShadowColor="#26000000"
-                                    HeaderPanelHeight="53"
-                                    HeaderPanelItemSpacing="20"
-                                    HeaderPanelIndent="30"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     HeaderPanelShadowHeight="{OnPlatform Android='5', iOS='3'}"
-                                    HeaderPanelShadowRadius="{OnPlatform Android='5', iOS='5'}"
-                                    ItemHeaderFontSize="{OnIdiom Phone='16', Tablet='18'}">
+                                    HeaderPanelShadowRadius="{OnPlatform Android='5', iOS='5'}">
                 </dxco:TabView>
             </dxco:TabViewItem>
             <dxco:TabViewItem HeaderText="Cart"
                                     HeaderIcon="nested_cart"
-                                    HeaderPadding="0">
+                                    >
                 <Grid ColumnSpacing="0" RowSpacing="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.15*'}"/>
@@ -453,8 +432,6 @@
                     </Grid.ColumnDefinitions>
                     <demo:NonSelectableListView x:Name="cartList"
                                                 Grid.Column="1"
-                                                BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                                                SeparatorColor="{DynamicResource NestedTabViewSeparatorColor}"
                                                 ItemsSource="{Binding Cart}"
                                                 ItemTemplate="{x:StaticResource Key=cartListItemTemplate}"
                                                 VerticalScrollBarVisibility="Never"
@@ -480,8 +457,7 @@
                     </Grid.ColumnDefinitions>
                     <demo:NonSelectableListView x:Name="wishList"
                                                 Grid.Column="1"
-                                                BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                                                SeparatorColor="{DynamicResource NestedTabViewSeparatorColor}"
+
                                                 ItemsSource="{Binding WishList}"
                                                 ItemTemplate="{x:StaticResource Key=wishListItemTemplate}"
                                                 VerticalScrollBarVisibility="Never"
@@ -498,4 +474,4 @@
             </dxco:TabViewItem>
         </dxco:TabView>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

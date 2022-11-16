@@ -6,7 +6,7 @@ using DevExpress.Maui.Scheduler;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class RemindersDemo : ContentPage {
+    public partial class RemindersDemo : Demo.DemoPage {
         readonly Random rnd = new Random();
         readonly RemindersNotificationCenter remindersNotificationCenter = new RemindersNotificationCenter();
         readonly RemindersDemoViewModel viewModel = new RemindersDemoViewModel();

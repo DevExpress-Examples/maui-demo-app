@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<?xml version="1.0" encoding="UTF-8"?>
+<demo:DemoPage
 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -8,8 +8,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
     x:Class="DemoCenter.Maui.Views.SimpleButtonView"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-    ios:Page.UseSafeArea="True">
+    ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
@@ -21,25 +20,27 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         <viewModel:SimpleButtonViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid Padding="0,16" RowDefinitions="Auto, *">
-            <Grid Style="{StaticResource EditorContainerStyle}" Grid.Row="0">
-                <dxco:SimpleButton Text="Button"
-                        CornerMode="{Binding SelectedCornerMode}"
-                        CornerRadius="{Binding CornerRadius}"
-                        TextColor="{Binding SelectedTextColor.Color}"
-                        BackgroundColor="{Binding SelectedBackgroundColor.Color}"
-                        Icon="smile"
-                        IconColor="{Binding SelectedIconColor.Color}"
-                        IconIndent="7"
-                        IconVisible="{Binding ShouldShowIcon}"
-                        BorderColor="{Binding SelectedBorderColor.Color}"
-                        BorderThickness="{Binding BorderWidth}"
-                        ShowShadow="{Binding ShouldShowShadow}"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"/>
-                <BoxView Grid.Row="1" Style="{StaticResource SeparatorStyle}"/>
-            </Grid>
-            <ScrollView Grid.Row="1">
+        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}">
+            <dxco:SimpleButton
+                demo:DockLayout.Dock="Top"
+                Text="Button"
+                CornerMode="{Binding SelectedCornerMode}"
+                TextColor="{Binding SelectedTextColor.Color}"
+                BackgroundColor="{Binding SelectedBackgroundColor.Color}"
+                Icon="smile"
+                IconColor="{Binding SelectedIconColor.Color}"
+                IconIndent="7"
+                IconVisible="{Binding ShouldShowIcon}"
+                BorderColor="{Binding SelectedBorderColor.Color}"
+                BorderThickness="{Binding BorderWidth}"
+                ShowShadow="{Binding ShouldShowShadow}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="160"
+                Margin="16,32,16,32"/>
+            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
+
+            <ScrollView>
                 <StackLayout Spacing="0" Padding="0">
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Text Color" Style="{StaticResource TextStyle}"/>
@@ -57,32 +58,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     </StackLayout>
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <Label Text="Corner Radius" Style="{StaticResource TextStyle}"/>
-                        <Grid ColumnSpacing="0" RowSpacing="0" RowDefinitions="auto, auto" ColumnDefinitions="0.5*, 0.5*">
-                            <StackLayout Style="{StaticResource SliderItemContainerStyle}">
-                                <demo:IconView Source="topleftcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding TopLeftCornerRadius}" Style="{StaticResource SliderStyle}"/>
-                            </StackLayout>
-
-                            <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Column="1">
-                                <demo:IconView Source="toprightcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding TopRightCornerRadius}" Style="{StaticResource SliderStyle}"/>
-                            </StackLayout>
-
-                            <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Row="1">
-                                <demo:IconView Source="bottomleftcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding BottomLeftCornerRadius}" Style="{StaticResource SliderStyle}"/>
-                            </StackLayout>
-
-                            <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Column="1" Grid.Row="1">
-                                <demo:IconView Source="bottomrightcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding BottomRightCornerRadius}" Style="{StaticResource SliderStyle}"/>
-                            </StackLayout>
-
-                        </Grid>
-                    </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -121,6 +97,6 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 
                 </StackLayout>
             </ScrollView>
-        </Grid>
+        </demo:DockLayout>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

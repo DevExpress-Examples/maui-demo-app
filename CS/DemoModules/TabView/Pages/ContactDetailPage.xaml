@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -20,7 +20,7 @@
             </Style>
             <Style TargetType="Label">
                 <Setter Property="FontFamily">Roboto</Setter>
-                <Setter Property="FontSize">14</Setter>
+                <Setter Property="FontSize">Default</Setter>
             </Style>
             <Style TargetType="ContentPage">
                 <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundThemeColor}"/>
@@ -52,7 +52,7 @@
                     <Ellipse Margin="0"
                              IsVisible="{Binding HasPhoto}"
                              Fill="White"
-                             Stroke="{DynamicResource DrawerTopPanelBorderColor}" 
+                             Stroke="{DynamicResource DrawerTopPanelBorderColor}"
                              StrokeThickness="1"
                              HeightRequest="80"
                              WidthRequest="80"
@@ -121,24 +121,14 @@
                          Margin="0"
                          BackgroundColor="{StaticResource BackgroundThemeColor}">
                 <dxg:DataGridView AllowGroupCollapse="False"
-                                     ShowGroupedColumns="True"
-                                     IsColumnHeaderVisible="False"
-                                     GroupRowTemplate="{StaticResource dateTemplate}"
-                                     ItemsSource="{Binding CallsHistory}">
-                    <dxg:DataGridView.CellStyle>
-                        <dxg:CellStyle FontFamily="Roboto"
-                                          Padding="15"
-                                          FontColor="{DynamicResource DrawerGrayFontColor}"
-                                          HorizontalLineThickness="0"
-                                          SelectionColor="Transparent"
-                                          FontSize="{OnPlatform Android='16', iOS='14'}"/>
-                    </dxg:DataGridView.CellStyle>
-                    <dxg:DataGridView.GroupRowStyle>
-                        <dxg:GroupRowStyle Padding="0"
-                                              FontSize="14"
-                                              BorderColor="{DynamicResource TabPageSeparatorColor}"
-                                              BackgroundColor="Transparent"/>
-                    </dxg:DataGridView.GroupRowStyle>
+                                  ShowGroupedColumns="True"
+                                  IsColumnHeaderVisible="False"
+                                  GroupRowTemplate="{StaticResource dateTemplate}"
+                                  ItemsSource="{Binding CallsHistory}"
+                                  VerticalLineThickness="0">
+                    <dxg:DataGridView.GroupRowAppearance>
+                        <dxg:GroupRowAppearance BackgroundColor="Transparent"/>
+                    </dxg:DataGridView.GroupRowAppearance>
                     <dxg:DataGridView.Columns>
                         <dxg:TemplateColumn FieldName="CallType"
                                                Width="35"
@@ -163,4 +153,4 @@
             </ContentView>
         </Grid>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

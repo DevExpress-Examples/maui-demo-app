@@ -14,36 +14,36 @@
     <Style x:Key="MailColorItemStyle" TargetType="Ellipse">
         <Setter Property="HorizontalOptions" Value="Start"/>
         <Setter Property="VerticalOptions" Value="StartAndExpand"/>
-        <Setter Property="WidthRequest" Value="46"/>
-        <Setter Property="HeightRequest" Value="46"/>
+        <Setter Property="WidthRequest" Value="50"/>
+        <Setter Property="HeightRequest" Value="50"/>
     </Style>
 
     <Style x:Key="SenderAvatarTextStyle" TargetType="Label">
         <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="FontAttributes" Value="None" />
         <Setter Property="FontSize" Value="22"/>
-        <Setter Property="HeightRequest" Value="46"/>
+        <Setter Property="HeightRequest" Value="50"/>
         <Setter Property="HorizontalOptions" Value="Start"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="TextColor" Value="White"/>
         <Setter Property="VerticalOptions" Value="StartAndExpand"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
-        <Setter Property="WidthRequest" Value="46"/>
+        <Setter Property="WidthRequest" Value="50"/>
     </Style>
 
     <Style x:Key="MailTemplateStyle" TargetType="Grid">
         <Setter Property="BackgroundColor" Value="{StaticResource BackgroundThemeColor}" />
         <Setter Property="ColumnSpacing" Value="16" />
-        <Setter Property="Padding" Value="16,14" />
+        <Setter Property="Padding" Value="{OnIdiom Phone='16,14', Tablet='16,14,37,14'}" />
     </Style>
 
     <Style x:Key="DragDropTemplateStyle" TargetType="Label">
-        <Setter Property="Margin" Value="20" />
-        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="Margin" Value="16" />
+        <Setter Property="FontSize" Value="Default" />
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
         <Setter Property="Padding">
-            <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,0,0" Tablet="60,0,0,0"/>
+            <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,0,0" Tablet="37,0,0,0"/>
         </Setter>
         <Setter Property="TextColor" Value="{DynamicResource CollectionViewItemFontColor}"/>
     </Style>

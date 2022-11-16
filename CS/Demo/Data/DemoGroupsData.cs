@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DemoCenter.Maui.Data;
 using DemoCenter.Maui.Models;
 
 namespace DemoCenter.Maui.Data {
@@ -8,51 +9,47 @@ namespace DemoCenter.Maui.Data {
         static DemoGroupsData() {
             demoItems = new List<DemoItem>() {
                 new DemoItem() {
-                    IsHeader=true,
-                    Title = "for .NET MAUI"
-                },
-                new DemoItem() {
-                    Title = "Data Grid: Basic Features",
+                    Title = TitleData.GridDataTitle,
                     Description = "Data Grid: Basic Features",
                     Module = typeof(GridData)
                 },
                 new DemoItem() {
-                    Title = "Data Grid: Advanced Features",
+                    Title = TitleData.DataGridAdvancedTitle,
                     Description = "Data Grid: Advanced Features",
                     Module = typeof(DataGridAdvanced)
                 },
                 new DemoItem() {
-                    Title = "Collection / List View",
+                    Title = TitleData.CollectionViewDataTitle,
                     Description = "CollectionView",
                     Module = typeof(CollectionViewData)
                 },
                 new DemoItem() {
-                    Title = "Data Editors",
+                    Title = TitleData.EditorsDataTitle,
                     Description = "Data Editors",
                     Module = typeof(EditorsData)
                 },
                 new DemoItem() {
-                    Title = "Buttons",
+                    Title = TitleData.ControlsDataTitle,
                     Description = "Buttons",
                     Module = typeof(ControlsData)
                 },
                 new DemoItem() {
-                    Title = "Data Form, Popup, & Menu",
+                    Title = TitleData.DataFormDataTitle,
                     Description = "Data Form, Popup, & Menu",
                     Module = typeof(DataFormData)
                 },
                 new DemoItem() {
-                    Title = "Charts: Basic Features",
+                    Title = TitleData.ChartsDataTitle,
                     Description = "Charts: Basic Features",
                     Module = typeof(ChartsData)
                 },
                 new DemoItem() {
-                    Title = "Charts: Advanced Features",
+                    Title = TitleData.ChartsDataAdvancedTitle,
                     Description = "Charts: Advanced Features",
                     Module = typeof(ChartsDataAdvanced)
                 },
                 new DemoItem() {
-                    Title = "Scheduler",
+                    Title = TitleData.SchedulerDataTitle,
                     Description = "Scheduler",
                     Module = typeof(SchedulerData)
                 }

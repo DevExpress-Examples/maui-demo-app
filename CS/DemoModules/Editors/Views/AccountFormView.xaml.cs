@@ -4,7 +4,7 @@ using DemoCenter.Maui.DemoModules.Editors.ViewModels;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class AccountFormView : ContentPage {
+    public partial class AccountFormView : Demo.DemoPage {
         readonly AccountFormViewModel viewModel;
 
         public AccountFormView() {

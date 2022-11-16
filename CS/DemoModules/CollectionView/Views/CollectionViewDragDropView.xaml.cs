@@ -21,7 +21,7 @@ namespace DemoCenter.Maui {
 }
 
 namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
-    public partial class CollectionViewDragDropView : ContentPage {
+    public partial class CollectionViewDragDropView : Demo.DemoPage {
         public CollectionViewDragDropView() {
             InitializeComponent();
             ViewModel = new DragDropModel(new EmployeeTasksRepository());
@@ -31,11 +31,11 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
         DragDropModel ViewModel { get; }
 
         void DragItem(object sender, DragItemEventArgs e) {
-            e.Allow = IsItemDraggable(e.DragItem);
+            e.Cancel = !IsItemDraggable(e.DragItem);
         }
 
         void DragItemOver(object sender, DropItemEventArgs e) {
-            e.Allow = IsItemDraggable(e.DropItem);
+            e.Cancel = !IsItemDraggable(e.DropItem);
         }
 
         bool IsItemDraggable(object item) {

@@ -1,5 +1,6 @@
 ﻿using System;
 using DemoCenter.Maui.DemoModules.Grid.Data;
+using DevExpress.Maui.Core;
 using DevExpress.Maui.DataGrid;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
@@ -10,12 +11,11 @@ namespace DemoCenter.Maui.Views {
         readonly double columnWidth = DeviceInfo.Idiom == DeviceIdiom.Tablet ? 180 : 150;
 
         public HorizontalVirtualizationView() {
-            AddResources();
             InitializeComponent();
 
             this.dataGridView.Columns.Add(new TextColumn() {
                 FieldName = "Full Name",
-                Width = columnWidth,
+                Width = 180,
                 FixedStyle = DeviceInfo.Idiom == DeviceIdiom.Tablet ? FixedStyle.Start : FixedStyle.None
             });
             for (int i = 0; i < 5; i++) {
@@ -26,15 +26,6 @@ namespace DemoCenter.Maui.Views {
                 AddColumnAndSummary("" + year + " Total", this.columnWidth + 20, "yearTotalColumnTemplate");
             }
         }
-
-        void AddResources() {
-            if (DeviceInfo.Idiom == DeviceIdiom.Tablet) {
-                Resources.Add("FontSize", 14.0);
-            } else {
-                Resources.Add("FontSize", 12.0);
-            }
-        }
-
         void AddColumnAndSummary(string fieldName, double width, string templateName) {
             this.dataGridView.Columns.Add(new TemplateColumn() {
                 FieldName = fieldName,
@@ -42,7 +33,8 @@ namespace DemoCenter.Maui.Views {
                 HorizontalContentAlignment = TextAlignment.End,
                 DisplayTemplate = (DataTemplate)Resources[templateName]
             });
-            this.dataGridView.TotalSummaries.Add(new GridColumnSummary() { FieldName = fieldName, Type = SummaryType.Sum, DisplayFormat = "SUM={0:C2}" });
+            this.dataGridView.TotalSummaries.Add(new GridColumnSummary() {
+                FieldName = fieldName, Type = DataSummaryType.Sum, DisplayFormat = "{0:C0}" });
         }
 
         protected override object LoadData() {

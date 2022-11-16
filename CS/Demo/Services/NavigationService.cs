@@ -1,24 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using DemoCenter.Maui.Models;
-using DemoCenter.Maui.Views;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui.Services {
     public static class NavigationService {
-
-        static void SetDemoPageTitleView(Page page, DemoItem demoItem) {
+        static void SetDemoPageTitleView(Page page, string titleText) {
             Label label = new() {
-                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                FontFamily = "Univia-Pro Medium",
+                FontSize = 17,
+                FontFamily = "Roboto Medium",
                 FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
                 BackgroundColor = Colors.Transparent,
-                Text = (demoItem == null)? page.Title : demoItem.Title,
+                Text = titleText,
                 LineBreakMode = Microsoft.Maui.LineBreakMode.NoWrap
             };
             label.SetDynamicResource(Label.TextColorProperty, "TextThemeColor");
@@ -36,8 +32,13 @@ namespace DemoCenter.Maui.Services {
         }
 
         public static async Task NavigateToPage(Page page, DemoItem demoItem = null) {
+            string titleText = (demoItem == null) ? page.Title : demoItem.Title;
+            await NavigateToPage(page, titleText);
+        }
+
+        public static async Task NavigateToPage(Page page, string titleText) {
             if (Shell.GetTitleView(page) == null)
-                SetDemoPageTitleView(page, demoItem);
+                SetDemoPageTitleView(page, titleText);
 
             await Shell.Current.Navigation.PushAsync(page);
         }

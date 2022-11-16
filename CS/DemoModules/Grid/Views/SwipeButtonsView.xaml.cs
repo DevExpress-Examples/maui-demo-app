@@ -16,12 +16,12 @@ namespace DemoCenter.Maui.Views {
             return new OutlookDataRepository();
         }
         
-        void OnShowCustomerInfo(object sender, SwipeItemTapEventArgs e) {
+        async void OnShowCustomerInfo(object sender, SwipeItemTapEventArgs e) {
             Customer customer = (e.Item as OutlookData).From;
             CustomerOrdersView customerOrdersView = new CustomerOrdersView(customer) {
                 Title = customer.Name
             };
-            NavigationService.NavigateToPage(customerOrdersView);
+            await NavigationService.NavigateToPage(customerOrdersView);
         }
         
         void OnDelete(object sender, SwipeItemTapEventArgs e) {

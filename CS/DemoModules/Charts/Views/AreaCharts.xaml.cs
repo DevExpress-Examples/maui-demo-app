@@ -3,7 +3,7 @@ using DevExpress.Maui.Controls;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class AreaCharts : ContentPage {
+    public partial class AreaCharts : Demo.DemoPage {
         public AreaCharts() {
             InitializeComponent();
             BindingContext = new AreaChartsViewModel();
@@ -13,7 +13,7 @@ namespace DemoCenter.Maui.Views {
 
         void UpdateOrientation(double width, double height) {
             bool isVertical = width <= height;
-            Position position = isVertical ? Position.Top : Position.Left;
+            HeaderContentPosition position = isVertical ? HeaderContentPosition.Top : HeaderContentPosition.Left;
             dxTabView.HeaderPanelPosition = position;
             ((ChartsPageViewModelBase)BindingContext).SetVerticalState(isVertical);
         }

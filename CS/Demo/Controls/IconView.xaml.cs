@@ -1,13 +1,14 @@
 ﻿using System;
-using DevExpress.Maui.Core.Themes;
-using DevExpress.Utils;
+using DevExpress.Maui.Core.Internal;
+using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
+using MThemeLoader = DemoCenter.Maui.Styles.ThemeLoader.ThemeLoader;
 
 namespace DemoCenter.Maui.Demo {
     public partial class IconView : Image {
         public static readonly BindableProperty ThemeNameProperty = BindableProperty.Create("ThemeName", typeof(string),
-            typeof(IconView), propertyChanged: ThemeNamePropertyChanged, defaultValue: Theme.Light);
+            typeof(IconView), propertyChanged: ThemeNamePropertyChanged, defaultValue: nameof(AppTheme.Light));
 
         public static readonly BindableProperty IconProperty = BindableProperty.Create("Icon", typeof(string),
             typeof(IconView), propertyChanged: IconPropertyChanged, defaultValue: null);
@@ -37,7 +38,7 @@ namespace DemoCenter.Maui.Demo {
         }
 
         void OnDemoCenterAppThemeChanged(object sender, EventArgs e) {
-            ThemeName = ThemeManager.ThemeName;
+            ThemeName = MThemeLoader.ThemeName;
             if (Source is FileImageSource)
                 OnPropertyChanged(nameof(Image.Source));
         }
@@ -58,7 +59,7 @@ namespace DemoCenter.Maui.Demo {
         void OnThemeNameChanged(string newValue) {
         }
         static string GetImageSource(string icon) {
-            return ThemeManager.ThemeName.ToLower() + icon;
+            return MThemeLoader.ThemeName.ToLower() + icon;
         }
     }
 }

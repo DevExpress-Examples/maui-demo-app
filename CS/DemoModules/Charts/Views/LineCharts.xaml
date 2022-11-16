@@ -1,17 +1,30 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="DemoCenter.Maui.Views.LineCharts"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.LineCharts"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:view="clr-namespace:DemoCenter.Maui.Charts.Views"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
+        <DataTemplate x:Key="lineChartTemplate">
+            <view:LineChartContainer/>
+        </DataTemplate>
+        <DataTemplate x:Key="scatterChartTemplate">
+            <view:ScatterChartContainer/>
+        </DataTemplate>
+        <DataTemplate x:Key="stepLineChartTemplate">
+            <view:StepLineChartContainer/>
+        </DataTemplate>
+        <DataTemplate x:Key="splineChartTemplate">
+            <view:SplineChartContainer/>
+        </DataTemplate>
+
         <local:LineTypeToImageSourceConverter x:Key="lineTypeToImageSourceConverter"/>
         <DataTemplate x:Key="headerItemTemplate">
-            <demo:TabButton ImageSource="{Binding LineType, Converter={StaticResource lineTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
+            <demo:ChartsDemoTabButton ImageSource="{Binding LineType, Converter={StaticResource lineTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
         </DataTemplate>
         <local:LineChartTemplateSelector x:Key="lineChartTemplateSelector"
                                          LineChartTemplate="{StaticResource lineChartTemplate}"
@@ -19,30 +32,30 @@
                                          StepLineChartTemplate="{StaticResource stepLineChartTemplate}"
                                          SplineChartTemplate="{StaticResource splineChartTemplate}"/>
         <Style TargetType="Label">
-            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="FontSize" Value="Default"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0,8,0,0"/>
         </Style>
     </ContentPage.Resources>
     <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
         <dxco:TabView x:Name="dxTabView"
-                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                            HeaderPanelBackgroundColor="{DynamicResource TabItemBackgroundColor}"
-                            HorizontalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
 
-                            ScrollAnimationEnabled="True"
-                            SwipeEnabled="False"
-                
-                            ItemsSource="{Binding Content}"
-                            ItemHeaderTemplate="{StaticResource headerItemTemplate}"
-                            ItemTemplate="{StaticResource lineChartTemplateSelector}"
-                
-                            HeaderPanelContentAlignment="Start"
-                            HeaderPanelIndent="0"
-                
-                            IsSelectedItemIndicatorVisible="False"
-                            IsHeaderPanelShadowVisible="False"
-                
-                            SelectedItem="{Binding SelectedItem}"/>
+                      ScrollAnimationEnabled="True"
+                      SwipeEnabled="False"
+
+                      ItemsSource="{Binding Content}"
+                      ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                      ItemTemplate="{StaticResource lineChartTemplateSelector}"
+
+                      HeaderPanelContentAlignment="Start"
+                      HeaderPanelIndent="0"
+                      HeaderPanelItemSpacing="0"
+                      HeaderPanelPadding="0"
+
+                      IsSelectedItemIndicatorVisible="False"
+                      IsHeaderPanelShadowVisible="False"
+
+                      SelectedItem="{Binding SelectedItem}" />
     </Grid>
-</ContentPage>
+</demo:DemoPage>

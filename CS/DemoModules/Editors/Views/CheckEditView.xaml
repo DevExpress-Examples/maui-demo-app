@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -8,100 +8,109 @@
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
     xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
     x:Class="DemoCenter.Maui.Views.CheckEditView"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-    ios:Page.UseSafeArea="True">
+    ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <demo:EditorsAndControlsResources/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate
-                x:Key="IconListItemTemplate">
-                <Grid ColumnDefinitions="*,Auto,Auto,Auto"
-                    Margin="5"
-                    HeightRequest="50"
-                    Style="{StaticResource ComboBoxItemContainer}">
-                    <Label
-                        Text="{Binding LabelText}"
-                        TextColor="{DynamicResource TextThemeColor}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="FillAndExpand"/>
-                    <demo:IconView Grid.Column="1"
-                        Source="{Binding UncheckedGlyph}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="End"
-                        ForegroundColor="{Binding Source={x:Reference edit}, Path=CheckBoxColor}"/>
-                    <demo:IconView Grid.Column="2"
-                        Source="{Binding IndeterminateGlyph}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="End"
-                        ForegroundColor="{Binding Source={x:Reference edit}, Path=CheckedCheckBoxColor}"
-                        IsVisible="{Binding Source={x:Reference edit}, Path=AllowIndeterminateInput}"/>
-                    <demo:IconView Grid.Column="3"
-                        Source="{Binding CheckedGlyph}"
-                        VerticalOptions="Center"
-                        HorizontalOptions="End"
-                        ForegroundColor="{Binding Source={x:Reference edit}, Path=CheckedCheckBoxColor}"/>
-                </Grid>
-            </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.BindingContext>
-        <viewModel:CheckEditViewModel/>
-    </ContentPage.BindingContext>
-
     <ContentPage.Content>
-        <Grid x:Name="container"
-              Style="{StaticResource EditorContainerStyle}">
-            <dxe:CheckEdit x:Name="edit"
-                           IsChecked="True"
-                           VerticalOptions="FillAndExpand"
-                           HorizontalOptions="FillAndExpand"
-                           Margin="16"
+        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <dxe:CheckEdit
+                x:Name="edit"
+                demo:DockLayout.Dock="Top"
+                Grid.Row="0"
+                IsChecked="True"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="96"
+                Margin="16"
+                Label="Check Edit"
+                AllowIndeterminateInput="{Binding AllowIndeterminateInput}"
+                CheckedCheckBoxImage="{Binding SelectedGlyph.CheckedGlyph}"
+                IndeterminateCheckBoxImage="{Binding SelectedGlyph.IndeterminateGlyph}"
+                UncheckedCheckBoxImage="{Binding SelectedGlyph.UncheckedGlyph}"
+                CheckBoxPosition="{Binding CheckBoxPosition}"
+                LabelVerticalAlignment="{Binding LabelVerticalAlignment}"
+                LabelHorizontalAlignment="{Binding LabelHorizontalAlignment}"
+                CheckBoxAlignment="{Binding CheckBoxAlignment}"/>
+            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
 
-                           Label="Check Edit"
-                           AllowIndeterminateInput="{Binding AllowIndeterminateInput}"
-                           CheckedCheckBoxImage="{Binding SelectedGlyph.CheckedGlyph}"
-                           IndeterminateCheckBoxImage="{Binding SelectedGlyph.IndeterminateGlyph}"
-                           UncheckedCheckBoxImage="{Binding SelectedGlyph.UncheckedGlyph}"
+            <ScrollView>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                            <Label Text="Allow Indeterminate" Style="{StaticResource TextStyle}"/>
+                            <Switch IsToggled="{Binding AllowIndeterminateInput}" Style="{DynamicResource SwitchStyle}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
 
-                           CheckBoxPosition="{Binding CheckBoxPosition}"
-                           LabelVerticalAlignment="{Binding LabelVerticalAlignment}"
-                           LabelHorizontalAlignment="{Binding LabelHorizontalAlignment}"
-                           CheckBoxAlignment="{Binding CheckBoxAlignment}"
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <Label Text="CheckBox Appearance" Style="{StaticResource TextStyle}"/>
+                        <dxe:ComboBoxEdit Style="{StaticResource ComboBoxStyleBase}"
+                                          SelectedItem="{Binding SelectedGlyph}"
+                                          DisplayMember="LabelText"
+                                          ItemsSource="{Binding AvailableGlyphs}"/>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
 
-                           CheckBoxColor="#5B5B5B"
-                           CheckedCheckBoxColor="{Binding SelectedCheckedColor}"/>
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                            <Label Text="Accent Color" Style="{StaticResource TextStyle}"/>
+                            <Switch IsToggled="{Binding AllowCustomCheckedCheckBoxColor}" Style="{DynamicResource SwitchStyle}"/>
+                        </StackLayout>
 
-            <BoxView x:Name="separator" Color="{DynamicResource EditorSettingsSeparatorColor}"/>
+                        <dxe:ComboBoxEdit
+                            SelectedValue="{Binding SelectedCheckedColor}"
+                            ValueMember="Color"
+                            ItemsSource="{Binding AvailableCheckedColors}"
+                            ItemTemplate="{StaticResource ColorComboBoxItemTemplate}"
+                            IsVisible="{Binding AllowCustomCheckedCheckBoxColor}"
+                            UseItemTemplateAsDisplayItemTemplate="True"
+                            Style="{StaticResource ComboBoxStyleBase}"/>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
 
-            <dxdf:DataFormView x:Name="settingsDataForm"
-                               DataObject="{Binding}"
-                               Style="{StaticResource EditorSettingsFormStyle}">
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <Label Text="Label Vertical Alignment" Style="{StaticResource TextStyle}"/>
+                        <dxe:ComboBoxEdit
+                            SelectedValue="{Binding LabelVerticalAlignment}"
+                            ItemsSource="{Binding TextAlignments}"
+                            Style="{StaticResource ComboBoxStyleBase}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
 
-                <dxdf:DataFormSwitchItem x:Name="allowIndeterminateItem"
-                                         FieldName="AllowIndeterminateInput"
-                                         LabelText="Allow Indeterminate"
-                                         LabelPosition="Left"
-                                         LabelWidth="250"
-                                         EditorHorizontalAlignment="End"/>
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <Label Text="Label Horizontal Alignment" Style="{StaticResource TextStyle}"/>
+                        <dxe:ComboBoxEdit
+                            SelectedValue="{Binding LabelHorizontalAlignment}"
+                            ItemsSource="{Binding TextAlignments}"
+                            Style="{StaticResource ComboBoxStyleBase}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
 
-                <dxdf:DataFormComboBoxItem FieldName="SelectedGlyph"
-                                           LabelText="CheckBox Appearance"
-                                           DisplayMember="LabelText"
-                                           ItemTemplate="{StaticResource IconListItemTemplate}"/>
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <Label Text="CheckBox Alignment" Style="{StaticResource TextStyle}"/>
+                        <dxe:ComboBoxEdit
+                            SelectedValue="{Binding CheckBoxAlignment}"
+                            ItemsSource="{Binding TextAlignments}"
+                            Style="{StaticResource ComboBoxStyleBase}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
 
-                <dxdf:DataFormComboBoxItem x:Name="selectedColorItem"
-                                           FieldName="SelectedCheckedColor"
-                                           LabelText="Checked CheckBox Color"
-                                           DisplayMember="Name"
-                                           ValueMember="Color"
-                                           ItemTemplate="{StaticResource ColorComboBoxItemTemplate}"/>
-                <dxdf:DataFormView.Groups>
-                    <dxdf:DataFormGroup GroupName="Layout Options" IsCollapsed="True"/>
-                </dxdf:DataFormView.Groups>
-
-            </dxdf:DataFormView>
-        </Grid>
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <Label Text="CheckBox Position" Style="{StaticResource TextStyle}"/>
+                        <dxe:ComboBoxEdit
+                            SelectedValue="{Binding CheckBoxPosition}"
+                            ItemsSource="{Binding CheckBoxPositions}"
+                            Style="{StaticResource ComboBoxStyleBase}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                </StackLayout>
+            </ScrollView>
+        </demo:DockLayout>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

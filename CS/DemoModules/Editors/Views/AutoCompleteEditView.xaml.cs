@@ -7,7 +7,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui.Views {
-    public partial class AutoCompleteEditView : ContentPage {
+    public partial class AutoCompleteEditView : Demo.DemoPage {
         IList<Employee> employees;
         Color accentColor;
 
@@ -18,7 +18,7 @@ namespace DemoCenter.Maui.Views {
         }
 
         void AutocompleteEdit_TextChanged(object sender, AutoCompleteEditTextChangedEventArgs e) {
-            if (e.Reason == AutoCompleteEditTextChangeReason.SuggestionChosen)
+            if (e.Reason == AutoCompleteEditTextChangeReason.ItemSelected)
                 return;
 
             if (String.IsNullOrEmpty(this.autocompleteEdit.Text)) {

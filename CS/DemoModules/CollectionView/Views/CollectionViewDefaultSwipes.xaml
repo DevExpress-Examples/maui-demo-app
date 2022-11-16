@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
              xmlns:local="clr-namespace:DemoCenter.Maui"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewDefaultSwipes"
-             ios:Page.UseSafeArea="True">
+             ios:Page.UseSafeArea="False">
      <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,13 +16,13 @@
 
             <Style TargetType="dxcv:SwipeItem">
                 <Setter Property="FontColor" Value="White"/>
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontSize" Value="Default"/>
             </Style>
             <DataTemplate x:Key="urgentItemTemplate">
                 <dxcv:SwipeContainer>
                     <dxcv:SwipeContainer.ItemView>
                         <StackLayout Margin="0" Spacing="0" BackgroundColor="{DynamicResource CollectionViewUrgentItemBackgroundColor}">
-                            <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" TextColor="#e59601"/>
+                            <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" />
                             <BoxView Style="{StaticResource SeparatorStyle}"/>
                         </StackLayout>
                     </dxcv:SwipeContainer.ItemView>
@@ -30,13 +30,13 @@
                         <dxcv:SwipeItem Command="{Binding CompleteTaskCommand}"
                                         Invoked="OnStatusChanged"
                                         Caption="Done"
-                                        BackgroundColor="#BCCC3E"
+                                        BackgroundColor="#8AB850"
                                         Image="collectionviewcompletetask"/>
                     </dxcv:SwipeContainer.StartSwipeItems>
                     <dxcv:SwipeContainer.EndSwipeItems>
                         <dxcv:SwipeItem Invoked="OnDeleteTask"
                                         Caption="Delete"
-                                        BackgroundColor="#FA5E54"
+                                        BackgroundColor="#F3A40A"
                                         Image="collectionviewdeletetask"/>
                     </dxcv:SwipeContainer.EndSwipeItems>
                 </dxcv:SwipeContainer>
@@ -54,18 +54,18 @@
                         <dxcv:SwipeItem Command="{Binding CompleteTaskCommand}"
                                         Invoked="OnStatusChanged"
                                         Caption="Done"
-                                        BackgroundColor="#BCCC3E"
+                                        BackgroundColor="#8AB850"
                                         Image="collectionviewcompletetask"/>
                         <dxcv:SwipeItem Command="{Binding UrgentTaskCommand}"
                                         Invoked="OnStatusChanged"
                                         Caption="Pin"
-                                        BackgroundColor="#FF8F00"
+                                        BackgroundColor="#F3A40A"
                                         Image="collectionviewpintotop"/>
                     </dxcv:SwipeContainer.StartSwipeItems>
                     <dxcv:SwipeContainer.EndSwipeItems>
                         <dxcv:SwipeItem Invoked="OnDeleteTask"
                                         Caption="Delete"
-                                        BackgroundColor="#FA5E54"
+                                        BackgroundColor="#D74F67"
                                         Image="collectionviewdeletetask"/>
                     </dxcv:SwipeContainer.EndSwipeItems>
                 </dxcv:SwipeContainer>
@@ -92,10 +92,10 @@
                     <dxcv:SwipeContainer.EndSwipeItems>
                         <dxcv:SwipeItem Invoked="OnDeleteTask"
                                         Caption="Delete"
-                                        BackgroundColor="#FA5E54"
+                                        BackgroundColor="#D74F67"
                                         Image="collectionviewdeletetask"/>
                     </dxcv:SwipeContainer.EndSwipeItems>
-                
+
                 </dxcv:SwipeContainer>
             </DataTemplate>
 
@@ -111,4 +111,4 @@
                                ItemsSource="{Binding ItemSource}">
         </dxcv:DXCollectionView>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

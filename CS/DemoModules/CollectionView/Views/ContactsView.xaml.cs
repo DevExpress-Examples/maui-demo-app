@@ -6,7 +6,7 @@ using DevExpress.Maui.CollectionView;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
-    public partial class ContactsView : ContentPage {
+    public partial class ContactsView : Demo.DemoPage {
         bool inNavigation = false;
 
         public ContactsView() {

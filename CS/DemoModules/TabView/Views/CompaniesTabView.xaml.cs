@@ -5,7 +5,7 @@ using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.Views {
-    public partial class CompaniesTabView : ContentPage {
+    public partial class CompaniesTabView : Demo.DemoPage {
         public CompaniesTabView() {
             InitializeComponent();
             BindingContext = new CompaniesTabViewModel();

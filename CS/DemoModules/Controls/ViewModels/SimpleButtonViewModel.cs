@@ -3,7 +3,7 @@ using DemoCenter.Maui.ViewModels;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
     public class SimpleButtonViewModel : NotificationObject {
-        double DefaultCornerRadius = 4.0;
+        
         double DefaultBorderSize = 4.0;
 
         ColorViewModel selectedTextColor;
@@ -11,11 +11,11 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         ColorViewModel selectedIconColor;
         ColorViewModel selectedBorderColor;
 
-        double topLeftCornerRadius;
-        double topRightCornerRadius;
-        double bottomLeftCornerRadius;
-        double bottomRightCornerRadius;
-        Microsoft.Maui.CornerRadius cornerRadius;
+        
+        
+        
+        
+        
         double borderWidth;
 
         bool shouldShowIcon;
@@ -35,11 +35,11 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         }
         public bool ShouldShowShadow { get => shouldShowShadow; set => SetProperty(ref shouldShowShadow, value); }
 
-        public double TopLeftCornerRadius { get => topLeftCornerRadius; set => SetProperty(ref topLeftCornerRadius, value, UpdateCornerRadius); }
-        public double TopRightCornerRadius { get => topRightCornerRadius; set => SetProperty(ref topRightCornerRadius, value, UpdateCornerRadius); }
-        public double BottomLeftCornerRadius { get => bottomLeftCornerRadius; set => SetProperty(ref bottomLeftCornerRadius, value, UpdateCornerRadius); }
-        public double BottomRightCornerRadius { get => bottomRightCornerRadius; set => SetProperty(ref bottomRightCornerRadius, value, UpdateCornerRadius); }
-        public Microsoft.Maui.CornerRadius CornerRadius { get => cornerRadius; set => SetProperty(ref cornerRadius, value); }
+        
+        
+        
+        
+        
         public double BorderWidth { get => borderWidth; set => SetProperty(ref borderWidth, value); }
 
         public SimpleButtonViewModel() {
@@ -49,14 +49,14 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             SelectedIconColor = Colors[0];
             SelectedBorderColor = Colors[1];
 
-            TopLeftCornerRadius = DefaultCornerRadius;
-            TopRightCornerRadius = DefaultCornerRadius;
-            BottomLeftCornerRadius = DefaultCornerRadius;
-            BottomRightCornerRadius = DefaultCornerRadius;
+            
+            
+            
+            
         }
 
-        void UpdateCornerRadius() {
-            CornerRadius = new Microsoft.Maui.CornerRadius(TopLeftCornerRadius, TopRightCornerRadius, BottomLeftCornerRadius, BottomRightCornerRadius);
-        }
+        
+        
+        
     }
 }

@@ -4,7 +4,7 @@ using DemoCenter.Maui.ViewModels;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class SpectrumAnalyzer : ContentPage {
+    public partial class SpectrumAnalyzer : Demo.DemoPage {
         readonly LogarithmicScaleViewModel viewModel = new LogarithmicScaleViewModel();
         readonly Timer timer = new Timer();
         bool isRunning = false;
@@ -19,7 +19,7 @@ namespace DemoCenter.Maui.Views {
         }
 
         void Timer_Tick(object sender, EventArgs e) {
-            Device.BeginInvokeOnMainThread(() => {
+            Dispatcher.Dispatch(() => {
                 viewModel.MoveToNextFrame();
                 if (isRunning)
                     timer.Start();

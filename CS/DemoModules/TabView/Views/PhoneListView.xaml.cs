@@ -5,7 +5,7 @@ using DevExpress.Maui.Controls;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class PhoneListView : ContentPage {
+    public partial class PhoneListView : Demo.DemoPage {
         public PhoneListView() {
             InitializeComponent();
             BindingContext = new PhoneListViewModel();
@@ -20,11 +20,11 @@ namespace DemoCenter.Maui.Views {
                     model.SelectedItem = model.PhoneListData[0];
                     model.SetGroupByParameter(parameter);
                     if (model.GroupParameter == GroupParameterName.Alphabeticaly) {
-                        this.dxTabView.HeaderPanelPosition = Position.Right;
-                        this.dxTabView.HeaderPanelContentAlignment = ContentAlignment.Start;
+                        this.dxTabView.HeaderPanelPosition = HeaderContentPosition.Right;
+                        this.dxTabView.HeaderPanelContentAlignment = HeaderContentAlignment.Start;
                     } else {
-                        this.dxTabView.HeaderPanelPosition = Position.Bottom;
-                        this.dxTabView.HeaderPanelContentAlignment = ContentAlignment.Center;
+                        this.dxTabView.HeaderPanelPosition = HeaderContentPosition.Bottom;
+                        this.dxTabView.HeaderPanelContentAlignment = HeaderContentAlignment.Center;
                     }
                     this.dxTabView.ItemsSource = model.PhoneListData;
                     this.dxTabView.SelectedItem = model.PhoneListData[0];

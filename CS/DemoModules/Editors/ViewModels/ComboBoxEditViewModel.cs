@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using DemoCenter.Maui.ViewModels;
-using DevExpress.Maui.Controls;
+using DevExpress.Maui.Core;
 using DevExpress.Maui.Editors;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
@@ -11,7 +11,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
 
         string selectedState;
         BoxMode selectedBoxMode;
-        FilterMode selectedFilterMode;
+        DataFilterCondition selectedFilterCondition;
         CornerMode selectedCornerMode;
         ColorViewModel selectedAccentColor;
 
@@ -38,7 +38,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
                 OnPropertyChanged(nameof(CanSetBottomCorners));
             });
         }
-        public FilterMode SelectedFilterMode { get => selectedFilterMode; set => SetProperty(ref selectedFilterMode, value); }
+        public DataFilterCondition SelectedFilterCondition { get => selectedFilterCondition; set => SetProperty(ref selectedFilterCondition, value); }
         public CornerMode SelectedCornerMode { get => selectedCornerMode; set => SetProperty(ref selectedCornerMode, value); }
         public ColorViewModel SelectedAccentColor { get => selectedAccentColor; set => SetProperty(ref selectedAccentColor, value); }
 
@@ -69,7 +69,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
 
         public IList<ColorViewModel> Colors { get; }
         public IList<BoxMode> BoxModes { get; }
-        public IList<FilterMode> FilterModes { get; }
+        public IList<DataFilterCondition> FilterConditions { get; }
         public IList<CornerMode> CornerModes { get; }
 
         public ICommand ResetToDefaultCommand { get; }
@@ -146,10 +146,10 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
                 CornerMode.Cut
             };
 
-            FilterModes = new List<FilterMode> {
-                FilterMode.StartsWith,
-                FilterMode.EndsWith,
-                FilterMode.Contains
+            FilterConditions = new List<DataFilterCondition> {
+                DataFilterCondition.StartsWith,
+                DataFilterCondition.Contains,
+                DataFilterCondition.Equals
             };
 
             ResetToDefaultCommand = new DelegateCommand(ResetToDefault);
@@ -161,7 +161,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         public void ResetToDefault() {
             SelectedBoxMode = BoxModes[0];
             SelectedCornerMode = CornerModes[0];
-            SelectedFilterMode = FilterModes[0];
+            SelectedFilterCondition = FilterConditions[0];
             SelectedAccentColor = Colors[6];
             TopLeftCornerRadius = DefaultCornerRadius;
             TopRightCornerRadius = DefaultCornerRadius;

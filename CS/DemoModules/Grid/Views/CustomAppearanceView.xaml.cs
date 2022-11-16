@@ -7,7 +7,6 @@ using Microsoft.Maui.Devices;
 namespace DemoCenter.Maui.Views {
     public partial class CustomAppearanceView : BaseGridContentPage {
         public CustomAppearanceView() {
-            Resources.Add("IsAverageMonthlySalesVisible", DeviceInfo.Idiom == DeviceIdiom.Tablet);
             InitializeComponent();
         }
 
@@ -15,7 +14,7 @@ namespace DemoCenter.Maui.Views {
             return SalesDataGenerator.CreateData();
         }
 
-        void DataGridView_CustomCellStyle(object sender, CustomCellStyleEventArgs e) {
+        void DataGridView_CustomCellAppearance(object sender, CustomCellAppearanceEventArgs e) {
             if(e.RowHandle % 2 == 0)
                 e.BackgroundColor = GetColorFromResource("GridCustomAppearanceOddRowBackgroundColor");
             e.FontColor = GetColorFromResource("GridCustomAppearanceFontColor");

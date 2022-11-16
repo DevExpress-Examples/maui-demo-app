@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using DemoCenter.Maui.Data;
 using DemoCenter.Maui.ViewModels;
-using DevExpress.Utils;
+using DevExpress.Maui.Core.Internal;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 

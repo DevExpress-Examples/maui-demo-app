@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using DevExpress.Maui.Controls;
+using DevExpress.Maui.Core;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;

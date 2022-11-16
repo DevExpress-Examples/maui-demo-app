@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="DemoCenter.Maui.Views.PhoneListView"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.PhoneListView"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:dxc="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-             ios:Page.UseSafeArea="true"
+             ios:Page.UseSafeArea="False"
              x:Name="phoneListView"
              BackgroundColor="{DynamicResource BackgroundThemeColor}">
     <ContentPage.Resources>
@@ -47,7 +47,7 @@
                                         VerticalOptions="CenterAndExpand"
                                         HorizontalOptions="Center">
                                 </Ellipse>
-                                <Label 
+                                <Label
                                         Grid.RowSpan="2"
                                         Margin="0"
                                         Text="{Binding Initials}"
@@ -87,24 +87,16 @@
         <dxco:TabView x:Name="dxTabView"
                             HeaderPanelPosition="Right"
                             HeaderPanelContentAlignment="Start"
-                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                            HeaderPanelBackgroundColor="{DynamicResource BackgroundThemeColor}"
                             IsSelectedItemIndicatorVisible = "False"
                             ItemsSource="{Binding PhoneListData}"
                             ItemHeaderTemplate="{StaticResource headerTemplate}"
                             ItemTemplate="{StaticResource itemTemplate}"
                             IsHeaderPanelShadowVisible="True"
-                            HeaderPanelShadowHeight="1"
-                            HeaderPanelShadowColor="{DynamicResource TabViewPhoneListShadowColor}"
-                            ItemHeaderHeight = "40"
-                            HeaderPanelHeight="72"
-                            HeaderPanelIndent="0"
                             ItemHeaderWidth="*"
-                            ItemHeaderMaxWidth="130"
                             SwipeEnabled="False"
                             ScrollAnimationEnabled="False"
                             SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
                             HeaderPanelShadowRadius="{OnPlatform Android='1', iOS='0'}">
         </dxco:TabView>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

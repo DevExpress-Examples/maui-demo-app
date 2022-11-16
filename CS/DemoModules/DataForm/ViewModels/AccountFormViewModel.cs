@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.DataForm;
 
@@ -51,7 +52,8 @@ namespace DemoCenter.Maui.DemoModules.DataForm.ViewModels {
             nameof(AccountInfo.Password),
         };
 
-        public void Rotate(DataFormView dataForm, bool newIsVertical) {
+        public void Rotate(DataFormView dataForm, PageOrientation orientation) {
+            var newIsVertical = (orientation == PageOrientation.Portrait);
             if (newIsVertical != IsVertical) {
                 if (dataForm.Items != null) {
                     IsVertical = newIsVertical;

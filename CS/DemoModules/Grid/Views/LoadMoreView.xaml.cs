@@ -4,7 +4,6 @@ using Microsoft.Maui.Devices;
 namespace DemoCenter.Maui.Views {
     public partial class LoadMoreView : BaseGridContentPage {
         public LoadMoreView() {
-            Resources.Add("IsTablet", DeviceInfo.Idiom == DeviceIdiom.Tablet);
             InitializeComponent();
         }
 

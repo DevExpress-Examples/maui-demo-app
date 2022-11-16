@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Microsoft.Maui.Graphics;
 
-namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
+namespace DemoCenter.Maui.ViewModels {
     public class ColorViewModel {
         public static IList<ColorViewModel> CreateDefaultColors() {
             return new List<ColorViewModel>() {
-                new ColorViewModel("Gray", Color.FromArgb("#f0f0f0")),
+                new ColorViewModel("Gray", Color.FromArgb("#CBCBCB")),
                 new ColorViewModel("Red", Color.FromArgb("#ea4c4f")),
                 new ColorViewModel("Orange", Color.FromArgb("#ff6b11")),
                 new ColorViewModel("Yellow", Color.FromArgb("#fdaf18")),

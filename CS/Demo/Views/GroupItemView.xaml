@@ -6,8 +6,7 @@
              xmlns:views="clr-namespace:DemoCenter.Maui.Views;assembly=DemoCenter.Maui"
              x:Class="DemoCenter.Maui.Views.GroupItemView"
              VerticalOptions="FillAndExpand"
-             WidthRequest="90"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             WidthRequest="90">
     <AbsoluteLayout.GestureRecognizers>
         <TapGestureRecognizer x:Name="gestureRecognizer" NumberOfTapsRequired="1" Tapped="GroupItemViewTapped" />
     </AbsoluteLayout.GestureRecognizers>
@@ -24,7 +23,7 @@
         HorizontalTextAlignment="Center"
         Text="{Binding Title}"
         FontSize="16"
-        FontFamily="Univia-Pro"
+        FontFamily="Roboto"
         MaxLines="2"
         LineHeight="1"
         LineBreakMode="WordWrap"

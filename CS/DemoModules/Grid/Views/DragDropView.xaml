@@ -3,20 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
              x:Class="DemoCenter.Maui.Views.DragDropView"
-             xmlns:views="clr-namespace:DemoCenter.Maui.Views"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             xmlns:views="clr-namespace:DemoCenter.Maui.Views">
     <ContentPage.Content>
         <dxg:DataGridView x:Name="grid"
                           AllowSort="False"
                           AllowDragDropRows="True"
                           CompleteRowDragDrop="Grid_CompleteRowDragDrop"
-                          CustomCellStyle="Grid_CustomCellStyle"
+                          CustomCellAppearance="Grid_CustomCellAppearance"
                           DragRow="Grid_DragRow"
                           DragRowOver="Grid_DragRowOver"
                           ItemsSource="{Binding EmployeeTasks}"
                           Tap="Grid_Tap">
             <dxg:DataGridView.Columns>
-                <dxg:CheckBoxColumn FieldName="Completed" Width="108"/>
+                <dxg:CheckBoxColumn FieldName="Completed" Caption="Done" Width="70"/>
                 <dxg:TextColumn FieldName="Name"/>
                 <dxg:DateColumn FieldName="DueDate" DisplayFormat="d" Width="115"/>
             </dxg:DataGridView.Columns>

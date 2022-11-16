@@ -1,4 +1,4 @@
-﻿<ContentPage
+<ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -8,14 +8,13 @@
     xmlns:viewmodels="clr-namespace:DemoCenter.Maui.ViewModels"
     x:DataType="viewmodels:ControlViewModel"
     x:Class="DemoCenter.Maui.Views.ControlPage"
-    ios:Page.UseSafeArea="true"
+    ios:Page.UseSafeArea="False"
     Title="{Binding Title}"
     BackgroundColor="{DynamicResource BackgroundThemeColor}">
     <ContentPage.BindingContext>
         <viewmodels:ControlViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <!--<BoxView></BoxView>-->
         <dxcv:DXCollectionView x:Name="collectionView"
                                x:DataType="viewmodels:ControlViewModel"
                                ItemsSource="{Binding DemoItems}"
@@ -24,60 +23,37 @@
                                BackgroundColor="{DynamicResource BackgroundThemeColor}">
             <dxcv:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:DemoItem">
-                        <AbsoluteLayout
-                            VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="{DynamicResource BackgroundThemeColor}">
-                            <Grid
-                                Margin="16,0"
-                                BackgroundColor="Transparent"
-                                ColumnDefinitions="auto,*">
-                                <demo:IconView Grid.Column="0"
-                                    Margin="26"
-                                    HeightRequest="42"
-                                    WidthRequest="42"
-                                    Icon="{Binding Icon}"/>
-                                <Grid
-                                    Grid.Column="1"
-                                    Margin="0,16,0,0"
-                                    BackgroundColor="Transparent"
-                                    RowDefinitions="auto,auto">
-                                    <Label
-                                        Grid.Row="0"
-                                        Margin="0,0,0,2"
-                                        BackgroundColor="Transparent"
-                                        FontSize="16"
-                                        FontFamily="Univia-Pro"
-                                        LineBreakMode="NoWrap"
-                                        Style="{DynamicResource ListItemTextStyle}"
-                                        Text="{Binding ControlsPageTitle}"
-                                        TextColor="{DynamicResource TextThemeColor}"
-                                        VerticalOptions="Start" />
-                                    <Label
-                                        Grid.Row="1"
-                                        BackgroundColor="Transparent"
-                                        FontSize="12"
-                                        LineBreakMode="WordWrap"
-                                        FontFamily="Roboto"
-                                        Style="{DynamicResource ListItemDetailTextStyle}"
-                                        Text="{Binding Description}"
-                                        TextColor="{DynamicResource TextThemeColor}"
-                                        VerticalOptions="Start" />
-                                </Grid>
-                            </Grid>
-                            <demo:IconView
-                                AbsoluteLayout.LayoutFlags="All"
-                                AbsoluteLayout.LayoutBounds="0.993, 0.1, 0.175, 0.18"
-                                IsVisible="{Binding ShowBadge}"
-                                Source="{Binding BadgeIcon}"/>
-                            <BoxView
-                                AbsoluteLayout.LayoutFlags="WidthProportional"
-                                AbsoluteLayout.LayoutBounds="0, 98, 1, 1"
-                                Margin="20,0"
-                                Color="{DynamicResource GridCellLinesColor}"
-                                HeightRequest="1"
-                                IsVisible="{Binding ShowItemUnderline}" />
-                        </AbsoluteLayout>
+                    <VerticalStackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                        <demo:DockLayout Margin="16" StretchLastChild="False" ColumnSpacing="16">
+                            <demo:IconView demo:DockLayout.Dock="Left" HeightRequest="42" WidthRequest="42" Icon="{Binding Icon}"/>
+
+                            <demo:DockLayout demo:DockLayout.Dock="Top" StretchLastChild="False">
+                                <demo:IconView demo:DockLayout.Dock="Right" IsVisible="{Binding ShowBadge}" Source="{Binding BadgeIcon}"/>
+                                <Label HorizontalOptions="FillAndExpand"
+                                       Margin="0,0,0,2"
+                                       BackgroundColor="Transparent"
+                                       FontSize="16"
+                                       FontFamily="Roboto"
+                                       LineBreakMode="NoWrap"
+                                       Style="{DynamicResource ListItemTextStyle}"
+                                       Text="{Binding ControlsPageTitle}"
+                                       TextColor="{DynamicResource TextThemeColor}"
+                                       VerticalOptions="Start" />
+                            </demo:DockLayout>
+
+                            <Label demo:DockLayout.Dock="Top"
+                                   BackgroundColor="Transparent"
+                                   FontSize="Default"
+                                   LineBreakMode="WordWrap"
+                                   FontFamily="Roboto"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   Text="{Binding Description}"
+                                   TextColor="{DynamicResource TextThemeColor}"
+                                   VerticalOptions="Start" />
+                        </demo:DockLayout>
+                        <BoxView Color="{DynamicResource SeparatorColor}" HeightRequest="1" />
+                         
+                    </VerticalStackLayout>
                 </DataTemplate>
             </dxcv:DXCollectionView.ItemTemplate>
         </dxcv:DXCollectionView>

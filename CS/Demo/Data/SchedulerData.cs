@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DemoCenter.Maui.Models;
@@ -17,26 +17,25 @@ namespace DemoCenter.Maui.Data {
             demoItems = new List<DemoItem>() {
                 new DemoItem() {
                     Title = "Calendar",
-                    Description = "A calendar that allows a user to select a date. The calendar highlights holidays and observances.",
+                    Description = "A calendar that allows a user to select a date. The calendar can highlight holidays, observances, and any specific days in the year.",
                     Module = typeof(CalendarView),
-                    DemoItemStatus = DemoItemStatus.New,
                     Icon = "calendar"
                 },
                 new DemoItem() {
                     Title = "Day View",
-                    Description="This is a detailed view of appointments for one or several days.",
+                    Description="This scheduler view displays appointments for one or more days.",
                     Module = typeof(DayViewDemo),
                     Icon = "dayview"
                 },
                  new DemoItem() {
                     Title = "Work Week View",
-                    Description="Displays appointments for working days in a week.",
+                    Description="This scheduler view displays appointments for weekdays only.",
                     Module = typeof(ReceptionDesk),
                     Icon = "workweekview"
                  },
                 new DemoItem() {
                     Title = "Week View",
-                    Description="Displays appointments for an entire week.",
+                    Description="This view displays appointments for the entire week.",
                     Module = typeof(WeekViewDemo),
                     Icon = "weekview"
                 },
@@ -46,15 +45,15 @@ namespace DemoCenter.Maui.Data {
                     Module = typeof(MonthViewDemo),
                     Icon = "monthview"
                 },
-                //new DemoItem() {
-                //    Title = "Reminders",
-                //    Description="Illustrates how to add reminders to appointments.",
-                //    Module = typeof(RemindersDemo),
-                //    Icon = "reminders",
-                //    ShowItemUnderline = false},
+                
+                
+                
+                
+                
+                
             };
         }
         public List<DemoItem> DemoItems => demoItems;
-        public string Title => "SchedulerView";
+        public string Title => TitleData.SchedulerDataTitle;
     }
 }

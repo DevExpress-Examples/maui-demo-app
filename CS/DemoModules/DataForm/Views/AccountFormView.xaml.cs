@@ -1,20 +1,22 @@
 ﻿using System;
+using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.DataForm.ViewModels;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 
 namespace DemoCenter.Maui.Views {
-    public partial class DataFormAccountFormView : ContentPage {
+    public partial class DataFormAccountFormView : AdaptivePage {
         public DataFormAccountFormView() {
             InitializeComponent();
             BindingContext = new AccountFormViewModel();
+            OrientationChanged += OnOrientationChanged;
         }
 
-        protected override void OnSizeAllocated(double width, double height) {
-            base.OnSizeAllocated(width, height);
-            ((AccountFormViewModel)this.BindingContext).Rotate(dataForm, height > width);
+        void OnOrientationChanged(object sender, EventArgs e) {
+            ((AccountFormViewModel)this.BindingContext).Rotate(dataForm, Orientation);
         }
 
-        private void SubmitOnClicked(object sender, EventArgs e) {
+        void SubmitOnClicked(object sender, EventArgs e) {
             if (dataForm.Validate()) { 
                 dataForm.Commit();
                 DisplayAlert("Success", "Your account has been created successfully", "OK");

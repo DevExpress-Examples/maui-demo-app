@@ -45,6 +45,6 @@ namespace DemoCenter.Maui.Data {
         }
 
         public List<DemoItem> DemoItems => this.demoItems;
-        public string Title => "Editors";
+        public string Title => TitleData.DataFormDataTitle;
     }
 }
