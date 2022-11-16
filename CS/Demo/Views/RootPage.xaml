@@ -1,154 +1,125 @@
 ﻿<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                 xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
                 xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
                 xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
                 xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                 xmlns:views="clr-namespace:DemoCenter.Maui.Views"
+                xmlns:local="clr-namespace:DemoCenter.Maui"
                 x:Class="DemoCenter.Maui.AppShell"
                 x:Name="appShell"
                 FlyoutBehavior="Flyout"
-                ForegroundColor="{DynamicResource DemoIconColor}"
+                ios:Page.UseSafeArea="False"
+                ForegroundColor="{DynamicResource DemoHamburgerIconColor}"
                 BackgroundColor="{DynamicResource BackgroundThemeColor}"
                 FlyoutBackgroundColor="{DynamicResource BackgroundThemeColor}">
-    <Shell.BindingContext>
-        <vm:MainViewModel />
-    </Shell.BindingContext>
     <Shell.Resources>
         <ResourceDictionary>
-                <DataTemplate x:Key="headerTemplate">
-                    <StackLayout
-                        Margin="0,0,0,0"
-                        BackgroundColor="{DynamicResource BackgroundThemeColor}">
-                        <Label
-                            Text="{Binding Title}"
-                            FontFamily="Univia-Pro"
-                            FontSize="Medium"
-                            VerticalOptions="StartAndExpand"
-                            HorizontalOptions="Fill"
-                            HorizontalTextAlignment="Center"
-                            HeightRequest="35"
-                            TextColor="{DynamicResource TextThemeColor}"
-                            BackgroundColor="Transparent"/>
-                        <BoxView Color="{DynamicResource MainPageBackgroundColor}"
-                                    HeightRequest="10" />
-                    </StackLayout>
-                </DataTemplate>
-                <DataTemplate x:Key="itemTemplate">
-                    <Frame
-                        Padding="10,0,10,10"
-                        HasShadow="False"
-                        BorderColor="{DynamicResource MainPageBackgroundColor}"
-                        CornerRadius="0"
-                        BackgroundColor="{DynamicResource MainPageBackgroundColor}">
-                        <Grid ColumnDefinitions="*, 40"
-                              RowDefinitions="41, 160"
-                              BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                              HeightRequest="201"
-                              Padding="0"
-                              Margin="0"
-                              RowSpacing="0"
-                              ColumnSpacing="0">
-                            <demo:DXDCLabel
-                                Margin="15, 0, 0, 0"
-                                Padding="0"
-                                HeightRequest="32"
+            <DataTemplate x:Key="itemTemplate">
+                <VerticalStackLayout
+                    Margin="{OnIdiom Phone='10,10', Tablet='40,10'}">
+                    <VerticalStackLayout.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,4"
+                                Radius="2"
+                                Opacity="0.1" />
+                    </VerticalStackLayout.Shadow>
+                    <Border BackgroundColor="{DynamicResource CardViewHeaderColor}"
+                        StrokeShape="RoundRectangle 16 16 0 0"
+                        StrokeThickness="0" Margin="0, 0, 0, -2">
+                        <Grid ColumnDefinitions="*, Auto"
+                            Padding="20, 6, 10, 6">
+                            <Label Grid.Column="0"
                                 Text="{Binding Title}"
+                                VerticalOptions="Center"
                                 LineBreakMode="TailTruncation"
-                                Style="{DynamicResource ListItemTextStyle}"
                                 TextColor="{DynamicResource TextThemeColor}"
-                                FontFamily="Univia-Pro"
-                                FontSize="22"
-                                BackgroundColor="Transparent"
-                                VerticalOptions="End"/>
-                            <dxco:SimpleButton
-                                Grid.Column="1"
-                                Text="⋮"
+                                FontFamily="Roboto-Medium"
+                                FontSize="18"/>
+                            <dxco:SimpleButton Grid.Column="1"
+                                HeightRequest="50"
                                 TextColor="{DynamicResource AccentColor}"
-                                FontFamily="Univia-Pro Medium"
-                                FontSize="22"
-                                HeightRequest="32"
-                                WidthRequest="30"
-                                Padding="0"
                                 Command="{Binding NavigationCommand, Source={Reference appShell}}"
                                 CommandParameter="{Binding}"
                                 BackgroundColor="Transparent"
-                                VerticalOptions="End" />
-                                <dxcv:DXCollectionView
-                                    Grid.ColumnSpan="2"
-                                    Grid.Row="1"
-                                    Margin="10"
-                                    ItemsSource="{Binding DemoItems}"
-                                    Orientation="Horizontal"
-                                    HorizontalOptions="Fill"
-                                    VerticalOptions="FillAndExpand"
-                                    HeightRequest="140"
-                                    IsScrollBarVisible="false"
-                                    BackgroundColor="{DynamicResource BackgroundThemeColor}">
-                                    <dxcv:DXCollectionView.ItemTemplate>
-                                        <DataTemplate>
-                                            <views:GroupItemView TappedControlShortcut="DemoItemTappedControlShortcut"/>
-                                        </DataTemplate>
-                                    </dxcv:DXCollectionView.ItemTemplate>
-                                </dxcv:DXCollectionView>
+                                HorizontalOptions="End"
+                                FontFamily="Roboto"
+                                Text="All"
+                                FontSize="18"/>
                         </Grid>
-                    </Frame>
-                </DataTemplate>
-                <demo:CollectionViewHeaderTemplateSelector x:Key="itemTemplateSelector"
-                                            HeaderTemplate="{StaticResource headerTemplate}"
-                                            ItemTemplate="{StaticResource itemTemplate}"/>
-            </ResourceDictionary>
+                    </Border>
+                    <Border BackgroundColor="{DynamicResource CardViewBackgroundColor}"
+                        StrokeShape="RoundRectangle 0 0 16 16"
+                        Padding="2,0,2,0">
+                        <dxcv:DXCollectionView
+                                ItemsSource="{Binding DemoItems}"
+                                Orientation="Horizontal"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center"
+                                HeightRequest="130"
+                                Margin="0,8,0,0"
+                                IsScrollBarVisible="false">
+                                <dxcv:DXCollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <views:GroupItemView TappedControlShortcut="DemoItemTappedControlShortcut"/>
+                                    </DataTemplate>
+                                </dxcv:DXCollectionView.ItemTemplate>
+                            </dxcv:DXCollectionView>
+                    </Border>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
     </Shell.Resources>
-    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <Grid ColumnDefinitions="56, *"
-                  RowDefinitions="36"
+
+    <Shell.FlyoutHeader>
+        <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid ColumnDefinitions="48, *"
+                  Margin="0,24,16,16"
                   BackgroundColor="{DynamicResource BackgroundThemeColor}" >
-                <demo:IconView Icon="{Binding Icon}"
+                <demo:IconView Icon="dx"
                                VerticalOptions="Center"
                                HeightRequest="24"/>
-                <Label Text="{Binding Title}"
-                       TextColor="{DynamicResource TextThemeColor}"
+                <Label TextColor="{DynamicResource TextThemeColor}"
+                       FontSize="22"
+                       FontFamily="Roboto"
+                       Text="{Binding TitleText}"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
                        VerticalTextAlignment="Center"
                        Grid.Column="1" />
             </Grid>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>
-    <Shell.FlyoutHeader>
-        <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}">            
-            <Label Margin="16,24"
-                   TextColor="{DynamicResource DemoIconColor}"
-                   FontSize="22"
-                   FontAttributes="Bold"
-                   FontFamily="Roboto"
-                   Text="{Binding TitleText}" />
             <Label Margin="16,10"
-                   TextColor="{DynamicResource TextThemeColor}"
+                   TextColor="{DynamicResource SecondaryTextColor}"
                    Text="{Binding Description}"
-                   VerticalOptions="End"
+                   FontSize="14"/>
+            <Label Margin="16,20,16,0"
+                   TextColor="{DynamicResource SecondaryTextColor}"
+                   Text="{Binding Version}"
                    FontSize="14"/>
             <BoxView
                 Margin="16,20"
                 HeightRequest="1"
-                BackgroundColor="{DynamicResource SecondaryTextColor}"/>
-            <dxcv:DXCollectionView ItemsSource="{Binding MenuItems}"
-                                   TapCommand="{Binding OpenWebCommand}">
+                BackgroundColor="{DynamicResource SeparatorColor}"/>
+            <dxcv:DXCollectionView ItemsSource="{Binding MenuItems}">
                 <dxcv:DXCollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions="56, *"
-                              RowDefinitions="36"
+                              RowDefinitions="48"
                               BackgroundColor="{DynamicResource BackgroundThemeColor}" >
                             <demo:IconView Icon="{Binding Icon}"
                                            VerticalOptions="Center"
                                            HeightRequest="24"/>
                             <Label Text="{Binding Name}"
-                                   TextColor="{DynamicResource SecondaryTextColor}"
+                                   TextColor="{DynamicResource AccentColor}"
                                    HorizontalOptions="Start"
                                    VerticalOptions="Center"
                                    VerticalTextAlignment="Center"
                                    Grid.Column="1" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference appShell}, Path=BindingContext.OpenWebCommand}"
+                                                      CommandParameter="{Binding}"/>
+                            </Grid.GestureRecognizers>
                         </Grid>
                     </DataTemplate>
                 </dxcv:DXCollectionView.ItemTemplate>
@@ -156,58 +127,41 @@
         </StackLayout>
     </Shell.FlyoutHeader>
     <Shell.TitleView>
-        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
-              Margin="0, 0, 10, 0"
-              ColumnDefinitions="*, Auto"
-              RowDefinitions="*">
-            <StackLayout Grid.Column="0"
-                         Grid.Row="0"
-                         VerticalOptions="Center"
-                         HorizontalOptions="Center">
+        <local:TitleViewFix>
+            <Grid ColumnDefinitions="*, Auto"
+                  HorizontalOptions="FillAndExpand"
+                  Margin="{OnPlatform Android='0, 0, 12, 0', iOS='0, 0, 0, 6'}">
                 <Label Text="{Binding TitleText}"
+                       Grid.Column="0"
                        FontSize="Large"
-                       FontFamily="Univia-Pro Medium"
+                       FontFamily="Roboto Medium"
                        VerticalOptions="Center"
-                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"
+                       Margin="{OnPlatform Android='0, 0, 20, 0', iOS='0'}"
                        TextColor="{DynamicResource TextThemeColor}"
                        BackgroundColor="Transparent"/>
-            </StackLayout>
-            <demo:IconView Grid.Column="1"
-                           Grid.Row="0"
-                           HeightRequest="24"
-                           WidthRequest="24"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           Icon="palette">
-                <demo:IconView.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ThemeCommand}" CommandParameter="{Binding}" />
-                </demo:IconView.GestureRecognizers>
-            </demo:IconView>
-        </Grid>
+                <Grid Grid.Column="1" Padding="4"
+                      BackgroundColor="Transparent"
+                      HorizontalOptions="Center" VerticalOptions="Center">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ThemeCommand}" CommandParameter="{Binding}" />
+                    </Grid.GestureRecognizers>
+                    <demo:IconView HeightRequest="24" WidthRequest="24" Icon="palette" />
+                </Grid>
+            </Grid>
+        </local:TitleViewFix>
     </Shell.TitleView>
-    <MenuItem Text="Product Page"
-              IconImageSource="productpage"
-              Command="{Binding OpenWebCommand}"
-              CommandParameter="{Binding ProductUrl}" />
 
-    <MenuItem Text="Documentation"
-              IconImageSource="documentation"
-              Command="{Binding OpenWebCommand}"
-              CommandParameter="{Binding DocumentationUrl}" />
-
-    <MenuItem Text="Source Code"
-              IconImageSource="sourcecode"
-              Command="{Binding OpenWebCommand}"
-              CommandParameter="{Binding SourceCodeUrl}" />
     <ShellContent FlyoutItemIsVisible="False">
-        <ContentPage>
+        <demo:DemoPage>
             <dxcv:DXCollectionView
                 SelectionMode="None"
                 IsScrollBarVisible="false"
-                ItemTemplate="{StaticResource itemTemplateSelector}"
+                ItemTemplate="{StaticResource itemTemplate}"
                 ItemsSource="{Binding Items}"
 				BackgroundColor="{DynamicResource BackgroundThemeColor}">
             </dxcv:DXCollectionView>
-        </ContentPage>      
+        </demo:DemoPage>
     </ShellContent>
 </Shell>

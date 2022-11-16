@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DemoCenter.Maui.Data;
 using DemoCenter.Maui.DemoModules.CollectionView.Views;
 using DemoCenter.Maui.Models;
 
@@ -9,44 +10,44 @@ namespace DemoCenter.Maui.Data {
             DemoItems = new List<DemoItem>() {
                 new DemoItem() {
                     Title = "First Look",
-                    Description = "Demonstrates the DXCollectionView's basic features.",
+                    Description = "An introduction to our Collection View control. Shows basic control features, such as vertical orientation, grouping, and item templates.",
                     Module = typeof(ContactsView),
                     Icon = "collectionview_firstlook"
                 },
                 new DemoItem() {
                     Title = "Swipe Actions",
-                    Description = "Illustrates the UI that is extended with extra buttons when you swipe an item row.",
+                    Description = "The swipe gesture allows your users to access row-related commands. Users can swipe a row to the left or right.",
                     Module = typeof(CollectionViewDefaultSwipes),
                     Icon = "collectionview_swipeactions"
                 },
                 new DemoItem() {
                     Title = "Horizontal Scrolling",
-                    Description = "Demonstrates the DXCollectionView's items Horizontal Scrolling.",
+                    Description = "You can arrange elements horizontally in the view. In combination with item templates, this allows you to implement a gallery of items with our Collection View control.",
                     Module = typeof(CollectionViewHorizontalScrolling),
                     Icon = "collectionview_virtualscrolling"
                 },
                 new DemoItem() {
                     Title = "Row Auto Height",
-                    Description = "Shows how the list can automatically adjust item height to display the entire content of items.",
+                    Description = "Our Collection View control automatically adjusts row heights to fully display the content of cells. You can always set the height to a fixed value.",
                     Module = typeof(CollectionViewRowAutoHeightView),
                     Icon = "collectionview_rowautoheight"
                 },
                 new DemoItem() {
                     Title = "Drag and Drop",
-                    Description = "Demonstrates the list's drag-and-drop functionality. This feature allows users to reorder items.",
+                    Description = "Users can drag a row to a new position. Touch and hold a row to start dragging it.",
                     Module = typeof(CollectionViewDragDropView),
                     Icon = "collectionview_dragdrop"
                 },
                 new DemoItem() {
-                    Title = "Pull To Refresh",
-                    Description = "Shows how end users can use a pull-down gesture to update the list.",
+                    Title = "Pull-to-Refresh",
+                    Description = "The Collection View control supports the pull-to-refresh gesture. Drag the screen downwards and then release it to load new content.",
                     Module = typeof(CollectionViewPullToRefreshView),
                     Icon = "collectionview_pulltorefresh"
                 },
                 new DemoItem() {
                     Title = "Infinite Data Source",
                     ControlsPageTitle = "Infinite Data Source",
-                    Description = "Shows how the list requests new data when users scroll to the end of the list.",
+                    Description = "You can implement infinite scrolling in the Collection View control. This allows you to speed up the display of large data sources. The control only shows more rows if the user scrolls down to the bottom of the page.",
                     Module = typeof(CollectionViewLoadMoreView),
                     Icon = "collectionview_infinitedatasource",
                     ShowItemUnderline = false
@@ -55,6 +56,6 @@ namespace DemoCenter.Maui.Data {
         }
 
         public List<DemoItem> DemoItems { get; }
-        public string Title => "CollectionView";
+        public string Title => TitleData.CollectionViewDataTitle;
     }
 }

@@ -4,20 +4,19 @@
                            x:Class="DemoCenter.Maui.Views.AutoFilterRowView"
                            xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views"
-                           xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
-    
+                           xmlns:demo="clr-namespace:DemoCenter.Maui.Demo">
+
     <ContentPage.Content>
         <dxg:DataGridView x:Name="dataGridView"
                           EditorShowMode="Tap"
                           ItemsSource="{Binding Path=OutlookData}"
                           ShowAutoFilterRow="True">
             <dxg:DataGridView.Columns>
-                <dxg:NumberColumn FieldName="Id" Width="70" IsReadOnly="true" AutoFilterCondition="Equals"/>
-                <dxg:ComboBoxColumn FieldName="Priority" MinWidth="120" AutoFilterCondition="Equals"/>
-                <dxg:TextColumn FieldName="From.Name" Caption="From" MinWidth="150" AutoFilterCondition="Contains"/>
-                <dxg:DateColumn FieldName="Sent" MinWidth="110"/>
-                <dxg:NumberColumn FieldName="Size" Width="90" DisplayFormat="{}{0} B"/>
+                <dxg:NumberColumn FieldName="Id" Width="60" IsReadOnly="true" AutoFilterCondition="Equals"/>
+                <dxg:ComboBoxColumn FieldName="Priority" MinWidth="140" AutoFilterCondition="Equals"/>
+                <dxg:TextColumn FieldName="From.Name" Caption="From" MinWidth="190" AutoFilterCondition="Contains"/>
+                <dxg:DateColumn FieldName="Sent" MinWidth="120"/>
+                <dxg:NumberColumn FieldName="Size" Width="110" DisplayFormat="{}{0} B"/>
                 <dxg:CheckBoxColumn FieldName="HasAttachment" EditFormCaption="Has Attachment" Width="70">
                     <dxg:CheckBoxColumn.HeaderContentTemplate>
                         <DataTemplate>

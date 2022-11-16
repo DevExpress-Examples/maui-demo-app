@@ -31,19 +31,4 @@ namespace DemoCenter.Maui.Views {
             return null;
         }
     }
-
-    public class ContactIconTemplateSelector : DataTemplateSelector {
-        public DataTemplate PhotoTemplate { get; set; }
-        public DataTemplate IconTemplate { get; set; }
-
-        protected override DataTemplate OnSelectTemplate(object item, BindableObject container) {
-            if (item is CellData gridData)
-                return OnSelectTemplate(gridData.Item, container);
-            if (item is PhoneContact contact)
-                return contact.HasPhoto ? PhotoTemplate : IconTemplate;
-            if (item is CallInfo callInfo)
-                return OnSelectTemplate(callInfo.Contact, container);
-            return IconTemplate;
-        }
-    }
 }

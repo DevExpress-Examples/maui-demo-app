@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-             xmlns:editors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:views="clr-namespace:DemoCenter.Maui.Views"
              x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.ContactsView"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}"
-             ios:Page.UseSafeArea="True">
+             ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,13 +16,13 @@
 
             <Style TargetType="Label">
                 <Setter Property="FontFamily">Roboto</Setter>
-                <Setter Property="FontSize">14</Setter>
+                <Setter Property="FontSize">Default</Setter>
             </Style>
 
             <views:CallTypeToIconConverter x:Key="callTypeIconConverter"/>
             <views:UpperCaseConverter x:Key="upperCaseConverter"/>
             <DataTemplate x:Key="iconItemTemplate">
-                <Grid Padding="2, 8, 18, 7">
+                <Grid Padding="{OnIdiom Phone='2, 8, 18, 7', Tablet='2, 8, 37, 7'}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="*"/>
@@ -84,16 +82,16 @@
             </DataTemplate>
 
             <DataTemplate x:Key="photoItemTemplate">
-                <Grid Padding="2, 8, 18, 7">
+                <Grid Padding="{OnIdiom Phone='2, 8, 18, 7', Tablet='2, 8, 37, 7'}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="20"/>
                         <ColumnDefinition Width="44"/>
-                    </Grid.ColumnDefinitions>        
+                    </Grid.ColumnDefinitions>
                     <Ellipse Margin="0"
                                 Fill="White"
-                                Stroke="{DynamicResource AvatarBorderColor}" 
+                                Stroke="{DynamicResource AvatarBorderColor}"
                                 StrokeThickness="1"
                                 HeightRequest="50"
                                 WidthRequest="50"
@@ -135,9 +133,9 @@
                                        IconTemplate="{StaticResource iconItemTemplate}"/>
 
             <DataTemplate x:Key="groupItemTemplate">
-                <StackLayout Padding="2, 0, 18, 10">
+                <StackLayout Padding="{OnIdiom Phone='2,0,18,10', Tablet='2,0,37,10'}">
                     <Label FontFamily="Roboto-Medium"
-                           Margin="0,20,0,1"
+                           Margin="0,20,0,4"
                            TextColor="{DynamicResource PhoneListTabTextColor}"
                            Text="{Binding Value, StringFormat='{0:d}', Converter={StaticResource upperCaseConverter}}"/>
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
@@ -146,16 +144,18 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <dxcv:DXCollectionView x:Name="collectionView"
-                              AllowGroupCollapse="False"
-                              GroupHeaderTemplate="{StaticResource groupItemTemplate}"
-                              ItemTemplate="{StaticResource contactItemTemplateSelector}"
-                              ItemsSource="{Binding Recent}"
-                              Tap="ItemSelected"
-                              Margin="{OnIdiom Phone='16,0,0,0', Tablet='71,0,0,0'}">
-            <dxcv:DXCollectionView.GroupDescription>
-                <dxcv:GroupDescription FieldName="Date" SortOrder="Descending"/>
-            </dxcv:DXCollectionView.GroupDescription>
-        </dxcv:DXCollectionView>
+        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <dxcv:DXCollectionView x:Name="collectionView"
+                                   AllowGroupCollapse="False"
+                                   GroupHeaderTemplate="{StaticResource groupItemTemplate}"
+                                   ItemTemplate="{StaticResource contactItemTemplateSelector}"
+                                   ItemsSource="{Binding Recent}"
+                                   Tap="ItemSelected"
+                                   Margin="{OnIdiom Phone='16,0,0,0', Tablet='37,0,0,0'}">
+                <dxcv:DXCollectionView.GroupDescription>
+                    <dxcv:GroupDescription FieldName="Date" SortOrder="Descending"/>
+                </dxcv:DXCollectionView.GroupDescription>
+            </dxcv:DXCollectionView>
+        </Grid>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

@@ -37,15 +37,5 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         public void UpdateSuperhero() {
             SelectedSuperhero = (SelectedColorIndex == -1) ? null : Superheroes[SelectedColorIndex];
         }
-
-        public void UpdateLayout(bool isHorizontalOrientation) {
-            if (isHorizontalOrientation) {
-                ImageRect = new Rect(0, 0, 0.5, 1.0);
-                DetailsRect = new Rect(1.0, 0.0, 0.5, 1.0);
-            } else {
-                ImageRect = new Rect(0, 0, 1.0, 0.5);
-                DetailsRect = new Rect(0.0, 1.0, 1.0, 0.5);
-            }
-        }
     }
 }

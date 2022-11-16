@@ -4,7 +4,7 @@ using DemoCenter.Maui.ViewModels;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class Oscillator : ContentPage {
+    public partial class Oscillator : Demo.DemoPage {
         readonly OscillatorChartsViewModel viewModel = new OscillatorChartsViewModel();
         readonly Timer timer = new Timer();
         bool isRunning = false;
@@ -20,7 +20,7 @@ namespace DemoCenter.Maui.Views {
         }
 
         void Timer_Tick(object sender, EventArgs e) {
-            Device.BeginInvokeOnMainThread(() => {
+            Dispatcher.Dispatch(() => {
                 viewModel.MoveToNextFrame();
                 if (isRunning)
                     timer.Start();

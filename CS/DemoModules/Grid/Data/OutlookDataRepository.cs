@@ -50,7 +50,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
         void ExecuteLoadMoreCommand() {
             Task.Run(() => {
                 Thread.Sleep(1000);
-                Device.BeginInvokeOnMainThread(() => {
+                Application.Current.Dispatcher.Dispatch(() => {
                     LoadData();
                     IsRefreshing = false;
                 });

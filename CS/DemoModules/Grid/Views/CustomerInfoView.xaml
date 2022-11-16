@@ -1,89 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<demo:DemoPage
+    x:Class="DemoCenter.Maui.Views.CustomerOrdersView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             
-             x:Class="DemoCenter.Maui.Views.CustomerOrdersView"
-             BackgroundColor="{DynamicResource GridCellBackgroundColor}"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="true">
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <Style TargetType="Label">
+            <Setter Property="FontSize" Value="{OnIdiom Phone=14, Tablet=16}"/>
             <Setter Property="TextColor" Value="{DynamicResource GridCellFontColor}"/>
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <OnIdiom x:TypeArguments="View">
             <OnIdiom.Phone>
-                <StackLayout Margin="14" Spacing="0">
-                    <Grid RowSpacing="0" ColumnSpacing="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                                            
-                        <ContentView Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" BackgroundColor="{DynamicResource GridCellBorderColor}">
-                            <Image Margin="1" Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="120" WidthRequest="100" />
-                        </ContentView>
-                        <Label Text="{Binding Name}" Grid.Row="0" Grid.Column="1" Margin="14, 0, 0, 7"/>
-                        <Label Text="{Binding Position}" Grid.Row="1" Grid.Column="1" Margin="14, 0, 0, 7"/>
-                        <Label Text="{Binding Phone}" Grid.Row="2" Grid.Column="1" Margin="14, 0, 0, 0"/>
-                    </Grid>
-                                        
-                    <Label Text="{Binding Notes}" Margin="0, 14, 0, 0" />
-                </StackLayout>
-            </OnIdiom.Phone>
+                <VerticalStackLayout Spacing="7" Padding="16">
+                    <demo:DockLayout ColumnSpacing="7" RowSpacing="7" StretchLastChild="False">
+                        <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}">
+                            <Image Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="120" WidthRequest="100" />
+                        </Border>
 
+                        <Label demo:DockLayout.Dock="Top" Text="{Binding Name}"/>
+                        <Label demo:DockLayout.Dock="Top" Text="{Binding Position}"/>
+                        <Label demo:DockLayout.Dock="Top" Text="{Binding Phone}"/>
+                        <Label demo:DockLayout.Dock="Top" Text="{Binding Email}"/>
+                    </demo:DockLayout>
+                    <Label Text="{Binding Notes}" Grid.Row="1"/>
+                </VerticalStackLayout>
+            </OnIdiom.Phone>
             <OnIdiom.Tablet>
-                <StackLayout Spacing="0" Margin="20">
-                    <Grid RowSpacing="0" ColumnSpacing="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                                        
-                        <ContentView Grid.Row="0" Grid.Column="0" BackgroundColor="{DynamicResource GridCellBorderColor}">
-                            <Image Margin="1" Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="120" WidthRequest="100" />
-                        </ContentView>
-                                            
-                        <Grid Grid.Row="0" Grid.Column="1" Margin="20, 0, 0, 0" RowSpacing="0" ColumnSpacing="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                                            
-                            <Label Margin="0, 0, 0, 10" Text="Name:" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
-                            <Label Margin="0, 0, 0, 10" Text="{Binding Name}" Grid.Row="0" Grid.Column="1"/>
-                                                
-                            <Label Margin="0, 0, 0, 10" Text="Position:" FontAttributes="Bold" Grid.Row="1" Grid.Column="0"/>
-                            <Label Margin="0, 0, 0, 10" Text="{Binding Position}" Grid.Row="1" Grid.Column="1"/>
-                                                
-                            <Label Margin="0, 0, 0, 10" Text="Phone:" FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
-                            <Label Margin="0, 0, 0, 10" Text="{Binding Phone}" Grid.Row="2" Grid.Column="1"/>
-                                                
-                            <Label Margin="0, 0, 0, 10" Text="Email:" FontAttributes="Bold" Grid.Row="3" Grid.Column="0"/>
-                            <Label Margin="0, 0, 0, 10" Text="{Binding Email}" Grid.Row="3" Grid.Column="1"/>
-                                                
-                            <Label Text="Address:" FontAttributes="Bold" Grid.Row="4" Grid.Column="0"/>
-                            <Label Text="{Binding Address}" Grid.Row="4" Grid.Column="1"/>
-                        </Grid>
-                    </Grid>
-                                        
-                    <Label Text="{Binding Notes}" Margin="0, 20, 0, 0" Grid.Row="1"/>
-                </StackLayout>
+                <VerticalStackLayout Spacing="0" Padding="16">
+                    <demo:DockLayout ColumnSpacing="16" RowSpacing="10" StretchLastChild="False">
+                        <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}">
+                            <Image Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="130" WidthRequest="100" />
+                        </Border>
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Name:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Name}"/>
+                        </demo:DockLayout>
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Position:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Position}"/>
+                        </demo:DockLayout>
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Phone:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Phone}"/>
+                        </demo:DockLayout>
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Email:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Email}"/>
+                        </demo:DockLayout>
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Address:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Address}"/>
+                        </demo:DockLayout>
+                    </demo:DockLayout>
+
+                    <Label Text="{Binding Notes}" Margin="0,16,0,0" Grid.Row="1"/>
+                </VerticalStackLayout>
             </OnIdiom.Tablet>
         </OnIdiom>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

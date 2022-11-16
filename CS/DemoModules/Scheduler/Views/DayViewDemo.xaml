@@ -1,17 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<?xml version="1.0" encoding="UTF-8"?>
+<demo:DemoPage  xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+                xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
-             x:Class="DemoCenter.Maui.Views.DayViewDemo"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             x:Class="DemoCenter.Maui.Views.DayViewDemo">
     <ContentPage.ToolbarItems>
-        <!-- <ToolbarItem Text="Day Count"
-                     Clicked="OnItemClicked"
-                     IconImageSource="{OnPlatform Android='format_list_bulleted.xml'}"/> -->
+        
         <ToolbarItem Clicked="OnItemClicked" IconImageSource="verticalelipsize" />
     </ContentPage.ToolbarItems>
-    
-    <dxsch:DayView DayCount="{Binding DaysCount, Mode=TwoWay}" Start="{Binding Start}" Tap="DayView_OnTap">
+
+    <dxsch:DayView DayCount="{Binding DaysCount, Mode=TwoWay}" Start="{Binding Start}" Tap="DayView_OnTap"
+                   BackgroundColor="{DynamicResource BackgroundThemeColor}">
         <dxsch:DayView.DataStorage>
             <dxsch:SchedulerDataStorage x:Name="storage">
                 <dxsch:SchedulerDataStorage.DataSource>
@@ -21,18 +20,18 @@
                                                        AllDay="AllDay"
                                                        Start="Start"
                                                        End="End"
-                                                       Id="Id" 
-                                                       Description="Description" 
-                                                       Location="Location" 
+                                                       Id="Id"
+                                                       Description="Description"
+                                                       Location="Location"
                                                        RecurrenceInfo="RecurrenceInfo"
-                                                       StatusId="Status" 
+                                                       StatusId="Status"
                                                        Subject="Subject"
-                                                       LabelId="Label" 
-                                                       TimeZoneId="TimeZoneId"/>
+                                                       LabelId="Label"
+                                                       TimeZoneId="TimeZoneId" />
                         </dxsch:DataSource.AppointmentMappings>
                     </dxsch:DataSource>
                 </dxsch:SchedulerDataStorage.DataSource>
             </dxsch:SchedulerDataStorage>
         </dxsch:DayView.DataStorage>
     </dxsch:DayView>
-</ContentPage>
+</demo:DemoPage>

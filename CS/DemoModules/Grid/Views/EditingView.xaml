@@ -5,17 +5,15 @@
                            xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views"
                            xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-                           xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
-                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                           xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui">
     <ContentPage.Resources>
         <local:DoubleToProgressConverter MaxValue="1000" x:Key="DoubleToProgressConverter"/>
     </ContentPage.Resources>
-    
+
     <ContentPage.ToolbarItems>
-        <!-- <ToolbarItem Text="Change Mode" Clicked="OnItemClicked"/> -->
         <ToolbarItem Clicked="OnItemClicked" IconImageSource="verticalelipsize" />
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
         <dxg:DataGridView x:Name="dataGridView"
                           Grid.Row="1"
@@ -25,36 +23,30 @@
                           ValidateCell="DataGridView_ValidateCell"
                           ValidationError="DataGridView_ValidationError">
             <dxg:DataGridView.Columns>
-                <dxg:NumberColumn FieldName="Id" Width="70" IsReadOnly="true"/>
-                <dxg:ComboBoxColumn FieldName="Priority" MinWidth="120"/>
-                <dxg:TextColumn FieldName="From.Name" Caption="From" MinWidth="150" ClearIconVisibility="Auto"/>
-                <dxg:DateColumn FieldName="Sent" Width="110" PickerDisableDate="DateColumn_PickerDisableDate" PickerShowTrailingDays="True"/>
-                <dxg:TimeColumn FieldName="Time" Width="100"/>
-                <dxg:NumberColumn FieldName="Size" Width="120" DisplayFormat="{}{0} B" IsUpDownIconVisible="True" UpDownIconAlignment="Start"/>
+                <dxg:NumberColumn FieldName="Id" Width="60" IsReadOnly="true"/>
+                <dxg:ComboBoxColumn FieldName="Priority" MinWidth="140"/>
+                <dxg:TextColumn FieldName="From.Name" Caption="From" MinWidth="190" ClearIconVisibility="Auto"/>
+                <dxg:DateColumn FieldName="Sent" Width="120" PickerDisableDate="DateColumn_PickerDisableDate" />
+                <dxg:TimeColumn FieldName="Time" Width="110"/>
+                <dxg:NumberColumn FieldName="Size" Width="110" DisplayFormat="{}{0} B" IsUpDownIconVisible="True" UpDownIconAlignment="Start"/>
                 <dxg:TemplateColumn FieldName="HoursActive" MinWidth="180">
                     <dxg:TemplateColumn.DisplayTemplate>
                         <DataTemplate>
                             <ProgressBar Progress="{Binding Path=Value, Converter={StaticResource DoubleToProgressConverter}}"
                                          ProgressColor="{DynamicResource AccentColor}"
-                                         VerticalOptions="CenterAndExpand">
-                                <ProgressBar.Margin>
-                                    <OnIdiom x:TypeArguments="maui:Thickness" Phone="14, 0, 14, 0" Tablet="15, 0, 15, 0"/>
-                                </ProgressBar.Margin>
-                            </ProgressBar>
+                                         VerticalOptions="CenterAndExpand"
+                                         Margin="14, 0, 14, 0" />
                         </DataTemplate>
                     </dxg:TemplateColumn.DisplayTemplate>
                     <dxg:TemplateColumn.EditTemplate>
                         <DataTemplate>
                             <Slider Minimum="0"
                                     Maximum="1000"
-                                    Value="{Binding Path=Value}" 
+                                    Value="{Binding Path=Value}"
                                     MaximumTrackColor="Silver"
                                     MinimumTrackColor="Silver"
-                                    ThumbColor="{DynamicResource AccentColor}">
-                                <Slider.Margin>
-                                    <OnIdiom x:TypeArguments="maui:Thickness" Phone="14, 0, 14, 0" Tablet="15, 0, 15, 0"/>
-                                </Slider.Margin>
-                            </Slider>
+                                    ThumbColor="{DynamicResource AccentColor}"
+                                    Margin="14, 0, 14, 0" />
                         </DataTemplate>
                     </dxg:TemplateColumn.EditTemplate>
                 </dxg:TemplateColumn>

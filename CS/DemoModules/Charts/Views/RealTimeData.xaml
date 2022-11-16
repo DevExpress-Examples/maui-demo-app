@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="DemoCenter.Maui.Views.RealTimeData"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.RealTimeData"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False">
     <ContentPage.Content>
         <demo:Panel>
             <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
@@ -16,7 +15,7 @@
                 </Grid.RowDefinitions>
                 <Label Text="Device Acceleration"
                        HorizontalTextAlignment="Center"
-                       FontSize="Medium"
+                       FontSize="Default"
                        Margin="0,8"
                        FontFamily="Roboto"
                        TextColor="{DynamicResource TextThemeColor}"
@@ -63,4 +62,4 @@
             </Grid>
         </demo:Panel>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

@@ -3,7 +3,7 @@ using DevExpress.Maui.Controls;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class PieCharts : ContentPage {
+    public partial class PieCharts : Demo.DemoPage {
         public PieCharts() {
             InitializeComponent();
             BindingContext = new PieChartsViewModel();
@@ -13,7 +13,7 @@ namespace DemoCenter.Maui.Views {
 
         void UpdateOrientation(double width, double height) {
             bool isVertical = width <= height;
-            Position position = isVertical ? Position.Top : Position.Left;
+            HeaderContentPosition position = isVertical ? HeaderContentPosition.Top : HeaderContentPosition.Left;
             dxTabView.HeaderPanelPosition = position;
             ((ChartsPageViewModelBase)BindingContext).SetVerticalState(isVertical);
         }

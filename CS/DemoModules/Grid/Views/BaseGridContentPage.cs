@@ -3,10 +3,9 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 namespace DemoCenter.Maui.Views {
-    public abstract class BaseGridContentPage : ContentPage {
-
+    public abstract class BaseGridContentPage : Demo.DemoPage {
         public BaseGridContentPage() {
-            On<Microsoft.Maui.Controls.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            On<Microsoft.Maui.Controls.PlatformConfiguration.iOS>().SetUseSafeArea(false);
             BindData();
         }
         

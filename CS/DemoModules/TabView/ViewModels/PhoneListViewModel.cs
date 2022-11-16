@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using DemoCenter.Maui.Data;
-using DevExpress.Maui.Core.Themes;
+using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.ViewModels {
@@ -13,7 +13,7 @@ namespace DemoCenter.Maui.ViewModels {
 
         public PhoneListData PhoneListData => currentGroupParameter == GroupParameterName.Alphabeticaly? alphabeticalyPhoneListData: categoryPhoneListData;
         public GroupParameterName GroupParameter => currentGroupParameter;
-        public bool IsLightTheme { get { return ThemeManager.ThemeName == Theme.Light; } }
+        public bool IsLightTheme => Application.Current.RequestedTheme == AppTheme.Light;
         public PhoneListViewModel() {
             phoneList = XmlDataDeserializer.GetData<PhoneList>("Resources.PhoneListData.xml");
             alphabeticalyPhoneListData = GroupByParameter(GroupParameterName.Alphabeticaly);

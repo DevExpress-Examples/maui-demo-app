@@ -1,17 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="DemoCenter.Maui.Views.AreaCharts"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.AreaCharts"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:view="clr-namespace:DemoCenter.Maui.Charts.Views"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
+        <DataTemplate x:Key="rangeAreaChartTemplate">
+            <view:RangeAreaChartContainer/>
+        </DataTemplate>
+        <DataTemplate x:Key="areaChartTemplate">
+            <view:AreaChartContainer/>
+        </DataTemplate>
+        <DataTemplate x:Key="stackedAreaChartTemplate">
+            <view:StackedAreaChartContainer/>
+        </DataTemplate>
+        <DataTemplate x:Key="fullStackedAreaChartTemplate">
+            <view:FullStackedAreaChartContainer/>
+        </DataTemplate>
+        <DataTemplate x:Key="stepAreaChartTemplate">
+            <view:StepAreaChartContainer/>
+        </DataTemplate>
+
         <local:AreaTypeToImageSourceConverter x:Key="areaTypeToImageSourceConverter"/>
         <DataTemplate x:Key="headerItemTemplate">
-            <demo:TabButton ImageSource="{Binding AreaType, Converter={StaticResource areaTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
+            <demo:ChartsDemoTabButton ImageSource="{Binding AreaType, Converter={StaticResource areaTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
         </DataTemplate>
         <local:AreaChartTemplateSelector x:Key="areaChartTemplateSelector"
                                          RangeAreaChartTemplate="{StaticResource rangeAreaChartTemplate}"
@@ -27,23 +43,22 @@
     </ContentPage.Resources>
     <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
         <dxco:TabView x:Name="dxTabView"
-                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                            HeaderPanelBackgroundColor="{DynamicResource TabItemBackgroundColor}"
-                
-                            HorizontalOptions="FillAndExpand"
-                            ScrollAnimationEnabled="True"
-                            SwipeEnabled="False"
-                
-                            ItemsSource="{Binding Content}"
-                            ItemHeaderTemplate="{StaticResource headerItemTemplate}"
-                            ItemTemplate="{StaticResource areaChartTemplateSelector}"
-                
-                            HeaderPanelContentAlignment="Start"
-                            HeaderPanelIndent="0"
-                
-                            IsSelectedItemIndicatorVisible="False"
-                            IsHeaderPanelShadowVisible="False"
-                
-                            SelectedItem="{Binding SelectedItem}"/>
+                      HorizontalOptions="FillAndExpand"
+                      ScrollAnimationEnabled="True"
+                      SwipeEnabled="False"
+
+                      ItemsSource="{Binding Content}"
+                      ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                      ItemTemplate="{StaticResource areaChartTemplateSelector}"
+
+                      HeaderPanelContentAlignment="Start"
+                      HeaderPanelIndent="0"
+                      HeaderPanelItemSpacing="0"
+                      HeaderPanelPadding="0"
+
+                      IsSelectedItemIndicatorVisible="False"
+                      IsHeaderPanelShadowVisible="False"
+
+                      SelectedItem="{Binding SelectedItem}" />
     </Grid>
-</ContentPage>
+</demo:DemoPage>

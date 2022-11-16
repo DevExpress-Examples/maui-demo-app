@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
              x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewDragDropView"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}"
-             ios:Page.UseSafeArea="True">
+             ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -36,12 +36,13 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <dxcv:DXCollectionView x:Name="collectionView"
-                              AllowDragDropItems="True"
-                              DragItem="DragItem"
-                              DragItemOver="DragItemOver"
-                              ItemTemplate="{StaticResource itemTemplateSelector}"
-                              ItemsSource="{Binding ItemSource}">
+        <dxcv:DXCollectionView
+            x:Name="collectionView"
+            AllowDragDropItems="True"
+            DragItem="DragItem"
+            DragItemOver="DragItemOver"
+            ItemTemplate="{StaticResource itemTemplateSelector}"
+            ItemsSource="{Binding ItemSource}">
         </dxcv:DXCollectionView>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Globalization;
+using DevExpress.Maui.Controls;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.PlatformConfiguration;
@@ -55,8 +56,8 @@ namespace DemoCenter.Maui {
 
     public class BoolToHeaderPanelPositionConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (value is bool && targetType == typeof(DevExpress.Maui.Controls.Position)) {
-                return (bool) value ? DevExpress.Maui.Controls.Position.Left : DevExpress.Maui.Controls.Position.Top;
+            if (value is bool && targetType == typeof(HeaderContentPosition)) {
+                return (bool) value ? HeaderContentPosition.Left : HeaderContentPosition.Top;
             }
             return null;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DemoCenter.Maui.Data;
 using DemoCenter.Maui.Models;
 using DemoCenter.Maui.Views;
 
@@ -11,20 +12,20 @@ namespace DemoCenter.Maui.Data {
             this.demoItems = new List<DemoItem>() {
                 new DemoItem() {
                     Title = "First Look",
-                    Description="Shows the TextEdit, PasswordEdit, MultilineEdit, and SimpleButton editors on a registration form.",
+                    Description="You can use our editors to create a data form. This registration form allows a user to enter a login, password, date, and notes.",
                     Module = typeof(AccountFormView),
                     Icon = "editors"
                 },
                 new DemoItem() {
                     Title = "Combo Box",
-                    Description = "Shows how to customize the ComboBoxEdit.",
+                    Description = "Demonstrates the customization capabilities of our combo box.",
                     Module = typeof(ComboBoxEditView),
                     Icon = "combobox"
                 },
                 new DemoItem() {
                     Title = "Auto Complete",
                     ControlsPageTitle = "Text Editor with Autocomplete",
-                    Description = "Shows how to customize the AutoCompleteEdit.",
+                    Description = "Shows how you can customize our text editor with the autocomplete feature.",
                     Module = typeof(AutoCompleteEditAsyncView),
                     Icon = "autocomplete"
                 },
@@ -32,32 +33,31 @@ namespace DemoCenter.Maui.Data {
                     Title = "Phone Book",
                     PageTitle = "Phone Number Editor"+Environment.NewLine+"with Autocomplete",
                     ControlsPageTitle = "Phone Book with Autocomplete",
-                    Description = "Shows how to use the AutoCompleteEdit in a phone book.",
+                    Description = "Shows how to use the text editor with autocomplete in a phone book.",
                     Module = typeof(AutoCompleteEditView),
                     Icon = "phonebook"
                 },
                 new DemoItem() {
                     Title = "Text Edit",
-                    Description = "Demonstrates different TextEdit customization options.",
+                    Description = "Demonstrates the customization capabilities of our text editor.",
                     Module = typeof(TextEditView),
-                    DemoItemStatus = DemoItemStatus.Updated,
                     Icon = "textedit"
                 },
                 new DemoItem() {
                     Title = "Numeric Edit",
-                    Description = "Demonstrates different NumericEdit customization options.",
+                    Description = "Demonstrates the customization capabilities of our numeric editor.",
                     Module = typeof(NumericEditView),
                     Icon = "numericedit"
                 },
                 new DemoItem() {
                     Title = "Date Edit",
-                    Description = "Demonstrates different DateEdit customization options.",
+                    Description = "Shows how you can customize our date editor.",
                     Module = typeof(DateEditView),
                     Icon = "dateedit"
                 },
                 new DemoItem() {
                     Title = "Time Edit",
-                    Description = "Demonstrates different TimeEdit customization options.",
+                    Description = "Demonstrates the customization capabilities of our time editor.",
                     Module = typeof(TimeEditView),
                     Icon = "timeedit"
                 }
@@ -65,6 +65,6 @@ namespace DemoCenter.Maui.Data {
         }
 
         public List<DemoItem> DemoItems => this.demoItems;
-        public string Title => "Editors";
+        public string Title => TitleData.EditorsDataTitle;
     }
 }

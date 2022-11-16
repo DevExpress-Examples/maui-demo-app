@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
              xmlns:local="clr-namespace:DemoCenter.Maui"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
-             ios:Page.UseSafeArea="true"
-             x:Class="DemoCenter.Maui.Views.LogarithmicScale"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
+             x:Class="DemoCenter.Maui.Views.LogarithmicScale">
     <ContentPage.BindingContext>
         <vm:HeadphoneComparisonViewModel/>
     </ContentPage.BindingContext>
@@ -122,4 +121,4 @@
             </Grid>
         </demo:Panel>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

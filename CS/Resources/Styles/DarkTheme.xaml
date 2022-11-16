@@ -1,148 +1,84 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-                    x:Class="DemoCenter.Maui.Resources.Styles.DarkTheme"
-                    xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
-                    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-                    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-                    xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler">
-    <Color x:Key="AccentColor">#9D7DE8</Color>
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <Color x:Key="BackgroundThemeColor">#303030</Color>
-    <Color x:Key="GridCellLinesColor">#454545</Color>
+<ResourceDictionary x:Class="DemoCenter.Maui.Resources.Styles.DarkTheme"
+                    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Color x:Key="GridAdvancedLayoutRowBorderColor">#696969</Color>
+    <Color x:Key="AccentColor" x:Uid="Primary-80">#D0BCFF</Color>
+    <Color x:Key="BackgroundThemeColor" x:Uid="Neutral-10">#1C1B1F</Color>
+    <Color x:Key="NavigationBarColor" x:Uid="Neutral-10">#1C1B1F</Color>
+    <Color x:Key="SeparatorColor" x:Uid="Secondary-40">#625B71</Color>
+    <Color x:Key="DividerColor" x:Uid="NeutralVariant-30">#49454F</Color>
+    <Color x:Key="TextThemeColor" x:Uid="Neutral-90">#E6E1E5</Color>
+    <Color x:Key="DemoHamburgerIconColor" x:Uid="NeutralVariant-80">#CAC4D0</Color>
+    <Color x:Key="SecondaryTextColor" x:Uid="NeutralVariant-80">#CAC4D0</Color>
+    <Color x:Key="NavigationTextColor" x:Uid="Neutral-90">#E6E1E5</Color>
 
-    <Color x:Key="GridCustomAppearanceOddRowBackgroundColor">#3A3A3A</Color>
-    <Color x:Key="GridCustomAppearanceFontColor">#E7E7E7</Color>
-    <Color x:Key="GridCustomAppearancePositiveFontColor">#00AE00</Color>
-    <Color x:Key="GridCustomAppearanceNegativeFontColor">#FF5458</Color>
+      
+    <Color x:Key="NestedTabViewFavoriteColor">#de6d6f</Color>
+    <Color x:Key="NestedTabViewCartColor">#27b24f</Color>
+    <Color x:Key="ReminderButtonBackgroundColor">#2088FF</Color>
+      
 
-    <Color x:Key="GridHorizontalVirtualizationSelectionColor">#2B4B6F</Color>
-    <Color x:Key="GridHorizontalVirtualizationQuarterBarColor">#6E5091</Color>
-    <Color x:Key="GridHorizontalVirtualizationYearBarColor">#A675E4</Color>
+    <Color x:Key="AvatarBorderColor">Transparent</Color>
+    <Color x:Key="SliderMaximumTrackColor-iOS" x:Uid="NeutralVariant-30">#49454F</Color>
 
-    <Color x:Key="CalendarViewBackgroundColor">#272727</Color>
-    <Color x:Key="CalendarViewSeparatorColor">#454545</Color>
-    <Color x:Key="CalendarViewTextColor">#E7E7E7</Color>
-    <Color x:Key="CalendarViewHolidayTextColor">#F44848</Color>
+    <Color x:Key="CardViewBackgroundColor" x:Uid="SurfaceDark-3">#2A2831</Color>
+    <Color x:Key="CardViewHeaderColor" x:Uid="NeutralVariant-20">#322F37</Color>
 
-    <Color x:Key="TabItemBackgroundColor">#454545</Color>
-    <Color x:Key="MainPageBackgroundColor">#454545</Color>
-    <Color x:Key="TabItemBorderColor">#555555</Color>
-    <Color x:Key="TextThemeColor">#e7e7e7</Color>
-    <Color x:Key="TextButtonColor">#42a5f6</Color>
-    <Color x:Key="TitleIconColor">#e7e7e7</Color>
-    <Color x:Key="DemoIconColor">#9D7DE8</Color>
-    <Color x:Key="SecondElementsColor">#42a5f6</Color>
+    
+   <Color x:Key="GridCellFontColor" x:Uid="Neutral-90">#E6E1E5</Color>
+    <Color x:Key="GridHorizontalVirtualizationQuarterBarColor">#667BC8</Color>
+    <Color x:Key="GridHorizontalVirtualizationYearBarColor">#AF4D9A</Color>
 
-    <Color x:Key="SecondaryTextColor">#8e8e8e</Color>
+    
+    <Color x:Key="CalendarDemoBackgroundColor" x:Uid="SurfaceDark-4">#24212A</Color>
+    <Color x:Key="CalendarSpecialDatesSeparatorColor" x:Uid="Secondary-40">#625B71</Color>
+    <Color x:Key="CalendarSpecialDatesHolidayTextColor">#FF6D65</Color>
+    <Color x:Key="CalendarSpecialDatesHolidayBackgroundColor">#674745</Color>
+    <Color x:Key="CalendarInfoPanelTitleColor" x:Uid="NeutralVariant-80">#CAC4D0</Color>
+    <Color x:Key="CalendarSpecialDatesTextColor" x:Uid="NeutralVariant-80">#CAC4D0</Color>
+    <Color x:Key="CalendarSpecialDatesBackgroundColor">#1AFFFFFF</Color>
 
-    <Color x:Key="NavigationTextColor">#e7e7e7</Color>
+    
+    <Color x:Key="ChartsTabButtonSelectedBackgroundColor">#303030</Color>
+    <Color x:Key="ChartsTabButtonBackgroundColor">#454545</Color> 
+    <Color x:Key="ChartsTabButtonBorderColor">#555555</Color>
+
+    
     <Color x:Key="PhoneListTabTextColor">#b7b7b7</Color>
     <Color x:Key="PhoneListTabIconColor">#b7b7b7</Color>
-    
-    <Color x:Key="TabViewCompaniesIconColor">#b7b7b7</Color>
-    <Color x:Key="TabViewHeaderBackgroundColor">#424242</Color>
-    <Color x:Key="TabViewItemTextColor">#b7b7b7</Color>
-    <Color x:Key="TabViewItemSelectedBackgroundColor">#2b4b6f</Color>
-    <Color x:Key="TabViewIndicatorColor">#2088ff</Color>
-    <Color x:Key="TabViewPhoneListShadowColor">#555555</Color>
-    
     <Color x:Key="PhoneThemeColor">#959aa0</Color>
-    
-    <Color x:Key="DrawerTopPanelBackgroundColor">#212121</Color>
-    <Color x:Key="DrawerTopPanelFontColor">#e7e7e7</Color>
-    <Color x:Key="DrawerTopPanelBorderColor">#212121</Color>
-    <Color x:Key="DrawerBackGroundColor">#303030</Color>
-    <Color x:Key="DrawerGrayFontColor">#8e8e8e</Color>
-    <Color x:Key="DrawerScrimColor">#A0000000</Color>
 
-    <Color x:Key="EditorSettingsSeparatorColor">#555555</Color>
+    
+    <Color x:Key="DrawerTopPanelBorderColor">#212121</Color>
+
+    
+    <Color x:Key="EditorSettingsSeparatorColor" x:Uid="Secondary-40">#625B71</Color>
     <Color x:Key="EditorSettingsTextColor">#dee7e7e7</Color>
+
+    
     <Color x:Key="ChoiceChipGroupChipTextColor">#E5E5E1</Color>
     <Color x:Key="ChoiceChipGroupChipBorderColor">#505050</Color>
     <Color x:Key="ChoiceChipGroupChipPressedBorderColor">#707070</Color>
     <Color x:Key="ChoiceChipGroupChipSelectedBackgroundColor">#524670</Color>
     <Color x:Key="ChoiceChipGroupChipPressedBackgroundColor">#625680</Color>
+
     
-    <Color x:Key="CollectionViewGrayFontColor">#8e8e8e</Color>
-    <Color x:Key="CollectionViewBoldGrayFontColor">#ababab</Color>
-    <Color x:Key="CollectionViewItemBorderColor">#424242</Color>
-    <Color x:Key="CollectionViewItemFontColor">#e7e7e7</Color>
+    <Color x:Key="CollectionViewGrayFontColor" x:Uid="Neutral-70">#AEAAAE</Color>
+    <Color x:Key="CollectionViewBoldGrayFontColor" x:Uid="NeutralVariant-80">#CAC4D0</Color>
+    <Color x:Key="CollectionViewItemBorderColor">#36F0E5FF</Color>
+    <Color x:Key="CollectionViewItemFontColor" x:Uid="Neutral-90">#E6E1E5</Color>
     <Color x:Key="CollectionViewStrikedItemFontColor">#747474</Color>
-    <Color x:Key="CollectionViewUrgentItemBackgroundColor">#594827</Color>
+    <Color x:Key="CollectionViewUrgentItemBackgroundColor" x:Uid="Secondary-30">#4A4458</Color>
 
-    <Color x:Key="NestedTabViewSeparatorColor">#303030</Color>
-    <Color x:Key="NestedTabViewFavoriteColor">#de6d6f</Color>
-    <Color x:Key="NestedTabViewCartColor">#27b24f</Color>
-    <Color x:Key="DrawerSettingsSeparatorColor">#454545</Color>
-    <Color x:Key="ReminderButtonBackgroundColor">#2088FF</Color>
+    
+    <Color x:Key="GridCustomAppearanceOddRowBackgroundColor">#3A3A3A</Color>
+    <Color x:Key="GridCustomAppearanceFontColor">#E7E7E7</Color>
+    <Color x:Key="GridCustomAppearancePositiveFontColor">#00AE00</Color>
+    <Color x:Key="GridCustomAppearanceNegativeFontColor">#FF5458</Color>
 
-    <Color x:Key="AvatarBorderColor">Transparent</Color>
-
-    <Color x:Key="ShadowedBackgroundColor">#7d000000</Color>
-
-    <Color x:Key="TabPagesHeaderSelectedBackground">#2d4259</Color>
-    <Color x:Key="TabPagesHeaderSelectedTextColor">#2088FF</Color>
-    <Color x:Key="TabPageHeaderShadowColor">#555555</Color>
-    <Color x:Key="TabPageDetailIconColor">#b7b7b7</Color>
-    <Color x:Key="TabPageFavoriteColor">#e39b29</Color>
-    <Color x:Key="TabPageSeparatorColor">#555555</Color>
-
-    <Color x:Key="SliderMaximumTrackColor-iOS">#dfe0e2</Color>
-
-    <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
-        <Setter Property="BarBackgroundColor" Value="{StaticResource BackgroundThemeColor}"/>
-        <Setter Property="BarTextColor" Value="{StaticResource TextThemeColor}"/>
-    </Style>
-    <Style TargetType="demo:IconView">
-        <Setter Property="ThemeName" Value="Dark" />
-    </Style>
-    <Style TargetType="dxc:ChartView">
-        <Setter Property="Theme" Value="Dark"/>
-    </Style>
-    <Style TargetType="dxc:PieChartView">
-        <Setter Property="Theme" Value="Dark"/>
-    </Style>
-
-    <Style TargetType="dxco:SimpleButton">
-        <Setter Property="BackgroundColor" Value="{DynamicResource AccentColor}" />
-    </Style>
-
-    <Style TargetType="dxe:EditBase" ApplyToDerivedTypes="True" CanCascade="True">
-        <Setter Property="FocusedBorderColor" Value="{DynamicResource AccentColor}" />
-        <Setter Property="FocusedLabelColor" Value="{DynamicResource AccentColor}" />
-        <Setter Property="CursorColor" Value="{DynamicResource AccentColor}" />
-    </Style>
-
-    <Style TargetType="dxe:CheckEdit">
-        <Setter Property="CheckedCheckBoxColor" Value="{DynamicResource AccentColor}" />
-    </Style>
-
-    <Style TargetType="CheckBox">
-        <Setter Property="Color" Value="{DynamicResource AccentColor}" />
-    </Style>
-
-    <Style TargetType="dxe:CalendarDayCellStyle" >
-        <Setter Property="TodayEllipseBackgroundColor" Value="#7F9D7DE8" />
-        <Setter Property="TodayTextColor" Value="#303030" />
-        <Setter Property="SelectedEllipseBackgroundColor" Value="{DynamicResource AccentColor}" />
-    </Style>
-
-    <Style TargetType="dxe:CalendarMonthCellStyle" >
-        <Setter Property="SelectedEllipseBackgroundColor" Value="{DynamicResource AccentColor}" />
-    </Style>
-
-    <Style TargetType="dxe:CalendarYearCellStyle" >
-        <Setter Property="SelectedEllipseBackgroundColor" Value="{DynamicResource AccentColor}" />
-    </Style>
-
-    <Style TargetType="dxe:CalendarHeaderStyle" >
-        <Setter Property="TextColor" Value="{DynamicResource AccentColor}" />
-    </Style>
-
+    
     <Style TargetType="Slider">
         <Setter Property="ThumbColor" Value="{DynamicResource AccentColor}" />
     </Style>
@@ -150,38 +86,33 @@
     <Style TargetType="ProgressBar">
         <Setter Property="ProgressColor" Value="{DynamicResource AccentColor}" />
     </Style>
-    
+
     <Style x:Key="SwitchStyle-iOS" TargetType="Switch">
-        <Setter Property="OnColor" Value="{DynamicResource AccentColor}"/>
+        <Setter Property="OnColor" Value="{DynamicResource AccentColor}" />
     </Style>
 
     <Style x:Key="SwitchStyle-Android" TargetType="Switch">
-        <Setter Property="ThumbColor" Value="{DynamicResource AccentColor}"/>
+        <Setter Property="ThumbColor" Value="{DynamicResource AccentColor}" />
     </Style>
 
     <Style TargetType="Switch">
         <Style.BasedOn>
             <OnPlatform x:TypeArguments="Style">
-                <On Platform="iOS" Value="{StaticResource SwitchStyle-iOS}"/>
-                <On Platform="Android" Value="{StaticResource SwitchStyle-Android}"/>
+                <On Platform="iOS" Value="{StaticResource SwitchStyle-iOS}" />
+                <On Platform="Android" Value="{StaticResource SwitchStyle-Android}" />
             </OnPlatform>
         </Style.BasedOn>
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="End" />
     </Style>
 
-    <Style TargetType="dxsch:DayViewHeaderItemStyle">
-        <Setter Property="TodayDayNumberBackgroundColor" Value="{DynamicResource AccentColor}" />
-        <Setter Property="TodayWeekDayTextStyle">
-            <dxsch:TextStyle Color="{DynamicResource AccentColor}" />
-        </Setter>
+    <Style TargetType="CheckBox">
+        <Setter Property="Color" Value="{DynamicResource AccentColor}" />
     </Style>
 
-    <Style TargetType="dxsch:MonthViewHeaderItemStyle">
-        <Setter Property="TodayWeekDayTextStyle">
-            <dxsch:TextStyle Color="{DynamicResource AccentColor}" />
-        </Setter>
+    <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource BackgroundThemeColor}" />
+        <Setter Property="BarTextColor" Value="{StaticResource TextThemeColor}" />
     </Style>
-
 </ResourceDictionary>

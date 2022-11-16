@@ -1,23 +1,24 @@
 ﻿using System;
+using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.DataForm.ViewModels;
 using DevExpress.Maui.DataForm;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.Views {
-    public partial class DeliveryFormView : ContentPage {
+    public partial class DeliveryFormView : AdaptivePage {
         public DeliveryFormView() {
             InitializeComponent();
             BindingContext = new DeliveryFormViewModel();
             dataForm.ValidateProperty += DataFormOnValidateProperty;
+            OrientationChanged += OnOrientationChanged;
         }
 
         void DataFormOnValidateProperty(object sender, DataFormPropertyValidationEventArgs e) {
             if (e.PropertyName == nameof(DeliveryInfo.DeliveryTimeFrom)) {
                 ((DeliveryInfo) dataForm.DataObject).DeliveryTimeFrom = (DateTime)e.NewValue;
-                Device.BeginInvokeOnMainThread(() => {
-                    dataForm.Validate(nameof(DeliveryInfo.DeliveryTimeTo));    
-                });
+                Dispatcher.Dispatch(() => dataForm.Validate(nameof(DeliveryInfo.DeliveryTimeTo)));
             }
             if (e.PropertyName == nameof(DeliveryInfo.DeliveryTimeTo)) {
                 DateTime timeFrom = ((DeliveryInfo) dataForm.DataObject).DeliveryTimeFrom;
@@ -29,12 +30,11 @@ namespace DemoCenter.Maui.Views {
             }
         }
 
-        protected override void OnSizeAllocated(double width, double height) {
-            base.OnSizeAllocated(width, height);
-            ((DeliveryFormViewModel) this.BindingContext).Rotate(dataForm, height > width);            
+        void OnOrientationChanged(object sender, EventArgs e) {
+            ((DeliveryFormViewModel)this.BindingContext).Rotate(dataForm, Orientation);
         }
 
-        private void SubmitOnClicked(object sender, EventArgs e) {
+        void SubmitOnClicked(object sender, EventArgs e) {
             dataForm.Commit();
             if (dataForm.Validate()) 
                 DisplayAlert("Success", "Your delivery information has been successfully saved", "OK");

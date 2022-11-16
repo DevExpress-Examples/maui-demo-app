@@ -1,4 +1,5 @@
 ﻿using System;
+using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.DataForm.ViewModels;
 using DevExpress.Maui.DataForm;
 using Microsoft.Maui;
@@ -6,7 +7,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.Views {
-    public partial class EmployeeFormView : ContentPage {
+    public partial class EmployeeFormView : AdaptivePage {
         readonly EmployeeFormViewModel viewModel;
 
         public EmployeeFormView() {
@@ -14,6 +15,7 @@ namespace DemoCenter.Maui.Views {
             InitializeComponent();
             this.viewModel = new EmployeeFormViewModel();
             BindingContext = this.viewModel;
+            OrientationChanged += OnOrientationChanged;
         }
 
         void AddResources() {
@@ -32,8 +34,8 @@ namespace DemoCenter.Maui.Views {
             }
         }
 
-        protected override void OnSizeAllocated(double width, double height) {
-            bool isVertical = height > width;
+        void OnOrientationChanged(object sender, EventArgs e) {
+            bool isVertical = Orientation == PageOrientation.Portrait;
 
             if (isVertical && DeviceInfo.Idiom == DeviceIdiom.Phone) {
                 this.photoContainer.Margin = new Thickness(0, 0, 0, 0);
@@ -42,9 +44,8 @@ namespace DemoCenter.Maui.Views {
             } else {
                 this.photoContainer.Margin = new Thickness(0, 50, 0, 50);
             }
-            base.OnSizeAllocated(width, height);
 
-            this.viewModel.Rotate(this.dataForm, isVertical);            
+            this.viewModel.Rotate(this.dataForm, isVertical);
         }
     }
 }

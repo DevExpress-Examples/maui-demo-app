@@ -33,8 +33,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             for (int i = 0; i < orderCount; i++) {
                 Orders.Add(GenerateOrder(i));
                 if (orderChange != null && i % percent == 0) {
-                    Action action = new Action(() => { orderChange(i / percent); });
-                    Device.BeginInvokeOnMainThread(action);
+                    Application.Current.Dispatcher.Dispatch(() => { orderChange(i / percent); });
                 }
             }
         }

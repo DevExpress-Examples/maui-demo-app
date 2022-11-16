@@ -1,19 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:views="clr-namespace:DemoCenter.Maui.Views" 
+    xmlns:views="clr-namespace:DemoCenter.Maui.Views"
     xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:core="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
     xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
     xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
     x:Class="DemoCenter.Maui.DemoModules.Popup.Views.ContactsDropdownView"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
     x:Name="contentPage"
-    ios:Page.UseSafeArea="True">
+    ios:Page.UseSafeArea="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -23,7 +21,16 @@
 
             <Style TargetType="Label">
                 <Setter Property="FontFamily">Roboto</Setter>
-                <Setter Property="FontSize">14</Setter>
+                <Setter Property="FontSize">Default</Setter>
+            </Style>
+
+            <Style TargetType="dxco:SimpleButton">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="PressedBackgroundColor" Value="#20000000"/>
+                <Setter Property="IconColor" Value="{DynamicResource TextThemeColor}"/>
+                <Setter Property="PressedIconColor" Value="{DynamicResource TextThemeColor}"/>
+                <Setter Property="TextColor" Value="{DynamicResource TextThemeColor}"/>
+                <Setter Property="PressedTextColor" Value="{DynamicResource TextThemeColor}"/>  
             </Style>
 
             <views:CallTypeToIconConverter x:Key="callTypeIconConverter"/>
@@ -85,13 +92,11 @@
                     <dxco:SimpleButton Grid.Column="3"
                                  HorizontalOptions="End"
                                  VerticalOptions="Center"
-                                 BackgroundColor="Transparent"
-                                 IconColor="{DynamicResource TabPageDetailIconColor}"
-                                 PressedBackgroundColor="{StaticResource MainPageBackgroundColor}"
                                  Command="{Binding ItemCommand, Source={x:Reference contentPage}}"
                                  CommandParameter="{Binding}"
                                  Clicked="OnContactClick"
-                                 Icon="demotabviewdetail"/>
+                                 Icon="demotabviewdetail"
+                                 IconColor="{DynamicResource CollectionViewGrayFontColor}"/>
                 </Grid>
             </DataTemplate>
 
@@ -105,7 +110,7 @@
                     </Grid.ColumnDefinitions>
                     <Ellipse Margin="0"
                                 Fill="White"
-                                Stroke="{DynamicResource AvatarBorderColor}" 
+                                Stroke="{DynamicResource AvatarBorderColor}"
                                 StrokeThickness="1"
                                 HeightRequest="50"
                                 WidthRequest="50"
@@ -136,13 +141,11 @@
                     <dxco:SimpleButton Grid.Column="3"
                                  HorizontalOptions="End"
                                  VerticalOptions="Center"
-                                 BackgroundColor="Transparent"
-                                 IconColor="{DynamicResource TabPageDetailIconColor}"
-                                 PressedBackgroundColor="{StaticResource MainPageBackgroundColor}"
                                  Command="{Binding ItemCommand, Source={x:Reference contentPage}}"
                                  CommandParameter="{Binding}"
                                  Clicked="OnContactClick"
-                                 Icon="demotabviewdetail"/>
+                                 Icon="demotabviewdetail"
+                                 IconColor="{DynamicResource CollectionViewGrayFontColor}"/>
                 </Grid>
             </DataTemplate>
 
@@ -163,7 +166,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}">
             <dxcv:DXCollectionView x:Name="collectionView"
                               AllowGroupCollapse="False"
                               GroupHeaderTemplate="{StaticResource groupItemTemplate}"
@@ -180,31 +183,20 @@
 
             <dxco:DXPopup IsOpen="{Binding IsOpenPopup}"
                          PlacementTarget="{Binding PlacementTarget}"
-                         ShadowColor="#9e000000" 
                          Placement="Bottom"
                          CornerRadius="8"
                          HorizontalAlignment="Left">
-                <StackLayout Orientation="Vertical" Padding="8,2">
+                <StackLayout Padding="8,6">
                     <dxco:SimpleButton Text="Call"
                                       Icon="popupphone"
-                                      TextColor="#81c95a"
-                                      IconColor="#81c95a"
-                                      PressedBackgroundColor="{StaticResource MainPageBackgroundColor}"
-                                      IconIndent="16"
                                       HorizontalOptions="Start"
-                                      Clicked="OnCallClick"
-                                      BackgroundColor="Transparent"/>
+                                      Clicked="OnCallClick"/>
                     <dxco:SimpleButton Text="Remove"
                                       Icon="collectionviewdeletetask"
-                                      TextColor="#ff5e61"
-                                      IconColor="#ff5e61"
-                                      PressedBackgroundColor="{StaticResource MainPageBackgroundColor}"
-                                      IconIndent="16"
                                       HorizontalOptions="Start"
-                                      Clicked="OnRemoveClick"
-                                      BackgroundColor="Transparent"/>
+                                      Clicked="OnRemoveClick"/>
                 </StackLayout>
             </dxco:DXPopup>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

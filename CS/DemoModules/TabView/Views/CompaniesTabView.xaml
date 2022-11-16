@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="DemoCenter.Maui.Views.CompaniesTabView"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.CompaniesTabView"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
-             ios:Page.UseSafeArea="true"
+             ios:Page.UseSafeArea="False"
              BackgroundColor="{DynamicResource BackgroundThemeColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -18,8 +18,7 @@
                                       TextColor="#ffffff"
                                       FontFamily="Roboto"
                                       FontSize="16"
-                                      IsSelected="{Binding IsSelected}"
-                                      SelectedBackgroundColor="{DynamicResource TabViewItemSelectedBackgroundColor}"/>
+                                      IsSelected="{Binding IsSelected}"/>
             </DataTemplate>
             <DataTemplate x:Key="itemTemplate">
                 <ScrollView>
@@ -37,7 +36,7 @@
                             <Image Grid.Row="0"
                                    SizeChanged="UpdateSizeChanged"
                                    Source="{Binding ImageSource}"
-                                   VerticalOptions="StartAndExpand" 
+                                   VerticalOptions="StartAndExpand"
                                    HorizontalOptions="FillAndExpand"/>
                             <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
                                   Grid.Row="1"
@@ -130,9 +129,7 @@
     <ContentPage.Content>
         <dxco:TabView x:Name="tabControl"
                             IsHeaderPanelShadowVisible="False"
-                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                            HeaderPanelBackgroundColor="{DynamicResource TabViewHeaderBackgroundColor}"
-                            SelectedItemIndicatorColor="{DynamicResource TabViewIndicatorColor}"
+
                             HeaderPanelIndent="16"
                             HeaderPanelHeight="52"
                             ItemHeaderMinWidth="100"
@@ -142,4 +139,4 @@
                             ItemTemplate="{StaticResource itemTemplate}"
                             SelectedItem="{Binding SelectedItem}"/>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

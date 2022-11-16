@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -9,8 +9,7 @@
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
     xmlns:converters="clr-namespace:DemoCenter.Maui.DemoModules.Editors.Converters"
     x:Class="DemoCenter.Maui.Views.ComboBoxEditView"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-    ios:Page.UseSafeArea="True">
+    ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
@@ -22,28 +21,28 @@
         <viewModel:ComboBoxEditViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid Padding="0,16" RowDefinitions="Auto, *">
-            <Grid Style="{StaticResource EditorContainerStyle}" Grid.Row="0">
-                <dxe:ComboBoxEdit LabelText="State"
-                    SelectedItem="{Binding SelectedState}"
-                    ItemsSource="{Binding States}"
-                    IsFilterEnabled="{Binding EnableFilter}"
-                    PlaceholderText="Type here to search"
-                    HelpText="{Binding ActualHelpText}"
-                    BoxMode="{Binding SelectedBoxMode}"
-                    FilterMode="{Binding SelectedFilterMode}"
-                    CornerMode="{Binding SelectedCornerMode}"
-                    CornerRadius="{Binding CornerRadius}"
-                    CursorColor="{Binding SelectedAccentColor.Color}"
-                    FocusedBorderColor="{Binding SelectedAccentColor.Color}"
-                    FocusedLabelColor="{Binding SelectedAccentColor.Color}"
-                    ErrorText="{Binding ActualErrorText}"
-                    HasError="{Binding ActualHasError}"
-                    VerticalOptions="Center"
-                    Margin="16,0"/>
-                <BoxView Grid.Row="1" Style="{StaticResource SeparatorStyle}"/>
-            </Grid>
-            <ScrollView Grid.Row="1">
+        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <dxe:ComboBoxEdit
+                demo:DockLayout.Dock="Top"
+                LabelText="State"
+                SelectedItem="{Binding SelectedState}"
+                ItemsSource="{Binding States}"
+                IsFilterEnabled="{Binding EnableFilter}"
+                PlaceholderText="Type here to search"
+                HelpText="{Binding ActualHelpText}"
+                BoxMode="{Binding SelectedBoxMode}"
+                FilterComparisonType="{Binding SelectedFilterCondition}"
+                CornerMode="{Binding SelectedCornerMode}"
+                CornerRadius="{Binding CornerRadius}"
+                CursorColor="{Binding SelectedAccentColor.Color}"
+                FocusedBorderColor="{Binding SelectedAccentColor.Color}"
+                FocusedLabelColor="{Binding SelectedAccentColor.Color}"
+                ErrorText="{Binding ActualErrorText}"
+                HasError="{Binding ActualHasError}"
+                VerticalOptions="Center"
+                Margin="16,32,16,32"/>
+            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
+            <ScrollView>
                 <StackLayout Padding="0" Spacing="0">
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -51,37 +50,27 @@
                             <Switch IsToggled="{Binding EnableFilter}" Style="{DynamicResource SwitchStyle}"/>
                         </StackLayout>
                         <dxe:ComboBoxEdit IsVisible="{Binding EnableFilter}"
-                                          SelectedItem="{Binding SelectedFilterMode}"
-                                          ItemsSource="{Binding FilterModes}"
+                                          SelectedItem="{Binding SelectedFilterCondition}"
+                                          ItemsSource="{Binding FilterConditions}"
                                           Style="{StaticResource ComboBoxStyleBase}"/>
                     </StackLayout>
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <Label Text="Box Mode" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit Style="{StaticResource ComboBoxStyleBase}"
-                            SelectedItem="{Binding SelectedBoxMode}"
-                            StartIcon="{Binding SelectedBoxMode, Converter={converters:BoxModeToImageSourceConverter Outlined='boxmodeoutlined', Filled='boxmodefilled'}}"
-                            StartIconColor="{StaticResource IconForegroundColor}"
-                            ItemsSource="{Binding BoxModes}"
-                            ItemTemplate="{StaticResource BoxModeComboBoxItemTemplate}">
-                        </dxe:ComboBoxEdit>
-                    </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <Label Text="Corner Mode" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit Style="{StaticResource ComboBoxStyleBase}"
-                            SelectedItem="{Binding SelectedCornerMode}"
-                            StartIcon="{Binding SelectedCornerMode, Converter={converters:CornerModeToImageSourceConverter Cut='cornermodecut', Round='cornermoderound'}}"
-                            StartIconColor="{StaticResource IconForegroundColor}"
-                            ItemsSource="{Binding CornerModes}"
-                            ItemTemplate="{StaticResource CornerModeComboBoxItemTemplate}">
-                        </dxe:ComboBoxEdit>
+                    <Grid ColumnSpacing="0" RowSpacing="0"  RowDefinitions="auto, auto" ColumnDefinitions="0.5*, 0.5*" Margin="0,10,0,0">
+                        <StackLayout Style="{StaticResource LayoutItemContainerStyle}" Grid.Column="0">
+                            <Label Text="Box Mode" Style="{StaticResource TextStyle}"/>
+                            <dxe:ComboBoxEdit Style="{StaticResource BoxModeComboBoxStyle}"/>
                         </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    
+                        <StackLayout Style="{StaticResource LayoutItemContainerStyle}" Grid.Column="1">
+                            <Label Text="Corner Mode" Style="{StaticResource TextStyle}"/>
+                            <dxe:ComboBoxEdit Style="{StaticResource CornerModeComboBoxStyle}"/>
+                        </StackLayout>
+                    </Grid>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+
+                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}" Margin="16,2,16,16">
                         <Label Text="Corner Radius" Style="{StaticResource TextStyle}"/>
                         <Grid ColumnSpacing="0" RowSpacing="0"  RowDefinitions="auto, auto" ColumnDefinitions="0.5*, 0.5*">
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}">
@@ -109,7 +98,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Accent Color" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit 
+                        <dxe:ComboBoxEdit
                                       StartIconColor="{Binding SelectedAccentColor.Color}"
                                       SelectedItem="{Binding SelectedAccentColor}"
                                       Style="{StaticResource ColorComboBoxStyle}"/>
@@ -135,6 +124,6 @@
                     </Grid>
                 </StackLayout>
             </ScrollView>
-        </Grid>
+        </demo:DockLayout>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

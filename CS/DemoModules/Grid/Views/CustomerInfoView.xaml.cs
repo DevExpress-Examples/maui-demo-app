@@ -2,7 +2,7 @@ using DemoCenter.Maui.DemoModules.Grid.Data;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class CustomerOrdersView : ContentPage {        
+    public partial class CustomerOrdersView : Demo.DemoPage {        
         readonly Customer customer;
 
         public CustomerOrdersView() {

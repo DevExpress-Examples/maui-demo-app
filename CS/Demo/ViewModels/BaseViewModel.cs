@@ -1,5 +1,6 @@
 using System.Windows.Input;
-using DevExpress.Maui.Core.Themes;
+using DemoCenter.Maui.Styles.ThemeLoader;
+using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.ViewModels {
@@ -9,10 +10,10 @@ namespace DemoCenter.Maui.ViewModels {
         public string Title { get; set; }
         public bool IsLightTheme {
             get {
-                isLightTheme = ThemeManager.ThemeName == Theme.Light;
+                isLightTheme = ThemeLoader.IsLightTheme;
                 return isLightTheme;
             }
-            set { SetProperty(ref isLightTheme, value, onChanged: () => ((App)Application.Current).ApplyTheme(isLightTheme, true)); }
+            set { SetProperty(ref isLightTheme, value, onChanged: () => ((App)Application.Current).ApplyTheme(isLightTheme)); }
         }
 
         public ICommand ThemeCommand { get; }

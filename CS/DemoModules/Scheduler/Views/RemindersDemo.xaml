@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-             x:Class="DemoCenter.Maui.Views.RemindersDemo"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
-    <AbsoluteLayout>
-        <dxsch:DayView Tap="OnTap" SnapToCellsMode="Never" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,1,1,1">
+             x:Class="DemoCenter.Maui.Views.RemindersDemo">
+    <AbsoluteLayout BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <dxsch:DayView Tap="OnTap" SnapToCellsMode="Never" AbsoluteLayout.LayoutFlags="All"
+                       AbsoluteLayout.LayoutBounds="0,1,1,1">
             <dxsch:DayView.DataStorage>
                 <dxsch:SchedulerDataStorage x:Name="storage" RemindersChanged="OnRemindersChanged">
                     <dxsch:SchedulerDataStorage.DataSource>
@@ -16,14 +16,14 @@
                                                            AllDay="AllDay"
                                                            Start="Start"
                                                            End="End"
-                                                           Id="Id" 
-                                                           Description="Description" 
-                                                           Location="Location" 
+                                                           Id="Id"
+                                                           Description="Description"
+                                                           Location="Location"
                                                            RecurrenceInfo="RecurrenceInfo"
                                                            Reminder="ReminderInfo"
-                                                           StatusId="Status" 
+                                                           StatusId="Status"
                                                            Subject="Subject"
-                                                           LabelId="Label" 
+                                                           LabelId="Label"
                                                            TimeZoneId="TimeZoneId" />
                             </dxsch:DataSource.AppointmentMappings>
                         </dxsch:DataSource>
@@ -39,10 +39,11 @@
                AbsoluteLayout.LayoutFlags="PositionProportional"
                AbsoluteLayout.LayoutBounds="1,1,-1,-1"
                BackgroundColor="{DynamicResource ReminderButtonBackgroundColor}">
-            <demo:IconView Icon="demoschedulerbell" WidthRequest="24" HeightRequest="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <demo:IconView Icon="demoschedulerbell" WidthRequest="24" HeightRequest="24" HorizontalOptions="Center"
+                           VerticalOptions="Center" />
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnClicked" />
             </Frame.GestureRecognizers>
         </Frame>
     </AbsoluteLayout>
-</ContentPage>
+</demo:DemoPage>

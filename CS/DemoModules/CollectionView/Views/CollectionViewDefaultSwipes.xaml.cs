@@ -30,7 +30,7 @@ namespace DemoCenter.Maui {
 }
 
 namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
-    public partial class CollectionViewDefaultSwipes : ContentPage {
+    public partial class CollectionViewDefaultSwipes : Demo.DemoPage {
         bool isAnimated;
 
         public CollectionViewDefaultSwipes() {
@@ -72,12 +72,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
                 return;
 
             this.isAnimated = true;
-            //Device.StartTimer(TimeSpan.FromMilliseconds(200), () => {
-                Device.BeginInvokeOnMainThread(() =>
-                    this.collectionView.MoveItem(itemHandle, newItemHandle, () => this.isAnimated = false)
-                );
-            //    return false;
-            //});
+            Dispatcher.Dispatch(() => this.collectionView.MoveItem(itemHandle, newItemHandle, () => this.isAnimated = false));
         }
     }
 }

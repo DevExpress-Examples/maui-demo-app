@@ -4,7 +4,7 @@ using DevExpress.Maui.Scheduler;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class MultiDayViewDemo : ContentPage {
+    public partial class MultiDayViewDemo : Demo.DemoPage {
         bool inNavigation = false;
 
         public MultiDayViewDemo() {

@@ -1,91 +1,81 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
              x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewRowAutoHeightView"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}"
-             ios:Page.UseSafeArea="True">
+             ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <resources:CollectionViewResources/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="TextColor" Value="{DynamicResource CollectionViewItemFontColor}"/>
+            </Style>
+
+            <DataTemplate x:Key="compactTemplate">
+                <demo:DockLayout Margin="10" RowSpacing="10" StretchLastChild="False">
+                    <demo:DockLayout demo:DockLayout.Dock="Top" ColumnSpacing="10" RowSpacing="7">
+                        <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}" StrokeThickness="1" WidthRequest="62">
+                            <Border.StrokeShape>
+                                <Rectangle/>
+                            </Border.StrokeShape>
+                            <Image Source="{Binding Photo}" Aspect="AspectFill" />
+                        </Border>
+                        <Label demo:DockLayout.Dock="Top" Text="{Binding Name}" />
+                        <Label demo:DockLayout.Dock="Top" Text="{Binding Position}" />
+                        <Label demo:DockLayout.Dock="Top" Text="{Binding Phone}" />
+                    </demo:DockLayout>
+                    <Label demo:DockLayout.Dock="Top" Text="{Binding Notes}" />
+                    <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
+                </demo:DockLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="detailedTemplate">
+                <VerticalStackLayout Spacing="0" Padding="16">
+                    <demo:DockLayout ColumnSpacing="16" RowSpacing="10" StretchLastChild="False">
+                        <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}">
+                            <Image Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="130" WidthRequest="100" />
+                        </Border>
+
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Name:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Name}"/>
+                        </demo:DockLayout>
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Position:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Position}"/>
+                        </demo:DockLayout>
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Phone:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Phone}"/>
+                        </demo:DockLayout>
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Email:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Email}"/>
+                        </demo:DockLayout>
+                        <demo:DockLayout demo:DockLayout.Dock="Top">
+                            <Label demo:DockLayout.Dock="Left" Text="Address:" FontAttributes="Bold" WidthRequest="70"/>
+                            <Label Text="{Binding Address}"/>
+                        </demo:DockLayout>
+                    </demo:DockLayout>
+
+                    <Label Text="{Binding Notes}" Margin="0,16,0,0" />
+                    <BoxView Style="{StaticResource SeparatorStyle}" Margin="0,16,0,0"/>
+                </VerticalStackLayout>
+            </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <dxcv:DXCollectionView x:Name="collectionView"
-                              ItemsSource="{Binding ItemSource}">
-            <dxcv:DXCollectionView.Resources>
-                <Style TargetType="Label">
-                    <Setter Property="FontSize" Value="16"/>
-                    <Setter Property="TextColor" Value="{DynamicResource CollectionViewItemFontColor}"/>
-                </Style>
-            </dxcv:DXCollectionView.Resources>
-            <dxcv:DXCollectionView.ItemTemplate>
-                <OnIdiom x:TypeArguments="DataTemplate">
-                    <OnIdiom.Phone>
-                        <DataTemplate>
-                            <StackLayout Margin="0" Spacing="0">
-                                <StackLayout Margin="14" Spacing="0">
-                                    <Grid RowSpacing="0" ColumnSpacing="0" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*">
-                                        <Border Grid.RowSpan="3" Stroke="{DynamicResource CollectionViewItemBorderColor}" StrokeThickness="1" WidthRequest="62">
-                                            <Border.StrokeShape>
-                                                <Rectangle/>
-                                            </Border.StrokeShape>
-                                            <Image Source="{Binding Photo}" Aspect="AspectFill" />
-                                        </Border>
-                                        <Label Text="{Binding Name}" Grid.Row="0" Grid.Column="1" Margin="14, 0, 0, 7"/>
-                                        <Label Text="{Binding Position}" Grid.Row="1" Grid.Column="1" Margin="14, 0, 0, 7"/>
-                                        <Label Text="{Binding Phone}" Grid.Row="2" Grid.Column="1" Margin="14, 0, 0, 0"/>
-                                    </Grid>
-                                    <Label Text="{Binding Notes}" Margin="0, 14, 0, 0" />
-                                </StackLayout>
-                                <BoxView Style="{StaticResource SeparatorStyle}"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </OnIdiom.Phone>
-                    <OnIdiom.Tablet>
-                        <DataTemplate>
-                            <StackLayout Margin="0" Spacing="0">
-                                <StackLayout Spacing="0" Margin="20">
-                                    <Grid RowSpacing="0" ColumnSpacing="0" ColumnDefinitions="Auto,*">
-                                        <Border Stroke="{DynamicResource CollectionViewItemBorderColor}" StrokeThickness="1" WidthRequest="102">
-                                            <Border.StrokeShape>
-                                                <Rectangle/>
-                                            </Border.StrokeShape>
-                                            <Image Source="{Binding Photo}" Aspect="AspectFill" />
-                                        </Border>
-
-                                        <Grid Grid.Row="0" Grid.Column="1" Margin="20, 0, 0, 0" RowSpacing="0" ColumnSpacing="0"
-                                              RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="80,*">
-
-                                            <Label Margin="0, 0, 0, 10" Text="Name:" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
-                                            <Label Margin="0, 0, 0, 10" Text="{Binding Name}" Grid.Row="0" Grid.Column="1"/>
-
-                                            <Label Margin="0, 0, 0, 10" Text="Position:" FontAttributes="Bold" Grid.Row="1" Grid.Column="0"/>
-                                            <Label Margin="0, 0, 0, 10" Text="{Binding Position}" Grid.Row="1" Grid.Column="1"/>
-
-                                            <Label Margin="0, 0, 0, 10" Text="Phone:" FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
-                                            <Label Margin="0, 0, 0, 10" Text="{Binding Phone}" Grid.Row="2" Grid.Column="1"/>
-
-                                            <Label Margin="0, 0, 0, 10" Text="Email:" FontAttributes="Bold" Grid.Row="3" Grid.Column="0"/>
-                                            <Label Margin="0, 0, 0, 10" Text="{Binding Email}" Grid.Row="3" Grid.Column="1"/>
-
-                                            <Label Text="Address:" FontAttributes="Bold" Grid.Row="4" Grid.Column="0"/>
-                                            <Label Text="{Binding Address}" Grid.Row="4" Grid.Column="1"/>
-                                        </Grid>
-                                    </Grid>
-
-                                    <Label Text="{Binding Notes}" Margin="0, 20, 0, 0" Grid.Row="1"/>
-                                </StackLayout>
-                                <BoxView Style="{StaticResource SeparatorStyle}"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </OnIdiom.Tablet>
-                </OnIdiom>
-            </dxcv:DXCollectionView.ItemTemplate>
+        <dxcv:DXCollectionView
+            x:Name="collectionView"
+            BackgroundColor="{DynamicResource BackgroundThemeColor}"
+            ItemsSource="{Binding ItemSource}"
+            ItemTemplate="{OnIdiom Phone={StaticResource compactTemplate}, Tablet={StaticResource detailedTemplate}}">
         </dxcv:DXCollectionView>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

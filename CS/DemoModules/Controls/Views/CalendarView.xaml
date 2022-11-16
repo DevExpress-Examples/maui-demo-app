@@ -1,50 +1,86 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
-    x:Class="DemoCenter.Maui.Views.CalendarView"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-    x:Name="calendarView"
-    ios:Page.UseSafeArea="True">
+
+<demo:AdaptivePage x:Class="DemoCenter.Maui.Views.CalendarView"
+                   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+                   xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+                   xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+                   xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+                   xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+                   x:Name="calendarView"
+                   ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
-        <!--<OnIdiom x:Key="ListItemTextSize" x:TypeArguments="x:Double" Phone="16" Tablet="24"/>-->
-        <OnIdiom x:Key="SeparatorMargin" x:TypeArguments="maui:Thickness" Phone="0,16,0,0" Tablet="0,24,0,0"/>
-        <OnIdiom x:Key="ItemPadding" x:TypeArguments="maui:Thickness" Phone="16" Tablet="24"/>
-        <OnIdiom x:Key="DayNumberPadding" x:TypeArguments="maui:Thickness" Phone="0,16" Tablet="0,24"/>
+        <OnIdiom x:Key="ItemPadding" x:TypeArguments="maui:Thickness" Phone="24,0" Tablet="48,0" />
+        <OnIdiom x:Key="DayNumberPadding" x:TypeArguments="maui:Thickness" Phone="0,8" Tablet="0,16" />
+        <OnIdiom x:Key="DayNamePadding" x:TypeArguments="maui:Thickness" Phone="12,8" Tablet="24,16" />
+
         <Style TargetType="Label" x:Key="HolidayListItemTextStyle">
-            <Setter Property="TextColor" Value="{DynamicResource CalendarViewTextColor}"/>
-            <Setter Property="FontSize" Value="{DynamicResource ListItemTextSize}"/>
+            <Setter Property="TextColor" Value="{DynamicResource CalendarSpecialDatesTextColor}" />
+            <Setter Property="FontSize" Value="{DynamicResource ListItemTextSize}" />
             <Style.Triggers>
                 <DataTrigger TargetType="Label" Binding="{Binding IsHoliday}" Value="true">
-                    <Setter Property="TextColor" Value="{DynamicResource CalendarViewHolidayTextColor}" />
+                    <Setter Property="TextColor" Value="{DynamicResource CalendarSpecialDatesHolidayTextColor}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Border" x:Key="HolidayListItemStyle">
+            <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource CalendarSpecialDatesBackgroundColor}" />
+            <Style.Triggers>
+                <DataTrigger TargetType="Border" Binding="{Binding IsHoliday}" Value="true">
+                    <Setter Property="BackgroundColor" Value="{DynamicResource CalendarSpecialDatesHolidayBackgroundColor}" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Orientation="{Binding Source={x:Reference Name=calendarView}, Path=Orientation}">
-            <dxe:DXCalendar DisplayDate="{Binding DisplayDate}" SelectedDate="{Binding SelectedDate}" ActiveViewType="{Binding ActiveViewType}" ShowTrailingDays="True" CustomDayCellStyle="CustomDayCellStyle"/>
-            <StackLayout Padding="{StaticResource ItemPadding}" IsVisible="{Binding IsHolidaysAndObservancesListVisible}" BackgroundColor="{DynamicResource CalendarViewBackgroundColor}">
-                <Label Text="HOLIDAYS AND OBSERVANCES" TextColor="{DynamicResource CalendarViewTextColor}" FontSize="{StaticResource ListItemTextSize}"/>
-                <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="{DynamicResource CalendarViewSeparatorColor}" Margin="{StaticResource SeparatorMargin}"/>
-                <dxcv:DXCollectionView Grid.Row="2" ItemsSource="{Binding SpecialDates}">
+        <demo:DockLayout Margin="{OnIdiom Phone=0, Tablet='40,10'}" BackgroundColor="{DynamicResource CalendarDemoBackgroundColor}">
+            <dxe:DXCalendar
+                x:Name="calendar"
+                demo:DockLayout.Dock="Top"
+                VerticalOptions="Start"
+                DisplayDate="{Binding DisplayDate}" CellMinSize="{StaticResource CalendarCellHeight}"
+                SelectedDate="{Binding SelectedDate}" ActiveViewType="{Binding ActiveViewType}"
+                ShowTrailingDays="True" CustomDayCellAppearance="CustomDayCellStyle" />
+
+            <demo:DockLayout
+                Padding="{StaticResource ItemPadding}"
+                IsVisible="{Binding IsHolidaysAndObservancesListVisible}">
+
+                <BoxView demo:DockLayout.Dock="Top"
+                         HeightRequest="1"
+                         BackgroundColor="{DynamicResource CalendarSpecialDatesSeparatorColor}" />
+                <Label demo:DockLayout.Dock="Top"
+                       Text="Holiday and Observances"
+                       Margin="0,20"
+                       TextColor="{DynamicResource CalendarInfoPanelTitleColor}"
+                       FontSize="{StaticResource ListHeaderTextSize}" />
+                <dxcv:DXCollectionView ItemsSource="{Binding SpecialDates}">
                     <dxcv:DXCollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="24"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Date.Day}" HorizontalTextAlignment="End" FontAttributes="Bold" Style="{StaticResource HolidayListItemTextStyle}" Padding="{StaticResource DayNumberPadding}"/>
-                                <Label Text="{Binding Description}" Grid.Column="1" Style="{StaticResource HolidayListItemTextStyle}" Padding="{StaticResource ItemPadding}"/>
-                            </Grid>
+                            <Border Style="{StaticResource HolidayListItemStyle}" Margin="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Date.Day}"
+                                        Style="{StaticResource HolidayListItemTextStyle}"
+                                        HorizontalTextAlignment="End"
+                                        FontAttributes="Bold"
+                                        Padding="{StaticResource DayNumberPadding}" />
+                                    <Label Text="{Binding Description}"
+                                        Style="{StaticResource HolidayListItemTextStyle}"
+                                        Padding="{StaticResource DayNamePadding}"
+                                        Grid.Column="1"
+                                        FontAttributes="Bold" />
+                                </Grid>
+                            </Border>
                         </DataTemplate>
                     </dxcv:DXCollectionView.ItemTemplate>
                 </dxcv:DXCollectionView>
-            </StackLayout>
-        </StackLayout>
+            </demo:DockLayout>
+        </demo:DockLayout>
     </ContentPage.Content>
-</ContentPage>
+</demo:AdaptivePage>

@@ -3,7 +3,7 @@ using DevExpress.Maui.Controls;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class BarCharts : ContentPage {
+    public partial class BarCharts : Demo.DemoPage {
         public BarCharts() {
             InitializeComponent();
             BindingContext = new BarChartsViewModel();
@@ -12,7 +12,7 @@ namespace DemoCenter.Maui.Views {
         }
         void UpdateOrientation(double width, double height) {
             bool isVertical = width <= height;
-            Position position = isVertical ? Position.Top: Position.Left;
+            HeaderContentPosition position = isVertical ? HeaderContentPosition.Top: HeaderContentPosition.Left;
             dxTabView.HeaderPanelPosition = position;
             ((ChartsPageViewModelBase)BindingContext).SetVerticalState(isVertical);
         }

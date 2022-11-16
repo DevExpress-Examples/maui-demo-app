@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <local:RotationHandleView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
@@ -10,18 +10,9 @@
                                   PointTextPattern="{}{A}: {S} {V$#,###}%"/>
     </ContentView.Resources>
     <ContentView.Content>
-        <!--<Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label Text="{Binding ChartModel.Title}"
-                   FontFamily="Roboto"
-                   TextColor="{DynamicResource TextThemeColor}"
-                   BackgroundColor="{DynamicResource BackgroundThemeColor}"/>-->
-            <dxc:ChartView Grid.Row="1"
-                              Rotated="True"
-                              x:Name="chart">
+        <dxc:ChartView Grid.Row="1"
+                       Rotated="True"
+                       x:Name="chart">
                 <dxc:ChartView.Series>
                     <dxc:BarSeries DisplayName="{Binding ChartModel.CryptocurrencyPortfolio.Name}"
                                       HintOptions="{StaticResource CryptocurrencyPortfolioSeriesHintOptions}"
@@ -61,9 +52,9 @@
                 </dxc:ChartView.AxisX>
                 <dxc:ChartView.AxisY>
                     <dxc:NumericAxisY
-                             
+
                              GridAlignment="15">
- <!--                   LabelTextFormatter="{local:CryptocurrencyPortfolioAxisLabelTextFormatter}"-->
+ 
                         <dxc:NumericAxisY.Range>
                             <dxc:NumericRange Min="-40" Max="40"/>
                         </dxc:NumericAxisY.Range>
@@ -73,6 +64,6 @@
                     </dxc:NumericAxisY>
                 </dxc:ChartView.AxisY>
             </dxc:ChartView>
-        <!--</Grid>-->
+        
     </ContentView.Content>
 </local:RotationHandleView>

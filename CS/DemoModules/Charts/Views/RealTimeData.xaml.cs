@@ -2,10 +2,9 @@ using DemoCenter.Maui.ViewModels;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class RealTimeData : ContentPage {
+    public partial class RealTimeData : Demo.DemoPage {
         RealTimeDataViewModel viewModel;
         public RealTimeData() {
-            
             InitializeComponent();
             BindingContext = viewModel = new RealTimeDataViewModel(chart);
         }

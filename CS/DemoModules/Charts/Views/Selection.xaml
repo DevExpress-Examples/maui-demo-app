@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="DemoCenter.Maui.Views.Selection"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.Selection"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
@@ -7,9 +7,8 @@
              xmlns:local="clr-namespace:DemoCenter.Maui"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False">
     <ContentPage.BindingContext>
         <vm:SelectionViewModel/>
     </ContentPage.BindingContext>
@@ -30,7 +29,7 @@
                 <Label Text="DevAV Sales by Region"
                        HorizontalTextAlignment="Center"
                        Margin="0,8,0,0"
-                       FontSize="Medium"
+                       FontSize="Default"
                        FontFamily="Roboto"
                        TextColor="{DynamicResource TextThemeColor}"
                        BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
@@ -63,8 +62,8 @@
                     <dxc:PieChartView.Series>
                         <dxc:DonutSeries>
                             <dxc:PieSeries.Data>
-                            <dxc:PieSeriesDataAdapter DataSource="{Binding PieSeriesData}" 
-                                                         LabelDataMember="Label" 
+                            <dxc:PieSeriesDataAdapter DataSource="{Binding PieSeriesData}"
+                                                         LabelDataMember="Label"
                                                          ValueDataMember="Value"/>
                         </dxc:PieSeries.Data>
                             <dxc:DonutSeries.Label>
@@ -88,7 +87,7 @@
                        HorizontalTextAlignment="Center"
                        HorizontalOptions="Center"
                        Margin="0,8,0,0"
-                       FontSize="Medium"
+                       FontSize="Default"
                        FontFamily="Roboto"
                        TextColor="{DynamicResource TextThemeColor}"
                        BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
@@ -115,7 +114,7 @@
                         <dxc:Hint ShowMode="OnTap">
                             <dxc:Hint.Behavior>
                                 <dxc:CrosshairHintBehavior GroupHeaderVisible="false"
-                                                              ValueLineVisible="false" 
+                                                              ValueLineVisible="false"
                                                               ValueLabelVisible="false"
                                                               MaxSeriesCount="{Binding SeriesDataByYears.Count}"/>
                             </dxc:Hint.Behavior>
@@ -123,7 +122,7 @@
                     </dxc:ChartView.Hint>
 
                     <dxc:ChartView.Series>
-                        <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=Asia}" 
+                        <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=Asia}"
                                                   MarkersVisible="true">
                             <dxc:StackedAreaSeries.Data>
                                 <dxc:SeriesDataAdapter DataSource="{Binding SeriesDataByYears[0]}" ArgumentDataMember="Argument">
@@ -161,7 +160,7 @@
                             </dxc:StackedAreaSeries.Style>
                         </dxc:StackedAreaSeries>
 
-                        <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=Europe}" 
+                        <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=Europe}"
                                                   MarkersVisible="true">
                             <dxc:StackedAreaSeries.Data>
                                 <dxc:SeriesDataAdapter DataSource="{Binding SeriesDataByYears[2]}" ArgumentDataMember="Argument">
@@ -180,7 +179,7 @@
                             </dxc:StackedAreaSeries.Style>
                         </dxc:StackedAreaSeries>
 
-                        <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=N. America}" 
+                        <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=N. America}"
                                                   MarkersVisible="true">
                             <dxc:StackedAreaSeries.Data>
                                 <dxc:SeriesDataAdapter DataSource="{Binding SeriesDataByYears[3]}" ArgumentDataMember="Argument">
@@ -199,7 +198,7 @@
                             </dxc:StackedAreaSeries.Style>
                         </dxc:StackedAreaSeries>
 
-                        <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=S. America}" 
+                        <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=S. America}"
                                                   MarkersVisible="true">
                             <dxc:StackedAreaSeries.Data>
                                 <dxc:SeriesDataAdapter DataSource="{Binding SeriesDataByYears[4]}" ArgumentDataMember="Argument">
@@ -223,4 +222,4 @@
             </Grid>
         </demo:Panel>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

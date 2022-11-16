@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -7,8 +7,7 @@
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-    ios:Page.UseSafeArea="True"
+    ios:Page.UseSafeArea="False"
     x:Class="DemoCenter.Maui.Views.NumericEditView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -21,47 +20,38 @@
         <viewModel:NumericEditViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid Padding="0,16" RowDefinitions="Auto, *">
-            <Grid Style="{StaticResource EditorContainerStyle}" Grid.Row="0">
-                <dxe:NumericEdit
-                    Value="{Binding Value}"
-                    MinValue="{Binding MinValue}"
-                    MaxValue="{Binding MaxValue}"
-                    StepValue="{Binding StepValue}"
-                    LabelText="Numeric Edit"
-                    AllowLooping="{Binding AllowLooping}"
-                    SelectValueOnFocus="{Binding SelectValueOnFocus}"
-                    IsUpDownIconVisible="{Binding IsUpDownIconsVisible}"
-                    DisplayFormat="{Binding DisplayFormat.Value}"
-                    UpDownIconAlignment="{Binding UpDownIconsAlignment.Value}"
-                    VerticalOptions="Center"
-                    HasError="{Binding ActualHasError}"
-                    ErrorText="{Binding ActualErrorText}"
-                    HelpText="{Binding ActualHelpText}"
-                    TextHorizontalAlignment="{Binding UpDownIconsAlignment.TextAlignment}"
-                    Margin="16,0"/>
-                <BoxView Grid.Row="1" Style="{StaticResource SeparatorStyle}"/>
-            </Grid>
-            <ScrollView Grid.Row="1">
+        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" >
+            <dxe:NumericEdit
+                demo:DockLayout.Dock="Top" 
+                Value="{Binding Value}"
+                MinValue="{Binding MinValue}"
+                MaxValue="{Binding MaxValue}"
+                StepValue="{Binding StepValue}"
+                LabelText="Numeric Edit"
+                AllowLooping="{Binding AllowLooping}"
+                SelectValueOnFocus="{Binding SelectValueOnFocus}"
+                IsUpDownIconVisible="{Binding IsUpDownIconsVisible}"
+                DisplayFormat="{Binding DisplayFormat.Value}"
+                UpDownIconAlignment="{Binding UpDownIconsAlignment.Value}"
+                VerticalOptions="Center"
+                HasError="{Binding ActualHasError}"
+                ErrorText="{Binding ActualErrorText}"
+                HelpText="{Binding ActualHelpText}"
+                TextHorizontalAlignment="{Binding UpDownIconsAlignment.TextAlignment}"
+                Margin="16,32,16,32"/>
+            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
+
+            <ScrollView>
                 <StackLayout Padding="0" Spacing="0">
-                    <Grid Margin="0,8">
+                    <Grid Margin="16,18" ColumnSpacing="14">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                            <Label Text="Min Value" Style="{StaticResource TextStyle}"/>
-                            <dxe:NumericEdit x:Name="minValue" Value="{Binding MinValue}"/>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" Style="{StaticResource LayoutItemContainerStyle}">
-                            <Label Text="Max Value" Style="{StaticResource TextStyle}"/>
-                            <dxe:NumericEdit x:Name="maxValue" Value="{Binding MaxValue}"/>
-                        </StackLayout>
-                        <StackLayout Grid.Column="2" Style="{StaticResource LayoutItemContainerStyle}">
-                            <Label Text="Step Value" Style="{StaticResource TextStyle}"/>
-                            <dxe:NumericEdit x:Name="stepValue" Value="{Binding StepValue}"/>
-                        </StackLayout>
+                        <dxe:NumericEdit x:Name="minValue" Grid.Column="0" LabelText="Min Value" Value="{Binding MinValue}" />
+                        <dxe:NumericEdit x:Name="maxValue" Grid.Column="1" LabelText="Max Value" Value="{Binding MaxValue}" />
+                        <dxe:NumericEdit x:Name="stepValue" Grid.Column="2" LabelText="Step Value" Value="{Binding StepValue}" />
                     </Grid>
 
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
@@ -81,7 +71,7 @@
                         </StackLayout>
                     </StackLayout>
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
-                    
+
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Display Format" Style="{StaticResource TextStyle}"/>
                         <dxe:ComboBoxEdit
@@ -90,7 +80,7 @@
                             BorderThickness="0"
                             ItemsSource="{Binding DisplayFormats}"
                             SelectedItem="{Binding DisplayFormat}"
-                            />
+                            Style="{StaticResource ComboBoxStyleBase}"/>
                     </StackLayout>
 
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
@@ -104,7 +94,7 @@
                             BorderThickness="0"
                             ItemsSource="{Binding Alignments}"
                             SelectedItem="{Binding UpDownIconsAlignment}"
-                            />
+                            Style="{StaticResource ComboBoxStyleBase}"/>
                     </StackLayout>
 
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
@@ -129,6 +119,6 @@
                     </Grid>
                 </StackLayout>
             </ScrollView>
-        </Grid>
+        </demo:DockLayout>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

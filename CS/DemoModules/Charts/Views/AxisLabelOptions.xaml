@@ -1,19 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-
-<ContentPage x:Class="DemoCenter.Maui.Views.AxisLabelOptions"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.AxisLabelOptions"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:view="clr-namespace:DemoCenter.Maui.Charts.Views"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}"
-             >
+             ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
+        <DataTemplate x:Key="rotatedLabelTemplate">
+            <view:RotatedLabelContainer/>
+        </DataTemplate>
+        <DataTemplate x:Key="cryptocurrencyPortfolioTemplate">
+            <view:CryptocurrencyPortfolioContainer/>
+        </DataTemplate>
+
         <local:LabelModeTypeToImageSourceConverter x:Key="labelModeTypeToImageSourceConverter"/>
         <DataTemplate x:Key="headerItemTemplate">
-            <demo:TabButton ImageSource="{Binding LabelModeType, Converter={StaticResource labelModeTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
+            <demo:ChartsDemoTabButton ImageSource="{Binding LabelModeType, Converter={StaticResource labelModeTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
         </DataTemplate>
         <local:LabelModeTemplateSelector x:Key="labelModeTemplateSelector"
                                          RotatedLabelTemplate="{StaticResource rotatedLabelTemplate}"
@@ -24,23 +29,22 @@
             <Setter Property="Margin" Value="0,8,0,0"/>
         </Style>
     </ContentPage.Resources>
-    
+
     <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
     <dxco:TabView x:Name="dxTabView"
-                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                            HeaderPanelBackgroundColor="{DynamicResource TabItemBackgroundColor}"
-                            ItemsSource="{Binding Content}"
-                            ItemHeaderTemplate="{StaticResource headerItemTemplate}"
-                            HorizontalOptions="FillAndExpand"
-                            ScrollAnimationEnabled="True"
-                            SwipeEnabled="False"              
-                            
-                            SelectedItem="{Binding SelectedItem}"
-                            ItemTemplate="{StaticResource labelModeTemplateSelector}"
-                            HeaderPanelContentAlignment="Start"
-                            HeaderPanelIndent="0"
-                            IsSelectedItemIndicatorVisible="False"
-                            IsHeaderPanelShadowVisible="False"                
-                            />
+                  ItemsSource="{Binding Content}"
+                  ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                  HorizontalOptions="FillAndExpand"
+                  ScrollAnimationEnabled="True"
+                  SwipeEnabled="False"
+
+                  SelectedItem="{Binding SelectedItem}"
+                  ItemTemplate="{StaticResource labelModeTemplateSelector}"
+                  HeaderPanelContentAlignment="Start"
+                  HeaderPanelIndent="0"
+                  HeaderPanelItemSpacing="0"
+                  HeaderPanelPadding="0"
+                  IsSelectedItemIndicatorVisible="False"
+                  IsHeaderPanelShadowVisible="False" />
     </Grid>
-</ContentPage>
+</demo:DemoPage>

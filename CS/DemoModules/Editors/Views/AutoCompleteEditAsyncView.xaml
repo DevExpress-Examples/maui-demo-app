@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -9,8 +9,7 @@
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
     xmlns:converters="clr-namespace:DemoCenter.Maui.DemoModules.Editors.Converters"
     x:Class="DemoCenter.Maui.Views.AutoCompleteEditAsyncView"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-    ios:Page.UseSafeArea="True">
+    ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
@@ -22,79 +21,76 @@
         <viewModel:AutoCompleteEditAsyncViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid Padding="0,16" RowDefinitions="Auto, *">
-            <Grid Style="{StaticResource EditorContainerStyle}" Grid.Row="0">
-                <dxe:AutoCompleteEdit
-                    LabelText="Person"
-                    DisplayMember="FullName"
-                    PlaceholderText="Type here to search"
-                    NoSuggestionsText="Not found"
-                    HelpText="{Binding ActualHelpText}"
-                    BoxMode="{Binding SelectedBoxMode}"
-                    CornerMode="{Binding SelectedCornerMode}"
-                    CornerRadius="{Binding CornerRadius}"
-                    CursorColor="{Binding SelectedAccentColor.Color}"
-                    FocusedBorderColor="{Binding SelectedAccentColor.Color}"
-                    FocusedLabelColor="{Binding SelectedAccentColor.Color}"
-                    ErrorText="{Binding ActualErrorText}"
-                    HasError="{Binding ActualHasError}"
-                    WaitIndicatorColor="{Binding SelectedAccentColor.Color}"
-                    VerticalOptions="Center"
-                    Margin="16,0">
-                    <dxe:AutoCompleteEdit.ItemsSourceProvider>
-                        <dxe:AsyncItemsSourceProvider
-                            CharacterCountThreshold="1"
-                            RequestDelay="500"
-                            SuggestionsRequested="OnAsyncItemsSourceProviderSuggestionsRequested"/>
-                    </dxe:AutoCompleteEdit.ItemsSourceProvider>
+        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" >
+            <dxe:AutoCompleteEdit
+                demo:DockLayout.Dock="Top"
+                LabelText="Person"
+                DisplayMember="FullName"
+                PlaceholderText="Type here to search"
+                NoResultsFoundText="Not found"
+                HelpText="{Binding ActualHelpText}"
+                BoxMode="{Binding SelectedBoxMode}"
+                CornerMode="{Binding SelectedCornerMode}"
+                CornerRadius="{Binding CornerRadius}"
+                CursorColor="{Binding SelectedAccentColor.Color}"
+                FocusedBorderColor="{Binding SelectedAccentColor.Color}"
+                FocusedLabelColor="{Binding SelectedAccentColor.Color}"
+                ErrorText="{Binding ActualErrorText}"
+                HasError="{Binding ActualHasError}"
+                WaitIndicatorColor="{Binding SelectedAccentColor.Color}"
+                VerticalOptions="Center"
+                Margin="16,32,16,32">
+                <dxe:AutoCompleteEdit.ItemsSourceProvider>
+                    <dxe:AsyncItemsSourceProvider
+                        CharacterCountThreshold="1"
+                        RequestDelay="500"
+                        ItemsRequested="OnAsyncItemsSourceProviderItemsRequested"/>
+                </dxe:AutoCompleteEdit.ItemsSourceProvider>
 
-                    <dxe:AutoCompleteEdit.ItemTemplate>
-                        <DataTemplate>
-                            <Grid
-                                HeightRequest="64"
-                                Padding="10"
-                                RowSpacing="4"
-                                ColumnSpacing="4">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="64"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image
-                                    Source="{Binding Image}"
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Grid.RowSpan="2"/>
-                                <Label
-                                    Text="{Binding FullName}"
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    VerticalOptions="End"
-                                    TextColor="{DynamicResource TextThemeColor}"/>
-                                <Label
-                                    Text="{Binding Phone}"
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    VerticalOptions="Start"
-                                    TextColor="{DynamicResource TextThemeColor}"/>
-                            </Grid>
-                        </DataTemplate>
+                <dxe:AutoCompleteEdit.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            HeightRequest="64"
+                            Padding="10"
+                            RowSpacing="4"
+                            ColumnSpacing="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="64"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Source="{Binding Image}"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.RowSpan="2"/>
+                            <Label
+                                Text="{Binding FullName}"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                VerticalOptions="End"
+                                TextColor="{DynamicResource TextThemeColor}"/>
+                            <Label
+                                Text="{Binding Phone}"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                VerticalOptions="Start"
+                                TextColor="{DynamicResource TextThemeColor}"/>
+                        </Grid>
+                    </DataTemplate>
+                </dxe:AutoCompleteEdit.ItemTemplate>
+            </dxe:AutoCompleteEdit>
+            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
 
-                    </dxe:AutoCompleteEdit.ItemTemplate>
-                </dxe:AutoCompleteEdit>
-                <BoxView Grid.Row="1" Style="{StaticResource SeparatorStyle}"/>
-            </Grid>
-            <ScrollView Grid.Row="1">
+            <ScrollView>
                 <StackLayout Padding="0" Spacing="0">
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Box Mode" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit Style="{StaticResource ComboBoxStyleBase}"
+                        <dxe:ComboBoxEdit Style="{StaticResource BoxModeComboBoxStyle}"
                             SelectedItem="{Binding SelectedBoxMode}"
-                            StartIcon="{Binding SelectedBoxMode, Converter={converters:BoxModeToImageSourceConverter Outlined='boxmodeoutlined', Filled='boxmodefilled'}}"
-                            StartIconColor="{StaticResource IconForegroundColor}"
                             ItemsSource="{Binding BoxModes}"
                             ItemTemplate="{StaticResource BoxModeComboBoxItemTemplate}">
                         </dxe:ComboBoxEdit>
@@ -103,10 +99,8 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Corner Mode" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit Style="{StaticResource ComboBoxStyleBase}"
+                        <dxe:ComboBoxEdit Style="{StaticResource CornerModeComboBoxStyle}"
                             SelectedItem="{Binding SelectedCornerMode}"
-                            StartIcon="{Binding SelectedCornerMode, Converter={converters:CornerModeToImageSourceConverter Cut='cornermodecut', Round='cornermoderound'}}"
-                            StartIconColor="{StaticResource IconForegroundColor}"
                             ItemsSource="{Binding CornerModes}"
                             ItemTemplate="{StaticResource CornerModeComboBoxItemTemplate}">
                         </dxe:ComboBoxEdit>
@@ -142,7 +136,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Accent Color" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit 
+                        <dxe:ComboBoxEdit
                                       StartIconColor="{Binding SelectedAccentColor.Color}"
                                       SelectedItem="{Binding SelectedAccentColor}"
                                       Style="{StaticResource ColorComboBoxStyle}"/>
@@ -168,6 +162,6 @@
                     </Grid>
                 </StackLayout>
             </ScrollView>
-        </Grid>
+        </demo:DockLayout>
     </ContentPage.Content>
-</ContentPage>
+</demo:DemoPage>

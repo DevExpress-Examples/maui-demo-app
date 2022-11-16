@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="DemoCenter.Maui.Views.MultipleAxes"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.MultipleAxes"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
@@ -7,13 +7,12 @@
              xmlns:local="clr-namespace:DemoCenter.Maui"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
-    <ContentPage.BindingContext>
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False">
+    <demo:DemoPage.BindingContext>
         <vm:MultipleAxesViewModel/>
-    </ContentPage.BindingContext>
-    <ContentPage.Resources>
+    </demo:DemoPage.BindingContext>
+    <demo:DemoPage.Resources>
         <views:ChartTitleConverter x:Key="chartTitleConverter"/>
         <local:BoolToStackOrientationConverter x:Key="boolToStackOrientationConverter"/>
         <dxc:NumericAxisX x:Key="RPMaxis">
@@ -31,7 +30,7 @@
                 <dxc:NumericRange SideMargin="100"/>
             </dxc:NumericAxisX.Range>
         </dxc:NumericAxisX>
-        
+
         <dxc:NumericAxisY x:Key="powerAxis"
                              AlwaysShowZeroLevel="false">
             <dxc:NumericAxisY.Layout>
@@ -44,7 +43,7 @@
                 <dxc:AxisLabel TextFormat="#"/>
             </dxc:NumericAxisY.Label>
             <dxc:NumericAxisY.Title>
-                <dxc:AxisTitle Text="Power (hp)" 
+                <dxc:AxisTitle Text="Power (hp)"
                                   Alignment="Center"/>
             </dxc:NumericAxisY.Title>
         </dxc:NumericAxisY>
@@ -62,7 +61,7 @@
                 <dxc:AxisLabel TextFormat="#.#"/>
             </dxc:NumericAxisY.Label>
             <dxc:NumericAxisY.Title>
-                <dxc:AxisTitle Text="Fuel Rate (MPG)" 
+                <dxc:AxisTitle Text="Fuel Rate (MPG)"
                                   Alignment="Center"/>
             </dxc:NumericAxisY.Title>
             <dxc:NumericAxisY.Style>
@@ -70,7 +69,7 @@
                                   LineVisible="True"/>
             </dxc:NumericAxisY.Style>
         </dxc:NumericAxisY>
-            
+
         <dxc:NumericAxisY x:Key="torqueAxis"
                              GridAlignment="25"
                              AlwaysShowZeroLevel="false">
@@ -85,9 +84,9 @@
                                   Alignment="Center"/>
             </dxc:NumericAxisY.Title>
         </dxc:NumericAxisY>
-                
-    </ContentPage.Resources>
-    <ContentPage.Content>
+
+    </demo:DemoPage.Resources>
+    <demo:DemoPage.Content>
         <demo:Panel x:Name="panel">
             <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
                 <Grid.RowDefinitions>
@@ -100,7 +99,7 @@
                    Margin="0,8"
                    BackgroundColor="{DynamicResource BackgroundThemeColor}"
                    HorizontalTextAlignment="Center"/>
-            
+
             <dxc:ChartView x:Name="chart"
                               Grid.Row="1"
                               SelectionMode="None"
@@ -124,7 +123,7 @@
                                 <dxc:AreaSeriesStyle.MarkerStyle>
                                     <dxc:MarkerStyle Fill="{Binding Palette[6]}"/>
                                 </dxc:AreaSeriesStyle.MarkerStyle>
-                            </dxc:AreaSeriesStyle>   
+                            </dxc:AreaSeriesStyle>
                         </dxc:AreaSeries.Style>
                     </dxc:AreaSeries>
 
@@ -145,7 +144,7 @@
                                 <dxc:AreaSeriesStyle.MarkerStyle>
                                     <dxc:MarkerStyle Fill="{Binding Palette[7]}"/>
                                 </dxc:AreaSeriesStyle.MarkerStyle>
-                            </dxc:AreaSeriesStyle>   
+                            </dxc:AreaSeriesStyle>
                         </dxc:AreaSeries.Style>
                     </dxc:AreaSeries>
 
@@ -164,7 +163,7 @@
                                 <dxc:LineSeriesStyle.MarkerStyle>
                                     <dxc:MarkerStyle Fill="{Binding Palette[0]}"/>
                                 </dxc:LineSeriesStyle.MarkerStyle>
-                            </dxc:LineSeriesStyle>   
+                            </dxc:LineSeriesStyle>
                         </dxc:LineSeries.Style>
                     </dxc:LineSeries>
 
@@ -183,7 +182,7 @@
                                 <dxc:LineSeriesStyle.MarkerStyle>
                                     <dxc:MarkerStyle Fill="{Binding Palette[1]}"/>
                                 </dxc:LineSeriesStyle.MarkerStyle>
-                            </dxc:LineSeriesStyle>   
+                            </dxc:LineSeriesStyle>
                         </dxc:LineSeries.Style>
                     </dxc:LineSeries>
 
@@ -203,10 +202,10 @@
                                 <dxc:LineSeriesStyle.MarkerStyle>
                                     <dxc:MarkerStyle Fill="{Binding Palette[2]}"/>
                                 </dxc:LineSeriesStyle.MarkerStyle>
-                            </dxc:LineSeriesStyle>   
+                            </dxc:LineSeriesStyle>
                         </dxc:LineSeries.Style>
                     </dxc:LineSeries>
-                        
+
                     <dxc:LineSeries DisplayName="{Binding Names[4]}"
                                        MarkersVisible="true"
                                        AxisY="{StaticResource Key=torqueAxis}">
@@ -226,7 +225,7 @@
                             </dxc:LineSeriesStyle>
                         </dxc:LineSeries.Style>
                     </dxc:LineSeries>
-                    
+
                 </dxc:ChartView.Series>
                 <dxc:ChartView.Hint>
                     <dxc:Hint ShowMode="OnTap">
@@ -245,5 +244,5 @@
             </dxc:ChartView>
             </Grid>
         </demo:Panel>
-    </ContentPage.Content>
-</ContentPage>
+    </demo:DemoPage.Content>
+</demo:DemoPage>

@@ -1,61 +1,39 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
-                           x:Class="DemoCenter.Maui.Views.FirstLookView"
-                           xmlns:local="clr-namespace:DemoCenter.Maui.Views"
-                           xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-                           BackgroundColor="{DynamicResource BackgroundThemeColor}">
+<local:BaseGridContentPage
+    x:Class="DemoCenter.Maui.Views.FirstLookView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+    xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo">
     <ContentPage.Resources>
         <local:DepartmentToImageConverter x:Key="DepartmentToImageConverter"/>
     </ContentPage.Resources>
-    <dxg:DataGridView ItemsSource="{Binding Path=Employees}" RowHeight="90" GroupRowHeight="68">
-        <dxg:DataGridView.CellStyle>
-            <dxg:CellStyle ImagePadding="10"/>
-        </dxg:DataGridView.CellStyle>
+    <dxg:DataGridView x:Name="grid" ItemsSource="{Binding Path=Employees}">
         <dxg:DataGridView.Columns>
-            <dxg:ImageColumn FieldName="Image" Caption="Photo" Width="100">
-                <dxg:ImageColumn.FixedStyle>
-                    <OnIdiom x:TypeArguments="dxg:FixedStyle" Tablet="None" Phone="Start" />
-                </dxg:ImageColumn.FixedStyle>
-            </dxg:ImageColumn>
-            <dxg:TextColumn FieldName="FullName" IsReadOnly="true" Width="{OnIdiom Phone='120', Tablet='200'}"/>
+            <dxg:ImageColumn FieldName="Image" Caption="Photo" FixedStyle="Start" Width="75" Padding="10,4,10,4"/>
+            <dxg:TextColumn FieldName="FullName" IsReadOnly="true" Width="{OnIdiom Phone='120', Tablet='180'}"/>
             <dxg:TextColumn FieldName="GroupName" GroupCaptionDisplayFormat="{}{1}" IsGrouped="true">
                 <dxg:TextColumn.GroupCaptionTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
                             <demo:IconView HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" Source="{Binding Converter={StaticResource DepartmentToImageConverter}}" VerticalOptions="Center"/>
-                            <Label TextColor="{DynamicResource GridGroupRowFontColor}"
+                            <Label TextColor="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}"
                                    Margin="9, 0, 0, 0"
-                                   FontFamily="{DynamicResource GridGroupRowFontFamily}"
+                                   FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}"
                                    Text="{Binding GroupText}"
                                    VerticalOptions="Center"
                                    VerticalTextAlignment="Center"
                                    HorizontalOptions="FillAndExpand"
-                                   FontSize="{StaticResource FontSize}">
-                                <!--<Label.FontSize>
-                                    <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14"/>
-                                </Label.FontSize>-->
+                                   FontSize="16">
                             </Label>
                         </StackLayout>
                     </DataTemplate>
                 </dxg:TextColumn.GroupCaptionTemplate>
             </dxg:TextColumn>
-            <dxg:TextColumn FieldName="JobTitle" MinWidth="{StaticResource ColumnMinWidth}">
-                <!--<dxg:TextColumn.MinWidth>
-                    <OnIdiom x:TypeArguments="x:Double" Tablet="200" Phone="120" />
-                </dxg:TextColumn.MinWidth>-->
-            </dxg:TextColumn>
-            <dxg:TextColumn FieldName="Phone" MinWidth="{StaticResource ColumnMinWidth}">
-                <!--<dxg:TextColumn.MinWidth>
-                    <OnIdiom x:TypeArguments="x:Double" Tablet="200" Phone="120" />
-                </dxg:TextColumn.MinWidth>-->
-            </dxg:TextColumn>
-            <dxg:DateColumn FieldName="HireDate" MinWidth="{StaticResource ColumnMinWidth}">
-                <!--<dxg:DateColumn.MinWidth>
-                    <OnIdiom x:TypeArguments="x:Double" Tablet="200" Phone="120" />
-                </dxg:DateColumn.MinWidth>-->
-            </dxg:DateColumn>
+            <dxg:TextColumn FieldName="JobTitle" MinWidth="150" Width="1.5*" />
+            <dxg:TextColumn FieldName="Phone" MinWidth="150" Width="*" />
+            <dxg:DateColumn FieldName="HireDate" MinWidth="120" Width="*" />
         </dxg:DataGridView.Columns>
     </dxg:DataGridView>
 </local:BaseGridContentPage>

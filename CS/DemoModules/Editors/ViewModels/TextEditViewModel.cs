@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.Controls;
+using DevExpress.Maui.Core;
 using DevExpress.Maui.Editors;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {

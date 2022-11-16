@@ -5,7 +5,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class SuperHeroTShirtView : ContentPage {
+    public partial class SuperHeroTShirtView : Demo.DemoPage {
         const int animationDuration = 450;
 
         SuperHeroTShirtViewModel VM { get; } 
@@ -33,10 +33,11 @@ namespace DemoCenter.Maui.Views {
                 superhero.TranslateTo(0, superhero.Y, animationDuration, Easing.CubicInOut)
                 );
         }
-
-        protected override void OnSizeAllocated(double width, double height) {
-            VM.UpdateLayout(width > height);
-            base.OnSizeAllocated(width, height);            
-        }
+        
+        
+        
+        
+        
+        
     }
 }

@@ -6,7 +6,7 @@ using DevExpress.Maui.Editors;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class AutoCompleteEditAsyncView : ContentPage {
+    public partial class AutoCompleteEditAsyncView : Demo.DemoPage {
         private IList<Employee> employees;
 
 
@@ -15,7 +15,7 @@ namespace DemoCenter.Maui.Views {
             this.employees = new EmployeesRepository().Employees;
         }
 
-        void OnAsyncItemsSourceProviderSuggestionsRequested(object sender, SuggestionsRequestEventArgs e) {
+        void OnAsyncItemsSourceProviderItemsRequested(object sender, ItemsRequestEventArgs e) {
             e.Request = () => {
                 Task.Delay(1500).Wait();
                 return this.employees.Where(employee => employee.FullName.Contains(e.Text));

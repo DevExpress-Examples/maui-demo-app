@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<?xml version="1.0" encoding="UTF-8"?>
+<demo:AdaptivePage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="DemoCenter.Maui.Views.EmployeeFormView"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-    ios:Page.UseSafeArea="True">
+    ios:Page.UseSafeArea="False">
 
     <ContentPage.Resources>
         <Style TargetType="dxe:MultilineEdit">
@@ -23,16 +23,12 @@
             <Setter Property="EditorLabelFontFamily" Value="Roboto"/>
             <Setter Property="ContentPadding" Value="0"/>
             <Setter Property="EditorLabelFontSize" Value="{StaticResource EditorLabelFontSize}">
-                <!--<Setter.Value>
-                    <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="16"/>
-                </Setter.Value>-->
+                
             </Setter>
             <Setter Property="EditorLabelWidth" Value="{OnIdiom Phone='*', Tablet='90'}"/>
             <Setter Property="EditorPadding" Value="{OnIdiom Phone='0,5', Tablet='0,10'}"/>
             <Setter Property="EditorHorizontalSpacing" Value="{StaticResource EditorHorizontalSpacing}">
-                <!--<Setter.Value>
-                    <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="24"/>
-                </Setter.Value>-->
+                
             </Setter>
             <Setter Property="EditorLabelPosition">
                 <Setter.Value>
@@ -47,7 +43,7 @@
         </Style>
     </ContentPage.Resources>
 
-    <Grid>
+    <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition Width="{OnIdiom Phone='3*', Tablet='1*'}"/>
@@ -171,4 +167,4 @@
             </dxdf:DataFormTextItem>
         </dxdf:DataFormView>
     </Grid>
-</ContentPage>
+</demo:AdaptivePage>

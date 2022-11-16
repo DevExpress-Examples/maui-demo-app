@@ -4,31 +4,27 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui.Devices;
+using DemoCenter.Maui.Demo;
 
 namespace DemoCenter.Maui.Views {
-    public partial class CalendarView : ContentPage {
-        public static readonly BindablePropertyKey OrientationPropertyKey = BindableProperty.CreateReadOnly("Orientation", typeof(StackOrientation), typeof(CalendarView), StackOrientation.Vertical);
-        public static readonly BindableProperty OrientationProperty = OrientationPropertyKey.BindableProperty;
-        public StackOrientation Orientation => (StackOrientation)GetValue(OrientationProperty);
-
+    public partial class CalendarView : AdaptivePage {
         public CalendarView() {
             AddResources();
             InitializeComponent();
             ViewModel = new CalendarViewModel();
             BindingContext = ViewModel;
+            OrientationChanged += OnOrientationChanged;
         }
 
         void AddResources() {
-            if (DeviceInfo.Idiom == DeviceIdiom.Tablet) {
-                Resources.Add("ListItemTextSize", 24.0);
-            } else {
-                Resources.Add("ListItemTextSize", 16.0);
-            }
+            Resources.Add("ListItemTextSize", DeviceInfo.Idiom == DeviceIdiom.Tablet ? 24.0 : 16.0);
+            Resources.Add("ListHeaderTextSize", DeviceInfo.Idiom == DeviceIdiom.Tablet ? 30.0 : 20.0);
+            Resources.Add("CalendarCellHeight", DeviceInfo.Platform == DevicePlatform.Android ? 36.0 : 46.0);
         }
 
         CalendarViewModel ViewModel { get; }
 
-        void CustomDayCellStyle(object sender, CustomSelectableCellStyleEventArgs e) {
+        void CustomDayCellStyle(object sender, CustomSelectableCellAppearanceEventArgs e) {
             if (e.Date == DateTime.Today)
                 return;
 
@@ -42,22 +38,19 @@ namespace DemoCenter.Maui.Views {
             e.FontAttributes = FontAttributes.Bold;
             Color textColor;
             if (specialDate.IsHoliday) {
-                textColor = (Color)Application.Current.Resources["CalendarViewHolidayTextColor"];
-                e.EllipseBackgroundColor = Color.FromRgba(textColor.Red, textColor.Green, textColor.Blue, 0.25);
+                textColor = (Color)Application.Current.Resources["CalendarSpecialDatesHolidayTextColor"];
+                e.EllipseBackgroundColor = (Color)Application.Current.Resources["CalendarSpecialDatesHolidayBackgroundColor"];
                 e.TextColor = textColor;
 
                 return;
             }
-            textColor = (Color)Application.Current.Resources["CalendarViewTextColor"];
-            e.EllipseBackgroundColor = Color.FromRgba(textColor.Red, textColor.Green, textColor.Blue, 0.15);
+            textColor = (Color)Application.Current.Resources["CalendarSpecialDatesTextColor"];
+            e.EllipseBackgroundColor = (Color)Application.Current.Resources["CalendarSpecialDatesBackgroundColor"];
             e.TextColor = textColor;
         }
 
-        protected override void OnSizeAllocated(double width, double height) {
-            base.OnSizeAllocated(width, height);
-            SetValue(OrientationPropertyKey, width > height ? StackOrientation.Horizontal : StackOrientation.Vertical);
-
-            //temporary solution to refresh layout
+        void OnOrientationChanged(object sender, EventArgs e) {
+            DockLayout.SetDock(calendar, (Orientation == PageOrientation.Portrait) ? Dock.Top : Dock.Left);
             ViewModel.IsHolidaysAndObservancesListVisible = false;
             ViewModel.IsHolidaysAndObservancesListVisible = true;
         }

@@ -18,6 +18,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         CheckEditGlyphSet selectedGlyph;
         Color selectedColor;
         bool allowIndeterminateInput;
+        bool allowCustomCheckedCheckBoxColor;
 
         [DataFormDisplayOptions(SkipAutoGenerating = true)]
         public bool AllowIndeterminateInput {
@@ -25,6 +26,11 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             set => SetProperty(ref this.allowIndeterminateInput, value);
         }
 
+        [DataFormDisplayOptions(SkipAutoGenerating = true)]
+        public bool AllowCustomCheckedCheckBoxColor {
+            get => this.allowCustomCheckedCheckBoxColor;
+            set => SetProperty(ref this.allowCustomCheckedCheckBoxColor, value, UpdateCheckedCheckBoxColor);
+        }
 
         [DataFormDisplayOptions(SkipAutoGenerating = true)]
         public IList<CheckEditGlyphSet> AvailableGlyphs { get; }
@@ -32,6 +38,9 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
 
         [DataFormDisplayOptions(SkipAutoGenerating = true)]
         public IList<ColorViewModel> AvailableCheckedColors { get; }
+
+        public IList<TextAlignment> TextAlignments { get; }
+        public IList<CheckBoxPosition> CheckBoxPositions { get; }
 
 
         [DataFormDisplayOptions(SkipAutoGenerating = true)]
@@ -43,7 +52,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         [DataFormDisplayOptions(SkipAutoGenerating = true)]
         public Color SelectedCheckedColor {
             get => this.selectedColor;
-            set => SetProperty(ref this.selectedColor, value);
+            set => SetProperty(ref this.selectedColor, value, UpdateCheckedCheckBoxColor);
         }
 
         [DataFormDisplayOptions(LabelText = "Label Vertical Alignment", GroupName = "Layout Options")]
@@ -70,7 +79,12 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             set => SetProperty(ref this.checkBoxPosition, value);
         }
 
-        public CheckEditViewModel() {
+        CheckEdit Edit { get; }
+        Color DefaultCheckedCheckBoxColor { get; }
+
+        public CheckEditViewModel(CheckEdit checkEdit) {
+            Edit = checkEdit;
+            DefaultCheckedCheckBoxColor = Edit.ActualAppearance.CheckedCheckBoxColor;
             AvailableGlyphs = new List<CheckEditGlyphSet> {
                 new CheckEditGlyphSet() {
                     CheckedGlyph = null,
@@ -86,9 +100,21 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
                 }
             };
             AvailableCheckedColors = ColorViewModel.CreateDefaultColors();
+            TextAlignments = new List<TextAlignment>() { TextAlignment.Start, TextAlignment.Center, TextAlignment.End };
+            CheckBoxPositions = new List<CheckBoxPosition>() {
+                CheckBoxPosition.Start,
+                CheckBoxPosition.Top,
+                CheckBoxPosition.End,
+                CheckBoxPosition.Bottom
+            };
 
             this.selectedGlyph = AvailableGlyphs[0];
             this.selectedColor = AvailableCheckedColors.Single(it => it.Name == "Purple").Color;
+            UpdateCheckedCheckBoxColor();
+        }
+
+        void UpdateCheckedCheckBoxColor() {
+            Edit.CheckedCheckBoxColor = AllowCustomCheckedCheckBoxColor ? SelectedCheckedColor : DefaultCheckedCheckBoxColor;
         }
     }
 

@@ -1,20 +1,27 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage x:Class="DemoCenter.Maui.Views.PointsCharts"
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.PointsCharts"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:local="clr-namespace:DemoCenter.Maui"
+             xmlns:view="clr-namespace:DemoCenter.Maui.Charts.Views"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" 
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
+        <DataTemplate x:Key="pointChartTemplate">
+            <view:PointChartContainer/>
+        </DataTemplate>
+        <DataTemplate x:Key="bubbleChartTemplate">
+            <view:BubbleChartContainer/>
+        </DataTemplate>
+
         <dxc:SeriesHintOptions x:Key="pointSeriesHintOptions"
                                   PointTextPattern="{}{A$LLLL}: {V}°C"/>
         <local:PointTypeToImageSourceConverter x:Key="pointTypeToImageSourceConverter"/>
         <DataTemplate x:Key="headerItemTemplate">
-            <demo:TabButton ImageSource="{Binding PointType, Converter={StaticResource pointTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
+            <demo:ChartsDemoTabButton ImageSource="{Binding PointType, Converter={StaticResource pointTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
         </DataTemplate>
         <local:PointChartTemplateSelector x:Key="pointChartTemplateSelector"
                                           PointChartTemplate="{StaticResource pointChartTemplate}"
@@ -27,23 +34,23 @@
     </ContentPage.Resources>
     <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
         <dxco:TabView x:Name="dxTabView"
-                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                            HeaderPanelBackgroundColor="{DynamicResource TabItemBackgroundColor}"
-                            HorizontalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
 
-                            ScrollAnimationEnabled="True"
-                            SwipeEnabled="False"
-                
-                            ItemsSource="{Binding Content}"
-                            ItemHeaderTemplate="{StaticResource headerItemTemplate}"
-                            ItemTemplate="{StaticResource pointChartTemplateSelector}"
-                
-                            HeaderPanelContentAlignment="Start"
-                            HeaderPanelIndent="0"
-                
-                            IsSelectedItemIndicatorVisible="False"
-                            IsHeaderPanelShadowVisible="False"
-                
-                            SelectedItem="{Binding SelectedItem}"/>      
+                      ScrollAnimationEnabled="True"
+                      SwipeEnabled="False"
+
+                      ItemsSource="{Binding Content}"
+                      ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                      ItemTemplate="{StaticResource pointChartTemplateSelector}"
+
+                      HeaderPanelContentAlignment="Start"
+                      HeaderPanelIndent="0"
+                      HeaderPanelItemSpacing="0"
+                      HeaderPanelPadding="0"
+
+                      IsSelectedItemIndicatorVisible="False"
+                      IsHeaderPanelShadowVisible="False"
+
+                      SelectedItem="{Binding SelectedItem}" />
     </Grid>
-</ContentPage>
+</demo:DemoPage>

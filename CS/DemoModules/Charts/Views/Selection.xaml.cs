@@ -5,9 +5,8 @@ using DevExpress.Maui.Charts;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class Selection : ContentPage {
-        public Selection() {
-            
+    public partial class Selection : Demo.DemoPage {
+        public Selection() {          
             InitializeComponent();
         }
     }

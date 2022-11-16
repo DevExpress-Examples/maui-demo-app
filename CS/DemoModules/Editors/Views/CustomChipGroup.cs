@@ -1,7 +1,7 @@
 ﻿using DevExpress.Maui.Editors;
 using Microsoft.Maui.Controls;
 
-namespace DemoCenter.Maui.DemoModules.Editors.Views {
+namespace DemoCenter.Maui.Views {
     public class CustomChipGroup : ChipGroup {
         public static readonly BindableProperty ChipIsRemoveIconVisibleProperty = BindableProperty.Create(nameof(ChipIsRemoveIconVisibleProperty), typeof(bool), typeof(CustomChipGroup), defaultValue: false, propertyChanged: ChipIsRemoveIconVisiblePropertyChanged);
         private static void ChipIsRemoveIconVisiblePropertyChanged(BindableObject bindable, object oldValue, object newValue) {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.DataForm;
 
@@ -119,7 +120,8 @@ namespace DemoCenter.Maui.DemoModules.DataForm.ViewModels {
 
         bool isVertical = true;
 
-        public void Rotate(DataFormView dataForm, bool newIsVertical) {
+        public void Rotate(DataFormView dataForm, PageOrientation orientation) {
+            var newIsVertical = (orientation == PageOrientation.Portrait);
             if (newIsVertical != isVertical) {
                 if (dataForm.Items != null) {
                     isVertical = newIsVertical;

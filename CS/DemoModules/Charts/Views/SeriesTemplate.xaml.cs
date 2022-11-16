@@ -18,7 +18,7 @@ namespace DemoCenter.Maui {
 }
 
 namespace DemoCenter.Maui.Views {
-    public partial class SeriesTemplate : ContentPage {
+    public partial class SeriesTemplate : Demo.DemoPage {
         readonly string[] members = { "Year", "Country" };
 
         public SeriesTemplate() {

@@ -3,9 +3,8 @@ using DevExpress.Maui.Controls;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class PointsCharts : ContentPage {
+    public partial class PointsCharts : Demo.DemoPage {
         public PointsCharts() {
-            
             InitializeComponent();
             BindingContext = new PointChartsViewModel();
             SizeChanged += (s, e) => UpdateOrientation(Width, Height);
@@ -14,7 +13,7 @@ namespace DemoCenter.Maui.Views {
 
         void UpdateOrientation(double width, double height) {
             bool isVertical = width <= height;
-            Position position = isVertical ? Position.Top : Position.Left;
+            HeaderContentPosition position = isVertical ? HeaderContentPosition.Top : HeaderContentPosition.Left;
             dxTabView.HeaderPanelPosition = position;
             ((ChartsPageViewModelBase)BindingContext).SetVerticalState(isVertical);
         }

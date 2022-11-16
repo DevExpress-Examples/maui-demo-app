@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
+<demo:DemoPage
 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -7,8 +7,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     x:Class="DemoCenter.Maui.Views.SuperHeroTShirtView"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}"
-    ios:Page.UseSafeArea="True">
+    ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="ColorChipStyle" TargetType="dxe:Chip">
@@ -40,31 +39,19 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 <Setter Property="Spacing" Value="0"/>
             </Style>
              <ResourceDictionary.MergedDictionaries>
-                <demo:EditorsAndControlsResources/> 
+                <demo:EditorsAndControlsResources/>
              </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
    <ContentPage.Content>
-        <AbsoluteLayout Margin="{OnIdiom Tablet='20, 0', Phone='10, 0'}">
-            <AbsoluteLayout AbsoluteLayout.LayoutBounds="{Binding ImageRect}"
-                            AbsoluteLayout.LayoutFlags="All"
-                            IsClippedToBounds="True">
-                <Image Source="tshirt.png"
-                       Aspect="AspectFit"
-                       AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
-                       AbsoluteLayout.LayoutFlags="All"
-                       Margin="5" />
-                <Image x:Name="superhero" Source="{Binding SelectedSuperhero}"
-                       Aspect="AspectFit"
-                       AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
-                       AbsoluteLayout.LayoutFlags="SizeProportional"
-                       Margin="5" />
-            </AbsoluteLayout>
-            <ScrollView AbsoluteLayout.LayoutBounds="{Binding DetailsRect}"
-                        AbsoluteLayout.LayoutFlags="All"
-                        Margin="5" >
-                <VerticalStackLayout Spacing="0"
-                                     Padding="0">
+       <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+           <ScrollView>
+                <VerticalStackLayout Spacing="0" Padding="16" WidthRequest="{OnIdiom Phone=NaN, Tablet=540}" Margin="{OnIdiom Phone=0, Tablet='0,26,0,0'}">
+                    <Grid IsClippedToBounds="True" x:Name="container" MaximumHeightRequest="{OnIdiom Phone=300, Tablet=400}">
+                        <Image Source="tshirt.png" Aspect="AspectFit" />
+                        <Image x:Name="superhero" Source="{Binding SelectedSuperhero}" Aspect="AspectFit" BackgroundColor="Transparent"/>
+                    </Grid>
+
                     <VerticalStackLayout Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
                         <Label Text="SuperHero T-Shirt" Style="{StaticResource TextStyle}" />
                         <Label Text="$ 30" Style="{StaticResource TextStyle}" FontSize="Title"/>
@@ -92,9 +79,10 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                                                 Style="{StaticResource ChoiceChipGroupStyle}"
                                                 ChipPadding="23,10"/>
                     </VerticalStackLayout>
+
                     <dxco:SimpleButton Text="ADD TO CART" Icon="shopping_cart"/>
                 </VerticalStackLayout>
             </ScrollView>
-        </AbsoluteLayout>
-    </ContentPage.Content>
-</ContentPage>
+       </Grid>
+   </ContentPage.Content>
+</demo:DemoPage>

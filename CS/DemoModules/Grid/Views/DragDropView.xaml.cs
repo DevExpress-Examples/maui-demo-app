@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using DemoCenter.Maui.DemoModules.Grid.Data;
-using DevExpress.Maui.Core.Themes;
+using DemoCenter.Maui.Styles.ThemeLoader;
 using DevExpress.Maui.DataGrid;
 using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui.Views {
@@ -16,10 +14,10 @@ namespace DemoCenter.Maui.Views {
             InitializeComponent();
 
             Color checkedCheckBoxColor;
-            if (ThemeManager.ThemeName == Theme.Light) {
-                checkedCheckBoxColor = Color.FromArgb("#5B27D9");
+            if (ThemeLoader.IsLightTheme) {
+                checkedCheckBoxColor = Color.FromArgb("#6750a4");
             } else {
-                checkedCheckBoxColor = Color.FromArgb("#9D7DE8");
+                checkedCheckBoxColor = Color.FromArgb("#D0BCff");
             }
             Resources.Add("GridCellCheckedCheckBoxColor", checkedCheckBoxColor);
         }
@@ -30,15 +28,15 @@ namespace DemoCenter.Maui.Views {
 
         void Grid_DragRow(object sender, DragRowEventArgs e) {
             if (this.isAnimated) {
-                e.Allow = false;
+                e.Cancel = true;
                 return;
             }
-            e.Allow = IsItemDraggable(e.DragItem);
-            this.isAnimated = e.Allow;
+            e.Cancel = !IsItemDraggable(e.DragItem);
+            this.isAnimated = !e.Cancel;
         }
 
         void Grid_DragRowOver(object sender, DropRowEventArgs e) {
-            e.Allow = IsItemDraggable(e.DropItem);
+            e.Cancel = !IsItemDraggable(e.DropItem);
         }
 
         void Grid_CompleteRowDragDrop(object sender, CompleteRowDragDropEventArgs e) {
@@ -59,15 +57,10 @@ namespace DemoCenter.Maui.Views {
             if (e.RowHandle == newRowHandle)
                 return;
             this.isAnimated = true;
-            Device.StartTimer(TimeSpan.FromMilliseconds(200), () => {
-                Device.BeginInvokeOnMainThread(() =>
-                    this.grid.MoveItem(e.RowHandle, newRowHandle, () => this.isAnimated = false)
-                );
-                return false;
-            });
+            Dispatcher.Dispatch(() => this.grid.MoveRow(e.RowHandle, newRowHandle, () => this.isAnimated = false));
         }
 
-        void Grid_CustomCellStyle(object sender, CustomCellStyleEventArgs e) {
+        void Grid_CustomCellAppearance(object sender, CustomCellAppearanceEventArgs e) {
             if (e.FieldName == nameof(EmployeeTask.Name) || e.FieldName == nameof(EmployeeTask.DueDate)) {
                 if (((EmployeeTask)e.Item).Completed) {
                     e.TextDecorations = TextDecorations.Strikethrough;
