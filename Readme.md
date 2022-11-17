@@ -15,6 +15,8 @@ The **DevExpress Mobile UI for Xamarin.Forms and .NET MAUI** is free of charge. 
 
 Please register the DevExpress NuGet Gallery in Visual Studio to restore the NuGet packages used in this solution. See the following topic for more information: [Get Started with DevExpress Mobile UI for .NET MAUI](https://docs.devexpress.com/MAUI/403249/get-started).
 
+You can also refer to the following YouTube video for more information on how to get started with the DevExpress .NET MAUI Controls: [Setting up a .NET MAUI Project](https://www.youtube.com/watch?v=juJvl5UicIQ).
+
 ## What's in This Repository
 
 A demo application in this repository demonstrates the capabilities of the **DevExpress Mobile UI for .NET MAUI**: Data Grid, Editors, Charts, Scheduler, Data Form, and other controls.
@@ -32,9 +34,15 @@ A demo application in this repository demonstrates the capabilities of the **Dev
 
 ## More Examples
 
+* [Stocks App](https://github.com/DevExpress-Examples/maui-stocks-mini)
 * [Data Grid](https://github.com/DevExpress-Examples/maui-data-grid-get-started)
 * [Data Form](https://github.com/DevExpress-Examples/maui-data-form-get-started)
 * [Data Editors](https://github.com/DevExpress-Examples/maui-editors-get-started)
 * [Charts](https://github.com/DevExpress-Examples/maui-charts)
+* [Scheduler](https://github.com/DevExpress-Examples/maui-scheduler-get-started)
+* [Tab Page](https://github.com/DevExpress-Examples/maui-tab-page-get-started)
 * [Tab View](https://github.com/DevExpress-Examples/maui-tab-view-get-started)
+* [Drawer Page](https://github.com/DevExpress-Examples/maui-drawer-page-get-started)
+* [Drawer View](https://github.com/DevExpress-Examples/maui-drawer-view-get-started)
 * [Collection View](https://github.com/DevExpress-Examples/maui-collection-view-get-started)
+* [Popup](https://github.com/DevExpress-Examples/maui-popup-get-started)
