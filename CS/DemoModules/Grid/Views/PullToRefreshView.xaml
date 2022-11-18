@@ -37,7 +37,6 @@
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="End"
                                        Margin="0, 0, 7, 0"
-                                       FontFamily="{DynamicResource GridHeaderFontFamily}"
                                        BackgroundColor="{DynamicResource GridCellBackgroundColor}"
                                        TextColor="{Binding Path=Item.Delta, Converter={StaticResource DeltaToColorConverter}}" />
                                 <demo:IconView Grid.Column="1" HeightRequest="8" WidthRequest="16" HorizontalOptions="StartAndExpand" Source="{Binding Path=Item.Delta, Converter={StaticResource DeltaToImageConverter}}" VerticalOptions="Center"/>

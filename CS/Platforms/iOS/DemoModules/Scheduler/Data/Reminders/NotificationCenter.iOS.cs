@@ -39,10 +39,7 @@ namespace DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders {
         readonly ReminderNotificationCenterCore notificationsCore;
 
         public NotificationCenter() {
-            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-                notificationsCore = new ReminderNotificationCenterVersionSinceX();
-            else
-                notificationsCore = new ReminderNotificationCenterVersionBeforeX();
+            notificationsCore = new ReminderNotificationCenter();
         }
 
         public void UpdateNotifications(IList<TriggeredReminder> reminders, int maxCount) {
@@ -57,29 +54,7 @@ namespace DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders {
         public abstract void UpdateRemindersNotifications(IList<TriggeredReminder> featureReminders);
     }
 
-    public class ReminderNotificationCenterVersionBeforeX : ReminderNotificationCenterCore {
-
-        void RequestUserAccess() {
-            UIUserNotificationSettings settings = UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, null);
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
-        }
-        void ScheduleReminderNotification(TriggeredReminder reminder, int badge) {
-            UILocalNotification notification = new UILocalNotification();
-            notification.FireDate = NSDate.FromTimeIntervalSinceNow((reminder.AlertTime - DateTime.Now).TotalSeconds);
-            notification.AlertBody = CreateMessageContent(reminder);
-            notification.SoundName = UILocalNotification.DefaultSoundName;
-            UIApplication.SharedApplication.ScheduleLocalNotification(notification);
-        }
-        public override void UpdateRemindersNotifications(IList<TriggeredReminder> featureReminders) {
-            RequestUserAccess();
-            UIApplication.SharedApplication.CancelAllLocalNotifications();
-            for (int i = 0; i < featureReminders.Count; i++) {
-                ScheduleReminderNotification(featureReminders[i], i + 1);
-            }
-        }
-    }
-
-    public class ReminderNotificationCenterVersionSinceX : ReminderNotificationCenterCore {
+    public class ReminderNotificationCenter : ReminderNotificationCenterCore {
         readonly UNUserNotificationCenter notificationCenter = UNUserNotificationCenter.Current;
 
         Task<Tuple<bool, NSError>> RequestUserAccess() {

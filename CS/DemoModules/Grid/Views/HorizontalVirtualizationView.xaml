@@ -8,7 +8,6 @@
     <local:BaseGridContentPage.Resources>
         <Style x:Key="labelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource GridCellFontColor}"/>
-            <Setter Property="FontFamily" Value="{DynamicResource GridCellFontFamily}"/>
             <Setter Property="HorizontalTextAlignment" Value="End"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
             <Setter Property="Padding" Value="14,0,14,0"/>
