@@ -25,9 +25,9 @@
     <PackageReference Include="SQLite" Version="3.13.0"/>
     <PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836"/>
     <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836"/>
-    <PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.2-beta"/>
-    <PackageReference Include="DevExpress.Maui.Charts" Version="22.2.2-beta"/>
-    <PackageReference Include="DevExpress.Maui.DataGrid" Version="22.2.2-beta"/>
+    <PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.*"/>
+    <PackageReference Include="DevExpress.Maui.Charts" Version="22.2.*"/>
+    <PackageReference Include="DevExpress.Maui.DataGrid" Version="22.2.*"/>
   </ItemGroup>
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
     <PackageReference Include="Xamarin.AndroidX.AutoFill" Version="1.1.0.14"/>
