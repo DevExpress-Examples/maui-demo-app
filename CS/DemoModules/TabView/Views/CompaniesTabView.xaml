@@ -21,7 +21,7 @@
                                       IsSelected="{Binding IsSelected}"/>
             </DataTemplate>
             <DataTemplate x:Key="itemTemplate">
-                <ScrollView>
+                <demo:ScrollViewFix>
                     <Grid ColumnSpacing="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="{OnIdiom Phone='0', Tablet='0.15*'}"/>
@@ -122,7 +122,7 @@
                             </Grid>
                         </Grid>
                     </Grid>
-                </ScrollView>
+                </demo:ScrollViewFix>
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>

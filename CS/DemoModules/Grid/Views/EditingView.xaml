@@ -28,7 +28,7 @@
                 <dxg:TextColumn FieldName="From.Name" Caption="From" MinWidth="190" ClearIconVisibility="Auto"/>
                 <dxg:DateColumn FieldName="Sent" Width="120" PickerDisableDate="DateColumn_PickerDisableDate" />
                 <dxg:TimeColumn FieldName="Time" Width="110"/>
-                <dxg:NumberColumn FieldName="Size" Width="110" DisplayFormat="{}{0} B" IsUpDownIconVisible="True" UpDownIconAlignment="Start"/>
+                <dxg:NumberColumn FieldName="Size" Width="110" DisplayFormat="{}{0} B" UpDownIconAlignment="Start"/>
                 <dxg:TemplateColumn FieldName="HoursActive" MinWidth="180">
                     <dxg:TemplateColumn.DisplayTemplate>
                         <DataTemplate>
@@ -40,16 +40,14 @@
                     </dxg:TemplateColumn.DisplayTemplate>
                     <dxg:TemplateColumn.EditTemplate>
                         <DataTemplate>
-                            <Slider Minimum="0"
-                                    Maximum="1000"
-                                    Value="{Binding Path=Value}"
-                                    MaximumTrackColor="Silver"
-                                    MinimumTrackColor="Silver"
+                            <Slider Minimum="0" Maximum="1000" Value="{Binding Path=Value}"
+                                    MinimumTrackColor="{DynamicResource AccentColor}"
                                     ThumbColor="{DynamicResource AccentColor}"
-                                    Margin="14, 0, 14, 0" />
+                                    Margin="{OnPlatform iOS='11, 0, 11, 0', Android='0'}"/>
                         </DataTemplate>
                     </dxg:TemplateColumn.EditTemplate>
                 </dxg:TemplateColumn>
+
                 <dxg:CheckBoxColumn FieldName="HasAttachment" EditFormCaption="Has Attachment" Width="70">
                     <dxg:CheckBoxColumn.HeaderContentTemplate>
                         <DataTemplate>

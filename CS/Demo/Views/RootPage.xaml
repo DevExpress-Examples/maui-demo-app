@@ -19,24 +19,20 @@
             <DataTemplate x:Key="itemTemplate">
                 <VerticalStackLayout
                     Margin="{OnIdiom Phone='10,10', Tablet='40,10'}">
-                    <VerticalStackLayout.Shadow>
-                        <Shadow Brush="Black"
-                                Offset="0,4"
-                                Radius="2"
-                                Opacity="0.1" />
-                    </VerticalStackLayout.Shadow>
-                    <Border BackgroundColor="{DynamicResource CardViewHeaderColor}"
-                        StrokeShape="RoundRectangle 16 16 0 0"
-                        StrokeThickness="0" Margin="0, 0, 0, -2">
-                        <Grid ColumnDefinitions="*, Auto"
-                            Padding="20, 6, 10, 6">
-                            <Label Grid.Column="0"
-                                Text="{Binding Title}"
-                                VerticalOptions="Center"
-                                LineBreakMode="TailTruncation"
-                                TextColor="{DynamicResource TextThemeColor}"
-                                FontFamily="Roboto-Medium"
-                                FontSize="18"/>
+                    <Grid ColumnDefinitions="*, Auto"
+                            Padding="10, 6, 0, 0" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                            <Button Text="{Binding Title}"
+                                    Background="Transparent"
+                                    VerticalOptions="Center"
+                                    TextColor="{DynamicResource TextThemeColor}"
+                                    FontFamily="Roboto-Medium"
+                                    FontSize="18"
+                                    Margin="0"
+                                    Padding="0,0,40,0"
+                                    HorizontalOptions="Start"
+                                    Grid.Column="0"
+                                    Command="{Binding NavigationCommand, Source={Reference appShell}}"
+                                    CommandParameter="{Binding}"/>
                             <dxco:SimpleButton Grid.Column="1"
                                 HeightRequest="50"
                                 TextColor="{DynamicResource AccentColor}"
@@ -44,21 +40,18 @@
                                 CommandParameter="{Binding}"
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="End"
-                                FontFamily="Roboto"
+                                FontFamily="Roboto-Medium"
                                 Text="All"
-                                FontSize="18"/>
+                                FontSize="18"
+                                PressedBackgroundColor="{DynamicResource CardViewHeaderColor}"/>
                         </Grid>
-                    </Border>
-                    <Border BackgroundColor="{DynamicResource CardViewBackgroundColor}"
-                        StrokeShape="RoundRectangle 0 0 16 16"
-                        Padding="2,0,2,0">
                         <dxcv:DXCollectionView
                                 ItemsSource="{Binding DemoItems}"
                                 Orientation="Horizontal"
                                 HorizontalOptions="Fill"
                                 VerticalOptions="Center"
-                                HeightRequest="130"
-                                Margin="0,8,0,0"
+                                HeightRequest="140"
+                                Margin="0,0,0,0"
                                 IsScrollBarVisible="false">
                                 <dxcv:DXCollectionView.ItemTemplate>
                                     <DataTemplate>
@@ -66,7 +59,6 @@
                                     </DataTemplate>
                                 </dxcv:DXCollectionView.ItemTemplate>
                             </dxcv:DXCollectionView>
-                    </Border>
                 </VerticalStackLayout>
             </DataTemplate>
         </ResourceDictionary>
@@ -128,9 +120,14 @@
     </Shell.FlyoutHeader>
     <Shell.TitleView>
         <local:TitleViewFix>
-            <Grid ColumnDefinitions="*, Auto"
-                  HorizontalOptions="FillAndExpand"
-                  Margin="{OnPlatform Android='0, 0, 12, 0', iOS='0, 0, 0, 6'}">
+            <demo:DockLayout Margin="{OnPlatform Android='0, 0, 12, 0', iOS='0, 0, 0, 6'}">
+                <Grid demo:DockLayout.Dock="Right" Padding="4" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ThemeCommand}" CommandParameter="{Binding}" />
+                    </Grid.GestureRecognizers>
+                    <demo:IconView HeightRequest="24" WidthRequest="24" Icon="palette" />
+                </Grid>
+
                 <Label Text="{Binding TitleText}"
                        Grid.Column="0"
                        FontSize="Large"
@@ -141,15 +138,7 @@
                        Margin="{OnPlatform Android='0, 0, 20, 0', iOS='0'}"
                        TextColor="{DynamicResource TextThemeColor}"
                        BackgroundColor="Transparent"/>
-                <Grid Grid.Column="1" Padding="4"
-                      BackgroundColor="Transparent"
-                      HorizontalOptions="Center" VerticalOptions="Center">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ThemeCommand}" CommandParameter="{Binding}" />
-                    </Grid.GestureRecognizers>
-                    <demo:IconView HeightRequest="24" WidthRequest="24" Icon="palette" />
-                </Grid>
-            </Grid>
+            </demo:DockLayout>
         </local:TitleViewFix>
     </Shell.TitleView>
 

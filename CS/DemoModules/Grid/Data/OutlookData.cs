@@ -5,13 +5,13 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
 
     public class OutlookData {
         public int Id { get; set; }
-        public virtual string Subject { get; set; }
-        public virtual Customer From { get; set; }
-        public virtual DateTime Sent { get; set; }
-        public virtual TimeSpan Time { get; set; }
-        public virtual bool HasAttachment { get; set; }
-        public virtual long Size { get; set; }
-        public virtual double HoursActive { get; set; }
-        public virtual Priority Priority { get; set; }
+        public string Subject { get; set; }
+        public Customer From { get; set; }
+        public DateTime Sent { get; set; }
+        public TimeSpan Time { get; set; }
+        public bool HasAttachment { get; set; }
+        public long Size { get; set; }
+        public double HoursActive { get; set; }
+        public Priority Priority { get; set; }
     }
 }

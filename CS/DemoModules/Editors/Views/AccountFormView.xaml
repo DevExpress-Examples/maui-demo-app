@@ -16,7 +16,7 @@
              </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ScrollView Padding="{OnIdiom Phone=16, Tablet='92,36'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <demo:ScrollViewFix Padding="{OnIdiom Phone=16, Tablet='92,36'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
         <demo:DockLayout StretchLastChild="False" RowSpacing="4">
             <dxe:ComboBoxEdit
                 demo:DockLayout.Dock="Top"
@@ -99,5 +99,5 @@
                 MaxCharacterCount="100"/>
              <dxco:SimpleButton demo:DockLayout.Dock="Top" Text="SUBMIT" Clicked="OnSubmitClicked" FontAttributes="Bold" Margin="0,16,0,0"/>
         </demo:DockLayout>
-    </ScrollView>
+    </demo:ScrollViewFix>
 </demo:DemoPage>

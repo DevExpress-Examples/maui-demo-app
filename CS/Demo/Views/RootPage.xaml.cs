@@ -7,6 +7,7 @@ using DemoCenter.Maui.Models;
 using DemoCenter.Maui.Services;
 using DemoCenter.Maui.ViewModels;
 using DemoCenter.Maui.Views;
+using DevExpress.Maui.Controls;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 
@@ -41,8 +42,8 @@ namespace DemoCenter.Maui {
                 return;
 
             inNavigation = true;
-            if (sender is GroupItemView groupItemView) {
-                var demoItem = (DemoItem)groupItemView.BindingContext;
+            if (sender is SimpleButton simpleButton) {
+                var demoItem = (DemoItem)simpleButton.BindingContext;
                 await NavigationService.NavigateToDemo(demoItem);
             }
             inNavigation = false;

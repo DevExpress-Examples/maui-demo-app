@@ -40,7 +40,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 Margin="16,32,16,32"/>
             <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
 
-            <ScrollView>
+            <demo:ScrollViewFix>
                 <StackLayout Spacing="0" Padding="0">
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Text Color" Style="{StaticResource TextStyle}"/>
@@ -96,7 +96,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
 
                 </StackLayout>
-            </ScrollView>
+            </demo:ScrollViewFix>
         </demo:DockLayout>
     </ContentPage.Content>
 </demo:DemoPage>

@@ -1,8 +1,6 @@
 ﻿using System;
 using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.DataForm.ViewModels;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 
 namespace DemoCenter.Maui.Views {
     public partial class DataFormAccountFormView : AdaptivePage {

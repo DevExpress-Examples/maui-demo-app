@@ -198,5 +198,19 @@ namespace DemoCenter.Maui.Demo {
             return res.AdjustForFill(bounds, Layout);
         }
     }
+
+    public class ScrollViewFix : ScrollView {
+        protected override void OnChildAdded(Element child) {
+            ((VisualElement)child).SizeChanged += OnContentSizeChanged;
+        }
+
+        protected override void OnChildRemoved(Element child, int oldLogicalIndex) {
+            ((VisualElement)child).SizeChanged -= OnContentSizeChanged;
+        }
+
+        void OnContentSizeChanged(object sender, EventArgs e) {
+            InvalidateMeasure();
+        }
+    }
 }
 

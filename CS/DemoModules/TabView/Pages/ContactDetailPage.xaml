@@ -142,7 +142,7 @@
                         <dxg:TimeColumn SortOrder="Descending"
                                            FieldName="Date"
                                            DisplayFormat="t"
-                                           Width="100"
+                                           Width="150"
                                            VerticalContentAlignment="Center"
                                            HorizontalContentAlignment="End"
                                            IsGrouped="true"

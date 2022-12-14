@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using DemoCenter.Maui.DemoModules.Grid.Data;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.DataForm;
 using Microsoft.Maui.Controls;

@@ -12,10 +12,11 @@ namespace DemoCenter.Maui {
         internal event EventHandler ThemeChangedEvent;
 
         public App() {
-			InitializeComponent();
+            var culture = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
 
-            PlatformLocale locale = new PlatformLocale();
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(locale.GetPlatformLocale());
+            InitializeComponent();
 
             AppShell rootPage = new AppShell();
             MainPage = rootPage;

@@ -41,7 +41,7 @@
                 Margin="16,32,16,32"/>
             <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
 
-            <ScrollView>
+            <demo:ScrollViewFix>
                 <StackLayout Padding="0" Spacing="0">
                     <Grid Margin="16,18" ColumnSpacing="14">
                         <Grid.ColumnDefinitions>
@@ -118,7 +118,7 @@
                                            Grid.Column="1"/>
                     </Grid>
                 </StackLayout>
-            </ScrollView>
+            </demo:ScrollViewFix>
         </demo:DockLayout>
     </ContentPage.Content>
 </demo:DemoPage>

@@ -25,17 +25,16 @@
                 <DataTemplate x:DataType="models:DemoItem">
                     <VerticalStackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}">
                         <demo:DockLayout Margin="16" StretchLastChild="False" ColumnSpacing="16">
-                            <demo:IconView demo:DockLayout.Dock="Left" HeightRequest="42" WidthRequest="42" Icon="{Binding Icon}"/>
+                            <demo:IconView demo:DockLayout.Dock="Left" VerticalOptions="Start" HeightRequest="42" WidthRequest="42" Icon="{Binding Icon}"/>
 
                             <demo:DockLayout demo:DockLayout.Dock="Top" StretchLastChild="False">
-                                <demo:IconView demo:DockLayout.Dock="Right" IsVisible="{Binding ShowBadge}" Source="{Binding BadgeIcon}"/>
+                                <demo:IconView demo:DockLayout.Dock="Top" IsVisible="{Binding ShowBadge}" Source="{Binding BadgeIcon}" />
                                 <Label HorizontalOptions="FillAndExpand"
-                                       Margin="0,0,0,2"
+                                       Margin="0,0,0,6"
                                        BackgroundColor="Transparent"
-                                       FontSize="16"
-                                       FontFamily="Roboto"
+                                       FontSize="Header"
+                                       FontFamily="Roboto-Medium"
                                        LineBreakMode="NoWrap"
-                                       Style="{DynamicResource ListItemTextStyle}"
                                        Text="{Binding ControlsPageTitle}"
                                        TextColor="{DynamicResource TextThemeColor}"
                                        VerticalOptions="Start" />

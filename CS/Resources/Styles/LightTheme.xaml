@@ -26,6 +26,8 @@
 
     <Color x:Key="CardViewBackgroundColor" x:Uid="SurfaceLight-3">#F3EDF7</Color>
     <Color x:Key="CardViewHeaderColor" x:Uid="NeutralVariant-90">#E7E0EC</Color>
+    
+    <Color x:Key="BadgeThemeColor">#75A450</Color>
 
     
 

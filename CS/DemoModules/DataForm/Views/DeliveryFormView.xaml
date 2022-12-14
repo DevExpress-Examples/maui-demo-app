@@ -19,7 +19,7 @@
     <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
         <demo:DockLayout RowSpacing="10" StretchLastChild="False">
             <dxco:SimpleButton demo:DockLayout.Dock="Bottom" Text="SUBMIT" Clicked="SubmitOnClicked"
-                               Margin="{OnIdiom Phone='10,0,10,0', Tablet='40,0,40,0'}"/>
+                               Margin="{OnIdiom Phone='10,0,10,10', Tablet='40,0,40,40'}"/>
             <dxdf:DataFormView
                 GeneratePropertyItem="DataForm_GeneratePropertyItem"
                 CommitMode="Manually"

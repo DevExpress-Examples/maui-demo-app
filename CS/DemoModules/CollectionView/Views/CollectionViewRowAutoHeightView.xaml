@@ -21,7 +21,7 @@
             <DataTemplate x:Key="compactTemplate">
                 <demo:DockLayout Margin="10" RowSpacing="10" StretchLastChild="False">
                     <demo:DockLayout demo:DockLayout.Dock="Top" ColumnSpacing="10" RowSpacing="7">
-                        <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}" StrokeThickness="1" WidthRequest="62">
+                        <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}" StrokeThickness="1" MaximumHeightRequest="72" WidthRequest="62">
                             <Border.StrokeShape>
                                 <Rectangle/>
                             </Border.StrokeShape>

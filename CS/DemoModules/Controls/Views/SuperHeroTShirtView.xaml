@@ -45,7 +45,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     </ContentPage.Resources>
    <ContentPage.Content>
        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
-           <ScrollView>
+           <demo:ScrollViewFix>
                 <VerticalStackLayout Spacing="0" Padding="16" WidthRequest="{OnIdiom Phone=NaN, Tablet=540}" Margin="{OnIdiom Phone=0, Tablet='0,26,0,0'}">
                     <Grid IsClippedToBounds="True" x:Name="container" MaximumHeightRequest="{OnIdiom Phone=300, Tablet=400}">
                         <Image Source="tshirt.png" Aspect="AspectFit" />
@@ -82,7 +82,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 
                     <dxco:SimpleButton Text="ADD TO CART" Icon="shopping_cart"/>
                 </VerticalStackLayout>
-            </ScrollView>
+            </demo:ScrollViewFix>
        </Grid>
    </ContentPage.Content>
 </demo:DemoPage>

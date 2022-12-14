@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<demo:AdaptivePage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:viewmodels="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
+    xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+    x:DataType="viewmodels:ApplicationDeploymentViewModel"
+    x:Class="DemoCenter.Maui.Views.ApplicationDeploymentForm"
+    ios:Page.UseSafeArea="True">
+    <ContentPage.Resources>
+        <local:LanguageNameConverter x:Key="LanguageNameConverter" />
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <demo:DockLayout RowSpacing="10"
+                         StretchLastChild="False">
+            <dxco:SimpleButton demo:DockLayout.Dock="Bottom"
+                               Text="SUBMIT"
+                               Clicked="SubmitOnClicked"
+                               Margin="{OnIdiom Phone='10,0,10,10', Tablet='40,0,40,40'}"/>
+
+            <dxdf:DataFormView x:Name="dataForm"
+                               IsAutoGenerationEnabled="False"
+                               DataObject="{Binding Model}"
+                               EditorLabelPosition="Top"
+                               EditorLabelColor="#8a8d93"
+                               CommitMode="Manually"
+                               ValidationMode="LostFocus"
+                               EditorBoxMode="Outlined"
+                               ReserveBottomTextLine="True"
+                               ContentPadding="{OnIdiom Phone='10,10,10,0', Tablet='40,10,40,0'}">
+                <dxdf:DataFormCustomItem x:Name="iconItem"
+                                         LabelPosition="{x:Null}"
+                                         FieldName="AppIcon"
+                                         RowOrder="0"
+                                         RowSpan="{OnIdiom Phone=1, Tablet=2}"
+                                         EditorWidth=".4*"
+                                         IsLabelVisible="False"
+                                         Padding="0" >
+                    <Border StrokeThickness="1"
+                            x:Name="photoContainer"
+                            x:DataType="viewmodels:ApplicationInfo"
+                            WidthRequest="162"
+                            HeightRequest="162"
+                            Margin="{OnIdiom Phone='0', Tablet='0, 50'}"
+                            BackgroundColor="Transparent">
+                        <Image Source="{Binding AppIcon}"
+                               WidthRequest="160"
+                               HeightRequest="160" />
+                    </Border>
+                </dxdf:DataFormCustomItem>
+
+                <dxdf:DataFormTextItem FieldName="Name"
+                                       Placeholder="Application name"
+                                       RowOrder="{OnIdiom Phone=1, Tablet=0}" />
+
+                <dxdf:DataFormTextItem FieldName="Version"
+                                       Placeholder="Application Version"
+                                       RowOrder="{OnIdiom Phone=2, Tablet=1}" />
+
+                <dxdf:DataFormTextItem FieldName="Id"
+                                       Placeholder="Application ID"
+                                       LabelText="Application identifier"
+                                       RowOrder="3" />
+
+                <dxdf:DataFormCustomItem x:Name="supportedLanguagesCustomItem"
+                                         FieldName="SupportedLanguages"
+                                         LabelText="Supported Languages"
+                                         RowOrder="4">
+                    <dxe:AutoCompleteTokenEdit x:DataType="viewmodels:ApplicationInfo"
+                                               DisplayMember="EnglishName"
+                                               SelectedItems="{Binding Source={Reference supportedLanguagesCustomItem}, Path=EditorValue}">
+                        <dxe:AutoCompleteTokenEdit.ItemsSourceProvider>
+                            <dxe:FilteredItemsSourceProvider ItemsSource="{Binding Languages}"
+                                                             FilterCondition="Contains"
+                                                             FilterMembers="EnglishName, NativeName"/>
+                        </dxe:AutoCompleteTokenEdit.ItemsSourceProvider>
+                        <dxe:AutoCompleteTokenEdit.ItemTemplate>
+                            <DataTemplate>
+                                <Label BackgroundColor="Transparent"
+                                       FontSize="Medium"
+                                       Padding="5">
+                                    <Label.Text>
+                                        <MultiBinding Converter="{StaticResource LanguageNameConverter}">
+                                            <Binding Path="EnglishName" />
+                                            <Binding Path="NativeName" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                            </DataTemplate>
+
+                        </dxe:AutoCompleteTokenEdit.ItemTemplate>
+                    </dxe:AutoCompleteTokenEdit>
+                </dxdf:DataFormCustomItem>
+
+                <dxdf:DataFormCustomItem x:Name="selectedApplicationTagsCustomItem"
+                                         LabelText="Tags"
+                                         FieldName="SelectedApplicationTags"
+                                         RowOrder="5">
+                    <dxe:TokenEdit x:DataType="viewmodels:ApplicationInfo"
+                                   ItemsSource="{Binding Tags}"
+                                   SelectedItems="{Binding Source={Reference selectedApplicationTagsCustomItem}, Path=EditorValue}"
+                                   IsFilterEnabled="True"
+                                   FilterCondition="Contains"
+                                   FilterComparisonType="CurrentCultureIgnoreCase" />
+                </dxdf:DataFormCustomItem>
+            </dxdf:DataFormView>
+        </demo:DockLayout>
+    </Grid>
+</demo:AdaptivePage>

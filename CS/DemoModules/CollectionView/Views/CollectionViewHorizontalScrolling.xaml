@@ -21,11 +21,11 @@
                        TextColor="{DynamicResource CollectionViewBoldGrayFontColor}"
                        FontAttributes="Bold"
                        FontSize="{OnIdiom Phone=16, Tablet=18}"/>
-                <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never">
+                <demo:ScrollViewFix Orientation="Vertical" HorizontalScrollBarVisibility="Never">
                     <Label Text="{Binding Description}"
                            TextColor="{DynamicResource CollectionViewItemFontColor}"
                            FontSize="{OnIdiom Phone=14, Tablet=16}"/>
-                </ScrollView>
+                </demo:ScrollViewFix>
             </demo:DockLayout>
         </DataTemplate>
     </ContentPage.Resources>

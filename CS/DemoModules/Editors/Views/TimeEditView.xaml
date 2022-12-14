@@ -40,7 +40,7 @@
                 Margin="16,32,16,32"/>
             <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
 
-            <ScrollView>
+            <demo:ScrollViewFix>
                 <StackLayout Padding="0" Spacing="0">
                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Time Format Mode" Style="{StaticResource TextStyle}"/>
@@ -119,7 +119,7 @@
                                            Grid.Column="1"/>
                     </Grid>
                 </StackLayout>
-            </ScrollView>
+            </demo:ScrollViewFix>
         </demo:DockLayout>
     </ContentPage.Content>
 </demo:DemoPage>

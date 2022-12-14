@@ -17,6 +17,13 @@ namespace DemoCenter.Maui.Data {
                     Icon = "editors"
                 },
                 new DemoItem() {
+                    Title = "Deployment Form",
+                    Description="Shows how to use our token editors to create an app deployment form. Token editors allow you to select multiple items from a list.",
+                    Module = typeof(ApplicationDeploymentForm),
+                    Icon="deploymentform",
+                    DemoItemStatus = DemoItemStatus.New
+                },
+                new DemoItem() {
                     Title = "Combo Box",
                     Description = "Demonstrates the customization capabilities of our combo box.",
                     Module = typeof(ComboBoxEditView),

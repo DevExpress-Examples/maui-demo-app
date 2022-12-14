@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net7.0-android;net7.0-ios;</TargetFrameworks>
@@ -7,8 +8,8 @@
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
     <ApplicationTitle>DevExpress UI</ApplicationTitle>
-    <ApplicationId>com.devexpress.mauigallery</ApplicationId>
-    <DXVer>22.2.2</DXVer>
+    <ApplicationId>com.devexpress.mauimobileui</ApplicationId>
+    <DXVer>22.2.3</DXVer>
     <AssemblyVersion>$(DXVer)</AssemblyVersion>
     <AssemblyFileVersion>$(DXVer)</AssemblyFileVersion>
     <Company>Developer Express Inc.</Company>
@@ -20,51 +21,57 @@
     <NoWarn>CA1422;CA1416;NU1603</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
-    <PackageReference Include="sqlite-net-pcl" Version="1.8.116"/>
-    <PackageReference Include="SQLite" Version="3.13.0"/>
-    <PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836"/>
-    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836"/>
-    <PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.*"/>
-    <PackageReference Include="DevExpress.Maui.Charts" Version="22.2.*"/>
-    <PackageReference Include="DevExpress.Maui.DataGrid" Version="22.2.*"/>
+    <TrimmableAssembly Include="DevExpress.Data.v22.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="SQLite" Version="3.13.0" />
+    <PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836" />
+    <PackageReference Include="DevExpress.Maui.Core" Version="22.2.3" />
+    <PackageReference Include="DevExpress.Maui.Controls" Version="22.2.3" />
+    <PackageReference Include="DevExpress.Maui.DataGrid" Version="22.2.3" />
+    <PackageReference Include="DevExpress.Maui.Charts" Version="22.2.3" />
+    <PackageReference Include="DevExpress.Maui.CollectionView" Version="22.2.3" />
+    <PackageReference Include="DevExpress.Maui.Editors" Version="22.2.3" />
+    <PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.3" />
   </ItemGroup>
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
-    <PackageReference Include="Xamarin.AndroidX.AutoFill" Version="1.1.0.14"/>
+    <PackageReference Include="Xamarin.AndroidX.AutoFill" Version="1.1.0.14" />
   </ItemGroup>
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
-    <MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_android.svg" Color="#5B27D9"/>
-    <MauiSplashScreen Include="Resources\splashscreen_android.svg" Color="#5B27D9"/>
+    <MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_android.svg" Color="#5B27D9" />
+    <MauiSplashScreen Include="Resources\splashscreen_android.svg" Color="#5B27D9" />
   </ItemGroup>
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
-    <MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_ios.svg" Color="#5B27D9"/>
-    <MauiSplashScreen Include="Resources\splashscreen.svg" Color="#5B27D9"/>
+    <MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_ios.svg" Color="#5B27D9" />
+    <MauiSplashScreen Include="Resources\splashscreen.svg" Color="#5B27D9" />
   </ItemGroup>
   <ItemGroup>
-    <MauiImage Include="Resources\Images\*"/>
-    <MauiImage Include="DemoModules\DataForm\Images\*"/>
-    <MauiImage Include="Demo\Images\Charts\*"/>
-    <MauiImage Include="Demo\Images\Controls\*"/>
-    <MauiImage Include="Demo\Images\smile.png" BaseSize="24,24"/>
-    <MauiImage Include="Demo\Images\DataGrid\*"/>
-    <MauiImage Include="Demo\Images\Editors\*"/>
-    <MauiImage Include="Demo\Images\CollectionView\*"/>
-    <MauiImage Include="Demo\Images\DataForm\*"/>
-    <MauiImage Include="Demo\Images\Scheduler\*"/>
-    <MauiImage Include="Demo\Images\Demo\*"/>
-    <MauiImage Include="DemoModules\Charts\Resources\Images\*"/>
-    <MauiImage Include="DemoModules\Controls\Images\*"/>
-    <MauiFont Include="Resources\Fonts\*"/>
-    <MauiImage Include="DemoModules\TabView\Images\demotabview_location.svg"/>
-    <MauiImage Include="DemoModules\TabView\Images\demotabview_phone.svg"/>
-    <MauiImage Include="DemoModules\TabView\Images\demotabview_www.svg"/>
-    <MauiImage Include="DemoModules\TabView\Images\demotabview_cartbutton.svg"/>
-    <MauiImage Include="DemoModules\TabView\Images\demotabview_deletebutton.svg"/>
-    <MauiImage Include="DemoModules\TabView\Images\demotabview_favoritebutton.svg"/>
-    <MauiImage Include="DemoModules\TabView\Images\menu_dots.svg"/>
-    <MauiImage Include="DemoModules\TabView\Images\nested_all.svg"/>
-    <MauiImage Include="DemoModules\TabView\Images\nested_cart.svg"/>
-    <MauiImage Include="DemoModules\TabView\Images\nested_wish_list.svg"/>
+    <MauiImage Include="Resources\Images\*" />
+    <MauiImage Include="Resources\Images\dxicon.svg" BaseSize="160,160" />
+    <MauiImage Include="DemoModules\DataForm\Images\*" />
+    <MauiImage Include="Demo\Images\Charts\*" />
+    <MauiImage Include="Demo\Images\Controls\*" />
+    <MauiImage Include="Demo\Images\smile.png" BaseSize="24,24" />
+    <MauiImage Include="Demo\Images\DataGrid\*" />
+    <MauiImage Include="Demo\Images\Editors\*" />
+    <MauiImage Include="Demo\Images\CollectionView\*" />
+    <MauiImage Include="Demo\Images\DataForm\*" />
+    <MauiImage Include="Demo\Images\Scheduler\*" />
+    <MauiImage Include="Demo\Images\Demo\*" />
+    <MauiImage Include="DemoModules\Charts\Resources\Images\*" />
+    <MauiImage Include="DemoModules\Controls\Images\*" />
+    <MauiFont Include="Resources\Fonts\*" />
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_location.svg" />
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_phone.svg" />
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_www.svg" />
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_cartbutton.svg" />
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_deletebutton.svg" />
+    <MauiImage Include="DemoModules\TabView\Images\demotabview_favoritebutton.svg" />
+    <MauiImage Include="DemoModules\TabView\Images\menu_dots.svg" />
+    <MauiImage Include="DemoModules\TabView\Images\nested_all.svg" />
+    <MauiImage Include="DemoModules\TabView\Images\nested_cart.svg" />
+    <MauiImage Include="DemoModules\TabView\Images\nested_wish_list.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DemoModules\Grid\Data\Employees.json">
@@ -79,28 +86,28 @@
     <EmbeddedResource Include="DemoModules\Grid\Data\StockSource.json">
       <LogicalName>StockSource.json</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="DemoModules\DataForm\Images\arvil.jpg"/>
-    <EmbeddedResource Include="DemoModules\Grid\Images\nancydavolio.jpg"/>
-    <EmbeddedResource Include="DemoModules\Grid\Images\michaelsuyama.jpg"/>
-    <EmbeddedResource Include="DemoModules\Grid\Images\margaretpeacock.jpg"/>
-    <EmbeddedResource Include="DemoModules\Grid\Images\lauracallahan.jpg"/>
-    <EmbeddedResource Include="DemoModules\Grid\Images\janetleverling.jpg"/>
-    <EmbeddedResource Include="DemoModules\Grid\Images\annedodsworth.jpg"/>
-    <EmbeddedResource Include="DemoModules\Grid\Images\andrewfuller.jpg"/>
-    <EmbeddedResource Include="DemoModules\Grid\Images\robertking.jpg"/>
-    <EmbeddedResource Include="DemoModules\Grid\Images\stevenbuchanan.jpg"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\1.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\10.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\12.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\13.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\14.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\15.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\2.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\4.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\5.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\6.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\7.png"/>
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\9.png"/>
+    <EmbeddedResource Include="DemoModules\DataForm\Images\arvil.jpg" />
+    <EmbeddedResource Include="DemoModules\Grid\Images\nancydavolio.jpg" />
+    <EmbeddedResource Include="DemoModules\Grid\Images\michaelsuyama.jpg" />
+    <EmbeddedResource Include="DemoModules\Grid\Images\margaretpeacock.jpg" />
+    <EmbeddedResource Include="DemoModules\Grid\Images\lauracallahan.jpg" />
+    <EmbeddedResource Include="DemoModules\Grid\Images\janetleverling.jpg" />
+    <EmbeddedResource Include="DemoModules\Grid\Images\annedodsworth.jpg" />
+    <EmbeddedResource Include="DemoModules\Grid\Images\andrewfuller.jpg" />
+    <EmbeddedResource Include="DemoModules\Grid\Images\robertking.jpg" />
+    <EmbeddedResource Include="DemoModules\Grid\Images\stevenbuchanan.jpg" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\1.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\10.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\12.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\13.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\14.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\15.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\2.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\4.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\5.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\6.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\7.png" />
+    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\9.png" />
     <!--<EmbeddedResource Include="Demo\Resources\Images\default.png">
 			<LogicalName>default</LogicalName>
 		</EmbeddedResource>
@@ -170,22 +177,15 @@
     <EmbeddedResource Include="DemoModules\TabView\Resources\PhoneListData.xml">
       <LogicalName>Resources.PhoneListData.xml</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house1.jpg"/>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house2.jpg"/>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house3.jpg"/>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house4.jpg"/>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house5.jpg"/>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house6.jpg"/>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house7.jpg"/>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house8.jpg"/>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house9.jpg"/>
-    <EmbeddedResource Include="DemoModules\Controls\Images\tshirt.png"/>
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house1.jpg" />
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house2.jpg" />
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house3.jpg" />
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house4.jpg" />
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house5.jpg" />
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house6.jpg" />
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house7.jpg" />
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house8.jpg" />
+    <EmbeddedResource Include="DemoModules\CollectionView\Images\house9.jpg" />
+    <EmbeddedResource Include="DemoModules\Controls\Images\tshirt.png" />
   </ItemGroup>
-  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
-    <ItemGroup>
-      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Data.v22.2'">
-        <IsTrimmable>true</IsTrimmable>
-      </ManagedAssemblyToLink>
-    </ItemGroup>
-  </Target>
 </Project>

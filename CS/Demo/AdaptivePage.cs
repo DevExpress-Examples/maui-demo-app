@@ -21,7 +21,7 @@ namespace DemoCenter.Maui.Demo {
                 oldPageSize = currentSize;
                 isOldSizeStored = true;
                 SetValue(OrientationPropertyKey, width > height ? PageOrientation.Landscape : PageOrientation.Portrait);
-                this.OrientationChanged.Invoke(this, EventArgs.Empty);
+                this.OrientationChanged?.Invoke(this, EventArgs.Empty);
             }
 
             if (KeyboardAction(oldPageSize, currentSize))
@@ -45,7 +45,7 @@ namespace DemoCenter.Maui.Demo {
             } else {
                 SetValue(OrientationPropertyKey, PageOrientation.Landscape);
             }
-            this.OrientationChanged.Invoke(this, EventArgs.Empty);
+            this.OrientationChanged?.Invoke(this, EventArgs.Empty);
         }
 
         bool KeyboardAction(Size old, Size current) {

@@ -10,16 +10,16 @@
             <dxg:DataGridView.Columns>
                 <dxg:NumberColumn FieldName="OrderID" Caption="OrderID" IsGrouped="true">
                 </dxg:NumberColumn>
-                <dxg:TextColumn FieldName="ProductName" MinWidth="90" Width="1.5*"/>
+                <dxg:TextColumn FieldName="ProductName" MinWidth="105" Width="1.5*"/>
                 <dxg:DateColumn FieldName="OrderDate" MinWidth="105" IsVisible="{OnIdiom Phone=False, Tablet=True}"/>
                 <dxg:DateColumn FieldName="ShippedDate" MinWidth="105" IsVisible="{OnIdiom Phone=False, Tablet=True}"/>
-                <dxg:NumberColumn FieldName="UnitPriceInt" MinWidth="65" Caption="Price" DisplayFormat="C0"/>
-                <dxg:NumberColumn FieldName="Quantity" MinWidth="90"/>
+                <dxg:NumberColumn FieldName="UnitPriceInt" MinWidth="67" Caption="Price" DisplayFormat="C0"/>
+                <dxg:NumberColumn FieldName="Quantity" MinWidth="95"/>
                 <dxg:NumberColumn FieldName="Total"
                                   UnboundType="Decimal"
                                   UnboundExpression="[UnitPriceInt] * [Quantity]"
                                   DisplayFormat="c0"
-                                  MinWidth="100">
+                                  MinWidth="110">
                 </dxg:NumberColumn>
             </dxg:DataGridView.Columns>
             <dxg:DataGridView.GroupSummaries>
@@ -29,7 +29,6 @@
                 <dxg:TotalSummaryAppearance Padding="{OnPlatform iOS='14,12,14,24', Android='14,12,14,14'}" />
             </dxg:DataGridView.TotalSummaryAppearance>
             <dxg:DataGridView.TotalSummaries>
-                <dxg:GridColumnSummary FieldName="ProductName" Type="Count" DisplayFormat="{}Count={0}"/>
                 <dxg:GridColumnSummary FieldName="Total" Type="Sum" DisplayFormat="c0" />
             </dxg:DataGridView.TotalSummaries>
         </dxg:DataGridView>

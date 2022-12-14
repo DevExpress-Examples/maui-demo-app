@@ -26,6 +26,8 @@
     <Color x:Key="CardViewBackgroundColor" x:Uid="SurfaceDark-3">#2A2831</Color>
     <Color x:Key="CardViewHeaderColor" x:Uid="NeutralVariant-20">#322F37</Color>
 
+    <Color x:Key="BadgeThemeColor">#A2CA76</Color>
+
     
    <Color x:Key="GridCellFontColor" x:Uid="Neutral-90">#E6E1E5</Color>
     <Color x:Key="GridHorizontalVirtualizationQuarterBarColor">#667BC8</Color>

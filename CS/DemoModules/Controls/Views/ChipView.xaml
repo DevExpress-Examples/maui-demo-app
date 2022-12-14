@@ -32,7 +32,7 @@
                 Margin="16,32,16,32" />
             <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
 
-            <ScrollView>
+            <demo:ScrollViewFix>
                 <StackLayout Spacing="0" Padding="0">
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -109,7 +109,7 @@
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
 
                 </StackLayout>
-            </ScrollView>
+            </demo:ScrollViewFix>
         </demo:DockLayout>
     </ContentPage.Content>
 </demo:DemoPage>
