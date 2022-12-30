@@ -12,16 +12,5 @@ namespace DemoCenter.Maui.Views {
         void OnChipTap(object sender, ChipEventArgs e) {
             e.Chip.IsSelected = !e.Chip.IsSelected;
         }
-
-        void OnSwitchToggled(System.Object sender, Microsoft.Maui.Controls.ToggledEventArgs e) {
-            
-#if __IOS__
-            if (e.Value) {
-                UIKit.UIView nativeGrid = this.chipsCornerRadiusContainer.Handler.PlatformView as UIKit.UIView;
-                UIKit.UIView nativeGridParent = nativeGrid?.Superview;
-                nativeGridParent?.Superview?.SetNeedsLayout();
-            }
-#endif
-        }
     }
 }

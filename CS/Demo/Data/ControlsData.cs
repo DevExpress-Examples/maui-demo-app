@@ -10,30 +10,6 @@ namespace DemoCenter.Maui.Data {
 
         public ControlsData() {
             this.demoItems = new List<DemoItem>() {
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 new DemoItem() {
                     Title = "Simple Button",
                     Description = "Illustrates how to customize a button.",
