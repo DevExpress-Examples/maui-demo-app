@@ -37,6 +37,7 @@
                 FocusedLabelColor="{Binding SelectedAccentColor.Color}"
                 ErrorText="{Binding ActualErrorText}"
                 HasError="{Binding ActualHasError}"
+                MaxCharacterCountOverflowMode="LimitInput"
                 VerticalOptions="Center"
                 Margin="16,32,16,32"/>
             <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}" />

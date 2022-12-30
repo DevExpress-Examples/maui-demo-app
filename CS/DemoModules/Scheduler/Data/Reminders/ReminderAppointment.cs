@@ -17,10 +17,6 @@ namespace DemoCenter.Maui.ViewModels {
         string recurrenceInfo;
         string timeZoneId;
 
-        
-        
-        
-
         public int AppointmentType {
             get => appointmentType;
             set => SetProperty(ref appointmentType, value);

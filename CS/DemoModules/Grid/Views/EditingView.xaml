@@ -4,8 +4,7 @@
                            x:Class="DemoCenter.Maui.Views.EditingView"
                            xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views"
-                           xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-                           xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui">
+                           xmlns:demo="clr-namespace:DemoCenter.Maui.Demo">
     <ContentPage.Resources>
         <local:DoubleToProgressConverter MaxValue="1000" x:Key="DoubleToProgressConverter"/>
     </ContentPage.Resources>

@@ -188,4 +188,11 @@
     <EmbeddedResource Include="DemoModules\CollectionView\Images\house9.jpg" />
     <EmbeddedResource Include="DemoModules\Controls\Images\tshirt.png" />
   </ItemGroup>
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Data.v22.2'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
 </Project>

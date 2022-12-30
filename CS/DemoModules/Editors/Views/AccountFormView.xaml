@@ -96,6 +96,7 @@
                 MinLineCount="2"
                 MaxLineCount="4"
                 LabelText="Notes"
+                MaxCharacterCountOverflowMode="LimitInput"
                 MaxCharacterCount="100"/>
              <dxco:SimpleButton demo:DockLayout.Dock="Top" Text="SUBMIT" Clicked="OnSubmitClicked" FontAttributes="Bold" Margin="0,16,0,0"/>
         </demo:DockLayout>

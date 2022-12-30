@@ -17,10 +17,9 @@
     <Shell.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="itemTemplate">
-                <VerticalStackLayout
-                    Margin="{OnIdiom Phone='10,10', Tablet='40,10'}">
+                <VerticalStackLayout Margin="0,10">
                     <Grid ColumnDefinitions="*, Auto"
-                            Padding="10, 6, 0, 0" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                            Padding="{OnIdiom Phone='20,6,10,0', Tablet='50,6,40,0'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
                             <Button Text="{Binding Title}"
                                     Background="Transparent"
                                     VerticalOptions="Center"
@@ -43,6 +42,7 @@
                                 FontFamily="Roboto-Medium"
                                 Text="All"
                                 FontSize="18"
+                                PressedTextColor="{DynamicResource TextThemeColor}"
                                 PressedBackgroundColor="{DynamicResource CardViewHeaderColor}"/>
                         </Grid>
                         <dxcv:DXCollectionView

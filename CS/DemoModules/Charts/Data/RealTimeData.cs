@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using DevExpress.Maui.Charts;
+using DevExpress.Maui.Core.Internal;
 using Microsoft.Maui.Devices.Sensors;
 
 namespace DemoCenter.Maui.Data {
@@ -9,7 +10,7 @@ namespace DemoCenter.Maui.Data {
 
         readonly IAccelerometer sensor;
         readonly ChartView chart;
-        
+
         public BindingList<DateTimeData> XAxisSeriesData { get; } = new BindingList<DateTimeData>();
         public BindingList<DateTimeData> YAxisSeriesData { get; } = new BindingList<DateTimeData>();
         public BindingList<DateTimeData> ZAxisSeriesData { get; } = new BindingList<DateTimeData>();
@@ -30,7 +31,6 @@ namespace DemoCenter.Maui.Data {
                 ZAxisSeriesData.Add(new DateTimeData(DateTime.Now, e.Reading.Acceleration.Z));
                 RemoveExcessData(ZAxisSeriesData);
                 chart.ResumeRender();
-
             });
         }
 
@@ -43,7 +43,8 @@ namespace DemoCenter.Maui.Data {
             sensor.Stop();
         }
         public void Start() {
-            sensor.Start(SensorSpeed.Game);
+            var sensorSpeed = On.IOS ? SensorSpeed.Fastest : SensorSpeed.Game;
+            sensor.Start(sensorSpeed);
         }
     }
 }

@@ -33,7 +33,6 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 IconVisible="{Binding ShouldShowIcon}"
                 BorderColor="{Binding SelectedBorderColor.Color}"
                 BorderThickness="{Binding BorderWidth}"
-                ShowShadow="{Binding ShouldShowShadow}"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 WidthRequest="160"
@@ -86,15 +85,6 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                         </StackLayout>
                     </StackLayout>
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
-
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
-                            <Label Text="Shadow" Style="{StaticResource TextStyle}"/>
-                            <Switch IsToggled="{Binding ShouldShowShadow}" Style="{DynamicResource SwitchStyle}"/>
-                        </StackLayout>
-                    </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
-
                 </StackLayout>
             </demo:ScrollViewFix>
         </demo:DockLayout>

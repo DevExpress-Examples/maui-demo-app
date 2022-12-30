@@ -7,13 +7,13 @@
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              x:Class="DemoCenter.Maui.Views.GroupItemView"
              VerticalOptions="FillAndExpand"
-             WidthRequest="156">
+             WidthRequest="160">
     <dxco:SimpleButton BackgroundColor="{DynamicResource CardViewBackgroundColor}"
                         Padding="2,0,2,0"
                         Clicked="GroupItemViewClicked"
                         BorderThickness="0.3"
                         BorderColor="#2B2A1C34"
-                        WidthRequest="140"
+                        WidthRequest="144"
                         Margin="10"
                         HeightRequest="120"
                         PressedBackgroundColor="{DynamicResource CardViewHeaderColor}"

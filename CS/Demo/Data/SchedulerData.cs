@@ -45,12 +45,6 @@ namespace DemoCenter.Maui.Data {
                     Module = typeof(MonthViewDemo),
                     Icon = "monthview"
                 },
-                
-                
-                
-                
-                
-                
             };
         }
         public List<DemoItem> DemoItems => demoItems;

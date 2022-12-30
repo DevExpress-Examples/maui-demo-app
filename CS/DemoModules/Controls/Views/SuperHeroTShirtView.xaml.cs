@@ -33,11 +33,5 @@ namespace DemoCenter.Maui.Views {
                 superhero.TranslateTo(0, superhero.Y, animationDuration, Easing.CubicInOut)
                 );
         }
-        
-        
-        
-        
-        
-        
     }
 }

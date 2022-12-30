@@ -13,6 +13,7 @@ namespace DemoCenter.Maui.Services {
                 FontAttributes = FontAttributes.Bold,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
+                Margin = 0,
                 BackgroundColor = Colors.Transparent,
                 Text = titleText,
                 LineBreakMode = Microsoft.Maui.LineBreakMode.NoWrap
