@@ -5,21 +5,21 @@
 <!-- default badges end -->
 # DevExpress Mobile UI for .NET MAUI
 
-[DevExpress Mobile UI](https://www.devexpress.com/maui/) allows you to use a .NET cross-platform UI toolkit and C# to build native apps for iOS and Android.
+[DevExpress Mobile UI](https://www.devexpress.com/maui/) allows you to use the .NET cross-platform UI toolkit and C# to build native apps for iOS and Android.
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/OverviewDemo.png)
 
-The **DevExpress Mobile UI for Xamarin.Forms and .NET MAUI** is free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/xamarin-free).
+The **DevExpress Mobile UI for .NET MAUI** and **Xamarin.Forms ** is available free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/xamarin-free).
 
 ## Requirements
 
-Please register the DevExpress NuGet Gallery in Visual Studio to restore the NuGet packages used in this solution. See the following topic for more information: [Get Started with DevExpress Mobile UI for .NET MAUI](https://docs.devexpress.com/MAUI/403249/get-started).
+Please register the DevExpress NuGet Gallery in Visual Studio to restore NuGet packages used in this solution. See the following topic for more information: [Get Started with DevExpress Mobile UI for .NET MAUI](https://docs.devexpress.com/MAUI/403249/get-started).
 
-You can also refer to the following YouTube video for more information on how to get started with the DevExpress .NET MAUI Controls: [Setting up a .NET MAUI Project](https://www.youtube.com/watch?v=juJvl5UicIQ).
+You can also refer to the following YouTube video to get started with the DevExpress .NET MAUI Controls: [Setting up a .NET MAUI Project](https://www.youtube.com/watch?v=juJvl5UicIQ).
 
-## What's in This Repository
+## What's in this Repository
 
-A demo application in this repository demonstrates the capabilities of the **DevExpress Mobile UI for .NET MAUI**: Data Grid, Editors, Charts, Scheduler, Data Form, and other controls.
+The demo application within this repository illustrates what’s possible with the **DevExpress Mobile UI for .NET MAUI** (it uses our .NET MAUI Data Grid, Editors, Charts, Scheduler, Data Form, etc).
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/demos.png)
 
