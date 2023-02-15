@@ -9,7 +9,7 @@
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/OverviewDemo.png)
 
-The **DevExpress Mobile UI for .NET MAUI** and **Xamarin.Forms ** is available free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/xamarin-free).
+The **DevExpress Mobile UI for .NET MAUI** and **Xamarin.Forms** is available free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/xamarin-free).
 
 ## Requirements
 
