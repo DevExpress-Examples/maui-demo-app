@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DemoCenter.Maui.ViewModels;
 
 namespace DemoCenter.Maui.Charts.ViewModels {
@@ -18,11 +19,19 @@ namespace DemoCenter.Maui.Charts.ViewModels {
     }
 
     public class AxisLabelOptionsItemInfoContainer : ChartItemInfoContainerBase {
-        public AxisLabelOptionsType LabelModeType { get; }
-
         public AxisLabelOptionsItemInfoContainer(AxisLabelOptionsType type, ChartViewModelBase viewModel) {
             LabelModeType = type;
             ChartModel = viewModel;
+        }
+        public AxisLabelOptionsType LabelModeType { get; }
+        public string LabelModelTypeImage {
+            get {
+                switch (LabelModeType) {
+                    case AxisLabelOptionsType.RotatedAndStaggered: return GetThemedImageName("demochartsrotatedlabels");
+                    case AxisLabelOptionsType.CryptocurrencyPortfolio: return GetThemedImageName("demochartscryptocurrencyportfolio");
+                    default: throw new ArgumentException("The selector cannot handle the passed AxisLabelOptionsType value.");
+                }
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
@@ -41,7 +41,6 @@
                         <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}">
                             <Image Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="130" WidthRequest="100" />
                         </Border>
-
                         <demo:DockLayout demo:DockLayout.Dock="Top">
                             <Label demo:DockLayout.Dock="Left" Text="Name:" FontAttributes="Bold" WidthRequest="70"/>
                             <Label Text="{Binding Name}"/>
@@ -63,7 +62,6 @@
                             <Label Text="{Binding Address}"/>
                         </demo:DockLayout>
                     </demo:DockLayout>
-
                     <Label Text="{Binding Notes}" Margin="0,16,0,0" />
                     <BoxView Style="{StaticResource SeparatorStyle}" Margin="0,16,0,0"/>
                 </VerticalStackLayout>

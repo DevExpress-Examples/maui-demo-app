@@ -1,5 +1,5 @@
 using DemoCenter.Maui.ViewModels;
-
+using MThemeLoader = DemoCenter.Maui.Styles.ThemeLoader.ThemeLoader;
 namespace DemoCenter.Maui.Charts.ViewModels {
     public class ChartItemInfoContainerBase : NotificationObject {
         bool isSelected;
@@ -15,6 +15,9 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public ChartViewModelBase ChartModel {
             get;
             protected set;
+        }
+        protected string GetThemedImageName(string imageName) {
+            return MThemeLoader.ThemeName.ToLower() + imageName;
         }
     }
 }

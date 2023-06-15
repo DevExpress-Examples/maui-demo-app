@@ -20,18 +20,12 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
         public DateTime HireDate { get; set; }
         public string Gender { get; set; }
         public string MaritalStatus { get; set; }
-        public string ImageData { get; set; }
-        public string FullName{
-            get {
-                return FirstName + " " + LastName;
-            }
+        public string FullName => FirstName + " " + LastName;
+        public string ImageData { 
+            set {
+                Image = ImageSource.FromFile(value);
+            } 
         }
-        public ImageSource Image {
-            get {
-                byte[] bytes = Convert.FromBase64String(ImageData);
-                MemoryStream ms = new MemoryStream(bytes);
-                return ImageSource.FromStream(() => ms);
-            }
-        }
+        public ImageSource Image { get; set; }
     }
 }

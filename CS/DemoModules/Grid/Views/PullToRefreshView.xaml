@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                            xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
@@ -35,6 +35,7 @@
                                 <Label Text="{Binding Value, StringFormat='{0:0.00}'}"
                                        Grid.Column="0"
                                        VerticalOptions="Center"
+                                       HorizontalOptions="End"
                                        HorizontalTextAlignment="End"
                                        Margin="0, 0, 7, 0"
                                        BackgroundColor="{DynamicResource GridCellBackgroundColor}"

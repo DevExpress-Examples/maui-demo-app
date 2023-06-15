@@ -3,10 +3,14 @@ using DemoCenter.Maui.DemoModules.TabView.Pages;
 using DemoCenter.Maui.Services;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.CollectionView;
-using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
     public partial class ContactsView : Demo.DemoPage {
+        static PhoneContact GetContactInfo(object item) {
+            if (item is CallInfo callInfo)
+                return callInfo?.Contact;
+            return null;
+        }
         bool inNavigation = false;
 
         public ContactsView() {
@@ -24,12 +28,6 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
                 await OpenDetailPage(GetContactInfo(args.Item));
         }
 
-        private PhoneContact GetContactInfo(object item) {
-            if (item is CallInfo callInfo)
-                return callInfo?.Contact;
-            return null;
-        }
-
         Task OpenDetailPage(PhoneContact contact) {
             if (contact == null)
                 return Task.CompletedTask;
@@ -42,4 +40,3 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
         }
     }
 }
-

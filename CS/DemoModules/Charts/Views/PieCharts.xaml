@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.PieCharts"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -14,12 +14,7 @@
         </DataTemplate>
         <DataTemplate x:Key="pieChartTemplate">
             <view:PieChartContainer/>
-        </DataTemplate>
-
-        <local:PieTypeToImageSourceConverter x:Key="pieTypeToImageSourceConverter"/>
-        <DataTemplate x:Key="headerItemTemplate">
-            <demo:ChartsDemoTabButton ImageSource="{Binding PieType, Converter={StaticResource pieTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
-        </DataTemplate>
+        </DataTemplate>        
         <local:PieChartTemplateSelector x:Key="pieChartTemplateSelector"
                                         DonutChartTemplate="{StaticResource donutChartTemplate}"
                                         PieChartTemplate="{StaticResource pieChartTemplate}"/>
@@ -37,16 +32,16 @@
                   SwipeEnabled="False"
 
                   ItemsSource="{Binding Content}"
-                  ItemHeaderTemplate="{StaticResource headerItemTemplate}"
                   ItemTemplate="{StaticResource pieChartTemplateSelector}"
 
+                  ItemHeaderIconDataMember="PieTypeImage"
                   HeaderPanelContentAlignment="Start"
                   HeaderPanelIndent="0"
                   HeaderPanelItemSpacing="0"
                   HeaderPanelPadding="0"
 
-                  IsSelectedItemIndicatorVisible="False"
+                  IsSelectedItemIndicatorVisible="True"
                   IsHeaderPanelShadowVisible="False"
 
-                        SelectedItem="{Binding SelectedItem}"/>
+                  SelectedItem="{Binding SelectedItem}"/>
 </demo:DemoPage>

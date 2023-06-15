@@ -13,7 +13,7 @@ namespace DemoCenter.Maui.Views {
 
         public AutoCompleteEditView() {
             InitializeComponent();
-            this.accentColor = ((AutoCompleteEditViewModel)BindingContext).SelectedAccentColor.Color;
+            this.accentColor = App.Current.Resources["TextHighlightingColor"] as Color;
             this.employees = new EmployeesRepository().Employees;
         }
 

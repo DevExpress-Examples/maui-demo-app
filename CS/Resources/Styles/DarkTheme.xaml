@@ -14,11 +14,11 @@
     <Color x:Key="SecondaryTextColor" x:Uid="NeutralVariant-80">#CAC4D0</Color>
     <Color x:Key="NavigationTextColor" x:Uid="Neutral-90">#E6E1E5</Color>
 
-      
+    
     <Color x:Key="NestedTabViewFavoriteColor">#de6d6f</Color>
     <Color x:Key="NestedTabViewCartColor">#27b24f</Color>
     <Color x:Key="ReminderButtonBackgroundColor">#2088FF</Color>
-      
+    
 
     <Color x:Key="AvatarBorderColor">Transparent</Color>
     <Color x:Key="SliderMaximumTrackColor-iOS" x:Uid="NeutralVariant-30">#49454F</Color>
@@ -27,9 +27,10 @@
     <Color x:Key="CardViewHeaderColor" x:Uid="NeutralVariant-20">#322F37</Color>
 
     <Color x:Key="BadgeThemeColor">#A2CA76</Color>
+    <Color x:Key="TextHighlightingColor">#9A6E19</Color>
 
     
-   <Color x:Key="GridCellFontColor" x:Uid="Neutral-90">#E6E1E5</Color>
+    <Color x:Key="GridCellFontColor" x:Uid="Neutral-90">#E6E1E5</Color>
     <Color x:Key="GridHorizontalVirtualizationQuarterBarColor">#667BC8</Color>
     <Color x:Key="GridHorizontalVirtualizationYearBarColor">#AF4D9A</Color>
 
@@ -43,9 +44,9 @@
     <Color x:Key="CalendarSpecialDatesBackgroundColor">#1AFFFFFF</Color>
 
     
-    <Color x:Key="ChartsTabButtonSelectedBackgroundColor">#303030</Color>
-    <Color x:Key="ChartsTabButtonBackgroundColor">#454545</Color> 
-    <Color x:Key="ChartsTabButtonBorderColor">#555555</Color>
+    <Color x:Key="ChartsTabButtonSelectedBackgroundColor">Transparent</Color>
+    <Color x:Key="ChartsTabButtonBackgroundColor" x:Uid="Neutral-10">#1C1B1F</Color>
+    <Color x:Key="ChartsTabButtonBorderColor">Transparent</Color>
 
     
     <Color x:Key="PhoneListTabTextColor">#b7b7b7</Color>
@@ -74,11 +75,42 @@
     <Color x:Key="CollectionViewStrikedItemFontColor">#747474</Color>
     <Color x:Key="CollectionViewUrgentItemBackgroundColor" x:Uid="Secondary-30">#4A4458</Color>
 
+    <Color x:Key="CollectionViewPageBackground" x:Uid="PageBackground">#1C1B1F</Color>
+    <Color x:Key="CollectionViewIconColor" x:Uid="Neutral-Variant-80">#CAC4D0</Color>
+    <Color x:Key="CollectionViewUrgentItemTextColor" x:Uid="Secondary-90">#E8DEF8</Color>
+    <Color x:Key="CompanyTextColor" x:Uid="Neutral-Variant-80">#CAC4D0</Color>
+    <Color x:Key="CollectionViewCardBarColor" x:Uid="Neutral-Variant-20">#322F37</Color>
+    <Color x:Key="CollectionViewFloatingButtonShadowColor">Black</Color>
+    <Color x:Key="CollectionViewAltText" x:Uid="Neutral-95">#F4EFF4</Color>
+
+    
+    <Color x:Key="HousePriceTextColor">#FFFFFF</Color>
+    <Color x:Key="HouseAddressTextColor">#CAC4D0</Color>
+    <Color x:Key="HouseTypeTextColor">#E6E1E5</Color>
+    <Color x:Key="HouseCardBackgroundColor">#443F4A</Color>
+    <Color x:Key="ToogleFavoriteIconBackgroundColor">#EFB8C8</Color>
+    <Color x:Key="ToogleFavoriteIconStrokeColor">#1C1B1F</Color>
+    <Color x:Key="FavoriteIconBackgroundColor">#443F4A</Color>
+    <Color x:Key="FavoriteIconStrokeColor">#EFB8C8</Color>
+    <Color x:Key="SelectedTabHeaderBackgroundColor">#4A4458</Color>
+    <Color x:Key="SelectedTabHeaderTextColor">#E6E1E5</Color>
+    <Color x:Key="TabHeaderTextColor">#CAC4D0</Color>
+    <Color x:Key="FormSettingsIconColor">#CAC4D0</Color>
+    <Color x:Key="RegionTextColor">#E6E1E5</Color>
+    <Color x:Key="FilterFormItemEditorBackgroundColor">#2E2A30</Color>
+    <Color x:Key="FilterFormItemSelectedChipBackgroundColor">#E8DEF8</Color>
+    <Color x:Key="ToolBarItemTextColor">#A49EAC</Color>
+
     
     <Color x:Key="GridCustomAppearanceOddRowBackgroundColor">#3A3A3A</Color>
     <Color x:Key="GridCustomAppearanceFontColor">#E7E7E7</Color>
     <Color x:Key="GridCustomAppearancePositiveFontColor">#00AE00</Color>
     <Color x:Key="GridCustomAppearanceNegativeFontColor">#FF5458</Color>
+
+    
+    <Color x:Key="UnselectedBorderColor">#79747E</Color>
+    <Color x:Key="SelectedPaperSizeColor">#4A4458</Color>
+    <Color x:Key="FormatTextColor">#E6E1E5</Color>
 
     
     <Style TargetType="Slider">

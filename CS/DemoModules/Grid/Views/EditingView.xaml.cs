@@ -1,9 +1,9 @@
 using System;
 using System.Globalization;
 using DemoCenter.Maui.DemoModules.Grid.Data;
-
 using DemoCenter.Maui.Services;
 using DemoCenter.Maui.Styles.ThemeLoader;
+using DevExpress.Maui.Core;
 using DevExpress.Maui.DataGrid;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui.Controls;
@@ -24,23 +24,32 @@ namespace DemoCenter.Maui.Views {
         void DataGridView_ValidateCell(object sender, ValidateCellEventArgs e) {
             if (e.FieldName == "From.Name" && string.IsNullOrWhiteSpace((string)e.NewValue))
                 e.ErrorContent = "The From field is required.";
-            if (e.FieldName == "Sent" && (DateTime)e.NewValue > DateTime.Now.Date)
+            else if (e.FieldName == "Sent" && (DateTime)e.NewValue > DateTime.Now.Date)
                 e.ErrorContent = "The Sent field cannot be in the future.";
         }
-
-        async void Handle_Tap(object sender, DataGridGestureEventArgs e) {
-            if (e.Item == null || dataGridView.EditorShowMode == EditorShowMode.Tap)
+        async void DataGridView_ValidateAndSave(object sender, ValidateItemEventArgs e) {
+            OutlookData item = e.Item as OutlookData;
+            if (item == null)
                 return;
-            var editFormPage = new EditFormPage(dataGridView, dataGridView.GetRowItem(e.RowHandle));
-            editFormPage.Disappearing += EditFormPage_Disappearing;
-            editFormPage.ValidateCell += DataGridView_ValidateCell;
-            await NavigationService.NavigateToPage(editFormPage);
+            string errorText = string.Empty;
+            if (string.IsNullOrWhiteSpace(item.From.Name))
+                errorText = "The From field is required.";
+            if (item.Sent > DateTime.Now.Date) {
+                errorText += "\nThe Sent field cannot be in the future.";
+            }
+
+            errorText.TrimStart('\n');
+            e.IsValid = string.IsNullOrWhiteSpace(errorText);
+            if(!e.IsValid)
+                await DisplayAlert("Error", errorText, "OK");
         }
 
-        void EditFormPage_Disappearing(object sender, EventArgs e) {
-            var editFormPage = (EditFormPage)sender;
-            editFormPage.Disappearing -= EditFormPage_Disappearing;
-            editFormPage.ValidateCell -= DataGridView_ValidateCell;
+         void Handle_Tap(object sender, DataGridGestureEventArgs e) {
+            if (e.Item == null || dataGridView.EditorShowMode == EditorShowMode.Tap)
+                return;
+            this.dataGridView.ShowDetailEditForm(e.RowHandle);
+            
+            
         }
 
         async void OnItemClicked(object sender, EventArgs e) {

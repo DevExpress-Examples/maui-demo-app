@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<demo:DemoPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
+    xmlns:helpers="clr-namespace:DemoCenter.Maui"
+    x:Class="DemoCenter.Maui.Views.SettingsForm"
+    ios:Page.UseSafeArea="False">
+     <ContentPage.BindingContext>
+        <viewModel:SettingsFormViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="dxe:FormItem">
+            <Setter Property="ShowSeparator" Value="false" />
+            <Setter Property="ImageWidth" Value="36" />
+            <Setter Property="ImageMargin" Value="0,0,10,0" />
+            <Setter Property="ImageHeight" Value="36" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="ImageColor" Value="{DynamicResource FormSettingsIconColor}" />
+        </Style>
+        <Style TargetType="dxe:FormSwitchItem">
+            <Setter Property="ShowSeparator" Value="false" />
+            <Setter Property="ImageWidth" Value="36" />
+            <Setter Property="ImageMargin" Value="0,0,10,0" />
+            <Setter Property="ImageHeight" Value="36" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="ImageColor" Value="{DynamicResource FormSettingsIconColor}" />
+        </Style>
+        <Style TargetType="dxe:FormListPickerItem">
+            <Setter Property="ShowSeparator" Value="false" />
+            <Setter Property="ImageWidth" Value="36" />
+            <Setter Property="ImageMargin" Value="0,0,10,0" />
+            <Setter Property="ImageHeight" Value="36" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="ImageColor" Value="{DynamicResource FormSettingsIconColor}" />
+        </Style>
+        <Style TargetType="dxe:FormGroupItem">
+            <Setter Property="HeaderFontAttributes" Value="Bold" />
+            <Setter Property="HeaderMargin" Value="15,0,0,5" />
+            <Setter Property="Padding" Value="0,25,0,15" />
+            <Setter Property="HeaderFontSize" Value="15" />
+            <Setter Property="ItemSpacing" Value="0" />
+        </Style>
+    </ContentPage.Resources>
+    <demo:ScrollViewFix BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <VerticalStackLayout Padding="20,0">
+            <dxe:FormGroupItem>
+                <dxe:FormItem
+                    Detail="support@devexpress.com"
+                    DetailFontSize="14"
+                    ImageVerticalOptions="Center"
+                    Padding="0,10"
+                    Text="Jennie Valintine"
+                    TextFontSize="18">
+                    <dxe:FormItem.ImageTemplate>
+                        <DataTemplate>
+                            <Image
+                                Margin="0,0,10,0"
+                                Aspect="AspectFit"
+                                HeightRequest="60"
+                                Source="jennievalintine"
+                                WidthRequest="60">
+                                <Image.Clip>
+                                    <EllipseGeometry
+                                        Center="30,30"
+                                        RadiusX="30"
+                                        RadiusY="30" />
+                                </Image.Clip>
+                            </Image>
+                        </DataTemplate>
+                    </dxe:FormItem.ImageTemplate>
+                </dxe:FormItem>
+                <dxe:FormItem
+                    AllowTap="True"
+                    Detail="{Binding Bio, Converter={helpers:BioDetailsConverter}, Mode=OneWay}"
+                    DetailColor="Gray"
+                    Tap="OnBioTap"
+                    Text="{Binding Bio, Converter={helpers:BioTextConverter}, Mode=OneWay}" />
+            </dxe:FormGroupItem>
+            <dxe:FormGroupItem Header="Language">
+                <dxe:FormListPickerItem
+                    ImageSource="globe"
+                    InlineContent="{x:Null}"
+                    ItemsSource="{Binding Languages}"
+                    PickerTitle="Select Language"
+                    SelectedItem="{Binding Language, Mode=TwoWay}"
+                    Text="{Binding Language}">
+                    <dxe:FormListPickerItem.PickerTitleView>
+                        <demo:TitleView Title="Select Language" />
+                    </dxe:FormListPickerItem.PickerTitleView>
+                </dxe:FormListPickerItem>
+            </dxe:FormGroupItem>
+            <dxe:FormGroupItem Header="Chat Notifications">
+                <dxe:FormSwitchItem
+                    ImageSource="priv"
+                    IsToggled="{Binding IsPrivateChatEnabled}"
+                    Text="Private Chat" />
+                <dxe:FormSwitchItem
+                    ImageSource="group"
+                    IsToggled="{Binding IsGroupChatEnabled}"
+                    Text="Group Chat" />
+            </dxe:FormGroupItem>
+            <dxe:FormGroupItem Header="Calls" ShowSeparator="false">
+                <dxe:FormSwitchItem
+                    ImageSource="sound"
+                    IsToggled="{Binding IsSoundEnabled}"
+                    Text="Sounds" />
+                <dxe:FormListPickerItem
+                    ImageSource="vibrate"
+                    ItemsSource="{Binding VibrationModes}"
+                    PickerShowMode="Popup"
+                    SelectedItem="{Binding VibrationMode}"
+                    ShowSearchPanel="False"
+                    Text="Vibrate"/>
+                <dxe:FormListPickerItem
+                    ImageSource="blacklist"
+                    InlineContent="{x:Null}"
+                    Content="{x:Null}"
+                    IsMultipleSelectionEnabled="True"
+                    ItemsSource="{Binding Contacts}"
+                    SelectedItems="{Binding Blacklist}"
+                    PickerTitle="Blacklist"
+                    PickerShowMode="BottomSheet"
+                    Text="Blacklist">
+                    <dxe:FormListPickerItem.PickerTitleView>
+                        <demo:TitleView Title="Blacklist" />
+                    </dxe:FormListPickerItem.PickerTitleView>
+                </dxe:FormListPickerItem>
+            </dxe:FormGroupItem>
+        </VerticalStackLayout>
+    </demo:ScrollViewFix>
+</demo:DemoPage>

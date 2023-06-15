@@ -4,6 +4,7 @@ using System.Windows.Input;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
     public class NumericEditViewModel : NotificationObject {
@@ -51,8 +52,8 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         public ICommand ToggleErrorCommand { get; }
 
         public NumericEditViewModel() {
-            ResetToDefaultCommand = new DelegateCommand(ResetToDefault);
-            ToggleErrorCommand = new DelegateCommand(ToggleError);
+            ResetToDefaultCommand = new Command(ResetToDefault);
+            ToggleErrorCommand = new Command(ToggleError);
 
             ResetToDefault();
         }
@@ -92,4 +93,3 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         public CultureInfo Info { get; set; }
     }
 }
-

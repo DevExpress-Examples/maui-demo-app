@@ -18,13 +18,13 @@
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="60" />
+                <RowDefinition Height="49" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <demo:IconView x:Name="icon"
                            Icon="{Binding ImageSource}"
-                           HeightRequest="30"
-                           WidthRequest="30"
+                           HeightRequest="24"
+                           WidthRequest="24"
                            HorizontalOptions="Center"
                            VerticalOptions="Center" />
             <BoxView x:Name="verticalBorder"
@@ -36,11 +36,7 @@
                      Grid.Row="1"
                      HeightRequest="1"
                      Color="{Binding BorderColor, Source={Reference buttonContainer}}" />
-            <BoxView Grid.Column="1"
-                     Grid.Row="1"
-                     HeightRequest="1"
-                     WidthRequest="1"
-                     Color="{Binding BorderColor, Source={Reference buttonContainer}}" />
+            
         </Grid>
     </ContentView.Content>
 </ContentView>

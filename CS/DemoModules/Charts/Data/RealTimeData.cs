@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using DevExpress.Maui.Charts;
+using DevExpress.Maui.Core;
 using DevExpress.Maui.Core.Internal;
 using Microsoft.Maui.Devices.Sensors;
 
@@ -43,8 +44,8 @@ namespace DemoCenter.Maui.Data {
             sensor.Stop();
         }
         public void Start() {
-            var sensorSpeed = On.IOS ? SensorSpeed.Fastest : SensorSpeed.Game;
-            sensor.Start(sensorSpeed);
+            var sensorSpeed = ON.iOS ? SensorSpeed.Fastest : SensorSpeed.Game;
+            sensor.Start(SensorSpeed.Fastest);
         }
     }
 }

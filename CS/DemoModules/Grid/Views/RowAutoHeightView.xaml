@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:BaseGridContentPage
     x:Class="DemoCenter.Maui.Views.RowAutoHeightView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -13,9 +13,9 @@
             <Setter Property="TextColor" Value="{DynamicResource GridCellFontColor}"/>
         </Style>
         <DataTemplate x:Key="compactTemplate">
-            <StackLayout Margin="10" Spacing="0">
-                <demo:DockLayout ColumnSpacing="10" RowSpacing="7">
-                    <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}" StrokeThickness="1" WidthRequest="62">
+            <demo:DockLayout Margin="10" RowSpacing="10" StretchLastChild="False">
+                <demo:DockLayout demo:DockLayout.Dock="Top" ColumnSpacing="10" RowSpacing="7">
+                    <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}" StrokeThickness="1" MaximumHeightRequest="72" WidthRequest="62">
                         <Border.StrokeShape>
                             <Rectangle/>
                         </Border.StrokeShape>
@@ -25,16 +25,15 @@
                     <Label demo:DockLayout.Dock="Top" Text="{Binding Item.Position}" />
                     <Label demo:DockLayout.Dock="Top" Text="{Binding Item.Phone}" />
                 </demo:DockLayout>
-                <Label Text="{Binding Item.Notes}" Margin="0,10,0,0" />
-            </StackLayout>
+                <Label demo:DockLayout.Dock="Top" Text="{Binding Item.Notes}" />
+            </demo:DockLayout>
         </DataTemplate>
         <DataTemplate x:Key="detailedTemplate">
             <VerticalStackLayout Spacing="0" Padding="16">
                 <demo:DockLayout ColumnSpacing="16" RowSpacing="10" StretchLastChild="False">
                     <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}">
-                        <Image Source="{Binding Item.Photo}" Aspect="AspectFill" HeightRequest="130" WidthRequest="100" />
+                        <Image Source="{Binding Item.Photo}" Aspect="AspectFit" HeightRequest="130" WidthRequest="100" />
                     </Border>
-
                     <demo:DockLayout demo:DockLayout.Dock="Top">
                         <Label demo:DockLayout.Dock="Left" Text="Name:" FontAttributes="Bold" WidthRequest="70"/>
                         <Label Text="{Binding Item.Name}"/>
@@ -56,7 +55,6 @@
                         <Label Text="{Binding Item.Address}"/>
                     </demo:DockLayout>
                 </demo:DockLayout>
-
                 <Label Text="{Binding Item.Notes}" Margin="0,16,0,0" Grid.Row="1"/>
             </VerticalStackLayout>
         </DataTemplate>

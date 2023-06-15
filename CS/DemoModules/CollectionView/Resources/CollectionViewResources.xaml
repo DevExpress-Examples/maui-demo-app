@@ -23,13 +23,13 @@
         <Setter Property="FontAttributes" Value="None" />
         <Setter Property="FontSize" Value="22"/>
         <Setter Property="HeightRequest" Value="50"/>
-        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="TextColor" Value="White"/>
         <Setter Property="VerticalOptions" Value="StartAndExpand"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
-        <Setter Property="WidthRequest" Value="50"/>
+        
     </Style>
 
     <Style x:Key="MailTemplateStyle" TargetType="Grid">

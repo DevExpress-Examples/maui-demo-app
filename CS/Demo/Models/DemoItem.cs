@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DemoCenter.Maui.Data;
+using String = System.String;
 
 namespace DemoCenter.Maui.Models {
     public class DemoItem {
@@ -41,6 +42,12 @@ namespace DemoCenter.Maui.Models {
         public DemoItemStatus DemoItemStatus { get; set; } = DemoItemStatus.None;
 
         public bool ShowBadge => DemoItemStatus != DemoItemStatus.None;
+        public string BadgeText => DemoItemStatus switch {
+            DemoItemStatus.Updated => "UPD",
+            DemoItemStatus.New => "NEW",
+            DemoItemStatus.None => string.Empty,
+            _ => throw new Exception("Unknown DemoItemStatus"),
+        };
 
         public string BadgeIcon {
             get {

@@ -4,6 +4,7 @@ using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.Controls;
 using DevExpress.Maui.Core;
 using DevExpress.Maui.Editors;
+using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
     public class TextEditViewModel : NotificationObject {
@@ -101,8 +102,8 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
                 CharacterCasing.Lower
             };
 
-            ResetToDefaultCommand = new DelegateCommand(ResetToDefault);
-            ToggleErrorCommand = new DelegateCommand(ToggleError);
+            ResetToDefaultCommand = new Command(ResetToDefault);
+            ToggleErrorCommand = new Command(ToggleError);
 
             ResetToDefault();
         }

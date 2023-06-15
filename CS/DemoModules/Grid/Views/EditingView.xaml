@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                            x:Class="DemoCenter.Maui.Views.EditingView"
@@ -20,7 +20,8 @@
                           ItemsSource="{Binding Path=OutlookData}"
                           Tap="Handle_Tap"
                           ValidateCell="DataGridView_ValidateCell"
-                          ValidationError="DataGridView_ValidationError">
+                          ValidationError="DataGridView_ValidationError"
+                          ValidateAndSave="DataGridView_ValidateAndSave">
             <dxg:DataGridView.Columns>
                 <dxg:NumberColumn FieldName="Id" Width="60" IsReadOnly="true"/>
                 <dxg:ComboBoxColumn FieldName="Priority" MinWidth="140"/>

@@ -2,7 +2,7 @@
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
-    public partial class GroupItemView : AbsoluteLayout {
+    public partial class GroupItemView : Grid {
         public event EventHandler TappedControlShortcut;
 
         public GroupItemView() {

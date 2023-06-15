@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
@@ -53,9 +53,8 @@
                                FontSize="20"
                                VerticalTextAlignment="Center"
                                HorizontalTextAlignment="Center"
-                               WidthRequest="50"
                                VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="Start"/>
+                               HorizontalOptions="Center"/>
                     </Grid>
                     <StackLayout Grid.Column="1"
                                  Padding="18,1,18,7"

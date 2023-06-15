@@ -1,39 +1,156 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<local:BaseGridContentPage
-    x:Class="DemoCenter.Maui.Views.FirstLookView"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:BaseGridContentPage x:Class="DemoCenter.Maui.Views.FirstLookView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+    xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+    xmlns:vm="clr-namespace:DemoCenter.Maui.DemoModules.Grid.ViewModels"
+    xmlns:u="clr-namespace:DemoCenter.Maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo">
+
     <ContentPage.Resources>
         <local:DepartmentToImageConverter x:Key="DepartmentToImageConverter"/>
     </ContentPage.Resources>
-    <dxg:DataGridView x:Name="grid" ItemsSource="{Binding Path=Employees}">
-        <dxg:DataGridView.Columns>
-            <dxg:ImageColumn FieldName="Image" Caption="Photo" FixedStyle="Start" Width="75" Padding="10,4,10,4"/>
-            <dxg:TextColumn FieldName="FullName" IsReadOnly="true" Width="{OnIdiom Phone='120', Tablet='180'}"/>
-            <dxg:TextColumn FieldName="GroupName" GroupCaptionDisplayFormat="{}{1}" IsGrouped="true">
-                <dxg:TextColumn.GroupCaptionTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal">
-                            <demo:IconView HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" Source="{Binding Converter={StaticResource DepartmentToImageConverter}}" VerticalOptions="Center"/>
-                            <Label TextColor="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}"
-                                   Margin="9, 0, 0, 0"
-                                   FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}"
-                                   Text="{Binding GroupText}"
-                                   VerticalOptions="Center"
-                                   VerticalTextAlignment="Center"
-                                   HorizontalOptions="FillAndExpand"
-                                   FontSize="16">
-                            </Label>
-                        </StackLayout>
-                    </DataTemplate>
-                </dxg:TextColumn.GroupCaptionTemplate>
-            </dxg:TextColumn>
-            <dxg:TextColumn FieldName="JobTitle" MinWidth="150" Width="1.5*" />
-            <dxg:TextColumn FieldName="Phone" MinWidth="150" Width="*" />
-            <dxg:DateColumn FieldName="HireDate" MinWidth="120" Width="*" />
-        </dxg:DataGridView.Columns>
-    </dxg:DataGridView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="{AppThemeBinding Light=export_button_light, Dark=export_button_dark}" Clicked="ExportButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <dxc:BottomSheet x:Name="bottomSheet" BindingContext="{vm:ExportViewModel}" x:DataType="vm:ExportViewModel" State="{Binding BottomSheetState}" AllowedState="HalfExpanded">
+            <dxc:BottomSheet.HalfExpandedRatio>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="{dx:OnScreenHeight ExtraLarge=0.37, Large=0.44, Medium=0.51, Small=0.58, ExtraSmall=0.65}"/>
+                    <On Platform="Android" Value="{dx:OnScreenHeight ExtraLarge=0.43, Large=0.5, Medium=0.57, Small=0.64, ExtraSmall=0.71}"/>
+                </OnPlatform>
+            </dxc:BottomSheet.HalfExpandedRatio>
+            <Grid>
+                <demo:DockLayout Margin="30,20" IsVisible="{Binding IsInExport, Converter={u:InverseBoolConverter}}">
+                    <demo:DockLayout.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=Black}"/>
+                            <Setter Property="Padding" Value="5"/>
+                            <Setter Property="StrokeThickness" Value="{OnPlatform iOS=3, Android=2}"/>
+                            <Setter Property="StrokeShape" Value="RoundRectangle 5,5,5,5"/>
+                            <Setter Property="WidthRequest" Value="{OnPlatform iOS=42, Android=50}"/>
+                            <Setter Property="HeightRequest" Value="{OnPlatform iOS=42, Android=50}"/>
+                            <Style.Triggers>
+                                <DataTrigger TargetType="Border" Binding="{Binding IsChecked}" Value="False">
+                                    <Setter Property="Stroke" Value="{StaticResource UnselectedBorderColor}"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Border" Binding="{Binding IsChecked}" Value="True">
+                                    <Setter Property="Stroke" Value="{StaticResource AccentColor}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+
+                        <Style TargetType="Label">
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="TextColor" Value="{StaticResource FormatTextColor}"/>
+                            <Setter Property="FontFamily" Value="Roboto"/>
+                            <Setter Property="HorizontalOptions" Value="Center"/>
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+
+                        <Style TargetType="dxe:CheckEdit">
+                            <Setter Property="CheckedCheckBoxImage" Value="radiobuttonchecked"/>
+                            <Setter Property="UncheckedCheckBoxImage" Value="radiobuttonunchecked"/>
+                            <Setter Property="LabelFontSize" Value="14"/>
+                            <Setter Property="LabelFontFamily" Value="Roboto"/>
+                            <Setter Property="CheckBoxIndent" Value="15"/>
+                        </Style>
+                    </demo:DockLayout.Resources>
+                    <HorizontalStackLayout RadioButtonGroup.GroupName="format" RadioButtonGroup.SelectedValue="{Binding SelectedFormat, Mode=TwoWay}" Spacing="38" demo:DockLayout.Dock="Top">
+                        <RadioButton Value="{x:Static vm:ExportFormat.Pdf}">
+                            <RadioButton.ControlTemplate>
+                                <ControlTemplate>
+                                    <VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
+                                        <Border>
+                                            <Image Source="pdf"/>
+                                        </Border>
+
+                                        <Label Text="PDF" />
+                                    </VerticalStackLayout>
+                                </ControlTemplate>
+                            </RadioButton.ControlTemplate>
+                        </RadioButton>
+                        <RadioButton Value="{x:Static vm:ExportFormat.Xlsx}">
+                            <RadioButton.ControlTemplate>
+                                <ControlTemplate>
+                                    <VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
+                                        <Border>
+                                            <Image Source="xls"/>
+                                        </Border>
+
+                                        <Label Text="EXCEL"/>
+                                    </VerticalStackLayout>
+                                </ControlTemplate>
+                            </RadioButton.ControlTemplate>
+                        </RadioButton>
+                        <RadioButton Value="{x:Static vm:ExportFormat.Docx}">
+                            <RadioButton.ControlTemplate>
+                                <ControlTemplate>
+                                    <VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
+                                        <Border>
+                                            <Image Source="docx"/>
+                                        </Border>
+
+                                        <Label Text="DOCX"/>
+                                    </VerticalStackLayout>
+                                </ControlTemplate>
+                            </RadioButton.ControlTemplate>
+                        </RadioButton>
+                    </HorizontalStackLayout>
+
+                    <VerticalStackLayout Spacing="25" Margin="5,10,0,0" demo:DockLayout.Dock="Top">
+                        <dxe:CheckEdit Label="Landscape" IsChecked="{Binding LandscapeSelected}"/>
+                        <dxe:CheckEdit Label="Portrait" IsChecked="{Binding PortraitSelected}"/>
+                    </VerticalStackLayout>
+
+                    <dxe:ChoiceChipGroup demo:DockLayout.Dock="Top" Padding="0,25" ChipSelectedBackgroundColor="{StaticResource SelectedPaperSizeColor}" ItemsSource="{u:EnumToItemsSource EnumType={x:Type vm:PaperSize}}" SelectedItem="{Binding SelectedPaperSize}"/>
+
+                    <dxc:SimpleButton HorizontalOptions="Fill" demo:DockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Text="Export" Icon="export_button" Command="{Binding ExportCommand}" CommandParameter="{x:Reference grid}"/>
+                </demo:DockLayout>
+
+                <demo:DockLayout Margin="30,20" IsVisible="{Binding IsInExport}">
+                    <ActivityIndicator IsRunning="True" Color="{StaticResource AccentColor}" demo:DockLayout.Dock="Top" Margin="30,80" WidthRequest="50"/>
+                    <dxc:SimpleButton HorizontalOptions="Fill" demo:DockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Text="Cancel Exporting" Command="{Binding CancelExportCommand}"/>
+                </demo:DockLayout>
+            </Grid>
+        </dxc:BottomSheet>
+
+        <dxg:DataGridView x:Name="grid" ItemsSource="{Binding Path=Employees}">
+            <dxg:DataGridView.Columns>
+                <dxg:TemplateColumn Width="{OnIdiom Phone='180', Tablet='240'}" FixedStyle="Start" IsReadOnly="true" Caption="Employee" FieldName="FullName">
+                    <dxg:TemplateColumn.DisplayTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="Auto,*" Padding="16,8" ColumnSpacing="16" IgnoreSafeArea="True">
+                                <Image Source="{Binding Item.Image}" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" HeightRequest="40">
+                                    <Image.Clip>
+                                        <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20" />
+                                    </Image.Clip>
+                                </Image>
+                                <Label Text="{Binding Item.FullName}" TextColor="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}" VerticalOptions="Center" Grid.Column="1" FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}" FontSize="16"/>
+                            </Grid>
+                        </DataTemplate>
+                    </dxg:TemplateColumn.DisplayTemplate>
+                </dxg:TemplateColumn>
+                <dxg:TextColumn FieldName="GroupName" GroupCaptionDisplayFormat="{}{1}" IsGrouped="true" AllowExport="false">
+                    <dxg:TextColumn.GroupCaptionTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <demo:IconView HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" Source="{Binding Converter={StaticResource DepartmentToImageConverter}}" VerticalOptions="Center"/>
+                                <Label TextColor="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}" Margin="9, 0, 0, 0" FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}" Text="{Binding GroupText}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" FontSize="16">
+                                </Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </dxg:TextColumn.GroupCaptionTemplate>
+                </dxg:TextColumn>
+                <dxg:TextColumn FieldName="JobTitle" MinWidth="150" Width="1.5*" />
+                <dxg:TextColumn FieldName="Phone" MinWidth="150" Width="*" />
+                <dxg:DateColumn FieldName="HireDate" MinWidth="120" Width="*" />
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </StackLayout>
 </local:BaseGridContentPage>

@@ -20,7 +20,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         <viewModel:SimpleButtonViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}">
+        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
             <dxco:SimpleButton
                 demo:DockLayout.Dock="Top"
                 Text="Button"

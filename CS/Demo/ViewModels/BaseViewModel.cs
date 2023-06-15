@@ -19,7 +19,7 @@ namespace DemoCenter.Maui.ViewModels {
         public ICommand ThemeCommand { get; }
 
         public BaseViewModel() {
-            ThemeCommand = new DelegateCommand(() => IsLightTheme = !isLightTheme);
+            ThemeCommand = new Command(() => IsLightTheme = !isLightTheme);
         }
     }
 }

@@ -10,6 +10,37 @@ namespace DemoCenter.Maui.Data {
 
         public ControlsData() {
             this.demoItems = new List<DemoItem>() {
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                new DemoItem() {
+                    Title = "Loading View",
+                    Description = "This demo emulates an app that obtains its data from a remote server. While a load operation is in progress, the app switches to a Loading View. This view displays a skeleton layout with UI element placeholders with shimmer effects.",
+                    Icon = "shimmer",
+                    DemoItemStatus = DemoItemStatus.New,
+                    Module = typeof(ShimmerView),
+                },
                 new DemoItem() {
                     Title = "Simple Button",
                     Description = "Illustrates how to customize a button.",

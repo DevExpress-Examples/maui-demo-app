@@ -5,6 +5,7 @@ using System.Windows.Input;
 using DemoCenter.Maui.Data;
 using DemoCenter.Maui.Models;
 using DemoCenter.Maui.Services;
+using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.ViewModels {
     public class MainViewModel : BaseViewModel {
@@ -32,7 +33,7 @@ namespace DemoCenter.Maui.ViewModels {
         public MainViewModel() {
             InitVersion();
             this.openService = new MauiUriOpener();
-            OpenWebCommand = new DelegateCommand<MenuItemDescription>((p) => this.openService.Open(p.Url));
+            OpenWebCommand = new Command<MenuItemDescription>((p) => this.openService.Open(p.Url));
             MenuItems = new List<MenuItemDescription> {
                 new MenuItemDescription("Product Page", "productpage", OpenWebCommand, ProductUrl),
                 new MenuItemDescription("Documentation", "documentation", OpenWebCommand, DocumentationUrl),

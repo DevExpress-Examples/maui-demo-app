@@ -1,16 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Globalization;
+using System.Reflection;
 using DevExpress.Maui.Controls;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Controls.Xaml;
 using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui {
     public class InverseBoolConverter : IValueConverter {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => !(bool) value;
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => !(bool) value;
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => !(bool)value;
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => !(bool)value;
     }
 
     public class BoolToObjectConverter : IValueConverter {
@@ -31,10 +32,10 @@ namespace DemoCenter.Maui {
     public class BoolToStackOrientationConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is bool && targetType == typeof(StackOrientation)) {
-                if (parameter is string && ((string) parameter) == "inverse")
-                    return (bool) value ? StackOrientation.Horizontal : StackOrientation.Vertical;
+                if (parameter is string && ((string)parameter) == "inverse")
+                    return (bool)value ? StackOrientation.Horizontal : StackOrientation.Vertical;
                 else
-                    return (bool) value ? StackOrientation.Vertical : StackOrientation.Horizontal;
+                    return (bool)value ? StackOrientation.Vertical : StackOrientation.Horizontal;
             }
             return null;
         }
@@ -44,10 +45,10 @@ namespace DemoCenter.Maui {
     public class BoolToScrollOrientationConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is bool && targetType == typeof(ScrollOrientation)) {
-                if (parameter is string && ((string) parameter) == "inverse")
-                    return (bool) value ? ScrollOrientation.Horizontal : ScrollOrientation.Vertical;
+                if (parameter is string && ((string)parameter) == "inverse")
+                    return (bool)value ? ScrollOrientation.Horizontal : ScrollOrientation.Vertical;
                 else
-                    return (bool) value ? ScrollOrientation.Vertical : ScrollOrientation.Horizontal;
+                    return (bool)value ? ScrollOrientation.Vertical : ScrollOrientation.Horizontal;
             }
             return null;
         }
@@ -57,7 +58,7 @@ namespace DemoCenter.Maui {
     public class BoolToHeaderPanelPositionConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is bool && targetType == typeof(HeaderContentPosition)) {
-                return (bool) value ? HeaderContentPosition.Left : HeaderContentPosition.Top;
+                return (bool)value ? HeaderContentPosition.Left : HeaderContentPosition.Top;
             }
             return null;
         }
@@ -94,46 +95,62 @@ namespace DemoCenter.Maui {
             throw new NotImplementedException();
         }
     }
-    public class TitleViewExtensions {
-        public static BindableProperty IsShadowVisibleProperty =
-            BindableProperty.CreateAttached("IsShadowVisible", typeof(bool), typeof(Page), false);
-
-        public static bool GetIsShadowVisible(Page view) {
-            return (bool) view.GetValue(IsShadowVisibleProperty);
+    public class EnumToDescriptionConverter : IMarkupExtension, IValueConverter {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            return Convert(value);
         }
 
-        public static void SetIsShadowVisible(Page view, bool value) {
-            view.SetValue(IsShadowVisibleProperty, value);
-        }
-    }
-
-}
-
-namespace DemoCenter.PlatformConfiguration.iOSSpecific {
-    using FormsElement = NavigationPage;
-    public static class Page {
-        public static readonly BindableProperty DisablePopInteractiveProperty = BindableProperty.Create(nameof(DisablePopInteractive), typeof(bool), typeof(Page), false);
-
-        public static bool GetDisablePopInteractive(BindableObject element)
-        {
-            return (bool)element.GetValue(DisablePopInteractiveProperty);
+        public object Convert(object value) {
+            var enumValue = (Enum)value;
+            var member = enumValue.GetType().GetMember(enumValue.ToString());
+            var attributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return (attributes.Length > 0) ? ((DescriptionAttribute)attributes[0]).Description : null;
         }
 
-        public static void SetDisablePopInteractive(BindableObject element, bool value)
-        {
-            element.SetValue(DisablePopInteractiveProperty, value);
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotSupportedException();
         }
 
-        public static IPlatformElementConfiguration<iOS, FormsElement> SetDisablePopInteractive(this IPlatformElementConfiguration<iOS, FormsElement> config, bool value)
-        {
-            SetDisablePopInteractive(config.Element, value);
-            return config;
-        }
-
-        public static bool DisablePopInteractive(this IPlatformElementConfiguration<iOS, FormsElement> config)
-        {
-            return GetDisablePopInteractive(config.Element);
+        public object ProvideValue(IServiceProvider serviceProvider) {
+            return this;
         }
     }
+    public class EnumToItemsSource : IMarkupExtension {
+        public Type EnumType { get; set; }
+        public object ProvideValue(IServiceProvider serviceProvider) {
+            return Enum.GetValues(EnumType);
+        }
+    }
+    public class HiddenPropertyInfo<T> {
+        PropertyInfo propertyInfo;
 
+        public HiddenPropertyInfo(Object obj, string propertyName) {
+            Type = obj.GetType();
+            PropertyName = propertyName;
+            Instance = obj;
+        }
+
+        public T Value {
+            get { return (T)PropertyInfo.GetValue(Instance); }
+            set { PropertyInfo.SetValue(Instance, value); }
+        }
+        Type Type { get; }
+        string PropertyName { get; }
+        object Instance { get; }
+        PropertyInfo PropertyInfo {
+            get {
+                if (this.propertyInfo == null) {
+                    Type currentType = Type;
+                    while (currentType != null) {
+                        this.propertyInfo = currentType.GetProperty(PropertyName, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+                        if (this.propertyInfo != null) {
+                            break;
+                        }
+                        currentType = currentType.BaseType;
+                    }
+                }
+                return this.propertyInfo;
+            }
+        }
+    }
 }

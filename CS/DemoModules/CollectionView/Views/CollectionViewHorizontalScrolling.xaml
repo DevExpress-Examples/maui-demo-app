@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -12,7 +12,7 @@
                 <Image demo:DockLayout.Dock="Top" Margin="1" HeightRequest="200" Source="{Binding ImageSource}" Aspect="Fill"/>
 
                 <Label demo:DockLayout.Dock="Top"
-                       Text="{Binding Price, StringFormat='${0:N0}'}"
+                       Text="{Binding Price, StringFormat='${0:N0} K'}"
                        TextColor="{DynamicResource AccentColor}"
                        FontAttributes="Bold"
                        FontSize="{OnIdiom Phone=16, Tablet=18}"/>

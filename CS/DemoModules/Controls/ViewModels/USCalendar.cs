@@ -83,6 +83,7 @@ namespace DemoCenter.Maui.ViewModels {
 
         static List<SpecialDate> GetSpecialDates(int year) {
             List<SpecialDate> specialDates = new List<SpecialDate>();
+
             
             AddFederalHolidayTo(specialDates, new DateTime(year, 1, 1), "New Year's Day");
             AddFederalHolidayTo(specialDates, new DateTime(year + 1, 1, 1), "New Year's Day");
@@ -111,6 +112,7 @@ namespace DemoCenter.Maui.ViewModels {
             specialDates.Add(new FederalHoliday(date, "Thanksgiving"));
 
             AddFederalHolidayTo(specialDates, new DateTime(year, 12, 25), "Christmas Day");
+
             
             date = new DateTime(year, 2, 14);
             specialDates.Add(new Observance(date, "Valentine's Day"));
@@ -172,5 +174,7 @@ namespace DemoCenter.Maui.ViewModels {
             SortSpecialDates(specialDates);
             return specialDates;
         }
+
+
     }
 }

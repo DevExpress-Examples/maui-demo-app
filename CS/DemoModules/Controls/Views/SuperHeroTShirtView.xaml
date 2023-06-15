@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
@@ -19,7 +19,8 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 <Setter Property="WidthRequest" Value="40"/>
                 <Setter Property="HeightRequest" Value="40"/>
                 <Setter Property="Icon" Value="chip_checkicon"/>
-                <Setter Property="Padding" Value="8,0"/>
+                <Setter Property="IconSize" Value="32,32"/>
+                <Setter Property="Padding" Value="5,0"/>
                 <Setter Property="IsIconVisible" Value="{Binding Source={RelativeSource Self}, Path=IsSelected}"/>
             </Style>
             <Style x:Key="ChoiceChipGroupStyle" TargetType="dxe:ChoiceChipGroup">
@@ -46,18 +47,18 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
    <ContentPage.Content>
        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
            <demo:ScrollViewFix>
-                <VerticalStackLayout Spacing="0" Padding="16" WidthRequest="{OnIdiom Phone=NaN, Tablet=540}" Margin="{OnIdiom Phone=0, Tablet='0,26,0,0'}">
-                    <Grid IsClippedToBounds="True" x:Name="container" MaximumHeightRequest="{OnIdiom Phone=300, Tablet=400}">
-                        <Image Source="tshirt.png" Aspect="AspectFit" />
-                        <Image x:Name="superhero" Source="{Binding SelectedSuperhero}" Aspect="AspectFit" BackgroundColor="Transparent"/>
+                <demo:DockLayout StretchLastChild="false" Padding="16" WidthRequest="{OnIdiom Phone=NaN, Tablet=540}" Margin="{OnIdiom Phone=0, Tablet='0,26,0,0'}">
+                    <Grid demo:DockLayout.Dock="Top" IsClippedToBounds="True" x:Name="container">
+                        <Image VerticalOptions="Start" Source="tshirt.png" Aspect="AspectFit" HeightRequest="{OnIdiom Phone=300, Tablet=400}"/>
+                        <Image x:Name="superhero" VerticalOptions="Start" Source="{Binding SelectedSuperhero}" HeightRequest="{OnIdiom Phone=300, Tablet=400}" Aspect="AspectFit" BackgroundColor="Transparent"/>
                     </Grid>
 
-                    <VerticalStackLayout Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
+                    <VerticalStackLayout demo:DockLayout.Dock="Top" Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
                         <Label Text="SuperHero T-Shirt" Style="{StaticResource TextStyle}" />
                         <Label Text="$ 30" Style="{StaticResource TextStyle}" FontSize="Title"/>
                     </VerticalStackLayout>
 
-                    <VerticalStackLayout Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
+                    <VerticalStackLayout demo:DockLayout.Dock="Top" Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
                         <Label Text="PICK A COLOR" Style="{StaticResource TextStyle}"/>
                         <dxe:ChoiceChipGroup x:Name="colorChoiceChipGroup"
                                             SelectedIndex="{Binding SelectedColorIndex}"
@@ -72,7 +73,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                         </dxe:ChoiceChipGroup>
                     </VerticalStackLayout>
 
-                    <VerticalStackLayout Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
+                    <VerticalStackLayout demo:DockLayout.Dock="Top" Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
                         <Label Text="CHOOSE SIZE" Style="{StaticResource TextStyle}"/>
                         <dxe:ChoiceChipGroup ItemsSource="{Binding Sizes}"
                                                 SelectedItem="{Binding SelectedSize}"
@@ -80,8 +81,8 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                                                 ChipPadding="23,10"/>
                     </VerticalStackLayout>
 
-                    <dxco:SimpleButton Text="ADD TO CART" Icon="shopping_cart"/>
-                </VerticalStackLayout>
+                    <dxco:SimpleButton Text="ADD TO CART" Icon="shopping_cart" demo:DockLayout.Dock="Top"/>
+                </demo:DockLayout>
             </demo:ScrollViewFix>
        </Grid>
    </ContentPage.Content>

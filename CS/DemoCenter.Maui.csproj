@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net7.0-android;net7.0-ios;</TargetFrameworks>
+    <TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
     <OutputType>Exe</OutputType>
@@ -9,7 +9,7 @@
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
     <ApplicationTitle>DevExpress UI</ApplicationTitle>
     <ApplicationId>com.devexpress.mauimobileui</ApplicationId>
-    <DXVer>22.2.3</DXVer>
+    <DXVer>23.1.3</DXVer>
     <AssemblyVersion>$(DXVer)</AssemblyVersion>
     <AssemblyFileVersion>$(DXVer)</AssemblyFileVersion>
     <Company>Developer Express Inc.</Company>
@@ -17,23 +17,30 @@
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
     <RootNamespace>DemoCenter.Maui</RootNamespace>
+    <AssemblyName>DemoCenter.Maui</AssemblyName>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>CA1422;CA1416;NU1603</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <TrimmableAssembly Include="DevExpress.Data.v22.2" />
+    <TrimmableAssembly Include="DevExpress.Data.v23.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="SQLite" Version="3.13.0" />
     <PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836" />
     <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836" />
-    <PackageReference Include="DevExpress.Maui.Core" Version="22.2.3" />
-    <PackageReference Include="DevExpress.Maui.Controls" Version="22.2.3" />
-    <PackageReference Include="DevExpress.Maui.DataGrid" Version="22.2.3" />
-    <PackageReference Include="DevExpress.Maui.Charts" Version="22.2.3" />
-    <PackageReference Include="DevExpress.Maui.CollectionView" Version="22.2.3" />
-    <PackageReference Include="DevExpress.Maui.Editors" Version="22.2.3" />
-    <PackageReference Include="DevExpress.Maui.Scheduler" Version="22.2.3" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'Android'" Include="SkiaSharp.NativeAssets.Android" Version="2.88.3" />
+    <PackageReference Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'iOS'" Include="SkiaSharp.NativeAssets.iOS" Version="2.88.3" />
+    <PackageReference Include="SkiaSharp" Version="2.88.3" />
+    <PackageReference Include="SkiaSharp.HarfBuzz" Version="2.88.3" />
+    <PackageReference Include="DevExpress.Maui.Core" Version="23.1.3" />
+    <PackageReference Include="DevExpress.Maui.Controls" Version="23.1.3" />
+    <PackageReference Include="DevExpress.Maui.DataGrid" Version="23.1.3" />
+    <PackageReference Include="DevExpress.Maui.DataGrid.Export" Version="23.1.3" />
+    <PackageReference Include="DevExpress.Maui.Charts" Version="23.1.3" />
+    <PackageReference Include="DevExpress.Maui.CollectionView" Version="23.1.3" />
+    <PackageReference Include="DevExpress.Maui.Editors" Version="23.1.3" />
+    <PackageReference Include="DevExpress.Maui.Scheduler" Version="23.1.3" />
   </ItemGroup>
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
     <PackageReference Include="Xamarin.AndroidX.AutoFill" Version="1.1.0.14" />
@@ -48,6 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <MauiImage Include="Resources\Images\*" />
+    <MauiImage Include="Resources\Images\Houses\*" />
+    <MauiImage Include="Resources\Images\Shimmer\*.svg" />
+    <MauiImage Include="Resources\Images\Avatars\*" />
+    <MauiImage Include="Resources\Images\Editors\*" />
     <MauiImage Include="Resources\Images\dxicon.svg" BaseSize="160,160" />
     <MauiImage Include="DemoModules\DataForm\Images\*" />
     <MauiImage Include="Demo\Images\Charts\*" />
@@ -61,6 +72,8 @@
     <MauiImage Include="Demo\Images\Demo\*" />
     <MauiImage Include="DemoModules\Charts\Resources\Images\*" />
     <MauiImage Include="DemoModules\Controls\Images\*" />
+    <MauiImage Include="DemoModules\CollectionView\Images\*" />
+    <MauiImage Include="DemoModules\CollectionView\Images\Contacts\*" />
     <MauiFont Include="Resources\Fonts\*" />
     <MauiImage Include="DemoModules\TabView\Images\demotabview_location.svg" />
     <MauiImage Include="DemoModules\TabView\Images\demotabview_phone.svg" />
@@ -72,6 +85,9 @@
     <MauiImage Include="DemoModules\TabView\Images\nested_all.svg" />
     <MauiImage Include="DemoModules\TabView\Images\nested_cart.svg" />
     <MauiImage Include="DemoModules\TabView\Images\nested_wish_list.svg" />
+    <MauiImage Include="DemoModules\Grid\Images\*" />
+    <MauiImage Include="DemoModules\DataForm\Images\*" />
+    <MauiImage Include="DemoModules\TabView\Resources\NestedTabViewImages\*" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DemoModules\Grid\Data\Employees.json">
@@ -86,40 +102,6 @@
     <EmbeddedResource Include="DemoModules\Grid\Data\StockSource.json">
       <LogicalName>StockSource.json</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="DemoModules\DataForm\Images\arvil.jpg" />
-    <EmbeddedResource Include="DemoModules\Grid\Images\nancydavolio.jpg" />
-    <EmbeddedResource Include="DemoModules\Grid\Images\michaelsuyama.jpg" />
-    <EmbeddedResource Include="DemoModules\Grid\Images\margaretpeacock.jpg" />
-    <EmbeddedResource Include="DemoModules\Grid\Images\lauracallahan.jpg" />
-    <EmbeddedResource Include="DemoModules\Grid\Images\janetleverling.jpg" />
-    <EmbeddedResource Include="DemoModules\Grid\Images\annedodsworth.jpg" />
-    <EmbeddedResource Include="DemoModules\Grid\Images\andrewfuller.jpg" />
-    <EmbeddedResource Include="DemoModules\Grid\Images\robertking.jpg" />
-    <EmbeddedResource Include="DemoModules\Grid\Images\stevenbuchanan.jpg" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\1.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\10.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\12.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\13.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\14.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\15.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\2.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\4.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\5.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\6.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\7.png" />
-    <EmbeddedResource Include="DemoModules\TabView\Resources\NestedTabViewImages\9.png" />
-    <!--<EmbeddedResource Include="Demo\Resources\Images\default.png">
-			<LogicalName>default</LogicalName>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Demo\Resources\Images\radiobutton.png">
-			<LogicalName>radiobutton</LogicalName>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Demo\Resources\Images\radiobuttonchecked.png">
-			<LogicalName>radiobuttonchecked</LogicalName>
-		</EmbeddedResource>-->
-    <!--<EmbeddedResource Include="DemoModules\Charts\Resources\CryptocurrencyPortfolio.xml">
-			<LogicalName>Resources.CryptocurrencyPortfolio.xml</LogicalName>
-		</EmbeddedResource>-->
     <EmbeddedResource Include="DemoModules\Charts\Resources\PopulationPyramid.json">
       <LogicalName>Resources.PopulationPyramid.json</LogicalName>
     </EmbeddedResource>
@@ -177,15 +159,48 @@
     <EmbeddedResource Include="DemoModules\TabView\Resources\PhoneListData.xml">
       <LogicalName>Resources.PhoneListData.xml</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house1.jpg" />
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house2.jpg" />
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house3.jpg" />
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house4.jpg" />
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house5.jpg" />
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house6.jpg" />
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house7.jpg" />
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house8.jpg" />
-    <EmbeddedResource Include="DemoModules\CollectionView\Images\house9.jpg" />
-    <EmbeddedResource Include="DemoModules\Controls\Images\tshirt.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Images\mainscreen_image_light.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Images\mainscreen_image_dark.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <MauiAsset Include="DemoModules\CollectionView\Data\contacts.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <MauiXaml Update="DemoModules\CollectionView\Views\ContactsCRUDView.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="DemoModules\CollectionView\Views\ContactEditingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="DemoModules\CollectionView\Views\DetailInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="DemoModules\CollectionView\Views\ContactsCRUDView.xaml.cs">
+      <DependentUpon>ContactsCRUDView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DemoModules\CollectionView\Views\ContactEditingPage.xaml.cs">
+      <DependentUpon>ContactEditingPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DemoModules\CollectionView\Views\DetailInfoPage.xaml.cs">
+      <DependentUpon>DetailInfoPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Data.v23.1'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
 </Project>

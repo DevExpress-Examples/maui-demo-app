@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                            xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
@@ -21,7 +21,22 @@
             </dxg:AdvancedColumnLayout>
         </dxg:DataGridView.AdvancedColumnLayout>
 
-        <dxg:ImageColumn FieldName="Image" Caption="Photo" RowSpan="3" Padding="10,4,10,4"/>
+        <dxg:TemplateColumn FieldName="Image" Caption="Photo" RowSpan="3" Padding="10,4,10,4">
+            <dxg:TemplateColumn.DisplayTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Item.Image}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Margin="4"
+                        WidthRequest="80"
+                        HeightRequest="80">
+                        <Image.Clip>
+                            <EllipseGeometry RadiusX="40" RadiusY="40" Center="40,40" />
+                        </Image.Clip>
+                    </Image>
+                </DataTemplate>
+            </dxg:TemplateColumn.DisplayTemplate>
+        </dxg:TemplateColumn>
 
         <dxg:TextColumn FieldName="FullName" Column="1" ColumnSpan="2"/>
         <dxg:TextColumn FieldName="Phone" Column="3" ColumnSpan="2"/>

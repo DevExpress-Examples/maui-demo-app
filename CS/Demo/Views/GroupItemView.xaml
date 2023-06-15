@@ -1,52 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<AbsoluteLayout
-             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-             xmlns:views="clr-namespace:DemoCenter.Maui.Views;assembly=DemoCenter.Maui"
-             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-             x:Class="DemoCenter.Maui.Views.GroupItemView"
-             VerticalOptions="FillAndExpand"
-             WidthRequest="160">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:views="clr-namespace:DemoCenter.Maui.Views;assembly=DemoCenter.Maui"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    x:Class="DemoCenter.Maui.Views.GroupItemView"
+    VerticalOptions="FillAndExpand"
+    WidthRequest="{OnIdiom Phone='156', Tablet='160'}">
+
     <dxco:SimpleButton BackgroundColor="{DynamicResource CardViewBackgroundColor}"
                         Padding="2,0,2,0"
                         Clicked="GroupItemViewClicked"
                         BorderThickness="0.3"
                         BorderColor="#2B2A1C34"
-                        WidthRequest="144"
+                        WidthRequest="{OnIdiom Phone='140', Tablet='144'}"
                         Margin="10"
                         HeightRequest="120"
                         PressedBackgroundColor="{DynamicResource CardViewHeaderColor}"
                         CornerRadius="16"
                         x:Name="demoModuleCard">
-        <Grid RowDefinitions="Auto, *">
-            <demo:IconView Grid.Row="0"
-                           HorizontalOptions="Start"
-                           AbsoluteLayout.LayoutBounds="25,12,39,39"
-                           Margin="16,16,0,8"
-                           Icon="{Binding Icon}"/>
-            <Label VerticalOptions="Start"
-                   HorizontalOptions="End"
-                   IsVisible="{Binding ShowBadge}"
-                   WidthRequest="38"
-                   Margin="16"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   Text="NEW"
-                   TextColor="{DynamicResource BadgeThemeColor}"/>
-            <Label Grid.Row="1"
-                   VerticalTextAlignment="End"
-                   Margin="16,0,10,16"
-                   HorizontalTextAlignment="Start"
-                   Text="{Binding Title}"
-                   FontSize="16"
-                   FontFamily="Roboto"
-                   MaxLines="2"
-                   LineHeight="1"
-                   LineBreakMode="WordWrap"
-                   TextColor="{DynamicResource TextThemeColor}"
-                   BackgroundColor="Transparent" />
-        </Grid>
+
+            <Grid RowDefinitions="Auto, *">
+                <demo:IconView Grid.Row="0"
+                            HorizontalOptions="Start"
+                            AbsoluteLayout.LayoutBounds="25,12,39,39"
+                            Margin="16,16,0,8"
+                            Icon="{Binding Icon}"/>
+                <Label VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    IsVisible="{Binding ShowBadge}"
+                    WidthRequest="38"
+                    Margin="16"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Text="{Binding BadgeText}"
+                    TextColor="{DynamicResource BadgeThemeColor}"/>
+                <Label Grid.Row="1"
+                    VerticalTextAlignment="End"
+                    Margin="16,0,10,16"
+                    HorizontalTextAlignment="Start"
+                    Text="{Binding Title}"
+                    FontSize="16"
+                    FontFamily="Roboto"
+                    MaxLines="2"
+                    LineHeight="1"
+                    LineBreakMode="WordWrap"
+                    TextColor="{DynamicResource TextThemeColor}"
+                    BackgroundColor="Transparent" />
+            </Grid>
         <dxco:SimpleButton.Shadow>
         <OnPlatform x:TypeArguments="Shadow">
             <On Platform="iOS">
@@ -68,4 +69,4 @@
         </OnPlatform>
         </dxco:SimpleButton.Shadow>
     </dxco:SimpleButton>
-</AbsoluteLayout>
+</Grid>

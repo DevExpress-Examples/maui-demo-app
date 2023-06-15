@@ -25,8 +25,7 @@ namespace DemoCenter.Maui.ViewModels {
         public DateTime DisplayDate {
             get => this.displayDate;
             set => SetProperty(ref this.displayDate, value, () => {
-                UpdateCurrentCalendarIfNeeded();
-                SpecialDates = USCalendar.GetSpecialDatesForMonth(DisplayDate.Month);
+                UpdateSpecialDatesIfNeeded(DisplayDate);  
             });
         }
 
@@ -48,6 +47,7 @@ namespace DemoCenter.Maui.ViewModels {
         USCalendar USCalendar { get; set; }
 
         public SpecialDate TryFindSpecialDate(DateTime date) {
+            UpdateSpecialDatesIfNeeded(date);
             return SpecialDates.FirstOrDefault(x => x.Date == date);
         }
 
@@ -55,9 +55,11 @@ namespace DemoCenter.Maui.ViewModels {
             IsHolidaysAndObservancesListVisible = ActiveViewType == DXCalendarViewType.Month;
         }
 
-        void UpdateCurrentCalendarIfNeeded() {
-            if (USCalendar == null || USCalendar.Year != DisplayDate.Year)
-                USCalendar = new USCalendar(DisplayDate.Year);
+        void UpdateSpecialDatesIfNeeded(DateTime date) {
+            if (USCalendar == null || USCalendar.Year != date.Year)
+                USCalendar = new USCalendar(date.Year);
+
+            SpecialDates = USCalendar.GetSpecialDatesForMonth(date.Month);
         }
     }
 }

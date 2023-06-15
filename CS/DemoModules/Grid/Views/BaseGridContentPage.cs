@@ -10,7 +10,7 @@ namespace DemoCenter.Maui.Views {
         }
         
         async void BindData() {
-            BindingContext = await Task.Run(() => LoadData());
+            BindingContext = await Task.Run(LoadData);
         }
 
         protected abstract object LoadData();

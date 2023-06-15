@@ -3,13 +3,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using DemoCenter.Maui.ViewModels;
+using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.TabView {
     public class NestedTabViewModel : NavigationViewModelBase {
         Category selectedCategory;
-        public List<Product> ProductsData { get => AllProducts.SelectMany(p => p.Products).ToList(); }
+        public List<Product> ProductsData => AllProducts.SelectMany(p => p.Products).ToList(); 
 
-        public List<Category> AllProducts { get; private set; } = new List<Category>() {};
+        public List<Category> AllProducts { get; private set; } = new List<Category>();
         public ObservableCollection<Product> Cart { get; private set; }
         public ObservableCollection<Product> WishList { get; private set; }
 
@@ -24,12 +25,12 @@ namespace DemoCenter.Maui.DemoModules.TabView {
         public ICommand ChangeWishList { get; }
 
         public NestedTabViewModel() {
-            ChangeCart = new DelegateCommand<Product> ((p) => ExecuteChangeCart(p));
-            ChangeWishList = new DelegateCommand<Product>((p) => ExecuteChangeWishList(p));
+            ChangeCart = new Command<Product> ((p) => ExecuteChangeCart(p));
+            ChangeWishList = new Command<Product>((p) => ExecuteChangeWishList(p));
             GenerateTestData();
         }
         private void GenerateTestData() {
-            Category tv = new Category() {
+            Category tv = new() {
                 Name = "Televisions",
                 Products = new List<Product>() {
                     new Product(this) { Name = "SuperLCD 42", Category = "Television", Price = "$1200", ImageName="7", Description="The 42” Super LCD TV is changing the way people watch TV. It’s amazing build quality and high precision design means you get the best possible picture for the best possible price."},
@@ -39,7 +40,7 @@ namespace DemoCenter.Maui.DemoModules.TabView {
                     new Product(this) { Name = "SuperLCD 70", Category = "Television", Price = "$4000", ImageName="9", Description="The 70” Super SuperLCD TV is changing the way people watch TV. It’s amazing build quality and high precision design means you get the best possible picture for the best possible price."}
                 }
             };
-            Category monitors = new Category() {
+            Category monitors = new() {
                 Name = "Monitors",
                 Products = new List<Product>() {
                     new Product(this) { Name = "DesktopLCD 19", Category = "Monitor", Price = "$160", ImageName="10", Description="The 19” Brilliance LCD Computer Monitor is changing the way people display computer signals. It’s amazing build quality and high precision design means you get the best possible computer picture."},
@@ -47,14 +48,14 @@ namespace DemoCenter.Maui.DemoModules.TabView {
                     new Product(this) { Name = "DesktopLED 21", Category = "Monitor", Price = "$180", ImageName="13", Description="The 21” Brilliance LED Computer Monitor is changing the way people display computer signals. It’s amazing build quality and high precision design means you get the best possible computer picture."}
                 }
             };
-            Category projectors = new Category() {
+            Category projectors = new() {
                 Name = "Projectors",
                 Products = new List<Product>() {
                     new Product(this) { Name = "Projector Plus", Category = "Projector", Price = "$550", ImageName="14", Description="The HD Projector gives the home theater enthusiast HD output at a super low price. It has a compact design and is both easy to install and setup."},
                     new Product(this) { Name = "Projector Plus HD", Category = "Projector", Price = "$750", ImageName="15", Description="The Super HD Projector gives the home theater enthusiast HD output at a low price. It has a compact design and is both easy to install and setup."},
                 }
             };
-            Category videoPlayers = new Category() {
+            Category videoPlayers = new() {
                 Name = "Video Players",
                 Products = new List<Product>() {
                     new Product(this) { Name = "HD Video Player", Category = "Video Player", Price = "$220", ImageName="1", Description="Get ready to be blown away by the world’s best HD Video Player. Powered by our newest chipset, the HD Video Player upscales and upconverts like never before."},
@@ -112,7 +113,6 @@ namespace DemoCenter.Maui.DemoModules.TabView {
                     return;
                 item.CanAddToCart = true;
                 Cart.Remove(item);
-
             }
         }
         void ExecuteChangeWishList(Product item) {

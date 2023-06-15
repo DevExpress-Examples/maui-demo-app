@@ -78,7 +78,7 @@ namespace DemoCenter.Maui.Views {
             FormattedString formattedString = new FormattedString();
             if (Index != 0)
                 formattedString.Spans.Add(new Span() { Text = EntryField.Substring(0, Index) });
-            formattedString.Spans.Add(new Span() { Text = EntryField.Substring(Index, Length), TextColor = matchHighlightColor });
+            formattedString.Spans.Add(new Span() { Text = EntryField.Substring(Index, Length), BackgroundColor = matchHighlightColor });
             int endIndex = Index + Length;
             if (endIndex != EntryField.Length)
                 formattedString.Spans.Add(new Span() { Text = EntryField.Substring(endIndex) });

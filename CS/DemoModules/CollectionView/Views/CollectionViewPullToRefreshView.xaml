@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
@@ -19,12 +19,10 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <compatibility:RelativeLayout Grid.Column="0">
-                        <Ellipse Style="{StaticResource MailColorItemStyle}"
-                                 Fill="{Binding CategoryColor}" />
-                        <Label Style="{StaticResource SenderAvatarTextStyle}"
-                               Text="{Binding SenderAvatarText}" />
-                    </compatibility:RelativeLayout>
+                    <Ellipse Style="{StaticResource MailColorItemStyle}"
+                                Fill="{Binding CategoryColor}" />
+                    <Label Style="{StaticResource SenderAvatarTextStyle}"
+                            Text="{Binding SenderAvatarText}"/>
                     <StackLayout Grid.Column="1"
                                  Orientation="Vertical"
                                  VerticalOptions="StartAndExpand"

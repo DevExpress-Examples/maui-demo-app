@@ -50,7 +50,7 @@
             <ColumnDefinition Width="0.1*"/>
         </Grid.ColumnDefinitions>
 
-        <dxdf:DataFormView x:Name="dataForm" Grid.Column="1" PickerSourceProvider="{Binding .}">
+        <dxdf:DataFormView x:Name="dataForm" Grid.Column="1" PickerSourceProvider="{Binding .}" BackgroundColor="Transparent">
             <dxdf:DataFormView.ContentPadding>
                 <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,12" Tablet="0,18"/>
             </dxdf:DataFormView.ContentPadding>

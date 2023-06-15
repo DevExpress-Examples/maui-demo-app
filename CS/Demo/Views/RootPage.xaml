@@ -13,13 +13,14 @@
                 ios:Page.UseSafeArea="False"
                 ForegroundColor="{DynamicResource DemoHamburgerIconColor}"
                 BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                FlyoutBackgroundColor="{DynamicResource BackgroundThemeColor}">
+                FlyoutBackgroundColor="White">
     <Shell.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="itemTemplate">
                 <VerticalStackLayout Margin="0,10">
+                    
                     <Grid ColumnDefinitions="*, Auto"
-                            Padding="{OnIdiom Phone='20,6,10,0', Tablet='50,6,40,0'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                            Padding="{OnIdiom Phone='20,6,10,0', Tablet='50,6,40,0'}">
                             <Button Text="{Binding Title}"
                                     Background="Transparent"
                                     VerticalOptions="Center"
@@ -65,10 +66,11 @@
     </Shell.Resources>
 
     <Shell.FlyoutHeader>
-        <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        
+        <StackLayout BackgroundColor="Transparent">
+            
             <Grid ColumnDefinitions="48, *"
-                  Margin="0,24,16,16"
-                  BackgroundColor="{DynamicResource BackgroundThemeColor}" >
+                  Margin="0,24,16,16">
                 <demo:IconView Icon="dx"
                                VerticalOptions="Center"
                                HeightRequest="24"/>
@@ -96,9 +98,10 @@
             <dxcv:DXCollectionView ItemsSource="{Binding MenuItems}">
                 <dxcv:DXCollectionView.ItemTemplate>
                     <DataTemplate>
+                          
                         <Grid ColumnDefinitions="56, *"
                               RowDefinitions="48"
-                              BackgroundColor="{DynamicResource BackgroundThemeColor}" >
+                              BackgroundColor="Transparent" >
                             <demo:IconView Icon="{Binding Icon}"
                                            VerticalOptions="Center"
                                            HeightRequest="24"/>
@@ -118,39 +121,39 @@
             </dxcv:DXCollectionView>
         </StackLayout>
     </Shell.FlyoutHeader>
-    <Shell.TitleView>
-        <local:TitleViewFix>
-            <demo:DockLayout Margin="{OnPlatform Android='0, 0, 12, 0', iOS='0, 0, 0, 6'}">
-                <Grid demo:DockLayout.Dock="Right" Padding="4" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ThemeCommand}" CommandParameter="{Binding}" />
-                    </Grid.GestureRecognizers>
-                    <demo:IconView HeightRequest="24" WidthRequest="24" Icon="palette" />
-                </Grid>
+    <Shell.TitleView>        
+        <demo:DockLayout Margin="{OnPlatform Android='0, 0, 12, 0', iOS='0, 0, 0, 6'}">
+            <Grid demo:DockLayout.Dock="Right" Padding="4" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ThemeCommand}" CommandParameter="{Binding}" />
+                </Grid.GestureRecognizers>
+                <demo:IconView HeightRequest="24" WidthRequest="24" Icon="palette" />
+            </Grid>
 
-                <Label Text="{Binding TitleText}"
-                       Grid.Column="0"
-                       FontSize="Large"
-                       FontFamily="Roboto Medium"
-                       VerticalOptions="Center"
-                       HorizontalTextAlignment="Center"
-                       HorizontalOptions="FillAndExpand"
-                       Margin="{OnPlatform Android='0, 0, 20, 0', iOS='0'}"
-                       TextColor="{DynamicResource TextThemeColor}"
-                       BackgroundColor="Transparent"/>
-            </demo:DockLayout>
-        </local:TitleViewFix>
+            <Label Text="{Binding TitleText}"
+                    Grid.Column="0"
+                    FontSize="Large"
+                    FontFamily="Roboto Medium"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="{OnPlatform Android='0, 0, 20, 0', iOS='0'}"
+                    TextColor="{DynamicResource TextThemeColor}"
+                    BackgroundColor="Transparent"/>
+        </demo:DockLayout>
     </Shell.TitleView>
 
     <ShellContent FlyoutItemIsVisible="False">
         <demo:DemoPage>
-            <dxcv:DXCollectionView
-                SelectionMode="None"
-                IsScrollBarVisible="false"
-                ItemTemplate="{StaticResource itemTemplate}"
-                ItemsSource="{Binding Items}"
-				BackgroundColor="{DynamicResource BackgroundThemeColor}">
-            </dxcv:DXCollectionView>
+            <Grid>
+                <Image Source="{AppThemeBinding Light=mainscreen_image_light, Dark=mainscreen_image_dark}" Aspect="AspectFill"/>
+                <dxcv:DXCollectionView
+                    SelectionMode="None"
+                    IsScrollBarVisible="false"
+                    ItemTemplate="{StaticResource itemTemplate}"
+                    ItemsSource="{Binding Items}">
+                    </dxcv:DXCollectionView>
+            </Grid>
         </demo:DemoPage>
     </ShellContent>
 </Shell>

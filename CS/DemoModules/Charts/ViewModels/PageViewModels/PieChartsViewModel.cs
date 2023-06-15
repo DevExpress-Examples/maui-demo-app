@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DemoCenter.Maui.ViewModels;
 
@@ -22,6 +23,15 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public PieChartItemInfoContainer(PieType type, ChartViewModelBase viewModel) {
             this.PieType = type;
             this.ChartModel = viewModel;
+        }
+        public string PieTypeImage {
+            get {
+                switch (PieType) {
+                    case PieType.Donut: return GetThemedImageName("demochartsdonut");
+                    case PieType.Pie: return GetThemedImageName("demochartspie");
+                    default: throw new ArgumentException("The selector cannot handle the passed PieType value.");
+                }
+            }
         }
     }
 }

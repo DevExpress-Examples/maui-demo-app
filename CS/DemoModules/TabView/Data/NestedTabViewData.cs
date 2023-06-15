@@ -43,7 +43,7 @@ namespace DemoCenter.Maui.DemoModules.TabView {
             get => this.imageName;
             set {
                 this.imageName = value;
-                ImageSource = ImageSource.FromResource("DemoCenter.Maui.DemoModules.TabView.Resources.NestedTabViewImages." + value + ".png");
+                ImageSource = ImageSource.FromFile(value + ".png");
             }
         }
         public ICommand ChangeCart { get; }

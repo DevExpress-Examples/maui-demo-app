@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+               xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
+               x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.ContactEditingPage"
+               BackgroundColor="{StaticResource CollectionViewPageBackground}"
+               Shell.ForegroundColor="{DynamicResource AccentColor}">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="True" IsEnabled="True" />
+    </Shell.BackButtonBehavior>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="{AppThemeBinding Light=collectionview_crud_savechanges_light, Dark=collectionview_crud_savechanges_dark}"
+                     Clicked="SaveItemClick" />
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout BackgroundColor="{StaticResource CollectionViewPageBackground}"
+                                 Padding="0, 10, 0, 0">
+                <Image Source="{Binding Item.PhotoImageSource}"
+                       x:Name="image"
+                       WidthRequest="100"
+                       HeightRequest="100"
+                       Margin="0,0,0,20">
+                    <Image.Clip>
+                        <EllipseGeometry RadiusX="50" RadiusY="50" Center="50, 50" />
+                    </Image.Clip>
+                </Image>
+                <Border BackgroundColor="Transparent" StrokeThickness="0" StrokeShape="RoundRectangle 10,10,0,0">
+                    <dxdf:DataFormView x:Name="dataForm" DataObject="{Binding Item}"
+                                       EditorLabelColor="{DynamicResource AccentColor}" IsAutoGenerationEnabled="False"
+                                       EditorLabelWidth="40" ValidateProperty="OnDataFormValidateProperty"
+                                       Margin="0,10,0,0">
+                        <dxdf:DataFormTextItem FieldName="FirstName" LabelIcon="collectionview_crud_name"
+                                               LabelWidth="40"
+                                               LabelText="" InplaceLabelText="First Name" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="LastName" IsLabelVisible="True" LabelText=""
+                                               InplaceLabelText="Last Name" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormMaskedItem FieldName="HomePhone" Keyboard="Telephone" Mask="+1 (000) 000-0000"
+                                                 IsLabelVisible="True" LabelIcon="collectionview_crud_phone"
+                                                 InplaceLabelText="Phone" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="Email" IsLabelVisible="True"
+                                               LabelIcon="collectionview_crud_email"
+                                               InplaceLabelText="Email" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="Company" IsLabelVisible="True"
+                                               LabelIcon="collectionview_crud_company"
+                                               InplaceLabelText="Company" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="State" IsLabelVisible="True"
+                                               LabelIcon="collectionview_crud_location"
+                                               InplaceLabelText="State" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="City" IsLabelVisible="True" LabelText=""
+                                               InplaceLabelText="City" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormTextItem FieldName="Address" IsLabelVisible="True" LabelText=""
+                                               InplaceLabelText="Street" IsInplaceLabelFloating="True" />
+                        <dxdf:DataFormNumericItem FieldName="ZipCode" IsLabelVisible="True" LabelText=""
+                                                  InplaceLabelText="Zip" IsInplaceLabelFloating="True" />
+                    </dxdf:DataFormView>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</demo:DemoPage>

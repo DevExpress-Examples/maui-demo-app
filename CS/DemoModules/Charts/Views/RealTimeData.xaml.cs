@@ -1,11 +1,11 @@
+using DevExpress.Maui.Core;
+using DevExpress.Maui.Core.Internal;
 using DemoCenter.Maui.ViewModels;
-using Microsoft.Maui.Devices;
-using ON = DevExpress.Maui.Core.Internal.On;
 
 namespace DemoCenter.Maui.Views {
     public partial class RealTimeData : Demo.DemoPage {
         RealTimeDataViewModel viewModel;
-        readonly static bool IsOniOSSimulator = DeviceInfo.DeviceType == DeviceType.Virtual && ON.IOS;
+        readonly static bool IsOniOSSimulator = ON.Simulator && ON.iOS;
         public RealTimeData() {
             InitializeComponent();
             BindingContext = viewModel = new RealTimeDataViewModel(chart);

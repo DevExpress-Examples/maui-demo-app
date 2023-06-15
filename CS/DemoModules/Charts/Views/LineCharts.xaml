@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.LineCharts"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -22,10 +22,6 @@
             <view:SplineChartContainer/>
         </DataTemplate>
 
-        <local:LineTypeToImageSourceConverter x:Key="lineTypeToImageSourceConverter"/>
-        <DataTemplate x:Key="headerItemTemplate">
-            <demo:ChartsDemoTabButton ImageSource="{Binding LineType, Converter={StaticResource lineTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
-        </DataTemplate>
         <local:LineChartTemplateSelector x:Key="lineChartTemplateSelector"
                                          LineChartTemplate="{StaticResource lineChartTemplate}"
                                          ScatterChartTemplate="{StaticResource scatterChartTemplate}"
@@ -45,7 +41,7 @@
                       SwipeEnabled="False"
 
                       ItemsSource="{Binding Content}"
-                      ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                      ItemHeaderIconDataMember = "LineTypeImage"
                       ItemTemplate="{StaticResource lineChartTemplateSelector}"
 
                       HeaderPanelContentAlignment="Start"
@@ -53,7 +49,7 @@
                       HeaderPanelItemSpacing="0"
                       HeaderPanelPadding="0"
 
-                      IsSelectedItemIndicatorVisible="False"
+                      IsSelectedItemIndicatorVisible="True"
                       IsHeaderPanelShadowVisible="False"
 
                       SelectedItem="{Binding SelectedItem}" />

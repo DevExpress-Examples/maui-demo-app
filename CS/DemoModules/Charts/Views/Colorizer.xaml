@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -24,12 +24,7 @@
         <DataTemplate x:Key="operationSurfaceTemperatureTemplate">
             <view:OperationSurfaceTemperatureContainer/>
         </DataTemplate>
-
-        <local:ColorizerTypeToImageSourceConverter x:Key="colorizerTypeToImageSourceConverter"/>
-        <DataTemplate x:Key="headerItemTemplate">
-            <demo:ChartsDemoTabButton ImageSource="{Binding CustomAppearanceModuleType, Converter={StaticResource colorizerTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
-        </DataTemplate>
-
+        
         <local:ColorizerTemplateSelector x:Key="colorizerTemplateSelector"
                                          AreaGradientFillEffectTemplate="{StaticResource areaGradientFillEffectTemplate}"
                                          BubbleColorizerTemplate="{StaticResource bubbleColorizerTemplate}"
@@ -48,18 +43,15 @@
                       HorizontalOptions="FillAndExpand"
                       ScrollAnimationEnabled="True"
                       SwipeEnabled="False"
-
                       ItemsSource="{Binding Content}"
-                      ItemHeaderTemplate="{StaticResource headerItemTemplate}"
                       ItemTemplate="{StaticResource colorizerTemplateSelector}"
-
+                      ItemHeaderIconDataMember="CustomAppearanceTypeImage"
                       HeaderPanelContentAlignment="Start"
                       HeaderPanelIndent="0"
                       HeaderPanelItemSpacing="0"
                       HeaderPanelPadding="0"
-                      IsSelectedItemIndicatorVisible="False"
+                      IsSelectedItemIndicatorVisible="true"
                       IsHeaderPanelShadowVisible="False"
-
                       SelectedItem="{Binding SelectedItem}" />
     </Grid>
 </demo:DemoPage>

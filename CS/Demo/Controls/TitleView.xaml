@@ -1,0 +1,18 @@
+﻿<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui"
+    x:Class="DemoCenter.Maui.Demo.TitleView"
+    x:Name="self">    
+        <Label FontSize="17"
+                FontFamily="Roboto Medium"
+                FontAttributes="Bold"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="0"
+                TextColor="{DynamicResource TextThemeColor}}"
+                BackgroundColor="Transparent"
+                Text="{Binding Title, Source={Reference self}}"
+                LineBreakMode="NoWrap">
+        </Label>   
+</ContentView>

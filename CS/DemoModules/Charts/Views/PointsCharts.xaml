@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.PointsCharts"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -18,11 +18,7 @@
         </DataTemplate>
 
         <dxc:SeriesHintOptions x:Key="pointSeriesHintOptions"
-                                  PointTextPattern="{}{A$LLLL}: {V}°C"/>
-        <local:PointTypeToImageSourceConverter x:Key="pointTypeToImageSourceConverter"/>
-        <DataTemplate x:Key="headerItemTemplate">
-            <demo:ChartsDemoTabButton ImageSource="{Binding PointType, Converter={StaticResource pointTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
-        </DataTemplate>
+                                  PointTextPattern="{}{A$LLLL}: {V}°C"/>        
         <local:PointChartTemplateSelector x:Key="pointChartTemplateSelector"
                                           PointChartTemplate="{StaticResource pointChartTemplate}"
                                           BubbleChartTemplate="{StaticResource bubbleChartTemplate}"/>
@@ -40,15 +36,15 @@
                       SwipeEnabled="False"
 
                       ItemsSource="{Binding Content}"
-                      ItemHeaderTemplate="{StaticResource headerItemTemplate}"
                       ItemTemplate="{StaticResource pointChartTemplateSelector}"
 
+                      ItemHeaderIconDataMember="PointTypeImage"
                       HeaderPanelContentAlignment="Start"
                       HeaderPanelIndent="0"
                       HeaderPanelItemSpacing="0"
                       HeaderPanelPadding="0"
 
-                      IsSelectedItemIndicatorVisible="False"
+                      IsSelectedItemIndicatorVisible="True"
                       IsHeaderPanelShadowVisible="False"
 
                       SelectedItem="{Binding SelectedItem}" />

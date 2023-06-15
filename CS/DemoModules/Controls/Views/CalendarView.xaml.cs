@@ -31,6 +31,9 @@ namespace DemoCenter.Maui.Views {
             if (ViewModel.SelectedDate != null && e.Date == ViewModel.SelectedDate.Value)
                 return;
 
+            if (e.IsTrailing)
+                return;
+
             SpecialDate specialDate = ViewModel.TryFindSpecialDate(e.Date);
             if (specialDate == null)
                 return;

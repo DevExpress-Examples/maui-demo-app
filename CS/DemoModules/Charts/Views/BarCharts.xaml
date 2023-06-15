@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.BarCharts"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -38,12 +38,7 @@
         </DataTemplate>
         <DataTemplate x:Key="rotatedSideBySideStackedBarChartTemplate">
             <view:RotatedSideBySideStackedBarChartContainer/>
-        </DataTemplate>
-
-        <local:BarTypeToImageSourceConverter x:Key="barTypeToImageSourceConverter"/>
-        <DataTemplate x:Key="headerItemTemplate">
-            <demo:ChartsDemoTabButton ImageSource="{Binding BarType, Converter={StaticResource barTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
-        </DataTemplate>
+        </DataTemplate>        
         <local:BarChartTemplateSelector x:Key="barChartTemplateSelector"
                                         SideBySideRangeBarChartTemplate="{StaticResource sideBySideRangeBarChartTemplate}"
                                         RangeBarChartTemplate="{StaticResource rangeBarChartTemplate}"
@@ -68,14 +63,14 @@
                       SwipeEnabled="False"
 
                       ItemsSource="{Binding Content}"
-                      ItemHeaderTemplate="{StaticResource headerItemTemplate}"
                       ItemTemplate="{StaticResource barChartTemplateSelector}"
 
+                      ItemHeaderIconDataMember="BarTypeImage"
                       HeaderPanelContentAlignment="Start"
                       HeaderPanelIndent="0"
                       HeaderPanelItemSpacing="0"
                       HeaderPanelPadding="0"
-                      IsSelectedItemIndicatorVisible="False"
+                      IsSelectedItemIndicatorVisible="True"
                       IsHeaderPanelShadowVisible="False"
 
                       SelectedItem="{Binding SelectedItem}" />

@@ -17,6 +17,13 @@ namespace DemoCenter.Maui.Data {
                     Icon = "editors"
                 },
                 new DemoItem() {
+                    Title = "Settings Form",
+                    Description="Demonstrates how to implement a settings form with the help of our editors. This form contains switches, text editors, and picker controls.",
+                    Module = typeof(SettingsForm),
+                    Icon = "settingsform",
+                    DemoItemStatus = DemoItemStatus.New
+                },
+                new DemoItem() {
                     Title = "Deployment Form",
                     Description="Shows how to use our token editors to create an app deployment form. Token editors allow you to select multiple items from a list.",
                     Module = typeof(ApplicationDeploymentForm),

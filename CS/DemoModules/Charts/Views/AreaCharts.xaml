@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.AreaCharts"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -25,10 +25,6 @@
             <view:StepAreaChartContainer/>
         </DataTemplate>
 
-        <local:AreaTypeToImageSourceConverter x:Key="areaTypeToImageSourceConverter"/>
-        <DataTemplate x:Key="headerItemTemplate">
-            <demo:ChartsDemoTabButton ImageSource="{Binding AreaType, Converter={StaticResource areaTypeToImageSourceConverter}}" IsSelected="{Binding IsSelected}" IsVertical="{Binding IsVertical}"/>
-        </DataTemplate>
         <local:AreaChartTemplateSelector x:Key="areaChartTemplateSelector"
                                          RangeAreaChartTemplate="{StaticResource rangeAreaChartTemplate}"
                                          AreaChartTemplate="{StaticResource areaChartTemplate}"
@@ -46,19 +42,15 @@
                       HorizontalOptions="FillAndExpand"
                       ScrollAnimationEnabled="True"
                       SwipeEnabled="False"
-
                       ItemsSource="{Binding Content}"
-                      ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                      ItemHeaderIconDataMember = "AreaTypeImage"
                       ItemTemplate="{StaticResource areaChartTemplateSelector}"
-
                       HeaderPanelContentAlignment="Start"
                       HeaderPanelIndent="0"
                       HeaderPanelItemSpacing="0"
                       HeaderPanelPadding="0"
-
-                      IsSelectedItemIndicatorVisible="False"
+                      IsSelectedItemIndicatorVisible="True"
                       IsHeaderPanelShadowVisible="False"
-
                       SelectedItem="{Binding SelectedItem}" />
     </Grid>
 </demo:DemoPage>

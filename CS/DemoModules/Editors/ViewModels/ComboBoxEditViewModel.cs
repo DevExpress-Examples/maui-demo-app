@@ -3,6 +3,7 @@ using System.Windows.Input;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.Core;
 using DevExpress.Maui.Editors;
+using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
     public class ComboBoxEditViewModel : NotificationObject {
@@ -152,8 +153,8 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
                 DataFilterCondition.Equals
             };
 
-            ResetToDefaultCommand = new DelegateCommand(ResetToDefault);
-            ToggleErrorCommand = new DelegateCommand(ToggleError);
+            ResetToDefaultCommand = new Command(ResetToDefault);
+            ToggleErrorCommand = new Command(ToggleError);
 
             ResetToDefault();
         }

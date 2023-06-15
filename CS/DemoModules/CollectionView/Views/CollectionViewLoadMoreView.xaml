@@ -20,12 +20,10 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <compatibility:RelativeLayout Grid.Column="0">
-                        <Ellipse Style="{StaticResource MailColorItemStyle}"
-                                 Fill="{Binding CategoryColor}" />
-                        <Label Style="{StaticResource SenderAvatarTextStyle}"
-                               Text="{Binding SenderAvatarText}" />
-                    </compatibility:RelativeLayout>
+                    <Ellipse Style="{StaticResource MailColorItemStyle}"
+                                Fill="{Binding CategoryColor}" />
+                    <Label Style="{StaticResource SenderAvatarTextStyle}"
+                            Text="{Binding SenderAvatarText}"/>
                     <StackLayout Grid.Column="1"
                                  Orientation="Vertical"
                                  VerticalOptions="StartAndExpand"

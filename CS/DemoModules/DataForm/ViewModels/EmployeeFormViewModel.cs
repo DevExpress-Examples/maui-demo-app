@@ -27,7 +27,7 @@ namespace DemoCenter.Maui.DemoModules.DataForm.ViewModels {
             Email = "Arvil_Chase@example.com";
             Skype = FirstName + LastName + "_DX_skype";
 
-            Photo = ImageSource.FromResource("DemoCenter.Maui.DemoModules.DataForm.Images.arvil.jpg");
+            Photo = ImageSource.FromFile("arvil.jpg");
         }
 
         public ImageSource Photo { get; private set; }

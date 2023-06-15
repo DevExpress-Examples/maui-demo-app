@@ -9,7 +9,6 @@ using DemoCenter.Maui.ViewModels;
 using DemoCenter.Maui.Views;
 using DevExpress.Maui.Controls;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui {
     public partial class AppShell : Shell {
@@ -19,7 +18,7 @@ namespace DemoCenter.Maui {
         public AppShell(){
             InitializeComponent();
             BindingContext = new MainViewModel();
-            NavigationCommand = new DelegateCommand<Models.DemoItem>(async (obj) => await NavigateToDetailsPageAsync(obj.Module));
+            NavigationCommand = new Command<Models.DemoItem>(async (obj) => await NavigateToDetailsPageAsync(obj.Module));
         }
 
         async Task NavigateToDetailsPageAsync(Type demoGroup) {
@@ -47,20 +46,6 @@ namespace DemoCenter.Maui {
                 await NavigationService.NavigateToDemo(demoItem);
             }
             inNavigation = false;
-        }
-    }
-    public class TitleViewFix : Grid {
-        bool isMeasured;
-        protected override Size MeasureOverride(double widthConstraint, double heightConstraint) {
-            isMeasured = true;
-            return base.MeasureOverride(widthConstraint, heightConstraint);
-        }
-        protected override Size ArrangeOverride(Rect bounds) {
-            if(!isMeasured)
-                Measure(bounds.Width, double.PositiveInfinity, MeasureFlags.None);
-            if (bounds.Height == 0)
-                bounds.Height = DesiredSize.Height + 12;
-            return base.ArrangeOverride(bounds);
         }
     }
 }

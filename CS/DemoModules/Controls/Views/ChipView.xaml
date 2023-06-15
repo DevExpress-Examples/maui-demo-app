@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}">
+        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
             <views:CustomChipGroup
                 demo:DockLayout.Dock="Top"
                 x:Name="chipGroup"
@@ -71,7 +71,7 @@
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Custom Corner Radius" Style="{StaticResource TextStyle}"/>
-                            <Switch IsToggled="{Binding AllowCustomCornerRadius}" Style="{DynamicResource SwitchStyle}"/>
+                            <Switch IsToggled="{Binding AllowCustomCornerRadius}" Style="{DynamicResource SwitchStyle}" Toggled="OnSwitchToggled"/>
                         </StackLayout>
                         <Grid x:Name="chipsCornerRadiusContainer"
                               ColumnSpacing="0"

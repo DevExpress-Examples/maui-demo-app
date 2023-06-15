@@ -12,9 +12,9 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             set {
                 this.name = value;
                 if (Photo == null) {
-                    string resourceName = "DemoCenter.Maui.DemoModules.Grid.Images." + value.Replace(" ", "").ToLower() + ".jpg";
-                    if (!String.IsNullOrEmpty(resourceName))
-                        Photo = ImageSource.FromResource(resourceName);
+                    string fileName = value.Replace(" ", "").ToLower() + ".jpg";
+                    if (!String.IsNullOrEmpty(fileName))
+                        Photo = ImageSource.FromFile(fileName);
                 }
             }
         }

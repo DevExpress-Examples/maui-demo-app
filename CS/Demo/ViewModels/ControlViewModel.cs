@@ -18,14 +18,14 @@ namespace DemoCenter.Maui.ViewModels {
             set {
                 this.selectedItem = value;
                 if (this.selectedItem == null)
-                    return;                
+                    return;
                 NavigationDemoCommand.Execute(this.selectedItem);
             }
         }
         public ICommand NavigationDemoCommand { get; }
 
         public ControlViewModel() {
-            NavigationDemoCommand = new DelegateCommand<DemoItem>(async (demoItem) => await NavigationService.NavigateToDemo(demoItem));
+            NavigationDemoCommand = new Command<DemoItem>(async (demoItem) => await NavigationService.NavigateToDemo(demoItem));
         }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query) {

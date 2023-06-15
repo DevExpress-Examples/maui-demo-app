@@ -1,8 +1,7 @@
 ﻿using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Hosting;
 using DevExpress.Maui;
-using DevExpress.Maui.Core;
-using Microsoft.Maui.Controls.Compatibility.Hosting;
+using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui {
 	public static class MauiProgram {
@@ -17,7 +16,16 @@ namespace DemoCenter.Maui {
 					fonts.AddFont("roboto-medium.ttf", "Roboto-Medium");
 					fonts.AddFont("roboto-regular.ttf", "Roboto");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+				.ConfigureMauiHandlers(handlers => {
+					handlers.AddHandler<Shell, CustomShellRenderer>();
+				} );
+			DevExpress.Maui.Charts.Initializer.Init();
+			DevExpress.Maui.CollectionView.Initializer.Init();
+			DevExpress.Maui.Controls.Initializer.Init();
+			DevExpress.Maui.Editors.Initializer.Init();
+			DevExpress.Maui.DataGrid.Initializer.Init();
+			DevExpress.Maui.Scheduler.Initializer.Init();
 			return builder.Build();
 		}
 	}
