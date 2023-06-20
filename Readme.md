@@ -9,7 +9,7 @@
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/OverviewDemo.png)
 
-The **DevExpress Mobile UI for .NET MAUI** and **Xamarin.Forms** is available free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/xamarin-free).
+The **DevExpress Mobile UI for .NET MAUI** and **Xamarin.Forms** are available free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/xamarin-free).
 
 ## Requirements
 
@@ -31,6 +31,7 @@ The demo application within this repository illustrates what’s possible with t
 - [Navigation](https://docs.devexpress.com/MAUI/403297/navigation/index)
 - [Data Editors](https://docs.devexpress.com/MAUI/403427/editors/index)
 - [Collection View](https://docs.devexpress.com/MAUI/403324/collection-view/index)
+- [Form Items](https://docs.devexpress.com/MAUI/404418/form-items/form-items)
 
 ## More Examples
 
