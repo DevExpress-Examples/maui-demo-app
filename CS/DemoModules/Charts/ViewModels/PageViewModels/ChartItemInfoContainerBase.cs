@@ -1,5 +1,7 @@
 using DemoCenter.Maui.ViewModels;
-using MThemeLoader = DemoCenter.Maui.Styles.ThemeLoader.ThemeLoader;
+using DevExpress.Maui.Core;
+using Microsoft.Maui.ApplicationModel;
+
 namespace DemoCenter.Maui.Charts.ViewModels {
     public class ChartItemInfoContainerBase : NotificationObject {
         bool isSelected;
@@ -17,7 +19,8 @@ namespace DemoCenter.Maui.Charts.ViewModels {
             protected set;
         }
         protected string GetThemedImageName(string imageName) {
-            return MThemeLoader.ThemeName.ToLower() + imageName;
+            string themeName = ThemeManager.IsLightTheme ? nameof(AppTheme.Light) : nameof(AppTheme.Dark);
+            return themeName.ToLower() + imageName;
         }
     }
 }

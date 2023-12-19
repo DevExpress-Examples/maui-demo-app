@@ -40,12 +40,18 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public string CustomAppearanceTypeImage {
             get {
                 switch (CustomAppearanceModuleType) {
-                    case CustomAppearanceType.AreaGradientFillEffect: return GetThemedImageName("demochartsareagradientfill");
-                    case CustomAppearanceType.Bubble: return GetThemedImageName("demochartscolorizerbubble");
-                    case CustomAppearanceType.Bar: return GetThemedImageName("demochartscolorizerbar");
-                    case CustomAppearanceType.GradientSegmentColorizer: return GetThemedImageName("demochartslightspector");
-                    case CustomAppearanceType.OperationSurfaceTemperature: return GetThemedImageName("demochartssurfacetemperature");
-                    default: throw new ArgumentException("The selector cannot handle the passed CustomAppearanceType value.");
+                    case CustomAppearanceType.AreaGradientFillEffect:
+                        return GetThemedImageName("demochartsareagradientfill");
+                    case CustomAppearanceType.Bubble:
+                        return GetThemedImageName("demochartscolorizerbubble");
+                    case CustomAppearanceType.Bar:
+                        return GetThemedImageName("demochartscolorizerbar");
+                    case CustomAppearanceType.GradientSegmentColorizer:
+                        return GetThemedImageName("demochartslightspector");
+                    case CustomAppearanceType.OperationSurfaceTemperature:
+                        return GetThemedImageName("demochartssurfacetemperature");
+                    default:
+                        throw new ArgumentException("The selector cannot handle the passed CustomAppearanceType value.");
                 }
             }
         }

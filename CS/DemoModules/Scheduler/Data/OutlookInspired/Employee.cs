@@ -22,7 +22,7 @@ namespace DemoCenter.Maui.ViewModels {
         public string Email { get; set; }
         public string GroupName { get; set; }
 
-        string _FullName = null;
+        string _FullName;
         public string FullName {
             get {
                 if (_FullName == null)

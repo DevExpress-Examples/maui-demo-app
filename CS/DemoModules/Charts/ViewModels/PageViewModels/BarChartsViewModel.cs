@@ -61,17 +61,28 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public string BarTypeImage {
             get {
                 switch (BarType) {
-                    case BarType.Simple: return GetThemedImageName("demochartsbar");
-                    case BarType.Range: return GetThemedImageName("demochartsrangebar");
-                    case BarType.SideBySideRange: return GetThemedImageName("demochartssidebysiderangebar");
-                    case BarType.Stacked: return GetThemedImageName("demochartsstackedbar");
-                    case BarType.SideBySideStacked: return GetThemedImageName("demochartssidebysidestackedbar");
-                    case BarType.FullStacked: return GetThemedImageName("demochartsfullstackedbar");
-                    case BarType.SideBySideFullStacked: return GetThemedImageName("demochartssidebysidefullstackedbar");
-                    case BarType.RotatedStacked: return GetThemedImageName("demochartsrotatedstackedbar");
-                    case BarType.RotatedSideBySide: return GetThemedImageName("demochartsrotatedsidebysidestackedbar");
-                    case BarType.PopulationPyramid: return GetThemedImageName("demochartspopulationpyramid");
-                    default: throw new ArgumentException("The selector cannot handle the passed BarType value.");
+                    case BarType.Simple:
+                        return GetThemedImageName("demochartsbar");
+                    case BarType.Range:
+                        return GetThemedImageName("demochartsrangebar");
+                    case BarType.SideBySideRange:
+                        return GetThemedImageName("demochartssidebysiderangebar");
+                    case BarType.Stacked:
+                        return GetThemedImageName("demochartsstackedbar");
+                    case BarType.SideBySideStacked:
+                        return GetThemedImageName("demochartssidebysidestackedbar");
+                    case BarType.FullStacked:
+                        return GetThemedImageName("demochartsfullstackedbar");
+                    case BarType.SideBySideFullStacked:
+                        return GetThemedImageName("demochartssidebysidefullstackedbar");
+                    case BarType.RotatedStacked:
+                        return GetThemedImageName("demochartsrotatedstackedbar");
+                    case BarType.RotatedSideBySide:
+                        return GetThemedImageName("demochartsrotatedsidebysidestackedbar");
+                    case BarType.PopulationPyramid:
+                        return GetThemedImageName("demochartspopulationpyramid");
+                    default:
+                        throw new ArgumentException("The selector cannot handle the passed BarType value.");
                 }
             }
         }

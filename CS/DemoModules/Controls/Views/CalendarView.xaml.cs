@@ -4,6 +4,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui.Devices;
+using DevExpress.Maui.Core;
 using DemoCenter.Maui.Demo;
 
 namespace DemoCenter.Maui.Views {
@@ -41,19 +42,19 @@ namespace DemoCenter.Maui.Views {
             e.FontAttributes = FontAttributes.Bold;
             Color textColor;
             if (specialDate.IsHoliday) {
-                textColor = (Color)Application.Current.Resources["CalendarSpecialDatesHolidayTextColor"];
-                e.EllipseBackgroundColor = (Color)Application.Current.Resources["CalendarSpecialDatesHolidayBackgroundColor"];
+                textColor = ThemeManager.Theme.Scheme.OnTertiaryContainer;
+                e.EllipseBackgroundColor = ThemeManager.Theme.Scheme.TertiaryContainer;
                 e.TextColor = textColor;
 
                 return;
             }
-            textColor = (Color)Application.Current.Resources["CalendarSpecialDatesTextColor"];
-            e.EllipseBackgroundColor = (Color)Application.Current.Resources["CalendarSpecialDatesBackgroundColor"];
+            textColor = ThemeManager.Theme.Scheme.OnSecondaryContainer;
+            e.EllipseBackgroundColor = ThemeManager.Theme.Scheme.SecondaryContainer;
             e.TextColor = textColor;
         }
 
         void OnOrientationChanged(object sender, EventArgs e) {
-            DockLayout.SetDock(calendar, (Orientation == PageOrientation.Portrait) ? Dock.Top : Dock.Left);
+            DXDockLayout.SetDock(calendar, (Orientation == PageOrientation.Portrait) ? Dock.Top : Dock.Left);
             ViewModel.IsHolidaysAndObservancesListVisible = false;
             ViewModel.IsHolidaysAndObservancesListVisible = true;
         }

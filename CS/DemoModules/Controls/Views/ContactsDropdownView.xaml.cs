@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Microsoft.Maui.Controls;
 using DevExpress.Maui.CollectionView;
 using DemoCenter.Maui.DemoModules.TabView.Pages;
 using DemoCenter.Maui.ViewModels;
@@ -11,7 +10,7 @@ namespace DemoCenter.Maui.DemoModules.Popup.Views {
     public partial class ContactsDropdownView : Demo.DemoPage {
 
         ContactsDropdownViewModel viewModel = new ContactsDropdownViewModel();
-        bool inNavigation = false;
+        bool inNavigation;
 
         public ActiveItemCommand ItemCommand { get; }
 
@@ -22,7 +21,7 @@ namespace DemoCenter.Maui.DemoModules.Popup.Views {
             ItemCommand = new ActiveItemCommand(this.viewModel);
         }
 
-         protected override void OnAppearing() {
+        protected override void OnAppearing() {
             base.OnAppearing();
             this.inNavigation = false;
         }
@@ -65,7 +64,7 @@ namespace DemoCenter.Maui.DemoModules.Popup.Views {
         }
     }
 
-    public class ActiveItemCommand: ICommand {
+    public class ActiveItemCommand : ICommand {
         public event EventHandler CanExecuteChanged { add { } remove { } }
 
         readonly ContactsDropdownViewModel vm;

@@ -5,8 +5,11 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
     public enum Priority { Low, BelowNormal, Normal, AboveNormal, High }
 
     public class OutlookData {
+        public OutlookData(int id) {
+            Id = id;
+        }
         [DataFormItemPosition(RowOrder = 0)]
-        public int Id { get; set; }
+        public int Id { get; }
         [DataFormDisplayOptions(IsVisible = false)]
         public string Subject { get; set; }
         [DataFormDisplayOptions(IsVisible = false)]

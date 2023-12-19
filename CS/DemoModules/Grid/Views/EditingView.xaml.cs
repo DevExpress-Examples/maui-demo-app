@@ -1,13 +1,10 @@
 using System;
 using System.Globalization;
 using DemoCenter.Maui.DemoModules.Grid.Data;
-using DemoCenter.Maui.Services;
-using DemoCenter.Maui.Styles.ThemeLoader;
 using DevExpress.Maui.Core;
 using DevExpress.Maui.DataGrid;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui.Views {
     public partial class EditingView : BaseGridContentPage {
@@ -38,13 +35,14 @@ namespace DemoCenter.Maui.Views {
                 errorText += "\nThe Sent field cannot be in the future.";
             }
 
-            errorText.TrimStart('\n');
+            errorText = errorText.TrimStart('\n');
             e.IsValid = string.IsNullOrWhiteSpace(errorText);
-            if(!e.IsValid)
+            if (!e.IsValid)
                 await DisplayAlert("Error", errorText, "OK");
         }
 
-         void Handle_Tap(object sender, DataGridGestureEventArgs e) {
+        
+        void Handle_Tap(object sender, DataGridGestureEventArgs e) {
             if (e.Item == null || dataGridView.EditorShowMode == EditorShowMode.Tap)
                 return;
             this.dataGridView.ShowDetailEditForm(e.RowHandle);
@@ -63,7 +61,7 @@ namespace DemoCenter.Maui.Views {
         }
 
         void DateColumn_PickerDisableDate(System.Object sender, DisableDateEventArgs e) {
-            if(e.Date.DayOfWeek == DayOfWeek.Sunday || e.Date.DayOfWeek == DayOfWeek.Saturday) {
+            if (e.Date.DayOfWeek == DayOfWeek.Sunday || e.Date.DayOfWeek == DayOfWeek.Saturday) {
                 e.IsDisabled = true;
             }
         }

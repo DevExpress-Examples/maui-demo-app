@@ -1,13 +1,5 @@
-using CoreGraphics;
-using Microsoft.Maui;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Handlers.Compatibility;
 using Microsoft.Maui.Controls.Platform.Compatibility;
-using Microsoft.Maui.Platform;
-using UIKit;
-using System;
-using Microsoft.Maui.Graphics;
-using System.Collections.Generic;
 
 namespace DemoCenter.Maui;
 
@@ -22,7 +14,7 @@ public class CustomShellPageRendererTracker : ShellPageRendererTracker {
         if (ViewController?.NavigationItem is null) {
             return;
         }
-        var titleView = Shell.GetTitleView(Page) ?? Shell.GetTitleView(Context.Shell);
+        var titleView = Shell.GetTitleView(Page);
         if (titleView == null) {
             var view = ViewController.NavigationItem.TitleView;
             ViewController.NavigationItem.TitleView = null;

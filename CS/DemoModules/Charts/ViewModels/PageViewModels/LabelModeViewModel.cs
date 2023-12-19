@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DemoCenter.Maui.ViewModels;
 
 namespace DemoCenter.Maui.Charts.ViewModels {
-    public class LabelModeViewModel : ChartsPageViewModelBase{
+    public class LabelModeViewModel : ChartsPageViewModelBase {
         static readonly List<ChartItemInfoContainerBase> content = new List<ChartItemInfoContainerBase>() {
             new AxisLabelOptionsItemInfoContainer(
                 viewModel: new AxisLabelOptionsViewModel(),
@@ -27,9 +27,12 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public string LabelModelTypeImage {
             get {
                 switch (LabelModeType) {
-                    case AxisLabelOptionsType.RotatedAndStaggered: return GetThemedImageName("demochartsrotatedlabels");
-                    case AxisLabelOptionsType.CryptocurrencyPortfolio: return GetThemedImageName("demochartscryptocurrencyportfolio");
-                    default: throw new ArgumentException("The selector cannot handle the passed AxisLabelOptionsType value.");
+                    case AxisLabelOptionsType.RotatedAndStaggered:
+                        return GetThemedImageName("demochartsrotatedlabels");
+                    case AxisLabelOptionsType.CryptocurrencyPortfolio:
+                        return GetThemedImageName("demochartscryptocurrencyportfolio");
+                    default:
+                        throw new ArgumentException("The selector cannot handle the passed AxisLabelOptionsType value.");
                 }
             }
         }

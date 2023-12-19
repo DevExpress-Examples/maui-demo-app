@@ -35,22 +35,27 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public override List<ChartItemInfoContainerBase> Content => content;
     }
 
-    public class LineChartItemInfoContainer: ChartItemInfoContainerBase {        
+    public class LineChartItemInfoContainer : ChartItemInfoContainerBase {
         public LineChartItemInfoContainer(LineType type, ChartViewModelBase viewModel) {
             this.LineType = type;
             this.ChartModel = viewModel;
         }
         public LineType LineType { get; set; }
         public string LineTypeImage {
-            get {                
+            get {
                 switch (LineType) {
-                    case LineType.Simple: return GetThemedImageName("demochartsline");
-                    case LineType.Scatter: return GetThemedImageName("demochartsscatter");
-                    case LineType.Step: return GetThemedImageName("demochartsstepline");
-                    case LineType.Spline: return GetThemedImageName("demochartsspline");
-                    default: throw new ArgumentException("The selector cannot handle the passed LineType value.");
+                    case LineType.Simple:
+                        return GetThemedImageName("demochartsline");
+                    case LineType.Scatter:
+                        return GetThemedImageName("demochartsscatter");
+                    case LineType.Step:
+                        return GetThemedImageName("demochartsstepline");
+                    case LineType.Spline:
+                        return GetThemedImageName("demochartsspline");
+                    default:
+                        throw new ArgumentException("The selector cannot handle the passed LineType value.");
                 }
             }
-        }        
+        }
     }
 }

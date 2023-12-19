@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
@@ -14,13 +15,9 @@
                 <resources:CollectionViewResources/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="Label">
-                <Setter Property="FontFamily">Roboto</Setter>
-                <Setter Property="FontSize">Default</Setter>
-            </Style>
-
             <views:CallTypeToIconConverter x:Key="callTypeIconConverter"/>
             <views:UpperCaseConverter x:Key="upperCaseConverter"/>
+
             <DataTemplate x:Key="iconItemTemplate">
                 <Grid Padding="{OnIdiom Phone='2, 8, 18, 7', Tablet='2, 8, 37, 7'}">
                     <Grid.ColumnDefinitions>
@@ -31,7 +28,6 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0"
                           Margin="0"
-                          BackgroundColor="{DynamicResource BackgroundThemeColor}"
                           ColumnSpacing="22"
                           RowSpacing="0">
                         <Grid.ColumnDefinitions>
@@ -61,22 +57,25 @@
                                  Orientation="Vertical">
                         <Label Text="{Binding Name}"
                                Margin="0,2"
-                               TextColor="{DynamicResource NavigationTextColor}"/>
+                               FontSize="16"
+                               TextColor="{dx:ThemeColor OnSurface}"/>
                         <Label Text="{Binding Phone}"
-                               TextColor="{DynamicResource CollectionViewGrayFontColor}"/>
+                               FontSize="15"
+                               TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
                     </StackLayout>
-                    <demo:IconView Grid.Column="2"
-                                   Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
-                                   HorizontalOptions="EndAndExpand"
-                                   VerticalOptions="CenterAndExpand"
-                                   HeightRequest="20"
-                                   WidthRequest="20"/>
-                    <demo:IconView Grid.Column="3"
-                                   HorizontalOptions="EndAndExpand"
-                                   VerticalOptions="CenterAndExpand"
-                                   HeightRequest="20"
-                                   WidthRequest="20"
-                                   Icon="demotabviewdetail"/>
+                    <dx:DXImage Grid.Column="2"
+                                Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                HeightRequest="20"
+                                WidthRequest="20"/>
+                    <dx:DXImage Grid.Column="3"
+                                TintColor="{dx:ThemeColor OnSurfaceVariant}"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                HeightRequest="20"
+                                WidthRequest="20"
+                                Source="demotabviewdetail"/>
                 </Grid>
             </DataTemplate>
 
@@ -90,7 +89,7 @@
                     </Grid.ColumnDefinitions>
                     <Ellipse Margin="0"
                                 Fill="White"
-                                Stroke="{DynamicResource AvatarBorderColor}"
+                                Stroke="{dx:ThemeColor OutlineVariant}"
                                 StrokeThickness="1"
                                 HeightRequest="50"
                                 WidthRequest="50"
@@ -108,22 +107,25 @@
                                  Orientation="Vertical">
                         <Label Text="{Binding Name}"
                                Margin="0,2"
-                               TextColor="{DynamicResource NavigationTextColor}"/>
+                               FontSize="16"
+                               TextColor="{dx:ThemeColor OnSurface}"/>
                         <Label Text="{Binding Phone}"
-                               TextColor="{DynamicResource CollectionViewGrayFontColor}"/>
+                               FontSize="15"
+                               TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
                     </StackLayout>
-                    <demo:IconView Grid.Column="2"
-                                   Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
-                                   HorizontalOptions="EndAndExpand"
-                                   VerticalOptions="CenterAndExpand"
-                                   HeightRequest="20"
-                                   WidthRequest="20"/>
-                    <demo:IconView Grid.Column="3"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="EndAndExpand"
-                                   HeightRequest="20"
-                                   WidthRequest="20"
-                                   Icon="demotabviewdetail"/>
+                    <dx:DXImage Grid.Column="2"
+                                Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                HeightRequest="20"
+                                WidthRequest="20"/>
+                    <dx:DXImage Grid.Column="3"
+                                TintColor="{dx:ThemeColor OnSurfaceVariant}"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand"
+                                HeightRequest="20"
+                                WidthRequest="20"
+                                Source="demotabviewdetail"/>
                 </Grid>
             </DataTemplate>
 
@@ -133,17 +135,16 @@
 
             <DataTemplate x:Key="groupItemTemplate">
                 <StackLayout Padding="{OnIdiom Phone='2,0,18,10', Tablet='2,0,37,10'}">
-                    <Label FontFamily="Roboto-Medium"
-                           Margin="0,20,0,4"
-                           TextColor="{DynamicResource PhoneListTabTextColor}"
+                    <Label Margin="0,20,0,4"
+                           TextColor="{dx:ThemeColor OnSurfaceVariant}"
                            Text="{Binding Value, StringFormat='{0:d}', Converter={StaticResource upperCaseConverter}}"/>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator Orientation="Horizontal"/>
                 </StackLayout>
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <Grid BackgroundColor="{dx:ThemeColor Surface}">
             <dxcv:DXCollectionView x:Name="collectionView"
                                    AllowGroupCollapse="False"
                                    GroupHeaderTemplate="{StaticResource groupItemTemplate}"

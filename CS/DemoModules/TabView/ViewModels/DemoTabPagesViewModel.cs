@@ -84,7 +84,7 @@ namespace DemoCenter.Maui.ViewModels {
         public bool HasPhoto { get; } = new Random().Next(0, 18) % 3 == 0;
         public bool Favorite { get; set; }
         public Color CategoryColor => GetContactColor();
-        public string Initials => Name.Substring(0, 1) + Name.Split(null)[1].Substring(0, 1);
+        public string Initials => String.Concat(Name.AsSpan(0, 1), Name.Split(null)[1].AsSpan(0, 1));
 
         internal Color GetContactColor() {
             if (this.contactColor == DXColor.Default) {

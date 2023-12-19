@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DemoCenter.Maui.DemoModules.Grid.Data;
+﻿using DemoCenter.Maui.DemoModules.Grid.Data;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.CollectionView;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui {
-    class ItemTemplateSelector : DataTemplateSelector {
+    sealed class ItemTemplateSelector : DataTemplateSelector {
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container) {
             if (!(item is EmployeeTask task))
                 return null;
 
-            return task.Completed ? CompletedDataTemplate : UncompletedDataTemplate; 
+            return task.Completed ? CompletedDataTemplate : UncompletedDataTemplate;
         }
 
         public DataTemplate CompletedDataTemplate { get; set; }

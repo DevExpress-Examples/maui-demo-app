@@ -1,19 +1,20 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:utils="clr-namespace:DemoCenter.Maui" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
              ios:Page.UseSafeArea="False"
              x:Class="DemoCenter.Maui.Views.NestedTabView"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             BackgroundColor="{dx:ThemeColor Surface}">
     <ContentPage.Resources>
         <utils:BoolToColorConverter x:Key="addToCartConverter" TrueSource="#FF000000" FalseSource="{StaticResource NestedTabViewCartColor}"/>
         <utils:BoolToColorConverter x:Key="addToWishListConverter" TrueSource="#FF000000" FalseSource="{StaticResource NestedTabViewFavoriteColor}"/>
         <DataTemplate x:Key="allListItemTemplate">
             <ViewCell>
-                <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                <Grid BackgroundColor="{dx:ThemeColor Surface}"
                       VerticalOptions="FillAndExpand"
                       ColumnSpacing="27">
                     <Grid.RowDefinitions>
@@ -45,17 +46,15 @@
                                      Margin="{OnIdiom Phone='0,20,0,0', Tablet='0,30,0,0'}"
                                      Orientation="{OnIdiom Phone='Vertical', Tablet='Horizontal'}">
                             <Label Text="{Binding Name}"
-                                   FontFamily="Roboto"
                                    LineBreakMode="TailTruncation"
-                                   TextColor="{DynamicResource NavigationTextColor}"
-                                   BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                   TextColor="{dx:ThemeColor OnSurface}"
+                                   BackgroundColor="{dx:ThemeColor Surface}"
                                    FontSize="{OnIdiom Phone='16', Tablet='18'}">
                             </Label>
                             <Label Text="{Binding Price}"
-                                   FontFamily="Roboto"
                                    LineBreakMode="NoWrap"
-                                   TextColor="{DynamicResource NavigationTextColor}"
-                                   BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                   TextColor="{dx:ThemeColor OnSurface}"
+                                   BackgroundColor="{dx:ThemeColor Surface}"
                                    Margin="{OnIdiom Phone='0,0,0,15', Tablet='0'}"
                                    FontSize="{OnIdiom Phone='18', Tablet='20'}"
                                    HorizontalOptions="{OnIdiom Phone='Start', Tablet='EndAndExpand'}">
@@ -64,11 +63,10 @@
                         <Label Margin="0"
                                Text="{Binding Description}"
                                FontSize="16"
-                               FontFamily="Roboto"
                                LineBreakMode="WordWrap"
                                MaxLines="4"
-                               TextColor="{DynamicResource NavigationTextColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               BackgroundColor="{dx:ThemeColor Surface}"
                                IsVisible="{OnIdiom Phone='False', Tablet='True'}">
                         </Label>
                         <StackLayout Orientation="Horizontal"
@@ -131,7 +129,7 @@
         </DataTemplate>
         <DataTemplate x:Key="cartListItemTemplate">
             <ViewCell>
-                <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                <Grid BackgroundColor="{dx:ThemeColor Surface}"
                       VerticalOptions="FillAndExpand"
                       ColumnSpacing="27">
                     <Grid.RowDefinitions>
@@ -165,26 +163,23 @@
                             <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,20,0,0" Tablet="0,30,0,0"/>
                         </StackLayout.Margin>
                         <Label Text="{Binding Name}"
-                               FontFamily="Roboto"
                                LineBreakMode="TailTruncation"
-                               TextColor="{DynamicResource NavigationTextColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               BackgroundColor="{dx:ThemeColor Surface}"
                                FontSize="{OnIdiom Phone='16', Tablet='22'}">
                         </Label>
                         <Label Margin="0"
                                Text="{Binding Category}"
-                               FontFamily="Roboto"
                                LineBreakMode="WordWrap"
                                MaxLines="4"
-                               TextColor="{DynamicResource NavigationTextColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               BackgroundColor="{dx:ThemeColor Surface}"
                                IsVisible="{OnIdiom Phone='False', Tablet='True'}">
                         </Label>
                         <Label HorizontalOptions="Start"
                                Text="{Binding Price}"
-                               FontFamily="Roboto"
-                               TextColor="{DynamicResource NavigationTextColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               BackgroundColor="{dx:ThemeColor Surface}"
                                FontSize="{OnIdiom Phone='18', Tablet='26'}">
                             <Label.Margin>
                                 <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,0,15" Tablet="0,10,0,0"/>
@@ -251,7 +246,7 @@
         </DataTemplate>
         <DataTemplate x:Key="wishListItemTemplate">
             <ViewCell>
-                <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                <Grid BackgroundColor="{dx:ThemeColor Surface}"
                       VerticalOptions="FillAndExpand"
                       ColumnSpacing="27">
                     <Grid.RowDefinitions>
@@ -285,27 +280,24 @@
                             <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,20,0,0" Tablet="0,30,0,0"/>
                         </StackLayout.Margin>
                         <Label Text="{Binding Name}"
-                               FontFamily="Roboto"
                                LineBreakMode="TailTruncation"
-                               TextColor="{DynamicResource NavigationTextColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               BackgroundColor="{dx:ThemeColor Surface}"
                                FontSize="{OnIdiom Phone='16', Tablet='22'}">
                         </Label>
                         <Label Margin="0"
                                Text="{Binding Category}"
                                FontSize="18"
-                               FontFamily="Roboto"
                                LineBreakMode="WordWrap"
                                MaxLines="4"
-                               TextColor="{DynamicResource NavigationTextColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               BackgroundColor="{dx:ThemeColor Surface}"
                                IsVisible="{OnIdiom Phone='False', Tablet='True'}">
                         </Label>
                         <Label HorizontalOptions="Start"
                                Text="{Binding Price}"
-                               FontFamily="Roboto"
-                               TextColor="{DynamicResource NavigationTextColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               BackgroundColor="{dx:ThemeColor Surface}"
                                FontSize="{OnIdiom Phone='18', Tablet='26'}">
                             <Label.Margin>
                                 <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,0,15" Tablet="0,10,0,0"/>

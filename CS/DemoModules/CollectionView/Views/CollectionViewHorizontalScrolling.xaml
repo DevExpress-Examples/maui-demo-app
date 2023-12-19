@@ -1,36 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewHorizontalScrolling"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <DataTemplate x:Key="itemTemplate">
-            <demo:DockLayout Margin="8" WidthRequest="300" RowSpacing="8">
-                <Image demo:DockLayout.Dock="Top" Margin="1" HeightRequest="200" Source="{Binding ImageSource}" Aspect="Fill"/>
+            <dx:DXDockLayout Margin="8" WidthRequest="300" VerticalSpacing="8">
+                <Image dx:DXDockLayout.Dock="Top" Margin="1" HeightRequest="200" Source="{Binding ImageSource}" Aspect="Fill"/>
 
-                <Label demo:DockLayout.Dock="Top"
+                <Label dx:DXDockLayout.Dock="Top"
                        Text="{Binding Price, StringFormat='${0:N0} K'}"
-                       TextColor="{DynamicResource AccentColor}"
+                       TextColor="{dx:ThemeColor Primary}"
                        FontAttributes="Bold"
                        FontSize="{OnIdiom Phone=16, Tablet=18}"/>
-                <Label demo:DockLayout.Dock="Top"
+                <Label dx:DXDockLayout.Dock="Top"
                        Text="{Binding Address}"
-                       TextColor="{DynamicResource CollectionViewBoldGrayFontColor}"
+                       TextColor="{dx:ThemeColor OnSurface}"
                        FontAttributes="Bold"
                        FontSize="{OnIdiom Phone=16, Tablet=18}"/>
                 <demo:ScrollViewFix Orientation="Vertical" HorizontalScrollBarVisibility="Never">
                     <Label Text="{Binding Description}"
-                           TextColor="{DynamicResource CollectionViewItemFontColor}"
+                           TextColor="{dx:ThemeColor OnSurface}"
                            FontSize="{OnIdiom Phone=14, Tablet=16}"/>
                 </demo:ScrollViewFix>
-            </demo:DockLayout>
+            </dx:DXDockLayout>
         </DataTemplate>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <Grid BackgroundColor="{dx:ThemeColor Surface}">
             <dxcv:DXCollectionView x:Name="collectionView"
                                    Orientation="Horizontal"
                                    ItemsSource="{Binding ItemSource}"

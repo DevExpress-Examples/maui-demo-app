@@ -162,7 +162,7 @@ namespace DemoCenter.Maui.ViewModels {
         #endregion
 
         public USCalendar(int year) {
-            Year = Year;
+            Year = year;
             SpecialDates = new ReadOnlyCollection<SpecialDate>(GetSpecialDates(year));
         }
 

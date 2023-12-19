@@ -9,5 +9,8 @@
         public const string ChartsDataTitle = "Charts: Basic Features";
         public const string ChartsDataAdvancedTitle = "Charts: Advanced Features";
         public const string SchedulerDataTitle = "Scheduler";
+#if PaidDemoModules
+        public const string OfficeFileAPIDataTitle = "Office File API";
+#endif
     }
 }

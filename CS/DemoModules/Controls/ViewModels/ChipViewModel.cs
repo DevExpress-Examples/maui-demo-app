@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using System.Windows.Input;
-using DemoCenter.Maui.ViewModels;
 using DemoCenter.Maui.Views;
-using DevExpress.Maui.Editors;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;

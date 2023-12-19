@@ -19,14 +19,14 @@ namespace DemoCenter.Maui.DemoModules.Drawer.Data {
         public int Count { get; set; }
         public bool ShowCount { get; set; }
 
-        bool isSelected = false;
+        bool isSelected;
         public bool IsSelected {
             get => this.isSelected;
             set {
                 if (value == this.isSelected)
                     return;
                 this.isSelected = value;
-                OnPropertyChanged("IsSelected");
+                OnPropertyChanged(nameof(IsSelected));
             }
         }
     }

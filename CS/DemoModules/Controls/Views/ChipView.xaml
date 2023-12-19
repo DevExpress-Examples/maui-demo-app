@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:views="clr-namespace:DemoCenter.Maui.Views"
@@ -16,9 +17,9 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
             <views:CustomChipGroup
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 x:Name="chipGroup"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
@@ -30,7 +31,7 @@
                 ChipIsRemoveIconVisible="{Binding RemoveIconVisible}"
                 ChipTap="OnChipTap"
                 Margin="16,32,16,32" />
-            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
+            <dx:DXSeparator SideMargin="0" dx:DXDockLayout.Dock="Top" />
 
             <demo:ScrollViewFix>
                 <StackLayout Spacing="0" Padding="0">
@@ -43,7 +44,7 @@
                                       SelectedItem="{Binding SelectedTextColor}"
                                       Style="{StaticResource ColorComboBoxStyle}"/>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -54,7 +55,7 @@
                                           SelectedItem="{Binding SelectedBackgroundColor}"
                                           Style="{StaticResource ColorComboBoxStyle}"/>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -66,7 +67,7 @@
                                           Style="{StaticResource ColorComboBoxStyle}"/>
 
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -83,7 +84,7 @@
                             </StackLayout>
                         </Grid>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -91,7 +92,7 @@
                             <Switch IsToggled="{Binding RemoveIconVisible}" Style="{DynamicResource SwitchStyle}"/>
                         </StackLayout>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -106,10 +107,10 @@
                             <Slider Value="{Binding BorderWidth}" Style="{StaticResource SliderStyle}"/>
                         </StackLayout>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                 </StackLayout>
             </demo:ScrollViewFix>
-        </demo:DockLayout>
+        </dx:DXDockLayout>
     </ContentPage.Content>
 </demo:DemoPage>

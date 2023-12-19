@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources" xmlns:compatibility="clr-namespace:Microsoft.Maui.Controls.Compatibility;assembly=Microsoft.Maui.Controls"
              x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewLoadMoreView"
@@ -27,25 +28,25 @@
                     <StackLayout Grid.Column="1"
                                  Orientation="Vertical"
                                  VerticalOptions="StartAndExpand"
-                                 BackgroundColor="{DynamicResource BackgroundThemeColor}">
+                                 BackgroundColor="{dx:ThemeColor Surface}">
                         <Label Text="{Binding SenderName}"
                                MaxLines="1"
                                FontAttributes="Bold"
-                               TextColor="{DynamicResource NavigationTextColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}" />
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               BackgroundColor="{dx:ThemeColor Surface}" />
                         <Label Text="{Binding Subject}"
                                MaxLines="1"
                                LineBreakMode="TailTruncation"
-                               TextColor="{DynamicResource NavigationTextColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}" />
+                               TextColor="{dx:ThemeColor OnSurface}"
+                               BackgroundColor="{dx:ThemeColor Surface}" />
                         <Label Text="{Binding Body}"
                                MaxLines="1"
                                LineBreakMode="TailTruncation"
-                               TextColor="{DynamicResource CollectionViewGrayFontColor}"
-                               BackgroundColor="{DynamicResource BackgroundThemeColor}" />
+                               TextColor="{dx:ThemeColor Outline}"
+                               BackgroundColor="{dx:ThemeColor Surface}" />
                     </StackLayout>
                     <Label Grid.Column="2"
-                           TextColor="{DynamicResource CollectionViewGrayFontColor}"
+                           TextColor="{dx:ThemeColor Outline}"
                            Text="{Binding SentDate, StringFormat={StaticResource formatTime}}"
                            VerticalOptions="StartAndExpand" />
                 </Grid>
@@ -53,7 +54,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <Grid BackgroundColor="{dx:ThemeColor Surface}">
             <dxcv:DXCollectionView
                 x:Name="collectionView"
                 ItemTemplate="{StaticResource mailTemplate}"

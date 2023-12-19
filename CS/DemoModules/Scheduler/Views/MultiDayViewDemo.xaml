@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage  xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
              x:Class="DemoCenter.Maui.Views.MultiDayViewDemo">
-    <dxsch:DayView DayCount="3" Start="{Binding Start}" Tap="DayView_OnTap"
-                   BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <dxsch:DayView DayCount="3" Start="{Binding Start}" Tap="DayView_OnTap">
         <dxsch:DayView.DataStorage>
             <dxsch:SchedulerDataStorage x:Name="storage">
                 <dxsch:SchedulerDataStorage.DataSource>

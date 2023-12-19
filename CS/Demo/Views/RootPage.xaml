@@ -1,82 +1,26 @@
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-                xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-                xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-                xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
-                xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-                xmlns:views="clr-namespace:DemoCenter.Maui.Views"
-                xmlns:local="clr-namespace:DemoCenter.Maui"
-                x:Class="DemoCenter.Maui.AppShell"
-                x:Name="appShell"
-                FlyoutBehavior="Flyout"
-                ios:Page.UseSafeArea="False"
-                ForegroundColor="{DynamicResource DemoHamburgerIconColor}"
-                BackgroundColor="{DynamicResource BackgroundThemeColor}"
-                FlyoutBackgroundColor="White">
-    <Shell.Resources>
-        <ResourceDictionary>
-            <DataTemplate x:Key="itemTemplate">
-                <VerticalStackLayout Margin="0,10">
-                    
-                    <Grid ColumnDefinitions="*, Auto"
-                            Padding="{OnIdiom Phone='20,6,10,0', Tablet='50,6,40,0'}">
-                            <Button Text="{Binding Title}"
-                                    Background="Transparent"
-                                    VerticalOptions="Center"
-                                    TextColor="{DynamicResource TextThemeColor}"
-                                    FontFamily="Roboto-Medium"
-                                    FontSize="18"
-                                    Margin="0"
-                                    Padding="0,0,40,0"
-                                    HorizontalOptions="Start"
-                                    Grid.Column="0"
-                                    Command="{Binding NavigationCommand, Source={Reference appShell}}"
-                                    CommandParameter="{Binding}"/>
-                            <dxco:SimpleButton Grid.Column="1"
-                                HeightRequest="50"
-                                TextColor="{DynamicResource AccentColor}"
-                                Command="{Binding NavigationCommand, Source={Reference appShell}}"
-                                CommandParameter="{Binding}"
-                                BackgroundColor="Transparent"
-                                HorizontalOptions="End"
-                                FontFamily="Roboto-Medium"
-                                Text="All"
-                                FontSize="18"
-                                PressedTextColor="{DynamicResource TextThemeColor}"
-                                PressedBackgroundColor="{DynamicResource CardViewHeaderColor}"/>
-                        </Grid>
-                        <dxcv:DXCollectionView
-                                ItemsSource="{Binding DemoItems}"
-                                Orientation="Horizontal"
-                                HorizontalOptions="Fill"
-                                VerticalOptions="Center"
-                                HeightRequest="140"
-                                Margin="0,0,0,0"
-                                IsScrollBarVisible="false">
-                                <dxcv:DXCollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <views:GroupItemView TappedControlShortcut="DemoItemTappedControlShortcut"/>
-                                    </DataTemplate>
-                                </dxcv:DXCollectionView.ItemTemplate>
-                            </dxcv:DXCollectionView>
-                </VerticalStackLayout>
-            </DataTemplate>
-        </ResourceDictionary>
-    </Shell.Resources>
-
+﻿<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:views="clr-namespace:DemoCenter.Maui.Views"
+    xmlns:local="clr-namespace:DemoCenter.Maui"
+    x:Class="DemoCenter.Maui.AppShell"
+    x:Name="appShell"
+    FlyoutBehavior="Flyout"
+    FlyoutBackgroundColor="{dx:ThemeColor Surface}">
+    
     <Shell.FlyoutHeader>
-        
         <StackLayout BackgroundColor="Transparent">
-            
-            <Grid ColumnDefinitions="48, *"
-                  Margin="0,24,16,16">
-                <demo:IconView Icon="dx"
-                               VerticalOptions="Center"
-                               HeightRequest="24"/>
-                <Label TextColor="{DynamicResource TextThemeColor}"
+            <Grid ColumnDefinitions="48, *" Margin="4,24,16,16">
+                <dx:DXImage Source="dx"
+                    TintColor="{dx:ThemeColor OnSurface}"
+                    VerticalOptions="Center"
+                    HeightRequest="24"/>
+                <Label TextColor="{dx:ThemeColor OnSurface}"
                        FontSize="22"
-                       FontFamily="Roboto"
                        Text="{Binding TitleText}"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
@@ -84,76 +28,27 @@
                        Grid.Column="1" />
             </Grid>
             <Label Margin="16,10"
-                   TextColor="{DynamicResource SecondaryTextColor}"
+                   TextColor="{dx:ThemeColor OnSurface}"
                    Text="{Binding Description}"
                    FontSize="14"/>
             <Label Margin="16,20,16,0"
-                   TextColor="{DynamicResource SecondaryTextColor}"
+                   TextColor="{dx:ThemeColor OnSurface}"
                    Text="{Binding Version}"
                    FontSize="14"/>
-            <BoxView
-                Margin="16,20"
-                HeightRequest="1"
-                BackgroundColor="{DynamicResource SeparatorColor}"/>
+            <dx:DXSeparator Orientation="Horizontal" Margin="16,20"/>
             <dxcv:DXCollectionView ItemsSource="{Binding MenuItems}">
                 <dxcv:DXCollectionView.ItemTemplate>
                     <DataTemplate>
-                          
-                        <Grid ColumnDefinitions="56, *"
-                              RowDefinitions="48"
-                              BackgroundColor="Transparent" >
-                            <demo:IconView Icon="{Binding Icon}"
-                                           VerticalOptions="Center"
-                                           HeightRequest="24"/>
-                            <Label Text="{Binding Name}"
-                                   TextColor="{DynamicResource AccentColor}"
-                                   HorizontalOptions="Start"
-                                   VerticalOptions="Center"
-                                   VerticalTextAlignment="Center"
-                                   Grid.Column="1" />
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference appShell}, Path=BindingContext.OpenWebCommand}"
-                                                      CommandParameter="{Binding}"/>
-                            </Grid.GestureRecognizers>
-                        </Grid>
+                        <dx:DXButton ButtonType="Text" HorizontalContentAlignment="Fill" 
+                            Command="{Binding Source={x:Reference appShell}, Path=BindingContext.OpenWebCommand}" CommandParameter="{Binding}"
+                            Content="{Binding Name}" Icon="{Binding Icon}" IconWidth="24" IconHeight="24" IconIndent="16" />
                     </DataTemplate>
                 </dxcv:DXCollectionView.ItemTemplate>
             </dxcv:DXCollectionView>
         </StackLayout>
     </Shell.FlyoutHeader>
-    <Shell.TitleView>        
-        <demo:DockLayout Margin="{OnPlatform Android='0, 0, 12, 0', iOS='0, 0, 0, 6'}">
-            <Grid demo:DockLayout.Dock="Right" Padding="4" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ThemeCommand}" CommandParameter="{Binding}" />
-                </Grid.GestureRecognizers>
-                <demo:IconView HeightRequest="24" WidthRequest="24" Icon="palette" />
-            </Grid>
 
-            <Label Text="{Binding TitleText}"
-                    Grid.Column="0"
-                    FontSize="Large"
-                    FontFamily="Roboto Medium"
-                    VerticalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    HorizontalOptions="FillAndExpand"
-                    Margin="{OnPlatform Android='0, 0, 20, 0', iOS='0'}"
-                    TextColor="{DynamicResource TextThemeColor}"
-                    BackgroundColor="Transparent"/>
-        </demo:DockLayout>
-    </Shell.TitleView>
-
-    <ShellContent FlyoutItemIsVisible="False">
-        <demo:DemoPage>
-            <Grid>
-                <Image Source="{AppThemeBinding Light=mainscreen_image_light, Dark=mainscreen_image_dark}" Aspect="AspectFill"/>
-                <dxcv:DXCollectionView
-                    SelectionMode="None"
-                    IsScrollBarVisible="false"
-                    ItemTemplate="{StaticResource itemTemplate}"
-                    ItemsSource="{Binding Items}">
-                    </dxcv:DXCollectionView>
-            </Grid>
-        </demo:DemoPage>
-    </ShellContent>
+    <ShellContent FlyoutItemIsVisible="False"
+        BindingContext="{Binding}"
+        ContentTemplate="{DataTemplate views:MainPage}"/>
 </Shell>

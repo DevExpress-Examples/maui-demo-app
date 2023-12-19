@@ -1,17 +1,16 @@
 ﻿using System;
 using Microsoft.Maui.Graphics;
-using System.Collections.Generic;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Demo {
-    public abstract class AdaptivePage: DemoPage {
-        public static readonly BindablePropertyKey OrientationPropertyKey = BindableProperty.CreateReadOnly("Orientation", typeof(PageOrientation), typeof(AdaptivePage), PageOrientation.Unknown);
+    public abstract class AdaptivePage : DemoPage {
+        public static readonly BindablePropertyKey OrientationPropertyKey = BindableProperty.CreateReadOnly(nameof(Orientation), typeof(PageOrientation), typeof(AdaptivePage), PageOrientation.Unknown);
         public static readonly BindableProperty OrientationProperty = OrientationPropertyKey.BindableProperty;
         public PageOrientation Orientation => (PageOrientation)GetValue(OrientationProperty);
 
         public EventHandler OrientationChanged;
 
-        private bool isOldSizeStored = false;
+        private bool isOldSizeStored;
         private Size oldPageSize = Size.Zero;
 
         protected override void OnSizeAllocated(double width, double height) {

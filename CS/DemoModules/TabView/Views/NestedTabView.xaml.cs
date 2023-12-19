@@ -23,7 +23,7 @@ namespace DemoCenter.Maui.Views {
         void UpdateItemSize(double width) {
             int count = this.nestedTabView.Items.Count;
             if (count != 0) {
-                double itemWidth = (width - (this.nestedTabView.HeaderPanelItemSpacing * (count-1))) / count;
+                double itemWidth = (width - (this.nestedTabView.HeaderPanelItemSpacing * (count - 1))) / count;
                 for (int i = 0; i < count; i++)
                     this.nestedTabView.Items[i].HeaderWidth = itemWidth;
             }

@@ -1,13 +1,11 @@
 using DemoCenter.Maui.Services;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.Scheduler;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui.Views {
     public partial class MonthViewDemo : Demo.DemoPage {
         readonly EmployeeCalendarViewModel viewModel = new EmployeeCalendarViewModel();
-        bool inNavigation = false;
+        bool inNavigation;
 
         public MonthViewDemo() {
             InitializeComponent();

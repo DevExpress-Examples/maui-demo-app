@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
                            xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views"
                            xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
@@ -14,7 +15,6 @@
         <dxg:DataGridView x:Name="grid"
                           AllowCascadeUpdate="false"
                           ItemsSource="{Binding Quotes}"
-
                           IsReadOnly="true"
                           SelectionMode="None">
             <dxg:DataGridView.Columns>
@@ -22,7 +22,7 @@
                 <dxg:TemplateColumn FieldName="Price" Caption="Value" MinWidth="90" HorizontalContentAlignment="End">
                     <dxg:TemplateColumn.DisplayTemplate>
                         <DataTemplate>
-                            <Grid BackgroundColor="{DynamicResource GridCellBackgroundColor}"
+                            <Grid
                                   RowSpacing="0"
                                   ColumnSpacing="0"
                                   Margin="0, 0, 9, 0">
@@ -36,9 +36,8 @@
                                        VerticalOptions="Center"
                                        HorizontalOptions="End"
                                        HorizontalTextAlignment="End"
-                                       BackgroundColor="{DynamicResource GridCellBackgroundColor}"
                                        TextColor="{Binding Path=Item.Delta, Converter={StaticResource DeltaToColorConverter}}" />
-                                <demo:IconView Grid.Column="1" HeightRequest="8" WidthRequest="16" HorizontalOptions="StartAndExpand" Source="{Binding Path=Item.Delta, Converter={StaticResource DeltaToImageConverter}}" VerticalOptions="Center"/>
+                                <dx:DXImage Grid.Column="1" HeightRequest="8" WidthRequest="16" HorizontalOptions="StartAndExpand" Source="{Binding Path=Item.Delta, Converter={StaticResource DeltaToImageConverter}}" VerticalOptions="Center"/>
                             </Grid>
                         </DataTemplate>
                     </dxg:TemplateColumn.DisplayTemplate>

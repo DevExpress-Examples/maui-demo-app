@@ -25,7 +25,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
         int status;
         public int Status {
             get => this.status;
-            set => SetProperty(ref this.status, value, () => OnPropertyChanged("Completed"));
+            set => SetProperty(ref this.status, value, () => OnPropertyChanged(nameof(Completed)));
         }
 
         public bool Completed => Status == 100;

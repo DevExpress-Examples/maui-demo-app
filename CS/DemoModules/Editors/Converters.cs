@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Globalization;
-using DevExpress.Maui.Controls;
 using DevExpress.Maui.Core;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
 
 namespace DemoCenter.Maui.DemoModules.Editors.Converters {
-    class BoxModeToImageSourceConverterExtension : IMarkupExtension<BoxModeToImageSourceConverter> {
+    sealed class BoxModeToImageSourceConverterExtension : IMarkupExtension<BoxModeToImageSourceConverter> {
         public ImageSource Filled { get; set; }
         public ImageSource Outlined { get; set; }
 
@@ -23,7 +22,8 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         public ImageSource Outlined { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (!(value is BoxMode boxMode) || targetType != typeof(ImageSource)) return null;
+            if (!(value is BoxMode boxMode) || targetType != typeof(ImageSource))
+                return null;
             switch (boxMode) {
                 case BoxMode.Filled:
                     return Filled;
@@ -39,7 +39,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         }
     }
 
-    class CharacterCasingToImageSourceConverterExtension : IMarkupExtension<CharacterCasingToImageSourceConverter> {
+    sealed class CharacterCasingToImageSourceConverterExtension : IMarkupExtension<CharacterCasingToImageSourceConverter> {
         public ImageSource Normal { get; set; }
         public ImageSource Uppercase { get; set; }
         public ImageSource Lowercase { get; set; }
@@ -77,7 +77,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         }
     }
 
-    class CornerModeToImageSourceConverterExtension : IMarkupExtension<CornerModeToImageSourceConverter> {
+    sealed class CornerModeToImageSourceConverterExtension : IMarkupExtension<CornerModeToImageSourceConverter> {
         public ImageSource Cut { get; set; }
         public ImageSource Round { get; set; }
 
@@ -93,7 +93,8 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         public ImageSource Round { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (!(value is CornerMode cornerMode) || targetType != typeof(ImageSource)) return null;
+            if (!(value is CornerMode cornerMode) || targetType != typeof(ImageSource))
+                return null;
             switch (cornerMode) {
                 case CornerMode.Cut:
                     return Cut;
@@ -109,7 +110,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         }
     }
 
-    class BoxModeToImageNameConverterExtension : IMarkupExtension<BoxModeToImageNameConverter> {
+    sealed class BoxModeToImageNameConverterExtension : IMarkupExtension<BoxModeToImageNameConverter> {
         public string Filled { get; set; }
         public string Outlined { get; set; }
 
@@ -125,7 +126,8 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         public string Outlined { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (!(value is BoxMode boxMode) || targetType != typeof(string)) return null;
+            if (!(value is BoxMode boxMode) || targetType != typeof(string))
+                return null;
             switch (boxMode) {
                 case BoxMode.Filled:
                     return Filled;
@@ -141,7 +143,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         }
     }
 
-    class CornerModeToImageNameConverterExtension : IMarkupExtension<CornerModeToImageNameConverter> {
+    sealed class CornerModeToImageNameConverterExtension : IMarkupExtension<CornerModeToImageNameConverter> {
         public string Cut { get; set; }
         public string Round { get; set; }
 
@@ -157,7 +159,8 @@ namespace DemoCenter.Maui.DemoModules.Editors.Converters {
         public string Round { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (!(value is CornerMode cornerMode) || targetType != typeof(string)) return null;
+            if (!(value is CornerMode cornerMode) || targetType != typeof(string))
+                return null;
             switch (cornerMode) {
                 case CornerMode.Cut:
                     return Cut;

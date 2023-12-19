@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.Editors;
 
 namespace DemoCenter.Maui.ViewModels {
@@ -25,7 +24,7 @@ namespace DemoCenter.Maui.ViewModels {
         public DateTime DisplayDate {
             get => this.displayDate;
             set => SetProperty(ref this.displayDate, value, () => {
-                UpdateSpecialDatesIfNeeded(DisplayDate);  
+                UpdateSpecialDatesIfNeeded(DisplayDate);
             });
         }
 

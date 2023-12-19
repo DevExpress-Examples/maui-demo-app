@@ -2,12 +2,11 @@ using System;
 using System.Linq;
 using DevExpress.Maui.Core;
 using DevExpress.Maui.DataForm;
-using DevExpress.Maui.DataGrid;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.ApplicationModel.Communication;
 using Microsoft.Maui.ApplicationModel.DataTransfer;
-using SQLite;
 using Contact = DemoCenter.Maui.DemoModules.CollectionView.Data.Contact;
+using DemoCenter.Maui.Demo;
 
 namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
     public partial class DetailInfoPage : Demo.DemoPage {
@@ -18,6 +17,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
 
         public DetailInfoPage() {
             InitializeComponent();
+            Shell.SetTitleView(this, new TitleView() { Title = Title });
         }
 
         void EditItemClick(object sender, EventArgs e) {
@@ -59,11 +59,11 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
             }
         }
         void CallClick(object sender, EventArgs e) {
-            if (PhoneDialer.Default.IsSupported)
+            if (PhoneDialer.Default.IsSupported && !String.IsNullOrEmpty(Item.HomePhone))
                 PhoneDialer.Default.Open(Item.HomePhone);
         }
         async void MailClick(object sender, EventArgs e) {
-            if (Email.Default.IsComposeSupported){
+            if (Email.Default.IsComposeSupported) {
                 string[] recipients = new[] { Item.Email };
 
                 var message = new EmailMessage {

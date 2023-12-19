@@ -1,7 +1,5 @@
 using System;
 using DemoCenter.Maui.DemoModules.CollectionView.Data;
-using Microsoft.Maui.Controls;
-using SQLite;
 using System.Net.Mail;
 using DevExpress.Maui.Core;
 

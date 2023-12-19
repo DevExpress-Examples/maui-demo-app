@@ -10,7 +10,7 @@ namespace DemoCenter.Maui.Views {
         readonly Random rnd = new Random();
         readonly RemindersNotificationCenter remindersNotificationCenter = new RemindersNotificationCenter();
         readonly RemindersDemoViewModel viewModel = new RemindersDemoViewModel();
-        bool inNavigation = false;
+        bool inNavigation;
 
         public RemindersDemo() {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace DemoCenter.Maui.Views {
         }
 
         void OnClicked(object sender, EventArgs e) {
-            AppointmentItem appointmentWithReminder = storage.CreateAppointmentItem();            
+            AppointmentItem appointmentWithReminder = storage.CreateAppointmentItem();
             DateTime start = DateTime.Now.AddSeconds(30);
             appointmentWithReminder.Start = start;
             appointmentWithReminder.End = start.AddHours(1);
@@ -52,7 +52,7 @@ namespace DemoCenter.Maui.Views {
             appointmentWithReminder.Reminders.Add(new TimeSpan());
             storage.AppointmentItems.Add(appointmentWithReminder);
         }
-        
+
         async void OnTap(object sender, SchedulerGestureEventArgs e) {
             if (inNavigation)
                 return;

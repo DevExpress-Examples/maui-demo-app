@@ -58,5 +58,9 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
 
             return result;
         }
+
+        public override bool Equals(object obj) {
+            return ((IEquatable<Customer>)this).Equals(obj as Customer);
+        }
     }
 }

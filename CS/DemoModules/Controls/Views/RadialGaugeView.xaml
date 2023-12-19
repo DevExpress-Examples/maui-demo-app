@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+               xmlns:dxga="clr-namespace:DevExpress.Maui.Gauges;assembly=DevExpress.Maui.Gauges"
+               xmlns:viewmodels="clr-namespace:DemoCenter.Maui.ViewModels"
+               xmlns:dxcr="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+               xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+               xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+               x:Class="DemoCenter.Maui.Views.RadialGaugeView"
+               x:DataType="viewmodels:RadialGaugeViewModel"
+               Shell.BackgroundColor="{dxcr:ThemeColor SurfaceContainer}"
+               ios:Page.UseSafeArea="True">
+
+    <demo:DemoPage.BindingContext>
+        <viewmodels:RadialGaugeViewModel />
+    </demo:DemoPage.BindingContext>
+
+    <demo:DemoPage.Behaviors>
+        <dxcr:SystemBarBehavior AndroidNavigationBarBackground="{dxcr:ThemeColor SurfaceContainer}"
+            AndroidStatusBarBackground="{dxcr:ThemeColor SurfaceContainer}"/>
+    </demo:DemoPage.Behaviors>
+
+    <demo:DemoPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="LegendItem" x:DataType="viewmodels:RoomInfo">
+                <dxcr:DXStackLayout Orientation="Horizontal" ItemSpacing="8">
+                    <dxcr:DXBorder BackgroundColor="{Binding Color}" WidthRequest="8" Margin="0" CornerRadius="4"/>
+                    <dxcr:DXStackLayout VerticalOptions="Center" ItemSpacing="-2">
+                        <Label Text="{Binding Value, StringFormat='{0:F1}'}" TextColor="{Binding Color}" FontAttributes="Bold" FontSize="20" />
+                        <Label Style="{StaticResource SecondaryText}" FontSize="12" Text="{Binding Room}" />
+                    </dxcr:DXStackLayout>
+                </dxcr:DXStackLayout>
+            </DataTemplate>
+
+            <local:ValueToColorConverter x:Key="ValueToColorConverter" />
+
+            <Style TargetType="dxcr:DXBorder" ApplyToDerivedTypes="False">
+                <Setter Property="BackgroundColor" Value="{dxcr:ThemeColor Key=SurfaceContainerLowest}" />
+                <Setter Property="CornerRadius" Value="7" />
+                <Setter Property="Padding" Value="{dxcr:OnDisplaySize Medium=5, Large=10}" />
+                <Setter Property="IsClippedToBounds" Value="False" />
+                <Setter Property="Shadow">
+                    <OnPlatform x:TypeArguments="Shadow">
+                        <On Platform="iOS">
+                            <On.Value>
+                                <Shadow Brush="{dxcr:ThemeColor Shadow}"
+                                        Offset="0,2"
+                                        Radius="2"
+                                        Opacity="0.22" />
+                            </On.Value>
+                        </On>
+                        <On Platform="Android" >
+                            <On.Value>
+                                <Shadow Brush="{dxcr:ThemeColor Shadow}"
+                                        Offset="0,4"
+                                        Radius="2"
+                                        Opacity="0.15" />
+                            </On.Value>
+                        </On>
+                    </OnPlatform>
+                </Setter>
+            </Style>
+
+            <Style TargetType="dxcr:DXBorder" x:Key="WideBorder" ApplyToDerivedTypes="False">
+                <Setter Property="MinimumWidthRequest" Value="{dxcr:OnDisplaySize ExtraSmall='260', Large='400', ExtraLarge='500'}" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="PrimaryText">
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="{dxcr:ThemeColor OnSurfaceVariant}"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Padding" Value="10, 5" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="SecondaryText">
+                <Setter Property="TextColor" Value="{dxcr:ThemeColor OnSurfaceVariant}"/>
+                <Setter Property="FontSize" Value="{dxcr:OnDisplaySize Large=11, ExtraLarge=14}"/>
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+            <Style TargetType="dxga:RangeIndicator">
+                <Setter Property="StartThickness">
+                    <dxcr:OnDisplaySize ExtraLarge="16" Large="10" />
+                </Setter>
+                <Setter Property="EndThickness">
+                    <dxcr:OnDisplaySize ExtraLarge="16" Large="10" />
+                </Setter>
+                <Setter Property="StrokeCap" Value="Butt" />
+                <Setter Property="AllowAnimation" Value="True" />
+            </Style>
+
+            <Style TargetType="dxga:RadialScale" x:Key="NestedScale">
+                <Setter Property="Offset">
+                    <dxcr:OnDisplaySize ExtraLarge="16" Large="10" />
+                </Setter>
+                <Setter Property="Thickness">
+                    <dxcr:OnDisplaySize ExtraLarge="16" Large="10" />
+                </Setter>
+                
+            </Style>
+
+            <Style TargetType="dxga:RadialScale">
+                <Setter Property="MinorTickmarkThickness" Value="{dxcr:OnDisplaySize Large='2', Medium='1'}" />
+                <Setter Property="MajorTickmarkThickness" Value="{dxcr:OnDisplaySize Large='3', Medium='2'}" />
+                <Setter Property="StrokeCap" Value="Butt" />
+                <Setter Property="TickmarkLabelFontSize" Value="{dxcr:OnDisplaySize Medium=10, Large=14}" />
+                <Setter Property="Thickness">
+                    <dxcr:OnDisplaySize ExtraLarge="16" Large="10" />
+                </Setter>
+            </Style>
+
+            <Style TargetType="dxga:RadialGauge" x:Key="SecondaryGauge">
+                <Setter Property="MinimumHeightRequest" Value="{dxcr:OnDisplaySize ExtraSmall=85, Small=100, Large=110, ExtraLarge=120}" />
+                <Setter Property="MaximumHeightRequest" Value="{dxcr:OnDisplaySize Large=120, ExtraLarge=140}" />
+                <Setter Property="MaximumWidthRequest" Value="{dxcr:OnDisplaySize Large=190, ExtraLarge=220}" />
+            </Style>
+
+            <Style TargetType="dxga:RadialGauge" x:Key="PrimaryGauge">
+                <Setter Property="MaximumWidthRequest" Value="{dxcr:OnDisplaySize Large=200, ExtraLarge=400}" />
+                <Setter Property="MinimumWidthRequest" Value="{OnIdiom Tablet=200}" />
+                <Setter Property="MinimumHeightRequest" Value="{dxcr:OnDisplaySize ExtraSmall=150, Small=200, Large=200, ExtraLarge=300}" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="GaugeContent">
+                <Setter Property="FontSize" Value="{dxcr:OnDisplaySize ExtraSmall=20, Small=20, Medium=20, Large=30}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="End" />
+            </Style>
+        </ResourceDictionary>
+    </demo:DemoPage.Resources>
+
+    <ScrollView BackgroundColor="{dxcr:ThemeColor SurfaceContainer}">
+        <dxcr:DXWrapLayout x:Name="wrapLayout"
+                           ItemAlignment="Fill"
+                           IsClippedToBounds="False"
+                           Wrap="Regular"
+                           LineAlignment="Fill"
+                           ItemSpacing="8"
+                           LineSpacing="8"
+                           Orientation="Horizontal"
+                           Margin="{dxcr:OnDisplaySize ExtraSmall='8, 4', Medium='16, 4', Large='24, 8'}">
+            <dxcr:DXBorder Style="{StaticResource WideBorder}">
+                <dxcr:DXDockLayout>
+                    <Label Style="{StaticResource PrimaryText}" Text="Power (kW)" dxcr:DXDockLayout.Dock="Top" />
+                    <dxcr:DXDockLayout Padding="{dxcr:OnDisplaySize ExtraSmall=0, Small=0, Medium=0, Large='150, 0', ExtraLarge='180, 0'}" VerticalOptions="Center">
+                        <dxcr:DXStackLayout VerticalOptions="Center" Margin="8, 0, 0, 0" ItemSpacing="16" dxcr:DXDockLayout.Dock="Right">
+                            <dxcr:DXStackLayout ItemsSource="{Binding Rooms}"
+                                                ItemTemplate="{StaticResource LegendItem}"
+                                                ItemSpacing="16" />
+                            <dxcr:DXStackLayout Orientation="Horizontal">
+                                <Switch IsToggled="{Binding IsPowerSavingEnabled, Mode=OneWayToSource}" />
+                                <Label Text="Energy saving" LineBreakMode="WordWrap" MinimumHeightRequest="30" WidthRequest="40" Margin="{OnIdiom Default='4, 0', Tablet='8, 0'}" FontSize="{dxcr:OnDisplaySize ExtraSmall=12}" TextColor="{dxcr:ThemeColor Key=OnSurface}"/>
+                            </dxcr:DXStackLayout>
+                        </dxcr:DXStackLayout>
+                        <dxcr:DXDockLayout VerticalOptions="Center">
+                            <Label Style="{StaticResource SecondaryText}" Text="All rooms" dxcr:DXDockLayout.Dock="Top" Margin="0,8"/>
+                            <dxga:RadialGauge Style="{StaticResource PrimaryGauge}">
+                                <dxga:RadialScale StartAngle="-90" SweepAngle="360" Fill="#E1E8D8" Style="{StaticResource NestedScale}" Offset="0" StrokeCap="Round" EndValue="{Binding MaxLivingRoomPowerConsumption, Mode=OneTime}">
+                                    <dxga:RangeIndicator EndValue="{Binding LivingRoomPowerLevel}" Fill="{Binding LivingRoomPowerLevelBrush}" StrokeCap="Round"/>
+                                </dxga:RadialScale>
+                                <dxga:RadialScale StartAngle="-90" SweepAngle="360" Fill="#DDE5F6" Style="{StaticResource NestedScale}" StrokeCap="Round" EndValue="{Binding MaxBedroomPowerConsumption, Mode=OneTime}">
+                                    <dxga:RangeIndicator EndValue="{Binding BedroomPowerLevel}" Fill="{Binding BedroomPowerLevelBrush}" StrokeCap="Round"/>
+                                </dxga:RadialScale>
+                                <dxga:RadialScale StartAngle="-90" SweepAngle="360" Fill="#EFDDE6" Style="{StaticResource NestedScale}" StrokeCap="Round" EndValue="{Binding MaxKitchenPowerConsumption, Mode=OneTime}">
+                                    <dxga:RangeIndicator EndValue="{Binding KitchenPowerLevel}" Fill="{Binding KitchenPowerLevelBrush}" StrokeCap="Round"/>
+                                </dxga:RadialScale>
+                                <dxga:RadialGauge.Content>
+                                    <Label Style="{StaticResource PrimaryText}" Text="{Binding TotalPowerLevel, StringFormat='{0:F1}'}" FontSize="{dxcr:OnDisplaySize ExtraSmall=14, Small=24}" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" Padding="0"/>
+                                </dxga:RadialGauge.Content>
+                            </dxga:RadialGauge>
+                        </dxcr:DXDockLayout>
+                    </dxcr:DXDockLayout>
+                </dxcr:DXDockLayout>
+            </dxcr:DXBorder>
+            <Grid RowDefinitions="*, *" ColumnDefinitions="*, *" ColumnSpacing="8" RowSpacing="8">
+                <dxcr:DXBorder Style="{StaticResource WideBorder}" Grid.ColumnSpan="2">
+                    <dxcr:DXDockLayout>
+                        <Label dxcr:DXDockLayout.Dock="Top" Style="{StaticResource PrimaryText}" Text="Solar battery" />
+                        <dxcr:DXDockLayout VerticalOptions="Center">
+                            <Grid RowDefinitions="Auto, *" ColumnDefinitions="*, *" ColumnSpacing="8" Padding="4, 0">
+                                <Label Style="{StaticResource SecondaryText}" Text="Charge level" />
+                                <dxga:RadialGauge Grid.Row="1" Style="{StaticResource SecondaryGauge}">
+                                    <dxga:RadialScale Fill="#F4ECE2"
+                                                      ShowTickmarkLabels="False"
+                                                      StartAngle="180"
+                                                      SweepAngle="180"
+                                                      MajorTickmarkCount="2"
+                                                      MajorTickmarkColor="{Binding SolarBatteryChargeLevel, Converter={StaticResource ValueToColorConverter}}"
+                                                      MajorTickmarkLength="{dxcr:OnDisplaySize Large=14, ExtraLarge=20}">
+                                        <dxga:RangeIndicator EndValue="{Binding SolarBatteryChargeLevel}" Fill="{Binding SolarBatteryChargeLevel, Converter={StaticResource ValueToColorConverter}}" />
+                                    </dxga:RadialScale>
+                                    <dxga:RadialGauge.Content>
+                                        <Label Text="{Binding SolarBatteryChargeLevel, StringFormat='{0:P0}'}" TextColor="{Binding SolarBatteryChargeLevel, Converter={StaticResource ValueToColorConverter}}" Style="{StaticResource GaugeContent}"/>
+                                    </dxga:RadialGauge.Content>
+                                </dxga:RadialGauge>
+
+                                <Label Style="{StaticResource SecondaryText}" Text="Hours left" Grid.Column="1"/>
+                                <dxga:RadialGauge Grid.Column="1" Grid.Row="1" Style="{StaticResource SecondaryGauge}">
+                                    <dxga:RadialScale Fill="#ECEEF9"
+                                                      EndValue="{Binding MaxHoursLeft, Mode=OneTime}"
+                                                      MajorTickmarkCount="5"
+                                                      MinorTickmarkCount="3"
+                                                      TickmarkLabelPosition="Inside"
+                                                      MajorTickmarkPosition="Inside"
+                                                      MinorTickmarkPosition="Inside"
+                                                      MajorTickmarkOffset="3"
+                                                      MinorTickmarkOffset="3"
+                                                      TickmarkLabelOffset="12"
+                                                      StartAngle="180"
+                                                      SweepAngle="180"
+                                                      TickmarkLabelFormat="F0">
+                                        <dxga:RangeIndicator EndValue="{Binding HoursLeft}" Fill="#6486C9" />
+                                    </dxga:RadialScale>
+                                    <dxga:RadialGauge.Content>
+                                        <Label Text="{Binding HoursLeft, StringFormat='{0:F0}h'}" TextColor="#6486C9" Style="{StaticResource GaugeContent}"/>
+                                    </dxga:RadialGauge.Content>
+                                </dxga:RadialGauge>
+                            </Grid>
+                        </dxcr:DXDockLayout>
+                    </dxcr:DXDockLayout>
+                </dxcr:DXBorder>
+                <dxcr:DXBorder Grid.Row="1">
+                    <Grid RowDefinitions="Auto, *">
+                        <Label Text="Pressure" Style="{StaticResource PrimaryText}"/>
+                        <dxga:RadialGauge Grid.Row="1" Style="{StaticResource SecondaryGauge}">
+                            <dxga:RadialScale StartAngle="180"
+                                              SweepAngle="180"
+                                              MajorTickmarkCount="7"
+                                              MinorTickmarkCount="1"
+                                              TickmarkLabelFormat="F0"
+                                              MajorTickmarkPosition="Outside"
+                                              MinorTickmarkPosition="Outside"
+                                              TickmarkLabelPosition="Outside"
+                                              MajorTickmarkOffset="4"
+                                              MinorTickmarkOffset="4"
+                                              TickmarkLabelOffset="10"
+                                              EndValue="12"
+                                              Fill="Transparent"
+                                              CustomizeTickmark="OnCustomizeTickmark">
+                                <dxga:RangeIndicator StartValue="0" EndValue="4" Fill="#9BBB72" />
+                                <dxga:RangeIndicator StartValue="4" EndValue="8" Fill="#F9DC77" />
+                                <dxga:RangeIndicator StartValue="8" EndValue="12" Fill="#EF938D" />
+                                <dxga:NeedleIndicator Value="3" Size="{dxcr:OnDisplaySize ExtraSmall=25, Small=40, Medium=30, Large=45, ExtraLarge='60'}">
+                                    <dxga:NeedleIndicator.Fill>
+                                        <LinearGradientBrush StartPoint="0.5, 0.47" EndPoint="0.5, 0.53">
+                                            <GradientStop Offset="0" Color="{dxcr:ThemeColor Key=OnSurface}" />
+                                            <GradientStop Offset="1" Color="{dxcr:ThemeColor Key=Outline}" />
+                                        </LinearGradientBrush>
+                                    </dxga:NeedleIndicator.Fill>
+                                </dxga:NeedleIndicator>
+                            </dxga:RadialScale>
+                            <dxga:RadialGauge.Content>
+                                <Label Text="Bar" HorizontalOptions="Center" VerticalOptions="End" TranslationY="{dxcr:OnDisplaySize ExtraSmall=-25, Large=-30}" FontSize="{dxcr:OnDisplaySize ExtraSmall=11, ExtraLarge=16}" Style="{StaticResource Key=SecondaryText}"/>
+                            </dxga:RadialGauge.Content>
+                        </dxga:RadialGauge>
+                    </Grid>
+                </dxcr:DXBorder>
+
+                <dxcr:DXBorder Grid.Column="1" Grid.Row="1">
+                    <Grid RowDefinitions="Auto, *">
+                        <Label Text="Temperature" Style="{StaticResource PrimaryText}"/>
+                        <dxcr:DXDockLayout Grid.Row="1" VerticalOptions="Center">
+                            <Label Text="Fahrenheit" dxcr:DXDockLayout.Dock="Top" Style="{StaticResource SecondaryText}" />
+                            <dxga:RadialGauge Style="{StaticResource SecondaryGauge}">
+                                <dxga:RadialScale StartAngle="180"
+                                                  SweepAngle="180"
+                                                  MajorTickmarkCount="5"
+                                                  MinorTickmarkCount="3"
+                                                  MajorTickmarkPosition="Inside"
+                                                  MinorTickmarkPosition="Inside"
+                                                  MajorTickmarkOffset="4"
+                                                  MinorTickmarkOffset="4"
+                                                  TickmarkLabelOffset="{dxcr:OnDisplaySize ExtraSmall=12, Large=12, ExtraLarge=12}"
+                                                  TickmarkLabelFormat="{}{0:F0}°"
+                                                  StartValue="40"
+                                                  EndValue="90"
+                                                  Fill="Transparent"
+                                                  CustomizeTickmark="OnCustomizeTickmark">
+                                    <dxga:RangeIndicator StartValue="40" EndValue="56.6667" Fill="#9BBB72" />
+                                    <dxga:RangeIndicator StartValue="56.6667" EndValue="73.3333" Fill="#F9DC77" />
+                                    <dxga:RangeIndicator StartValue="73.3333" EndValue="90" Fill="#EF938D" />
+                                    <dxga:MarkerIndicator Position="Inside" Value="74" Size="{dxcr:OnDisplaySize ExtraSmall=15, Small=20}">
+                                        <dxga:MarkerIndicator.Fill>
+                                            <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
+                                                <GradientStop Offset="0" Color="{dxcr:ThemeColor Key=OnSurface}" />
+                                                <GradientStop Offset="1" Color="{dxcr:ThemeColor Key=Outline}" />
+                                            </LinearGradientBrush>
+                                        </dxga:MarkerIndicator.Fill>
+                                    </dxga:MarkerIndicator>
+                                </dxga:RadialScale>
+                            </dxga:RadialGauge>
+                        </dxcr:DXDockLayout>
+                    </Grid>
+                </dxcr:DXBorder>
+            </Grid>
+        </dxcr:DXWrapLayout>
+    </ScrollView>
+</demo:DemoPage>

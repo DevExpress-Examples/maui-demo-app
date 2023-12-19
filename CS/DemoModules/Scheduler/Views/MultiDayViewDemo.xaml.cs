@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
     public partial class MultiDayViewDemo : Demo.DemoPage {
-        bool inNavigation = false;
+        bool inNavigation;
 
         public MultiDayViewDemo() {
             InitializeComponent();

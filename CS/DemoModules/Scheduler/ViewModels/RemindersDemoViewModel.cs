@@ -7,7 +7,7 @@ namespace DemoCenter.Maui.ViewModels {
         public RemindersDemoViewModel() {
             Appointments = new ObservableCollection<ReminderAppointment>(AppointmentRepository.Instance.GetItems());
             Appointments.CollectionChanged += OnAppointmentsCollectionChanged;
-            foreach(ReminderAppointment appointment in Appointments)
+            foreach (ReminderAppointment appointment in Appointments)
                 SubscribeAppointmentEvent(appointment);
         }
 

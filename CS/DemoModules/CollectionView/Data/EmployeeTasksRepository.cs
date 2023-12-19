@@ -15,11 +15,11 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
             EmployeeTasks = tasks;
         }
 
-        IList<EmployeeTask> LoadTasks() {
+        BindingList<EmployeeTask> LoadTasks() {
             System.Reflection.Assembly assembly = GetType().Assembly;
             Stream stream = assembly.GetManifestResourceStream("EmployeeTasks.json");
             JObject jObject = JObject.Parse(new StreamReader(stream).ReadToEnd());
-            List<EmployeeTask> list = jObject["EmployeeTasks"].ToObject<List<EmployeeTask>>().Take(30).ToList();
+            List<EmployeeTask> list = jObject[nameof(EmployeeTasks)].ToObject<List<EmployeeTask>>().Take(30).ToList();
             return new BindingList<EmployeeTask>(list);
         }
 
@@ -29,7 +29,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
                 EmployeeTask task = tasks[i];
                 task.StartDate = DateTime.Now.AddDays(random.Next(7) + 1);
                 task.DueDate = task.StartDate.AddDays(random.Next(3) + 1);
-                task.Status = (TaskStatus) (i < 2 ? 0 : i < tasks.Count * 2 / 3 ? 1 : 2);
+                task.Status = (TaskStatus)(i < 2 ? 0 : i < tasks.Count * 2 / 3 ? 1 : 2);
             }
         }
     }

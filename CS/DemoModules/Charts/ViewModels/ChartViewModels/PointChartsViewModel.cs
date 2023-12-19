@@ -8,8 +8,8 @@ namespace DemoCenter.Maui.ViewModels {
 
         public DataSetContainer<DateTimeData> NightMin => chartData.NightMin;
         public DataSetContainer<DateTimeData> DayMax => chartData.DayMax;
-        public int AverageTempNight => (int) chartData.NightMinAverageValue;
-        public int AverageTempDay => (int) chartData.DayMaxAverageValue;
+        public int AverageTempNight => (int)chartData.NightMinAverageValue;
+        public int AverageTempDay => (int)chartData.DayMaxAverageValue;
 
         public override string Title => "Average Temperature in London";
     }

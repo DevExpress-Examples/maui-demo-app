@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using DemoCenter.Maui.DemoModules.Grid.Data;
-using DevExpress.Maui.Editors;
 
 namespace DemoCenter.Maui.ViewModels {
-    public class ContactsDropdownViewModel: NotificationObject {
+    public class ContactsDropdownViewModel : NotificationObject {
         readonly Random random;
 
         ObservableCollection<CallInfo> recent;

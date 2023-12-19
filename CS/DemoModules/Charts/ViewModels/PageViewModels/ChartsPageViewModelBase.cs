@@ -9,7 +9,8 @@ namespace DemoCenter.Maui.Charts.ViewModels {
             get => selectedItem;
             set => SetProperty(ref selectedItem, value, onChanged: (oldValue, newValue) => {
                 ResetSelectedItem(oldValue);
-                if(newValue != null) newValue.IsSelected = true;
+                if (newValue != null)
+                    newValue.IsSelected = true;
             });
         }
         public bool IsVertical {
@@ -18,17 +19,17 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         }
         public void SetVerticalState(bool vertical) {
             isVertical = vertical;
-            foreach(ChartItemInfoContainerBase curentItem in Content) {
+            foreach (ChartItemInfoContainerBase curentItem in Content) {
                 curentItem.IsVertical = vertical;
             }
         }
         public abstract List<ChartItemInfoContainerBase> Content { get; }
         void ResetSelectedItem(ChartItemInfoContainerBase oldSelectedItem) {
-            if(oldSelectedItem != null) {
+            if (oldSelectedItem != null) {
                 oldSelectedItem.IsSelected = false;
             } else {
-                foreach(ChartItemInfoContainerBase curentItem in Content) {
-                    if(curentItem.IsSelected) {
+                foreach (ChartItemInfoContainerBase curentItem in Content) {
+                    if (curentItem.IsSelected) {
                         curentItem.IsSelected = false;
                         return;
                     }

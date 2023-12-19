@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 using DevExpress.Maui.Charts;
 using Microsoft.Maui.Graphics;
@@ -11,8 +12,9 @@ namespace DemoCenter.Maui {
             T data;
             var assembly = typeof(T).Assembly;
             using (Stream stream = assembly.GetManifestResourceStream(resourceName)) {
+                XmlReader reader = XmlReader.Create(stream);
                 var serializer = new XmlSerializer(typeof(T));
-                data = (T) serializer.Deserialize(stream);
+                data = (T)serializer.Deserialize(reader);
             }
             return data;
         }
@@ -21,7 +23,7 @@ namespace DemoCenter.Maui {
         public static T GetData<T>(string resourceName) {
             T data;
             System.Reflection.Assembly assembly = typeof(T).Assembly;
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName)){
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName)) {
                 JObject jObject = JObject.Parse(new StreamReader(stream).ReadToEnd());
                 data = jObject[typeof(T).Name].ToObject<T>();
             }
@@ -44,31 +46,31 @@ namespace DemoCenter.Maui {
         public static Color[] Extended => extended;
     }
 
-    class AxisLabelTextFormatter : IAxisLabelTextFormatter {
-        public string Format(object value) => (((double) value) / 1000000.0).ToString() + "M";
+    sealed class AxisLabelTextFormatter : IAxisLabelTextFormatter {
+        public string Format(object value) => (((double)value) / 1000000.0).ToString() + "M";
     }
 
-    class BarChartAxisLabelTextFormatter : IAxisLabelTextFormatter {
-        public string Format(object value) => (((double) value) / 1000000.0).ToString();
+    sealed class BarChartAxisLabelTextFormatter : IAxisLabelTextFormatter {
+        public string Format(object value) => (((double)value) / 1000000.0).ToString();
     }
 
-    class PopulationPyramidAxisLabelTextFormatter : IAxisLabelTextFormatter {
+    sealed class PopulationPyramidAxisLabelTextFormatter : IAxisLabelTextFormatter {
         public string Format(object value) => (Math.Abs((double)value) / 1000000.0).ToString() + "M";
     }
 
-    class CryptocurrencyPortfolioAxisLabelTextFormatter : IAxisLabelTextFormatter {
+    sealed class CryptocurrencyPortfolioAxisLabelTextFormatter : IAxisLabelTextFormatter {
         public string Format(object value) => ((double)value).ToString() + "%";
     }
 
-    class FrequencyAxisLabelTextFormatter : IAxisLabelTextFormatter {
+    sealed class FrequencyAxisLabelTextFormatter : IAxisLabelTextFormatter {
         public string Format(object value) => ((double)value).ToString() + " Hz";
     }
 
-    class PercentAxisLabelTextFormatter : IAxisLabelTextFormatter {
+    sealed class PercentAxisLabelTextFormatter : IAxisLabelTextFormatter {
         public string Format(object value) => ((double)value).ToString() + " %";
     }
 
-    class PopulationByCountryTextFormatter : IAxisLabelTextFormatter {
+    sealed class PopulationByCountryTextFormatter : IAxisLabelTextFormatter {
         public string Format(object value) {
             double val = ((double)value) / 1e9;
             if (val == 0.0)

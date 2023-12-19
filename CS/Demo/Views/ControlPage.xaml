@@ -1,58 +1,32 @@
-<ContentPage
+﻿<ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:models="clr-namespace:DemoCenter.Maui.Models"
     xmlns:viewmodels="clr-namespace:DemoCenter.Maui.ViewModels"
     x:DataType="viewmodels:ControlViewModel"
     x:Class="DemoCenter.Maui.Views.ControlPage"
     ios:Page.UseSafeArea="False"
     Title="{Binding Title}"
-    BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    BackgroundColor="{dx:ThemeColor Surface}">
+    
     <ContentPage.BindingContext>
-        <viewmodels:ControlViewModel />
+        <viewmodels:ControlViewModel/>
     </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <dxcv:DXCollectionView x:Name="collectionView"
-                               x:DataType="viewmodels:ControlViewModel"
-                               ItemsSource="{Binding DemoItems}"
-                               SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                               SelectionMode="Single"
-                               BackgroundColor="Transparent">
+        <dxcv:DXCollectionView x:Name="collectionView" x:DataType="viewmodels:ControlViewModel"
+            ItemsSource="{Binding DemoItems}" SelectedItem="{Binding SelectedItem}"
+            SelectionMode="Single" BackgroundColor="Transparent">
             <dxcv:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:DemoItem">
-                    <VerticalStackLayout BackgroundColor="Transparent">
-                        <demo:DockLayout Margin="16" StretchLastChild="False" ColumnSpacing="16">
-                            <demo:IconView demo:DockLayout.Dock="Left" VerticalOptions="Start" HeightRequest="42" WidthRequest="42" Icon="{Binding Icon}"/>
-
-                            <demo:DockLayout demo:DockLayout.Dock="Top" StretchLastChild="False">
-                                <demo:IconView demo:DockLayout.Dock="Top" IsVisible="{Binding ShowBadge}" Source="{Binding BadgeIcon}" />
-                                <Label HorizontalOptions="FillAndExpand"
-                                       Margin="0,0,0,6"
-                                       BackgroundColor="Transparent"
-                                       FontSize="Header"
-                                       FontFamily="Roboto-Medium"
-                                       LineBreakMode="NoWrap"
-                                       Text="{Binding ControlsPageTitle}"
-                                       TextColor="{DynamicResource TextThemeColor}"
-                                       VerticalOptions="Start" />
-                            </demo:DockLayout>
-
-                            <Label demo:DockLayout.Dock="Top"
-                                   BackgroundColor="Transparent"
-                                   FontSize="Default"
-                                   LineBreakMode="WordWrap"
-                                   FontFamily="Roboto"
-                                   Style="{DynamicResource ListItemDetailTextStyle}"
-                                   Text="{Binding Description}"
-                                   TextColor="{DynamicResource TextThemeColor}"
-                                   VerticalOptions="Start" />
-                        </demo:DockLayout>
-                        <BoxView Color="{DynamicResource SeparatorColor}" HeightRequest="1" />
-                         
-                    </VerticalStackLayout>
+                    <dxe:FormItem Margin="16,0" ImageSource="{Binding Icon}" ImageColor="{dx:ThemeColor OnSurfaceVariant}" ImageVerticalOptions="Start" 
+                        ImageWidth="40" ImageHeight="40" ImageMargin="0,4,16,4" Text="{Binding ControlsPageTitle}" TextFontSize="16" TextFontAttributes="Bold" 
+                        TextColor="{dx:ThemeColor OnSurface}" Detail="{Binding Description}" DetailFontSize="14" DetailColor="{dx:ThemeColor OnSurface}"/>
                 </DataTemplate>
             </dxcv:DXCollectionView.ItemTemplate>
         </dxcv:DXCollectionView>

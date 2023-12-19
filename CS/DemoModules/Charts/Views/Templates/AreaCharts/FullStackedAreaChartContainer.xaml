@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
              x:Class="DemoCenter.Maui.Charts.Views.FullStackedAreaChartContainer">
     <ContentView.Resources>
@@ -10,15 +11,14 @@
                                   PointTextPattern="{}{S}&#x0a;{A$yyyy}: {VP$0.##}%"/>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <Grid BackgroundColor="{dx:ThemeColor Surface}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Label Text="{Binding ChartModel.Title}"
-                   FontFamily="Roboto"
-                   TextColor="{DynamicResource TextThemeColor}"
-                   BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                   TextColor="{dx:ThemeColor OnSurface}"
+                   BackgroundColor="{dx:ThemeColor Surface}"/>
             <dxc:ChartView Grid.Row="1"
                               SelectionMode="Single"
                               SelectionKind="Series">

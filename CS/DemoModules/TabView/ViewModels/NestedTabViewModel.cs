@@ -8,7 +8,7 @@ using Microsoft.Maui.Controls;
 namespace DemoCenter.Maui.DemoModules.TabView {
     public class NestedTabViewModel : NavigationViewModelBase {
         Category selectedCategory;
-        public List<Product> ProductsData => AllProducts.SelectMany(p => p.Products).ToList(); 
+        public List<Product> ProductsData => AllProducts.SelectMany(p => p.Products).ToList();
 
         public List<Category> AllProducts { get; private set; } = new List<Category>();
         public ObservableCollection<Product> Cart { get; private set; }
@@ -18,14 +18,15 @@ namespace DemoCenter.Maui.DemoModules.TabView {
             get => selectedCategory;
             set => SetProperty(ref selectedCategory, value, onChanged: (oldValue, newValue) => {
                 ResetSelectedCategory(oldValue);
-                if(newValue != null) newValue.IsSelected = true;
+                if (newValue != null)
+                    newValue.IsSelected = true;
             });
         }
         public ICommand ChangeCart { get; }
         public ICommand ChangeWishList { get; }
 
         public NestedTabViewModel() {
-            ChangeCart = new Command<Product> ((p) => ExecuteChangeCart(p));
+            ChangeCart = new Command<Product>((p) => ExecuteChangeCart(p));
             ChangeWishList = new Command<Product>((p) => ExecuteChangeWishList(p));
             GenerateTestData();
         }
@@ -91,11 +92,11 @@ namespace DemoCenter.Maui.DemoModules.TabView {
             tv.Products[3].CanAddToWishList = false;
         }
         void ResetSelectedCategory(Category oldValue) {
-            if(oldValue != null) {
+            if (oldValue != null) {
                 oldValue.IsSelected = false;
             } else {
-                foreach(Category curentItem in AllProducts) {
-                    if(curentItem.IsSelected) {
+                foreach (Category curentItem in AllProducts) {
+                    if (curentItem.IsSelected) {
                         curentItem.IsSelected = false;
                         return;
                     }
@@ -109,7 +110,7 @@ namespace DemoCenter.Maui.DemoModules.TabView {
                 item.CanAddToCart = false;
                 Cart.Add(item);
             } else {
-                if(!Cart.Contains(item))
+                if (!Cart.Contains(item))
                     return;
                 item.CanAddToCart = true;
                 Cart.Remove(item);

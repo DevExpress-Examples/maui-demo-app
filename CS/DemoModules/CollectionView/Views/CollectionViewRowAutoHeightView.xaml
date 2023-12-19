@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
@@ -15,55 +16,48 @@
 
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="16"/>
-                <Setter Property="TextColor" Value="{DynamicResource CollectionViewItemFontColor}"/>
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
             </Style>
 
             <DataTemplate x:Key="compactTemplate">
-                <demo:DockLayout Margin="10" RowSpacing="10" StretchLastChild="False">
-                    <demo:DockLayout demo:DockLayout.Dock="Top" ColumnSpacing="10" RowSpacing="7">
-                        <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}" StrokeThickness="1" MaximumHeightRequest="72" WidthRequest="62">
-                            <Border.StrokeShape>
-                                <Rectangle/>
-                            </Border.StrokeShape>
-                            <Image Source="{Binding Photo}" Aspect="AspectFill" />
-                        </Border>
-                        <Label demo:DockLayout.Dock="Top" Text="{Binding Name}" />
-                        <Label demo:DockLayout.Dock="Top" Text="{Binding Position}" />
-                        <Label demo:DockLayout.Dock="Top" Text="{Binding Phone}" />
-                    </demo:DockLayout>
-                    <Label demo:DockLayout.Dock="Top" Text="{Binding Notes}" />
-                    <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
-                </demo:DockLayout>
+                <dx:DXDockLayout Margin="10" VerticalSpacing="10" StretchLastItem="False">
+                    <dx:DXDockLayout dx:DXDockLayout.Dock="Top" HorizontalSpacing="10" VerticalSpacing="7">
+                        <Image dx:DXDockLayout.Dock="Left" Source="{Binding Photo}" Aspect="AspectFill" WidthRequest="62" HeightRequest="80"/>
+                        <Label dx:DXDockLayout.Dock="Top" Text="{Binding Name}" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="{Binding Position}" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="{Binding Phone}" />
+                    </dx:DXDockLayout>
+                    <Label dx:DXDockLayout.Dock="Top" Text="{Binding Notes}" />
+                    <dx:DXSeparator dx:DXDockLayout.Dock="Top" />
+                </dx:DXDockLayout>
             </DataTemplate>
             <DataTemplate x:Key="detailedTemplate">
                 <VerticalStackLayout Spacing="0" Padding="16">
-                    <demo:DockLayout ColumnSpacing="16" RowSpacing="10" StretchLastChild="False">
-                        <Border demo:DockLayout.Dock="Left" Stroke="{DynamicResource GridCellBorderColor}">
-                            <Image Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="130" WidthRequest="100" />
-                        </Border>
-                        <demo:DockLayout demo:DockLayout.Dock="Top">
-                            <Label demo:DockLayout.Dock="Left" Text="Name:" FontAttributes="Bold" WidthRequest="70"/>
+                    <dx:DXDockLayout HorizontalSpacing="16" VerticalSpacing="10" StretchLastItem="False">
+                        <Image dx:DXDockLayout.Dock="Left" Source="{Binding Photo}" Aspect="AspectFill" HeightRequest="130" WidthRequest="100" />
+                        <dx:DXDockLayout dx:DXDockLayout.Dock="Top">
+                            <Label dx:DXDockLayout.Dock="Left" Text="Name:" FontAttributes="Bold" WidthRequest="70"/>
                             <Label Text="{Binding Name}"/>
-                        </demo:DockLayout>
-                        <demo:DockLayout demo:DockLayout.Dock="Top">
-                            <Label demo:DockLayout.Dock="Left" Text="Position:" FontAttributes="Bold" WidthRequest="70"/>
+                        </dx:DXDockLayout>
+                        <dx:DXDockLayout dx:DXDockLayout.Dock="Top">
+                            <Label dx:DXDockLayout.Dock="Left" Text="Position:" FontAttributes="Bold" WidthRequest="70"/>
                             <Label Text="{Binding Position}"/>
-                        </demo:DockLayout>
-                        <demo:DockLayout demo:DockLayout.Dock="Top">
-                            <Label demo:DockLayout.Dock="Left" Text="Phone:" FontAttributes="Bold" WidthRequest="70"/>
+                        </dx:DXDockLayout>
+                        <dx:DXDockLayout dx:DXDockLayout.Dock="Top">
+                            <Label dx:DXDockLayout.Dock="Left" Text="Phone:" FontAttributes="Bold" WidthRequest="70"/>
                             <Label Text="{Binding Phone}"/>
-                        </demo:DockLayout>
-                        <demo:DockLayout demo:DockLayout.Dock="Top">
-                            <Label demo:DockLayout.Dock="Left" Text="Email:" FontAttributes="Bold" WidthRequest="70"/>
+                        </dx:DXDockLayout>
+                        <dx:DXDockLayout dx:DXDockLayout.Dock="Top">
+                            <Label dx:DXDockLayout.Dock="Left" Text="Email:" FontAttributes="Bold" WidthRequest="70"/>
                             <Label Text="{Binding Email}"/>
-                        </demo:DockLayout>
-                        <demo:DockLayout demo:DockLayout.Dock="Top">
-                            <Label demo:DockLayout.Dock="Left" Text="Address:" FontAttributes="Bold" WidthRequest="70"/>
+                        </dx:DXDockLayout>
+                        <dx:DXDockLayout dx:DXDockLayout.Dock="Top">
+                            <Label dx:DXDockLayout.Dock="Left" Text="Address:" FontAttributes="Bold" WidthRequest="70"/>
                             <Label Text="{Binding Address}"/>
-                        </demo:DockLayout>
-                    </demo:DockLayout>
+                        </dx:DXDockLayout>
+                    </dx:DXDockLayout>
                     <Label Text="{Binding Notes}" Margin="0,16,0,0" />
-                    <BoxView Style="{StaticResource SeparatorStyle}" Margin="0,16,0,0"/>
+                    <dx:DXSeparator Margin="0,16,0,0"/>
                 </VerticalStackLayout>
             </DataTemplate>
         </ResourceDictionary>
@@ -71,7 +65,7 @@
     <ContentPage.Content>
         <dxcv:DXCollectionView
             x:Name="collectionView"
-            BackgroundColor="{DynamicResource BackgroundThemeColor}"
+            BackgroundColor="{dx:ThemeColor Surface}"
             ItemsSource="{Binding ItemSource}"
             ItemTemplate="{OnIdiom Phone={StaticResource compactTemplate}, Tablet={StaticResource detailedTemplate}}">
         </dxcv:DXCollectionView>

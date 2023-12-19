@@ -19,7 +19,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         public string SelectedSuperhero { get => this.selectedSuperhero; set => SetProperty(ref this.selectedSuperhero, value); }
 
         public SuperHeroTShirtViewModel() {
-            Sizes = new List<string>() { "S","M","L","XL","XXL","XXXL" };
+            Sizes = new List<string>() { "S", "M", "L", "XL", "XXL", "XXXL" };
             Superheroes = new List<string>() {
                 "superhero_red",
                 "superhero_orange",

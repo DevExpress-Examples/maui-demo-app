@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:AdaptivePage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="DemoCenter.Maui.Views.DeliveryFormView"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
@@ -16,15 +17,15 @@
         </Style>
     </ContentPage.Resources>
 
-    <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
-        <demo:DockLayout RowSpacing="10" StretchLastChild="False">
-            <dxco:SimpleButton demo:DockLayout.Dock="Bottom" Text="SUBMIT" Clicked="SubmitOnClicked"
+    <Grid BackgroundColor="{dx:ThemeColor Surface}">
+        <dx:DXDockLayout VerticalSpacing="10" StretchLastItem="False">
+            <dxco:SimpleButton dx:DXDockLayout.Dock="Bottom" Text="SUBMIT" Clicked="SubmitOnClicked"
                                Margin="{OnIdiom Phone='10,0,10,10', Tablet='40,0,40,40'}"/>
             <dxdf:DataFormView
                 BackgroundColor="Transparent"
                 GeneratePropertyItem="DataForm_GeneratePropertyItem"
                 CommitMode="Manually"
-                ValidationMode="PropertyChanged"
+                ValidationMode="Input"
                 DataObject="{Binding Model}"
                 x:Name="dataForm"
                 EditorLabelColor="#8a8d93"
@@ -32,6 +33,6 @@
                 EditorHorizontalSpacing="10"
                 ReserveBottomTextLine="True"
                 ContentPadding="{OnIdiom Phone='10,10,10,0', Tablet='40,10,40,0'}"/>
-        </demo:DockLayout>
+        </dx:DXDockLayout>
     </Grid>
 </demo:AdaptivePage>

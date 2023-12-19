@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DemoCenter.Maui.DemoModules.CollectionView.Data;
 
 namespace DemoCenter.Maui.ViewModels {
 
-    public class PopupDialogViewModel: NotificationObject {
+    public class PopupDialogViewModel : NotificationObject {
         readonly EmployeeTasksRepository repository;
 
         public int ItemHandle { get; private set; }
@@ -16,19 +15,19 @@ namespace DemoCenter.Maui.ViewModels {
             set => SetProperty(ref this.popupTitle, value);
         }
 
-        bool buttonPinVisible = false;
+        bool buttonPinVisible;
         public bool ButtonPinVisible {
             get => this.buttonPinVisible;
             set => SetProperty(ref this.buttonPinVisible, value);
         }
 
-        bool buttonDoneVisible = false;
+        bool buttonDoneVisible;
         public bool ButtonDoneVisible {
             get => this.buttonDoneVisible;
             set => SetProperty(ref this.buttonDoneVisible, value);
         }
 
-        bool buttonToDoVisible = false;
+        bool buttonToDoVisible;
         public bool ButtonToDoVisible {
             get => this.buttonToDoVisible;
             set => SetProperty(ref this.buttonToDoVisible, value);

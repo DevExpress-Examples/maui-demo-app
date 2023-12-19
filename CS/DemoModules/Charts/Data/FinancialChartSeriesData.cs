@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace DemoCenter.Maui.Data {
@@ -20,9 +21,10 @@ namespace DemoCenter.Maui.Data {
         public static StockPrices GetStockPrices() {
             StockPrices stockPrices;
             System.Reflection.Assembly assembly = typeof(StockData).Assembly;
-            using(Stream stream = assembly.GetManifestResourceStream("Resources.GoogleStock.xml")) {
+            using (Stream stream = assembly.GetManifestResourceStream("Resources.GoogleStock.xml")) {
+                XmlReader reader = XmlReader.Create(stream);
                 XmlSerializer serializer = new XmlSerializer(typeof(StockPrices));
-                stockPrices = (StockPrices) serializer.Deserialize(stream);
+                stockPrices = (StockPrices)serializer.Deserialize(reader);
             }
             return stockPrices;
         }

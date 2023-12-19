@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
@@ -21,9 +22,9 @@
         <viewModel:AutoCompleteEditAsyncViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
             <dxe:AutoCompleteEdit
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 LabelText="Person"
                 DisplayMember="FullName"
                 PlaceholderText="Type here to search"
@@ -78,18 +79,18 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 VerticalOptions="End"
-                                TextColor="{DynamicResource TextThemeColor}"/>
+                                TextColor="{dx:ThemeColor OnSurface}"/>
                             <Label
                                 Text="{Binding Phone}"
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 VerticalOptions="Start"
-                                TextColor="{DynamicResource TextThemeColor}"/>
+                                TextColor="{dx:ThemeColor OnSurface}"/>
                         </Grid>
                     </DataTemplate>
                 </dxe:AutoCompleteEdit.ItemTemplate>
             </dxe:AutoCompleteEdit>
-            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
+            <dx:DXSeparator Orientation="Horizontal" dx:DXDockLayout.Dock="Top"/>
 
             <demo:ScrollViewFix>
                 <StackLayout Padding="0" Spacing="0">
@@ -101,7 +102,7 @@
                             ItemTemplate="{StaticResource BoxModeComboBoxItemTemplate}">
                         </dxe:ComboBoxEdit>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator Orientation="Horizontal"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Corner Mode" Style="{StaticResource TextStyle}"/>
@@ -111,7 +112,7 @@
                             ItemTemplate="{StaticResource CornerModeComboBoxItemTemplate}">
                         </dxe:ComboBoxEdit>
                         </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator Orientation="Horizontal"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Corner Radius" Style="{StaticResource TextStyle}"/>
@@ -138,7 +139,7 @@
 
                         </Grid>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator Orientation="Horizontal"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Accent Color" Style="{StaticResource TextStyle}"/>
@@ -147,7 +148,7 @@
                                       SelectedItem="{Binding SelectedAccentColor}"
                                       Style="{StaticResource ColorComboBoxStyle}"/>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator Orientation="Horizontal"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -155,7 +156,7 @@
                             <Switch IsToggled="{Binding ShowHelpText}" Style="{DynamicResource SwitchStyle}"/>
                         </StackLayout>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator Orientation="Horizontal"/>
 
                     <Grid ColumnSpacing="8" Margin="16" ColumnDefinitions="0.5*, 0.5*">
                         <dxco:SimpleButton Text="Toggle Error"
@@ -168,6 +169,6 @@
                     </Grid>
                 </StackLayout>
             </demo:ScrollViewFix>
-        </demo:DockLayout>
+        </dx:DXDockLayout>
     </ContentPage.Content>
 </demo:DemoPage>

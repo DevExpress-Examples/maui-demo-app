@@ -15,7 +15,7 @@ namespace DemoCenter.Maui.Views {
         }
 
         void SubmitOnClicked(object sender, EventArgs e) {
-            if (dataForm.Validate()) { 
+            if (dataForm.Validate()) {
                 dataForm.Commit();
                 DisplayAlert("Success", "Your account has been created successfully", "OK");
             }

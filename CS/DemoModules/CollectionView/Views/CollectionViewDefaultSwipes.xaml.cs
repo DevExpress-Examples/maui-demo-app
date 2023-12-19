@@ -7,7 +7,7 @@ using DevExpress.Maui.CollectionView;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui {
-    class ItemDataTemplateSelector : DataTemplateSelector {
+    sealed class ItemDataTemplateSelector : DataTemplateSelector {
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container) {
             if (!(item is EmployeeTask task))
                 return null;
@@ -59,14 +59,14 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
                     newItemHandle = 0;
                     break;
                 case TaskStatus.Completed:
-                    newItemHandle = source.Count() - 1;
+                    newItemHandle = source.Count - 1;
                     break;
                 case TaskStatus.Uncompleted:
                     newItemHandle = source.Where(t => t.Status == TaskStatus.Urgent).Count();
                     break;
             }
 
-                    
+
             int itemHandle = e.ItemHandle;
             if (itemHandle == newItemHandle)
                 return;

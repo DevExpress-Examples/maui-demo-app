@@ -11,7 +11,7 @@ namespace DemoCenter.Maui.Data {
         public PhoneListData(int capacity) : base(capacity) {
         }
     }
-    public class GroupedPhoneList: NotificationObject {
+    public class GroupedPhoneList : NotificationObject {
         bool isSelected;
         public string GroupName { get; set; }
         public ImageSource GroupIconSource { get; set; }
@@ -35,7 +35,7 @@ namespace DemoCenter.Maui.Data {
         public string FullName => String.Format("{0} {1}", FirstName, LastName);
         public string Phone { get; set; }
         public string ContactCategory { get; set; }
-        public string Initials => FirstName.Substring(0, 1) + LastName.Substring(0, 1);
+        public string Initials => String.Concat(FirstName.AsSpan(0, 1), LastName.AsSpan(0, 1));
         public Color CategoryColor => GetContactColor();
 
         internal Color GetContactColor() {
@@ -51,18 +51,29 @@ namespace DemoCenter.Maui.Data {
         }
 
         public static Color GetColor(int colorNumber) {
-            switch(colorNumber) {
-                case 1: return Color.FromArgb("#f15558");
-                case 2: return Color.FromArgb("#ff7c11");
-                case 3: return Color.FromArgb("#ffbf22");
-                case 4: return Color.FromArgb("#ff6e86");
-                case 5: return Color.FromArgb("#9865b0");
-                case 6: return Color.FromArgb("#756cfd");
-                case 7: return Color.FromArgb("#0055d8");
-                case 8: return Color.FromArgb("#01b0ee");
-                case 9: return Color.FromArgb("#0097ad");
-                case 0: return Color.FromArgb("#00c831");
-                default: return Color.FromArgb("#949494");
+            switch (colorNumber) {
+                case 1:
+                    return Color.FromArgb("#f15558");
+                case 2:
+                    return Color.FromArgb("#ff7c11");
+                case 3:
+                    return Color.FromArgb("#ffbf22");
+                case 4:
+                    return Color.FromArgb("#ff6e86");
+                case 5:
+                    return Color.FromArgb("#9865b0");
+                case 6:
+                    return Color.FromArgb("#756cfd");
+                case 7:
+                    return Color.FromArgb("#0055d8");
+                case 8:
+                    return Color.FromArgb("#01b0ee");
+                case 9:
+                    return Color.FromArgb("#0097ad");
+                case 0:
+                    return Color.FromArgb("#00c831");
+                default:
+                    return Color.FromArgb("#949494");
             }
         }
     }

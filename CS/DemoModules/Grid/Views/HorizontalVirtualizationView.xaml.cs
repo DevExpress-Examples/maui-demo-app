@@ -34,7 +34,8 @@ namespace DemoCenter.Maui.Views {
                 DisplayTemplate = (DataTemplate)Resources[templateName]
             });
             this.dataGridView.TotalSummaries.Add(new GridColumnSummary() {
-                FieldName = fieldName, Type = DataSummaryType.Sum, DisplayFormat = "{0:C0}" });
+                FieldName = fieldName, Type = DataSummaryType.Sum, DisplayFormat = "{0:C0}"
+            });
         }
 
         protected override object LoadData() {

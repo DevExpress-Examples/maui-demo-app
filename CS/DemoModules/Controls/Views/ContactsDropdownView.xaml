@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:views="clr-namespace:DemoCenter.Maui.Views"
     xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
@@ -19,18 +20,13 @@
                 <resources:CollectionViewResources/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="Label">
-                <Setter Property="FontFamily">Roboto</Setter>
-                <Setter Property="FontSize">Default</Setter>
-            </Style>
-
             <Style TargetType="dxco:SimpleButton">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="PressedBackgroundColor" Value="#20000000"/>
-                <Setter Property="IconColor" Value="{DynamicResource TextThemeColor}"/>
-                <Setter Property="PressedIconColor" Value="{DynamicResource TextThemeColor}"/>
-                <Setter Property="TextColor" Value="{DynamicResource TextThemeColor}"/>
-                <Setter Property="PressedTextColor" Value="{DynamicResource TextThemeColor}"/>  
+                <Setter Property="IconColor" Value="{dx:ThemeColor OnSurface}"/>
+                <Setter Property="PressedIconColor" Value="{dx:ThemeColor OnSurface}"/>
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
+                <Setter Property="PressedTextColor" Value="{dx:ThemeColor OnSurface}"/>  
             </Style>
 
             <views:CallTypeToIconConverter x:Key="callTypeIconConverter"/>
@@ -46,7 +42,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0"
                           Margin="0"
-                          BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                          BackgroundColor="{dx:ThemeColor Surface}"
                           ColumnSpacing="22"
                           RowSpacing="0">
                         <Grid.ColumnDefinitions>
@@ -78,9 +74,9 @@
                                  Orientation="Vertical">
                         <Label Text="{Binding Name}"
                                Margin="0,2"
-                               TextColor="{DynamicResource NavigationTextColor}"/>
+                               TextColor="{dx:ThemeColor OnSurface}"/>
                         <Label Text="{Binding Phone}"
-                               TextColor="{DynamicResource CollectionViewGrayFontColor}"/>
+                               TextColor="{dx:ThemeColor Outline}"/>
                     </StackLayout>
                     <demo:IconView Grid.Column="2"
                                    Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
@@ -95,7 +91,7 @@
                                  CommandParameter="{Binding}"
                                  Clicked="OnContactClick"
                                  Icon="demotabviewdetail"
-                                 IconColor="{DynamicResource CollectionViewGrayFontColor}"/>
+                                 IconColor="{dx:ThemeColor Outline}"/>
                 </Grid>
             </DataTemplate>
 
@@ -127,9 +123,9 @@
                                  Orientation="Vertical">
                         <Label Text="{Binding Name}"
                                Margin="0,2"
-                               TextColor="{DynamicResource NavigationTextColor}"/>
+                               TextColor="{dx:ThemeColor OnSurface}"/>
                         <Label Text="{Binding Phone}"
-                               TextColor="{DynamicResource CollectionViewGrayFontColor}"/>
+                               TextColor="{dx:ThemeColor Outline}"/>
                     </StackLayout>
                     <demo:IconView Grid.Column="2"
                                    Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
@@ -144,17 +140,16 @@
                                  CommandParameter="{Binding}"
                                  Clicked="OnContactClick"
                                  Icon="demotabviewdetail"
-                                 IconColor="{DynamicResource CollectionViewGrayFontColor}"/>
+                                 IconColor="{dx:ThemeColor Outline}"/>
                 </Grid>
             </DataTemplate>
 
             <DataTemplate x:Key="groupItemTemplate">
                 <StackLayout Padding="2, 0, 18, 10">
-                    <Label FontFamily="Roboto-Medium"
-                           Margin="0,20,0,1"
-                           TextColor="{DynamicResource PhoneListTabTextColor}"
+                    <Label Margin="0,20,0,1"
+                           TextColor="{dx:ThemeColor OnSurfaceVariant}"
                            Text="{Binding Value, StringFormat='{0:d}', Converter={StaticResource upperCaseConverter}}"/>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
                 </StackLayout>
             </DataTemplate>
 
@@ -165,7 +160,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <StackLayout BackgroundColor="{dx:ThemeColor Surface}">
             <dxcv:DXCollectionView x:Name="collectionView"
                               AllowGroupCollapse="False"
                               GroupHeaderTemplate="{StaticResource groupItemTemplate}"

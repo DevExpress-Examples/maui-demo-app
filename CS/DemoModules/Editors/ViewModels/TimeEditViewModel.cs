@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DevExpress.Maui.Editors;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
-    public class TimeEditViewModel: TextEditViewModel {
+    public class TimeEditViewModel : TextEditViewModel {
         TimeFormatItem selectedTimeFormatMode;
         public TimeEditViewModel() {
             TimeFormatModes = new List<TimeFormatItem> {
@@ -15,7 +14,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         }
         public TimeFormatItem SelectedTimeFormatMode {
             get => this.selectedTimeFormatMode;
-            set => SetProperty(ref this.selectedTimeFormatMode, value );
+            set => SetProperty(ref this.selectedTimeFormatMode, value);
         }
         public IList<TimeFormatItem> TimeFormatModes { get; }
     }

@@ -2,11 +2,12 @@
 
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
              xmlns:local="clr-namespace:DemoCenter.Maui.Data"
              x:Class="DemoCenter.Maui.Charts.Views.GradientSegmentColorizerContainer">
     <ContentView.Content>
-        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <Grid BackgroundColor="{dx:ThemeColor Surface}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -14,9 +15,8 @@
 
             <Label Grid.Row="0"
                     Text="{Binding ChartModel.Title}"
-                    FontFamily="Roboto"
-                    TextColor="{DynamicResource TextThemeColor}"
-                    BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                    TextColor="{dx:ThemeColor OnSurface}"
+                    BackgroundColor="{dx:ThemeColor Surface}"/>
 
             <dxc:ChartView Grid.Row="1" SelectionKind="Series">
                 <dxc:ChartView.Series>

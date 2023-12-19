@@ -9,7 +9,7 @@ namespace DemoCenter.Maui.ViewModels {
     public class LogarithmicScaleViewModel : ChartViewModelBase {
         static DateTime BasisDate = new DateTime(2020, 1, 1);
 
-        const int SamplingFrequency = 22050; 
+        const int SamplingFrequency = 22050;
         const int DefaultFrameLength = 2048;
         const double sixteenBitSampleMaxVale = short.MaxValue;
         const double MinDb = -500d;
@@ -18,7 +18,7 @@ namespace DemoCenter.Maui.ViewModels {
         readonly double[] imaginarySpectrum = new double[DefaultFrameLength];
         readonly double[] zeroSpectrum = new double[DefaultFrameLength];
 
-        int frameStartIndex = 0;
+        int frameStartIndex;
         int frameEndIndex = DefaultFrameLength - 1;
         double[] averageChannelNormalized;
         DateTime last;
@@ -44,8 +44,8 @@ namespace DemoCenter.Maui.ViewModels {
 
             int halfOfFrame = DefaultFrameLength / 2;
             double frequencyStep = SamplingFrequency / 2d / halfOfFrame;
-                for (int i = 0; i < halfOfFrame; i++)
-                    FrequencyData.Add(new NumericData(frequencyStep* i, 0));
+            for (int i = 0; i < halfOfFrame; i++)
+                FrequencyData.Add(new NumericData(frequencyStep * i, 0));
 
             this.last = DateTime.Now;
         }

@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="DemoCenter.Maui.Views.EmployeeFormView"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
@@ -20,7 +21,6 @@
         <Style TargetType="dxdf:DataFormView">
             <Setter Property="IsAutoGenerationEnabled" Value="False" />
             <Setter Property="EditorLabelFontAttributes" Value="Bold"/>
-            <Setter Property="EditorLabelFontFamily" Value="Roboto"/>
             <Setter Property="ContentPadding" Value="0"/>
             <Setter Property="EditorLabelFontSize" Value="{StaticResource EditorLabelFontSize}">
                 
@@ -43,7 +43,7 @@
         </Style>
     </ContentPage.Resources>
 
-    <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <Grid BackgroundColor="{dx:ThemeColor Surface}" IgnoreSafeArea="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition Width="{OnIdiom Phone='3*', Tablet='1*'}"/>

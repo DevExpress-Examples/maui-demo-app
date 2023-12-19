@@ -8,7 +8,7 @@ namespace DemoCenter.Maui.Views {
     public partial class SuperHeroTShirtView : Demo.DemoPage {
         const int animationDuration = 450;
 
-        SuperHeroTShirtViewModel VM { get; } 
+        SuperHeroTShirtViewModel VM { get; }
 
         public SuperHeroTShirtView() {
             InitializeComponent();

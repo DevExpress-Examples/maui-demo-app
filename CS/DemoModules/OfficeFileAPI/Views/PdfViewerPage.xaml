@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<demo:DemoPage xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios = "clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Pdf;assembly=DevExpress.Maui.Pdf"
+    xmlns:viewmodels="clr-namespace:DemoCenter.Maui.DemoModules.OfficeFileAPI.ViewModels"
+    x:Class="DemoCenter.Maui.Views.PdfViewerPage"
+    Shell.NavBarIsVisible="true"
+    ios:Page.UseSafeArea="False"
+    Title="PDF Viewer">
+    <ContentPage.BindingContext>
+        <viewmodels:PdfViewerViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="pdfviewer_open"
+            Command="{Binding Commands.ShowOpenFileDialog, Source={x:Reference pdfViewer}}" />
+        <ToolbarItem IconImageSource="pdfviewer_share"
+            Command="{Binding Commands.ShareDocument, Source={x:Reference pdfViewer}}" />
+    </ContentPage.ToolbarItems>
+
+    <dx:PdfViewer x:Name="pdfViewer" DocumentSource="RevenueByCompany.pdf" PageTap="OnPageTap" />
+
+</demo:DemoPage>

@@ -4,10 +4,10 @@ using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Charts.Views {
     public partial class BubbleChartContainer : ContentView {
-		public BubbleChartContainer() {
-            
+        public BubbleChartContainer() {
+
             InitializeComponent();
-		}
+        }
 
         void OnBubbleSelectionChanged(object sender, DevExpress.Maui.Charts.SelectionChangedEventArgs e) {
             if (e.SelectedObjects.Count > 0 && e.SelectedObjects[0] is DataSourceKey dataSourceKey) {

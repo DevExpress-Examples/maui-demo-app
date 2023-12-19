@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Maui.Controls;
 using DemoCenter.Maui.DemoModules.CollectionView.Data;
 using DemoCenter.Maui.ViewModels;
 
@@ -46,7 +45,8 @@ namespace DemoCenter.Maui.DemoModules.Popup.Views {
         }
 
         void OnStatusChanged() {
-            if (this.isAnimated) return;
+            if (this.isAnimated)
+                return;
 
             this.viewModel.IsOpenPopup = false;
 
@@ -59,7 +59,7 @@ namespace DemoCenter.Maui.DemoModules.Popup.Views {
                     newItemHandle = 0;
                     break;
                 case TaskStatus.Completed:
-                    newItemHandle = source.Count() - 1;
+                    newItemHandle = source.Count - 1;
                     break;
                 case TaskStatus.Uncompleted:
                     newItemHandle = source.Where(t => t.Status == TaskStatus.Urgent).Count();

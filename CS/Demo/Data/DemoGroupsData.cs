@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using DemoCenter.Maui.Data;
 using DemoCenter.Maui.Models;
 
 namespace DemoCenter.Maui.Data {
@@ -8,6 +7,11 @@ namespace DemoCenter.Maui.Data {
 
         static DemoGroupsData() {
             demoItems = new List<DemoItem>() {
+                new DemoItem() {
+                    Title = TitleData.CollectionViewDataTitle,
+                    Description = "CollectionView",
+                    Module = typeof(CollectionViewData)
+                },
                 new DemoItem() {
                     Title = TitleData.GridDataTitle,
                     Description = "Data Grid: Basic Features",
@@ -19,26 +23,6 @@ namespace DemoCenter.Maui.Data {
                     Module = typeof(DataGridAdvanced)
                 },
                 new DemoItem() {
-                    Title = TitleData.CollectionViewDataTitle,
-                    Description = "CollectionView",
-                    Module = typeof(CollectionViewData)
-                },
-                new DemoItem() {
-                    Title = TitleData.EditorsDataTitle,
-                    Description = "Data Editors",
-                    Module = typeof(EditorsData)
-                },
-                new DemoItem() {
-                    Title = TitleData.ControlsDataTitle,
-                    Description = "Buttons",
-                    Module = typeof(ControlsData)
-                },
-                new DemoItem() {
-                    Title = TitleData.DataFormDataTitle,
-                    Description = "Data Form, Popup, & Menu",
-                    Module = typeof(DataFormData)
-                },
-                new DemoItem() {
                     Title = TitleData.ChartsDataTitle,
                     Description = "Charts: Basic Features",
                     Module = typeof(ChartsData)
@@ -48,14 +32,35 @@ namespace DemoCenter.Maui.Data {
                     Description = "Charts: Advanced Features",
                     Module = typeof(ChartsDataAdvanced)
                 },
+#if PaidDemoModules
+                new DemoItem() {
+                    Title = TitleData.OfficeFileAPIDataTitle,
+                    Description = "Office File API",
+                    Module = typeof(OfficeFileAPIData)
+                },
+# endif
                 new DemoItem() {
                     Title = TitleData.SchedulerDataTitle,
                     Description = "Scheduler",
                     Module = typeof(SchedulerData)
-                }
+                },
+                new DemoItem() {
+                    Title = TitleData.ControlsDataTitle,
+                    Description = "Buttons",
+                    Module = typeof(ControlsData)
+                },
+                new DemoItem() {
+                    Title = TitleData.EditorsDataTitle,
+                    Description = "Data Editors",
+                    Module = typeof(EditorsData)
+                },
+                new DemoItem() {
+                    Title = TitleData.DataFormDataTitle,
+                    Description = "Data Form, Popup, & Menu",
+                    Module = typeof(DataFormData)
+                },
             };
-         }
-
+        }
         public static List<DemoItem> DemoItems => demoItems;
     }
 }

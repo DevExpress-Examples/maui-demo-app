@@ -4,7 +4,7 @@ using DemoCenter.Maui.Data;
 namespace DemoCenter.Maui.ViewModels {
     public class OscillatorChartsViewModel : ChartViewModelBase {
         readonly OscillatorDataProvider dataProvider = new OscillatorDataProvider();
-        List<NumericData> oscillatorSeriesData = null;
+        List<NumericData> oscillatorSeriesData;
 
         public List<NumericData> OscillatorSeriesData {
             get => oscillatorSeriesData;

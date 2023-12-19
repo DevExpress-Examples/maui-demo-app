@@ -22,13 +22,13 @@ namespace DemoCenter.Maui.ViewModels {
 
         public IList<MailData> ItemSource { get; }
 
-        bool isRefreshing = false;
+        bool isRefreshing;
         public bool IsRefreshing {
             get => this.isRefreshing;
             set => SetProperty(ref this.isRefreshing, value);
         }
 
-        ICommand loadMoreCommand = null;
+        ICommand loadMoreCommand;
         public ICommand LoadMoreCommand {
             get => this.loadMoreCommand;
             set => SetProperty(ref this.loadMoreCommand, value);

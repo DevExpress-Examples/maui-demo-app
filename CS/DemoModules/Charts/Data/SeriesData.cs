@@ -52,11 +52,11 @@ namespace DemoCenter.Maui.Data {
             Value = value;
         }
     }
-    
+
     public class PieData {
         public string Label { get; }
         public double Value { get; }
-        
+
         public PieData(string label, double value) {
             Label = label;
             Value = value;

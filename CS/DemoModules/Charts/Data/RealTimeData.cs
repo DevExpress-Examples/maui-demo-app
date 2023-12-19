@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel;
 using DevExpress.Maui.Charts;
 using DevExpress.Maui.Core;
-using DevExpress.Maui.Core.Internal;
 using Microsoft.Maui.Devices.Sensors;
 
 namespace DemoCenter.Maui.Data {
@@ -11,6 +10,7 @@ namespace DemoCenter.Maui.Data {
 
         readonly IAccelerometer sensor;
         readonly ChartView chart;
+        DateTime lastTime = DateTime.Now;
 
         public BindingList<DateTimeData> XAxisSeriesData { get; } = new BindingList<DateTimeData>();
         public BindingList<DateTimeData> YAxisSeriesData { get; } = new BindingList<DateTimeData>();
@@ -23,6 +23,9 @@ namespace DemoCenter.Maui.Data {
         }
 
         private void Sensor_ReadingChanged(object sender, AccelerometerChangedEventArgs e) {
+            if (this.lastTime.AddMilliseconds(100) > DateTime.Now)
+                return;
+            this.lastTime = DateTime.Now;
             chart.Dispatcher.Dispatch(() => {
                 chart.SuspendRender();
                 XAxisSeriesData.Add(new DateTimeData(DateTime.Now, e.Reading.Acceleration.X));

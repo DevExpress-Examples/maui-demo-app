@@ -33,7 +33,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             set {
                 if (id != value) {
                     id = value;
-                    OnPropertyChanged("Id");
+                    OnPropertyChanged(nameof(Id));
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             set {
                 if (customer != value) {
                     customer = value;
-                    OnPropertyChanged("Customer");
+                    OnPropertyChanged(nameof(Customer));
                 }
             }
         }
@@ -51,7 +51,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             set {
                 if (date != value) {
                     date = value;
-                    OnPropertyChanged("Date");
+                    OnPropertyChanged(nameof(Date));
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             set {
                 if (shipped != value) {
                     shipped = value;
-                    OnPropertyChanged("Shipped");
+                    OnPropertyChanged(nameof(Shipped));
                 }
             }
         }
@@ -77,7 +77,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             set {
                 if (note != value) {
                     note = value;
-                    OnPropertyChanged("Note");
+                    OnPropertyChanged(nameof(Note));
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             set {
                 if (priority != value) {
                     priority = value;
-                    OnPropertyChanged("Priority");
+                    OnPropertyChanged(nameof(Priority));
                 }
             }
         }

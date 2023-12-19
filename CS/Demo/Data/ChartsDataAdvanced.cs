@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DemoCenter.Maui.Models;
 using DemoCenter.Maui.Views;
 
@@ -25,7 +24,7 @@ namespace DemoCenter.Maui.Data {
                     Title = "Custom Appearance",
                     Description = "Shows how to customize the appearance of series and other elements of the chart.",
                     Module = typeof(Colorizer),
-                    Icon = "customappearance"
+                    Icon = "chartscustomappearance"
                 },
                 new DemoItem() {
                     Title = "Spectrum Analysis",

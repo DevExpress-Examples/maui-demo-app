@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
 using DemoCenter.Maui.DemoModules.Grid.Data;
-using DemoCenter.Maui.Styles.ThemeLoader;
 using DevExpress.Maui.DataGrid;
 using Microsoft.Maui;
 using Microsoft.Maui.Graphics;
@@ -12,14 +10,6 @@ namespace DemoCenter.Maui.Views {
 
         public DragDropView() {
             InitializeComponent();
-
-            Color checkedCheckBoxColor;
-            if (ThemeLoader.IsLightTheme) {
-                checkedCheckBoxColor = Color.FromArgb("#6750a4");
-            } else {
-                checkedCheckBoxColor = Color.FromArgb("#D0BCff");
-            }
-            Resources.Add("GridCellCheckedCheckBoxColor", checkedCheckBoxColor);
         }
 
         protected override object LoadData() {
@@ -53,7 +43,7 @@ namespace DemoCenter.Maui.Views {
             IList<EmployeeTask> source = (IList<EmployeeTask>)this.grid.ItemsSource;
             EmployeeTask task = (EmployeeTask)e.Item;
             task.Status = task.Completed ? 0 : 100;
-            int newRowHandle = task.Completed ? source.Count() - 1 : 0;
+            int newRowHandle = task.Completed ? source.Count - 1 : 0;
             if (e.RowHandle == newRowHandle)
                 return;
             this.isAnimated = true;

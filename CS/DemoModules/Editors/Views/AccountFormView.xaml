@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
@@ -16,10 +17,10 @@
              </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <demo:ScrollViewFix Padding="{OnIdiom Phone=16, Tablet='92,36'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
-        <demo:DockLayout StretchLastChild="False" RowSpacing="4">
+    <demo:ScrollViewFix Padding="{OnIdiom Phone=16, Tablet='92,36'}" BackgroundColor="{dx:ThemeColor Surface}">
+        <dx:DXDockLayout StretchLastItem="False" VerticalSpacing="4">
             <dxe:ComboBoxEdit
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 LabelText="Box Mode"
                 BoxMode="{Binding SelectedBoxMode}"
                 SelectedItem="{Binding SelectedBoxMode}"
@@ -28,7 +29,7 @@
                 ItemTemplate="{StaticResource BoxModeComboBoxItemTemplate}"
                 ReserveBottomTextLine="True"/>
             <dxe:TextEdit
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsname"
                 Text="{Binding Login, Mode=TwoWay}"
@@ -38,7 +39,7 @@
                 HelpText="*Required"
                 ErrorText="Login is required"/>
             <dxe:PasswordEdit
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorspassword"
                 Text="{Binding Password, Mode=TwoWay}"
@@ -48,7 +49,7 @@
                 HelpText="*Required"
                 ErrorText="The password should contain more than 5 characters, have at least one uppercase and one lowercase letter, and one number."/>
             <dxe:TextEdit
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsemail"
                 Text="{Binding Email, Mode=TwoWay}"
@@ -62,7 +63,7 @@
                 AffixIndent="0"
                 ClearIconVisibility="Never"/>
             <dxe:DateEdit
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsage"
                 Date="{Binding BirthDate, Mode=TwoWay}"
@@ -76,7 +77,7 @@
                 ClearIconVisibility="Auto"
                 DisplayFormat="d"/>
             <dxe:TextEdit
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsphone"
                 Text="{Binding Phone, Mode=TwoWay}"
@@ -88,7 +89,7 @@
                 HelpText="Do not include a country code"
                 Keyboard="Telephone"/>
             <dxe:MultilineEdit
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsnotes"
                 Text="{Binding Notes, Mode=TwoWay}"
@@ -98,7 +99,7 @@
                 LabelText="Notes"
                 MaxCharacterCountOverflowMode="LimitInput"
                 MaxCharacterCount="100"/>
-             <dxco:SimpleButton demo:DockLayout.Dock="Top" Text="SUBMIT" Clicked="OnSubmitClicked" FontAttributes="Bold" Margin="0,16,0,0"/>
-        </demo:DockLayout>
+             <dxco:SimpleButton dx:DXDockLayout.Dock="Top" Text="SUBMIT" Clicked="OnSubmitClicked" FontAttributes="Bold" Margin="0,16,0,0"/>
+        </dx:DXDockLayout>
     </demo:ScrollViewFix>
 </demo:DemoPage>

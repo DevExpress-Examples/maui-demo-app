@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <demo:AdaptivePage x:Class="DemoCenter.Maui.Views.ShimmerView"
                    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
+                   xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
                    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
                    xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
                    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
@@ -20,26 +21,26 @@
             </Style>
 
             <Style TargetType="Border" x:Key="ShimmerElementAction">
-                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#DCD9E1, Dark=#585560}"/>
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
                 <Setter Property="StrokeShape" Value="RoundRectangle 25"/>
                 <Setter Property="WidthRequest" Value="100"/>
                 <Setter Property="HeightRequest" Value="100"/>
                 <Setter Property="StrokeThickness" Value="0"/>
             </Style>
             <Style TargetType="Border" x:Key="ShimmerElementCard">
-                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#DCD9E1, Dark=#585560}"/>
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
                 <Setter Property="StrokeShape" Value="RoundRectangle 25"/>
                 <Setter Property="WidthRequest" Value="250"/>
                 <Setter Property="HeightRequest" Value="150"/>
                 <Setter Property="StrokeThickness" Value="0"/>
             </Style>
             <Style TargetType="Ellipse" x:Key="ShimmerElementAvatar">
-                <Setter Property="Fill" Value="{AppThemeBinding Light=#DCD9E1, Dark=#585560}"/>
+                <Setter Property="Fill" Value="{dx:ThemeColor SurfaceVariant}"/>
                 <Setter Property="WidthRequest" Value="60"/>
                 <Setter Property="HeightRequest" Value="60"/>
             </Style>
             <Style TargetType="Border" x:Key="ShimmerElementRow">
-                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#DCD9E1, Dark=#585560}"/>
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
                 <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
                 <Setter Property="HeightRequest" Value="24"/>
                 <Setter Property="StrokeThickness" Value="0"/>
@@ -54,44 +55,44 @@
             <Style TargetType="Label" x:Key="TextAction">
                 <Setter Property="TextColor" Value="{AppThemeBinding Light=#101010, Dark=#FFFFFF}"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="FontSize" Value="15"/>
             </Style>
 
-            <Style TargetType="Border" x:Key="ElementCard">
-                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#FAF8FE, Dark=#433F49}"/>
-                <Setter Property="StrokeShape" Value="RoundRectangle 10"/>
+            <Style TargetType="dx:DXBorder" x:Key="ElementCard">
+                <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
+                <Setter Property="CornerRadius" Value="12"/>
                 <Setter Property="WidthRequest" Value="240"/>
-                <Setter Property="StrokeThickness" Value="0"/>
             </Style>
             <Style TargetType="Label" x:Key="TextCardTitle">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light=#101010, Dark=#FFFFFF}"/>
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="FontSize" Value="16"/>
             </Style>
             <Style TargetType="Label" x:Key="TextCardCaption">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light=#5F5D65, Dark=#A6A2AC}"/>
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
                 <Setter Property="LineBreakMode" Value="TailTruncation"/>
                 <Setter Property="FontSize" Value="12"/>
             </Style>
 
             <Style TargetType="Label" x:Key="TextHeader">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light=#101010, Dark=#FFFFFF}"/>
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
             <Style TargetType="Label" x:Key="TextUserName">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light=#101010, Dark=#FFFFFF}"/>
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
                 <Setter Property="FontSize" Value="14"/>
             </Style>
             <Style TargetType="Label" x:Key="TextUserCaption">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light=#5F5D65, Dark=#A6A2AC}"/>
+                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
                 <Setter Property="FontSize" Value="14"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <ScrollView BackgroundColor="{dx:ThemeColor Surface}">
             <VerticalStackLayout>
 
                 <dxc:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
@@ -130,27 +131,7 @@
                         <dxcv:DXCollectionView HeightRequest="192" Orientation="Horizontal" ItemsSource="{Binding HouseItems}" IsScrollBarVisible="False">
                             <dxcv:DXCollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Style="{StaticResource ElementCard}" Margin="24,4,4,4">
-                                        <Border.Shadow>
-                                            <OnPlatform x:TypeArguments="Shadow">
-                                                <On Platform="iOS">
-                                                    <On.Value>
-                                                        <Shadow Brush="Black"
-                                                                Offset="0,2"
-                                                                Radius="2"
-                                                                Opacity="0.22" />
-                                                    </On.Value>
-                                                </On>
-                                                <On Platform="Android" >
-                                                    <On.Value>
-                                                        <Shadow Brush="Black"
-                                                                Offset="0,4"
-                                                                Radius="2"
-                                                                Opacity="0.15" />
-                                                    </On.Value>
-                                                </On>
-                                            </OnPlatform>
-                                        </Border.Shadow>
+                                    <dx:DXBorder Style="{StaticResource ElementCard}" Margin="24,4,4,4">
                                         <VerticalStackLayout>
                                             <Grid RowSpacing="0"
                                                 ColumnSpacing="0"
@@ -172,14 +153,14 @@
                                             </Grid>
                                             <Label Style="{StaticResource TextCardTitle}" Text="{Binding Description}" Margin="10,8"/>
                                             <Grid ColumnDefinitions="Auto,*" Margin="4,0">
-                                                <dxc:DXImage
+                                                <dx:DXImage
                                                     HeightRequest="18"
                                                     Source="filteringui_location_small"
-                                                    TintColor="{DynamicResource AccentColor}"/>
+                                                    TintColor="{dx:ThemeColor Primary}"/>
                                                  <Label Style="{StaticResource TextCardCaption}" Text="{Binding Address}" Grid.Column="1"/>
                                             </Grid>
                                         </VerticalStackLayout>
-                                    </Border>
+                                    </dx:DXBorder>
                                 </DataTemplate>
                             </dxcv:DXCollectionView.ItemTemplate>
                         </dxcv:DXCollectionView>

@@ -1,9 +1,7 @@
 ﻿using System;
 using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.DataForm.ViewModels;
-using DevExpress.Maui.DataForm;
 using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.Views {

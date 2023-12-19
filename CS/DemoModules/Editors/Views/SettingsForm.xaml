@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:helpers="clr-namespace:DemoCenter.Maui"
     x:Class="DemoCenter.Maui.Views.SettingsForm"
     ios:Page.UseSafeArea="False">
@@ -20,7 +21,7 @@
             <Setter Property="ImageHeight" Value="36" />
             <Setter Property="Padding" Value="10,8" />
             <Setter Property="Margin" Value="0,0,0,0" />
-            <Setter Property="ImageColor" Value="{DynamicResource FormSettingsIconColor}" />
+            <Setter Property="ImageColor" Value="{dx:ThemeColor OnSurface}" />
         </Style>
         <Style TargetType="dxe:FormSwitchItem">
             <Setter Property="ShowSeparator" Value="false" />
@@ -29,7 +30,7 @@
             <Setter Property="ImageHeight" Value="36" />
             <Setter Property="Padding" Value="10,8" />
             <Setter Property="Margin" Value="0,0,0,0" />
-            <Setter Property="ImageColor" Value="{DynamicResource FormSettingsIconColor}" />
+            <Setter Property="ImageColor" Value="{dx:ThemeColor OnSurface}" />
         </Style>
         <Style TargetType="dxe:FormListPickerItem">
             <Setter Property="ShowSeparator" Value="false" />
@@ -37,7 +38,7 @@
             <Setter Property="ImageMargin" Value="0,0,10,0" />
             <Setter Property="ImageHeight" Value="36" />
             <Setter Property="Padding" Value="10,8" />
-            <Setter Property="ImageColor" Value="{DynamicResource FormSettingsIconColor}" />
+            <Setter Property="ImageColor" Value="{dx:ThemeColor OnSurface}" />
         </Style>
         <Style TargetType="dxe:FormGroupItem">
             <Setter Property="HeaderFontAttributes" Value="Bold" />
@@ -47,7 +48,7 @@
             <Setter Property="ItemSpacing" Value="0" />
         </Style>
     </ContentPage.Resources>
-    <demo:ScrollViewFix BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <demo:ScrollViewFix BackgroundColor="{dx:ThemeColor Surface}">
         <VerticalStackLayout Padding="20,0">
             <dxe:FormGroupItem>
                 <dxe:FormItem
@@ -128,7 +129,7 @@
                     PickerShowMode="BottomSheet"
                     Text="Blacklist">
                     <dxe:FormListPickerItem.PickerTitleView>
-                        <demo:TitleView Title="Blacklist" />
+                        <demo:TitleView Title="Blacklist" Padding="20, 0, 0, 20" /> 
                     </dxe:FormListPickerItem.PickerTitleView>
                 </dxe:FormListPickerItem>
             </dxe:FormGroupItem>

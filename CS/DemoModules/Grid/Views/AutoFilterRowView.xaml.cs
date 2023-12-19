@@ -1,6 +1,4 @@
-﻿using System;
-using DemoCenter.Maui.DemoModules.Grid.Data;
-using DevExpress.Maui.DataGrid;
+﻿using DemoCenter.Maui.DemoModules.Grid.Data;
 
 namespace DemoCenter.Maui.Views {
     public partial class AutoFilterRowView : BaseGridContentPage {

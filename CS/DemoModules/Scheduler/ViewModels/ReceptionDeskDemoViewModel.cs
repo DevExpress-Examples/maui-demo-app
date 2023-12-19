@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace DemoCenter.Maui.ViewModels {
-    public class ReceptionDeskDemoViewModel: NotificationObject {
+    public class ReceptionDeskDemoViewModel : NotificationObject {
         readonly ReceptionDeskData data = new ReceptionDeskData();
         Doctor selectedDoctor;
         IReadOnlyList<MedicalAppointment> visibleAppointments = new List<MedicalAppointment>();
@@ -32,10 +32,10 @@ namespace DemoCenter.Maui.ViewModels {
         public IReadOnlyList<PaymentState> PaymentStates { get => data.Statuses; }
 
         public ReceptionDeskDemoViewModel() {
-            SelectedDoctor = Doctors.FirstOrDefault();
+            SelectedDoctor = Doctors[0];
         }
 
-        void NotifyPropertyChanged([CallerMemberName]String propertyName = "") {
+        void NotifyPropertyChanged([CallerMemberName] String propertyName = "") {
             OnPropertyChanged(propertyName);
         }
     }

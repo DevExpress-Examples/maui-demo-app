@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<demo:DemoPage
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+        xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+        xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+        xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+        xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+        ios:Page.UseSafeArea="False"
+        x:Class="DemoCenter.Maui.Views.ToolbarView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="card_view" Clicked="OnExportButtonClicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <dx:DXDockLayout>
+            <dxc:DXToolbar x:Name="toolbar" dx:DXDockLayout.Dock="Top" Padding="16,8,16,8">
+                <dxc:ToolbarToggleButton Icon="paint_mode" GroupName="Mode" IsChecked="{Binding IsPaintMode}"/>
+                <dxc:ToolbarToggleButton Icon="eraser_mode" GroupName="Mode" />
+                <dxc:ToolbarSeparator />
+                <dxc:ToolbarButton Icon="color_item" IconColor="{Binding LineColor}" Clicked="OnLineColorButtonClicked"/>
+                <dxc:ToolbarNavigationButton Icon="width" Content="{Binding LineWidth, StringFormat='{0}px'}" PageName="LineWidthSelectionPage" />
+                <dxc:ToolbarButton Content="Clear All" Clicked="OnClearAllButtonClicked" />
+
+                <dxc:ToolbarPage x:Name="lineWidthSelectionPage" Name="LineWidthSelectionPage" ShowBackButton="True">
+                    <dxc:ToolbarSeparator Placement="FixedLeft" />
+                </dxc:ToolbarPage>
+            </dxc:DXToolbar>
+            <toolkit:DrawingView
+                x:Name="drawingView"
+                Lines="{Binding Lines}"
+                LineColor="{Binding ActualLineColor}"
+                LineWidth="{Binding LineWidth}"
+                BackgroundColor="White"
+                ShouldClearOnFinish="False"
+                IsMultiLineModeEnabled="True"
+            />
+            <dxc:DXPopup CornerRadius="4" HorizontalAlignment="Center"
+                    IsOpen="{Binding IsColorSelectorOpen}" PlacementTarget="{Binding Source={x:Reference toolbar}}" Placement="Bottom">
+                <dxc:DXPopup.Content>
+                    <dx:DXColorSelector SelectedColor="{Binding LineColor}" />
+                </dxc:DXPopup.Content>
+            </dxc:DXPopup>
+        </dx:DXDockLayout>
+    </ContentPage.Content>
+</demo:DemoPage>

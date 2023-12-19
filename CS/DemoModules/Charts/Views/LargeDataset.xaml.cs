@@ -1,5 +1,4 @@
 using DemoCenter.Maui.ViewModels;
-using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
     public partial class LargeDataset : Demo.DemoPage {

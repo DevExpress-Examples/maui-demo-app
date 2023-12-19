@@ -4,7 +4,7 @@ using DevExpress.Maui.Charts;
 namespace DemoCenter.Maui.Data {
     public class LargeDatasetSeriesData : IXYSeriesData {
         int dataCount;
-        double lastPointValue = 0;
+        double lastPointValue;
         double delta;
         Random random;
 

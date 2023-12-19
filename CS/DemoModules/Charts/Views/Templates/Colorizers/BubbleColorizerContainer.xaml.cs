@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls;
 namespace DemoCenter.Maui.Charts.Views {
     public partial class BubbleColorizerContainer : ContentView {
         public BubbleColorizerContainer() {
-            
+
             InitializeComponent();
         }
 

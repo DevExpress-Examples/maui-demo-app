@@ -2,14 +2,10 @@
 <ResourceDictionary
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:editors="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Core"
              xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
              x:Class="DemoCenter.Maui.DemoModules.Resources.CollectionViewResources">
-
-    <Style x:Key="SeparatorStyle" TargetType="BoxView">
-        <Setter Property="BackgroundColor" Value="{DynamicResource EditorSettingsSeparatorColor}"/>
-        <Setter Property="HeightRequest" Value="1"/>
-    </Style>
 
     <Style x:Key="MailColorItemStyle" TargetType="Ellipse">
         <Setter Property="HorizontalOptions" Value="Start"/>
@@ -33,7 +29,7 @@
     </Style>
 
     <Style x:Key="MailTemplateStyle" TargetType="Grid">
-        <Setter Property="BackgroundColor" Value="{StaticResource BackgroundThemeColor}" />
+        <Setter Property="BackgroundColor" Value="{dx:ThemeColor Surface}" />
         <Setter Property="ColumnSpacing" Value="16" />
         <Setter Property="Padding" Value="{OnIdiom Phone='16,14', Tablet='16,14,37,14'}" />
     </Style>
@@ -45,6 +41,6 @@
         <Setter Property="Padding">
             <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,0,0,0" Tablet="37,0,0,0"/>
         </Setter>
-        <Setter Property="TextColor" Value="{DynamicResource CollectionViewItemFontColor}"/>
+        <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
     </Style>
 </ResourceDictionary>

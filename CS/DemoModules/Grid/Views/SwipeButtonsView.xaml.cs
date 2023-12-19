@@ -6,7 +6,7 @@ using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.Views {
-    public partial class SwipeButtonsView : BaseGridContentPage { 
+    public partial class SwipeButtonsView : BaseGridContentPage {
         public SwipeButtonsView() {
             Resources.Add("IsTablet", DeviceInfo.Idiom == DeviceIdiom.Tablet);
             InitializeComponent();
@@ -15,7 +15,7 @@ namespace DemoCenter.Maui.Views {
         protected override object LoadData() {
             return new OutlookDataRepository();
         }
-        
+
         async void OnShowCustomerInfo(object sender, SwipeItemTapEventArgs e) {
             Customer customer = (e.Item as OutlookData).From;
             CustomerOrdersView customerOrdersView = new CustomerOrdersView(customer) {
@@ -23,7 +23,7 @@ namespace DemoCenter.Maui.Views {
             };
             await NavigationService.NavigateToPage(customerOrdersView);
         }
-        
+
         void OnDelete(object sender, SwipeItemTapEventArgs e) {
             this.grid.DeleteRow(e.RowHandle);
         }

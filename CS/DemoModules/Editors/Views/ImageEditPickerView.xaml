@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<demo:DemoPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    x:Class="DemoCenter.Maui.Views.ImageEditPickerView">
+    
+    <ScrollView BackgroundColor="{dx:ThemeColor Surface}">
+        <VerticalStackLayout>
+            <Grid HorizontalOptions="Center" RowDefinitions="Auto,Auto,Auto">
+            <Image x:Name="preview" Source="photo0" WidthRequest="240" HeightRequest="240" Margin="0,40,0,60">
+                <Image.Clip>
+                    <EllipseGeometry Center="120,120" RadiusX="120" RadiusY="120"/>
+                </Image.Clip>
+            </Image>
+
+            <dx:DXButton Content="Gallery" Grid.Row="1" Icon="ic_image" ButtonType="Filled"
+                IconHeight="22" IconWidth="22" Clicked="SelectPhotoClicked"/>
+            <dx:DXButton Content="Take Photo" Grid.Row="2" Icon="ic_photo" ButtonType="Filled" Margin="0,20,0,0" 
+                IconHeight="22" IconWidth="22" Clicked="TakePhotoClicked"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</demo:DemoPage>

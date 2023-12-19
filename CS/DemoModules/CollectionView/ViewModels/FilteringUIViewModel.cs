@@ -36,8 +36,7 @@ namespace DemoCenter.Maui.ViewModels {
         public ICommand AddToFavoritesCommand { get; }
 
         void AddToFavorites(House house) {
-            if (Favorites.Contains(house)) {
-                Favorites.Remove(house);
+            if (Favorites.Remove(house)) {
                 house.IsFavorite = false;
             } else {
                 Favorites.Add(house);

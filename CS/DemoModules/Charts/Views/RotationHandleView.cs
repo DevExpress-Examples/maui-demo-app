@@ -7,9 +7,9 @@ namespace DemoCenter.Maui {
             UpdateOrientation(Width, Height);
         }
 
-        public static readonly BindablePropertyKey IsLandscapePropertyKey = BindableProperty.CreateReadOnly("IsLandscape", typeof(bool), typeof(RotationHandleView), false);
+        public static readonly BindablePropertyKey IsLandscapePropertyKey = BindableProperty.CreateReadOnly(nameof(IsLandscape), typeof(bool), typeof(RotationHandleView), false);
         public static readonly BindableProperty IsLandscapeProperty = IsLandscapePropertyKey.BindableProperty;
-        public bool IsLandscape { get => (bool) GetValue(IsLandscapeProperty); }
+        public bool IsLandscape { get => (bool)GetValue(IsLandscapeProperty); }
 
         void UpdateOrientation(double width, double height) {
             SetValue(IsLandscapePropertyKey, width > height);

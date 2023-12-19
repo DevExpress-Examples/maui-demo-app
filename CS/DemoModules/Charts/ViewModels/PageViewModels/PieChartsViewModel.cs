@@ -18,7 +18,7 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public override List<ChartItemInfoContainerBase> Content => content;
     }
 
-    public class PieChartItemInfoContainer: ChartItemInfoContainerBase {
+    public class PieChartItemInfoContainer : ChartItemInfoContainerBase {
         public PieType PieType { get; set; }
         public PieChartItemInfoContainer(PieType type, ChartViewModelBase viewModel) {
             this.PieType = type;
@@ -27,9 +27,12 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public string PieTypeImage {
             get {
                 switch (PieType) {
-                    case PieType.Donut: return GetThemedImageName("demochartsdonut");
-                    case PieType.Pie: return GetThemedImageName("demochartspie");
-                    default: throw new ArgumentException("The selector cannot handle the passed PieType value.");
+                    case PieType.Donut:
+                        return GetThemedImageName("demochartsdonut");
+                    case PieType.Pie:
+                        return GetThemedImageName("demochartspie");
+                    default:
+                        throw new ArgumentException("The selector cannot handle the passed PieType value.");
                 }
             }
         }

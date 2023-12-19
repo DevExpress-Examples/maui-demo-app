@@ -13,7 +13,7 @@ namespace DemoCenter.Maui.ViewModels {
             set {
                 if (this.seriesDataMember != value) {
                     this.seriesDataMember = value;
-                    OnPropertyChanged("SeriesDataMember");
+                    OnPropertyChanged(nameof(SeriesDataMember));
                 }
             }
         }
@@ -24,7 +24,7 @@ namespace DemoCenter.Maui.ViewModels {
             set {
                 if (this.argumentDataMember != value) {
                     this.argumentDataMember = value;
-                    OnPropertyChanged("ArgumentDataMember");
+                    OnPropertyChanged(nameof(ArgumentDataMember));
                 }
             }
         }

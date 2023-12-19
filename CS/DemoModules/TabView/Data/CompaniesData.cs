@@ -8,9 +8,10 @@ namespace DemoCenter.Maui.Data {
     [XmlRoot(ElementName = "CompaniesData")]
     public class CompaniesData : List<CompanyData> { }
 
-    public class CompanyData: NotificationObject {
+    public class CompanyData : NotificationObject {
         bool isSelected;
-        public ImageSource ImageSource { get {
+        public ImageSource ImageSource {
+            get {
                 return ImageSource.FromResource(CompanyBanner);
             }
         }

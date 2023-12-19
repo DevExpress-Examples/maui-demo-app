@@ -129,7 +129,7 @@ namespace DemoCenter.Maui.DemoModules.DataForm.ViewModels {
         }
 
         int GetFieldOrder(string fieldName) {
-            if(DeviceInfo.Idiom == DeviceIdiom.Tablet) {
+            if (DeviceInfo.Idiom == DeviceIdiom.Tablet) {
                 return IsVertical ?
                     EmloyeeLayoutTemplate.TabletVertical.GetFieldOrder(fieldName) :
                     EmloyeeLayoutTemplate.TabletHorizontal.GetFieldOrder(fieldName);

@@ -22,13 +22,13 @@ namespace DemoCenter.Maui.ViewModels {
             set => SetProperty(ref this.itemSource, value);
         }
 
-        bool isRefreshing = false;
+        bool isRefreshing;
         public bool IsRefreshing {
             get => this.isRefreshing;
             set => SetProperty(ref this.isRefreshing, value);
         }
 
-        ICommand pullToRefreshCommand = null;
+        ICommand pullToRefreshCommand;
         public ICommand PullToRefreshCommand {
             get => this.pullToRefreshCommand;
             set => SetProperty(ref this.pullToRefreshCommand, value);
@@ -43,7 +43,7 @@ namespace DemoCenter.Maui.ViewModels {
             });
         }
 
-        IList<MailData> GetSortedMessages(MailMessagesRepository repository) {
+        List<MailData> GetSortedMessages(MailMessagesRepository repository) {
             return repository.MailMessages.OrderByDescending(x => x.SentDate).ToList();
         }
     }

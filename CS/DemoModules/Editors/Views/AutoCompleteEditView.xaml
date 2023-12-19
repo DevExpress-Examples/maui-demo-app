@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
@@ -21,10 +22,10 @@
         <viewModel:AutoCompleteEditViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
             <dxe:AutoCompleteEdit
                 x:Name="autocompleteEdit"
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 LabelText="Contact"
                 PlaceholderText="Type here to search"
                 NoResultsFoundText="Not found"
@@ -74,18 +75,18 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 VerticalOptions="End"
-                                TextColor="{DynamicResource TextThemeColor}"/>
+                                TextColor="{dx:ThemeColor OnSurface}"/>
                             <Label
                                 FormattedText="{Binding FormattedPhone}"
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 VerticalOptions="Start"
-                                TextColor="{DynamicResource TextThemeColor}"/>
+                                TextColor="{dx:ThemeColor OnSurface}"/>
                         </Grid>
                     </DataTemplate>
                 </dxe:AutoCompleteEdit.ItemTemplate>
             </dxe:AutoCompleteEdit>
-            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
+            <dx:DXSeparator dx:DXDockLayout.Dock="Top"/>
 
             <demo:ScrollViewFix>
                 <StackLayout Padding="0" Spacing="0">
@@ -93,13 +94,13 @@
                         <Label Text="Box Mode" Style="{StaticResource TextStyle}"/>
                         <dxe:ComboBoxEdit Style="{StaticResource BoxModeComboBoxStyle}"/>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Corner Mode" Style="{StaticResource TextStyle}"/>
                         <dxe:ComboBoxEdit Style="{StaticResource CornerModeComboBoxStyle}"/>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Accent Color" Style="{StaticResource TextStyle}"/>
@@ -108,7 +109,7 @@
                                       SelectedItem="{Binding SelectedAccentColor}"
                                       Style="{StaticResource ColorComboBoxStyle}"/>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Corner Radius" Style="{StaticResource TextStyle}"/>
@@ -135,7 +136,7 @@
 
                         </Grid>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -155,6 +156,6 @@
                     </Grid>
                 </StackLayout>
             </demo:ScrollViewFix>
-        </demo:DockLayout>
+        </dx:DXDockLayout>
     </ContentPage.Content>
 </demo:DemoPage>

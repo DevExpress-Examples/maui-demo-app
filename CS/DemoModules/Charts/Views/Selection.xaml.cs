@@ -6,7 +6,7 @@ using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
     public partial class Selection : Demo.DemoPage {
-        public Selection() {          
+        public Selection() {
             InitializeComponent();
         }
     }
@@ -16,7 +16,7 @@ namespace DemoCenter.Maui.Views {
             if (value == null)
                 return true;
             DataSourceKey key = (DataSourceKey)value;
-            PieData pie = (PieData) key.DataObject;
+            PieData pie = (PieData)key.DataObject;
             return pie.Label.Equals(parameter);
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {

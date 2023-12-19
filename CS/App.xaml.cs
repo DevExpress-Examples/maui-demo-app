@@ -1,15 +1,12 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading;
-using DemoCenter.Maui.Demo.ThemeLoader;
-using DemoCenter.Maui.Styles.ThemeLoader;
-using Microsoft.Maui.ApplicationModel;
-using Microsoft.Maui.Graphics;
 using Application = Microsoft.Maui.Controls.Application;
+#if PaidDemoModules
+using Microsoft.Maui.Controls;
+#endif
 
 namespace DemoCenter.Maui {
     public partial class App : Application {
-        internal event EventHandler ThemeChangedEvent;
 
         public App() {
             var culture = new CultureInfo("en-US");
@@ -17,20 +14,10 @@ namespace DemoCenter.Maui {
             Thread.CurrentThread.CurrentUICulture = culture;
 
             InitializeComponent();
-
-            AppShell rootPage = new AppShell();
-            MainPage = rootPage;
-            ThemeLoader.Instance.LoadTheme();
-        }
-        protected override async void OnStart() {
-            base.OnStart();
-            bool lightTheme = await ThemeEnvironment.Instance.IsLightOperatingSystemTheme();
-            ApplyTheme(lightTheme);
-        }
-        internal void ApplyTheme(bool isLightTheme) {
-            Application.Current.UserAppTheme = isLightTheme ? AppTheme.Light : AppTheme.Dark;
-            MainPage.BackgroundColor = (Color)Resources["BackgroundThemeColor"];
-            ThemeChangedEvent?.Invoke(this, EventArgs.Empty);
+#if PaidDemoModules
+            Routing.RegisterRoute("editFieldsPage", typeof(Views.FillPDFEditFieldsPage));
+#endif
+            MainPage = new AppShell();
         }
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
                     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
                     xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
                     xmlns:converters="clr-namespace:DemoCenter.Maui.DemoModules.Editors.Converters"
@@ -12,21 +13,14 @@
         <Setter Property="Maximum" Value="8"/>
         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
         <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-        <Setter Property="ThumbColor" Value="{DynamicResource AccentColor}"/>
-        <Setter Property="MinimumTrackColor" Value="{DynamicResource AccentColor}"/>
-        <Setter Property="MaximumTrackColor" Value="{DynamicResource SliderMaximumTrackColor-iOS}"/>
-    </Style>
-
-    <Style x:Key="SeparatorStyle" TargetType="BoxView">
-        <Setter Property="BackgroundColor" Value="{DynamicResource EditorSettingsSeparatorColor}"/>
-        <Setter Property="HeightRequest" Value="1"/>
-        <Setter Property="VerticalOptions" Value="End"/>
+        <Setter Property="ThumbColor" Value="{dx:ThemeColor Primary}"/>
+        <Setter Property="MinimumTrackColor" Value="{dx:ThemeColor Primary}"/>
+        <Setter Property="MaximumTrackColor" Value="{dx:ThemeColor SurfaceContainerHighest}"/>
     </Style>
 
     <Style x:Key="TextStyle" TargetType="Label">
-        <Setter Property="FontFamily" Value="Roboto"/>
         <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="TextColor" Value="{DynamicResource EditorSettingsTextColor}"/>
+        <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
         <Setter Property="HorizontalOptions" Value="Start"/>
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
@@ -86,9 +80,8 @@
     </Style>
 
     <Style x:Key="ComboBoxItemLabelStyle" TargetType="Label">
-        <Setter Property="FontFamily" Value="Roboto"/>
         <Setter Property="FontSize" Value="16"/>
-        <Setter Property="TextColor" Value="{DynamicResource EditorSettingsTextColor}"/>
+        <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
         <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
         <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
         <Setter Property="Margin" Value="10, 0, 0, 0"/>
@@ -139,7 +132,7 @@
         <Setter Property="ItemsSource" Value="{Binding BoxModes}"/>
         <Setter Property="ItemTemplate" Value="{StaticResource BoxModeComboBoxItemTemplate}" />
         <Setter Property="StartIcon" Value="{Binding SelectedBoxMode, Converter={converters:BoxModeToImageSourceConverter Outlined='boxmodeoutlined', Filled='boxmodefilled'}}" />
-        <Setter Property="StartIconColor" Value="{StaticResource IconForegroundColor}" />
+        <Setter Property="StartIconColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
     </Style>
 
     <Style x:Key="CornerModeComboBoxStyle" TargetType="dxe:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
@@ -147,7 +140,7 @@
         <Setter Property="ItemsSource" Value="{Binding CornerModes}"/>
         <Setter Property="ItemTemplate" Value="{StaticResource CornerModeComboBoxItemTemplate}" />
         <Setter Property="StartIcon" Value="{Binding SelectedCornerMode, Converter={converters:CornerModeToImageSourceConverter Cut='cornermodecut', Round='cornermoderound'}}" />
-        <Setter Property="StartIconColor" Value="{StaticResource IconForegroundColor}" />
+        <Setter Property="StartIconColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
     </Style>
 
     <Style x:Key="LayoutItemContainerStyle" TargetType="StackLayout">
@@ -182,14 +175,13 @@
     <Style x:Key="EditorSettingsFormStyle" TargetType="dxdf:DataFormView">
         <Setter Property="EditorLabelPosition" Value="Top"/>
         <Setter Property="IsAutoGenerationEnabled" Value="True"/>
-        <Setter Property="CommitMode" Value="PropertyChanged"/>
+        <Setter Property="CommitMode" Value="Input"/>
         <Setter Property="RowSeparatorThickness" Value="1"/>
-        <Setter Property="RowSeparatorColor" Value="{DynamicResource EditorSettingsSeparatorColor}"/>
+        <Setter Property="RowSeparatorColor" Value="{dx:ThemeColor OutlineVariant}"/>
         <Setter Property="ContentPadding" Value="0"/>
         <Setter Property="EditorPadding" Value="16,12"/>
-        <Setter Property="EditorLabelColor" Value="{DynamicResource EditorSettingsTextColor}"/>
+        <Setter Property="EditorLabelColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
         <Setter Property="EditorLabelFontAttributes" Value="Bold"/>
-        <Setter Property="EditorLabelFontFamily" Value="Roboto"/>
         <Setter Property="EditorLabelFontSize" Value="16"/>
     </Style>
 </ResourceDictionary>

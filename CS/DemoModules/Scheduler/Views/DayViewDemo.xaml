@@ -9,8 +9,7 @@
         <ToolbarItem Clicked="OnItemClicked" IconImageSource="verticalelipsize" />
     </ContentPage.ToolbarItems>
 
-    <dxsch:DayView DayCount="{Binding DaysCount, Mode=TwoWay}" Start="{Binding Start}" Tap="DayView_OnTap"
-                   BackgroundColor="{DynamicResource BackgroundThemeColor}">
+    <dxsch:DayView DayCount="{Binding DaysCount, Mode=TwoWay}" Start="{Binding Start}" Tap="DayView_OnTap">
         <dxsch:DayView.DataStorage>
             <dxsch:SchedulerDataStorage x:Name="storage">
                 <dxsch:SchedulerDataStorage.DataSource>

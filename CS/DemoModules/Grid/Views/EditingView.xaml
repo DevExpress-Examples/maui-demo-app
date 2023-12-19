@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                            x:Class="DemoCenter.Maui.Views.EditingView"
+                           xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
                            xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views"
                            xmlns:demo="clr-namespace:DemoCenter.Maui.Demo">
@@ -33,7 +34,7 @@
                     <dxg:TemplateColumn.DisplayTemplate>
                         <DataTemplate>
                             <ProgressBar Progress="{Binding Path=Value, Converter={StaticResource DoubleToProgressConverter}}"
-                                         ProgressColor="{DynamicResource AccentColor}"
+                                         ProgressColor="{dx:ThemeColor Primary}"
                                          VerticalOptions="CenterAndExpand"
                                          Margin="14, 0, 14, 0" />
                         </DataTemplate>
@@ -41,8 +42,8 @@
                     <dxg:TemplateColumn.EditTemplate>
                         <DataTemplate>
                             <Slider Minimum="0" Maximum="1000" Value="{Binding Path=Value}"
-                                    MinimumTrackColor="{DynamicResource AccentColor}"
-                                    ThumbColor="{DynamicResource AccentColor}"
+                                    MinimumTrackColor="{dx:ThemeColor Primary}"
+                                    ThumbColor="{dx:ThemeColor Primary}"
                                     Margin="{OnPlatform iOS='11, 0, 11, 0', Android='0'}"/>
                         </DataTemplate>
                     </dxg:TemplateColumn.EditTemplate>

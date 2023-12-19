@@ -1,11 +1,6 @@
 ﻿using System;
-using DevExpress.Maui.Controls;
-using DevExpress.Maui.DataGrid;
 using DevExpress.Maui.Editors;
-using System.Globalization;
 using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using DemoCenter.Maui.DemoModules.CollectionView.Data;
 using DemoCenter.Maui.Services;
 using DemoCenter.Maui.ViewModels;
@@ -22,7 +17,6 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
                     value = "{1}";
                     return true;
                 }
-
                 value = null;
                 return false;
             }
@@ -43,7 +37,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
             if (this.inNavigation)
                 return;
             this.inNavigation = true;
-            Contact clickedContact = (Contact)((SimpleButton)sender).BindingContext;
+            Contact clickedContact = (Contact)((FormItem)sender).BindingContext;
             this.collectionView.ShowDetailForm(this.collectionView.FindItemHandle(clickedContact), true);
         }
         void AddButtonClick(object sender, EventArgs e) {

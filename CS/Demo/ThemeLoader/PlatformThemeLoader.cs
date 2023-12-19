@@ -1,7 +1,6 @@
-﻿using System;
-namespace DemoCenter.Maui.Styles.ThemeLoader {
-    internal partial class PlatformThemeLoader {
-        static PlatformThemeLoader instance = null;
+﻿namespace DemoCenter.Maui.Styles.ThemeLoader {
+    internal sealed partial class PlatformThemeLoader {
+        static PlatformThemeLoader instance;
         public static PlatformThemeLoader Instance {
             get {
                 if (instance == null)

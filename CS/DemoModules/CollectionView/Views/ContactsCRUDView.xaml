@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.ContactsCRUDView"
                xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+               xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
                xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
                xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
                xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
                xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                ios:Page.UseSafeArea="False"
                xmlns:local="clr-namespace:DemoCenter.Maui.DemoModules.CollectionView.Views"
-               Title="Contacts"
-               BackgroundColor="{StaticResource CollectionViewPageBackground}">
+               BackgroundColor="{dx:ThemeColor Surface}">
+
     <Grid RowDefinitions="Auto,*">
-        <Border StrokeThickness="0" Stroke="Transparent" Background="Transparent">
-            <dxe:TextEdit EndIcon="collectionview_crud_search" PlaceholderText="Search contacts" TextFontSize="14"
-                          ClearIconColor="{StaticResource CollectionViewIconColor}" TextVerticalAlignment="Center"
-                          BackgroundColor="{StaticResource CollectionViewCardBarColor}"
-                          BorderThickness="1" BorderColor="{StaticResource SeparatorColor}" BoxPadding="20,6,10,6"
-                          PlaceholderColor="{StaticResource CollectionViewIconColor}"
-                          EndIconColor="{StaticResource CollectionViewIconColor}"
-                          FocusedBorderColor="Transparent" CornerRadius="16" HeightRequest="35" Margin="15,10,15,10"
-                          TextChanged="SearchTextChanged" />
-        </Border>
+        <dxe:TextEdit EndIcon="collectionview_crud_search" PlaceholderText="Search contacts" TextFontSize="14"
+                        ClearIconColor="{dx:ThemeColor OnSurfaceVariant}" TextVerticalAlignment="Center"
+                        BackgroundColor="{dx:ThemeColor SurfaceContainerHighest}"
+                        BorderThickness="0" BoxPadding="20,8,10,8"
+                        PlaceholderColor="{dx:ThemeColor OnSurfaceVariant}"
+                        EndIconColor="{dx:ThemeColor OnSurfaceVariant}"
+                        FocusedBorderThickness="0" CornerRadius="19" HeightRequest="38" Margin="15,10,15,10"
+                        TextChanged="SearchTextChanged" />
+
         <dxcv:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Contacts}" IsPullToRefreshEnabled="True"
                                PullToRefreshCommand="{Binding RefreshDataCommand}"
                                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}" AllowLiveDataShaping="True"
@@ -34,9 +34,8 @@
                                ValidateAndSave="OnValidateAndSave">
             <dxcv:DXCollectionView.GroupItemAppearance>
                 <dxcv:CollectionViewGroupItemAppearance BackgroundColor="Transparent" BorderColor="Transparent"
-                                                        BorderThickness="0" TextColor="{StaticResource TextThemeColor}"
-                                                        FontSize="17"
-                                                        CaptionMargin="8, 0" />
+                                                        BorderThickness="0" TextColor="{dx:ThemeColor OnSurface}"
+                                                        FontSize="17" CaptionMargin="8,0" />
             </dxcv:DXCollectionView.GroupItemAppearance>
             <dxcv:DXCollectionView.ItemAppearance>
                 <dxcv:CollectionViewItemAppearance BorderThickness="0" />
@@ -49,44 +48,36 @@
             </dxcv:DXCollectionView.GroupDescription>
             <dxcv:DXCollectionView.ItemTemplate>
                 <DataTemplate>
-                    <dxco:SimpleButton Padding="5" BackgroundColor="Transparent" CornerRadius="0"
-                                       Clicked="ItemClick">
-                        <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="*, *">
-                            
-                            <Image HeightRequest="40" WidthRequest="40"
-                                   Source="{Binding PhotoImageSource}"
-                                   VerticalOptions="Center"
-                                   Margin="10"
-                                   Grid.RowSpan="2">
-                                <Image.Clip>
-                                    <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20" />
-                                </Image.Clip>
-                            </Image>
-                            <HorizontalStackLayout Grid.Column="1" VerticalOptions="End">
-                                <Label Text="{Binding FirstName}" TextColor="{StaticResource TextThemeColor}"
-                                       FontAttributes="Bold" />
-                                <Label Text="{Binding LastName}" Margin="5,0,0,0"
-                                       TextColor="{StaticResource TextThemeColor}" FontAttributes="Bold" />
-                            </HorizontalStackLayout>
-                            <Label Text="{Binding Company}" TextColor="{StaticResource CompanyTextColor}"
-                                   LineBreakMode="TailTruncation" VerticalOptions="Start" Grid.Column="1"
-                                   Grid.Row="1" />
-                        </Grid>
-                    </dxco:SimpleButton>
+                    <dxe:FormItem Margin="8,4" TextFontSize="16" ShowSeparator="False" Tap="ItemClick" AllowTap="True"
+                        TextColor="{dx:ThemeColor OnSurface}" Detail="{Binding Company}" DetailFontSize="14" DetailColor="{dx:ThemeColor OnSurface}">
+                        <dxe:FormItem.Text>    
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="FirstName" />
+                                <Binding Path="LastName" />
+                            </MultiBinding>
+                        </dxe:FormItem.Text>
+                        <dxe:FormItem.ImageTemplate>
+                            <DataTemplate>
+                                <Image HeightRequest="40" WidthRequest="40" Margin="0,0,8,0" Source="{Binding PhotoImageSource}">
+                                    <Image.Clip>
+                                        <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20" />
+                                    </Image.Clip>
+                                </Image>
+                            </DataTemplate>
+                        </dxe:FormItem.ImageTemplate>
+                    </dxe:FormItem>
                 </DataTemplate>
             </dxcv:DXCollectionView.ItemTemplate>
         </dxcv:DXCollectionView>
-        <dxco:SimpleButton VerticalOptions="End" Clicked="AddButtonClick"
-                           TextColor="{StaticResource CollectionViewUrgentItemTextColor}" HorizontalOptions="End" Margin="18"
-                           Text="+"
-                           WidthRequest="56" HeightRequest="56" Padding="0" Grid.RowSpan="2"
-                           BackgroundColor="{StaticResource CollectionViewUrgentItemBackgroundColor}" FontSize="28" CornerRadius="14"
-                           FontAttributes="None">
-            <dxco:SimpleButton.Shadow>
-                <Shadow Brush="{StaticResource CollectionViewFloatingButtonShadowColor}"
-                        Offset="4,8"
+        <dx:DXButton VerticalOptions="End" Clicked="AddButtonClick"
+                    HorizontalOptions="End" Margin="18" Content="+"
+                    WidthRequest="56" HeightRequest="56" Padding="0" Grid.RowSpan="2"
+                    FontSize="28" CornerRadius="14" FontAttributes="None">
+            <dx:DXButton.Shadow>
+                <Shadow Brush="{dx:ThemeColor Shadow, Alpha=0.3}"
+                        Offset="1,2"
                         Radius="10" />
-            </dxco:SimpleButton.Shadow>
-        </dxco:SimpleButton>
+            </dx:DXButton.Shadow>
+        </dx:DXButton>
     </Grid>
 </demo:DemoPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="DemoCenter.Maui.projitem" />
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);PaidDemoModules</DefineConstants>
+    <NoWarn>$(NoWarn);IL2105</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <MauiAsset Include="DemoModules\OfficeFileAPI\Resources\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    <MauiImage Include="DemoModules\OfficeFileAPI\Resources\Images\**" />
+    <PackageReference Include="DevExpress.Document.Processor" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Pdf.SkiaRenderer" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Pdf.Core" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Printing.Core" Version="23.2.*" />
+    <PackageReference Include="DevExpress.RichEdit.Export" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Drawing.Skia" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Drawing" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.Core" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.Controls" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.DataGrid" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.Charts" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.CollectionView" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.Editors" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.Gauges" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.Scheduler" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.DataGrid.Export" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.HtmlEditor" Version="23.2.*" />
+    <PackageReference Include="DevExpress.Maui.Pdf" Version="23.2.*" />
+  </ItemGroup>
+</Project>

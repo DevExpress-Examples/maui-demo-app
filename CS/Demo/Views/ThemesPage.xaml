@@ -1,0 +1,71 @@
+﻿<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+    xmlns:dxi="clr-namespace:DevExpress.Maui.Core.Internal;assembly=DevExpress.Maui.Core"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:models="clr-namespace:DemoCenter.Maui.Models"
+    xmlns:viewmodels="clr-namespace:DemoCenter.Maui.ViewModels"
+    x:Class="DemoCenter.Maui.Views.ThemesPage"
+    Title="Customize Theme"
+    BackgroundColor="{dx:ThemeColor Surface}">
+
+    <ScrollView>
+        <VerticalStackLayout Margin="16,0">
+            <Grid ColumnDefinitions="*,Auto" Margin="0,16">
+                <Label Text="Color Scheme" TextColor="{dx:ThemeColor OnSurface}" FontSize="14" FontAttributes="Bold" Grid.Column="0"/>
+                <Label Text="{Binding PreviewColorName}" TextColor="{dx:ThemeColor OnSurfaceVariant}" FontSize="12" Grid.Column="1"/>
+            </Grid>
+
+            <dxe:ChoiceChipGroup SelectedIndex="{Binding SelectedColorIndex}" ItemsSource="{Binding Items}" ChipBorderColor="Transparent" ChipBorderThickness="2" Padding="0" 
+                ChipSelectedBackgroundColor="Transparent" ChipSelectedBorderColor="{dx:ThemeColor OnSurface}" IsMultiline="True" ChipPadding="3" 
+                ChipCornerRadius="28" SelectionChanged="Color_Changed">
+                <dxe:ChoiceChipGroup.ChipContentTemplate>
+                    <DataTemplate>
+                        <dx:DXBorder CornerRadius="26" WidthRequest="52" HeightRequest="52" BackgroundColor="{Binding Color}">
+                            <Label Text="{Binding Name}" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center" WidthRequest="52" HeightRequest="52"/>
+                        </dx:DXBorder>
+                    </DataTemplate>
+                </dxe:ChoiceChipGroup.ChipContentTemplate>
+            </dxe:ChoiceChipGroup>
+
+            <VerticalStackLayout Margin="0,16" Spacing="16">
+                <Label Text="Custom Source Color" TextColor="{dx:ThemeColor OnSurface}" FontSize="14" FontAttributes="Bold"/>
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                    <Label Text="R" TextColor="{dx:ThemeColor OnSurface}" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="14" Grid.Column="0"/>
+                    <Slider Minimum="0" Maximum="1" Value="{Binding Red, Mode=TwoWay}" IsEnabled="{Binding IsEnabled}" Grid.Column="1"/>
+                </Grid>
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                    <Label Text="G" TextColor="{dx:ThemeColor OnSurface}" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="14" Grid.Column="0"/>
+                    <Slider Minimum="0" Maximum="1" Value="{Binding Green, Mode=TwoWay}" IsEnabled="{Binding IsEnabled}" Grid.Column="1"/>
+                </Grid>
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                    <Label Text="B" TextColor="{dx:ThemeColor OnSurface}" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="14" Grid.Column="0"/>
+                    <Slider Minimum="0" Maximum="1" Value="{Binding Blue, Mode=TwoWay}" IsEnabled="{Binding IsEnabled}" Grid.Column="1"/>
+                </Grid>
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+                    <dxe:TextEdit Text="{Binding PreviewColorHex}" IsReadOnly="True" IsEnabled="{Binding IsEnabled}" Grid.Column="0"/>
+                    <Ellipse Fill="{Binding PreviewColor}" WidthRequest="52" HeightRequest="52" Grid.Column="1"/>
+                </Grid>
+            </VerticalStackLayout>
+
+             <VerticalStackLayout Spacing="16">
+                <Label Text="Mode" TextColor="{dx:ThemeColor OnSurface}" FontSize="14" FontAttributes="Bold"/>
+                <dxe:CheckEdit Label="Light" IsChecked="{Binding IsLightTheme}" LabelFontSize="14" CheckBoxIndent="15" 
+                    CheckedCheckBoxImage="radiobuttonchecked" UncheckedCheckBoxImage="radiobuttonunchecked"/>
+                <dxe:CheckEdit Label="Dark" IsChecked="{Binding IsDarkTheme}" LabelFontSize="14" CheckBoxIndent="15" 
+                    CheckedCheckBoxImage="radiobuttonchecked" UncheckedCheckBoxImage="radiobuttonunchecked"/>
+                <dxe:CheckEdit Label="System" IsChecked="{Binding IsSystemTheme}" LabelFontSize="14" CheckBoxIndent="15" 
+                    CheckedCheckBoxImage="radiobuttonchecked" UncheckedCheckBoxImage="radiobuttonunchecked"/>
+            </VerticalStackLayout>
+            
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="8" Margin="0,32,0,16">
+                <dx:DXButton Content="Apply" ButtonType="Filled" Grid.Column="0" Clicked="Apply_Clicked"/>
+                <dx:DXButton Content="Cancel" ButtonType="Outlined" Grid.Column="1" Clicked="Cancel_Clicked"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -15,35 +15,35 @@ namespace DemoCenter.Maui.DemoModules.Grid.ViewModels {
         readonly OrdersRepository repository;
         readonly MarketSimulator market;
 
-        bool isRefreshing = false;
+        bool isRefreshing;
         public bool IsRefreshing {
             get { return this.isRefreshing; }
             set {
                 if (this.isRefreshing != value) {
                     this.isRefreshing = value;
-                    OnPropertyChanged("IsRefreshing");
+                    OnPropertyChanged(nameof(IsRefreshing));
                 }
             }
         }
 
-        bool isUpdateLocked = false;
+        bool isUpdateLocked;
         public bool IsUpdateLocked {
             get { return this.isUpdateLocked; }
             set {
                 if (this.isUpdateLocked != value) {
                     this.isUpdateLocked = value;
-                    OnPropertyChanged("IsUpdateLocked");
+                    OnPropertyChanged(nameof(IsUpdateLocked));
                 }
             }
         }
 
-        ICommand pullToRefreshCommand = null;
+        ICommand pullToRefreshCommand;
         public ICommand PullToRefreshCommand {
             get { return this.pullToRefreshCommand; }
             set {
                 if (this.pullToRefreshCommand != value) {
                     this.pullToRefreshCommand = value;
-                    OnPropertyChanged("PullToRefreshCommand");
+                    OnPropertyChanged(nameof(PullToRefreshCommand));
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.ViewModels {
             set {
                 if (this.orders != value) {
                     this.orders = value;
-                    OnPropertyChanged("Orders");
+                    OnPropertyChanged(nameof(Orders));
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.ViewModels {
             this.repository.RefreshOrders();
             Orders = this.repository.Orders;
         }
-        
+
         public void OnOrderRemove(int row) {
             Console.WriteLine("before" + Orders.Count);
             Orders.RemoveAt(row);
@@ -88,7 +88,8 @@ namespace DemoCenter.Maui.DemoModules.Grid.ViewModels {
         }
 
         public void StartMarketSimulation() {
-            if (this.marketSimulationTimer.IsRunning) return;
+            if (this.marketSimulationTimer.IsRunning)
+                return;
             this.marketSimulationTimer.Start();
         }
         public void StopMarketSimulation() {

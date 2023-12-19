@@ -25,7 +25,7 @@ namespace DemoCenter.Maui.DemoModules.TabView.ViewModels {
         public ImageSource Photo {
             get => this.contact.Photo;
         }
-        
+
         public bool HasPhoto {
             get => this.contact.HasPhoto;
         }
@@ -33,7 +33,7 @@ namespace DemoCenter.Maui.DemoModules.TabView.ViewModels {
         public string Initials {
             get => this.contact.Initials;
         }
-        
+
         public Color CategoryColor {
             get => this.contact.CategoryColor;
         }
@@ -59,7 +59,7 @@ namespace DemoCenter.Maui.DemoModules.TabView.ViewModels {
                 int randParameter = this.rand.Next(1, 35);
                 callsHistory.Add(new CallInfo() {
                     CallType = (CallType)((i + randParameter) % 3),
-                    Date = DateTime.UtcNow.AddHours( -1 * (i + randParameter)).AddMinutes(randParameter)
+                    Date = DateTime.UtcNow.AddHours(-1 * (i + randParameter)).AddMinutes(randParameter)
                 });
             }
             CallsHistory = callsHistory;

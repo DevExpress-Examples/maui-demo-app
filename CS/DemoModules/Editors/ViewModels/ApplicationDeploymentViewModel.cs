@@ -8,7 +8,6 @@ using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.DataForm;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
     public class ApplicationDeploymentViewModel : NotificationObject {
@@ -32,9 +31,9 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
                 return;
 
             isVertical = newIsVertical;
-            var itemPositionPair = isVertical? verticalFieldNamesToRowOrder : horizontalFieldNamesToRowOrder;
+            var itemPositionPair = isVertical ? verticalFieldNamesToRowOrder : horizontalFieldNamesToRowOrder;
             var dataFormItemsToReorder = dataForm.Items.Where(item => itemPositionPair.ContainsKey(item.FieldName) || item.FieldName == nameof(ApplicationInfo.AppIcon));
-            foreach(var item in dataFormItemsToReorder) {
+            foreach (var item in dataFormItemsToReorder) {
                 if (item.FieldName == nameof(ApplicationInfo.AppIcon))
                     SetPhotoItemProperties(item);
                 else
@@ -76,7 +75,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
     }
 
     public class Language {
-         static List<Language> languages = new() {
+        static List<Language> languages = new() {
             new Language { EnglishName = "Chinese",     NativeName = "简化字" },
             new Language { EnglishName = "Spanish",     NativeName = "Español" },
             new Language { EnglishName = "English",     NativeName = "English" },

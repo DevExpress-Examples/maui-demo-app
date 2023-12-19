@@ -19,7 +19,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
                     return;
 
                 this.companyName = value;
-                OnPropertyChanged("CompanyName");
+                OnPropertyChanged(nameof(CompanyName));
             }
         }
 
@@ -30,7 +30,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
                     return;
 
                 this.price = value;
-                OnPropertyChanged("Price");
+                OnPropertyChanged(nameof(Price));
             }
         }
 
@@ -41,7 +41,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
                     return;
 
                 this.delta = value;
-                OnPropertyChanged("Delta");
+                OnPropertyChanged(nameof(Delta));
             }
         }
 
@@ -52,7 +52,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
                     return;
 
                 lowPrice = value;
-                OnPropertyChanged("LowPrice");
+                OnPropertyChanged(nameof(LowPrice));
             }
         }
 
@@ -63,7 +63,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
                     return;
 
                 highPrice = value;
-                OnPropertyChanged("HighPrice");
+                OnPropertyChanged(nameof(HighPrice));
             }
         }
 

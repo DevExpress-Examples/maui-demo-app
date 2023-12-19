@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.Editors.ViewModels;
-using DemoCenter.Maui.Styles.ThemeLoader;
+using DevExpress.Maui.Core;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Devices;
@@ -13,15 +13,29 @@ namespace DemoCenter.Maui.Views {
 
         public ApplicationDeploymentForm() {
             viewModel = new ApplicationDeploymentViewModel();
-            if (ThemeLoader.IsLightTheme) {
+            if (ThemeManager.IsLightTheme) {
                 viewModel.Model.AppIcon = ImageSource.FromFile("appdeployment_light");
             } else {
                 viewModel.Model.AppIcon = ImageSource.FromFile("appdeployment_dark");
             }
             this.BindingContext = viewModel;
             InitializeComponent();
-            if(DeviceInfo.Idiom != DeviceIdiom.Tablet)
+            if (DeviceInfo.Idiom != DeviceIdiom.Tablet)
                 OrientationChanged += OnOrientationChanged;
+        }
+
+        protected override void OnAppearing() {
+            base.OnAppearing();
+#if IOS
+            Microsoft.Maui.Platform.KeyboardAutoManagerScroll.Disconnect();
+#endif
+        }
+
+        protected override void OnDisappearing() {
+            base.OnDisappearing();
+#if IOS
+            Microsoft.Maui.Platform.KeyboardAutoManagerScroll.Connect();
+#endif
         }
 
         void OnOrientationChanged(object sender, EventArgs e) {

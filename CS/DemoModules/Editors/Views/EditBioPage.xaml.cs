@@ -1,7 +1,6 @@
 using System;
 using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.Editors.ViewModels;
-using DevExpress.Maui.Editors;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views;
@@ -16,8 +15,8 @@ public partial class EditBioPage : DemoPage {
         }
     }
     public EditBioPage() {
-		InitializeComponent();
-	}
+        InitializeComponent();
+    }
 
     async void OnAccept(object sender, EventArgs e) {
         Settings.Bio = this.bioEditor.Text;

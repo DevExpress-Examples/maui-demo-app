@@ -8,7 +8,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
             Houses = Load();
         }
 
-        static IList<House> Load() {
+        static List<House> Load() {
             return new List<House>() {
                 new House() { Id = 1, Address = "652 Santa Fe, Riverbank, CA",
                     City = "Riverbank, CA",

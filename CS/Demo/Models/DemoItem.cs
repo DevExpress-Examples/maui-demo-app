@@ -1,18 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using DemoCenter.Maui.Data;
-using String = System.String;
 
 namespace DemoCenter.Maui.Models {
     public class DemoItem {
-        string pageTitle = null;
-        string icon = null;
-        string controlsPageTitle = null;
+        string pageTitle;
+        string icon;
+        string controlsPageTitle;
         Type module;
         List<DemoItem> demoItems;
 
         public string Icon {
-            get => String.IsNullOrEmpty(this.icon) ? "default_icon" : this.icon;
+            get => this.icon; 
             set => this.icon = value;
         }
         public bool IsHeader { get; set; }
@@ -46,7 +45,7 @@ namespace DemoCenter.Maui.Models {
             DemoItemStatus.Updated => "UPD",
             DemoItemStatus.New => "NEW",
             DemoItemStatus.None => string.Empty,
-            _ => throw new Exception("Unknown DemoItemStatus"),
+            _ => throw new ArgumentException($"Unknown {nameof(DemoItemStatus)}."),
         };
 
         public string BadgeIcon {

@@ -4,7 +4,7 @@ using DemoCenter.Maui.ViewModels;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.TabView {
-    public class Category: NotificationObject {
+    public class Category : NotificationObject {
         bool isSelected;
         public string Name { get; set; }
         public List<Product> Products { get; set; }
@@ -13,7 +13,7 @@ namespace DemoCenter.Maui.DemoModules.TabView {
             set => SetProperty(ref this.isSelected, value);
         }
     }
-    public class Product: BindableObject {
+    public class Product : BindableObject {
         public static readonly BindableProperty CanAddToCartProperty =
             BindableProperty.Create(nameof(Product.CanAddToCart), typeof(bool), typeof(Product),
                 defaultBindingMode: BindingMode.TwoWay);

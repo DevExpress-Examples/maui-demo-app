@@ -2,7 +2,7 @@ using DemoCenter.Maui.DemoModules.Grid.Data;
 using DevExpress.Maui.DataGrid;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
-using Microsoft.Maui.Devices;
+using DevExpress.Maui.Core;
 
 namespace DemoCenter.Maui.Views {
     public partial class CustomAppearanceView : BaseGridContentPage {
@@ -15,12 +15,13 @@ namespace DemoCenter.Maui.Views {
         }
 
         void DataGridView_CustomCellAppearance(object sender, CustomCellAppearanceEventArgs e) {
-            if(e.RowHandle % 2 == 0)
-                e.BackgroundColor = GetColorFromResource("GridCustomAppearanceOddRowBackgroundColor");
-            e.FontColor = GetColorFromResource("GridCustomAppearanceFontColor");
-            if(e.FieldName == "ActualSales" || e.FieldName == "TargetSales") {
+            if (e.RowHandle % 2 == 0) {
+                e.BackgroundColor = ThemeManager.Theme.Scheme.SurfaceContainerLowest;
+                e.FontColor = ThemeManager.Theme.Scheme.OnSurfaceVariant;
+            }
+            if (e.FieldName == "ActualSales" || e.FieldName == "TargetSales") {
                 double value = (double)dataGridView.GetCellValue(e.RowHandle, e.FieldName);
-                if(value > 7000000)
+                if (value > 7000000)
                     e.FontColor = GetColorFromResource("GridCustomAppearancePositiveFontColor");
                 else if (value < 4000000)
                     e.FontColor = GetColorFromResource("GridCustomAppearanceNegativeFontColor");
@@ -28,7 +29,11 @@ namespace DemoCenter.Maui.Views {
         }
 
         Color GetColorFromResource(string resourceName) {
-            return (Color)Application.Current.Resources[resourceName];
+            foreach (var rd in Application.Current.Resources.MergedDictionaries)
+                if (rd.TryGetValue(resourceName, out object color))
+                    return (Color)color;
+
+            return null;
         }
     }
 }

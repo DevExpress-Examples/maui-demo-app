@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using DemoCenter.Maui.ViewModels;
-using DevExpress.Maui.Controls;
 using DevExpress.Maui.Core;
 using DevExpress.Maui.Editors;
 using Microsoft.Maui.Controls;
@@ -36,8 +35,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
 
         public IList<ColorViewModel> Colors { get; }
 
-        public BoxMode SelectedBoxMode
-        {
+        public BoxMode SelectedBoxMode {
             get => selectedBoxMode;
             set => SetProperty(ref selectedBoxMode, value, () => {
                 OnPropertyChanged(nameof(CanSetBottomCorners));

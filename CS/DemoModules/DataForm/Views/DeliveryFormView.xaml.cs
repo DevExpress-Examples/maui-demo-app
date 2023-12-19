@@ -3,8 +3,6 @@ using DemoCenter.Maui.Demo;
 using DemoCenter.Maui.DemoModules.DataForm.ViewModels;
 using DevExpress.Maui.DataForm;
 using DevExpress.Maui.Editors;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Devices;
 
 namespace DemoCenter.Maui.Views {
     public partial class DeliveryFormView : AdaptivePage {
@@ -17,12 +15,12 @@ namespace DemoCenter.Maui.Views {
 
         void DataFormOnValidateProperty(object sender, DataFormPropertyValidationEventArgs e) {
             if (e.PropertyName == nameof(DeliveryInfo.DeliveryTimeFrom)) {
-                ((DeliveryInfo) dataForm.DataObject).DeliveryTimeFrom = (DateTime)e.NewValue;
+                ((DeliveryInfo)dataForm.DataObject).DeliveryTimeFrom = (DateTime)e.NewValue;
                 Dispatcher.Dispatch(() => dataForm.Validate(nameof(DeliveryInfo.DeliveryTimeTo)));
             }
             if (e.PropertyName == nameof(DeliveryInfo.DeliveryTimeTo)) {
-                DateTime timeFrom = ((DeliveryInfo) dataForm.DataObject).DeliveryTimeFrom;
-                if(timeFrom > (DateTime)e.NewValue) {
+                DateTime timeFrom = ((DeliveryInfo)dataForm.DataObject).DeliveryTimeFrom;
+                if (timeFrom > (DateTime)e.NewValue) {
                     e.HasError = true;
                     e.ErrorText = "The end time cannot be less than the start time";
                     return;
@@ -36,7 +34,7 @@ namespace DemoCenter.Maui.Views {
 
         void SubmitOnClicked(object sender, EventArgs e) {
             dataForm.Commit();
-            if (dataForm.Validate()) 
+            if (dataForm.Validate())
                 DisplayAlert("Success", "Your delivery information has been successfully saved", "OK");
         }
 
@@ -50,6 +48,6 @@ namespace DemoCenter.Maui.Views {
             if (e.Item.FieldName == nameof(DeliveryFormViewModel.Model.DeliveryDate) && e.Item is DataFormDateItem item) {
                 item.PickerDisableDate += DataFormDateItem_PickerDisableDate;
             }
-        }        
+        }
     }
 }

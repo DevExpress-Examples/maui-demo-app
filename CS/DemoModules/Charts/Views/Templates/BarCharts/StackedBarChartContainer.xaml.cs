@@ -1,7 +1,7 @@
 namespace DemoCenter.Maui.Charts.Views {
     public partial class StackedBarChartContainer : RotationHandleView {
-		public StackedBarChartContainer() {
-            
+        public StackedBarChartContainer() {
+
             InitializeComponent();
         }
     }

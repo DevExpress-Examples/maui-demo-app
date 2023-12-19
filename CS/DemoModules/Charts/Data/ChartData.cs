@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using DemoCenter.Maui.Data;
 using DevExpress.Maui.Charts;
 using Microsoft.Maui.Graphics;
-using Newtonsoft.Json.Linq;
 
 namespace DemoCenter.Maui.Data {
     public class OutsideVendorCostsData {
@@ -19,7 +17,7 @@ namespace DemoCenter.Maui.Data {
             seriesData = JsonDataDeserializer.GetData<DateTimeDataSets>("Resources.OutsideVendorCosts.json");
         }
     }
-    
+
     public class PopulationStructureData {
         readonly QualitativeDataSets seriesData;
 
@@ -30,7 +28,7 @@ namespace DemoCenter.Maui.Data {
             seriesData = JsonDataDeserializer.GetData<QualitativeDataSets>("Resources.PopulationStructure.json");
         }
     }
-    
+
     public class AgeStructureData {
         readonly QualitativeDataSets seriesData;
 
@@ -210,7 +208,7 @@ namespace DemoCenter.Maui.Data {
         public IList<PieData> SecuritiesByRisk = new List<PieData>();
 
         public BondPortfolioDiversification() {
-            SecuritiesByTypes.Add(new PieData("Stock",417360.00));
+            SecuritiesByTypes.Add(new PieData("Stock", 417360.00));
             SecuritiesByTypes.Add(new PieData("Mutual Fund", 27414.32));
             SecuritiesByTypes.Add(new PieData("Bond", 35682.00));
 
@@ -356,10 +354,10 @@ namespace DemoCenter.Maui.Data {
             using (Stream stream = GetType().Assembly.GetManifestResourceStream("Resources.HeadphoneComparison.dat")) {
                 StreamReader reader = new StreamReader(stream);
                 string data = reader.ReadToEnd();
-                String[] dataItems = data.Split(new String[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] dataItems = data.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
                 for (int i = 1; i < dataItems.Length; i++) {
-                    String[] row = dataItems[i].Split(new String[] { " " }, StringSplitOptions.RemoveEmptyEntries)[1]
-                        .Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] row = dataItems[i].Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]
+                        .Split(',', StringSplitOptions.RemoveEmptyEntries);
                     double frequency = Convert.ToDouble(row[1], CultureInfo.InvariantCulture);
                     double thd90 = Convert.ToDouble(row[2], CultureInfo.InvariantCulture);
                     double thd100 = Convert.ToDouble(row[3], CultureInfo.InvariantCulture);
@@ -425,9 +423,9 @@ namespace DemoCenter.Maui.Data {
             using (Stream stream = GetType().Assembly.GetManifestResourceStream("Resources.LightSpector.dat")) {
                 StreamReader reader = new StreamReader(stream);
                 string data = reader.ReadToEnd();
-                String[] dataItems = data.Split(new String[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] dataItems = data.Split('\n', StringSplitOptions.RemoveEmptyEntries);
                 for (int i = 0; i < dataItems.Length; i++) {
-                    String[] row = dataItems[i].Split(new String[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+                    string[] row = dataItems[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
                     double argument = Convert.ToDouble(row[0], CultureInfo.InvariantCulture);
                     double value = Convert.ToDouble(row[1], CultureInfo.InvariantCulture);
                     LightSpectors.Add(new NumericData(argument, value));
@@ -473,7 +471,7 @@ namespace DemoCenter.Maui.Data {
         }
 
         protected virtual double[] GetWavesForLegend() {
-            return new double[0];
+            return Array.Empty<double>();
         }
 
         Color ICustomPointColorizer.GetColor(ColoredPointInfo info) {

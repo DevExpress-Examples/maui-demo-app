@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Globalization;
 
 namespace DemoCenter.Maui.DemoModules.Grid.Data {
     public class EmployeeSales {

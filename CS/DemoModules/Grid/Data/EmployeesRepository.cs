@@ -10,7 +10,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             System.Reflection.Assembly assembly = GetType().Assembly;
             Stream stream = assembly.GetManifestResourceStream("Employees.json");
             JObject jObject = JObject.Parse(new StreamReader(stream).ReadToEnd());
-            Employees = jObject["Employees"].ToObject<List<Employee>>();
+            Employees = jObject[nameof(Employees)].ToObject<List<Employee>>();
         }
     }
 }

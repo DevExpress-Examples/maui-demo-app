@@ -11,10 +11,9 @@ namespace DemoCenter.Maui.DemoModules.DataForm.ViewModels {
             }
 
             public int GetFieldOrder(string fieldName) {
-                if (this.template.ContainsKey(fieldName)) {
-                    return this.template[fieldName];
-                }
-                else {
+                if (this.template.TryGetValue(fieldName, out var value)) {
+                    return value;
+                } else {
                     return -1;
                 }
             }

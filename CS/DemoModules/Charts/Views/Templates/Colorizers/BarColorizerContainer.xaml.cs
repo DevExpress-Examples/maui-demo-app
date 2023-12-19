@@ -3,7 +3,7 @@
 namespace DemoCenter.Maui.Charts.Views {
     public partial class BarColorizerContainer : ContentView {
         public BarColorizerContainer() {
-            
+
             InitializeComponent();
         }
     }

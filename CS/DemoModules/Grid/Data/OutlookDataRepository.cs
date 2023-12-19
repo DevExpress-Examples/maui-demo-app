@@ -12,26 +12,26 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
     public class OutlookDataRepository : NotificationObject {
         public ObservableCollection<OutlookData> OutlookData { get; private set; }
         int loadRowsCount = 30;
-        int lastId = 0;
+        int lastId;
 
-        bool isRefreshing = false;
+        bool isRefreshing;
         public bool IsRefreshing {
             get { return isRefreshing; }
             set {
                 if (isRefreshing != value) {
                     isRefreshing = value;
-                    OnPropertyChanged("IsRefreshing");
+                    OnPropertyChanged(nameof(IsRefreshing));
                 }
             }
         }
 
-        ICommand loadMoreCommand = null;
+        ICommand loadMoreCommand;
         public ICommand LoadMoreCommand {
             get { return loadMoreCommand; }
             set {
                 if (loadMoreCommand != value) {
                     loadMoreCommand = value;
-                    OnPropertyChanged("LoadMoreCommand");
+                    OnPropertyChanged(nameof(LoadMoreCommand));
                 }
             }
         }
@@ -107,16 +107,16 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
         static GridOrdersRepository gridOrdersRepository = new GridOrdersRepository();
 
         public static OutlookData CreateOutlookData(int id) {
-            OutlookData data = new OutlookData();
-            data.Id = id;
-            data.From = GetCustomer(UserIds[random.Next(UserIds.Length - 1)]);
-            data.Sent = DateTime.Today.AddDays(-random.Next(50));
-            data.Time = TimeSpan.FromMinutes(random.Next(24 * 60));
-            data.HasAttachment = random.Next(2) == 0;
-            data.Size = random.Next(3000);
-            data.Priority = (Priority)random.Next(5);
-            data.HoursActive = random.Next(1000);
-            data.Subject = Subjects[random.Next(Subjects.Length - 1)];
+            OutlookData data = new OutlookData(id) {
+                From = GetCustomer(UserIds[random.Next(UserIds.Length - 1)]),
+                Sent = DateTime.Today.AddDays(-random.Next(50)),
+                Time = TimeSpan.FromMinutes(random.Next(24 * 60)),
+                HasAttachment = random.Next(2) == 0,
+                Size = random.Next(3000),
+                Priority = (Priority)random.Next(5),
+                HoursActive = random.Next(1000),
+                Subject = Subjects[random.Next(Subjects.Length - 1)]
+            };
             return data;
         }
 

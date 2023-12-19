@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using DemoCenter.Maui.Data;
 using DemoCenter.Maui.Models;
 using DemoCenter.Maui.Views;
 
@@ -16,19 +15,33 @@ namespace DemoCenter.Maui.Data {
                     Module = typeof(AccountFormView),
                     Icon = "editors"
                 },
+#if PaidDemoModules
+                new DemoItem() {
+                    Title = "Html Edit",
+                    Description="Demonstrates how to use DevExpress HTML Edit control to replicate email client UI. The editor allows you to modify and format text, insert images, and add hyperlinks.",
+                    Module = typeof(HtmlEditView),
+                    Icon = "htmledit",
+                    DemoItemStatus = DemoItemStatus.New,
+                },
+#endif
+                new DemoItem() {
+                    Title = "Image Edit",
+                    Description="Demonstrates an avatar customization page created with the help of our image editor. The editor allows you to crop, flip, and rotate images. You can save the result in PNG and JPEG formats.",
+                    Module = typeof(ImageEditPickerView),
+                    Icon="imageedit",
+                    DemoItemStatus = DemoItemStatus.New
+                },
                 new DemoItem() {
                     Title = "Settings Form",
                     Description="Demonstrates how to implement a settings form with the help of our editors. This form contains switches, text editors, and picker controls.",
                     Module = typeof(SettingsForm),
                     Icon = "settingsform",
-                    DemoItemStatus = DemoItemStatus.New
                 },
                 new DemoItem() {
                     Title = "Deployment Form",
                     Description="Shows how to use our token editors to create an app deployment form. Token editors allow you to select multiple items from a list.",
                     Module = typeof(ApplicationDeploymentForm),
                     Icon="deploymentform",
-                    DemoItemStatus = DemoItemStatus.New
                 },
                 new DemoItem() {
                     Title = "Combo Box",

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DemoCenter.Maui.Data;
+﻿using System.Collections.Generic;
 using DemoCenter.Maui.Models;
 using DemoCenter.Maui.Views;
 
@@ -11,10 +9,13 @@ namespace DemoCenter.Maui.Data {
         public GridData() {
             this.demoItems = new List<DemoItem>() {
                 new DemoItem() {
+#if PaidDemoModules
                     Title = "First Look / Data Export",
+#else
+                    Title = "First Look",
+#endif
                     Description = "In this demo, you can try our Data Grid’s frequently-used navigation features and data presentation capabilities. Review the following functionality: columns corresponding to different data types (text, date, image), column size and position management, data grouping and sorting, vertical and horizontal scrolling, and fixed (frozen) columns. You can also export grid data to various formats (PDF, DOCX, and XLSX) and specify export options such as page size and orientation.",
                     Module = typeof(FirstLookView),
-                    DemoItemStatus = DemoItemStatus.New,
                     Icon = "firstlook"
                 },
                 new DemoItem() {
@@ -28,7 +29,6 @@ namespace DemoCenter.Maui.Data {
                     Title = "Editing",
                     Description = "The Data Grid control supports the edit of different types of data. For each data type, it uses a specific and fully-customizable data editor. Users can edit data directly in grid cells or on a separate edit form invoked for a grid row. Use the Ellipsis menu to change edit mode.",
                     Module = typeof(EditingView),
-                    DemoItemStatus = DemoItemStatus.Updated,
                     Icon = "editing"
                 },
                 new DemoItem() {

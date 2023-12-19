@@ -1,16 +1,15 @@
 using System;
 using System.Timers;
 using DemoCenter.Maui.ViewModels;
-using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
     public partial class Oscillator : Demo.DemoPage {
         readonly OscillatorChartsViewModel viewModel = new OscillatorChartsViewModel();
         readonly Timer timer = new Timer();
-        bool isRunning = false;
+        bool isRunning;
 
         public Oscillator() {
-            
+
             InitializeComponent();
             BindingContext = viewModel;
 

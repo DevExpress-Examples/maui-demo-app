@@ -11,14 +11,14 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             get { return commodity; }
             set {
                 commodity = value;
-                OnPropertyChanged("Commodity");
+                OnPropertyChanged(nameof(Commodity));
             }
         }
         public double Amount {
             get { return amount; }
             set {
                 amount = value;
-                OnPropertyChanged("Amount");
+                OnPropertyChanged(nameof(Amount));
                 UpdateTotal(raiseChanged: true);
             }
         }
@@ -26,7 +26,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
             get { return amount; }
             set {
                 amount = value;
-                OnPropertyChanged("Price");
+                OnPropertyChanged(nameof(Price));
                 UpdateTotal(raiseChanged: true);
             }
         }
@@ -44,7 +44,7 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
         void UpdateTotal(bool raiseChanged) {
             total = price * amount;
             if (raiseChanged)
-                OnPropertyChanged("Total");
+                OnPropertyChanged(nameof(Total));
         }
     }
 }

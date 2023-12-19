@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                            x:Class="DemoCenter.Maui.Views.AutoFilterRowView"
+                           xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
                            xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views"
                            xmlns:demo="clr-namespace:DemoCenter.Maui.Demo">
@@ -19,7 +20,7 @@
                 <dxg:CheckBoxColumn FieldName="HasAttachment" EditFormCaption="Has Attachment" Width="70">
                     <dxg:CheckBoxColumn.HeaderContentTemplate>
                         <DataTemplate>
-                            <demo:IconView HeightRequest="24" WidthRequest="24" HorizontalOptions="CenterAndExpand" Source="demogridattachment" VerticalOptions="Center"/>
+                            <dx:DXImage HeightRequest="24" WidthRequest="24" TintColor="{dx:ThemeColor OnSurface}" HorizontalOptions="CenterAndExpand" Source="demogridattachment" VerticalOptions="Center"/>
                         </DataTemplate>
                     </dxg:CheckBoxColumn.HeaderContentTemplate>
                 </dxg:CheckBoxColumn>

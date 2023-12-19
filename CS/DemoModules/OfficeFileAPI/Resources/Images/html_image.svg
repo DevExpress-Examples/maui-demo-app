@@ -1,0 +1,13 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+	.Yellow{fill:#FFB115;}
+	.Black{fill:#727272;}
+</style>
+<path class="Black" d="M8,4h18v6h2V3c0-0.5-0.5-1-1-1H7C6.5,2,6,2.5,6,3v7h2V4z"/>
+<path class="Black" d="M26,26H8v-8H6v9c0,0.5,0.5,1,1,1h20c0.5,0,1-0.5,1-1v-9h-2V26z"/>
+<path class="Yellow" d="M31,8H3C2.4,8,2,8.4,2,9v10c0,0.6,0.4,1,1,1h28c0.6,0,1-0.4,1-1V9C32,8.4,31.6,8,31,8z M9.8,18H8.3v-3.1H5.5
+	V18H4v-7.7h1.5v3.1h2.8v-3.1h1.5V18z M16,11.7h-1.9V18h-1.5v-6.3h-1.9v-1.4H16V11.7z M24.5,18H23v-4.6c0-0.5,0-1,0.1-1.6h0
+	c-0.1,0.5-0.1,0.8-0.2,1L21.3,18H20l-1.6-5.2c0-0.1-0.1-0.5-0.2-1.1h0c0,0.8,0.1,1.4,0.1,2V18h-1.4v-7.7h2.2l1.4,4.6
+	c0.1,0.4,0.2,0.7,0.2,1.1h0c0.1-0.4,0.2-0.8,0.3-1.1l1.4-4.6h2.1V18z M30,18h-4v-7.7h1.5v6.3H30V18z"/>
+</svg>

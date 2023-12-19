@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 
 namespace DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders {
     public partial class StoragePathProvider : Java.Lang.Object, IStoragePathProvider {

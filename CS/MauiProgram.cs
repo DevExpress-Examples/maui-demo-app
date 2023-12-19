@@ -1,32 +1,41 @@
-﻿using Microsoft.Maui.Hosting;
+using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Hosting;
-using DevExpress.Maui;
 using Microsoft.Maui.Controls;
+#if PaidDemoModules
+using SkiaSharp.Views.Maui.Controls.Hosting;
+#endif
+using CommunityToolkit.Maui;
+using DevExpress.Maui;
+using DevExpress.Maui.Core;
+
 
 namespace DemoCenter.Maui {
-	public static class MauiProgram {
-		public static MauiApp CreateMauiApp() {
-			var builder = MauiApp.CreateBuilder();
-			builder
-				.UseMauiApp<App>()
-				.UseDevExpress()
-				.ConfigureFonts(fonts => {
-					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-					fonts.AddFont("roboto-bold.ttf", "Roboto-Bold");
-					fonts.AddFont("roboto-medium.ttf", "Roboto-Medium");
-					fonts.AddFont("roboto-regular.ttf", "Roboto");
-					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                })
-				.ConfigureMauiHandlers(handlers => {
-					handlers.AddHandler<Shell, CustomShellRenderer>();
-				} );
-			DevExpress.Maui.Charts.Initializer.Init();
-			DevExpress.Maui.CollectionView.Initializer.Init();
-			DevExpress.Maui.Controls.Initializer.Init();
-			DevExpress.Maui.Editors.Initializer.Init();
-			DevExpress.Maui.DataGrid.Initializer.Init();
-			DevExpress.Maui.Scheduler.Initializer.Init();
-			return builder.Build();
-		}
-	}
+    public static class MauiProgram {
+
+        public static MauiApp CreateMauiApp() {
+            ThemeManager.UseAndroidSystemColor = false;
+            ThemeManager.ApplyThemeToSystemBars = true;
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .UseDevExpress()
+                .UseMauiCommunityToolkit()
+#if DEBUG
+
+#endif
+#if PaidDemoModules
+        .UseSkiaSharp()
+#endif
+                .ConfigureMauiHandlers(handlers => {
+                    handlers.AddHandler<Shell, CustomShellRenderer>();
+                });
+            DevExpress.Maui.Charts.Initializer.Init();
+            DevExpress.Maui.CollectionView.Initializer.Init();
+            DevExpress.Maui.Controls.Initializer.Init();
+            DevExpress.Maui.Editors.Initializer.Init();
+            DevExpress.Maui.DataGrid.Initializer.Init();
+            DevExpress.Maui.Scheduler.Initializer.Init();
+            return builder.Build();
+        }
+    }
 }

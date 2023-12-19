@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Threading.Tasks;
-using DemoCenter.Maui;
+using DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders;
 using DevExpress.Maui.Scheduler;
 using Foundation;
-using Microsoft.Maui.Controls;
-using UIKit;
 using UserNotifications;
 
-namespace DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders {
-    public partial class NotificationCenter : NSObject, INotificationCenter {
+namespace DemoCenter.Maui {
+    public partial class RemindersNotificationCenter : NSObject {
         #region Neasted classes
         public class ReminderIdentifier {
             public Guid Guid { get; private set; }
@@ -38,23 +35,22 @@ namespace DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders {
 
         readonly ReminderNotificationCenterCore notificationsCore;
 
-        public NotificationCenter() {
-            notificationsCore = new ReminderNotificationCenter();
+        public RemindersNotificationCenter() {
+            notificationsCore = new ReminderNotificationCenterCore();
         }
 
-        public void UpdateNotifications(IList<TriggeredReminder> reminders, int maxCount) {
+        void UpdateNotificationsCore(IList<TriggeredReminder> reminders, int maxCount) {
             notificationsCore.UpdateRemindersNotifications(reminders);
         }
     }
+}
 
-    public abstract class ReminderNotificationCenterCore {
+namespace DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders {
+    public class ReminderNotificationCenterCore {
         protected string CreateMessageContent(TriggeredReminder reminder) {
             return reminder.Appointment.Interval.ToString("{0:g} - {1:g}", null);
         }
-        public abstract void UpdateRemindersNotifications(IList<TriggeredReminder> featureReminders);
-    }
 
-    public class ReminderNotificationCenter : ReminderNotificationCenterCore {
         readonly UNUserNotificationCenter notificationCenter = UNUserNotificationCenter.Current;
 
         Task<Tuple<bool, NSError>> RequestUserAccess() {
@@ -79,12 +75,12 @@ namespace DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders {
                 TimeZone = NSTimeZone.SystemTimeZone,
             };
             UNCalendarNotificationTrigger trigger = UNCalendarNotificationTrigger.CreateTrigger(dateComponents, false);
-            string identifier = NotificationCenter.SerializeReminder(reminder);
+            string identifier = RemindersNotificationCenter.SerializeReminder(reminder);
             UNNotificationRequest request = UNNotificationRequest.FromIdentifier(identifier, content, trigger);
             await notificationCenter.AddNotificationRequestAsync(request);
         }
 
-        public override async void UpdateRemindersNotifications(IList<TriggeredReminder> featureReminders) {
+        public async void UpdateRemindersNotifications(IList<TriggeredReminder> featureReminders) {
             Tuple<bool, NSError> authResult = await RequestUserAccess();
             if (!authResult.Item1) {
                 Debug.WriteLine("User denied access to notifications");
@@ -96,4 +92,6 @@ namespace DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders {
             }
         }
     }
+
 }
+

@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
              x:Class="DemoCenter.Maui.Charts.Views.BarColorizerContainer"
              xmlns:local="clr-namespace:DemoCenter.Maui.Data">
     <ContentView.Content>
-        <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <Grid BackgroundColor="{dx:ThemeColor Surface}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -13,9 +14,8 @@
 
             <Label Grid.Row="0"
                     Text="{Binding ChartModel.Title}"
-                    FontFamily="Roboto"
-                    TextColor="{DynamicResource TextThemeColor}"
-                    BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                    TextColor="{dx:ThemeColor OnSurface}"
+                    BackgroundColor="{dx:ThemeColor Surface}"/>
             
             <dxc:ChartView x:Name="chart"
                               Grid.Row="1"

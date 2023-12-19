@@ -4,7 +4,7 @@ using DevExpress.Maui.Charts;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui {
-    class SeriesTemplateSelector : DataTemplateSelector {
+    sealed class SeriesTemplateSelector : DataTemplateSelector {
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container) {
             if (!(container is SeriesTemplateAdapter adapter))
                 return null;
@@ -26,8 +26,8 @@ namespace DemoCenter.Maui.Views {
         }
 
         async void OnItemClicked(System.Object sender, System.EventArgs e) {
-            SeriesTemplateViewModel viewModel = (SeriesTemplateViewModel) BindingContext;
-            
+            SeriesTemplateViewModel viewModel = (SeriesTemplateViewModel)BindingContext;
+
             string action = await DisplayActionSheet("Data Source Field", "Cancel", null, members);
             if (!String.IsNullOrEmpty(action) && action != "Cancel" && action != viewModel.SeriesDataMember) {
                 viewModel.SeriesDataMember = action;

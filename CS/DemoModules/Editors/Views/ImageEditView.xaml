@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<demo:DemoPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    x:Class="DemoCenter.Maui.Views.ImageEditView"
+    Shell.ForegroundColor="White"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{dx:ThemeNeutralColor Light=10, Dark=10}">
+
+    <demo:DemoPage.Resources>
+        <local:FrameTypeToImageStringConverter x:Key="frameToImage" />
+    </demo:DemoPage.Resources>
+
+    <demo:DemoPage.Behaviors>
+        <dx:SystemBarBehavior StatusBarForeground="Dark"
+            AndroidNavigationBarBackground="{dx:ThemeNeutralColor Light=10, Dark=10}"
+            AndroidStatusBarBackground="{dx:ThemeNeutralColor Light=10, Dark=10}"
+            AndroidNavigationBarForeground="Dark"/>
+    </demo:DemoPage.Behaviors>
+
+    <Grid>
+        <dxe:ImageEdit x:Name="editor"
+            MaxScaleFactor="3"
+            CropAreaBorderThickness="1"
+            CropAreaRatioX="1"
+            CropAreaRatioY="1"/>
+
+        <Grid VerticalOptions="Start"
+            Padding="8"
+            ColumnDefinitions="Auto,*,Auto">
+            <dx:DXImage Source="ic_arrow_back" Grid.Column="0" Margin="8" TintColor="{dx:ThemeNeutralColor Light=80, Dark=80}">
+               <dx:DXImage.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackPressed"/>
+                </dx:DXImage.GestureRecognizers>
+            </dx:DXImage>
+            <Label Text="Reset" TextColor="{dx:ThemeNeutralColor Light=80, Dark=80}" FontSize="16" VerticalOptions="Center" Margin="16,0" HorizontalOptions="End" Grid.Column="1">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference editor}, Path=Commands.Reset}"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <dx:DXImage Source="ic_check" Grid.Column="2" Margin="8" TintColor="{dx:ThemeNeutralColor Light=80, Dark=80}">
+                <dx:DXImage.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CropPressed"/>
+                </dx:DXImage.GestureRecognizers>
+            </dx:DXImage>
+        </Grid>
+
+        <dxc:DXToolbar VerticalOptions="End" ItemAlignment="Fill" BackgroundColor="{dx:ThemeNeutralColor Light=10, Dark=10}">
+            <dxc:ToolbarButton Icon="ic_rotate_left" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.RotateLeft}"/>
+            <dxc:ToolbarButton Icon="ic_rotate_right" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.RotateRight}"/>
+            <dxc:ToolbarButton Icon="{Binding Source={x:Reference editor}, Path=CropAreaShape, Converter={StaticResource frameToImage}}"  IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.SwitchCropAreaShape}"/>
+            <dxc:ToolbarButton Icon="ic_mirror_v" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.FlipHorizontal}"/>
+            <dxc:ToolbarButton Icon="ic_mirror_h" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.FlipVertical}"/>
+        </dxc:DXToolbar>
+    </Grid>
+
+</demo:DemoPage>

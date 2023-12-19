@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<OutputType>Exe</OutputType>
+		<ApplicationTitle>DevExpress UI</ApplicationTitle>
+		<ApplicationId>com.devexpress.mauimobileui</ApplicationId>
+		<DXVer>23.2.4</DXVer>
+		<SkiaSharpVersion>2.88.6</SkiaSharpVersion>
+		<AssemblyVersion>$(DXVer)</AssemblyVersion>
+		<AssemblyFileVersion>$(DXVer)</AssemblyFileVersion>
+		<Company>Developer Express Inc.</Company>
+		<ApplicationIdGuid>06FD4F07-07FF-4FEF-A6EA-8B6FA3A99898</ApplicationIdGuid>
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+		<RootNamespace>DemoCenter.Maui</RootNamespace>
+		<AssemblyName>DemoCenter.Maui</AssemblyName>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<NoWarn>CA1422;CA1416;NU1603</NoWarn>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<DXPlatform Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">iOS</DXPlatform>
+		<DXPlatform Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">Android</DXPlatform>
+		<DXPlatformShort Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">i</DXPlatformShort>
+		<DXPlatformShort Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">a</DXPlatformShort> 
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Data" Version="23.2.*" />
+		<TrimmableAssembly Include="DevExpress.Data.v23.2" />
+
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLite" Version="3.13.0" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836" />
+
+		<PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+ 		<PackageReference Condition="$(DXPlatform) == 'Android'" Include="SkiaSharp.NativeAssets.Android" Version="$(SkiaSharpVersion)" />
+		<PackageReference Condition="$(DXPlatform) == 'iOS'" Include="SkiaSharp.NativeAssets.iOS" Version="$(SkiaSharpVersion)" />
+		<PackageReference Include="SkiaSharp" Version="$(SkiaSharpVersion)" />
+		<PackageReference Include="SkiaSharp.HarfBuzz" Version="$(SkiaSharpVersion)" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="$(SkiaSharpVersion)" />
+
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.3" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
+
+	</ItemGroup>
+
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_android.svg" Color="#5B27D9" />
+		<MauiSplashScreen Include="Resources\splashscreen_android.svg" Color="#5B27D9" />
+		<PackageReference Include="Xamarin.AndroidX.AutoFill" Version="1.1.0.14" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg_ios.svg" Color="#5B27D9" />
+		<MauiSplashScreen Include="Resources\splashscreen_ios.svg" Color="#5B27D9"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Include="Resources\Images\Houses\*" />
+		<MauiImage Include="Resources\Images\Shimmer\*.svg" />
+		<MauiImage Include="Resources\Images\Avatars\*" />
+		<MauiImage Include="Resources\Images\Controls\*" />
+		<MauiImage Include="Resources\Images\Editors\*" />
+		<MauiImage Include="Resources\Images\Special\dxicon.svg" BaseSize="160,160" />
+		<MauiImage Include="DemoModules\DataForm\Images\*" />
+		<MauiImage Include="Demo\Images\Charts\*" />
+		<MauiImage Include="Demo\Images\Controls\*" />
+		<MauiImage Include="Demo\Images\Office\*" />
+		<MauiImage Include="Demo\Images\smile.png" BaseSize="24,24" />
+		<MauiImage Include="Demo\Images\DataGrid\*" />
+		<MauiImage Include="Demo\Images\Editors\*" />
+		<MauiImage Include="Demo\Images\CollectionView\*" />
+		<MauiImage Include="Demo\Images\DataForm\*" />
+		<MauiImage Include="Demo\Images\Scheduler\*" />
+		<MauiImage Include="Demo\Images\Demo\*" />
+		<MauiImage Include="DemoModules\Charts\Resources\Images\*" />
+		<MauiImage Include="DemoModules\Controls\Images\*" />
+		<MauiImage Include="DemoModules\CollectionView\Images\*" />
+        <MauiImage Include="DemoModules\CollectionView\Images\Contacts\*" />
+		<MauiImage Include="DemoModules\TabView\Images\demotabview_location.svg" />
+		<MauiImage Include="DemoModules\TabView\Images\demotabview_phone.svg" />
+		<MauiImage Include="DemoModules\TabView\Images\demotabview_www.svg" />
+		<MauiImage Include="DemoModules\TabView\Images\demotabview_cartbutton.svg" />
+		<MauiImage Include="DemoModules\TabView\Images\demotabview_deletebutton.svg" />
+		<MauiImage Include="DemoModules\TabView\Images\demotabview_favoritebutton.svg" />
+		<MauiImage Include="DemoModules\TabView\Images\menu_dots.svg" />
+		<MauiImage Include="DemoModules\TabView\Images\nested_all.svg" />
+		<MauiImage Include="DemoModules\TabView\Images\nested_cart.svg" />
+		<MauiImage Include="DemoModules\TabView\Images\nested_wish_list.svg" />
+		<MauiImage Include="DemoModules\Grid\Images\*" />
+		<MauiImage Include="DemoModules\TabView\Resources\NestedTabViewImages\*" />
+
+		<MauiFont Include="Resources\Fonts\*" />
+		<MauiAsset Include="DemoModules\CollectionView\Data\contacts.db" />
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="DemoModules\Grid\Data\Employees.json">
+			<LogicalName>Employees.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Grid\Data\EmployeeTasks.json">
+			<LogicalName>EmployeeTasks.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Grid\Data\Invoices.json">
+			<LogicalName>Invoices.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Grid\Data\StockSource.json">
+			<LogicalName>StockSource.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\PopulationPyramid.json">
+			<LogicalName>Resources.PopulationPyramid.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\PopulationStructure.json">
+			<LogicalName>Resources.PopulationStructure.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\AgeStructure.json">
+			<LogicalName>Resources.AgeStructure.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\AverageDieselPrices.json">
+			<LogicalName>Resources.AverageDieselPrices.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\DevAVSalesMixByRegion.json">
+			<LogicalName>Resources.DevAVSalesMixByRegion.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\GoogleStock.xml">
+			<LogicalName>Resources.GoogleStock.xml</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\LondonWeather.json">
+			<LogicalName>Resources.LondonWeather.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\OutsideVendorCosts.json">
+			<LogicalName>Resources.OutsideVendorCosts.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\TrendPopulation.json">
+			<LogicalName>Resources.TrendPopulation.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\sound.bin">
+			<LogicalName>Resources.sound.bin</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\LightSpector.dat">
+			<LogicalName>Resources.LightSpector.dat</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\CryptocurrencyPortfolio.json">
+			<LogicalName>Resources.CryptocurrencyPortfolio.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\Charts\Resources\HeadphoneComparison.dat">
+			<LogicalName>Resources.HeadphoneComparison.dat</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\TabView\Images\Companies_ElDepot.jpg">
+			<LogicalName>Companies_ElDepot.jpg</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\TabView\Images\Companies_KSMusic.jpg">
+			<LogicalName>Companies_KSMusic.jpg</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\TabView\Images\Companies_SuprMart.jpg">
+			<LogicalName>Companies_SuprMart.jpg</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\TabView\Images\Companies_TomClub.jpg">
+			<LogicalName>Companies_TomClub.jpg</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\DataForm\Images\arvil.jpg">
+			<LogicalName>arvil.jpg</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\TabView\Resources\CompaniesData.xml">
+			<LogicalName>Resources.CompaniesData.xml</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="DemoModules\TabView\Resources\PhoneListData.xml">
+			<LogicalName>Resources.PhoneListData.xml</LogicalName>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+		<ItemGroup>
+			<ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Data.v23.2'">
+				<IsTrimmable>true</IsTrimmable>
+			</ManagedAssemblyToLink>
+		</ItemGroup>
+	</Target>
+</Project>

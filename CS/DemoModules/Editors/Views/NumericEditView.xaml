@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
@@ -20,9 +21,9 @@
         <viewModel:NumericEditViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
             <dxe:NumericEdit
-                demo:DockLayout.Dock="Top" 
+                dx:DXDockLayout.Dock="Top" 
                 Value="{Binding Value}"
                 MinValue="{Binding MinValue}"
                 MaxValue="{Binding MaxValue}"
@@ -39,7 +40,7 @@
                 HelpText="{Binding ActualHelpText}"
                 TextHorizontalAlignment="{Binding UpDownIconsAlignment.TextAlignment}"
                 Margin="16,32,16,32"/>
-            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
+            <dx:DXSeparator dx:DXDockLayout.Dock="Top"/>
 
             <demo:ScrollViewFix>
                 <StackLayout Padding="0" Spacing="0">
@@ -54,7 +55,7 @@
                         <dxe:NumericEdit x:Name="stepValue" Grid.Column="2" LabelText="Step Value" Value="{Binding StepValue}" />
                     </Grid>
 
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Allow Looping" Style="{StaticResource TextStyle}"/>
@@ -62,7 +63,7 @@
                         </StackLayout>
                     </StackLayout>
 
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -70,7 +71,7 @@
                             <Switch x:Name="selectValueOnFocus" Style="{DynamicResource SwitchStyle}" IsToggled="{Binding SelectValueOnFocus}"/>
                         </StackLayout>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Display Format" Style="{StaticResource TextStyle}"/>
@@ -83,7 +84,7 @@
                             Style="{StaticResource ComboBoxStyleBase}"/>
                     </StackLayout>
 
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Up and Down Icons Alignment" Style="{StaticResource TextStyle}"/>
@@ -97,7 +98,7 @@
                             Style="{StaticResource ComboBoxStyleBase}"/>
                     </StackLayout>
 
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -106,7 +107,7 @@
                         </StackLayout>
                     </StackLayout>
 
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <Grid ColumnSpacing="8" Margin="16" ColumnDefinitions="0.5*, 0.5*">
                         <dxco:SimpleButton Text="Toggle Error"
@@ -119,6 +120,6 @@
                     </Grid>
                 </StackLayout>
             </demo:ScrollViewFix>
-        </demo:DockLayout>
+        </dx:DXDockLayout>
     </ContentPage.Content>
 </demo:DemoPage>

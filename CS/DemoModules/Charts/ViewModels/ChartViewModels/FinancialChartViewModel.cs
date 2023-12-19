@@ -3,7 +3,7 @@ using DevExpress.Maui.Charts;
 
 namespace DemoCenter.Maui.ViewModels {
     public class FinancialChartViewModel : ChartViewModelBase {
-        
+
         readonly DateTimeRange visualRange;
 
         public StockPrices StockPrices { get; }

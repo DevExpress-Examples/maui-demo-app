@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using SQLite;
-using Microsoft.Maui.Controls;
 using DemoCenter.Maui.DemoModules.Scheduler.Data.Reminders;
 
 namespace DemoCenter.Maui.ViewModels {
@@ -23,12 +22,12 @@ namespace DemoCenter.Maui.ViewModels {
         }
 
         public IEnumerable<ReminderAppointment> GetItems() {
-            lock (collisionLock) 
+            lock (collisionLock)
                 return (from i in database.Table<ReminderAppointment>() select i).ToList();
         }
         public ReminderAppointment GetItem(int id) {
-            lock (collisionLock) 
-                return database.Get<ReminderAppointment>(id);              
+            lock (collisionLock)
+                return database.Get<ReminderAppointment>(id);
         }
         public int DeleteItem(int id) {
             lock (collisionLock)

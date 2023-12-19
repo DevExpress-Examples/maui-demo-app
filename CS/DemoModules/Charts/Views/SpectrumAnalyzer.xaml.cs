@@ -1,13 +1,12 @@
 using System;
 using System.Timers;
 using DemoCenter.Maui.ViewModels;
-using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
     public partial class SpectrumAnalyzer : Demo.DemoPage {
         readonly LogarithmicScaleViewModel viewModel = new LogarithmicScaleViewModel();
         readonly Timer timer = new Timer();
-        bool isRunning = false;
+        bool isRunning;
 
         public SpectrumAnalyzer() {
             InitializeComponent();

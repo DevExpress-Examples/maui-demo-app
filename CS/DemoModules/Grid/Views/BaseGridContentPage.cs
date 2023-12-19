@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 namespace DemoCenter.Maui.Views {
@@ -8,7 +7,7 @@ namespace DemoCenter.Maui.Views {
             On<Microsoft.Maui.Controls.PlatformConfiguration.iOS>().SetUseSafeArea(false);
             BindData();
         }
-        
+
         async void BindData() {
             BindingContext = await Task.Run(LoadData);
         }

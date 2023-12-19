@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Threading.Tasks;
-using DemoCenter.Maui.DemoModules.TabView.Pages;
-using DemoCenter.Maui.ViewModels;
-using DevExpress.Maui.DataGrid;
-using DevExpress.Maui.Controls;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {

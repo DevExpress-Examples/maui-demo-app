@@ -18,7 +18,7 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public override List<ChartItemInfoContainerBase> Content => content;
     }
 
-    public class PointChartItemInfoContainer: ChartItemInfoContainerBase {        
+    public class PointChartItemInfoContainer : ChartItemInfoContainerBase {
         public PointChartItemInfoContainer(PointType type, ChartViewModelBase viewModel) {
             this.PointType = type;
             this.ChartModel = viewModel;
@@ -27,9 +27,12 @@ namespace DemoCenter.Maui.Charts.ViewModels {
         public string PointTypeImage {
             get {
                 switch (PointType) {
-                    case PointType.Point: return GetThemedImageName("demochartspoint");
-                    case PointType.Bubble: return GetThemedImageName("demochartsbubble");
-                    default: throw new ArgumentException("The selector cannot handle the passed PointType value.");
+                    case PointType.Point:
+                        return GetThemedImageName("demochartspoint");
+                    case PointType.Bubble:
+                        return GetThemedImageName("demochartsbubble");
+                    default:
+                        throw new ArgumentException("The selector cannot handle the passed PointType value.");
                 }
             }
         }

@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
@@ -17,10 +18,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <demo:DockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{DynamicResource BackgroundThemeColor}">
+        <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
             <dxe:CheckEdit
                 x:Name="edit"
-                demo:DockLayout.Dock="Top"
+                dx:DXDockLayout.Dock="Top"
                 Grid.Row="0"
                 IsChecked="True"
                 VerticalOptions="FillAndExpand"
@@ -36,7 +37,7 @@
                 LabelVerticalAlignment="{Binding LabelVerticalAlignment}"
                 LabelHorizontalAlignment="{Binding LabelHorizontalAlignment}"
                 CheckBoxAlignment="{Binding CheckBoxAlignment}"/>
-            <BoxView demo:DockLayout.Dock="Top" Style="{StaticResource SeparatorStyle}"/>
+            <dx:DXSeparator dx:DXDockLayout.Dock="Top"/>
 
             <demo:ScrollViewFix>
                 <StackLayout Spacing="0" Padding="0">
@@ -46,7 +47,7 @@
                             <Switch IsToggled="{Binding AllowIndeterminateInput}" Style="{DynamicResource SwitchStyle}"/>
                         </StackLayout>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="CheckBox Appearance" Style="{StaticResource TextStyle}"/>
@@ -55,7 +56,7 @@
                                           DisplayMember="LabelText"
                                           ItemsSource="{Binding AvailableGlyphs}"/>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
@@ -72,7 +73,7 @@
                             UseItemTemplateAsDisplayItemTemplate="True"
                             Style="{StaticResource ComboBoxStyleBase}"/>
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Label Vertical Alignment" Style="{StaticResource TextStyle}"/>
@@ -81,7 +82,7 @@
                             ItemsSource="{Binding TextAlignments}"
                             Style="{StaticResource ComboBoxStyleBase}" />
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Label Horizontal Alignment" Style="{StaticResource TextStyle}"/>
@@ -90,7 +91,7 @@
                             ItemsSource="{Binding TextAlignments}"
                             Style="{StaticResource ComboBoxStyleBase}" />
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="CheckBox Alignment" Style="{StaticResource TextStyle}"/>
@@ -99,7 +100,7 @@
                             ItemsSource="{Binding TextAlignments}"
                             Style="{StaticResource ComboBoxStyleBase}" />
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="CheckBox Position" Style="{StaticResource TextStyle}"/>
@@ -108,9 +109,9 @@
                             ItemsSource="{Binding CheckBoxPositions}"
                             Style="{StaticResource ComboBoxStyleBase}" />
                     </StackLayout>
-                    <BoxView Style="{StaticResource SeparatorStyle}"/>
+                    <dx:DXSeparator SideMargin="0"/>
                 </StackLayout>
             </demo:ScrollViewFix>
-        </demo:DockLayout>
+        </dx:DXDockLayout>
     </ContentPage.Content>
 </demo:DemoPage>

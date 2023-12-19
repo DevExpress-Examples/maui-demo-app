@@ -5,7 +5,11 @@ using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.Editors;
 
 namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
-    public class AccountFormViewModel : NotificationObject {
+    public partial class AccountFormViewModel : NotificationObject {
+
+        [GeneratedRegex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$")]
+        private static partial Regex PasswordRegex();
+
         BoxMode selectedBoxMode;
         public BoxMode SelectedBoxMode {
             get { return selectedBoxMode; }
@@ -17,7 +21,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             get { return notes; }
             set { SetProperty(ref notes, value); }
         }
-        bool notesHasError = false;
+        bool notesHasError;
         public bool NotesHasError {
             get { return notesHasError; }
             set { SetProperty(ref notesHasError, value); }
@@ -29,7 +33,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             set { SetProperty(ref email, value); }
         }
 
-        bool emailHasError = false;
+        bool emailHasError;
         public bool EmailHasError {
             get { return emailHasError; }
             set { SetProperty(ref emailHasError, value); }
@@ -41,7 +45,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             set { SetProperty(ref birthDate, value); }
         }
 
-        bool birthDateHasError = false;
+        bool birthDateHasError;
         public bool BirthDateHasError {
             get { return birthDateHasError; }
             set { SetProperty(ref birthDateHasError, value); }
@@ -53,7 +57,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             set { SetProperty(ref phone, value); }
         }
 
-        bool phoneHasError = false;
+        bool phoneHasError;
         public bool PhoneHasError {
             get { return phoneHasError; }
             set { SetProperty(ref phoneHasError, value); }
@@ -65,7 +69,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             set { SetProperty(ref login, value); }
         }
 
-        bool loginHasError = false;
+        bool loginHasError;
         public bool LoginHasError {
             get { return loginHasError; }
             set { SetProperty(ref loginHasError, value); }
@@ -77,7 +81,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             set { SetProperty(ref password, value); }
         }
 
-        bool passwordHasError = false;
+        bool passwordHasError;
         public bool PasswordHasError {
             get { return passwordHasError; }
             set { SetProperty(ref passwordHasError, value); }
@@ -104,7 +108,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         }
 
         bool CheckPassword() {
-            return Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$");
+            return PasswordRegex().IsMatch(password);
         }
     }
 }

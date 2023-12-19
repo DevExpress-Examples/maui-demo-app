@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.MultipleAxes"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -6,6 +6,7 @@
              xmlns:views="clr-namespace:DemoCenter.Maui.Views"
              xmlns:local="clr-namespace:DemoCenter.Maui"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="False">
@@ -88,16 +89,15 @@
     </demo:DemoPage.Resources>
     <demo:DemoPage.Content>
         <demo:Panel x:Name="panel">
-            <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}">
+            <Grid BackgroundColor="{dx:ThemeColor Surface}">
                 <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Label Text="Tuned engine characteristics"
-                   FontFamily="Roboto"
-                   TextColor="{DynamicResource TextThemeColor}"
+                   TextColor="{dx:ThemeColor OnSurface}"
                    Margin="0,8"
-                   BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                   BackgroundColor="{dx:ThemeColor Surface}"
                    HorizontalTextAlignment="Center"/>
 
             <dxc:ChartView x:Name="chart"

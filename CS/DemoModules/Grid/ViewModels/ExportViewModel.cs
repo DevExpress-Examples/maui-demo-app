@@ -3,12 +3,14 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using DemoCenter.Maui.DemoModules.Grid.Models;
 using DevExpress.Maui.Controls;
 using DevExpress.Maui.DataGrid;
 using Microsoft.Maui.ApplicationModel.DataTransfer;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
+#if PaidDemoModules
+using DemoCenter.Maui.DemoModules.Grid.Models;
+#endif
 
 namespace DemoCenter.Maui.DemoModules.Grid.ViewModels;
 
@@ -25,7 +27,9 @@ public enum PaperSize {
 }
 
 public class ExportViewModel : BindableObject {
+#if PaidDemoModules
     Exporter exporter;
+#endif
     bool isLandscape;
     BottomSheetState bottomSheetState;
     string fileName;
@@ -34,9 +38,9 @@ public class ExportViewModel : BindableObject {
         this.fileName = "SampleExport";
         this.bottomSheetState = BottomSheetState.Hidden;
         this.isLandscape = true;
-
+#if PaidDemoModules
         this.exporter = new Exporter(OnStartExport, OnEndExport, OnCancelExport);
-
+#endif
         SelectedFormat = ExportFormat.Pdf;
         SelectedPaperSize = PaperSize.A4;
     }
@@ -78,8 +82,11 @@ public class ExportViewModel : BindableObject {
         }
     }
 
+#if PaidDemoModules
     public bool IsInExport => this.exporter.IsInExport;
-
+#else
+    public bool IsInExport => false;
+#endif
     public ICommand ExportCommand => new Command<DataGridView>(PerformExport);
     public ICommand CancelExportCommand => new Command(CancelExport);
 
@@ -105,11 +112,15 @@ public class ExportViewModel : BindableObject {
     }
 
     void PerformExport(DataGridView grid) {
+#if PaidDemoModules
         this.exporter.Export(grid, ExportFilePath, SelectedFormat, SelectedPaperSize, LandscapeSelected);
+#endif
     }
 
     void CancelExport() {
+#if PaidDemoModules
         this.exporter.Cancel();
+#endif
     }
 
     void CloseBottomSheet() {

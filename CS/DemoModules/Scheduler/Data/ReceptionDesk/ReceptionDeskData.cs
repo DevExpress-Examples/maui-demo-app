@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using DevExpress.Maui.Scheduler.Internal;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui.ViewModels {
@@ -47,14 +46,14 @@ namespace DemoCenter.Maui.ViewModels {
     }
 
     public class ReceptionDeskData {
-        public static DateTime BaseDate = DateTime.Today;
+        public static readonly DateTime BaseDate = DateTime.Today;
 
-        public static string[] AppointmentTypes = { "Hospital", "Office", "Phone Consultation", "Home", "Hospice" };
+        public static readonly string[] AppointmentTypes = { "Hospital", "Office", "Phone Consultation", "Home", "Hospice" };
 
-        public static string[] PaymentStates = { "Paid", "Unpaid" };
-        public static Color[] PaymentStateColors = { Color.FromRgb(0xec, 0x70, 0x63), Color.FromRgb(0x45, 0xb3, 0x9d) };
+        public static readonly string[] PaymentStates = { "Paid", "Unpaid" };
+        public static readonly Color[] PaymentStateColors = { Color.FromRgb(0xec, 0x70, 0x63), Color.FromRgb(0x45, 0xb3, 0x9d) };
 
-        public static string[] PatientNames = { "Andrew Glover", "Mark Oliver", "Taylor Riley", "Addison Davis", "Benjamin Hughes", "Lucas Smith",
+        public static readonly string[] PatientNames = { "Andrew Glover", "Mark Oliver", "Taylor Riley", "Addison Davis", "Benjamin Hughes", "Lucas Smith",
                                     "Robert King", "Laura Callahan", "Miguel Simmons", "Isabella Carter", "Andrew Fuller", "Madeleine Russell",
                                     "Steven Buchanan", "Nancy Davolio", "Michael Suyama", "Margaret Peacock", "Janet Leverling", "Ariana Alexander",
                                     "Brad Farkus", "Bart Arnaz", "Arnie Schwartz", "Billy Zimmer", "Samantha Piper", "Maggie Boxter",
@@ -64,10 +63,10 @@ namespace DemoCenter.Maui.ViewModels {
                                     "Ed Holmes", "Sammy Hill", "Olivia Peyton", "Jim Packard", "Hannah Brookly", "Harv Mudd",
                                     "Todd Hoffman", "Kevin Carter","Mary Stern", "Robin Cosworth","Jenny Hobbs", "Dallas Lou"};
 
-        public static Dictionary<string, string[]> DepartmentCache = new Dictionary<string, string[]>();
+        public static readonly Dictionary<string, string[]> DepartmentCache = new Dictionary<string, string[]>();
 
         static Random rnd = new Random();
-        
+
         static ReceptionDeskData() {
             DepartmentCache.Add("Therapy", new string[] { "Lincoln Bartlett", "Amelia Harper", "Stu Pizaro", "Sandra Johnson", "Victor Norris" });
             DepartmentCache.Add("Ophthalmology", new string[] { "Lucy Ball" });
@@ -76,7 +75,7 @@ namespace DemoCenter.Maui.ViewModels {
             DepartmentCache.Add("Neurology", new string[] { "Samantha Bright" });
         }
         static TimeSpan CalculateAppointmentDuration(Doctor resource, int density) {
-            switch(resource.DepartmentId) {
+            switch (resource.DepartmentId) {
                 case 1:
                     return new TimeSpan(0, rnd.Next(2, 4) * 10, 0);
                 case 2:
@@ -173,7 +172,7 @@ namespace DemoCenter.Maui.ViewModels {
         void CreateLabels() {
             ObservableCollection<MedicalAppointmentType> result = new ObservableCollection<MedicalAppointmentType>();
             int count = AppointmentTypes.Length;
-            for(int i = 0; i < count; i++) {
+            for (int i = 0; i < count; i++) {
                 MedicalAppointmentType appointmentType = new MedicalAppointmentType();
                 appointmentType.Id = i;
                 appointmentType.Caption = AppointmentTypes[i];
@@ -185,7 +184,7 @@ namespace DemoCenter.Maui.ViewModels {
         void CreateStatuses() {
             ObservableCollection<PaymentState> result = new ObservableCollection<PaymentState>();
             int count = PaymentStates.Length;
-            for(int i = 0; i < count; i++) {
+            for (int i = 0; i < count; i++) {
                 PaymentState paymentState = new PaymentState();
                 paymentState.Id = i;
                 paymentState.Color = PaymentStateColors[i];
@@ -211,7 +210,7 @@ namespace DemoCenter.Maui.ViewModels {
 
         public ObservableCollection<Doctor> Doctors { get; private set; }
         public ObservableCollection<MedicalAppointment> MedicalAppointments { get; private set; }
-        public ObservableCollection<HospitalDepartment> HospitalDepartments { get; private set; } 
+        public ObservableCollection<HospitalDepartment> HospitalDepartments { get; private set; }
         public ObservableCollection<Patient> Patients { get; private set; }
         public ObservableCollection<PaymentState> Statuses { get; private set; }
         public ObservableCollection<MedicalAppointmentType> Labels { get; private set; }

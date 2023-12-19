@@ -11,7 +11,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
                 return callInfo?.Contact;
             return null;
         }
-        bool inNavigation = false;
+        bool inNavigation;
 
         public ContactsView() {
             InitializeComponent();

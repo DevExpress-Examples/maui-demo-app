@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<demo:DemoPage 
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DemoCenter.Maui.Views.ConverterDemo"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+    xmlns:dxi="clr-namespace:DevExpress.Maui.Core.Internal;assembly=DevExpress.Maui.Core"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+    xmlns:local="clr-namespace:DocxToPDFMAUI" Title="Convert Files" BackgroundColor="{dx:ThemeColor Surface}">
+
+    <dxi:DXScrollView Orientation="Vertical" HorizontalOptions="Fill">
+        <VerticalStackLayout HorizontalOptions="Center" Padding="0,16">
+            <dx:DXBorder CornerRadius="20" BackgroundColor="{dx:ThemeColor SurfaceVariant}" Margin="0">
+                <VerticalStackLayout HorizontalOptions="Center" Padding="24,0">
+                    <dx:DXButton Command="{Binding SelectFileCommand}" Content="Select a File" Margin="0, 30, 0, 20" Padding="32,12" Icon="file_upload_24px" />
+                    <HorizontalStackLayout HorizontalOptions="Center" IsVisible="{Binding IsFileSelected}">
+                        <dx:DXImage Source="file_24px" HeightRequest="16" Margin="0, 10, 0, 38" TintColor="{AppThemeBinding Light=Black, Dark=#CAC4D0}"/>
+                        <Label Text="{Binding SelectedFileName}" HorizontalOptions="Center" FontAttributes="Bold" Margin="4, 10, 0, 38" LineBreakMode="TailTruncation" TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
+                    </HorizontalStackLayout>
+                    <Label Text="Supported Formats:" HorizontalOptions="Center" IsVisible="{Binding IsFileSelectedInvert}" TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
+                    <Label Text="XLS, XLSX, HTML, DOC, DOCX" HorizontalOptions="Center" Margin="0, 10, 0, 20" FontAttributes="Bold" IsVisible="{Binding IsFileSelectedInvert}" TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
+                </VerticalStackLayout>
+            </dx:DXBorder>
+
+            <Label Text="Convert to:" FontSize="15" HorizontalOptions="Center" Margin="0,64,0,16" FontAttributes="Bold" TextColor="{dx:ThemeColor OnSurface}"/>
+
+            <dxe:ChoiceChipGroup ItemsSource="{Binding AvailableTargetFormats}" ChipBorderColor="Transparent" ChipBorderThickness="2" Padding="0" 
+                ChipSelectedBackgroundColor="Transparent" ChipSelectedBorderColor="{dx:ThemeColor OnSurface}" IsMultiline="True" ChipPadding="3" 
+                ChipCornerRadius="16" SelectedItem="{Binding SelectedTargetFormat, Mode=TwoWay}" HorizontalOptions="Center">
+                <dxe:ChoiceChipGroup.ChipContentTemplate>
+                    <DataTemplate>
+                        <dx:DXBorder CornerRadius="12" WidthRequest="52" HeightRequest="52" BackgroundColor="{dx:ThemeColor SurfaceVariant}">
+                            <dx:DXImage Source="{Binding Image}" Aspect="AspectFill" Margin="10" />
+                        </dx:DXBorder>
+                    </DataTemplate>
+                </dxe:ChoiceChipGroup.ChipContentTemplate>
+            </dxe:ChoiceChipGroup>
+
+            <dx:DXButton Content="Convert" Command="{Binding ConvertFileCommand}" Icon="refresh_24px" HorizontalOptions="Center" Margin="0,30,0,20" Padding="32,12" IsEnabled="{Binding IsFileSelectedInvert}"/>
+        </VerticalStackLayout>
+    </dxi:DXScrollView>
+</demo:DemoPage>

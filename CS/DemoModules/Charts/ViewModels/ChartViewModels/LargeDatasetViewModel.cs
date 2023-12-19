@@ -15,8 +15,7 @@ namespace DemoCenter.Maui.ViewModels {
         }
         public AddSeriesCommand AddSeries { get => addSeriesCommand; }
 
-        public LargeDatasetViewModel(ChartView chart)
-        {
+        public LargeDatasetViewModel(ChartView chart) {
             this.chart = chart;
             addSeriesCommand = new AddSeriesCommand((pointCount) => {
                 LineSeries lineSeries = new LineSeries();

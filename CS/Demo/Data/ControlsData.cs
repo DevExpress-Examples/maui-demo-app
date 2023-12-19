@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using DemoCenter.Maui.DemoModules.Popup.Views;
 using DemoCenter.Maui.Models;
 using DemoCenter.Maui.Views;
 
@@ -35,10 +33,23 @@ namespace DemoCenter.Maui.Data {
                 
                 
                 new DemoItem() {
+                    Title = "Toolbar Control",
+                    Description = "Demonstrates how to use DevExpress Toolbar control to create compact and adaptive action bars. The toolbar in this demo includes regular toolbar buttons, dropdowns, and a color picker. The control organizes commands into pages.",
+                    Module = typeof(ToolbarView),
+                    Icon = "edit",
+                    DemoItemStatus = DemoItemStatus.New,
+                },
+                new DemoItem() {
+                    Title = "Radial Gauge",
+                    Description = "Shows how to use DevExpress radial gauge and progress bar components to implement a dashboard panel. In this demo, the dashboard monitors appliances and sensors in a smart home. To align gauges on screen, we use DevExpress layout controls - DXStackLayout and DXDockLayout.",
+                    Icon = "radialgauge",
+                    Module = typeof(RadialGaugeView),
+                    DemoItemStatus = DemoItemStatus.New,
+                },
+                new DemoItem() {
                     Title = "Loading View",
                     Description = "This demo emulates an app that obtains its data from a remote server. While a load operation is in progress, the app switches to a Loading View. This view displays a skeleton layout with UI element placeholders with shimmer effects.",
                     Icon = "shimmer",
-                    DemoItemStatus = DemoItemStatus.New,
                     Module = typeof(ShimmerView),
                 },
                 new DemoItem() {

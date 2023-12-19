@@ -152,7 +152,7 @@ namespace DemoCenter.Maui.ViewModels {
         static Employee GetRandomEmployee() {
             return Employees[Random.Next(0, Employees.Count)];
         }
-        static IEnumerable<TeamCalendar> CreateCalendars() {
+        static TeamCalendar[] CreateCalendars() {
             return new TeamCalendar[] {
                 new TeamCalendar() { Id = 0, Name = "My Calendar" },
                 new TeamCalendar() { Id = 1, Name = "Team Calendar" },
@@ -250,7 +250,7 @@ namespace DemoCenter.Maui.ViewModels {
             };
             return apt;
         }
-        static IEnumerable<TeamAppointment> CreateMeetingAppointments(DateTime start) {
+        static List<TeamAppointment> CreateMeetingAppointments(DateTime start) {
             List<TeamAppointment> res = new List<TeamAppointment>() {
                 CreateMeetingRecurrenceAppointment("Weekly meeting", start.AddMonths(-6).Add(new TimeSpan(5, 14, 00, 0))),
                 CreateLunchAppointment(Employees[0], start.AddDays(1).AddHours(13)),
@@ -310,7 +310,7 @@ namespace DemoCenter.Maui.ViewModels {
             return apt;
         }
 
-        static IEnumerable<TeamAppointment> CreatePhoneCallsAppointments(DateTime start) {
+        static List<TeamAppointment> CreatePhoneCallsAppointments(DateTime start) {
             List<TeamAppointment> res = new List<TeamAppointment>() {
                 CreatePhoneCallAppointment(Employees[0], start.AddDays(0).AddHours(10)),
                 CreatePhoneCallAppointment(Employees[1], start.AddDays(3).AddHours(11)),
@@ -358,7 +358,7 @@ namespace DemoCenter.Maui.ViewModels {
             return apt;
         }
 
-        static IEnumerable<TeamAppointment> CreateVacationsAppointments(DateTime start) {
+        static TeamAppointment[] CreateVacationsAppointments(DateTime start) {
             return new[] {
                 new TeamAppointment() {
                     AppointmentType = (int)AppointmentType.Normal,
@@ -393,7 +393,7 @@ namespace DemoCenter.Maui.ViewModels {
             };
         }
 
-        static IEnumerable<TeamAppointment> CreateCarWashAppointments(DateTime start) {
+        static List<TeamAppointment> CreateCarWashAppointments(DateTime start) {
             List<TeamAppointment> res = new List<TeamAppointment>() {
                 CreateCarWashAppointment(start.AddDays(1).AddHours(17)),
             };
@@ -422,7 +422,7 @@ namespace DemoCenter.Maui.ViewModels {
             return apt;
         }
 
-        static IEnumerable<TeamAppointment> CreateCompanyBirthdayAppointments(DateTime start) {
+        static TeamAppointment[] CreateCompanyBirthdayAppointments(DateTime start) {
             DateTime newStart = new DateTime(start.Year - 1, start.Month, start.Day);
             newStart = newStart.AddDays(5);
             var apt = new TeamAppointment() {
@@ -448,7 +448,7 @@ namespace DemoCenter.Maui.ViewModels {
             return new[] { apt };
         }
 
-        static IEnumerable<TeamAppointment> CreateTrainingAppointments(DateTime start) {
+        static TeamAppointment[] CreateTrainingAppointments(DateTime start) {
             DateTime newStart = start.AddYears(-1).AddHours(8.5);
             var apt = new TeamAppointment() {
                 AppointmentType = (int)AppointmentType.Pattern,
@@ -470,7 +470,7 @@ namespace DemoCenter.Maui.ViewModels {
             return new[] { apt };
         }
 
-        static IEnumerable<TeamAppointment> CreatePayBillsAppointments(DateTime start) {
+        static TeamAppointment[] CreatePayBillsAppointments(DateTime start) {
             DateTime newStart = start.AddDays(2).AddYears(-1);
             var apt = new TeamAppointment() {
                 AppointmentType = (int)AppointmentType.Pattern,
@@ -493,7 +493,7 @@ namespace DemoCenter.Maui.ViewModels {
             return new[] { apt };
         }
 
-        static IEnumerable<TeamAppointment> CreateDentistAppointments(DateTime start) {
+        static List<TeamAppointment> CreateDentistAppointments(DateTime start) {
             List<TeamAppointment> res = new List<TeamAppointment>() {
                 CreateDentistAppointment(start.AddDays(4).AddHours(17.5)),
             };
@@ -518,7 +518,7 @@ namespace DemoCenter.Maui.ViewModels {
             return apt;
         }
 
-        static IEnumerable<TeamAppointment> CreateRestaurantAppointments(DateTime start) {
+        static List<TeamAppointment> CreateRestaurantAppointments(DateTime start) {
             List<TeamAppointment> res = new List<TeamAppointment>() {
                 CreateDinnerAppointment(start.AddDays(2).AddHours(19)),
                 CreateDinnerAppointment(start.AddDays(14).AddHours(19)),

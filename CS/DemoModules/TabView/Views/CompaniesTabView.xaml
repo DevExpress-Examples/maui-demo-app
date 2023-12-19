@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.CompaniesTabView"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              ios:Page.UseSafeArea="False"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             BackgroundColor="{dx:ThemeColor Surface}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="headerTemplate">
@@ -16,7 +17,6 @@
                                       ShowIcon="False"
                                       Text="{Binding CompanyName}"
                                       TextColor="#ffffff"
-                                      FontFamily="Roboto"
                                       FontSize="16"
                                       IsSelected="{Binding IsSelected}"/>
             </DataTemplate>
@@ -38,7 +38,7 @@
                                    Source="{Binding ImageSource}"
                                    VerticalOptions="StartAndExpand"
                                    HorizontalOptions="FillAndExpand"/>
-                            <Grid BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                            <Grid BackgroundColor="{dx:ThemeColor Surface}"
                                   Grid.Row="1"
                                   RowSpacing="30"
                                   ColumnSpacing="10"
@@ -69,55 +69,50 @@
                                                VerticalOptions="Start"
                                                HorizontalOptions="End"
                                                Margin="{OnPlatform Android='0,3,0,0', iOS='0'}"/>
-                                <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                <StackLayout BackgroundColor="{dx:ThemeColor Surface}"
                                              Grid.Column="1"
                                              Grid.Row="0"
                                              VerticalOptions="Start">
                                     <Label Text="{Binding ViewCity}"
                                            VerticalTextAlignment="Start"
                                            HorizontalTextAlignment="Start"
-                                           FontFamily="Roboto"
                                            FontSize="Medium"
-                                           TextColor="{DynamicResource NavigationTextColor}"
-                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                           TextColor="{dx:ThemeColor OnSurface}"
+                                           BackgroundColor="{dx:ThemeColor Surface}"/>
                                     <Label Text="{Binding ViewAddress}"
                                            VerticalTextAlignment="Start"
                                            HorizontalTextAlignment="Start"
-                                           FontFamily="Roboto"
                                            FontSize="Medium"
-                                           TextColor="{DynamicResource NavigationTextColor}"
-                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                           TextColor="{dx:ThemeColor OnSurface}"
+                                           BackgroundColor="{dx:ThemeColor Surface}"/>
                                 </StackLayout>
-                                <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                <StackLayout BackgroundColor="{dx:ThemeColor Surface}"
                                              Grid.Column="1"
                                              Grid.Row="1"
                                              VerticalOptions="Start">
                                     <Label Text="{Binding Phone}"
                                            VerticalTextAlignment="Start"
                                            HorizontalTextAlignment="Start"
-                                           FontFamily="Roboto"
                                            FontSize="Medium"
-                                           TextColor="{DynamicResource NavigationTextColor}"
-                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                           TextColor="{dx:ThemeColor OnSurface}"
+                                           BackgroundColor="{dx:ThemeColor Surface}"/>
                                     <Label Text="{Binding Fax}"
                                            VerticalTextAlignment="Start"
                                            HorizontalTextAlignment="Start"
-                                           FontFamily="Roboto"
                                            FontSize="Medium"
-                                           TextColor="{DynamicResource NavigationTextColor}"
-                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                           TextColor="{dx:ThemeColor OnSurface}"
+                                           BackgroundColor="{dx:ThemeColor Surface}"/>
                                 </StackLayout>
-                                <StackLayout BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                <StackLayout BackgroundColor="{dx:ThemeColor Surface}"
                                              Grid.Column="1"
                                              Grid.Row="2"
                                              VerticalOptions="Start">
                                     <Label Text="{Binding Website}"
                                            VerticalTextAlignment="Start"
                                            HorizontalTextAlignment="Start"
-                                           FontFamily="Roboto"
                                            FontSize="Medium"
-                                           TextColor="{DynamicResource NavigationTextColor}"
-                                           BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                           TextColor="{dx:ThemeColor OnSurface}"
+                                           BackgroundColor="{dx:ThemeColor Surface}"/>
                                 </StackLayout>
                             </Grid>
                         </Grid>

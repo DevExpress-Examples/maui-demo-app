@@ -8,21 +8,22 @@ namespace DemoCenter.Maui.ViewModels {
         public CompaniesData CompaniesData => this.companies;
 
         public CompaniesTabViewModel() {
-            this.companies = XmlDataDeserializer.GetData<CompaniesData>("Resources.CompaniesData.xml"); 
+            this.companies = XmlDataDeserializer.GetData<CompaniesData>("Resources.CompaniesData.xml");
         }
         public CompanyData SelectedItem {
             get => this.selectedItem;
             set => SetProperty(ref this.selectedItem, value, onChanged: (oldValue, newValue) => {
                 ResetSelectedItem(oldValue);
-                if(newValue != null) newValue.IsSelected = true;
+                if (newValue != null)
+                    newValue.IsSelected = true;
             });
         }
         void ResetSelectedItem(CompanyData oldValue) {
-            if(oldValue != null) {
+            if (oldValue != null) {
                 oldValue.IsSelected = false;
             } else {
-                foreach(CompanyData curentItem in this.companies) {
-                    if(curentItem.IsSelected) {
+                foreach (CompanyData curentItem in this.companies) {
+                    if (curentItem.IsSelected) {
                         curentItem.IsSelected = false;
                         return;
                     }

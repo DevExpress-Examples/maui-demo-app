@@ -2,59 +2,35 @@
 
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
                xmlns:dxcn="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
                xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.DetailInfoPage"
-               Title=""
-               BackgroundColor="{StaticResource CollectionViewPageBackground}"
-               Shell.ForegroundColor="{DynamicResource AccentColor}">
+               BackgroundColor="{dx:ThemeColor Surface}"
+               Title="">
+
     <ContentPage.Resources>
-        <Style x:Key="SeparatorStyle" TargetType="Border">
-            <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundThemeColor}" />
-            <Setter Property="HeightRequest" Value="1" />
-            <Setter Property="StrokeThickness" Value="1" />
-        </Style>
         <Style TargetType="Label">
-            <Setter Property="TextColor" Value="{StaticResource CollectionViewItemFontColor}"/>
+            <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
         </Style>
         <Style x:Key="AltText" TargetType="Label">
-            <Setter Property="TextColor" Value="{StaticResource CollectionViewAltText}"/>
+            <Setter Property="TextColor" Value="{dx:ThemeColor OnSurfaceVariant}"/>
             <Setter Property="Margin" Value="0, 5, 0, 0"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
-        <Style TargetType="dxcn:SimpleButton" x:Key="actionButton">
-            <Setter Property="HeightRequest" Value="60" />
-            <Setter Property="WidthRequest" Value="70" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="Margin" Value="8" />
-            <Setter Property="BackgroundColor" Value="White" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Shadow">
-                <Setter.Value>
-                    <Shadow Radius="20" Brush="Black"
-                            Opacity="0.15" />
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="Border" x:Key="propertyBorder">
+        <Style TargetType="dx:DXBorder">
             <Setter Property="Margin" Value="10,8,10,8" />
-            <Setter Property="BackgroundColor" Value="{StaticResource CollectionViewCardBarColor}" />
-            <Setter Property="StrokeShape" Value="RoundRectangle 10,10,10,10" />
+            <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}" />
+            <Setter Property="CornerRadius" Value="10" />
             <Setter Property="Padding" Value="16" />
-            <Setter Property="StrokeThickness" Value="0" />
-            <Setter Property="Shadow">
-                <Setter.Value>
-                    <Shadow Radius="20" Brush="{StaticResource CollectionViewPageBackground}" />
-                </Setter.Value>
-            </Setter>
         </Style>
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Clicked="EditItemClick" Text="Edit"
-                     IconImageSource="{AppThemeBinding Light=collectionview_crud_edit_light, Dark=collectionview_crud_edit_dark}"/>
+                     IconImageSource="collectionview_crud_edit"/>
         <ToolbarItem Clicked="DeleteItemClick" Text="Delete"
-                     IconImageSource="{AppThemeBinding Light=collectionview_crud_delete_light, Dark=collectionview_crud_delete_dark}" />
+                     IconImageSource="collectionview_crud_delete" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
@@ -67,119 +43,100 @@
                     <EllipseGeometry RadiusX="50" RadiusY="50" Center="50, 50" />
                 </Image.Clip>
             </Image>
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Label Text="{Binding Item.FirstName}" FontSize="24" FontAttributes="Bold"/>
-                <Label Text="{Binding Item.LastName}" Margin="10,0,0,0" FontSize="24" FontAttributes="Bold"/>
+            <Label FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="Item.FirstName" />
+                        <Binding Path="Item.LastName" />
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10" Spacing="16">
+                <dx:DXButton ButtonType="Filled" MinimumWidthRequest="70" IconPlacement="Top" Icon="collectionview_crud_message" Clicked="MessageClick"
+                    Content="Message" CornerRadius="8" FontAttributes="None" BackgroundColor="{dx:ThemeColor SurfaceVariant}"
+                    IconColor="{dx:ThemeColor Primary}" FontSize="12" IconWidth="24" IconHeight="24" IconIndent="2"/>
+
+                <dx:DXButton ButtonType="Filled" MinimumWidthRequest="70" IconPlacement="Top" Icon="collectionview_crud_phone" Clicked="CallClick"
+                    Content="Call" CornerRadius="8" FontAttributes="None" BackgroundColor="{dx:ThemeColor SurfaceVariant}"
+                    IconColor="{dx:ThemeColor Primary}" FontSize="12" IconWidth="24" IconHeight="24" IconIndent="2"/>
+
+                <dx:DXButton ButtonType="Filled" MinimumWidthRequest="70" IconPlacement="Top" Icon="collectionview_crud_mail" Clicked="MailClick"
+                    Content="Mail" CornerRadius="8" FontAttributes="None" BackgroundColor="{dx:ThemeColor SurfaceVariant}"
+                    IconColor="{dx:ThemeColor Primary}" FontSize="12" IconWidth="24" IconHeight="24" IconIndent="2"/>
             </HorizontalStackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0">
-                <dxcn:SimpleButton Style="{StaticResource actionButton}" Clicked="MessageClick"
-                                   BackgroundColor="{StaticResource CollectionViewCardBarColor}">
-                    <dxcn:SimpleButton.Content>
-                        <VerticalStackLayout>
-                            <dxcn:DXImage Source="collectionview_crud_message" WidthRequest="30" HeightRequest="30"
-                                          TintColor="{StaticResource AccentColor}" Margin="0,5,0,0" />
-                            <Label Text="Message" FontSize="12" HorizontalOptions="Center" />
-                        </VerticalStackLayout>
-                    </dxcn:SimpleButton.Content>
-                </dxcn:SimpleButton>
-                <dxcn:SimpleButton Style="{StaticResource actionButton}" Clicked="CallClick"
-                                   BackgroundColor="{StaticResource CollectionViewCardBarColor}">
-                    <dxcn:SimpleButton.Content>
-                        <VerticalStackLayout>
-                            <dxcn:DXImage Source="collectionview_crud_phone" WidthRequest="30" HeightRequest="30"
-                                          TintColor="{StaticResource AccentColor}" Margin="0,5,0,0" />
-                            <Label Text="Call" FontSize="12" HorizontalOptions="Center" />
-                        </VerticalStackLayout>
-                    </dxcn:SimpleButton.Content>
-                </dxcn:SimpleButton>
-                <dxcn:SimpleButton Style="{StaticResource actionButton}" Clicked="MailClick"
-                                   BackgroundColor="{StaticResource CollectionViewCardBarColor}">
-                    <dxcn:SimpleButton.Content>
-                        <VerticalStackLayout>
-                            <dxcn:DXImage Source="collectionview_crud_mail" WidthRequest="30" HeightRequest="30"
-                                          TintColor="{StaticResource AccentColor}" Margin="0,5,0,0" />
-                            <Label Text="Mail" FontSize="12" HorizontalOptions="Center" />
-                        </VerticalStackLayout>
-                    </dxcn:SimpleButton.Content>
-                </dxcn:SimpleButton>
-            </HorizontalStackLayout>
-            <Border Style="{StaticResource propertyBorder}">
+            <dx:DXBorder>
                 <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
                     <Label Text="Phone" FontAttributes="Bold" />
-                    <dxcn:SimpleButton Grid.Row="1" Clicked="CallClick" FontAttributes="None"
-                                       HorizontalContentAlignment="Start" VerticalContentAlignment="Center"
-                                       Text="{Binding Item.HomePhone}" Margin="0,5,0,0" HeightRequest="20"
-                                       TextColor="{StaticResource AccentColor}" BackgroundColor="Transparent"
-                                       Padding="0,0,0,0"
-                                       CornerRadius="0" HorizontalOptions="Start" />
-                    <dxcn:SimpleButton Grid.Column="1" Clicked="CopyPhoneClick" Grid.RowSpan="2" Text="C"
-                                       VerticalOptions="Center" Padding="0" BackgroundColor="Transparent"
-                                       WidthRequest="40" HeightRequest="40" TextColor="{StaticResource AccentColor}"
-                                       CornerRadius="22">
-                        <dxcn:DXImage TintColor="{StaticResource AccentColor}" WidthRequest="20" HeightRequest="20"
-                                      Source="collectionview_crud_copy" />
-                    </dxcn:SimpleButton>
+                    <Label Grid.Row="1" Margin="0,5,0,0" Text="{Binding Item.HomePhone}" 
+                        TextColor="{dx:ThemeColor Primary}" FontSize="16">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CallClick" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <dx:DXImage Grid.Column="1" Grid.RowSpan="2" Source="collectionview_crud_copy"
+                        TintColor="{dx:ThemeColor Primary}" WidthRequest="20" HeightRequest="20">
+                        <dx:DXImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CopyPhoneClick" />
+                        </dx:DXImage.GestureRecognizers>
+                    </dx:DXImage>
                 </Grid>
-            </Border>
-            <Border Style="{StaticResource propertyBorder}">
+            </dx:DXBorder>
+            <dx:DXBorder>
                 <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
                     <Label Text="Email" FontAttributes="Bold" />
-                    <dxcn:SimpleButton Grid.Row="1" Clicked="MailClick" FontAttributes="None"
-                                       Text="{Binding Item.Email}" Margin="0,5,0,0" HeightRequest="20"
-                                       TextColor="{DynamicResource AccentColor}" BackgroundColor="Transparent"
-                                       Padding="0,0,0,0"
-                                       CornerRadius="0" HorizontalOptions="Start" />
-                    <dxcn:SimpleButton Grid.Column="1" Clicked="CopyEmailClick" Grid.RowSpan="2" Text="C"
-                                       VerticalOptions="Center" Padding="0" BackgroundColor="Transparent"
-                                       WidthRequest="40" HeightRequest="40" TextColor="{DynamicResource AccentColor}"
-                                       CornerRadius="22">
-                        <dxcn:DXImage TintColor="{StaticResource AccentColor}"
-                                      WidthRequest="20" HeightRequest="20" Source="collectionview_crud_copy" />
-                    </dxcn:SimpleButton>
+                    <Label Grid.Row="1" Margin="0,5,0,0" Text="{Binding Item.Email}" 
+                        TextColor="{dx:ThemeColor Primary}" FontSize="16">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MailClick" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <dx:DXImage Grid.Column="1" Grid.RowSpan="2" Source="collectionview_crud_copy"
+                        TintColor="{dx:ThemeColor Primary}" WidthRequest="20" HeightRequest="20">
+                        <dx:DXImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CopyEmailClick" />
+                        </dx:DXImage.GestureRecognizers>
+                    </dx:DXImage>
                 </Grid>
-            </Border>
-            <Border Style="{StaticResource propertyBorder}">
+            </dx:DXBorder>
+            <dx:DXBorder>
                 <VerticalStackLayout>
                     <Label Text="Company" FontAttributes="Bold" />
                     <Label Text="{Binding Item.Company}" Style="{StaticResource AltText}" />
                 </VerticalStackLayout>
-            </Border>
-            <Border Style="{StaticResource propertyBorder}">
+            </dx:DXBorder>
+            <dx:DXBorder>
                 <VerticalStackLayout>
                     <Label Text="City" FontAttributes="Bold" />
                     <Label Text="{Binding Item.City}" Style="{StaticResource AltText}" />
                 </VerticalStackLayout>
-            </Border>
-            <Border Style="{StaticResource propertyBorder}">
+            </dx:DXBorder>
+            <dx:DXBorder>
                 <VerticalStackLayout>
                     <Label Text="Address" FontAttributes="Bold" />
                     <Label Text="{Binding Item.Address}" Style="{StaticResource AltText}" />
                 </VerticalStackLayout>
-            </Border>
-            <Border Style="{StaticResource propertyBorder}">
+            </dx:DXBorder>
+            <dx:DXBorder>
                 <VerticalStackLayout>
                     <Label Text="Zip" FontAttributes="Bold" />
                     <Label Text="{Binding Item.ZipCode}" Style="{StaticResource AltText}" />
                 </VerticalStackLayout>
-            </Border>
+            </dx:DXBorder>
             <dxcn:DXPopup x:Name="popup"
                           AllowScrim="True"
                           VerticalAlignment="Bottom"
-                          HorizontalAlignment="Stretch"
-                          Margin="16"
-                          CornerRadius="16"
-                          BackgroundColor="{StaticResource CollectionViewPageBackground}">
-                <VerticalStackLayout Padding="10">
+                          HorizontalAlignment="Center"
+                          Margin="24"
+                          CornerRadius="16">
+                <VerticalStackLayout Padding="32,16">
                     <Label Text="Do you want to delete the record?"
-                           Margin="0,20"
-                           HorizontalTextAlignment="Center" FontAttributes="Bold" />
-                    <Border Style="{StaticResource SeparatorStyle}" />
-                    <dxcn:SimpleButton Text="Delete" BackgroundColor="Transparent" HeightRequest="50"
-                                       FontAttributes="Bold" CornerRadius="0" TextColor="{DynamicResource AccentColor}"
-                                       Clicked="DeleteConfirmedClick" />
-                    <Border Style="{StaticResource SeparatorStyle}" />
-                    <dxcn:SimpleButton Text="Cancel" BackgroundColor="Transparent" HeightRequest="50" CornerRadius="0"
-                                       TextColor="{DynamicResource AccentColor}" Clicked="CancelDeleteClick" />
+                           Margin="0,0,0,16"
+                           HorizontalTextAlignment="Center" />
+                    <dx:DXSeparator Orientation="Horizontal" CapMargin="8" />
+                    <dx:DXButton ButtonType="Text" Content="Delete" Clicked="DeleteConfirmedClick"/>
+                    <dx:DXButton ButtonType="Text" Content="Cancel" Clicked="CancelDeleteClick"/>
                 </VerticalStackLayout>
             </dxcn:DXPopup>
         </VerticalStackLayout>

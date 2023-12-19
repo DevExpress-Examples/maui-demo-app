@@ -1,6 +1,5 @@
 using DevExpress.Maui.Editors;
 using DemoCenter.Maui.ViewModels;
-using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Views {
     public partial class ChipView : Demo.DemoPage {

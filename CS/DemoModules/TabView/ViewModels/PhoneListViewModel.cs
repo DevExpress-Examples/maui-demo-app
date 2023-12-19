@@ -11,7 +11,7 @@ namespace DemoCenter.Maui.ViewModels {
         PhoneListData categoryPhoneListData;
         GroupParameterName currentGroupParameter;
 
-        public PhoneListData PhoneListData => currentGroupParameter == GroupParameterName.Alphabeticaly? alphabeticalyPhoneListData: categoryPhoneListData;
+        public PhoneListData PhoneListData => currentGroupParameter == GroupParameterName.Alphabeticaly ? alphabeticalyPhoneListData : categoryPhoneListData;
         public GroupParameterName GroupParameter => currentGroupParameter;
         public bool IsLightTheme => Application.Current.RequestedTheme == AppTheme.Light;
         public PhoneListViewModel() {
@@ -27,17 +27,19 @@ namespace DemoCenter.Maui.ViewModels {
         PhoneListData GroupByParameter(GroupParameterName parameter) {
             Dictionary<string, PhoneList> result = new Dictionary<string, PhoneList>();
             result.Add("All", phoneList);
-            foreach(Contact contact in phoneList) {
+            foreach (Contact contact in phoneList) {
                 string groupedValue = GetGroupedValue(contact, parameter);
-                if (!result.ContainsKey(groupedValue)) {
-                    result.Add(groupedValue, new PhoneList());
+                if (!result.TryGetValue(groupedValue, out PhoneList value)) {
+                    value = new PhoneList();
+                    result.Add(groupedValue, value);
                 }
-                result[groupedValue].Add(contact);
+
+                value.Add(contact);
             }
             PhoneListData phoneListData = new PhoneListData(result.Count);
-            foreach(string group in result.Keys) {
+            foreach (string group in result.Keys) {
                 GroupedPhoneList groupedList = new GroupedPhoneList() { Contacts = result[group], GroupName = group };
-                if(GetShowGroupIcon(parameter)) {
+                if (GetShowGroupIcon(parameter)) {
                     groupedList.ShowGroupIcon = true;
                     groupedList.GroupIconSource = GetGroupIconSource(group);
                 }
@@ -55,15 +57,16 @@ namespace DemoCenter.Maui.ViewModels {
             get => selectedItem;
             set => SetProperty(ref selectedItem, value, onChanged: (oldValue, newValue) => {
                 ResetSelectedItem(oldValue);
-                if(newValue != null) newValue.IsSelected = true;
+                if (newValue != null)
+                    newValue.IsSelected = true;
             });
         }
         void ResetSelectedItem(GroupedPhoneList oldValue) {
             if (oldValue != null) {
                 oldValue.IsSelected = false;
             } else {
-                foreach(GroupedPhoneList curentItem in PhoneListData) {
-                    if(curentItem.IsSelected) {
+                foreach (GroupedPhoneList curentItem in PhoneListData) {
+                    if (curentItem.IsSelected) {
                         curentItem.IsSelected = false;
                         return;
                     }
@@ -71,11 +74,15 @@ namespace DemoCenter.Maui.ViewModels {
             }
         }
         ImageSource GetGroupIconSource(string groupName) {
-            switch(groupName) {
-                case "Star": return ImageSource.FromFile("demotabview_star");
-                case "Work": return ImageSource.FromFile("demotabview_work");
-                case "Family": return ImageSource.FromFile("demotabview_family");
-                case "All": return ImageSource.FromFile("demotabview_all");
+            switch (groupName) {
+                case "Star":
+                    return ImageSource.FromFile("demotabview_star");
+                case "Work":
+                    return ImageSource.FromFile("demotabview_work");
+                case "Family":
+                    return ImageSource.FromFile("demotabview_family");
+                case "All":
+                    return ImageSource.FromFile("demotabview_all");
                 default:
                     return string.Empty;
             }

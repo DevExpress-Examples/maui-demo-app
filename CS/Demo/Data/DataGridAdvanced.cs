@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DemoCenter.Maui.Data;
+﻿using System.Collections.Generic;
 using DemoCenter.Maui.Models;
 using DemoCenter.Maui.Views;
 
@@ -8,7 +6,7 @@ namespace DemoCenter.Maui.Data {
     public class DataGridAdvanced : IDemoData {
         readonly List<DemoItem> demoItems;
 
-        public DataGridAdvanced()  {
+        public DataGridAdvanced() {
             this.demoItems = new List<DemoItem>() {
                 new DemoItem() {
                     Title = "Drag and Drop",
@@ -26,7 +24,7 @@ namespace DemoCenter.Maui.Data {
                     Title = "Custom Appearance",
                     Description = "You can customize the appearance of specific rows and cells based on their position, values, or any other logic.",
                     Module = typeof(CustomAppearanceView),
-                    Icon = "customappearance"
+                    Icon = "gridcustomappearance"
                 },
                 new DemoItem() {
                     Title = "Row Auto Height",

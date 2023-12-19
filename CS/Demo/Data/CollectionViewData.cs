@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DemoCenter.Maui.Data;
+﻿using System.Collections.Generic;
 using DemoCenter.Maui.DemoModules.CollectionView.Views;
 using DemoCenter.Maui.Models;
 
@@ -19,14 +17,12 @@ namespace DemoCenter.Maui.Data {
                     Description = "Shows built-in filtering UI available in our Collection View control. Users can apply filter conditions to individual columns or to the entire control (construct a filter criteria of any complexity).",
                     Module = typeof(FilteringUIView),
                     Icon = "collectionview_filteringui",
-                    DemoItemStatus = DemoItemStatus.New
                 },
                 new DemoItem() {
                     Title = "CRUD Operations",
                     Description = "This demo implements a contact list. The list’s bound data source contains a few pre-defined contacts. You can edit existing records and add new people to the list. In both cases, you use the same contact edit form. Enter invalid values into editors on the form to see how our editors validate user input.",
                     Module = typeof(ContactsCRUDView),
                     Icon = "collectionview_contactscrud",
-                    DemoItemStatus = DemoItemStatus.New
                 },
                 new DemoItem() {
                     Title = "Swipe Actions",

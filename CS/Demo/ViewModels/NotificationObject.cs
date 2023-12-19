@@ -5,8 +5,8 @@ using System.Runtime.CompilerServices;
 
 namespace DemoCenter.Maui.ViewModels {
     public class NotificationObject : INotifyPropertyChanged {
-        protected bool SetProperty<T>(ref T backingStore, T value, Action onChanged = null, [CallerMemberName]string propertyName = "") {
-            if(EqualityComparer<T>.Default.Equals(backingStore, value))
+        protected bool SetProperty<T>(ref T backingStore, T value, Action onChanged = null, [CallerMemberName] string propertyName = "") {
+            if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
 
             backingStore = value;
@@ -15,8 +15,8 @@ namespace DemoCenter.Maui.ViewModels {
             return true;
         }
 
-        protected bool SetProperty<T>(ref T backingStore, T value, Action<T,T> onChanged, [CallerMemberName]string propertyName = "") {
-            if(EqualityComparer<T>.Default.Equals(backingStore, value))
+        protected bool SetProperty<T>(ref T backingStore, T value, Action<T, T> onChanged, [CallerMemberName] string propertyName = "") {
+            if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
             T oldValue = backingStore;
             backingStore = value;

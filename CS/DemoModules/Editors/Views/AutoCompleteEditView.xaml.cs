@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DemoCenter.Maui.DemoModules.Editors.ViewModels;
 using DemoCenter.Maui.DemoModules.Grid.Data;
+using DevExpress.Maui.Core;
+using DevExpress.Maui.Core.Internal;
 using DevExpress.Maui.Editors;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 
 namespace DemoCenter.Maui.Views {
@@ -13,7 +13,7 @@ namespace DemoCenter.Maui.Views {
 
         public AutoCompleteEditView() {
             InitializeComponent();
-            this.accentColor = App.Current.Resources["TextHighlightingColor"] as Color;
+            this.accentColor = ThemeManager.Theme.Scheme.Primary.OverrideAlpha(0.38);
             this.employees = new EmployeesRepository().Employees;
         }
 

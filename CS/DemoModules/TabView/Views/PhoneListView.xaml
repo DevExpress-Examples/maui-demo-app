@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.PhoneListView"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:dxc="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              ios:Page.UseSafeArea="False"
              x:Name="phoneListView"
-             BackgroundColor="{DynamicResource BackgroundThemeColor}">
+             BackgroundColor="{dx:ThemeColor Surface}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="headerTemplate">
@@ -16,7 +17,6 @@
                                       Text="{Binding GroupName}"
                                       TextColor="{DynamicResource PhoneListTabTextColor}"
                                       IconColor="{DynamicResource PhoneListTabIconColor}"
-                                      FontFamily="Roboto"
                                       FontSize="16"
                                       IsSelected="{Binding IsSelected}"
                                       SelectedColor="#2088ff"
@@ -27,14 +27,14 @@
                 <dxc:DXCollectionView ItemsSource="{Binding Contacts}"
                                             SelectionMode="None"
                                             ItemSize="70"
-                                            BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                            BackgroundColor="{dx:ThemeColor Surface}"
                                             ItemSpacing="1"
                                             IsScrollBarVisible="False"
                                             Margin="{OnIdiom Phone='16,0,0,0', Tablet='71,0,0,0'}">
                     <dxc:DXCollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0"
-                                    BackgroundColor="{DynamicResource BackgroundThemeColor}"
+                                    BackgroundColor="{dx:ThemeColor Surface}"
                                     Padding="10"
                                     ColumnSpacing="22"
                                     RowSpacing="0"
@@ -60,17 +60,15 @@
                                         HorizontalOptions="Start"/>
                                 <Label Grid.Column="1"
                                         Text="{Binding FullName}"
-                                        FontFamily="Roboto"
                                         FontSize="16"
-                                        TextColor="{DynamicResource TextThemeColor}"
-                                        BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                        TextColor="{dx:ThemeColor OnSurface}"
+                                        BackgroundColor="{dx:ThemeColor Surface}"/>
                                 <Label Grid.Row="1"
                                         Grid.Column="1"
                                         Text="{Binding Phone}"
-                                        FontFamily="Roboto"
                                         FontSize="16"
                                         TextColor="{DynamicResource PhoneThemeColor}"
-                                        BackgroundColor="{DynamicResource BackgroundThemeColor}"/>
+                                        BackgroundColor="{dx:ThemeColor Surface}"/>
                             </Grid>
                         </DataTemplate>
                     </dxc:DXCollectionView.ItemTemplate>

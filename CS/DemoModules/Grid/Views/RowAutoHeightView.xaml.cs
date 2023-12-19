@@ -4,7 +4,7 @@ using DemoCenter.Maui.DemoModules.Grid.ViewModels;
 namespace DemoCenter.Maui.Views {
     public partial class RowAutoHeightView : BaseGridContentPage {
         public RowAutoHeightView() {
-            InitializeComponent();   
+            InitializeComponent();
         }
 
         protected override object LoadData() {
