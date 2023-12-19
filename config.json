@@ -1,5 +1,5 @@
 {
   "autoGenerateVb": false,
   "runOnWeb": false,
-  "commonSln": "./CS/DataGridExample.sln"
+  "commonSln": "./CS/DemoCenter.Maui.sln"
 }
