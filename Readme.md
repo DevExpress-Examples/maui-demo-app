@@ -21,7 +21,7 @@ You can also refer to the following YouTube video to get started with the DevExp
 
 The demo application within this repository illustrates what’s possible with the **DevExpress Mobile UI for .NET MAUI** (it uses our .NET MAUI Data Grid, Editors, Charts, Scheduler, Data Form, etc).
 
-<img src="./Images/demos.png" alt="DevExpress Mobile UI for .NET MAUI" height="1000">
+<img src="./Images/demos-ipad.png" alt="DevExpress Mobile UI for .NET MAUI" height="1000">
 
 ## Documentation
 
