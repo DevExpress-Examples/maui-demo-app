@@ -10,11 +10,6 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
         ColorViewModel selectedBackgroundColor;
         ColorViewModel selectedIconColor;
         ColorViewModel selectedBorderColor;
-
-        
-        
-        
-        
         
         double borderWidth;
         bool shouldShowIcon;
@@ -32,11 +27,6 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             set => SetProperty(ref shouldShowBorder, value, () => BorderWidth = ShouldShowBorder ? DefaultBorderSize : 0);
         }
 
-        
-        
-        
-        
-        
         public double BorderWidth { get => borderWidth; set => SetProperty(ref borderWidth, value); }
 
         public SimpleButtonViewModel() {
@@ -44,16 +34,7 @@ namespace DemoCenter.Maui.DemoModules.Editors.ViewModels {
             SelectedTextColor = Colors[0];
             SelectedBackgroundColor = Colors[6];
             SelectedIconColor = Colors[0];
-            SelectedBorderColor = Colors[1];
-
-            
-            
-            
-            
+            SelectedBorderColor = Colors[1];   
         }
-
-        
-        
-        
     }
 }

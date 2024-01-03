@@ -7,7 +7,6 @@
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:viewmodels="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
     xmlns:local="clr-namespace:DemoCenter.Maui.Views"
     x:DataType="viewmodels:ApplicationDeploymentViewModel"
@@ -24,8 +23,8 @@
     <Grid>
         <dx:DXDockLayout VerticalSpacing="10"
                          StretchLastItem="False">
-            <dxco:SimpleButton dx:DXDockLayout.Dock="Bottom"
-                               Text="SUBMIT"
+            <dx:DXButton dx:DXDockLayout.Dock="Bottom"
+                               Content="SUBMIT"
                                Clicked="SubmitOnClicked"
                                Margin="{OnIdiom Phone='10,0,10,10', Tablet='40,0,40,40'}"/>
 
@@ -53,7 +52,7 @@
                             HeightRequest="162"
                             Margin="{OnIdiom Phone='0', Tablet='0, 50'}"
                             BackgroundColor="Transparent">
-                        <Image Source="{Binding AppIcon}"
+                        <dx:DXImage Source="{Binding AppIcon}"
                                WidthRequest="160"
                                HeightRequest="160" />
                     </Border>

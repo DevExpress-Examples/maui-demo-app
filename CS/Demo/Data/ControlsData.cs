@@ -8,30 +8,6 @@ namespace DemoCenter.Maui.Data {
 
         public ControlsData() {
             this.demoItems = new List<DemoItem>() {
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 new DemoItem() {
                     Title = "Toolbar Control",
                     Description = "Demonstrates how to use DevExpress Toolbar control to create compact and adaptive action bars. The toolbar in this demo includes regular toolbar buttons, dropdowns, and a color picker. The control organizes commands into pages.",

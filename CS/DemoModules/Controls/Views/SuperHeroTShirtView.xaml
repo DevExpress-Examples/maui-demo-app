@@ -29,9 +29,9 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 <Setter Property="Padding" Value="0,14,0,10"/>
                 <Setter Property="AllowDeselect" Value="False"/>
             </Style>
-            <Style x:Key="ChipGroupLayoutItemContainerStyle" TargetType="StackLayout">
+            <Style x:Key="ChipGroupLayoutItemContainerStyle" TargetType="dx:DXStackLayout">
                 <Setter Property="Margin" Value="0,16"/>
-                <Setter Property="Spacing" Value="0"/>
+                <Setter Property="ItemSpacing" Value="0"/>
             </Style>
              <ResourceDictionary.MergedDictionaries>
                 <demo:EditorsAndControlsResources/>
@@ -43,8 +43,8 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
            <demo:ScrollViewFix>
                 <dx:DXDockLayout StretchLastItem="false" Padding="16" WidthRequest="{OnIdiom Phone=NaN, Tablet=540}" Margin="{OnIdiom Phone=0, Tablet='0,26,0,0'}">
                     <Grid dx:DXDockLayout.Dock="Top" IsClippedToBounds="True" x:Name="container">
-                        <Image VerticalOptions="Start" Source="tshirt.png" Aspect="AspectFit" HeightRequest="{OnIdiom Phone=300, Tablet=400}"/>
-                        <Image x:Name="superhero" VerticalOptions="Start" Source="{Binding SelectedSuperhero}" HeightRequest="{OnIdiom Phone=300, Tablet=400}" Aspect="AspectFit" BackgroundColor="Transparent"/>
+                        <dx:DXImage VerticalOptions="Start" Source="tshirt.png" Aspect="AspectFit" HeightRequest="{OnIdiom Phone=300, Tablet=400}"/>
+                        <dx:DXImage x:Name="superhero" VerticalOptions="Start" Source="{Binding SelectedSuperhero}" HeightRequest="{OnIdiom Phone=300, Tablet=400}" Aspect="AspectFit" BackgroundColor="Transparent"/>
                     </Grid>
 
                     <VerticalStackLayout dx:DXDockLayout.Dock="Top" Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
@@ -75,7 +75,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                                                 ChipPadding="23,10"/>
                     </VerticalStackLayout>
 
-                    <dxco:SimpleButton Text="ADD TO CART" Icon="shopping_cart" dx:DXDockLayout.Dock="Top"/>
+                    <dx:DXButton Content="ADD TO CART" Icon="shopping_cart" dx:DXDockLayout.Dock="Top"/>
                 </dx:DXDockLayout>
             </demo:ScrollViewFix>
        </Grid>

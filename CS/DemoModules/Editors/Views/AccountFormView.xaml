@@ -5,7 +5,6 @@
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:converters="clr-namespace:DemoCenter.Maui.DemoModules.Editors.Converters"
     x:Class="DemoCenter.Maui.Views.AccountFormView"
@@ -99,7 +98,7 @@
                 LabelText="Notes"
                 MaxCharacterCountOverflowMode="LimitInput"
                 MaxCharacterCount="100"/>
-             <dxco:SimpleButton dx:DXDockLayout.Dock="Top" Text="SUBMIT" Clicked="OnSubmitClicked" FontAttributes="Bold" Margin="0,16,0,0"/>
+             <dx:DXButton dx:DXDockLayout.Dock="Top" Content="SUBMIT" Clicked="OnSubmitClicked" FontAttributes="Bold" Margin="0,16,0,0"/>
         </dx:DXDockLayout>
     </demo:ScrollViewFix>
 </demo:DemoPage>

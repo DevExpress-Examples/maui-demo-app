@@ -20,7 +20,7 @@
                 <resources:CollectionViewResources/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="dxco:SimpleButton">
+            <Style TargetType="dx:DXButton">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="PressedBackgroundColor" Value="#20000000"/>
                 <Setter Property="IconColor" Value="{dx:ThemeColor OnSurface}"/>
@@ -69,7 +69,7 @@
                                VerticalOptions="CenterAndExpand"
                                HorizontalOptions="Center"/>
                     </Grid>
-                    <StackLayout Grid.Column="1"
+                    <dx:DXStackLayout Grid.Column="1"
                                  Padding="18,1,18,7"
                                  Orientation="Vertical">
                         <Label Text="{Binding Name}"
@@ -77,14 +77,14 @@
                                TextColor="{dx:ThemeColor OnSurface}"/>
                         <Label Text="{Binding Phone}"
                                TextColor="{dx:ThemeColor Outline}"/>
-                    </StackLayout>
+                    </dx:DXStackLayout>
                     <demo:IconView Grid.Column="2"
                                    Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
                                    HorizontalOptions="EndAndExpand"
                                    VerticalOptions="CenterAndExpand"
                                    HeightRequest="20"
                                    WidthRequest="20"/>
-                    <dxco:SimpleButton Grid.Column="3"
+                    <dx:DXButton Grid.Column="3"
                                  HorizontalOptions="End"
                                  VerticalOptions="Center"
                                  Command="{Binding ItemCommand, Source={x:Reference contentPage}}"
@@ -118,7 +118,7 @@
                             <EllipseGeometry RadiusX="24" RadiusY="24" Center="24, 24" />
                         </Image.Clip>
                     </Image>
-                    <StackLayout Grid.Column="1"
+                    <dx:DXStackLayout Grid.Column="1"
                                  Padding="18,1,18,7"
                                  Orientation="Vertical">
                         <Label Text="{Binding Name}"
@@ -126,14 +126,14 @@
                                TextColor="{dx:ThemeColor OnSurface}"/>
                         <Label Text="{Binding Phone}"
                                TextColor="{dx:ThemeColor Outline}"/>
-                    </StackLayout>
+                    </dx:DXStackLayout>
                     <demo:IconView Grid.Column="2"
                                    Source="{Binding CallType, Converter={StaticResource callTypeIconConverter}}"
                                    HorizontalOptions="EndAndExpand"
                                    VerticalOptions="CenterAndExpand"
                                    HeightRequest="20"
                                    WidthRequest="20"/>
-                    <dxco:SimpleButton Grid.Column="3"
+                    <dx:DXButton Grid.Column="3"
                                  HorizontalOptions="End"
                                  VerticalOptions="Center"
                                  Command="{Binding ItemCommand, Source={x:Reference contentPage}}"
@@ -145,12 +145,12 @@
             </DataTemplate>
 
             <DataTemplate x:Key="groupItemTemplate">
-                <StackLayout Padding="2, 0, 18, 10">
+                <dx:DXStackLayout Padding="2, 0, 18, 10">
                     <Label Margin="0,20,0,1"
                            TextColor="{dx:ThemeColor OnSurfaceVariant}"
                            Text="{Binding Value, StringFormat='{0:d}', Converter={StaticResource upperCaseConverter}}"/>
                     <dx:DXSeparator SideMargin="0"/>
-                </StackLayout>
+                </dx:DXStackLayout>
             </DataTemplate>
 
             <views:ContactItemTemplateSelector x:Key="contactItemTemplateSelector"
@@ -160,7 +160,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{dx:ThemeColor Surface}">
+        <dx:DXStackLayout BackgroundColor="{dx:ThemeColor Surface}">
             <dxcv:DXCollectionView x:Name="collectionView"
                               AllowGroupCollapse="False"
                               GroupHeaderTemplate="{StaticResource groupItemTemplate}"
@@ -180,17 +180,17 @@
                          Placement="Bottom"
                          CornerRadius="8"
                          HorizontalAlignment="Left">
-                <StackLayout Padding="8,6">
-                    <dxco:SimpleButton Text="Call"
+                <dx:DXStackLayout Padding="8,6">
+                    <dx:DXButton Content="Call"
                                       Icon="popupphone"
                                       HorizontalOptions="Start"
                                       Clicked="OnCallClick"/>
-                    <dxco:SimpleButton Text="Remove"
+                    <dx:DXButton Content="Remove"
                                       Icon="collectionviewdeletetask"
                                       HorizontalOptions="Start"
                                       Clicked="OnRemoveClick"/>
-                </StackLayout>
+                </dx:DXStackLayout>
             </dxco:DXPopup>
-        </StackLayout>
+        </dx:DXStackLayout>
     </ContentPage.Content>
 </demo:DemoPage>

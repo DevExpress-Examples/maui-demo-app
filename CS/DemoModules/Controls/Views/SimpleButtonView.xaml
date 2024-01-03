@@ -22,16 +22,14 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
-            <dxco:SimpleButton
+            <dx:DXButton
                 dx:DXDockLayout.Dock="Top"
-                Text="Button"
-                CornerMode="{Binding SelectedCornerMode}"
+                Content="Button"
                 TextColor="{Binding SelectedTextColor.Color}"
                 BackgroundColor="{Binding SelectedBackgroundColor.Color}"
                 Icon="smile"
                 IconColor="{Binding SelectedIconColor.Color}"
                 IconIndent="7"
-                IconVisible="{Binding ShouldShowIcon}"
                 BorderColor="{Binding SelectedBorderColor.Color}"
                 BorderThickness="{Binding BorderWidth}"
                 HorizontalOptions="Center"
@@ -41,52 +39,50 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             <dx:DXSeparator dx:DXDockLayout.Dock="Top"/>
 
             <demo:ScrollViewFix>
-                <StackLayout Spacing="0" Padding="0">
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                <dx:DXStackLayout ItemSpacing="0" Padding="0">
+                    <dx:DXStackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Text Color" Style="{StaticResource TextStyle}"/>
                         <dxe:ComboBoxEdit StartIconColor="{Binding SelectedTextColor.Color}"
                                       SelectedItem="{Binding SelectedTextColor}"
                                       Style="{StaticResource ColorComboBoxStyle}"/>
-                    </StackLayout>
+                    </dx:DXStackLayout>
                     <dx:DXSeparator SideMargin="0"/>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                    <dx:DXStackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Background Color" Style="{StaticResource TextStyle}"/>
                         <dxe:ComboBoxEdit StartIconColor="{Binding SelectedBackgroundColor.Color}"
                                           SelectedItem="{Binding SelectedBackgroundColor}"
                                           Style="{StaticResource ColorComboBoxStyle}"/>
-                    </StackLayout>
+                    </dx:DXStackLayout>
                     <dx:DXSeparator SideMargin="0"/>
 
-                    
-
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                    <dx:DXStackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <dx:DXStackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Icon" Style="{StaticResource TextStyle}" />
                             <Switch IsToggled="{Binding ShouldShowIcon}" Style="{DynamicResource SwitchStyle}"/>
-                        </StackLayout>
+                        </dx:DXStackLayout>
                         <dxe:ComboBoxEdit StartIconColor="{Binding SelectedIconColor.Color}" IsVisible="{Binding ShouldShowIcon}"
                                           SelectedItem="{Binding SelectedIconColor}"
                                           Style="{StaticResource ColorComboBoxStyle}"/>
 
-                    </StackLayout>
+                    </dx:DXStackLayout>
                     <dx:DXSeparator SideMargin="0"/>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                    <dx:DXStackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <dx:DXStackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Border" Style="{StaticResource TextStyle}"/>
                             <Switch IsToggled="{Binding ShouldShowBorder}" Style="{DynamicResource SwitchStyle}"/>
-                        </StackLayout>
+                        </dx:DXStackLayout>
                         <dxe:ComboBoxEdit StartIconColor="{Binding SelectedBorderColor.Color}" IsVisible="{Binding ShouldShowBorder}"
                                           SelectedItem="{Binding SelectedBorderColor}"
                                           Style="{StaticResource ColorComboBoxStyle}"/>
-                        <StackLayout Style="{StaticResource SliderItemContainerStyle}" IsVisible="{Binding ShouldShowBorder}">
+                        <dx:DXStackLayout Style="{StaticResource SliderItemContainerStyle}" IsVisible="{Binding ShouldShowBorder}">
                             <Label Text="Border Size" Style="{StaticResource TextStyle}"/>
                             <Slider Value="{Binding BorderWidth}" Style="{StaticResource SliderStyle}"/>
-                        </StackLayout>
-                    </StackLayout>
+                        </dx:DXStackLayout>
+                    </dx:DXStackLayout>
                     <dx:DXSeparator SideMargin="0"/>
-                </StackLayout>
+                </dx:DXStackLayout>
             </demo:ScrollViewFix>
         </dx:DXDockLayout>
     </ContentPage.Content>

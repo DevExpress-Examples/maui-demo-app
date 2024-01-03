@@ -16,7 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <resources:CollectionViewResources />
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="dxco:SimpleButton">
+            <Style TargetType="dx:DXButton">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
                 <Setter Property="IconColor" Value="{dx:ThemeColor OnSurface}"/>
@@ -25,28 +25,28 @@
                 <Setter Property="PressedIconColor" Value="{dx:ThemeColor OnSurface}"/>
             </Style>
             <DataTemplate x:Key="urgentItemTemplate">
-                <StackLayout Margin="0" Spacing="0"
+                <dx:DXStackLayout Margin="0" ItemSpacing="0"
                              BackgroundColor="{dx:ThemeColor TertiaryContainer}">
                     <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" TextColor="{dx:ThemeColor OnTertiaryContainer}" />
                     <dx:DXSeparator SideMargin="0"/>
-                </StackLayout>
+                </dx:DXStackLayout>
             </DataTemplate>
 
             <DataTemplate x:Key="itemTemplate">
-                <StackLayout Margin="0" Spacing="0" BackgroundColor="{dx:ThemeColor Surface}">
+                <dx:DXStackLayout Margin="0" ItemSpacing="0" BackgroundColor="{dx:ThemeColor Surface}">
                     <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" />
                     <dx:DXSeparator SideMargin="0"/>
-                </StackLayout>
+                </dx:DXStackLayout>
             </DataTemplate>
 
             <DataTemplate x:Key="strikethroughItemTemplate">
-                <StackLayout Margin="0" Spacing="0">
+                <dx:DXStackLayout Margin="0" ItemSpacing="0">
                     <Label Style="{StaticResource DragDropTemplateStyle}"
                            Text="{Binding Name}"
                            TextDecorations="Strikethrough"
                            TextColor="{dx:ThemeColor OnSurfaceVariant}" />
                     <dx:DXSeparator SideMargin="0"/>
-                </StackLayout>
+                </dx:DXStackLayout>
             </DataTemplate>
 
             <local:ItemDataTemplateSelector x:Key="itemDataTemplateSelector"

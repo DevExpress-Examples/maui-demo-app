@@ -5,7 +5,6 @@
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
     ios:Page.UseSafeArea="False"
@@ -43,7 +42,7 @@
             <dx:DXSeparator dx:DXDockLayout.Dock="Top"/>
 
             <demo:ScrollViewFix>
-                <StackLayout Padding="0" Spacing="0">
+                <dx:DXStackLayout Padding="0" ItemSpacing="0">
                     <Grid Margin="16,18" ColumnSpacing="14">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -56,24 +55,24 @@
                     </Grid>
 
                     <dx:DXSeparator SideMargin="0"/>
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                    <dx:DXStackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <dx:DXStackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Allow Looping" Style="{StaticResource TextStyle}"/>
                             <Switch x:Name="allowLooping" Style="{DynamicResource SwitchStyle}" IsToggled="{Binding AllowLooping}"/>
-                        </StackLayout>
-                    </StackLayout>
+                        </dx:DXStackLayout>
+                    </dx:DXStackLayout>
 
                     <dx:DXSeparator SideMargin="0"/>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                    <dx:DXStackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <dx:DXStackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Select On Focus" Style="{StaticResource TextStyle}"/>
                             <Switch x:Name="selectValueOnFocus" Style="{DynamicResource SwitchStyle}" IsToggled="{Binding SelectValueOnFocus}"/>
-                        </StackLayout>
-                    </StackLayout>
+                        </dx:DXStackLayout>
+                    </dx:DXStackLayout>
                     <dx:DXSeparator SideMargin="0"/>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                    <dx:DXStackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Display Format" Style="{StaticResource TextStyle}"/>
                         <dxe:ComboBoxEdit
                             DisplayMember="Name"
@@ -82,11 +81,11 @@
                             ItemsSource="{Binding DisplayFormats}"
                             SelectedItem="{Binding DisplayFormat}"
                             Style="{StaticResource ComboBoxStyleBase}"/>
-                    </StackLayout>
+                    </dx:DXStackLayout>
 
                     <dx:DXSeparator SideMargin="0"/>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                    <dx:DXStackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Up and Down Icons Alignment" Style="{StaticResource TextStyle}"/>
                         <dxe:ComboBoxEdit
                             x:Name="alignmentComboBox"
@@ -96,29 +95,29 @@
                             ItemsSource="{Binding Alignments}"
                             SelectedItem="{Binding UpDownIconsAlignment}"
                             Style="{StaticResource ComboBoxStyleBase}"/>
-                    </StackLayout>
+                    </dx:DXStackLayout>
 
                     <dx:DXSeparator SideMargin="0"/>
 
-                    <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
-                        <StackLayout Style="{StaticResource SwitchItemContainerStyle}">
+                    <dx:DXStackLayout Style="{StaticResource LayoutItemContainerStyle}">
+                        <dx:DXStackLayout Style="{StaticResource SwitchItemContainerStyle}">
                             <Label Text="Is Up and Down Icons Visible" Style="{StaticResource TextStyle}"/>
                             <Switch x:Name="isUpDownIconVisible" Style="{DynamicResource SwitchStyle}" IsToggled="{Binding IsUpDownIconsVisible}"/>
-                        </StackLayout>
-                    </StackLayout>
+                        </dx:DXStackLayout>
+                    </dx:DXStackLayout>
 
                     <dx:DXSeparator SideMargin="0"/>
 
                     <Grid ColumnSpacing="8" Margin="16" ColumnDefinitions="0.5*, 0.5*">
-                        <dxco:SimpleButton Text="Toggle Error"
+                        <dx:DXButton Content="Toggle Error"
                                           Command="{Binding ToggleErrorCommand}"
                                           HorizontalOptions="FillAndExpand" />
-                        <dxco:SimpleButton Text="Reset to Default"
+                        <dx:DXButton Content="Reset to Default"
                                           Command="{Binding ResetToDefaultCommand}"
                                           HorizontalOptions="FillAndExpand"
-                                           Grid.Column="1"/>
+                                          Grid.Column="1"/>
                     </Grid>
-                </StackLayout>
+                </dx:DXStackLayout>
             </demo:ScrollViewFix>
         </dx:DXDockLayout>
     </ContentPage.Content>

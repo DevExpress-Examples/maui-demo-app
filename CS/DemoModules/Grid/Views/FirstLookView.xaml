@@ -61,7 +61,7 @@
                                 <ControlTemplate>
                                     <VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
                                         <Border>
-                                            <Image Source="pdf"/>
+                                            <dx:DXImage Source="pdf"/>
                                         </Border>
 
                                         <Label Text="PDF" />
@@ -74,7 +74,7 @@
                                 <ControlTemplate>
                                     <VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
                                         <Border>
-                                            <Image Source="xls"/>
+                                            <dx:DXImage Source="xls"/>
                                         </Border>
 
                                         <Label Text="EXCEL"/>
@@ -87,7 +87,7 @@
                                 <ControlTemplate>
                                     <VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
                                         <Border>
-                                            <Image Source="docx"/>
+                                            <dx:DXImage Source="docx"/>
                                         </Border>
 
                                         <Label Text="DOCX"/>
@@ -107,12 +107,12 @@
 
                     <dxe:ChoiceChipGroup dx:DXDockLayout.Dock="Top" Padding="0,25" ItemsSource="{u:EnumToItemsSource EnumType={x:Type vm:PaperSize}}" SelectedItem="{Binding SelectedPaperSize}"/>
 
-                    <dxc:SimpleButton HorizontalOptions="Fill" dx:DXDockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Text="Export" Icon="export_button" Command="{Binding ExportCommand}" CommandParameter="{x:Reference grid}"/>
+                    <dx:DXButton HorizontalOptions="Fill" dx:DXDockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Content="Export" Icon="export_button" Command="{Binding ExportCommand}" CommandParameter="{x:Reference grid}"/>
                 </dx:DXDockLayout>
 
                 <dx:DXDockLayout Margin="30,20" IsVisible="{Binding IsInExport}">
                     <ActivityIndicator IsRunning="True" Color="{dx:ThemeColor Primary}" dx:DXDockLayout.Dock="Top" Margin="30,80" WidthRequest="50"/>
-                    <dxc:SimpleButton HorizontalOptions="Fill" dx:DXDockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Text="Cancel Exporting" Command="{Binding CancelExportCommand}"/>
+                    <dx:DXButton HorizontalOptions="Fill" dx:DXDockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Content="Cancel Exporting" Command="{Binding CancelExportCommand}"/>
                 </dx:DXDockLayout>
             </Grid>
         </dxc:BottomSheet>
@@ -124,11 +124,11 @@
                     <dxg:TemplateColumn.DisplayTemplate>
                         <DataTemplate>
                             <Grid ColumnDefinitions="Auto,*" Padding="16,8" ColumnSpacing="16" IgnoreSafeArea="True">
-                                <Image Source="{Binding Item.Image}" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" HeightRequest="40">
-                                    <Image.Clip>
+                                <dx:DXImage Source="{Binding Item.Image}" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" HeightRequest="40">
+                                    <dx:DXImage.Clip>
                                         <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20" />
-                                    </Image.Clip>
-                                </Image>
+                                    </dx:DXImage.Clip>
+                                </dx:DXImage>
                                 <Label Text="{Binding Item.FullName}" TextColor="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}" VerticalOptions="Center" Grid.Column="1" FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}" FontSize="16"/>
                             </Grid>
                         </DataTemplate>
@@ -137,11 +137,11 @@
                 <dxg:TextColumn FieldName="GroupName" GroupCaptionDisplayFormat="{}{1}" IsGrouped="true" AllowExport="false">
                     <dxg:TextColumn.GroupCaptionTemplate>
                         <DataTemplate>
-                            <StackLayout Orientation="Horizontal">
+                            <dx:DXStackLayout Orientation="Horizontal">
                                 <dx:DXImage HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" TintColor="{dx:ThemeColor Primary}" Source="{Binding Converter={StaticResource DepartmentToImageConverter}}" VerticalOptions="Center"/>
                                 <Label TextColor="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}" Margin="9, 0, 0, 0" FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}" Text="{Binding GroupText}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" FontSize="16">
                                 </Label>
-                            </StackLayout>
+                            </dx:DXStackLayout>
                         </DataTemplate>
                     </dxg:TextColumn.GroupCaptionTemplate>
                 </dxg:TextColumn>

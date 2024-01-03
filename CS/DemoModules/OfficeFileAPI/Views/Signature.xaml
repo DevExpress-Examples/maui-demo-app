@@ -29,7 +29,7 @@
                         <viewmodels:DrawingViewMVVMBehavior x:Name="drawingMvvmBehavior" DrawingAcceptedCommand="{Binding SignPdfCommand}"/>
                     </toolkit:DrawingView.Behaviors>
                 </toolkit:DrawingView>
-                <dxc:SimpleButton Text="&#8634;" Command="{Binding Source={x:Reference drawingMvvmBehavior}, Path=ClearCommand}" VerticalOptions="Start" HorizontalOptions="End" Background="Transparent" TextColor="Black" FontSize="24" HeightRequest="40" WidthRequest="40" CornerRadius="20" Padding="0" Margin="24" />
+                <dx:DXButton Content="&#8634;" Command="{Binding Source={x:Reference drawingMvvmBehavior}, Path=ClearCommand}" VerticalOptions="Start" HorizontalOptions="End" Background="Transparent" TextColor="Black" FontSize="24" HeightRequest="40" WidthRequest="40" CornerRadius="20" Padding="0" Margin="24" />
                 <HorizontalStackLayout HorizontalOptions="End" Grid.Row="1" Margin="24">
                     <dx:DXButton Content="Cancel" Command="{Binding CloseSignatureViewCommand}" Margin="4,0" />
                     <dx:DXButton Content="Sign PDF" Command="{Binding Source={x:Reference drawingMvvmBehavior}, Path=AcceptDrawingCommand}" Margin="4,0" />

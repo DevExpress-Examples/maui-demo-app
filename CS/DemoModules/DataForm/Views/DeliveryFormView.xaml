@@ -8,7 +8,6 @@
     xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     ios:Page.UseSafeArea="False">
 
     <ContentPage.Resources>
@@ -19,7 +18,7 @@
 
     <Grid BackgroundColor="{dx:ThemeColor Surface}">
         <dx:DXDockLayout VerticalSpacing="10" StretchLastItem="False">
-            <dxco:SimpleButton dx:DXDockLayout.Dock="Bottom" Text="SUBMIT" Clicked="SubmitOnClicked"
+            <dx:DXButton dx:DXDockLayout.Dock="Bottom" Content="SUBMIT" Clicked="SubmitOnClicked"
                                Margin="{OnIdiom Phone='10,0,10,10', Tablet='40,0,40,40'}"/>
             <dxdf:DataFormView
                 BackgroundColor="Transparent"
