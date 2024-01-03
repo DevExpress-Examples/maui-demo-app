@@ -29,7 +29,7 @@ namespace DemoCenter.Maui.Data {
                     Module = typeof(ShimmerView),
                 },
                 new DemoItem() {
-                    Title = "Simple Button",
+                    Title = "Button",
                     Description = "Illustrates how to customize a button.",
                     Module = typeof(SimpleButtonView),
                     Icon = "simplebutton",
