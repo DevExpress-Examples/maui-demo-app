@@ -88,7 +88,7 @@ public class RadialGaugeViewModel : NotificationObject {
         this.ticker.Tick += OnIntervalTick;
         this.ticker.Start();
     }
-    
+
     internal void StopObserving() {
         this.ticker.Tick -= OnIntervalTick;
         this.ticker.Stop();

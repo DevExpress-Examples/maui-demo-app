@@ -8,14 +8,11 @@
                     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                     x:Class="DemoCenter.Maui.Demo.EditorsAndControlsResources">
 
-    <Style x:Key="SliderStyle" TargetType="Slider">
-        <Setter Property="Minimum" Value="0"/>
-        <Setter Property="Maximum" Value="8"/>
+    <Style x:Key="SliderStyle" TargetType="dxe:DXSlider">
+        <Setter Property="MinValue" Value="0"/>
+        <Setter Property="MaxValue" Value="8"/>
         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
         <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-        <Setter Property="ThumbColor" Value="{dx:ThemeColor Primary}"/>
-        <Setter Property="MinimumTrackColor" Value="{dx:ThemeColor Primary}"/>
-        <Setter Property="MaximumTrackColor" Value="{dx:ThemeColor SurfaceContainerHighest}"/>
     </Style>
 
     <Style x:Key="TextStyle" TargetType="Label">

@@ -31,15 +31,16 @@
                                DetailEditFormTemplate="{DataTemplate local:ContactEditingPage}"
                                DetailNewItemFormTemplate="{DataTemplate local:ContactEditingPage}"
                                DetailFormShowing="OnDetailFormShowing"
-                               ValidateAndSave="OnValidateAndSave">
+                               ValidateAndSave="OnValidateAndSave"
+                               ItemSeparatorThickness="0"
+                               GroupItemSeparatorThickness="0"
+                               UseRippleEffect="true"
+                               Tap="ItemClick">
             <dxcv:DXCollectionView.GroupItemAppearance>
-                <dxcv:CollectionViewGroupItemAppearance BackgroundColor="Transparent" BorderColor="Transparent"
-                                                        BorderThickness="0" TextColor="{dx:ThemeColor OnSurface}"
+                <dxcv:CollectionViewGroupItemAppearance BackgroundColor="Transparent"
+                                                        TextColor="{dx:ThemeColor OnSurface}"
                                                         FontSize="17" CaptionMargin="8,0" />
             </dxcv:DXCollectionView.GroupItemAppearance>
-            <dxcv:DXCollectionView.ItemAppearance>
-                <dxcv:CollectionViewItemAppearance BorderThickness="0" />
-            </dxcv:DXCollectionView.ItemAppearance>
             <dxcv:DXCollectionView.SortDescriptions>
                 <dxcv:SortDescription FieldName="FirstName" SortOrder="Ascending" />
             </dxcv:DXCollectionView.SortDescriptions>
@@ -48,7 +49,7 @@
             </dxcv:DXCollectionView.GroupDescription>
             <dxcv:DXCollectionView.ItemTemplate>
                 <DataTemplate>
-                    <dxe:FormItem Margin="8,4" TextFontSize="16" ShowSeparator="False" Tap="ItemClick" AllowTap="True"
+                    <dxe:FormItem Margin="8,4" TextFontSize="16" ShowSeparator="False" AllowTap="False"
                         TextColor="{dx:ThemeColor OnSurface}" Detail="{Binding Company}" DetailFontSize="14" DetailColor="{dx:ThemeColor OnSurface}">
                         <dxe:FormItem.Text>    
                             <MultiBinding StringFormat="{}{0} {1}">

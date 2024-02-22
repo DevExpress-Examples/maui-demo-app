@@ -5,7 +5,7 @@
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources" xmlns:compatibility="clr-namespace:Microsoft.Maui.Controls.Compatibility;assembly=Microsoft.Maui.Controls"
+             xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
              x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewLoadMoreView"
              ios:Page.UseSafeArea="False">
     <ContentPage.Resources>

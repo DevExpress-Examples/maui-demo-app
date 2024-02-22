@@ -47,58 +47,56 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <demo:Panel x:Name="panel">
-            <Grid BackgroundColor="{dx:ThemeColor Surface}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+        <Grid BackgroundColor="{dx:ThemeColor Surface}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <Label Text="G7 GDP per capita in 2017-2019"
-                       TextColor="{dx:ThemeColor OnSurface}"
-                       Margin="0,8"
-                       BackgroundColor="{dx:ThemeColor Surface}"
-                       HorizontalTextAlignment="Center"/>
+            <Label Text="G7 GDP per capita in 2017-2019"
+                    TextColor="{dx:ThemeColor OnSurface}"
+                    Margin="0,8"
+                    BackgroundColor="{dx:ThemeColor Surface}"
+                    HorizontalTextAlignment="Center"/>
 
-                <dxc:ChartView Grid.Row="1" SelectionMode="Single">
-                    <dxc:ChartView.SeriesDataTemplate>
-                        <dxc:SeriesTemplateAdapter DataSource="{Binding SeriesData}"
-                                                   SeriesDataMember="{Binding SeriesDataMember}"
-                                                   ArgumentDataMember="{Binding ArgumentDataMember}"
-                                                   SeriesTemplate="{StaticResource seriesTemplateSelector}">
-                            <dxc:SeriesTemplateAdapter.ValueDataMembers>
-                                 <dxc:ValueDataMember Type="Value" Member="Gdp"/>
-                            </dxc:SeriesTemplateAdapter.ValueDataMembers>
-                        </dxc:SeriesTemplateAdapter>
-                    </dxc:ChartView.SeriesDataTemplate>
+            <dxc:ChartView Grid.Row="1" SelectionMode="Single">
+                <dxc:ChartView.SeriesDataTemplate>
+                    <dxc:SeriesTemplateAdapter DataSource="{Binding SeriesData}"
+                                                SeriesDataMember="{Binding SeriesDataMember}"
+                                                ArgumentDataMember="{Binding ArgumentDataMember}"
+                                                SeriesTemplate="{StaticResource seriesTemplateSelector}">
+                        <dxc:SeriesTemplateAdapter.ValueDataMembers>
+                                <dxc:ValueDataMember Type="Value" Member="Gdp"/>
+                        </dxc:SeriesTemplateAdapter.ValueDataMembers>
+                    </dxc:SeriesTemplateAdapter>
+                </dxc:ChartView.SeriesDataTemplate>
 
-                    <dxc:ChartView.AxisY>
-                        <dxc:NumericAxisY AlwaysShowZeroLevel="False">
-                            <dxc:NumericAxisY.Style>
-                                <dxc:AxisStyle MajorTickmarksVisible="True"
-                                               MinorTickmarksVisible="True"/>
-                            </dxc:NumericAxisY.Style>
-                            <dxc:NumericAxisY.Title>
-                                <dxc:AxisTitle Text="Total GDP per capita, USD"/>
-                            </dxc:NumericAxisY.Title>
-                        </dxc:NumericAxisY>
-                    </dxc:ChartView.AxisY>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY AlwaysShowZeroLevel="False">
+                        <dxc:NumericAxisY.Style>
+                            <dxc:AxisStyle MajorTickmarksVisible="True"
+                                            MinorTickmarksVisible="True"/>
+                        </dxc:NumericAxisY.Style>
+                        <dxc:NumericAxisY.Title>
+                            <dxc:AxisTitle Text="Total GDP per capita, USD"/>
+                        </dxc:NumericAxisY.Title>
+                    </dxc:NumericAxisY>
+                </dxc:ChartView.AxisY>
 
-                    <dxc:ChartView.Legend>
-                        <dxc:Legend/>
-                    </dxc:ChartView.Legend>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend/>
+                </dxc:ChartView.Legend>
 
-                    <dxc:ChartView.Hint>
-                        <dxc:Hint>
-                            <dxc:Hint.Behavior>
-                                <dxc:TooltipHintBehavior />
-                            </dxc:Hint.Behavior>
-                        </dxc:Hint>
-                    </dxc:ChartView.Hint>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint>
+                        <dxc:Hint.Behavior>
+                            <dxc:TooltipHintBehavior />
+                        </dxc:Hint.Behavior>
+                    </dxc:Hint>
+                </dxc:ChartView.Hint>
 
-                </dxc:ChartView>
+            </dxc:ChartView>
 
-            </Grid>
-        </demo:Panel>
+        </Grid>
     </ContentPage.Content>
 </demo:DemoPage>

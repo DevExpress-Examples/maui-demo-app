@@ -19,52 +19,37 @@
         <local:BoolToStackOrientationConverter x:Key="boolToStackOrientationConverter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <demo:Panel x:Name="panel">
-            <Grid VerticalOptions="FillAndExpand"
-                  HorizontalOptions="FillAndExpand"
-                  BackgroundColor="{dx:ThemeColor Surface}">
+        <Grid x:Name="panel">
+            <Grid x:Name="grid1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Label Text="DevAV Sales by Region"
-                       HorizontalTextAlignment="Center"
-                       Margin="0,8,0,0"
-                       FontSize="Default"
-                       TextColor="{dx:ThemeColor OnSurface}"
-                       BackgroundColor="{dx:ThemeColor Surface}"/>
+                        HorizontalTextAlignment="Center"
+                        Margin="0,8,0,0"
+                        FontSize="Default"
+                        TextColor="{dx:ThemeColor OnSurface}"
+                        BackgroundColor="{dx:ThemeColor Surface}"/>
                 <dxc:PieChartView x:Name="pieChart"
-                                     Grid.Row="1"
-                                     SelectionBehavior="Hatch"
-                                     SelectionMode="Single">
-                    <dxc:PieChartView.Triggers>
-                        <DataTrigger TargetType="dxc:PieChartView"
-                                     Binding="{Binding Source={x:Reference panel}, Path=IsLandscape}"
-                                     Value="true">
-                            <Setter Property="Legend">
-                                <Setter.Value>
-                                    <dxc:Legend Orientation="TopToBottom"
-                                                   VerticalPosition="Center"
-                                                   HorizontalPosition="RightOutside"/>
-                                </Setter.Value>
-                            </Setter>
-                        </DataTrigger>
-                    </dxc:PieChartView.Triggers>
+                                        Grid.Row="1"
+                                        SelectionBehavior="Hatch"
+                                        SelectionMode="Single">
                     <dxc:PieChartView.ChartStyle>
                         <dxc:PieChartStyle Palette="{Binding Palette}"></dxc:PieChartStyle>
                     </dxc:PieChartView.ChartStyle>
                     <dxc:PieChartView.Legend>
                         <dxc:Legend Orientation="LeftToRight"
-                                       VerticalPosition="BottomOutside"
-                                       HorizontalPosition="Center">
+                                    VerticalPosition="BottomOutside"
+                                    HorizontalPosition="Center">
                         </dxc:Legend>
                     </dxc:PieChartView.Legend>
                     <dxc:PieChartView.Series>
                         <dxc:DonutSeries>
                             <dxc:PieSeries.Data>
                             <dxc:PieSeriesDataAdapter DataSource="{Binding PieSeriesData}"
-                                                         LabelDataMember="Label"
-                                                         ValueDataMember="Value"/>
+                                                        LabelDataMember="Label"
+                                                        ValueDataMember="Value"/>
                         </dxc:PieSeries.Data>
                             <dxc:DonutSeries.Label>
                                 <dxc:PieSeriesLabel TextPattern="{}${V}M" Position="Inside"/>
@@ -76,23 +61,21 @@
                     </dxc:PieChartView.Series>
                 </dxc:PieChartView>
             </Grid>
-            <Grid VerticalOptions="FillAndExpand"
-                  HorizontalOptions="FillAndExpand"
-                  BackgroundColor="{dx:ThemeColor Surface}">
+            <Grid x:Name="grid2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Label Text="{Binding SelectedItem, Source={x:Reference pieChart},  Converter={StaticResource chartTitleConverter}}"
-                       HorizontalTextAlignment="Center"
-                       HorizontalOptions="Center"
-                       Margin="0,8,0,0"
-                       FontSize="Default"
-                       TextColor="{dx:ThemeColor OnSurface}"
-                       BackgroundColor="{dx:ThemeColor Surface}"/>
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        Margin="0,8,0,0"
+                        FontSize="Default"
+                        TextColor="{dx:ThemeColor OnSurface}"
+                        BackgroundColor="{dx:ThemeColor Surface}"/>
                 <dxc:ChartView x:Name="chart"
-                                  Grid.Row="1"
-                                  SelectionMode="None">
+                                    Grid.Row="1"
+                                    SelectionMode="None">
                     <dxc:ChartView.AxisX>
                         <dxc:DateTimeAxisX MeasureUnit="Year">
                             <dxc:DateTimeAxisX.Range>
@@ -113,16 +96,16 @@
                         <dxc:Hint ShowMode="OnTap">
                             <dxc:Hint.Behavior>
                                 <dxc:CrosshairHintBehavior GroupHeaderVisible="false"
-                                                              ValueLineVisible="false"
-                                                              ValueLabelVisible="false"
-                                                              MaxSeriesCount="{Binding SeriesDataByYears.Count}"/>
+                                                                ValueLineVisible="false"
+                                                                ValueLabelVisible="false"
+                                                                MaxSeriesCount="{Binding SeriesDataByYears.Count}"/>
                             </dxc:Hint.Behavior>
                         </dxc:Hint>
                     </dxc:ChartView.Hint>
 
                     <dxc:ChartView.Series>
                         <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=Asia}"
-                                                  MarkersVisible="true">
+                                                    MarkersVisible="true">
                             <dxc:StackedAreaSeries.Data>
                                 <dxc:SeriesDataAdapter DataSource="{Binding SeriesDataByYears[0]}" ArgumentDataMember="Argument">
                                     <dxc:ValueDataMember Type="Value" Member="Value" />
@@ -141,7 +124,7 @@
                         </dxc:StackedAreaSeries>
 
                         <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=Australia}"
-                                                  MarkersVisible="true">
+                                                    MarkersVisible="true">
                             <dxc:StackedAreaSeries.Data>
                                 <dxc:SeriesDataAdapter DataSource="{Binding SeriesDataByYears[1]}" ArgumentDataMember="Argument">
                                     <dxc:ValueDataMember Type="Value" Member="Value" />
@@ -160,7 +143,7 @@
                         </dxc:StackedAreaSeries>
 
                         <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=Europe}"
-                                                  MarkersVisible="true">
+                                                    MarkersVisible="true">
                             <dxc:StackedAreaSeries.Data>
                                 <dxc:SeriesDataAdapter DataSource="{Binding SeriesDataByYears[2]}" ArgumentDataMember="Argument">
                                     <dxc:ValueDataMember Type="Value" Member="Value" />
@@ -179,7 +162,7 @@
                         </dxc:StackedAreaSeries>
 
                         <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=N. America}"
-                                                  MarkersVisible="true">
+                                                    MarkersVisible="true">
                             <dxc:StackedAreaSeries.Data>
                                 <dxc:SeriesDataAdapter DataSource="{Binding SeriesDataByYears[3]}" ArgumentDataMember="Argument">
                                     <dxc:ValueDataMember Type="Value" Member="Value" />
@@ -198,7 +181,7 @@
                         </dxc:StackedAreaSeries>
 
                         <dxc:StackedAreaSeries Visible="{Binding SelectedItem, Source={x:Reference pieChart}, Converter={StaticResource selectionConverter}, ConverterParameter=S. America}"
-                                                  MarkersVisible="true">
+                                                    MarkersVisible="true">
                             <dxc:StackedAreaSeries.Data>
                                 <dxc:SeriesDataAdapter DataSource="{Binding SeriesDataByYears[4]}" ArgumentDataMember="Argument">
                                     <dxc:ValueDataMember Type="Value" Member="Value" />
@@ -219,6 +202,6 @@
                     </dxc:ChartView.Series>
                 </dxc:ChartView>
             </Grid>
-        </demo:Panel>
+        </Grid>
     </ContentPage.Content>
 </demo:DemoPage>

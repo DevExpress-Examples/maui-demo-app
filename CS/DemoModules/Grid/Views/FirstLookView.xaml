@@ -14,13 +14,7 @@
         <local:DepartmentToImageConverter x:Key="DepartmentToImageConverter"/>
     </ContentPage.Resources>
     <Grid>
-        <dxc:BottomSheet x:Name="bottomSheet" BindingContext="{vm:ExportViewModel}" x:DataType="vm:ExportViewModel" State="{Binding BottomSheetState}" AllowedState="HalfExpanded">
-            <dxc:BottomSheet.HalfExpandedRatio>
-                <OnPlatform x:TypeArguments="x:Double">
-                    <On Platform="iOS" Value="{dx:OnScreenHeight ExtraLarge=0.37, Large=0.44, Medium=0.51, Small=0.62, ExtraSmall=0.70}"/>
-                    <On Platform="Android" Value="{dx:OnScreenHeight ExtraLarge=0.43, Large=0.5, Medium=0.57, Small=0.64, ExtraSmall=0.71}"/>
-                </OnPlatform>
-            </dxc:BottomSheet.HalfExpandedRatio>
+        <dxc:BottomSheet x:Name="bottomSheet" BindingContext="{vm:ExportViewModel}" UpdateSizeToContent="True" x:DataType="vm:ExportViewModel" State="{Binding BottomSheetState}" AllowedState="HalfExpanded">
             <Grid>
                 <dx:DXDockLayout Margin="30,20" IsVisible="{Binding IsInExport, Converter={u:InverseBoolConverter}}">
                     <dx:DXDockLayout.Resources>

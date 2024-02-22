@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<demo:DemoPage
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+        xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+        xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+        xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+        xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+        xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+        ios:Page.UseSafeArea="False"
+        x:Class="DemoCenter.Maui.Views.SlidersView">
+    <ContentPage.Resources>
+        <Style TargetType="Label" ApplyToDerivedTypes="True">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}" />
+        </Style>
+        <Style TargetType="dxe:DXSlider" x:Key="frequencySlider">
+            <Setter Property="Orientation" Value="Vertical" />
+            <Setter Property="ValueStep" Value="1" />
+            <Setter Property="MinValue" Value="-12" />
+            <Setter Property="MaxValue" Value="12" />
+            <Setter Property="TickmarkStep" Value="4" />
+            <Setter Property="HeightRequest" Value="{dx:OnDisplaySize ExtraSmall='135', Small='185', Medium='205', Large='250', ExtraLarge='350'}" />
+        </Style>
+        <Style TargetType="dx:DXWrapLayout" x:Key="rootWrapLayout">
+            <Setter Property="LineSpacing" Value="{dx:OnDisplaySize ExtraSmall='16', Small='32'}" />
+            <Setter Property="ItemSpacing" Value="{dx:OnDisplaySize ExtraSmall='16', Small='32'}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        
+            <dx:DXWrapLayout Padding="24,16,24,16" Orientation="Horizontal" Wrap="Regular" ItemAlignment="Fill" Style="{StaticResource rootWrapLayout}">
+                <dx:DXStackLayout dx:DXDockLayout.Dock="Top" Orientation="Vertical" ItemAlignment="SpaceBetween" ItemSpacing="{dx:OnDisplaySize ExtraSmall='16', Small='32'}">
+                    <dx:DXDockLayout dx:DXDockLayout.Dock="Top" VerticalSpacing="8">
+                        <Label dx:DXDockLayout.Dock="Top" Text="Mode" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                        <dxe:ComboBoxEdit x:Name="modeComboBox" dx:DXDockLayout.Dock="Top" HeightRequest="48" />
+                    </dx:DXDockLayout>
+
+                    <dx:DXDockLayout dx:DXDockLayout.Dock="Top" VerticalSpacing="8">
+                        <Label dx:DXDockLayout.Dock="Top" Text="Volume" />
+                        <dxe:DXSlider Orientation="Horizontal" MinValue="0" MaxValue="100" Value="25" />
+                    </dx:DXDockLayout>
+
+                    <dx:DXDockLayout dx:DXDockLayout.Dock="Top" VerticalSpacing="8">
+                        <Label dx:DXDockLayout.Dock="Top" Text="Frequency Filter" />
+                        <dxe:DXRangeSlider dx:DXDockLayout.Dock="Top" Orientation="Horizontal" MinValue="0" MaxValue="10" EndValue="7" StartValue="2" />
+                    </dx:DXDockLayout>
+                </dx:DXStackLayout>
+
+                <dx:DXStackLayout dx:DXDockLayout.Dock="Top" Orientation="Horizontal" ItemAlignment="FillUniform" BorderThickness="2">
+                    <dx:DXStackLayout ItemSpacing="8" Orientation="Vertical">
+                        <dxe:DXSlider x:Name="sliderF100" dx:DXDockLayout.Dock="Top" Value="0" Style="{StaticResource frequencySlider}" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="{Binding Value, Source={Reference sliderF100}, StringFormat='{0:F0} dB'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,16,0,0" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="100 Hz" FontAttributes="None" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </dx:DXStackLayout>
+
+                    <dx:DXStackLayout ItemSpacing="8" Orientation="Vertical">
+                        <dxe:DXSlider x:Name="sliderF400" dx:DXDockLayout.Dock="Top" Value="0" Style="{StaticResource frequencySlider}" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="{Binding Value, Source={Reference sliderF400}, StringFormat='{0:F0} dB'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,16,0,0" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="400 Hz" FontAttributes="None" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </dx:DXStackLayout>
+
+                    <dx:DXStackLayout ItemSpacing="8" Orientation="Vertical">
+                        <dxe:DXSlider x:Name="sliderF800" dx:DXDockLayout.Dock="Top" Value="0" Style="{StaticResource frequencySlider}" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="{Binding Value, Source={Reference sliderF800}, StringFormat='{0:F0} dB'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,16,0,0" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="800 Hz" FontAttributes="None" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </dx:DXStackLayout>
+
+                    <dx:DXStackLayout ItemSpacing="8" Orientation="Vertical">
+                        <dxe:DXSlider x:Name="sliderF4k" dx:DXDockLayout.Dock="Top" Value="0" Style="{StaticResource frequencySlider}" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="{Binding Value, Source={Reference sliderF4k}, StringFormat='{0:F0} dB'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,16,0,0" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="4 kHz" FontAttributes="None" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </dx:DXStackLayout>
+
+                    <dx:DXStackLayout ItemSpacing="8" Orientation="Vertical">
+                        <dxe:DXSlider x:Name="sliderF10k" dx:DXDockLayout.Dock="Top" Value="0" Style="{StaticResource frequencySlider}" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="{Binding Value, Source={Reference sliderF10k}, StringFormat='{0:F0} dB'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,16,0,0" />
+                        <Label dx:DXDockLayout.Dock="Top" Text="10 kHz" FontAttributes="None" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </dx:DXStackLayout>
+                </dx:DXStackLayout>
+            </dx:DXWrapLayout>
+        
+    </ContentPage.Content>
+
+</demo:DemoPage>

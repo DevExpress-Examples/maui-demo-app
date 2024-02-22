@@ -20,7 +20,7 @@
             </Style>
 
             <DataTemplate x:Key="compactTemplate">
-                <dx:DXDockLayout Margin="10" VerticalSpacing="10" StretchLastItem="False">
+                <dx:DXDockLayout Padding="16" VerticalSpacing="10" StretchLastItem="False">
                     <dx:DXDockLayout dx:DXDockLayout.Dock="Top" HorizontalSpacing="10" VerticalSpacing="7">
                         <Image dx:DXDockLayout.Dock="Left" Source="{Binding Photo}" Aspect="AspectFill" WidthRequest="62" HeightRequest="80"/>
                         <Label dx:DXDockLayout.Dock="Top" Text="{Binding Name}" />
@@ -28,7 +28,6 @@
                         <Label dx:DXDockLayout.Dock="Top" Text="{Binding Phone}" />
                     </dx:DXDockLayout>
                     <Label dx:DXDockLayout.Dock="Top" Text="{Binding Notes}" />
-                    <dx:DXSeparator dx:DXDockLayout.Dock="Top" />
                 </dx:DXDockLayout>
             </DataTemplate>
             <DataTemplate x:Key="detailedTemplate">
@@ -56,8 +55,7 @@
                             <Label Text="{Binding Address}"/>
                         </dx:DXDockLayout>
                     </dx:DXDockLayout>
-                    <Label Text="{Binding Notes}" Margin="0,16,0,0" />
-                    <dx:DXSeparator Margin="0,16,0,0"/>
+                    <Label Text="{Binding Notes}" Margin="0,16,0,16" />
                 </VerticalStackLayout>
             </DataTemplate>
         </ResourceDictionary>
@@ -67,7 +65,9 @@
             x:Name="collectionView"
             BackgroundColor="{dx:ThemeColor Surface}"
             ItemsSource="{Binding ItemSource}"
-            ItemTemplate="{OnIdiom Phone={StaticResource compactTemplate}, Tablet={StaticResource detailedTemplate}}">
+            ItemTemplate="{OnIdiom Phone={StaticResource compactTemplate}, Tablet={StaticResource detailedTemplate}}"
+            ItemSeparatorThickness="1"
+            ItemSeparatorCapMargin="16">
         </dxcv:DXCollectionView>
     </ContentPage.Content>
 </demo:DemoPage>

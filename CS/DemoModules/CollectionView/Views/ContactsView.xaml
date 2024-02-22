@@ -19,7 +19,7 @@
             <views:UpperCaseConverter x:Key="upperCaseConverter"/>
 
             <DataTemplate x:Key="iconItemTemplate">
-                <Grid Padding="{OnIdiom Phone='2, 8, 18, 7', Tablet='2, 8, 37, 7'}">
+                <Grid Padding="{OnIdiom Phone='16, 8, 18, 7', Tablet='37, 8, 37, 7'}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="*"/>
@@ -80,7 +80,7 @@
             </DataTemplate>
 
             <DataTemplate x:Key="photoItemTemplate">
-                <Grid Padding="{OnIdiom Phone='2, 8, 18, 7', Tablet='2, 8, 37, 7'}">
+                <Grid Padding="{OnIdiom Phone='16, 8, 18, 7', Tablet='37, 8, 37, 7'}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
                         <ColumnDefinition Width="*"/>
@@ -134,11 +134,10 @@
                                        IconTemplate="{StaticResource iconItemTemplate}"/>
 
             <DataTemplate x:Key="groupItemTemplate">
-                <StackLayout Padding="{OnIdiom Phone='2,0,18,10', Tablet='2,0,37,10'}">
+                <StackLayout Padding="{OnIdiom Phone='16,0,18,10', Tablet='37,0,37,10'}">
                     <Label Margin="0,20,0,4"
                            TextColor="{dx:ThemeColor OnSurfaceVariant}"
                            Text="{Binding Value, StringFormat='{0:d}', Converter={StaticResource upperCaseConverter}}"/>
-                    <dx:DXSeparator Orientation="Horizontal"/>
                 </StackLayout>
             </DataTemplate>
         </ResourceDictionary>
@@ -151,7 +150,9 @@
                                    ItemTemplate="{StaticResource contactItemTemplateSelector}"
                                    ItemsSource="{Binding Recent}"
                                    Tap="ItemSelected"
-                                   Margin="{OnIdiom Phone='16,0,0,0', Tablet='37,0,0,0'}">
+                                   GroupItemSeparatorThickness="1"
+                                   GroupItemSeparatorCapMargin="{OnIdiom Phone='16', Tablet='37'}"
+                                   UseRippleEffect="true">
                 <dxcv:DXCollectionView.GroupDescription>
                     <dxcv:GroupDescription FieldName="Date" SortOrder="Descending"/>
                 </dxcv:DXCollectionView.GroupDescription>

@@ -3,6 +3,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+                    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
                     xmlns:local="clr-namespace:DemoCenter.Maui.Views">
 
     
@@ -21,6 +22,14 @@
 
      <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{dx:ThemeColor Primary}" />
+    </Style>
+
+    <Style TargetType="dxe:EditBase" ApplyToDerivedTypes="True">
+        <Setter Property="TextVerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="dxe:MultilineEdit" ApplyToDerivedTypes="True">
+        <Setter Property="TextVerticalAlignment" Value="Start" />
     </Style>
 
     <Style TargetType="CheckBox">
