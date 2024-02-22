@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+               xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
+               xmlns:dxga="clr-namespace:DevExpress.Maui.Gauges;assembly=DevExpress.Maui.Gauges"
+               xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+               xmlns:local="clr-namespace:DemoCenter.Maui.Views"
+               x:Class="DemoCenter.Maui.Views.RadialProgressBarView"
+               x:DataType="vm:RadialProgressBarViewModel"
+               Title="RadialProgressBarView">
+    <demo:DemoPage.BindingContext>
+        <vm:RadialProgressBarViewModel />
+    </demo:DemoPage.BindingContext>
+    <demo:DemoPage.Resources>
+        <local:StatusToBoolConverter x:Key="StatusToBoolConverter"/>
+        <Style TargetType="dxga:RadialProgressBar" x:Key="RadialProgressBarStyle">
+            <Setter Property="AllowAnimation" Value="True" />
+            <Setter Property="StartAngle" Value="-90" />
+            <Setter Property="SweepAngle" Value="360" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Thickness" Value="8" />
+            <Setter Property="ValueIndicatorThickness" Value="8" />
+            <Setter Property="WidthRequest" Value="{dx:OnDisplaySize Medium=250, ExtraSmall=220}" />
+            <Setter Property="HeightRequest" Value="{dx:OnDisplaySize Medium=250, ExtraSmall=220}" />
+        </Style>
+        <Style TargetType="dx:DXButton" x:Key="DXButtonStyle">
+            <Setter Property="TextHorizontalAlignment" Value="Center" />
+            <Setter Property="BackgroundColor" Value="{dx:ThemeColor Primary}" />
+            <Setter Property="FontSize" Value="{dx:OnDisplaySize ExtraSmall=25, Medium=30 }" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="WidthRequest" Value="{dx:OnDisplaySize Medium=200, ExtraSmall=180}" />
+            <Setter Property="HeightRequest" Value="{dx:OnDisplaySize Medium=200, ExtraSmall=180}" />
+            <Setter Property="CornerRadius" Value="1000" />
+            <Setter Property="ZIndex" Value="1" />
+        </Style>
+    </demo:DemoPage.Resources>
+    
+    <Grid>
+        <Grid x:Name="grid1" RowDefinitions="*,*,*">
+            <dxga:RadialProgressBar Value="{Binding Progress}"
+                                    IsIndeterminate="{Binding Status, Converter={StaticResource StatusToBoolConverter}}"
+                                    Style="{StaticResource RadialProgressBarStyle}"
+                                    Grid.Row="1">
+                <dxga:RadialProgressBar.Content>
+                    <dx:DXButton Content="{Binding ButtonText}"
+                                 Command="{Binding TapCommand}"
+                                 Style="{StaticResource DXButtonStyle}" />
+                </dxga:RadialProgressBar.Content>
+            </dxga:RadialProgressBar>
+            <Label Grid.Row="2" VerticalOptions="Center" FormattedText="{Binding HelpMessage}" HorizontalTextAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="grid2" ColumnDefinitions="*,*">
+            <dxga:RadialProgressBar Value="{Binding Progress}"
+                                    IsIndeterminate="{Binding Status, Converter={StaticResource StatusToBoolConverter}}"
+                                    Style="{StaticResource RadialProgressBarStyle}">
+                <dxga:RadialProgressBar.Content>
+                    <dx:DXButton Content="{Binding ButtonText}"
+                                 Command="{Binding TapCommand}"
+                                 Style="{StaticResource DXButtonStyle}" />
+                </dxga:RadialProgressBar.Content>
+            </dxga:RadialProgressBar>
+            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" FormattedText="{Binding HelpMessage}" HorizontalTextAlignment="Center"/>
+        </Grid>
+    </Grid>
+</demo:DemoPage>

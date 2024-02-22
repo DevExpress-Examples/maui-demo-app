@@ -88,12 +88,11 @@
 
     </demo:DemoPage.Resources>
     <demo:DemoPage.Content>
-        <demo:Panel x:Name="panel">
-            <Grid BackgroundColor="{dx:ThemeColor Surface}">
-                <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <Grid BackgroundColor="{dx:ThemeColor Surface}">
+            <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
             <Label Text="Tuned engine characteristics"
                    TextColor="{dx:ThemeColor OnSurface}"
                    Margin="0,8"
@@ -242,7 +241,6 @@
                                    Orientation="LeftToRight"/>
                 </dxc:ChartView.Legend>
             </dxc:ChartView>
-            </Grid>
-        </demo:Panel>
+        </Grid>
     </demo:DemoPage.Content>
 </demo:DemoPage>

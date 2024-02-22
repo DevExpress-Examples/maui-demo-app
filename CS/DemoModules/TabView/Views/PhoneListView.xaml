@@ -28,9 +28,9 @@
                                             SelectionMode="None"
                                             ItemSize="70"
                                             BackgroundColor="{dx:ThemeColor Surface}"
-                                            ItemSpacing="1"
                                             IsScrollBarVisible="False"
-                                            Margin="{OnIdiom Phone='16,0,0,0', Tablet='71,0,0,0'}">
+                                            Margin="{OnIdiom Phone='16,0,0,0', Tablet='71,0,0,0'}"
+                                            ItemSpacing="1">
                     <dxc:DXCollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0"

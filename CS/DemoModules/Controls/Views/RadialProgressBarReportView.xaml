@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dxga="clr-namespace:DevExpress.Maui.Gauges;assembly=DevExpress.Maui.Gauges"
+             xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
+             x:Class="DemoCenter.Maui.Views.RadialProgressBarReportView"
+             Title="Test Results">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="RadialProgressBar" x:DataType="vm:TestReport">
+            <dxga:RadialProgressBar EndValue="{Binding TotalTestCount}"
+                                    Value="{Binding SuccessfulTestCount}"
+                                    StartAngle="180"
+                                    SweepAngle="180"
+                                    ValueIndicatorFill="{Binding TestColors[0]}"
+                                    Fill="{Binding TestColors[1]}"
+                                    StretchToFit="False"
+                                    HeightRequest="125"
+                                    WidthRequest="250"
+                                    Thickness="10"
+                                    ValueIndicatorThickness="10">
+                <dxga:RadialProgressBar.Content>
+                    <Label VerticalOptions="End" HorizontalOptions="Center" HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Name, StringFormat='{0} test passed'}" TextColor="{dx:ThemeColor Key=OnSurface}"/>
+                                <Span TextColor="{Binding TestColors[0]}" FontSize="40" FontAttributes="Bold">
+                                    <Span.Text>
+                                        <MultiBinding StringFormat="{}&#x0a;{0}/{1}">
+                                            <Binding Path="SuccessfulTestCount" />
+                                            <Binding Path="TotalTestCount" />
+                                        </MultiBinding>
+                                    </Span.Text>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </dxga:RadialProgressBar.Content>
+            </dxga:RadialProgressBar>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <Grid Padding="16" RowDefinitions="4*, *">
+        <dx:DXStackLayout x:Name="stackLayout"
+                          ItemsSource="{Binding Results}"
+                          ItemTemplate="{StaticResource RadialProgressBar}"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"
+                          ItemSpacing="{dx:OnDisplaySize Small=20, Medium=40, ExtraLarge=60}"/>
+        <dx:DXButton Content="Restart test" Tap="OnButtonTap" VerticalOptions="Center" WidthRequest="200" Grid.Row="1"/>
+    </Grid>
+</ContentPage>

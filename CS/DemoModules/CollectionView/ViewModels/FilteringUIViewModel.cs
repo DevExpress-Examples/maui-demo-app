@@ -10,12 +10,23 @@ namespace DemoCenter.Maui.ViewModels {
 
         public FilteringUIViewModel() {
             AddToFavoritesCommand = new Command<House>(AddToFavorites);
+            ChangeItemsLayoutCommand = new Command(ChangeItemsLayout);
             this.repository = new HouseSalesRepository();
             AddToFavorites(ItemsSource[1]);
             AddToFavorites(ItemsSource[3]);
             Update();
         }
 
+        bool isSingleColumn = true;
+        public bool IsSingleColumn {
+            get => this.isSingleColumn;
+            private set => SetProperty(ref this.isSingleColumn, value);
+        }
+        int columnsCount = 1;
+        public int ColumnsCount {
+            get => this.columnsCount;
+            set => SetProperty(ref this.columnsCount, value, () => IsSingleColumn = ColumnsCount == 1);
+        }
         int selectedTabIndex;
         public int SelectedTabIndex {
             get => this.selectedTabIndex;
@@ -34,6 +45,7 @@ namespace DemoCenter.Maui.ViewModels {
         public IList<House> ItemsSource => this.repository.Houses;
         public ObservableCollection<House> Favorites { get; } = new ObservableCollection<House>();
         public ICommand AddToFavoritesCommand { get; }
+        public ICommand ChangeItemsLayoutCommand { get; }
 
         void AddToFavorites(House house) {
             if (Favorites.Remove(house)) {
@@ -46,6 +58,10 @@ namespace DemoCenter.Maui.ViewModels {
         void Update() {
             IsHomeTabSelected = SelectedTabIndex == 0;
             IsFavoritesTabSelected = SelectedTabIndex == 1;
+        }
+        void ChangeItemsLayout() {
+            IsSingleColumn = !IsSingleColumn;
+            ColumnsCount = IsSingleColumn ? 1 : 2;
         }
     }
 }

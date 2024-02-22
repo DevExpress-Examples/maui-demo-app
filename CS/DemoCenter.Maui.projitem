@@ -8,7 +8,7 @@
 		<ApplicationTitle>DevExpress UI</ApplicationTitle>
 		<ApplicationId>com.devexpress.mauimobileui</ApplicationId>
 		<DXVer>23.2.4</DXVer>
-		<SkiaSharpVersion>2.88.6</SkiaSharpVersion>
+		<DevExpress_Data_FileName>DevExpress.Data.v23.2</DevExpress_Data_FileName>
 		<AssemblyVersion>$(DXVer)</AssemblyVersion>
 		<AssemblyFileVersion>$(DXVer)</AssemblyFileVersion>
 		<Company>Developer Express Inc.</Company>
@@ -18,37 +18,21 @@
 		<RootNamespace>DemoCenter.Maui</RootNamespace>
 		<AssemblyName>DemoCenter.Maui</AssemblyName>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<NoWarn>CA1422;CA1416;NU1603</NoWarn>
+		<NoWarn>CA1422;CA1416;NU1603;NU1504</NoWarn>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-		<DXPlatform Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">iOS</DXPlatform>
-		<DXPlatform Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">Android</DXPlatform>
-		<DXPlatformShort Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">i</DXPlatformShort>
-		<DXPlatformShort Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">a</DXPlatformShort> 
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DevExpress.Data" Version="23.2.*" />
-		<TrimmableAssembly Include="DevExpress.Data.v23.2" />
-
+		<TrimmableAssembly Include="$(DevExpress_Data_FileName)" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="SQLite" Version="3.13.0" />
 		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836" />
-
-		<PackageReference Include="System.Drawing.Common" Version="8.0.0" />
- 		<PackageReference Condition="$(DXPlatform) == 'Android'" Include="SkiaSharp.NativeAssets.Android" Version="$(SkiaSharpVersion)" />
-		<PackageReference Condition="$(DXPlatform) == 'iOS'" Include="SkiaSharp.NativeAssets.iOS" Version="$(SkiaSharpVersion)" />
-		<PackageReference Include="SkiaSharp" Version="$(SkiaSharpVersion)" />
-		<PackageReference Include="SkiaSharp.HarfBuzz" Version="$(SkiaSharpVersion)" />
-		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="$(SkiaSharpVersion)" />
-
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.3" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.3" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
-
 	</ItemGroup>
 
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
@@ -180,7 +164,7 @@
 
 	<Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
 		<ItemGroup>
-			<ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Data.v23.2'">
+			<ManagedAssemblyToLink Condition="'%(Filename)' == '$(DevExpress_Data_FileName)'">
 				<IsTrimmable>true</IsTrimmable>
 			</ManagedAssemblyToLink>
 		</ItemGroup>

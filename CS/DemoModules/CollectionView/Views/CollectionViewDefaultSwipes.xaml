@@ -25,7 +25,6 @@
                     <dxcv:SwipeContainer.ItemView>
                         <StackLayout Margin="0" Spacing="0" BackgroundColor="{dx:ThemeColor TertiaryContainer}">
                             <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" />
-                            <dx:DXSeparator SideMargin="0"/>
                         </StackLayout>
                     </dxcv:SwipeContainer.ItemView>
                     <dxcv:SwipeContainer.StartSwipeItems>
@@ -49,7 +48,6 @@
                     <dxcv:SwipeContainer.ItemView>
                         <StackLayout Margin="0" Spacing="0">
                             <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}"/>
-                            <dx:DXSeparator SideMargin="0"/>
                         </StackLayout>
                     </dxcv:SwipeContainer.ItemView>
                     <dxcv:SwipeContainer.StartSwipeItems>
@@ -81,7 +79,6 @@
                                    Text="{Binding Name}"
                                    TextDecorations="Strikethrough"
                                    TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
-                            <dx:DXSeparator SideMargin="0"/>
                         </StackLayout>
                     </dxcv:SwipeContainer.ItemView>
                     <dxcv:SwipeContainer.StartSwipeItems>
@@ -110,7 +107,9 @@
     <ContentPage.Content>
         <dxcv:DXCollectionView x:Name="collectionView"
                                ItemTemplate="{StaticResource itemDataTemplateSelector}"
-                               ItemsSource="{Binding ItemSource}">
+                               ItemsSource="{Binding ItemSource}"
+                               UseRippleEffect="True"
+                               ItemSeparatorThickness="1">
         </dxcv:DXCollectionView>
     </ContentPage.Content>
 </demo:DemoPage>

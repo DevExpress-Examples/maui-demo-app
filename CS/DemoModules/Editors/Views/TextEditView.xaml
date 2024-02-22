@@ -72,22 +72,22 @@
                         <Grid ColumnSpacing="0" RowSpacing="0"  RowDefinitions="auto, auto" ColumnDefinitions="0.5*, 0.5*">
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}">
                                 <demo:IconView Source="topleftcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding TopLeftCornerRadius}" Style="{StaticResource SliderStyle}"/>
+                                <dxe:DXSlider Value="{Binding TopLeftCornerRadius}" Style="{StaticResource SliderStyle}"/>
                             </StackLayout>
 
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Column="1">
                                 <demo:IconView Source="toprightcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding TopRightCornerRadius}" Style="{StaticResource SliderStyle}"/>
+                                <dxe:DXSlider Value="{Binding TopRightCornerRadius}" Style="{StaticResource SliderStyle}"/>
                             </StackLayout>
 
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Row="1">
                                 <demo:IconView Source="bottomleftcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding BottomLeftCornerRadius}" Style="{StaticResource SliderStyle}" IsEnabled="{Binding CanSetBottomCorners}"/>
+                                <dxe:DXSlider Value="{Binding BottomLeftCornerRadius}" Style="{StaticResource SliderStyle}" IsEnabled="{Binding CanSetBottomCorners}"/>
                             </StackLayout>
 
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Column="1" Grid.Row="1">
                                 <demo:IconView Source="bottomrightcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding BottomRightCornerRadius}" Style="{StaticResource SliderStyle}" IsEnabled="{Binding CanSetBottomCorners}"/>
+                                <dxe:DXSlider Value="{Binding BottomRightCornerRadius}" Style="{StaticResource SliderStyle}" IsEnabled="{Binding CanSetBottomCorners}"/>
                             </StackLayout>
 
                         </Grid>

@@ -19,9 +19,7 @@ namespace DemoCenter.Maui {
         public object TrueValue { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            var result = (bool)value ? TrueValue : FalseValue;
-            var typeConverter = TypeDescriptor.GetConverter(targetType);
-            return typeConverter.ConvertFrom(null, CultureInfo.InvariantCulture, result);
+            return (bool)value ? TrueValue : FalseValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
@@ -65,9 +63,9 @@ namespace DemoCenter.Maui {
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => null;
     }
 
-    public class BoolToFileImageSourceConverter : IValueConverter {
-        public FileImageSource FalseSource { get; set; }
-        public FileImageSource TrueSource { get; set; }
+    public class BoolToImageSourceConverter : IValueConverter {
+        public ImageSource FalseSource { get; set; }
+        public ImageSource TrueSource { get; set; }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (!(value is bool)) {

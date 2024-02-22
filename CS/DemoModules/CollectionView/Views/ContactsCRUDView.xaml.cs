@@ -7,6 +7,7 @@ using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.Core;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
+using DevExpress.Maui.CollectionView;
 
 namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
     public partial class ContactsCRUDView : Demo.DemoPage {
@@ -33,11 +34,11 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
             Localizer.StringLoader = new MyStringLoader();
         }
 
-        void ItemClick(object sender, EventArgs e) {
-            if (this.inNavigation)
+        void ItemClick(object sender, CollectionViewGestureEventArgs e) {
+            if (this.inNavigation || e.Item == null)
                 return;
             this.inNavigation = true;
-            Contact clickedContact = (Contact)((FormItem)sender).BindingContext;
+            Contact clickedContact = (Contact)e.Item;
             this.collectionView.ShowDetailForm(this.collectionView.FindItemHandle(clickedContact), true);
         }
         void AddButtonClick(object sender, EventArgs e) {

@@ -16,46 +16,44 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <demo:Panel>
-            <Grid BackgroundColor="{dx:ThemeColor Surface}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <StackLayout Orientation="Horizontal"
-                             HorizontalOptions="Center"
-                             Margin="0,8">
-                    <Label Text="Total Points Count:"
-                           TextColor="{dx:ThemeColor OnSurface}"
-                           BackgroundColor="{dx:ThemeColor Surface}"/>
-                    <Label Text="{Binding TotalPointsCount}"
-                           TextColor="{dx:ThemeColor OnSurface}"
-                           BackgroundColor="{dx:ThemeColor Surface}"/>
-                </StackLayout>
-                <StackLayout Grid.Row="1"
-                             Orientation="Horizontal"
-                             HorizontalOptions="Center">
-                    <Button Text="+100K"
-                            Style="{StaticResource buttonStyle}"
-                            Command="{Binding AddSeries}"
-                            CommandParameter="100000"/>
-                    <Grid WidthRequest="10"/>
-                    <Button Text="+250K"
-                            Style="{StaticResource buttonStyle}"
-                            Command="{Binding AddSeries}"
-                            CommandParameter="250000"/>
-                    <Grid WidthRequest="10"/>
-                    <Button Text="+500K"
-                            Style="{StaticResource buttonStyle}"
-                            Command="{Binding AddSeries}"
-                            CommandParameter="500000"/>
-                </StackLayout>
-                <dxc:ChartView x:Name="chart"
-                                  Grid.Row="2"
-                                  AxisXNavigationMode="ScrollingAndZooming"
-                                  AxisYNavigationMode="ScrollingAndZooming"/>
-            </Grid>
-        </demo:Panel>
+        <Grid BackgroundColor="{dx:ThemeColor Surface}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal"
+                            HorizontalOptions="Center"
+                            Margin="0,8">
+                <Label Text="Total Points Count:"
+                        TextColor="{dx:ThemeColor OnSurface}"
+                        BackgroundColor="{dx:ThemeColor Surface}"/>
+                <Label Text="{Binding TotalPointsCount}"
+                        TextColor="{dx:ThemeColor OnSurface}"
+                        BackgroundColor="{dx:ThemeColor Surface}"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                            Orientation="Horizontal"
+                            HorizontalOptions="Center">
+                <Button Text="+100K"
+                        Style="{StaticResource buttonStyle}"
+                        Command="{Binding AddSeries}"
+                        CommandParameter="100000"/>
+                <Grid WidthRequest="10"/>
+                <Button Text="+250K"
+                        Style="{StaticResource buttonStyle}"
+                        Command="{Binding AddSeries}"
+                        CommandParameter="250000"/>
+                <Grid WidthRequest="10"/>
+                <Button Text="+500K"
+                        Style="{StaticResource buttonStyle}"
+                        Command="{Binding AddSeries}"
+                        CommandParameter="500000"/>
+            </StackLayout>
+            <dxc:ChartView x:Name="chart"
+                                Grid.Row="2"
+                                AxisXNavigationMode="ScrollingAndZooming"
+                                AxisYNavigationMode="ScrollingAndZooming"/>
+        </Grid>
     </ContentPage.Content>
 </demo:DemoPage>

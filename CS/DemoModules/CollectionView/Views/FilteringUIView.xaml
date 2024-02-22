@@ -1,24 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-             xmlns:utils="clr-namespace:DemoCenter.Maui"
-             x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.FilteringUIView"
-             x:Name="page">
+<demo:AdaptivePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+    xmlns:utils="clr-namespace:DemoCenter.Maui"
+    x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.FilteringUIView" 
+    x:Name="page">
     <ContentPage.Resources>
+        <utils:BoolToImageSourceConverter x:Key="boolToImageSourceConverter" TrueSource="filteringui_grid" FalseSource="filteringui_linear"/>
         <utils:BoolToColorConverter x:Key="addToFavoriteBackgroundConverter" TrueSource="{dx:ThemeColor Tertiary}" FalseSource="{dx:ThemeColor SurfaceVariant}"/>
         <utils:BoolToColorConverter x:Key="addToFavoriteStrokeConverter" TrueSource="{dx:ThemeColor SurfaceVariant}" FalseSource="{dx:ThemeColor Tertiary}"/>
         <utils:BoolToColorConverter x:Key="selectedTabHeaderBackgroundConverter" TrueSource="{dx:ThemeColor SurfaceVariant}" FalseSource="Transparent"/>
         <utils:BoolToColorConverter x:Key="selectedTabHeaderTextColorConverter" TrueSource="{dx:ThemeColor OnSurface}" FalseSource="{dx:ThemeColor OnSurfaceVariant}"/>
         <utils:EnumToDescriptionConverter x:Key="enumToDesriptionConverter"/>
         <DataTemplate x:Key="houseCardTemplate">
-            <dx:DXBorder Margin="{OnIdiom Phone='18,9,18,9', Tablet='40,20,40,20'}"
-                    CornerRadius="10"
-                    BackgroundColor="{dx:ThemeColor SurfaceVariant}">
+            <dx:DXBorder CornerRadius="10" BackgroundColor="{dx:ThemeColor SurfaceVariant}">
                 <dx:DXBorder.Shadow>
                     <OnPlatform x:TypeArguments="Shadow">
                         <On Platform="iOS">
@@ -34,69 +33,90 @@
                     </OnPlatform>
                 </dx:DXBorder.Shadow>
                 <dx:DXDockLayout VerticalSpacing="0">
-                    <Grid dx:DXDockLayout.Dock="Top"
-                            RowSpacing="0"
-                            ColumnSpacing="0"
-                            Padding="0">
-                        <Image HeightRequest="{OnIdiom Phone=150, Tablet=350}"
-                                Source="{Binding ImageSource}"
-                                Margin="0,0,0,25"
-                                Aspect="AspectFill"/>
-                        <dx:DXBorder CornerRadius="25"
-                            WidthRequest="50"
-                            HeightRequest="50"
-                            VerticalOptions="End"
-                            HorizontalOptions="End"
-                            Margin="0,0,22,0"
-                            BackgroundColor="{Binding IsFavorite, Converter={StaticResource addToFavoriteBackgroundConverter}}">
-                            <dx:DXImage
-                                Margin="12"
-                                Source="filteringui_like"
-                                TintColor="{Binding IsFavorite, Converter={StaticResource addToFavoriteStrokeConverter}}"/>
+                    <Grid dx:DXDockLayout.Dock="Top" RowSpacing="0" ColumnSpacing="0" Padding="0">
+                        <Image HeightRequest="150" Source="{Binding ImageSource}" Margin="0,0,0,25" Aspect="AspectFill"/>
+                        <dx:DXBorder CornerRadius="25" 
+                                WidthRequest="50" 
+                                HeightRequest="50" 
+                                VerticalOptions="End" HorizontalOptions="End" Margin="0,0,22,0" BackgroundColor="{Binding IsFavorite, Converter={StaticResource addToFavoriteBackgroundConverter}}">
+                            <dx:DXImage Margin="12" Source="filteringui_like" TintColor="{Binding IsFavorite, Converter={StaticResource addToFavoriteStrokeConverter}}"/>
                             <dx:DXBorder.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    NumberOfTapsRequired="1"
-                                    Command="{Binding Source={Reference page}, Path=BindingContext.AddToFavoritesCommand}"
-                                    CommandParameter="{Binding }"/>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={Reference page}, Path=BindingContext.AddToFavoritesCommand}" CommandParameter="{Binding }"/>
                             </dx:DXBorder.GestureRecognizers>
                         </dx:DXBorder>
                     </Grid>
-                    <dx:DXDockLayout Padding="14,0,14,14" VerticalSpacing="8" HorizontalSpacing="8">
-                        <Label dx:DXDockLayout.Dock="Top"
-                            Text="{Binding Type, Converter={StaticResource enumToDesriptionConverter}}"
-                            TextColor="{dx:ThemeColor OnSurfaceVariant}"
-                            FontAttributes="Bold"
-                            FontSize="{OnIdiom Phone=16, Tablet=18}"/>
-                        <dx:DXImage dx:DXDockLayout.Dock="Left"
-                            Margin="0,0,0,2"
-                            VerticalOptions="Start"
-                            Source="filteringui_location_small"
-                            TintColor="{dx:ThemeColor Primary}"/>
-                        <Grid dx:DXDockLayout.Dock="Left" 
-                            Padding="0"
-                            Margin="0"
-                            ColumnDefinitions="*,Auto">
-                            <Label 
-                                Text="{Binding Address}"
-                                VerticalOptions="Start"
-                                LineBreakMode="WordWrap"
-                                VerticalTextAlignment="Start"
-                                TextColor="{dx:ThemeColor OnSurfaceVariant}"
-                                FontSize="{OnIdiom Phone=12, Tablet=14}"/>
-                            <Label Grid.Column="1"
-                                Margin="0,-6,0,0"
-                                Text="{Binding Price, StringFormat='${0:N0} K'}"
-                                TextColor="{dx:ThemeColor OnSurfaceVariant}"
-                                FontAttributes="Bold"
-                                VerticalOptions="Start"
-                                VerticalTextAlignment="Start"
-                                HorizontalTextAlignment="End"
+                    <Grid ColumnDefinitions="*,Auto" Padding="14,0,14,14" ColumnSpacing="8">
+                        <dx:DXStackLayout ItemSpacing="8">
+                            <Label Text="{Binding Type, Converter={StaticResource enumToDesriptionConverter}}" 
+                                TextColor="{dx:ThemeColor OnSurfaceVariant}" FontAttributes="Bold" 
+                                LineBreakMode="TailTruncation" 
                                 FontSize="{OnIdiom Phone=16, Tablet=18}"/>
-                        </Grid>
-                    </dx:DXDockLayout>
+                            <dx:DXStackLayout Orientation="Horizontal">
+                                <dx:DXImage Source="filteringui_location_small" Margin="-6,0,0,0" TintColor="{dx:ThemeColor Primary}"/>
+                                <Label Text="{Binding Address}" VerticalOptions="Start" LineBreakMode="TailTruncation" VerticalTextAlignment="Start" TextColor="{dx:ThemeColor OnSurfaceVariant}" FontSize="{OnIdiom Phone=12, Tablet=14}"/>
+                            </dx:DXStackLayout>
+                        </dx:DXStackLayout>
+                        <Label Grid.Column="1" Text="{Binding Price, StringFormat='${0:N0} K'}" 
+                                    TextColor="{dx:ThemeColor OnSurfaceVariant}" FontAttributes="Bold" 
+                                    VerticalOptions="Center" VerticalTextAlignment="End" 
+                                    HorizontalTextAlignment="End" 
+                                    FontSize="20"/>
+                    </Grid>
                 </dx:DXDockLayout>
             </dx:DXBorder>
         </DataTemplate>
+        <DataTemplate x:Key="smallHouseCardTemplate">
+            <dx:DXBorder CornerRadius="10" BackgroundColor="{dx:ThemeColor SurfaceVariant}">
+                <dx:DXBorder.Shadow>
+                    <OnPlatform x:TypeArguments="Shadow">
+                        <On Platform="iOS">
+                            <On.Value>
+                                <Shadow Brush="Black" Offset="0,2" Radius="2" Opacity="0.22" />
+                            </On.Value>
+                        </On>
+                        <On Platform="Android">
+                            <On.Value>
+                                <Shadow Brush="Black" Offset="0,4" Radius="2" Opacity="0.15" />
+                            </On.Value>
+                        </On>
+                    </OnPlatform>
+                </dx:DXBorder.Shadow>
+                <dx:DXDockLayout VerticalSpacing="0">
+                    <Grid dx:DXDockLayout.Dock="Top" RowSpacing="0" ColumnSpacing="0" Padding="0">
+                        <Image HeightRequest="150" Source="{Binding ImageSource}" Margin="0,0,0,18" Aspect="AspectFill"/>
+                        <dx:DXBorder CornerRadius="18" 
+                                WidthRequest="36" 
+                                HeightRequest="36" 
+                                VerticalOptions="End" HorizontalOptions="End" Margin="0,0,12,0" BackgroundColor="{Binding IsFavorite, Converter={StaticResource addToFavoriteBackgroundConverter}}">
+                            <dx:DXImage Margin="6" Source="filteringui_like" TintColor="{Binding IsFavorite, Converter={StaticResource addToFavoriteStrokeConverter}}"/>
+                            <dx:DXBorder.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={Reference page}, Path=BindingContext.AddToFavoritesCommand}" CommandParameter="{Binding }"/>
+                            </dx:DXBorder.GestureRecognizers>
+                        </dx:DXBorder>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,Auto" Padding="8,0,8,8" ColumnSpacing="8">
+                        <dx:DXStackLayout ItemSpacing="8">
+                            <Label Text="{Binding Type, Converter={StaticResource enumToDesriptionConverter}}" 
+                                TextColor="{dx:ThemeColor OnSurfaceVariant}" FontAttributes="Bold" 
+                                LineBreakMode="TailTruncation" 
+                                FontSize="{OnIdiom Phone=16, Tablet=18}"/>
+                            <dx:DXStackLayout Orientation="Horizontal">
+                                <dx:DXImage Source="filteringui_location_small" Margin="-6,0,0,0" TintColor="{dx:ThemeColor Primary}"/>
+                                <Label Text="{Binding Address}" VerticalOptions="Start" LineBreakMode="TailTruncation" VerticalTextAlignment="Start" TextColor="{dx:ThemeColor OnSurfaceVariant}" FontSize="{OnIdiom Phone=12, Tablet=14}"/>
+                            </dx:DXStackLayout>
+                        </dx:DXStackLayout>
+                        <Label Grid.Column="1" Text="{Binding Price, StringFormat='${0:N0} K'}" 
+                                    TextColor="{dx:ThemeColor OnSurfaceVariant}" FontAttributes="Bold" 
+                                    VerticalOptions="Center" VerticalTextAlignment="End" 
+                                    HorizontalTextAlignment="End" 
+                                    FontSize="14"/>
+                    </Grid>
+                </dx:DXDockLayout>
+            </dx:DXBorder>
+        </DataTemplate>
+        <utils:ColumnsCountToTemplateConverter x:Key="cardTemplateConverter"
+                                       SmallCardTemplate="{StaticResource smallHouseCardTemplate}"
+                                       CardTemplate="{StaticResource houseCardTemplate}"/>
         <DataTemplate x:Key="filteringUIFormTemplate">
             <demo:ScrollViewFix BackgroundColor="{dx:ThemeColor Surface}">
                 <demo:ScrollViewFix.Resources>
@@ -106,17 +126,11 @@
                     </Style>
                     <Style TargetType="dxe:FilterCheckedChipGroupItem" ApplyToDerivedTypes="True">
                         <Setter Property="ShowValuesOutOfFilter" Value="true"/>
-                        <Setter Property="ShowValueCounts" Value="true"/> 
+                        <Setter Property="ShowValueCounts" Value="true"/>
                     </Style>
                 </demo:ScrollViewFix.Resources>
                 <VerticalStackLayout>
-                    <dxe:FilterRadioListPickerItem 
-                        FieldName="City" 
-                        ShowValuesOutOfFilter="true"
-                        ShowValueCounts="false"
-                        ShowRadioButtons="false"
-                        ImageSource="filteringui_location" 
-                        ImageColor="{dx:ThemeColor Primary}">
+                    <dxe:FilterRadioListPickerItem FieldName="City" ShowValuesOutOfFilter="true" ShowValueCounts="false" ShowRadioButtons="false" ImageSource="filteringui_location" ImageColor="{dx:ThemeColor Primary}">
                         <dxe:FilterRadioListPickerItem.PickerTitleView>
                             <demo:TitleView Title="City" />
                         </dxe:FilterRadioListPickerItem.PickerTitleView>
@@ -134,76 +148,61 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ChangeItemsLayoutCommand}" IsEnabled="{OnIdiom Phone='true', Tablet='false'}" IconImageSource="{Binding IsSingleColumn, Converter={StaticResource boolToImageSourceConverter}}"/>
         <ToolbarItem Command="{Binding Source={Reference collectionView}, Path=Commands.ShowFilteringUIForm}" IconImageSource="filteringui_filter"/>
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Behaviors>
         <dx:SystemBarBehavior AndroidNavigationBarBackground="{dx:ThemeColor SurfaceContainer}"/>
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
         <Grid BackgroundColor="{dx:ThemeColor SurfaceContainer}">
-            <dxco:TabView HeaderPanelPosition="Bottom"
-                        ItemHeaderWidth="*"
-                        HeaderPanelPadding="0"
-                        IsSelectedItemIndicatorVisible="False"
-                        SelectedItemIndex="{Binding SelectedTabIndex}">
+            <dxco:TabView HeaderPanelPosition="Bottom" ItemHeaderWidth="*" HeaderPanelPadding="0" IsSelectedItemIndicatorVisible="False" SelectedItemIndex="{Binding SelectedTabIndex}">
                 <dxco:TabViewItem>
                     <dxco:TabViewItem.HeaderContent>
                         <VerticalStackLayout VerticalOptions="Center" Padding="{OnPlatform Android='0', iOS='0,8'}">
-                            <Border StrokeShape="RoundRectangle 16,16,16,16"
-                                    Padding="22,6"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderBackgroundConverter}}">
-                                <dx:DXImage Source="filteringui_home"
-                                    TintColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}">
+                            <Border StrokeShape="RoundRectangle 16,16,16,16" Padding="22,6" HorizontalOptions="Center" BackgroundColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderBackgroundConverter}}">
+                                <dx:DXImage Source="filteringui_home" TintColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}">
                                 </dx:DXImage>
                             </Border>
-                            <Label Text="Home"
-                                    HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center"
-                                    TextColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}"
-                                    FontSize="{OnIdiom Phone=12, Tablet=14}"/>
+                            <Label Text="Home" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{Binding IsHomeTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}" FontSize="{OnIdiom Phone=12, Tablet=14}"/>
                         </VerticalStackLayout>
                     </dxco:TabViewItem.HeaderContent>
-                     <dxco:TabViewItem.Content>
-                         <dxcv:DXCollectionView x:Name="collectionView"
-                                   ItemsSource="{Binding ItemsSource}"
-                                   ItemTemplate="{StaticResource houseCardTemplate}"
-                                   FilteringUITemplate="{StaticResource filteringUIFormTemplate}"
-                                   FilteringUIFormShowing="OnFilteringUIFormShowing"
-                                   BackgroundColor="{dx:ThemeColor Surface}">
-                         </dxcv:DXCollectionView>
-                     </dxco:TabViewItem.Content>
-                 </dxco:TabViewItem>
+                    <dxco:TabViewItem.Content>
+                        <dxcv:DXCollectionView x:Name="collectionView"
+                            IsScrollBarVisible="false"
+                            Margin="18,9,18,0" 
+                            ItemsSource="{Binding ItemsSource}" 
+                            ItemTemplate="{Binding ColumnsCount, Converter={StaticResource cardTemplateConverter}}"
+                            FilteringUITemplate="{StaticResource filteringUIFormTemplate}" 
+                            FilteringUIFormShowing="OnFilteringUIFormShowing"
+                            ItemSpanSpacing="18" ItemSpacing="18" ItemSpanCount="{Binding ColumnsCount}">
+                        </dxcv:DXCollectionView>
+                    </dxco:TabViewItem.Content>
+                </dxco:TabViewItem>
                 <dxco:TabViewItem>
                     <dxco:TabViewItem.HeaderContent>
                         <VerticalStackLayout Padding="{OnPlatform Android='0', iOS='0,8'}" VerticalOptions="Center">
-                            <Border StrokeShape="RoundRectangle 16,16,16,16"
-                                    Padding="22,6"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="{Binding IsFavoritesTabSelected, Converter={StaticResource selectedTabHeaderBackgroundConverter}}">
-                                <dx:DXImage Source="filteringui_like"
-                                    TintColor="{Binding IsFavoritesTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}">
+                            <Border StrokeShape="RoundRectangle 16,16,16,16" Padding="22,6" HorizontalOptions="Center" BackgroundColor="{Binding IsFavoritesTabSelected, Converter={StaticResource selectedTabHeaderBackgroundConverter}}">
+                                <dx:DXImage Source="filteringui_like" TintColor="{Binding IsFavoritesTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}">
                                 </dx:DXImage>
                             </Border>
-                            <Label Text="Favorites"
-                                HorizontalOptions="Center"
-                                HorizontalTextAlignment="Center"
-                                TextColor="{Binding IsFavoritesTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}"
-                                FontSize="{OnIdiom Phone=12, Tablet=14}"/>
+                            <Label Text="Favorites" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{Binding IsFavoritesTabSelected, Converter={StaticResource selectedTabHeaderTextColorConverter}}" FontSize="{OnIdiom Phone=12, Tablet=14}"/>
                         </VerticalStackLayout>
-                     </dxco:TabViewItem.HeaderContent>
-                     <dxco:TabViewItem.Content>
-                         <dxcv:DXCollectionView
-                                   FilterExpression="{Binding Source={Reference collectionView}, Path=FilterExpression}"
-                                   ItemsSource="{Binding Favorites}"
-                                   ItemTemplate="{StaticResource houseCardTemplate}"
-                                   BackgroundColor="{dx:ThemeColor Surface}">
-                         </dxcv:DXCollectionView>
-                     </dxco:TabViewItem.Content>
-                 </dxco:TabViewItem>
+                    </dxco:TabViewItem.HeaderContent>
+                    <dxco:TabViewItem.Content>
+                        <dxcv:DXCollectionView 
+                            IsScrollBarVisible="false"
+                            Margin="18,9,18,0" 
+                            FilterExpression="{Binding Source={Reference collectionView}, Path=FilterExpression}" 
+                            ItemsSource="{Binding Favorites}" 
+                            ItemTemplate="{Binding ColumnsCount, Converter={StaticResource cardTemplateConverter}}"
+                            ItemSpanSpacing="18" ItemSpacing="18" ItemSpanCount="{Binding ColumnsCount}">
+                        </dxcv:DXCollectionView>
+                    </dxco:TabViewItem.Content>
+                </dxco:TabViewItem>
             </dxco:TabView>
         </Grid>
     </ContentPage.Content>
-</demo:DemoPage>
+</demo:AdaptivePage>

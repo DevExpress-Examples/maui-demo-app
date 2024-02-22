@@ -80,7 +80,7 @@
                               IsVisible="{Binding AllowCustomCornerRadius}">
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}">
                                 <demo:IconView Source="cornermoderound" ForegroundColor="{StaticResource IconForegroundColor}" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <Slider Value="{Binding CornerRadius}" Style="{StaticResource SliderStyle}"/>
+                                <dxe:DXSlider Value="{Binding CornerRadius}" Style="{StaticResource SliderStyle}"/>
                             </StackLayout>
                         </Grid>
                     </StackLayout>
@@ -104,7 +104,7 @@
                                           Style="{StaticResource ColorComboBoxStyle}"/>
                         <StackLayout Style="{StaticResource SliderItemContainerStyle}" IsVisible="{Binding ShouldShowBorder}">
                             <Label Text="Border Size" Style="{StaticResource TextStyle}"/>
-                            <Slider Value="{Binding BorderWidth}" Style="{StaticResource SliderStyle}"/>
+                            <dxe:DXSlider Value="{Binding BorderWidth}" Style="{StaticResource SliderStyle}"/>
                         </StackLayout>
                     </StackLayout>
                     <dx:DXSeparator SideMargin="0"/>

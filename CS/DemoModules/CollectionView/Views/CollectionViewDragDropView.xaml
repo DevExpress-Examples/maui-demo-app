@@ -18,7 +18,6 @@
             <DataTemplate x:Key="itemTemplate">
                 <StackLayout Margin="0" Spacing="0" BackgroundColor="{dx:ThemeColor Surface}">
                     <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}"/>
-                    <dx:DXSeparator SideMargin="0"/>
                 </StackLayout>
             </DataTemplate>
 
@@ -27,7 +26,6 @@
                     <Label Style="{StaticResource DragDropTemplateStyle}"
                             Text="{Binding Name}"
                             TextDecorations="Strikethrough"/>
-                    <dx:DXSeparator SideMargin="0"/>
                 </StackLayout>
             </DataTemplate>
 
@@ -41,10 +39,12 @@
             BackgroundColor="{dx:ThemeColor Surface}"
             x:Name="collectionView"
             AllowDragDropItems="True"
+            UseRippleEffect="True"
             DragItem="DragItem"
             DragItemOver="DragItemOver"
             ItemTemplate="{StaticResource itemTemplateSelector}"
-            ItemsSource="{Binding ItemSource}">
+            ItemsSource="{Binding ItemSource}"
+            ItemSeparatorThickness="1">
         </dxcv:DXCollectionView>
     </ContentPage.Content>
 </demo:DemoPage>

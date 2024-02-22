@@ -17,6 +17,7 @@ namespace DemoCenter.Maui.Data {
                     Description = "Shows built-in filtering UI available in our Collection View control. Users can apply filter conditions to individual columns or to the entire control (construct a filter criteria of any complexity).",
                     Module = typeof(FilteringUIView),
                     Icon = "collectionview_filteringui",
+                    DemoItemStatus = DemoItemStatus.Updated
                 },
                 new DemoItem() {
                     Title = "CRUD Operations",
