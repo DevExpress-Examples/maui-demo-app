@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.0.31611.283
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoCenter.Maui", "DemoCenter.Maui.csproj", "{16A98946-30FB-4B45-A630-FD4C82F90AA6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoCenter.Maui_universal", "DemoCenter.Maui_universal.csproj", "{D63E9BE2-8E89-11EE-B9D1-0242AC120002}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoCenter.Maui", "DemoCenter.Maui.csproj", "{268E0DC9-CB7F-4997-9E23-A1BA7B1CA17E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,23 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{16A98946-30FB-4B45-A630-FD4C82F90AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16A98946-30FB-4B45-A630-FD4C82F90AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16A98946-30FB-4B45-A630-FD4C82F90AA6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{16A98946-30FB-4B45-A630-FD4C82F90AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16A98946-30FB-4B45-A630-FD4C82F90AA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{16A98946-30FB-4B45-A630-FD4C82F90AA6}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{D63E9BE2-8E89-11EE-B9D1-0242AC120002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D63E9BE2-8E89-11EE-B9D1-0242AC120002}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D63E9BE2-8E89-11EE-B9D1-0242AC120002}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{D63E9BE2-8E89-11EE-B9D1-0242AC120002}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D63E9BE2-8E89-11EE-B9D1-0242AC120002}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D63E9BE2-8E89-11EE-B9D1-0242AC120002}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{268E0DC9-CB7F-4997-9E23-A1BA7B1CA17E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268E0DC9-CB7F-4997-9E23-A1BA7B1CA17E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268E0DC9-CB7F-4997-9E23-A1BA7B1CA17E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{268E0DC9-CB7F-4997-9E23-A1BA7B1CA17E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268E0DC9-CB7F-4997-9E23-A1BA7B1CA17E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268E0DC9-CB7F-4997-9E23-A1BA7B1CA17E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
 	EndGlobalSection
 EndGlobal
