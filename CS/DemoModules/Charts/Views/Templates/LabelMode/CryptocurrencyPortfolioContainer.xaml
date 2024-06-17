@@ -1,69 +1,68 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <local:RotationHandleView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:DemoCenter.Maui"
              x:Class="DemoCenter.Maui.Charts.Views.CryptocurrencyPortfolioContainer"
              x:Name="cryptocurrencyContainer">
     <ContentView.Resources>
-        <dxc:SeriesHintOptions x:Key="CryptocurrencyPortfolioSeriesHintOptions"
+        <dx:SeriesHintOptions x:Key="CryptocurrencyPortfolioSeriesHintOptions"
                                   PointTextPattern="{}{A}: {S} {V$#,###}%"/>
     </ContentView.Resources>
     <ContentView.Content>
-        <dxc:ChartView Grid.Row="1"
+        <dx:ChartView Grid.Row="1"
                        Rotated="True"
                        x:Name="chart">
-                <dxc:ChartView.Series>
-                    <dxc:BarSeries DisplayName="{Binding ChartModel.CryptocurrencyPortfolio.Name}"
+                <dx:ChartView.Series>
+                    <dx:BarSeries DisplayName="{Binding ChartModel.CryptocurrencyPortfolio.Name}"
                                       HintOptions="{StaticResource CryptocurrencyPortfolioSeriesHintOptions}"
                                       LegendTextPattern="{}Profit form {CLV}% to {CHV}%">
-                        <dxc:BarSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.CryptocurrencyPortfolio.DataSet}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:BarSeries.Data>
-                        <dxc:BarSeries.Label>
-                            <dxc:BarSeriesLabel Position="Outside" Behavior="Moving" TextPattern="{}{V}%"/>
-                        </dxc:BarSeries.Label>
-                        <dxc:BarSeries.PointColorizer>
-                            <dxc:ValueBandPointColorizer>
-                                <dxc:ValueBandPointColorizer.ColorStops>
-                                    <dxc:ColorStop Color="#67ac5b" Value1="0" Value2="100" />
-                                    <dxc:ColorStop Color="#ff5353" Value1="0" Value2="-100" />
-                                </dxc:ValueBandPointColorizer.ColorStops>
-                            </dxc:ValueBandPointColorizer>
-                        </dxc:BarSeries.PointColorizer>
-                    </dxc:BarSeries>
-                </dxc:ChartView.Series>
-                <dxc:ChartView.Legend>
-                    <dxc:Legend HorizontalPosition="Center"
+                        <dx:BarSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.CryptocurrencyPortfolio.DataSet}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:BarSeries.Data>
+                        <dx:BarSeries.Label>
+                            <dx:BarSeriesLabel Position="Outside" Behavior="Moving" TextPattern="{}{V}%"/>
+                        </dx:BarSeries.Label>
+                        <dx:BarSeries.PointColorizer>
+                            <dx:ValueBandPointColorizer>
+                                <dx:ValueBandPointColorizer.ColorStops>
+                                    <dx:ColorStop Color="#67ac5b" Value1="0" Value2="100" />
+                                    <dx:ColorStop Color="#ff5353" Value1="0" Value2="-100" />
+                                </dx:ValueBandPointColorizer.ColorStops>
+                            </dx:ValueBandPointColorizer>
+                        </dx:BarSeries.PointColorizer>
+                    </dx:BarSeries>
+                </dx:ChartView.Series>
+                <dx:ChartView.Legend>
+                    <dx:Legend HorizontalPosition="Center"
                                    VerticalPosition="BottomOutside"
                                    Orientation="LeftToRight"/>
-                </dxc:ChartView.Legend>
-                <dxc:ChartView.Hint>
-                    <dxc:Hint/>
-                </dxc:ChartView.Hint>
-                <dxc:ChartView.AxisX>
-                    <dxc:QualitativeAxisX>
-                        <dxc:QualitativeAxisX.DisplayPosition>
-                            <dxc:AxisDisplayPositionRelative NumericPosition="0" RelativeAxis="{Binding AxisY, Source={x:Reference chart}}"/>
-                        </dxc:QualitativeAxisX.DisplayPosition>
-                    </dxc:QualitativeAxisX>
-                </dxc:ChartView.AxisX>
-                <dxc:ChartView.AxisY>
-                    <dxc:NumericAxisY
+                </dx:ChartView.Legend>
+                <dx:ChartView.Hint>
+                    <dx:Hint/>
+                </dx:ChartView.Hint>
+                <dx:ChartView.AxisX>
+                    <dx:QualitativeAxisX>
+                        <dx:QualitativeAxisX.DisplayPosition>
+                            <dx:AxisDisplayPositionRelative NumericPosition="0" RelativeAxis="{Binding AxisY, Source={x:Reference chart}}"/>
+                        </dx:QualitativeAxisX.DisplayPosition>
+                    </dx:QualitativeAxisX>
+                </dx:ChartView.AxisX>
+                <dx:ChartView.AxisY>
+                    <dx:NumericAxisY
 
                              GridAlignment="15">
  
-                        <dxc:NumericAxisY.Range>
-                            <dxc:NumericRange Min="-40" Max="40"/>
-                        </dxc:NumericAxisY.Range>
-                        <dxc:NumericAxisY.Style>
-                            <dxc:AxisStyle MajorTickmarksVisible="True" MinorTickmarksVisible="True" />
-                        </dxc:NumericAxisY.Style>
-                    </dxc:NumericAxisY>
-                </dxc:ChartView.AxisY>
-            </dxc:ChartView>
+                        <dx:NumericAxisY.Range>
+                            <dx:NumericRange Min="-40" Max="40"/>
+                        </dx:NumericAxisY.Range>
+                        <dx:NumericAxisY.Style>
+                            <dx:AxisStyle MajorTickmarksVisible="True" MinorTickmarksVisible="True" />
+                        </dx:NumericAxisY.Style>
+                    </dx:NumericAxisY>
+                </dx:ChartView.AxisY>
+            </dx:ChartView>
         
     </ContentView.Content>
 </local:RotationHandleView>

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using DemoCenter.Maui.DemoModules.Grid.Data;
+using DemoCenter.Maui.Data;
+using DemoCenter.Maui.DemoModules.CollectionView.Data;
 using DevExpress.Maui.DataGrid;
 using Microsoft.Maui;
 using Microsoft.Maui.Graphics;
@@ -42,7 +43,7 @@ namespace DemoCenter.Maui.Views {
                 return;
             IList<EmployeeTask> source = (IList<EmployeeTask>)this.grid.ItemsSource;
             EmployeeTask task = (EmployeeTask)e.Item;
-            task.Status = task.Completed ? 0 : 100;
+            task.Status = task.Completed ? TaskStatus.Uncompleted : TaskStatus.Completed;
             int newRowHandle = task.Completed ? source.Count - 1 : 0;
             if (e.RowHandle == newRowHandle)
                 return;

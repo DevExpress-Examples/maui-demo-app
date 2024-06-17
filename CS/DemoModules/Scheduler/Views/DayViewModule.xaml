@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="DemoCenter.Maui.Views.DayViewModule">
-    <dxsch:DayView x:Name="dayView" DayCount="1" Start="{Binding Start}" Tap="DayView_OnTap"/>
+    <dx:DayView x:Name="dayView" DayCount="1" Start="{Binding Start}" Tap="DayView_OnTap"/>
 </demo:DemoPage>

@@ -33,38 +33,35 @@ namespace DemoCenter.Maui.Data {
                 
                 
                 new DemoItem() {
+                    Title = "Slide View",
+                    Description = "Shows the SlideView control that allows users to navigate between slides. Each slide in this demo is a flash card that highlights a SlideView property. You can toggle the switch at the bottom to see how the property affects the control.",
+                    DemoItemStatus = DemoItemStatus.New,
+                    Module = typeof(SlideViewDemo),
+                    Icon = "slideview"
+                },
+                new DemoItem() {
                     Title = "Toolbar Control",
                     Description = "Demonstrates how to use DevExpress Toolbar control to create compact and adaptive action bars. The toolbar in this demo includes regular toolbar buttons, dropdowns, and a color picker. The control organizes commands into pages.",
                     Module = typeof(ToolbarView),
-                    Icon = "edit",
-                    DemoItemStatus = DemoItemStatus.New,
+                    Icon = "edit"
                 },
                 new DemoItem() {
                     Title = "Radial Gauge",
                     Description = "Shows how to use DevExpress radial gauge and progress bar components to implement a dashboard panel. In this demo, the dashboard monitors appliances and sensors in a smart home. To align gauges on screen, we use DevExpress layout controls - DXStackLayout and DXDockLayout.",
                     Icon = "radialgauge",
-                    Module = typeof(RadialGaugeView),
-                    DemoItemStatus = DemoItemStatus.New,
+                    Module = typeof(RadialGaugeView)
                 },
                 new DemoItem() {
                     Title = "Radial Progress Bar",
                     Description = "Shows how to use the RadialProgressBar control to implement a test monitoring app.",
                     Icon = "progressbar",
-                    Module = typeof(RadialProgressBarView),
-                    DemoItemStatus = DemoItemStatus.New,
+                    Module = typeof(RadialProgressBarView)
                 },
                 new DemoItem() {
                     Title = "Loading View",
                     Description = "This demo emulates an app that obtains its data from a remote server. While a load operation is in progress, the app switches to a Loading View. This view displays a skeleton layout with UI element placeholders with shimmer effects.",
                     Icon = "shimmer",
                     Module = typeof(ShimmerView),
-                },
-                new DemoItem() {
-                    Title = "Simple Button",
-                    Description = "Illustrates how to customize a button.",
-                    Module = typeof(SimpleButtonView),
-                    Icon = "simplebutton",
-                    ShowItemUnderline = false
                 },
                 new DemoItem() {
                     Title = "Check Edit",

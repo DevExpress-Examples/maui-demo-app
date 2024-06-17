@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using DemoCenter.Maui.ViewModels;
 using Microsoft.Maui.Controls;
 using SQLite;
@@ -6,6 +7,28 @@ using SQLite;
 namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
     [Table("Customers")]
     public class Contact : NotificationObject {
+        static readonly Dictionary<int, string> photoById = new() {
+            { 1, "photo0" },
+            { 2, "photo28" },
+            { 3, "photo27" },
+            { 4, "photo30" },
+            { 5, "photo29" },
+            { 6, "photo26" },
+            { 7, "photo16" },
+            { 8, "photo21" },
+            { 9, "photo14" },
+            { 10, "photo10" },
+            { 11, "photo31" },
+            { 12, "photo2" },
+            { 13, "photo34" },
+            { 14, "photo35" },
+            { 15, "photo37" },
+            { 16, "photo40" },
+            { 17, "photo42" },
+            { 18, "photo44" },
+            { 19, "photo47" },
+            { 20, "photo23" },
+        };
         static ImageSource noPhotoImageSource = ImageSource.FromFile("collectionview_crud_noavatar");
 
         int? id;
@@ -26,7 +49,6 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
             set => SetProperty(ref this.id, value);
         }
 
-        public char FirstNameChar => FirstName[0];
         [Required(ErrorMessage = "First Name cannot be empty")]
         public string FirstName {
             get => this.firstName;
@@ -71,9 +93,11 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
             get {
                 if (this.image is not null)
                     return this.image;
-                if (this.id is < 0 or > 20)
+                if (!this.id.HasValue || this.id is < 0 or > 20)
                     return this.image = noPhotoImageSource;
-                return this.image = ImageSource.FromFile("id" + this.id + ".png");
+                if(photoById.TryGetValue(this.id.Value, out var photo))
+                    return this.image = ImageSource.FromFile(photo);
+                return this.image = noPhotoImageSource;
             }
         }
     }

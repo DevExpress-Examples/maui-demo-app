@@ -1,0 +1,212 @@
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="http://schemas.devexpress.com/maui"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:common="clr-namespace:DemoCenter.Maui"
+             xmlns:local="clr-namespace:DemoCenter.Maui.DemoModules.TreeView.Views"
+             xmlns:vm="clr-namespace:DemoCenter.Maui.DemoModules.TreeView.ViewModels"
+             x:Class="DemoCenter.Maui.DemoModules.TreeView.Views.FirstLookPage"
+             BackgroundColor="{dx:ThemeColor Surface}"
+             ios:Page.UseSafeArea="False">
+    <demo:DemoPage.Resources>
+        <common:BoolToImageSourceConverter x:Key="expandedImageConverter" TrueSource="folder_open" FalseSource="folder" />
+        <DataTemplate x:Key="nodeTemplate">
+            <dx:TreeNodeView
+                Icon="{Binding IsExpanded, Converter={StaticResource expandedImageConverter}}">
+                <dx:TreeNodeView.EndSwipeItems>
+                    <dx:TreeNodeSwipeItem 
+                        Content="Delete"
+                        Icon="delete"
+                        BackgroundColor="{dx:ThemeColor Error}"
+                        TextColor="{dx:ThemeColor OnError}"
+                        IconColor="{dx:ThemeColor OnError}"
+                        Command="{Binding TreeView.BindingContext.DeleteCommand}"/>
+                </dx:TreeNodeView.EndSwipeItems>
+                <dx:TreeNodeView.Triggers>
+                    <DataTrigger 
+                        TargetType="dx:TreeNodeView"
+                        Binding="{Binding Item.IsFolder}"
+                        Value="False">
+                        <Setter Property="ShowIcon" Value="False" />
+                    </DataTrigger>
+                </dx:TreeNodeView.Triggers>
+            </dx:TreeNodeView>
+        </DataTemplate>
+
+        <common:BoolToImageSourceConverter x:Key="radioIconConverter" TrueSource="radio_checked" FalseSource="radio_unchecked" />
+        <Style x:Key="radioButtonStyle" TargetType="dx:DXToggleButton">
+            <Setter Property="Icon" Value="{Binding Source={RelativeSource Self}, Path=IsChecked, Converter={StaticResource radioIconConverter}}"/>
+            <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
+            <Setter Property="IconColor" Value="{dx:ThemeColor Primary}"/>
+            <Setter Property="PressedTextColor" Value="{dx:ThemeColor OnSurface}"/>
+            <Setter Property="PressedIconColor" Value="{dx:ThemeColor Primary}"/>
+            <Setter Property="CheckedTextColor" Value="{dx:ThemeColor OnSurface}"/>
+            <Setter Property="CheckedIconColor" Value="{dx:ThemeColor Primary}"/>
+            <Setter Property="CheckedPressedTextColor" Value="{dx:ThemeColor OnSurface}"/>
+            <Setter Property="CheckedPressedIconColor" Value="{dx:ThemeColor Primary}"/>
+            <Setter Property="PressedBackgroundColor" Value="{dx:ThemeColor Primary, Alpha=0.12}"/>
+            <Setter Property="CheckedPressedBackgroundColor" Value="{dx:ThemeColor Primary, Alpha=0.12}"/>
+            <Setter Property="ButtonType" Value="Text"/>
+            <Setter Property="HorizontalContentAlignment" Value="Start"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontAttributes" Value="None"/>
+            <Setter Property="PressedScale" Value="1"/>
+            <Setter Property="Padding" Value="12,12"/>
+            <Setter Property="IconWidth" Value="24"/>
+            <Setter Property="IconHeight" Value="24"/>
+        </Style>
+    </demo:DemoPage.Resources>
+    
+    <demo:DemoPage.BindingContext>
+        <vm:FirstLookPageViewModel/>
+    </demo:DemoPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            x:Name="selectionButton" 
+            Text="{Binding IsSelectMode, Converter={common:BoolToObjectConverter TrueValue='Cancel', FalseValue='Select'}}" 
+            Command="{Binding SelectOrCancelCommand}" 
+            Clicked="OnSelectionButtonClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <dx:DXDockLayout 
+            BackgroundColor="{dx:ThemeColor SurfaceContainer}"
+            CornerRadius="100"
+            Padding="16,16,16,16"
+            Margin="16,16,16,16"
+            HorizontalSpacing="16">
+            <dx:DXButton 
+                dx:DXDockLayout.Dock="Right"
+                ButtonType="Text"
+                Icon="filteringui_filter"
+                IconColor="{dx:ThemeColor OnSurfaceVariant}"
+                PressedIconColor="{dx:ThemeColor OnSurfaceVariant}"
+                IconWidth="-1"
+                IconHeight="-1"
+                PressedScale="0.9"
+                Padding="0"
+                PressedBackgroundColor="Transparent"
+                VerticalOptions="Center"
+                Command="{Binding Source={x:Reference searchSettingsBottomSheet}, Path=Commands.Show}"/>
+            <dx:TextEdit
+                TextFontSize="16"
+                PlaceholderText="Search" 
+                PlaceholderColor="{dx:ThemeColor OnSurfaceVariant}"
+                BoxPadding="0" 
+                BoxMinHeight="0" 
+                BorderThickness="0" 
+                FocusedBorderThickness="0"
+                IconIndent="16"
+                StartIcon="collectionview_crud_search"
+                StartIconColor="{dx:ThemeColor OnSurfaceVariant}"
+                ClearIconColor="{dx:ThemeColor OnSurfaceVariant}" 
+                EndIconColor="{dx:ThemeColor OnSurfaceVariant}"
+                VerticalOptions="Center"
+                TextVerticalAlignment="Center"
+                TextChanged="OnSearchTextChanged"/>
+        </dx:DXDockLayout>
+
+        <dx:DXTreeView 
+            x:Name="treeView"
+            Grid.Row="1"
+            ItemsSource="{Binding Nodes}" 
+            ItemTemplate="{StaticResource nodeTemplate}"
+            AllowLiveDataShaping="True"
+            DisplayMember="Name"
+            AutoExpandMode="RootNodes"
+            FilterMode="ParentBranch"
+            ExpandNodesOnFiltering="True"
+            RestoreExpandStateOnClearFilter="True"
+            ShowCheckBoxes="{Binding IsSelectMode}"
+            CheckBoxRecursiveChecking="True"
+            CheckBoxFieldName="IsChecked"
+            CheckBoxStateChanged="OnTreeNodeCheckBoxStateChanged"
+            Tap="OnNodeTap">
+            <dx:DXTreeView.TreeDescription>
+                <dx:HierarchyTreeDescription ChildNodeFieldName="Nodes"/>
+            </dx:DXTreeView.TreeDescription>
+        </dx:DXTreeView>
+
+        <dx:DXExpander 
+            Grid.Row="2" 
+            VerticalExpandMode="FromStartToEnd" 
+            IsExpanded="{Binding IsSelectMode}">
+            <dx:DXToolbar 
+                x:Name="selectionToolBar" 
+                ItemAlignment="Center" 
+                Padding="16,0">
+                <dx:ToolbarButton Icon="pdfviewer_share" Placement="FixedLeft" Command="{Binding ShareCheckedCommand}"/>
+                <dx:ToolbarText 
+                Content="{Binding CheckedNodesCount, StringFormat='{}{0} Items Selected'}" 
+                BackgroundColor="Transparent"/>
+                <dx:ToolbarButton Icon="delete" Placement="FixedRight" Command="{Binding DeleteCheckedCommand}"/>
+            </dx:DXToolbar>
+        </dx:DXExpander>
+
+        <dx:BottomSheet x:Name="detailBottomSheet" HalfExpandedRatio="0.4">
+            <dx:DXDockLayout HorizontalSpacing="12">
+                <Label
+                    x:Name="pdfCaption"
+                    dx:DXDockLayout.Dock="Top"
+                    TextColor="{dx:ThemeColor OnSurface}"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"/>
+                <Grid x:Name="pdfViewerContainer"/>
+            </dx:DXDockLayout>
+        </dx:BottomSheet>
+        <dx:BottomSheet x:Name="searchSettingsBottomSheet" UpdateSizeToContent="True">
+            <dx:DXStackLayout Orientation="Vertical" Padding="16,0">
+                <Label 
+                    Text="Filter Mode" 
+                    FontSize="14" 
+                    FontAttributes="Bold" 
+                    TextColor="{dx:ThemeColor OnSurface}"
+                    Margin="0,0,0,16"/>
+                <dx:DXToggleButton 
+                    Content="Nodes" 
+                    Style="{StaticResource radioButtonStyle}" 
+                    GroupName="0" 
+                    IsChecked="{Binding Source={x:Reference treeView}, Path=FilterMode, Converter={common:EnumToBooleanConverter TrueValue=Nodes}}"/>
+                <dx:DXToggleButton 
+                    Content="Parent Branch"
+                    Style="{StaticResource radioButtonStyle}" 
+                    GroupName="0" 
+                    IsChecked="{Binding Source={x:Reference treeView}, Path=FilterMode, Converter={common:EnumToBooleanConverter TrueValue=ParentBranch}}"/>
+                <dx:DXToggleButton 
+                    Content="Entire Branch" 
+                    Style="{StaticResource radioButtonStyle}" 
+                    GroupName="0" 
+                    IsChecked="{Binding Source={x:Reference treeView}, Path=FilterMode, Converter={common:EnumToBooleanConverter TrueValue=EntireBranch}}"/>
+                <dx:DXToggleButton 
+                    Content="Recursive" 
+                    Style="{StaticResource radioButtonStyle}" 
+                    GroupName="0" 
+                    IsChecked="{Binding Source={x:Reference treeView}, Path=FilterMode, Converter={common:EnumToBooleanConverter TrueValue=Recursive}}"/>
+                <dx:DXSeparator Margin="0,8"/>
+                <dx:DXDockLayout Margin="0,8">
+                    <Switch 
+                        dx:DXDockLayout.Dock="Right"
+                        IsToggled="{Binding Source={x:Reference treeView}, Path=ExpandNodesOnFiltering}"/>
+                    <Label 
+                        Text="Expand Nodes on Filtering" 
+                        FontSize="14" 
+                        TextColor="{dx:ThemeColor OnSurface}"
+                        VerticalTextAlignment="Center"/>
+                </dx:DXDockLayout>
+                <dx:DXDockLayout Margin="0,8">
+                    <Switch 
+                        dx:DXDockLayout.Dock="Right"
+                        IsToggled="{Binding Source={x:Reference treeView}, Path=RestoreExpandStateOnClearFilter}"/>
+                    <Label 
+                        Text="Restore Expand State on Clear Filter" 
+                        FontSize="14" 
+                        TextColor="{dx:ThemeColor OnSurface}"
+                        VerticalTextAlignment="Center"/>
+                </dx:DXDockLayout>
+            </dx:DXStackLayout>
+        </dx:BottomSheet>
+    </Grid>
+</demo:DemoPage>

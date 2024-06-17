@@ -118,12 +118,12 @@ namespace DemoCenter.Maui.Data {
     }
 
     public class SalesByLastYearsData {
-        readonly string[] names = { "North America", "Europe", "Australia" };
-        readonly double[][] values = {
-            new double[] { 2.666, 3.665, 3.555, 3.485, 3.747, 4.182 },
-            new double[] { 2.078, 3.888, 3.008, 3.088, 3.357, 3.725 },
-            new double[] { 1.09, 2.01, 1.85, 1.78, 1.957, 2.272 }
-        };
+        readonly string[] names = ["North America", "Europe", "Australia"];
+        readonly double[][] values = [
+            [2.666, 3.665, 3.555, 3.485, 3.747, 4.182],
+            [2.078, 3.888, 3.008, 3.088, 3.357, 3.725],
+            [1.09, 2.01, 1.85, 1.78, 1.957, 2.272]
+        ];
         readonly DataSetsContainer<DateTimeData> seriesData = new DataSetsContainer<DateTimeData>();
 
         public DataSetContainer<DateTimeData> NorthAmerica => seriesData.DataSets[0];
@@ -144,14 +144,14 @@ namespace DemoCenter.Maui.Data {
     }
 
     public class BranchesSalesData {
-        readonly string[] names = { "DevAV East", "DevAV West", "DevAV South", "DevAV Center", "DevAV North" };
-        readonly double[][] values = {
-            new double[] { 0D, 0D, 0.003, 0.32, 0.51, 1.71 },
+        readonly string[] names = ["DevAV East", "DevAV West", "DevAV South", "DevAV Center", "DevAV North"];
+        readonly double[][] values = [
+            [0D, 0D, 0.003, 0.32, 0.51, 1.71],
             new double[] { 0.95, 1.53, 1.75, 1.31, 1.31, 1.22 },
             new double[] { 1.09, 1.01, 1.11, 1.12, 1.12, 1.111 },
             new double[] { 2.078, 3.888, 3.008, 3.088, 3.357, 3.725 },
             new double[] { 2.666, 3.665, 3.555, 3.485, 3.747, 4.182 }
-        };
+        ];
         readonly DataSetsContainer<DateTimeData> seriesData = new DataSetsContainer<DateTimeData>();
 
         public DataSetContainer<DateTimeData> DevAVEast => seriesData.DataSets[0];

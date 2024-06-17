@@ -1,31 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:AdaptivePage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     x:Class="DemoCenter.Maui.Views.DataFormAccountFormView"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     ios:Page.UseSafeArea="False">
 
     <ContentPage.Resources>
-        <Style TargetType="dxe:TextEdit">
+        <Style TargetType="dx:TextEdit">
             <Setter Property="ClearIconVisibility" Value="Never" />
         </Style>
     </ContentPage.Resources>
 
     <Grid BackgroundColor="{dx:ThemeColor Surface}">
         <dx:DXDockLayout VerticalSpacing="10" StretchLastItem="False">
-            <dxco:SimpleButton
+            <dx:DXButton
                 dx:DXDockLayout.Dock="Bottom" 
                 VerticalOptions="EndAndExpand"
-                Text="SUBMIT"
+                Content="SUBMIT"
+                FontSize="16"
                 Clicked="SubmitOnClicked"
                 Margin="{OnIdiom Phone='10,0,10,10', Tablet='40,0,40,40'}"/>
-            <dxdf:DataFormView
+            <dx:DataFormView
                 BackgroundColor="Transparent"
                 EditorLabelWidth="40"
                 EditorLabelColor="#8a8d93"
@@ -37,25 +34,25 @@
                 EditorHorizontalSpacing="10"
                 ReserveBottomTextLine="True"
                 ContentPadding="{OnIdiom Phone='10,10,10,0', Tablet='40,10,40,0'}">
-                <dxdf:DataFormTextItem
+                <dx:DataFormTextItem
                     FieldName="FirstName"
                     Placeholder="First name"
                     RowOrder="0"
                     LabelIcon="editorsname"
                     />
-                <dxdf:DataFormTextItem
+                <dx:DataFormTextItem
                     FieldName="LastName"
                     Placeholder="Last name"
                     RowOrder="1"
                     LabelText=""
                     IsLabelVisible="{Binding IsVertical}"/>
-                <dxdf:DataFormDateItem
+                <dx:DataFormDateItem
                     FieldName="Birthday"
                     Placeholder="Birthday"
                     RowOrder="2"
                     LabelIcon="editorsage"
                     DisplayFormat="d" />
-                <dxdf:DataFormMaskedItem
+                <dx:DataFormMaskedItem
                     FieldName="PhoneNumber"
                     Placeholder="Phone number"
                     RowOrder="3"
@@ -63,23 +60,23 @@
                     Keyboard="Telephone"
                     Mask="+1 (000) 000-0000"
                     IsLabelVisible="{Binding IsVertical}"/>
-                <dxdf:DataFormTextItem
+                <dx:DataFormTextItem
                     FieldName="Description"
                     Placeholder="Description"
                     RowOrder="4"
                     LabelIcon="editorsdescription" />
-                <dxdf:DataFormTextItem
+                <dx:DataFormTextItem
                     FieldName="Login"
                     Placeholder="Login"
                     RowOrder="5"
                     LabelIcon="editorslogin" />
-                <dxdf:DataFormPasswordItem
+                <dx:DataFormPasswordItem
                     FieldName="Password"
                     Placeholder="Password"
                     RowOrder="6"
                     LabelIcon="editorspassword"
                     IsLabelVisible="{Binding IsVertical}"/>
-                <dxdf:DataFormCheckBoxItem
+                <dx:DataFormCheckBoxItem
                     EditorHorizontalAlignment="Start"
                     FieldName="ReceiveNotification"
                     LabelText="I want to receive email notifications."
@@ -87,8 +84,8 @@
                     RowOrder="7"
                     LabelWidth="*"
                     EditorWidth="{OnPlatform Android='34', iOS='39'}">
-                </dxdf:DataFormCheckBoxItem>
-            </dxdf:DataFormView>
+                </dx:DataFormCheckBoxItem>
+            </dx:DataFormView>
         </dx:DXDockLayout>
     </Grid>
 </demo:AdaptivePage>

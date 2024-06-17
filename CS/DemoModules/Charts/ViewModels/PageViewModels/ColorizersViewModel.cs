@@ -4,7 +4,7 @@ using DemoCenter.Maui.ViewModels;
 
 namespace DemoCenter.Maui.Charts.ViewModels {
     public class ColorizersViewModel : ChartsPageViewModelBase {
-        static readonly List<ChartItemInfoContainerBase> content = new List<ChartItemInfoContainerBase>() {
+        static readonly List<ChartItemInfoContainerBase> content = [
             new ColorizerItemInfoContainer(
                 viewModel: new AreaGradientFillEffectViewModel(),
                 type: CustomAppearanceType.AreaGradientFillEffect
@@ -25,7 +25,7 @@ namespace DemoCenter.Maui.Charts.ViewModels {
                 viewModel: new OperationSurfaceTemperatureViewModel(),
                 type: CustomAppearanceType.OperationSurfaceTemperature
             )
-        };
+        ];
 
         public override List<ChartItemInfoContainerBase> Content => content;
     }

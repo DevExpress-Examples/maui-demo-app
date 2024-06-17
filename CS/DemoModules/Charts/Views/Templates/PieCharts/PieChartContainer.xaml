@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="DemoCenter.Maui.Charts.Views.PieChartContainer">
     <ContentView.Resources>
-        <dxc:PieSeriesHintOptions x:Key="pieSeriesHintOptions"
+        <dx:PieSeriesHintOptions x:Key="pieSeriesHintOptions"
                                      PointTextPattern="{}{VP$#}%"/>
-        <dxc:PieSeriesLabel x:Key="pieSeriesLabel"
+        <dx:PieSeriesLabel x:Key="pieSeriesLabel"
                                Position="Inside"/>
     </ContentView.Resources>
     <ContentView.Content>
@@ -19,35 +17,35 @@
             <Label Text="{Binding ChartModel.Title}"
                    TextColor="{dx:ThemeColor OnSurface}"
                    BackgroundColor="{dx:ThemeColor Surface}"/>
-            <dxc:PieChartView Grid.Row="1"
+            <dx:PieChartView Grid.Row="1"
                                  SelectionMode="Single"
                                  SelectionBehavior="Hatch">
-                <dxc:PieChartView.ChartStyle>
-                    <dxc:PieChartStyle SeriesIndent="16"
+                <dx:PieChartView.ChartStyle>
+                    <dx:PieChartStyle SeriesIndent="16"
                                           Palette="{Binding ChartModel.Palette}"/>
-                </dxc:PieChartView.ChartStyle>
-                <dxc:PieChartView.Hint>
-                    <dxc:PieHint ShowMode="OnTap"/>
-                </dxc:PieChartView.Hint>
-                <dxc:PieChartView.Series>
-                    <dxc:PieSeries HintOptions="{StaticResource pieSeriesHintOptions}"
+                </dx:PieChartView.ChartStyle>
+                <dx:PieChartView.Hint>
+                    <dx:PieHint ShowMode="OnTap"/>
+                </dx:PieChartView.Hint>
+                <dx:PieChartView.Series>
+                    <dx:PieSeries HintOptions="{StaticResource pieSeriesHintOptions}"
                                       Label="{StaticResource pieSeriesLabel}">
-                        <dxc:PieSeries.Data>
-                            <dxc:PieSeriesDataAdapter DataSource="{Binding ChartModel.Rating}" 
+                        <dx:PieSeries.Data>
+                            <dx:PieSeriesDataAdapter DataSource="{Binding ChartModel.Rating}" 
                                                          LabelDataMember="Label" 
                                                          ValueDataMember="Value"/>
-                        </dxc:PieSeries.Data>
-                    </dxc:PieSeries>
-                    <dxc:PieSeries HintOptions="{StaticResource pieSeriesHintOptions}"
+                        </dx:PieSeries.Data>
+                    </dx:PieSeries>
+                    <dx:PieSeries HintOptions="{StaticResource pieSeriesHintOptions}"
                                       Label="{StaticResource pieSeriesLabel}">
-                        <dxc:PieSeries.Data>
-                            <dxc:PieSeriesDataAdapter DataSource="{Binding ChartModel.Security}" 
+                        <dx:PieSeries.Data>
+                            <dx:PieSeriesDataAdapter DataSource="{Binding ChartModel.Security}" 
                                                          LabelDataMember="Label" 
                                                          ValueDataMember="Value"/>
-                        </dxc:PieSeries.Data>
-                    </dxc:PieSeries>
-                </dxc:PieChartView.Series>
-            </dxc:PieChartView>
+                        </dx:PieSeries.Data>
+                    </dx:PieSeries>
+                </dx:PieChartView.Series>
+            </dx:PieChartView>
         </Grid>
     </ContentView.Content>
 </ContentView>

@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.PhoneListView"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              ios:Page.UseSafeArea="False"
@@ -24,14 +21,14 @@
                                       IconSource="{Binding GroupIconSource}"/>
             </DataTemplate>
             <DataTemplate x:Key="itemTemplate">
-                <dxc:DXCollectionView ItemsSource="{Binding Contacts}"
+                <dx:DXCollectionView ItemsSource="{Binding Contacts}"
                                             SelectionMode="None"
                                             ItemSize="70"
                                             BackgroundColor="{dx:ThemeColor Surface}"
                                             IsScrollBarVisible="False"
                                             Margin="{OnIdiom Phone='16,0,0,0', Tablet='71,0,0,0'}"
                                             ItemSpacing="1">
-                    <dxc:DXCollectionView.ItemTemplate>
+                    <dx:DXCollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0"
                                     BackgroundColor="{dx:ThemeColor Surface}"
@@ -71,8 +68,8 @@
                                         BackgroundColor="{dx:ThemeColor Surface}"/>
                             </Grid>
                         </DataTemplate>
-                    </dxc:DXCollectionView.ItemTemplate>
-                </dxc:DXCollectionView>
+                    </dx:DXCollectionView.ItemTemplate>
+                </dx:DXCollectionView>
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -82,7 +79,7 @@
                      />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <dxco:TabView x:Name="dxTabView"
+        <dx:TabView x:Name="dxTabView"
                             HeaderPanelPosition="Right"
                             HeaderPanelContentAlignment="Start"
                             IsSelectedItemIndicatorVisible = "False"
@@ -95,6 +92,6 @@
                             ScrollAnimationEnabled="False"
                             SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
                             HeaderPanelShadowRadius="{OnPlatform Android='1', iOS='0'}">
-        </dxco:TabView>
+        </dx:TabView>
     </ContentPage.Content>
 </demo:DemoPage>

@@ -1,8 +1,6 @@
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-                xmlns:dxi="clr-namespace:DevExpress.Maui.Core.Internal;assembly=DevExpress.Maui.Core"
-                xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+                xmlns:dx="http://schemas.devexpress.com/maui"
                 xmlns:views="clr-namespace:DemoCenter.Maui.Views"
                 xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
                 x:Class="DemoCenter.Maui.Views.MainPage"
@@ -11,80 +9,31 @@
     <demo:DemoPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="itemTemplate">
-                <VerticalStackLayout Margin="0,10">
-                    <dx:DXDockLayout Padding="{OnIdiom Phone='20,8,0,8', Tablet='20,12,0,12'}">  
-                        <dx:DXButton dx:DXDockLayout.Dock="Right"
-                            ButtonType="Text"
-                            HorizontalOptions="End"
-                            Padding="20,0"
-                            FontSize="16"
-                            TextColor="{dx:ThemeColor Primary}"
-                            Command="{Binding NavigationCommand, Source={Reference mainPage}}"
-                            CommandParameter="{Binding}"
-                            Content="View All"/>
-                        <Label dx:DXDockLayout.Dock="Left" 
-                            Text="{Binding Title}"
-                            TextColor="{dx:ThemeColor OnSurface}"
-                            FontSize="16"
-                            FontAttributes="Bold"/>
-                    </dx:DXDockLayout>
-                    <dxcv:DXCollectionView
-                            ItemsSource="{Binding DemoItems}"
-                            Orientation="Horizontal"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Center"
-                            HeightRequest="140"
-                            Margin="0,0,0,0"
-                            IsScrollBarVisible="false"
-                            ItemTemplate="{StaticResource cardTemplate}"/>
-                </VerticalStackLayout>
+                <dx:DXStackLayout>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="{Binding Title}" Margin="16,8" TextColor="{dx:ThemeColor OnSurfaceVariant}" VerticalOptions="Center" FontSize="16" FontAttributes="Bold"/>
+                        <dx:DXButton Grid.Column="1" ButtonType="Text" Padding="16,8" FontSize="14" HorizontalOptions="Start" Content="View All"
+                            Command="{Binding NavigationCommand, Source={Reference mainPage}}" CommandParameter="{Binding}"/>
+                    </Grid>
+                    <dx:DXCollectionView ItemsSource="{Binding DemoItems}" Orientation="Horizontal" HorizontalOptions="Fill"
+                            VerticalOptions="Center" HeightRequest="128" IsScrollBarVisible="false" ItemTemplate="{StaticResource cardTemplate}"/>
+                </dx:DXStackLayout>
             </DataTemplate>
 
             <DataTemplate x:Key="cardTemplate">
-                <Grid VerticalOptions="FillAndExpand" WidthRequest="156">
-                    <dx:DXButton ButtonType="Filled"
-                        BackgroundColor="{dx:ThemeColor SurfaceContainerLowest}"
-                        TextColor="{dx:ThemeColor OnSurfaceVariant}"
-                        IconColor="{dx:ThemeColor OnSurfaceVariant}"
-                        Clicked="DemoItemTappedControlShortcut"
-                        CornerRadius="16" 
-                        Margin="7"
-                        FontSize="14"
-                        HorizontalContentAlignment="Start"
-                        IconIndent="16"
-                        Padding="16"
-                        Icon="{Binding Icon}"
-                        IconWidth="40" IconHeight="40"
-                        IconPlacement="Top"
-                        FontAttributes="None"
-                        Content="{Binding Title}">
-                        <dx:DXButton.Shadow>
-                            <OnPlatform x:TypeArguments="Shadow">
-                                <On Platform="iOS">
-                                    <On.Value>
-                                        <Shadow Brush="Black" Offset="0,2" Radius="2" Opacity="0.22" />
-                                    </On.Value>
-                                </On>
-                                <On Platform="Android">
-                                    <On.Value>
-                                        <Shadow Brush="Black" Offset="0,4" Radius="2" Opacity="0.15" />
-                                    </On.Value>
-                                </On>
-                            </OnPlatform>
-                        </dx:DXButton.Shadow>
+                <Grid VerticalOptions="FillAndExpand">
+                    <dx:DXButton ButtonType="Text" WidthRequest="148" Padding="16" CornerRadius="16" Margin="12,0,0,0" HorizontalContentAlignment="Start" BackgroundColor="{dx:ThemeColor SurfaceContainer}"
+                        Icon="{Binding Icon}" IconWidth="40" IconHeight="40" IconPlacement="Top" IconIndent="12" IconColor="{dx:ThemeColor Primary}" IconColorizationEnabled="{Binding IconColorizationEnabled}"
+                        Content="{Binding Title}" TextColor="{dx:ThemeColor OnSurfaceVariant}" FontSize="14" FontAttributes="None"
+                        Clicked="DemoItemTappedControlShortcut">
                     </dx:DXButton>
-                    <Label VerticalOptions="Start"
-                        HorizontalOptions="End"
-                        IsVisible="{Binding ShowBadge}"
-                        Margin="22"
-                        FontAttributes="Bold"
-                        FontSize="13"
-                        Text="{Binding BadgeText}"
-                        TextColor="{dx:ThemeColor Primary}"/>
+                    <Label VerticalOptions="Start" HorizontalOptions="End" IsVisible="{Binding ShowBadge}"
+                        Margin="22" FontAttributes="Bold" FontSize="13" Text="{Binding BadgeText}" TextColor="{dx:ThemeColor Primary}"/>
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
     </demo:DemoPage.Resources>
+
     <Shell.TitleView>
         <views:TitleViewFix>
             <dx:DXDockLayout Margin="{OnPlatform Android='0, 0, 12, 0', iOS='0, 0, 0, 6'}">
@@ -104,14 +53,13 @@
             </dx:DXDockLayout>
         </views:TitleViewFix>
     </Shell.TitleView>
+
     <Grid IgnoreSafeArea="True">
-        <Grid BackgroundColor="{dx:ThemeColor Surface}" RowDefinitions="*,*">
-            <Ellipse Fill="{dx:ThemeColor OnSurface, Alpha=0.08}" WidthRequest="300" HeightRequest="300" Margin="0,0,300,10" Grid.Row="0"/>
-            <Ellipse Fill="{dx:ThemeColor OnSurface, Alpha=0.08}" WidthRequest="300" HeightRequest="300" Margin="300,150,0,0" Grid.Row="1"/>
-        </Grid>
-        
-        <dxi:DXScrollView Orientation="Vertical">
-            <dx:DXStackLayout Orientation="Vertical" ItemTemplate="{StaticResource itemTemplate}" ItemsSource="{Binding Items}"/>
-        </dxi:DXScrollView>
+        <dx:DXCollectionView
+            SelectionMode="None"
+            IsScrollBarVisible="false"
+            ItemSpacing="16"
+            ItemTemplate="{StaticResource itemTemplate}"
+            ItemsSource="{Binding Items}"/>
     </Grid>
 </demo:DemoPage>

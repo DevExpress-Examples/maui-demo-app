@@ -1,28 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+                           xmlns:dx="http://schemas.devexpress.com/maui"
                            x:Class="DemoCenter.Maui.Views.AdvancedLayoutView"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views">
-    <dxg:DataGridView ItemsSource="{Binding Path=Employees}">
-        <dxg:DataGridView.AdvancedColumnLayout>
-            <dxg:AdvancedColumnLayout>
-                <dxg:AdvancedColumnLayout.ColumnDefinitions>
+    <dx:DataGridView ItemsSource="{Binding Path=Employees}">
+        <dx:DataGridView.AdvancedColumnLayout>
+            <dx:AdvancedColumnLayout>
+                <dx:AdvancedColumnLayout.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="6*"/>
                     <ColumnDefinition Width="7*"/>
                     <ColumnDefinition Width="6*"/>
                     <ColumnDefinition Width="9*"/>
-                </dxg:AdvancedColumnLayout.ColumnDefinitions>
-                <dxg:AdvancedColumnLayout.RowDefinitions>
+                </dx:AdvancedColumnLayout.ColumnDefinitions>
+                <dx:AdvancedColumnLayout.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                </dxg:AdvancedColumnLayout.RowDefinitions>
-            </dxg:AdvancedColumnLayout>
-        </dxg:DataGridView.AdvancedColumnLayout>
+                </dx:AdvancedColumnLayout.RowDefinitions>
+            </dx:AdvancedColumnLayout>
+        </dx:DataGridView.AdvancedColumnLayout>
 
-        <dxg:TemplateColumn FieldName="Image" Caption="Photo" RowSpan="3" Padding="10,4,10,4">
-            <dxg:TemplateColumn.DisplayTemplate>
+        <dx:TemplateColumn FieldName="Image" Caption="Photo" RowSpan="3" Padding="10,4,10,4">
+            <dx:TemplateColumn.DisplayTemplate>
                 <DataTemplate>
                     <Image Source="{Binding Item.Image}"
                         VerticalOptions="Center"
@@ -35,12 +34,12 @@
                         </Image.Clip>
                     </Image>
                 </DataTemplate>
-            </dxg:TemplateColumn.DisplayTemplate>
-        </dxg:TemplateColumn>
+            </dx:TemplateColumn.DisplayTemplate>
+        </dx:TemplateColumn>
 
-        <dxg:TextColumn FieldName="FullName" Column="1" ColumnSpan="2"/>
-        <dxg:TextColumn FieldName="Phone" Column="3" ColumnSpan="2"/>
+        <dx:TextColumn FieldName="FullName" Column="1" ColumnSpan="2"/>
+        <dx:TextColumn FieldName="Phone" Column="3" ColumnSpan="2"/>
 
-        <dxg:TextColumn FieldName="JobTitle" Row="1" Column="1" ColumnSpan="4"/>
-    </dxg:DataGridView>
+        <dx:TextColumn FieldName="JobTitle" Row="1" Column="1" ColumnSpan="4"/>
+    </dx:DataGridView>
 </local:BaseGridContentPage>

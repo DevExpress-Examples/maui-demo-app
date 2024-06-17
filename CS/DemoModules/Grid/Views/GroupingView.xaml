@@ -1,36 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage
     x:Class="DemoCenter.Maui.Views.GroupingView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:local="clr-namespace:DemoCenter.Maui.Views">
     <ContentPage.Content>
-        <dxg:DataGridView x:Name="grid" ItemsSource="{Binding Invoices}" IsReadOnly="true" >
-            <dxg:DataGridView.Columns>
-                <dxg:NumberColumn FieldName="OrderID" Caption="OrderID" IsGrouped="true">
-                </dxg:NumberColumn>
-                <dxg:TextColumn FieldName="ProductName" MinWidth="105" Width="1.5*"/>
-                <dxg:DateColumn FieldName="OrderDate" MinWidth="105" IsVisible="{OnIdiom Phone=False, Tablet=True}"/>
-                <dxg:DateColumn FieldName="ShippedDate" MinWidth="105" IsVisible="{OnIdiom Phone=False, Tablet=True}"/>
-                <dxg:NumberColumn FieldName="UnitPriceInt" MinWidth="67" Caption="Price" DisplayFormat="C0"/>
-                <dxg:NumberColumn FieldName="Quantity" MinWidth="95"/>
-                <dxg:NumberColumn FieldName="Total"
+        <dx:DataGridView x:Name="grid" ItemsSource="{Binding Invoices}" IsReadOnly="true" >
+            <dx:DataGridView.Columns>
+                <dx:NumberColumn FieldName="OrderID" Caption="OrderID" IsGrouped="true">
+                </dx:NumberColumn>
+                <dx:TextColumn FieldName="ProductName" MinWidth="105" Width="1.5*"/>
+                <dx:DateColumn FieldName="OrderDate" MinWidth="105" IsVisible="{OnIdiom Phone=False, Tablet=True}"/>
+                <dx:DateColumn FieldName="ShippedDate" MinWidth="105" IsVisible="{OnIdiom Phone=False, Tablet=True}"/>
+                <dx:NumberColumn FieldName="UnitPriceInt" MinWidth="67" Caption="Price" DisplayFormat="C0"/>
+                <dx:NumberColumn FieldName="Quantity" MinWidth="95"/>
+                <dx:NumberColumn FieldName="Total"
                                   UnboundType="Decimal"
                                   UnboundExpression="[UnitPriceInt] * [Quantity]"
                                   DisplayFormat="c0"
                                   MinWidth="110">
-                </dxg:NumberColumn>
-            </dxg:DataGridView.Columns>
-            <dxg:DataGridView.GroupSummaries>
-                <dxg:GridColumnSummary FieldName="Total" Type="Sum" />
-            </dxg:DataGridView.GroupSummaries>
-            <dxg:DataGridView.TotalSummaryAppearance>
-                <dxg:TotalSummaryAppearance Padding="{OnPlatform iOS='14,12,14,24', Android='14,12,14,14'}" />
-            </dxg:DataGridView.TotalSummaryAppearance>
-            <dxg:DataGridView.TotalSummaries>
-                <dxg:GridColumnSummary FieldName="Total" Type="Sum" DisplayFormat="c0" />
-            </dxg:DataGridView.TotalSummaries>
-        </dxg:DataGridView>
+                </dx:NumberColumn>
+            </dx:DataGridView.Columns>
+            <dx:DataGridView.GroupSummaries>
+                <dx:GridColumnSummary FieldName="Total" Type="Sum" />
+            </dx:DataGridView.GroupSummaries>
+            <dx:DataGridView.TotalSummaryAppearance>
+                <dx:TotalSummaryAppearance Padding="{OnPlatform iOS='14,12,14,24', Android='14,12,14,14'}" />
+            </dx:DataGridView.TotalSummaryAppearance>
+            <dx:DataGridView.TotalSummaries>
+                <dx:GridColumnSummary FieldName="Total" Type="Sum" DisplayFormat="c0" />
+            </dx:DataGridView.TotalSummaries>
+        </dx:DataGridView>
     </ContentPage.Content>
 </local:BaseGridContentPage>

@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Text.Json;
 using DemoCenter.Maui.ViewModels;
-using Newtonsoft.Json.Linq;
 
 namespace DemoCenter.Maui.DemoModules.Grid.Data {
+    public class QuotesObject {
+        public List<Quote> StockItems { get; set; }
+    }
     public class Quote : NotificationObject {
         string companyName = String.Empty;
         double price;
@@ -94,9 +98,9 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
 
         void PopulateQuotes() {
             var assembly = this.GetType().Assembly;
-            Stream stream = assembly.GetManifestResourceStream("StockSource.json");
-            JObject jObject = JObject.Parse(new StreamReader(stream).ReadToEnd());
-            quotes = jObject["StockItems"].ToObject<BindingList<Quote>>();
+            using Stream stream = assembly.GetManifestResourceStream("StockSource.json");
+            using var stringContent = new StreamReader(stream);
+            this.quotes = new BindingList<Quote>(JsonSerializer.Deserialize<QuotesObject>(stringContent.ReadToEnd(), TrimmableContext.Default.QuotesObject)?.StockItems);
         }
 
         public void SimulateNextStep() {

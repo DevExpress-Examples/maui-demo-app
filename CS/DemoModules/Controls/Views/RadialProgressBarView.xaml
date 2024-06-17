@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:dx="http://schemas.devexpress.com/maui"
                xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
-               xmlns:dxga="clr-namespace:DevExpress.Maui.Gauges;assembly=DevExpress.Maui.Gauges"
-               xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
                xmlns:local="clr-namespace:DemoCenter.Maui.Views"
                x:Class="DemoCenter.Maui.Views.RadialProgressBarView"
                x:DataType="vm:RadialProgressBarViewModel"
@@ -14,7 +12,7 @@
     </demo:DemoPage.BindingContext>
     <demo:DemoPage.Resources>
         <local:StatusToBoolConverter x:Key="StatusToBoolConverter"/>
-        <Style TargetType="dxga:RadialProgressBar" x:Key="RadialProgressBarStyle">
+        <Style TargetType="dx:RadialProgressBar" x:Key="RadialProgressBarStyle">
             <Setter Property="AllowAnimation" Value="True" />
             <Setter Property="StartAngle" Value="-90" />
             <Setter Property="SweepAngle" Value="360" />
@@ -38,28 +36,28 @@
     
     <Grid>
         <Grid x:Name="grid1" RowDefinitions="*,*,*">
-            <dxga:RadialProgressBar Value="{Binding Progress}"
+            <dx:RadialProgressBar Value="{Binding Progress}"
                                     IsIndeterminate="{Binding Status, Converter={StaticResource StatusToBoolConverter}}"
                                     Style="{StaticResource RadialProgressBarStyle}"
                                     Grid.Row="1">
-                <dxga:RadialProgressBar.Content>
+                <dx:RadialProgressBar.Content>
                     <dx:DXButton Content="{Binding ButtonText}"
                                  Command="{Binding TapCommand}"
                                  Style="{StaticResource DXButtonStyle}" />
-                </dxga:RadialProgressBar.Content>
-            </dxga:RadialProgressBar>
+                </dx:RadialProgressBar.Content>
+            </dx:RadialProgressBar>
             <Label Grid.Row="2" VerticalOptions="Center" FormattedText="{Binding HelpMessage}" HorizontalTextAlignment="Center"/>
         </Grid>
         <Grid x:Name="grid2" ColumnDefinitions="*,*">
-            <dxga:RadialProgressBar Value="{Binding Progress}"
+            <dx:RadialProgressBar Value="{Binding Progress}"
                                     IsIndeterminate="{Binding Status, Converter={StaticResource StatusToBoolConverter}}"
                                     Style="{StaticResource RadialProgressBarStyle}">
-                <dxga:RadialProgressBar.Content>
+                <dx:RadialProgressBar.Content>
                     <dx:DXButton Content="{Binding ButtonText}"
                                  Command="{Binding TapCommand}"
                                  Style="{StaticResource DXButtonStyle}" />
-                </dxga:RadialProgressBar.Content>
-            </dxga:RadialProgressBar>
+                </dx:RadialProgressBar.Content>
+            </dx:RadialProgressBar>
             <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" FormattedText="{Binding HelpMessage}" HorizontalTextAlignment="Center"/>
         </Grid>
     </Grid>

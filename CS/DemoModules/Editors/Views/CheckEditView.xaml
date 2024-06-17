@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
-    xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
     x:Class="DemoCenter.Maui.Views.CheckEditView"
     ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
@@ -19,7 +16,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
-            <dxe:CheckEdit
+            <dx:CheckEdit
                 x:Name="edit"
                 dx:DXDockLayout.Dock="Top"
                 Grid.Row="0"
@@ -51,7 +48,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="CheckBox Appearance" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit Style="{StaticResource ComboBoxStyleBase}"
+                        <dx:ComboBoxEdit Style="{StaticResource ComboBoxStyleBase}"
                                           SelectedItem="{Binding SelectedGlyph}"
                                           DisplayMember="LabelText"
                                           ItemsSource="{Binding AvailableGlyphs}"/>
@@ -64,7 +61,7 @@
                             <Switch IsToggled="{Binding AllowCustomCheckedCheckBoxColor}" Style="{DynamicResource SwitchStyle}"/>
                         </StackLayout>
 
-                        <dxe:ComboBoxEdit
+                        <dx:ComboBoxEdit
                             SelectedValue="{Binding SelectedCheckedColor}"
                             ValueMember="Color"
                             ItemsSource="{Binding AvailableCheckedColors}"
@@ -77,7 +74,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Label Vertical Alignment" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit
+                        <dx:ComboBoxEdit
                             SelectedValue="{Binding LabelVerticalAlignment}"
                             ItemsSource="{Binding TextAlignments}"
                             Style="{StaticResource ComboBoxStyleBase}" />
@@ -86,7 +83,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Label Horizontal Alignment" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit
+                        <dx:ComboBoxEdit
                             SelectedValue="{Binding LabelHorizontalAlignment}"
                             ItemsSource="{Binding TextAlignments}"
                             Style="{StaticResource ComboBoxStyleBase}" />
@@ -95,7 +92,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="CheckBox Alignment" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit
+                        <dx:ComboBoxEdit
                             SelectedValue="{Binding CheckBoxAlignment}"
                             ItemsSource="{Binding TextAlignments}"
                             Style="{StaticResource ComboBoxStyleBase}" />
@@ -104,7 +101,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="CheckBox Position" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit
+                        <dx:ComboBoxEdit
                             SelectedValue="{Binding CheckBoxPosition}"
                             ItemsSource="{Binding CheckBoxPositions}"
                             Style="{StaticResource ComboBoxStyleBase}" />

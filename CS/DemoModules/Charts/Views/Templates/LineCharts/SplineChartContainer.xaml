@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="DemoCenter.Maui.Charts.Views.SplineChartContainer">
     <ContentView.Resources>
-        <dxc:SeriesHintOptions x:Key="lineSeriesHintOptions"
+        <dx:SeriesHintOptions x:Key="lineSeriesHintOptions"
                                   PointTextPattern="{}{A$MM/dd/yyyy}: {V}"/>
-        <dxc:ConstantLineTitle x:Key="emptyConstantLineTitle" Visible="false"/>
+        <dx:ConstantLineTitle x:Key="emptyConstantLineTitle" Visible="false"/>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid BackgroundColor="{dx:ThemeColor Surface}">
@@ -18,94 +16,94 @@
             <Label Text="{Binding ChartModel.Title}"
                    TextColor="{dx:ThemeColor OnSurface}"
                    BackgroundColor="{dx:ThemeColor Surface}"/>
-            <dxc:ChartView Grid.Row="1"
+            <dx:ChartView Grid.Row="1"
                               SelectionMode="Single"
                               SelectionKind="Series"
                               AxisXNavigationMode="ScrollingAndZooming"
                               AxisYNavigationMode="ScrollingAndZooming">
-                <dxc:ChartView.Series>
-                    <dxc:LineSeries DisplayName="Line"
+                <dx:ChartView.Series>
+                    <dx:LineSeries DisplayName="Line"
                                          MarkersVisible="False"
                                          HintOptions="{StaticResource Key=lineSeriesHintOptions}">
-                        <dxc:LineSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.SeriesData}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:LineSeries.Data>
-                        <dxc:LineSeries.Style>
-                            <dxc:LineSeriesStyle StrokeThickness="2"/>
-                        </dxc:LineSeries.Style>
-                    </dxc:LineSeries>
-                    <dxc:SplineSeries DisplayName="Spline"
+                        <dx:LineSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.SeriesData}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:LineSeries.Data>
+                        <dx:LineSeries.Style>
+                            <dx:LineSeriesStyle StrokeThickness="2"/>
+                        </dx:LineSeries.Style>
+                    </dx:LineSeries>
+                    <dx:SplineSeries DisplayName="Spline"
                                          MarkersVisible="true"
                                          LineTension="1"
                                          HintOptions="{StaticResource Key=lineSeriesHintOptions}">
-                        <dxc:SplineSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.SeriesData}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:SplineSeries.Data>
-                        <dxc:SplineSeries.Style>
-                            <dxc:LineSeriesStyle MarkerSize="6"
+                        <dx:SplineSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.SeriesData}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:SplineSeries.Data>
+                        <dx:SplineSeries.Style>
+                            <dx:LineSeriesStyle MarkerSize="6"
                                                     StrokeThickness="2">
-                                <dxc:LineSeriesStyle.MarkerStyle>
-                                    <dxc:MarkerStyle Fill="#ffffffff"
+                                <dx:LineSeriesStyle.MarkerStyle>
+                                    <dx:MarkerStyle Fill="#ffffffff"
                                                         Stroke="#ff4c4c4c"
                                                         StrokeThickness="2"/>
-                                </dxc:LineSeriesStyle.MarkerStyle>
-                            </dxc:LineSeriesStyle>
-                        </dxc:SplineSeries.Style>
-                    </dxc:SplineSeries>
-                </dxc:ChartView.Series>
-                <dxc:ChartView.AxisY>
-                    <dxc:NumericAxisY AlwaysShowZeroLevel="false">
-                        <dxc:NumericAxisY.Title>
-                            <dxc:AxisTitle Alignment="Outside"
+                                </dx:LineSeriesStyle.MarkerStyle>
+                            </dx:LineSeriesStyle>
+                        </dx:SplineSeries.Style>
+                    </dx:SplineSeries>
+                </dx:ChartView.Series>
+                <dx:ChartView.AxisY>
+                    <dx:NumericAxisY AlwaysShowZeroLevel="false">
+                        <dx:NumericAxisY.Title>
+                            <dx:AxisTitle Alignment="Outside"
                                               Text="J">
-                                <dxc:AxisTitle.Style>
-                                    <dxc:TitleStyle>
-                                        <dxc:TitleStyle.TextStyle>
-                                            <dxc:TextStyle Size="10"/>
-                                        </dxc:TitleStyle.TextStyle>
-                                    </dxc:TitleStyle>
-                                </dxc:AxisTitle.Style>
-                            </dxc:AxisTitle>
-                        </dxc:NumericAxisY.Title>
-                        <dxc:NumericAxisY.Label>
-                            <dxc:AxisLabel TextFormat="#E+0"/>
-                        </dxc:NumericAxisY.Label>
-                        <dxc:NumericAxisY.LabelValueNotation>
-                            <dxc:AxisLabelScientificNotation/>
-                        </dxc:NumericAxisY.LabelValueNotation>
-                        <dxc:NumericAxisY.Style>
-                            <dxc:AxisStyle InterlacedVisible="True"
+                                <dx:AxisTitle.Style>
+                                    <dx:TitleStyle>
+                                        <dx:TitleStyle.TextStyle>
+                                            <dx:TextStyle Size="10"/>
+                                        </dx:TitleStyle.TextStyle>
+                                    </dx:TitleStyle>
+                                </dx:AxisTitle.Style>
+                            </dx:AxisTitle>
+                        </dx:NumericAxisY.Title>
+                        <dx:NumericAxisY.Label>
+                            <dx:AxisLabel TextFormat="#E+0"/>
+                        </dx:NumericAxisY.Label>
+                        <dx:NumericAxisY.LabelValueNotation>
+                            <dx:AxisLabelScientificNotation/>
+                        </dx:NumericAxisY.LabelValueNotation>
+                        <dx:NumericAxisY.Style>
+                            <dx:AxisStyle InterlacedVisible="True"
                                               InterlacedColor="#22DDDDDD"/>
-                        </dxc:NumericAxisY.Style>
-                    </dxc:NumericAxisY>
-                </dxc:ChartView.AxisY>
-                <dxc:ChartView.AxisX>
-                    <dxc:DateTimeAxisX MeasureUnit="Day"
+                        </dx:NumericAxisY.Style>
+                    </dx:NumericAxisY>
+                </dx:ChartView.AxisY>
+                <dx:ChartView.AxisX>
+                    <dx:DateTimeAxisX MeasureUnit="Day"
                                           GridAlignment="Month"
                                           Range="{Binding ChartModel.VisualRange}">
-                        <dxc:DateTimeAxisX.Style>
-                            <dxc:AxisStyle MajorTickmarksVisible="True"/>
-                        </dxc:DateTimeAxisX.Style>
-                        <dxc:DateTimeAxisX.Label>
-                            <dxc:AxisLabel TextFormat="LLLL"/>
-                        </dxc:DateTimeAxisX.Label>
-                    </dxc:DateTimeAxisX>
-                </dxc:ChartView.AxisX>
-                <dxc:ChartView.Hint>
-                    <dxc:Hint>
-                        <dxc:Hint.Behavior>
-                            <dxc:TooltipHintBehavior/>
-                        </dxc:Hint.Behavior>
-                    </dxc:Hint>
-                </dxc:ChartView.Hint>
-                <dxc:ChartView.Legend>
-                    <dxc:Legend/>
-                </dxc:ChartView.Legend>
-            </dxc:ChartView>
+                        <dx:DateTimeAxisX.Style>
+                            <dx:AxisStyle MajorTickmarksVisible="True"/>
+                        </dx:DateTimeAxisX.Style>
+                        <dx:DateTimeAxisX.Label>
+                            <dx:AxisLabel TextFormat="LLLL"/>
+                        </dx:DateTimeAxisX.Label>
+                    </dx:DateTimeAxisX>
+                </dx:ChartView.AxisX>
+                <dx:ChartView.Hint>
+                    <dx:Hint>
+                        <dx:Hint.Behavior>
+                            <dx:TooltipHintBehavior/>
+                        </dx:Hint.Behavior>
+                    </dx:Hint>
+                </dx:ChartView.Hint>
+                <dx:ChartView.Legend>
+                    <dx:Legend/>
+                </dx:ChartView.Legend>
+            </dx:ChartView>
         </Grid>
     </ContentView.Content>
 </ContentView>

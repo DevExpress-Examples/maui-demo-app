@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using DemoCenter.Maui.DemoModules.Grid.Data;
+using DemoCenter.Maui.Data;
+using DemoCenter.Maui.DemoModules.CollectionView.Data;
 
 namespace DemoCenter.Maui.ViewModels {
     public class DragDropModel : NotificationObject {

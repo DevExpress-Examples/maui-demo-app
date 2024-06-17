@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:DemoCenter.Maui"
              x:Class="DemoCenter.Maui.Charts.Views.SideBySideRangeBarChartContainer">
     <ContentView.Resources>
-        <dxc:SeriesHintOptions x:Key="barSeriesHintOptions"
+        <dx:SeriesHintOptions x:Key="barSeriesHintOptions"
                                   PointTextPattern="{}{S}:&#10;Max price: {HV$0.##} &#10;Min price: {LV$0.##}"/>
     </ContentView.Resources>
     <ContentView.Content>
@@ -18,137 +16,137 @@
             <Label Text="{Binding ChartModel.Title}"
                    TextColor="{dx:ThemeColor OnSurface}"
                    BackgroundColor="{dx:ThemeColor Surface}"/>
-            <dxc:ChartView Grid.Row="1"
+            <dx:ChartView Grid.Row="1"
                               AxisXNavigationMode="ScrollingAndZooming"
                               x:Name="chart">
-                <dxc:ChartView.Series>
-                    <dxc:SideBySideRangeBarSeries DisplayName="Crude Oil"
+                <dx:ChartView.Series>
+                    <dx:SideBySideRangeBarSeries DisplayName="Crude Oil"
                                            HintOptions="{StaticResource barSeriesHintOptions}"
                                            BarWidth="0.6">
-                        <dxc:RangeBarSeries.Style>
-                            <dxc:BarSeriesStyle Fill="#FFff6e86"/>
-                        </dxc:RangeBarSeries.Style>
-                        <dxc:RangeBarSeries.Label>
-                            <dxc:RangeBarSeriesLabel Position="Outside"
+                        <dx:RangeBarSeries.Style>
+                            <dx:BarSeriesStyle Fill="#FFff6e86"/>
+                        </dx:RangeBarSeries.Style>
+                        <dx:RangeBarSeries.Label>
+                            <dx:RangeBarSeriesLabel Position="Outside"
                                                         Kind="TwoLabels"
                                                         TextPattern="{}{V$0.#}">
-                            </dxc:RangeBarSeriesLabel>
-                        </dxc:RangeBarSeries.Label>
-                        <dxc:RangeBarSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.OilSeriesData}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value1" Member="Value1" />
-                                <dxc:ValueDataMember Type="Value2" Member="Value2" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:RangeBarSeries.Data>
-                        <dxc:RangeBarSeries.AxisY>
-                            <dxc:NumericAxisY AlwaysShowZeroLevel="False">
-                                <dxc:NumericAxisY.Style>
-                                    <dxc:AxisStyle MajorGridlinesVisible="True"
+                            </dx:RangeBarSeriesLabel>
+                        </dx:RangeBarSeries.Label>
+                        <dx:RangeBarSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.OilSeriesData}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value1" Member="Value1" />
+                                <dx:ValueDataMember Type="Value2" Member="Value2" />
+                            </dx:SeriesDataAdapter>
+                        </dx:RangeBarSeries.Data>
+                        <dx:RangeBarSeries.AxisY>
+                            <dx:NumericAxisY AlwaysShowZeroLevel="False">
+                                <dx:NumericAxisY.Style>
+                                    <dx:AxisStyle MajorGridlinesVisible="True"
                                                       LineColor="#FFff6e86"/>
-                                </dxc:NumericAxisY.Style>
-                                <dxc:NumericAxisY.Label>
-                                    <dxc:AxisLabel>
-                                        <dxc:AxisLabel.Style>
-                                            <dxc:AxisLabelStyle>
-                                                <dxc:AxisLabelStyle.TextStyle>
-                                                    <dxc:TextStyle Color="#FFff6e86"/>
-                                                </dxc:AxisLabelStyle.TextStyle>
-                                            </dxc:AxisLabelStyle>
-                                        </dxc:AxisLabel.Style>
-                                    </dxc:AxisLabel>
-                                </dxc:NumericAxisY.Label>
-                                <dxc:NumericAxisY.Range>
-                                    <dxc:NumericRange Max="65"
+                                </dx:NumericAxisY.Style>
+                                <dx:NumericAxisY.Label>
+                                    <dx:AxisLabel>
+                                        <dx:AxisLabel.Style>
+                                            <dx:AxisLabelStyle>
+                                                <dx:AxisLabelStyle.TextStyle>
+                                                    <dx:TextStyle Color="#FFff6e86"/>
+                                                </dx:AxisLabelStyle.TextStyle>
+                                            </dx:AxisLabelStyle>
+                                        </dx:AxisLabel.Style>
+                                    </dx:AxisLabel>
+                                </dx:NumericAxisY.Label>
+                                <dx:NumericAxisY.Range>
+                                    <dx:NumericRange Max="65"
                                                          Min="50"/>
-                                </dxc:NumericAxisY.Range>
-                                <dxc:NumericAxisY.Title>
-                                    <dxc:AxisTitle Text="$/Barrel"
+                                </dx:NumericAxisY.Range>
+                                <dx:NumericAxisY.Title>
+                                    <dx:AxisTitle Text="$/Barrel"
                                                       Alignment="Outside"/>
-                                </dxc:NumericAxisY.Title>
-                            </dxc:NumericAxisY>
-                        </dxc:RangeBarSeries.AxisY>
-                    </dxc:SideBySideRangeBarSeries>                    
-                    <dxc:SideBySideRangeBarSeries DisplayName="Natural Gas"
+                                </dx:NumericAxisY.Title>
+                            </dx:NumericAxisY>
+                        </dx:RangeBarSeries.AxisY>
+                    </dx:SideBySideRangeBarSeries>                    
+                    <dx:SideBySideRangeBarSeries DisplayName="Natural Gas"
                                            HintOptions="{StaticResource barSeriesHintOptions}"
                                            BarWidth="0.6">
-                        <dxc:RangeBarSeries.Style>
-                            <dxc:BarSeriesStyle Fill="#FF01b0ee"/>
-                        </dxc:RangeBarSeries.Style>
-                        <dxc:RangeBarSeries.Label>
-                            <dxc:RangeBarSeriesLabel Position="Outside"
+                        <dx:RangeBarSeries.Style>
+                            <dx:BarSeriesStyle Fill="#FF01b0ee"/>
+                        </dx:RangeBarSeries.Style>
+                        <dx:RangeBarSeries.Label>
+                            <dx:RangeBarSeriesLabel Position="Outside"
                                                         Kind="TwoLabels"
                                                         TextPattern="{}{V$0.##}">
-                            </dxc:RangeBarSeriesLabel>
-                        </dxc:RangeBarSeries.Label>
-                        <dxc:RangeBarSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.GasSeriesData}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value1" Member="Value1" />
-                                <dxc:ValueDataMember Type="Value2" Member="Value2" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:RangeBarSeries.Data>
-                        <dxc:RangeBarSeries.AxisY>
-                            <dxc:NumericAxisY AlwaysShowZeroLevel="False">
-                                <dxc:NumericAxisY.DisplayPosition>
-                                    <dxc:AxisDisplayPositionFar/>
-                                </dxc:NumericAxisY.DisplayPosition>
-                                <dxc:NumericAxisY.Style>
-                                    <dxc:AxisStyle MajorGridlinesVisible="False"
+                            </dx:RangeBarSeriesLabel>
+                        </dx:RangeBarSeries.Label>
+                        <dx:RangeBarSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.GasSeriesData}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value1" Member="Value1" />
+                                <dx:ValueDataMember Type="Value2" Member="Value2" />
+                            </dx:SeriesDataAdapter>
+                        </dx:RangeBarSeries.Data>
+                        <dx:RangeBarSeries.AxisY>
+                            <dx:NumericAxisY AlwaysShowZeroLevel="False">
+                                <dx:NumericAxisY.DisplayPosition>
+                                    <dx:AxisDisplayPositionFar/>
+                                </dx:NumericAxisY.DisplayPosition>
+                                <dx:NumericAxisY.Style>
+                                    <dx:AxisStyle MajorGridlinesVisible="False"
                                                       LineColor="#FF01b0ee"
                                                       LineThickness="1"/>
-                                </dxc:NumericAxisY.Style>
-                                <dxc:NumericAxisY.Label>
-                                    <dxc:AxisLabel>
-                                        <dxc:AxisLabel.Style>
-                                            <dxc:AxisLabelStyle>
-                                                <dxc:AxisLabelStyle.TextStyle>
-                                                    <dxc:TextStyle Color="#FF01b0ee"/>
-                                                </dxc:AxisLabelStyle.TextStyle>
-                                            </dxc:AxisLabelStyle>
-                                        </dxc:AxisLabel.Style>
-                                    </dxc:AxisLabel>
-                                </dxc:NumericAxisY.Label>
-                                <dxc:NumericAxisY.Range>
-                                    <dxc:NumericRange Max="1"
+                                </dx:NumericAxisY.Style>
+                                <dx:NumericAxisY.Label>
+                                    <dx:AxisLabel>
+                                        <dx:AxisLabel.Style>
+                                            <dx:AxisLabelStyle>
+                                                <dx:AxisLabelStyle.TextStyle>
+                                                    <dx:TextStyle Color="#FF01b0ee"/>
+                                                </dx:AxisLabelStyle.TextStyle>
+                                            </dx:AxisLabelStyle>
+                                        </dx:AxisLabel.Style>
+                                    </dx:AxisLabel>
+                                </dx:NumericAxisY.Label>
+                                <dx:NumericAxisY.Range>
+                                    <dx:NumericRange Max="1"
                                                          Min="2.5"/>
-                                </dxc:NumericAxisY.Range>
-                                <dxc:NumericAxisY.Title>
-                                    <dxc:AxisTitle Text="$/MMBtu"
+                                </dx:NumericAxisY.Range>
+                                <dx:NumericAxisY.Title>
+                                    <dx:AxisTitle Text="$/MMBtu"
                                                       Alignment="Outside"/>
-                                </dxc:NumericAxisY.Title>
-                            </dxc:NumericAxisY>
-                        </dxc:RangeBarSeries.AxisY>
-                    </dxc:SideBySideRangeBarSeries>
-                </dxc:ChartView.Series>
-                <dxc:ChartView.AxisX>
-                    <dxc:DateTimeAxisX Range="{Binding ChartModel.VisualRange}"
+                                </dx:NumericAxisY.Title>
+                            </dx:NumericAxisY>
+                        </dx:RangeBarSeries.AxisY>
+                    </dx:SideBySideRangeBarSeries>
+                </dx:ChartView.Series>
+                <dx:ChartView.AxisX>
+                    <dx:DateTimeAxisX Range="{Binding ChartModel.VisualRange}"
                                           MeasureUnit="Month">
-                        <dxc:DateTimeAxisX.Label>
-                            <dxc:AxisLabel TextFormat="LLLL"/>
-                        </dxc:DateTimeAxisX.Label>
-                        <dxc:DateTimeAxisX.Style>
-                            <dxc:AxisStyle MajorTickmarksVisible="True"/>
-                        </dxc:DateTimeAxisX.Style>
-                    </dxc:DateTimeAxisX>
-                </dxc:ChartView.AxisX>
-                <dxc:ChartView.Legend>
-                    <dxc:Legend HorizontalPosition="Center"
+                        <dx:DateTimeAxisX.Label>
+                            <dx:AxisLabel TextFormat="LLLL"/>
+                        </dx:DateTimeAxisX.Label>
+                        <dx:DateTimeAxisX.Style>
+                            <dx:AxisStyle MajorTickmarksVisible="True"/>
+                        </dx:DateTimeAxisX.Style>
+                    </dx:DateTimeAxisX>
+                </dx:ChartView.AxisX>
+                <dx:ChartView.Legend>
+                    <dx:Legend HorizontalPosition="Center"
                                    VerticalPosition="BottomOutside"
                                    Orientation="LeftToRight" />
-                </dxc:ChartView.Legend>
-                <dxc:ChartView.Hint>
-                    <dxc:Hint>
-                        <dxc:Hint.Behavior>
-                            <dxc:CrosshairHintBehavior GroupHeaderTextPattern="{}{A$LLLL YYYY}">
-                                <dxc:CrosshairHintBehavior.LabelPosition>
-                                    <dxc:StaticCrosshairLabelPosition HorizontalAlignment="Left"
+                </dx:ChartView.Legend>
+                <dx:ChartView.Hint>
+                    <dx:Hint>
+                        <dx:Hint.Behavior>
+                            <dx:CrosshairHintBehavior GroupHeaderTextPattern="{}{A$LLLL YYYY}">
+                                <dx:CrosshairHintBehavior.LabelPosition>
+                                    <dx:StaticCrosshairLabelPosition HorizontalAlignment="Left"
                                                                          VerticalAlignment="Top"/>
-                                </dxc:CrosshairHintBehavior.LabelPosition>
-                            </dxc:CrosshairHintBehavior>
-                        </dxc:Hint.Behavior>
-                    </dxc:Hint>
-                </dxc:ChartView.Hint>
+                                </dx:CrosshairHintBehavior.LabelPosition>
+                            </dx:CrosshairHintBehavior>
+                        </dx:Hint.Behavior>
+                    </dx:Hint>
+                </dx:ChartView.Hint>
                 
-            </dxc:ChartView>
+            </dx:ChartView>
         </Grid>
     </ContentView.Content>
 </ContentView>

@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage  xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="DemoCenter.Maui.Views.FirstLookDemo">
-    <dxsch:DayView DayCount="7" Start="{Binding Start}">
-        <dxsch:DayView.DataStorage>
-            <dxsch:SchedulerDataStorage>
-                <dxsch:SchedulerDataStorage.DataSource>
-                    <dxsch:DataSource AppointmentsSource="{Binding Appointments}">
-                        <dxsch:DataSource.AppointmentMappings>
-                            <dxsch:AppointmentMappings Type="AppointmentType"
+    <dx:DayView DayCount="7" Start="{Binding Start}">
+        <dx:DayView.DataStorage>
+            <dx:SchedulerDataStorage>
+                <dx:SchedulerDataStorage.DataSource>
+                    <dx:DataSource AppointmentsSource="{Binding Appointments}">
+                        <dx:DataSource.AppointmentMappings>
+                            <dx:AppointmentMappings Type="AppointmentType"
                                                        AllDay="AllDay"
                                                        Start="Start"
                                                        End="End"
@@ -21,10 +20,10 @@
                                                        StatusId="Status"
                                                        Subject="Subject"
                                                        LabelId="Label" />
-                        </dxsch:DataSource.AppointmentMappings>
-                    </dxsch:DataSource>
-                </dxsch:SchedulerDataStorage.DataSource>
-            </dxsch:SchedulerDataStorage>
-        </dxsch:DayView.DataStorage>
-    </dxsch:DayView>
+                        </dx:DataSource.AppointmentMappings>
+                    </dx:DataSource>
+                </dx:SchedulerDataStorage.DataSource>
+            </dx:SchedulerDataStorage>
+        </dx:DayView.DataStorage>
+    </dx:DayView>
 </demo:DemoPage>

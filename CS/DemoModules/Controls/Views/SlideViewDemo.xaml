@@ -1,0 +1,151 @@
+<demo:DemoPage x:Class="DemoCenter.Maui.Views.SlideViewDemo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
+    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
+    xmlns:views="clr-namespace:DemoCenter.Maui.Views;assembly=DemoCenter.Maui"
+    xmlns:local="clr-namespace:DemoCenter.Maui;assembly=DemoCenter.Maui"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui" x:Name="slideViewDemo" ios:Page.UseSafeArea="False" BackgroundColor="{dx:ThemeColor Surface}">
+    <ContentPage.Resources>
+        <local:BoolToStackOrientationConverter x:Key="boolToStackOrientationConverter"/>
+        <local:InverseBoolConverter x:Key="inverseBoolConverter"/>
+        <Style TargetType="dx:DXToggleButton">
+            <Setter Property="TextColor" Value="{dx:ThemeColor OnSecondaryContainer}"/>
+            <Setter Property="CheckedTextColor" Value="{dx:ThemeColor OnSecondaryContainer}"/>
+            <Setter Property="CheckedBackgroundColor" Value="{dx:ThemeColor SecondaryContainer}"/>
+            <Setter Property="Icon" Value="selectedicon"/>
+            <Setter Property="IconColor" Value="Transparent"/>
+            <Setter Property="CheckedIconColor" Value="{dx:ThemeColor OnSecondaryContainer}"/>
+            <Setter Property="ButtonType" Value="Outlined"/>
+        </Style>
+        <Style TargetType="dx:DXButton">
+            <Setter Property="TextColor" Value="{dx:ThemeColor OnSecondaryContainer}"/>
+            <Setter Property="BackgroundColor" Value="{dx:ThemeColor SecondaryContainer}"/>
+        </Style>
+        <Style TargetType="views:SlideViewCard">
+            <Setter Property="Count" Value="5"/>
+            <Setter Property="Padding" Value="32"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Margin" Value="16"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid x:Name="grid" Margin="{dx:OnOrientation Landscape='28,0,8,16', Portrait='0'}"
+            ColumnDefinitions="0.5*,0.5*" 
+            RowDefinitions="0.5*,0.5*">
+            <dx:SlideView x:Name="slideView"
+                Orientation="{Binding Orientation}" 
+                CurrentIndex="{Binding CurrentIndex}" 
+                AllowSwipe="{Binding AllowSwipe}"
+                AllowAnimation="{Binding AllowAnimation}" 
+                AllowLooping="{Binding AllowLooping}"
+                Grid.RowSpan="{dx:OnOrientation Landscape='2', Portrait='1'}"
+                Grid.ColumnSpan="{dx:OnOrientation Landscape='1', Portrait='2'}">
+                    <views:SlideViewCard Number="1" 
+                        IsActive="{Binding AllowSwipe}"
+                        Value="{Binding AllowSwipe}" 
+                        Title="AllowSwipe" 
+                        Description="Specifies whether users can use swipe gestures to scroll SlideView items." 
+                        Icon="allowswipe"
+                        Text1="True"
+                        Text2=" / "
+                        Text3="False">
+                    </views:SlideViewCard>
+                    <views:SlideViewCard Number="2" 
+                        Title="Orientation" 
+                        Description="Defines whether users scroll SlideView items horizontally or vertically." 
+                        Icon="orientation_h"
+                        Value="{Binding IsHorizontal}"
+                        Text1="Horizontal"
+                        Text2=" / "
+                        Text3="Vertical">
+                        <views:SlideViewCard.Triggers>
+                            <Trigger TargetType="views:SlideViewCard" Property="Value" Value="false">
+                                <Setter Property="Icon" Value="orientation_v"/>
+                            </Trigger>
+                        </views:SlideViewCard.Triggers>
+                    </views:SlideViewCard>
+                    <views:SlideViewCard Number="3" 
+                        Title="CurrentIndex" 
+                        Description="Specifies the currently visible item by its zero-based index." 
+                        Icon="currentindex"
+                        Text2="[int]">
+                    </views:SlideViewCard>
+                    <views:SlideViewCard Number="4" 
+                        IsActive="{Binding AllowAnimation}"
+                        Value="{Binding AllowAnimation}" 
+                        Title="AllowAnimation" 
+                        Description="Enables or disables animation effects that accompany transitions between slides." 
+                        Icon="allowanimation"
+                        Text1="True"
+                        Text2=" / "
+                        Text3="False">
+                    </views:SlideViewCard>
+                    <views:SlideViewCard Number="5" 
+                        IsActive="{Binding AllowLooping}" 
+                        Value="{Binding AllowLooping}" 
+                        Title="AllowLooping" 
+                        Description="Defines whether users can navigate forward from the last slide to the first (and vice versa)." 
+                        Icon="allowlooping"
+                        Text1="True"
+                        Text2=" / "
+                        Text3="False">
+                    </views:SlideViewCard>
+            </dx:SlideView>
+            <dx:DXDockLayout x:Name="stack" 
+                Grid.Column="{dx:OnOrientation Landscape='1', Portrait='0'}"
+                Grid.Row="{dx:OnOrientation Landscape='0', Portrait='1'}"
+                Grid.RowSpan="{dx:OnOrientation Landscape='2', Portrait='1'}"
+                Grid.ColumnSpan="{dx:OnOrientation Landscape='1', Portrait='2'}">
+                <Grid x:Name="navigationPanel" 
+                    Padding="16,0,16,16" 
+                    ColumnDefinitions="0.5*,0.5*" 
+                    ColumnSpacing="8"
+                    VerticalOptions="{dx:OnOrientation Landscape='End', Portrait='Start'}"
+                    dx:DXDockLayout.Dock="{dx:OnOrientation Landscape='Bottom', Portrait='Top'}">
+                    <dx:DXButton Content="Previous" Command="{Binding Commands.ShowPrevious}" BindingContext="{x:Reference slideView}" />
+                    <dx:DXButton Grid.Column="1" Content="Next" Command="{Binding Commands.ShowNext}" BindingContext="{x:Reference slideView}" />
+                </Grid>
+                <dx:SlideView x:Name="slideView2" Margin="16,0" 
+                            AllowAnimation="false" 
+                            AllowSwipe="false" 
+                            CurrentIndex="{Binding CurrentIndex}"
+                            dx:DXDockLayout.Dock="{dx:OnOrientation Landscape='Top', Portrait='Bottom'}">
+                        <dx:DXDockLayout Margin="16" VerticalSpacing="16">
+                            <Label dx:DXDockLayout.Dock="Top" Text="Toggle property" FontAttributes="Bold"/>
+                            <dx:DXDockLayout VerticalOptions="Start">
+                                <Label dx:DXDockLayout.Dock="Left" Text="Allow Swipe" VerticalOptions="Center"/>
+                                <Switch dx:DXDockLayout.Dock="Right" VerticalOptions="Center" HorizontalOptions="End" IsToggled="{Binding AllowSwipe}" />
+                            </dx:DXDockLayout>    
+                        </dx:DXDockLayout>
+                        <dx:DXStackLayout Margin="0,16" ItemSpacing="16">
+                            <Label Text="Toggle property" FontAttributes="Bold"/>
+                            <Grid ColumnDefinitions="0.5*,0.5*" ColumnSpacing="0">
+                                <dx:DXToggleButton CornerRadius="100,0,100,0" Content="Horizontal" IsChecked="{Binding IsHorizontal}" />
+                                <dx:DXToggleButton Grid.Column="1" CornerRadius="0,100,0,100" Content="Vertical" IsChecked="{Binding IsVertical}" />
+                            </Grid>
+                        </dx:DXStackLayout>
+                        <dx:DXStackLayout Margin="0,16" ItemSpacing="16">
+                            <Label Text="Current Index" FontAttributes="Bold"/>
+                            <dx:DXContentPresenter HeightRequest="48" CornerRadius="20" TextHorizontalAlignment="Center" Content="[3]" TextVerticalAlignment="Center" TextColor="{dx:ThemeColor OnSurface}" BackgroundColor="{dx:ThemeColor SurfaceContainer}"/>
+                        </dx:DXStackLayout>
+                        <dx:DXDockLayout Margin="0,16" VerticalSpacing="8">
+                            <Label dx:DXDockLayout.Dock="Top" Text="Toggle property" FontAttributes="Bold"/>
+                            <dx:DXDockLayout VerticalOptions="Start">
+                                <Label dx:DXDockLayout.Dock="Left" Text="Allow Animation" VerticalOptions="Center"/>
+                                <Switch dx:DXDockLayout.Dock="Right" VerticalOptions="Center" HorizontalOptions="End" IsToggled="{Binding AllowAnimation}" />
+                            </dx:DXDockLayout>    
+                        </dx:DXDockLayout>
+                        <dx:DXDockLayout Margin="0,16" VerticalSpacing="8">
+                            <Label dx:DXDockLayout.Dock="Top" Text="Toggle property" FontAttributes="Bold"/>
+                            <dx:DXDockLayout VerticalOptions="Start">
+                                <Label dx:DXDockLayout.Dock="Left" Text="Allow Looping" VerticalOptions="Center"/>
+                                <Switch dx:DXDockLayout.Dock="Right" VerticalOptions="Center" HorizontalOptions="End" IsToggled="{Binding AllowLooping}" />
+                            </dx:DXDockLayout>    
+                        </dx:DXDockLayout>
+                </dx:SlideView>
+            </dx:DXDockLayout>
+        </Grid>
+    </ContentPage.Content>
+</demo:DemoPage>

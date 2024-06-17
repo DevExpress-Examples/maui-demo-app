@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <demo:DemoPage xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
-    xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:viewmodels="clr-namespace:DemoCenter.Maui.DemoModules.OfficeFileAPI.ViewModels"
     xmlns:local="clr-namespace:DemoCenter.Maui.Views"
     x:Class="DemoCenter.Maui.Views.FillPDFEditFieldsPage"
@@ -16,7 +14,7 @@
         <ToolbarItem Text="Save"  Command="{Binding OpenFileCommand}" Clicked="SavePDF"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
-        <Style TargetType="dxdf:DataFormTextItemWithAffixBase" x:Key="baseDataFormItemStyle">
+        <Style TargetType="dx:DataFormTextItemWithAffixBase" x:Key="baseDataFormItemStyle">
             <Setter Property="FieldName" Value="{Binding PropertyName}"/>
             <Setter Property="IsInplaceLabelFloating" Value="False"/>
             <Setter Property="ReturnType" Value="Next"/>
@@ -24,31 +22,31 @@
         <local:FormItemTemplateSelector x:Key="formItemTemplateSelector">
             <local:FormItemTemplateSelector.TextFormDataItemTemplate>
                 <DataTemplate x:DataType="{x:Type viewmodels:EditedItemModel}">
-                    <dxdf:DataFormTextItem Style="{StaticResource baseDataFormItemStyle}"/>
+                    <dx:DataFormTextItem Style="{StaticResource baseDataFormItemStyle}"/>
                 </DataTemplate>
             </local:FormItemTemplateSelector.TextFormDataItemTemplate>
             <local:FormItemTemplateSelector.DateFormDataItemTemplate>
                 <DataTemplate>
-                    <dxdf:DataFormDateItem Style="{StaticResource baseDataFormItemStyle}"/>
+                    <dx:DataFormDateItem Style="{StaticResource baseDataFormItemStyle}"/>
                 </DataTemplate>
             </local:FormItemTemplateSelector.DateFormDataItemTemplate>
             <local:FormItemTemplateSelector.ComboBoxDataFormItemTemplate>
                 <DataTemplate x:DataType="{x:Type viewmodels:ComboBoxEditedItemModel}">
-                    <dxdf:DataFormComboBoxItem Style="{StaticResource baseDataFormItemStyle}" ItemsSource="{Binding ItemsSource}" PickerShowMode="{Binding DropDownMode}"/>
+                    <dx:DataFormComboBoxItem Style="{StaticResource baseDataFormItemStyle}" ItemsSource="{Binding ItemsSource}" PickerShowMode="{Binding DropDownMode}"/>
                 </DataTemplate>
             </local:FormItemTemplateSelector.ComboBoxDataFormItemTemplate>
             <local:FormItemTemplateSelector.MaskDataFormItemTemplate>
                 <DataTemplate x:DataType="{x:Type viewmodels:MaskEditedItemModel}">
-                    <dxdf:DataFormMaskedItem Style="{StaticResource baseDataFormItemStyle}" Mask="{Binding Mask}" Keyboard="Numeric"/>
+                    <dx:DataFormMaskedItem Style="{StaticResource baseDataFormItemStyle}" Mask="{Binding Mask}" Keyboard="Numeric"/>
                 </DataTemplate>
             </local:FormItemTemplateSelector.MaskDataFormItemTemplate>
         </local:FormItemTemplateSelector>
     </ContentPage.Resources>
     <ScrollView>
-        <dxdf:DataFormView x:Name="dataform" DataObject="{Binding EditedObject}" IsAutoGenerationEnabled="False" ValidateProperty="dataform_ValidateProperty">
-            <dxdf:DataFormView.Behaviors>
+        <dx:DataFormView x:Name="dataform" DataObject="{Binding EditedObject}" IsAutoGenerationEnabled="False" ValidateProperty="dataform_ValidateProperty">
+            <dx:DataFormView.Behaviors>
                 <viewmodels:DataFormPropertySourceBehavior PropertiesSource="{Binding Properties}" ItemTemplate="{StaticResource formItemTemplateSelector}"/>
-            </dxdf:DataFormView.Behaviors>
-        </dxdf:DataFormView>
+            </dx:DataFormView.Behaviors>
+        </dx:DataFormView>
     </ScrollView>
 </demo:DemoPage>

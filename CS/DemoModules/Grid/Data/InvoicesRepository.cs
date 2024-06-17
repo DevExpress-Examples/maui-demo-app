@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 
 namespace DemoCenter.Maui.DemoModules.Grid.Data {
     public class InvoicesRepository {
@@ -8,9 +8,13 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
 
         public InvoicesRepository() {
             System.Reflection.Assembly assembly = GetType().Assembly;
-            Stream stream = assembly.GetManifestResourceStream("Invoices.json");
-            JObject jObject = JObject.Parse(new StreamReader(stream).ReadToEnd());
-            Invoices = jObject[nameof(Invoices)].ToObject<List<Invoice>>();
+            using Stream stream = assembly.GetManifestResourceStream("Invoices.json");
+            using var stringContent = new StreamReader(stream);
+            Invoices = JsonSerializer.Deserialize<InvocesObject>(stringContent.ReadToEnd(), TrimmableContext.Default.InvocesObject)?.Invoices;
         }
+    }
+
+    public class InvocesObject {
+        public List<Invoice> Invoices { get; set; }
     }
 }

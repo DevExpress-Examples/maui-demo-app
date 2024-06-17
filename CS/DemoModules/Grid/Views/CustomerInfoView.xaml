@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     x:Class="DemoCenter.Maui.Views.CustomerOrdersView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     BackgroundColor="{dx:ThemeColor Surface}"
     ios:Page.UseSafeArea="False">

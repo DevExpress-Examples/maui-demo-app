@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
              xmlns:utils="clr-namespace:DemoCenter.Maui" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
              ios:Page.UseSafeArea="False"
              x:Class="DemoCenter.Maui.Views.NestedTabView"
@@ -385,7 +383,7 @@
         </DataTemplate>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <dxco:TabView ScrollAnimationEnabled="False"
+        <dx:TabView ScrollAnimationEnabled="False"
                             SwipeEnabled="False"
                             HeaderPanelPosition="Bottom"
                             ItemHeaderWidth="*"
@@ -393,13 +391,13 @@
                             IsHeaderPanelShadowVisible="False"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand">
-            <dxco:TabView.HeaderPanelHeight>
-                <OnIdiom x:TypeArguments="dxco:TabHeaderLength" Phone="60" Tablet="90"/>
-            </dxco:TabView.HeaderPanelHeight>
-            <dxco:TabViewItem HeaderText="All"
+            <dx:TabView.HeaderPanelHeight>
+                <OnIdiom x:TypeArguments="dx:TabHeaderLength" Phone="60" Tablet="90"/>
+            </dx:TabView.HeaderPanelHeight>
+            <dx:TabViewItem HeaderText="All"
                                     HeaderIcon="nested_all"
                                     HeaderPadding="0">
-                <dxco:TabView x:Name="nestedTabView"
+                <dx:TabView x:Name="nestedTabView"
                                     HeaderPanelPosition="Top"
                                     ItemsSource="{Binding AllProducts}"
                                     SelectedItem="{Binding SelectedCategory}"
@@ -411,9 +409,9 @@
                                     VerticalOptions="FillAndExpand"
                                     HeaderPanelShadowHeight="{OnPlatform Android='5', iOS='3'}"
                                     HeaderPanelShadowRadius="{OnPlatform Android='5', iOS='5'}">
-                </dxco:TabView>
-            </dxco:TabViewItem>
-            <dxco:TabViewItem HeaderText="Cart"
+                </dx:TabView>
+            </dx:TabViewItem>
+            <dx:TabViewItem HeaderText="Cart"
                                     HeaderIcon="nested_cart"
                                     >
                 <Grid ColumnSpacing="0" RowSpacing="0">
@@ -437,8 +435,8 @@
                         </ListView.Margin>
                     </demo:NonSelectableListView>
                 </Grid>
-            </dxco:TabViewItem>
-            <dxco:TabViewItem HeaderText="Wish list"
+            </dx:TabViewItem>
+            <dx:TabViewItem HeaderText="Wish list"
                                     HeaderIcon="nested_wish_list"
                                     HeaderPadding="0">
                 <Grid ColumnSpacing="0" RowSpacing="0">
@@ -463,7 +461,7 @@
                         </ListView.Margin>
                     </demo:NonSelectableListView>
                 </Grid>
-            </dxco:TabViewItem>
-        </dxco:TabView>
+            </dx:TabViewItem>
+        </dx:TabView>
     </ContentPage.Content>
 </demo:DemoPage>

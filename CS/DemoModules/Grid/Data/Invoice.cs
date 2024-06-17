@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace DemoCenter.Maui.DemoModules.Grid.Data {
     public class Invoice {
@@ -21,9 +22,10 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public double UnitPrice { get; set; }
-        public int UnitPriceInt { get { return (int)UnitPrice; } }
         public int Quantity { get; set; }
         public double Discount { get; set; }
         public double Freight { get; set; }
+
+        [JsonIgnore] public int UnitPriceInt => (int)UnitPrice;
     }
 }

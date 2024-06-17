@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
@@ -144,7 +142,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid BackgroundColor="{dx:ThemeColor Surface}">
-            <dxcv:DXCollectionView x:Name="collectionView"
+            <dx:DXCollectionView x:Name="collectionView"
                                    AllowGroupCollapse="False"
                                    GroupHeaderTemplate="{StaticResource groupItemTemplate}"
                                    ItemTemplate="{StaticResource contactItemTemplateSelector}"
@@ -153,10 +151,10 @@
                                    GroupItemSeparatorThickness="1"
                                    GroupItemSeparatorCapMargin="{OnIdiom Phone='16', Tablet='37'}"
                                    UseRippleEffect="true">
-                <dxcv:DXCollectionView.GroupDescription>
-                    <dxcv:GroupDescription FieldName="Date" SortOrder="Descending"/>
-                </dxcv:DXCollectionView.GroupDescription>
-            </dxcv:DXCollectionView>
+                <dx:DXCollectionView.GroupDescription>
+                    <dx:GroupDescription FieldName="Date" SortOrder="Descending"/>
+                </dx:DXCollectionView.GroupDescription>
+            </dx:DXCollectionView>
         </Grid>
     </ContentPage.Content>
 </demo:DemoPage>

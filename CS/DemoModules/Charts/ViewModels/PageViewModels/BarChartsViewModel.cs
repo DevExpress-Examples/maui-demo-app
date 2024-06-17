@@ -4,7 +4,7 @@ using DemoCenter.Maui.ViewModels;
 
 namespace DemoCenter.Maui.Charts.ViewModels {
     public class BarChartsViewModel : ChartsPageViewModelBase {
-        static readonly List<ChartItemInfoContainerBase> content = new List<ChartItemInfoContainerBase>() {
+        static readonly List<ChartItemInfoContainerBase> content = [
             new BarChartItemInfoContainer(
                 viewModel: new SideBySideRangeBarChartViewModel(),
                 type: BarType.SideBySideRange
@@ -45,7 +45,7 @@ namespace DemoCenter.Maui.Charts.ViewModels {
                 viewModel: new SideBySideStackedBarChartViewModel(),
                 type: BarType.RotatedSideBySide
             )
-        };
+        ];
 
         public override List<ChartItemInfoContainerBase> Content => content;
     }

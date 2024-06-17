@@ -1,8 +1,6 @@
 ﻿{
-  "DateTimeDataSets": {
     "DataSets": [
         {
-
             "Name": "U.S.Average Diesel Prices",
             "DataSet": [
                 {
@@ -54,9 +52,6 @@
                     "Value": "2.5"
                 }
             ]
-
         }
     ]
-    
-  }
 }

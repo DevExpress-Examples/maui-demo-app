@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:views="clr-namespace:DemoCenter.Maui.Views"
-    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
     xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
@@ -19,15 +16,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <resources:CollectionViewResources/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Style TargetType="dxco:SimpleButton">
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="PressedBackgroundColor" Value="#20000000"/>
-                <Setter Property="IconColor" Value="{dx:ThemeColor OnSurface}"/>
-                <Setter Property="PressedIconColor" Value="{dx:ThemeColor OnSurface}"/>
-                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
-                <Setter Property="PressedTextColor" Value="{dx:ThemeColor OnSurface}"/>  
-            </Style>
 
             <views:CallTypeToIconConverter x:Key="callTypeIconConverter"/>
             <views:UpperCaseConverter x:Key="upperCaseConverter"/>
@@ -84,13 +72,17 @@
                                    VerticalOptions="CenterAndExpand"
                                    HeightRequest="20"
                                    WidthRequest="20"/>
-                    <dxco:SimpleButton Grid.Column="3"
+                    <dx:DXButton Grid.Column="3"
                                  HorizontalOptions="End"
                                  VerticalOptions="Center"
                                  Command="{Binding ItemCommand, Source={x:Reference contentPage}}"
                                  CommandParameter="{Binding}"
                                  Clicked="OnContactClick"
                                  Icon="demotabviewdetail"
+                                 ButtonType="Text"
+                                 Padding="12"
+                                 IconWidth="24" 
+                                 IconHeight="24"
                                  IconColor="{dx:ThemeColor Outline}"/>
                 </Grid>
             </DataTemplate>
@@ -133,13 +125,17 @@
                                    VerticalOptions="CenterAndExpand"
                                    HeightRequest="20"
                                    WidthRequest="20"/>
-                    <dxco:SimpleButton Grid.Column="3"
+                    <dx:DXButton Grid.Column="3"
                                  HorizontalOptions="End"
                                  VerticalOptions="Center"
                                  Command="{Binding ItemCommand, Source={x:Reference contentPage}}"
                                  CommandParameter="{Binding}"
                                  Clicked="OnContactClick"
                                  Icon="demotabviewdetail"
+                                 ButtonType="Text"
+                                 Padding="12"
+                                 IconWidth="24" 
+                                 IconHeight="24"
                                  IconColor="{dx:ThemeColor Outline}"/>
                 </Grid>
             </DataTemplate>
@@ -161,36 +157,46 @@
 
     <ContentPage.Content>
         <StackLayout BackgroundColor="{dx:ThemeColor Surface}">
-            <dxcv:DXCollectionView x:Name="collectionView"
+            <dx:DXCollectionView x:Name="collectionView"
                               AllowGroupCollapse="False"
                               GroupHeaderTemplate="{StaticResource groupItemTemplate}"
                               ItemTemplate="{StaticResource contactItemTemplateSelector}"
                               ItemsSource="{Binding Recent}"
-                              Tap="ItemSelected">
-                <dxcv:DXCollectionView.GroupDescription>
-                    <dxcv:GroupDescription FieldName="Date" SortOrder="Descending"/>
-                </dxcv:DXCollectionView.GroupDescription>
-                <dxcv:DXCollectionView.Margin>
+                              TapConfirmed="ItemSelected">
+                <dx:DXCollectionView.GroupDescription>
+                    <dx:GroupDescription FieldName="Date" SortOrder="Descending"/>
+                </dx:DXCollectionView.GroupDescription>
+                <dx:DXCollectionView.Margin>
                     <OnIdiom x:TypeArguments="maui:Thickness" Phone="16,0,0,0" Tablet="71,0,0,0"/>
-                </dxcv:DXCollectionView.Margin>
-            </dxcv:DXCollectionView>
+                </dx:DXCollectionView.Margin>
+            </dx:DXCollectionView>
 
-            <dxco:DXPopup IsOpen="{Binding IsOpenPopup}"
+            <dx:DXPopup IsOpen="{Binding IsOpenPopup}"
                          PlacementTarget="{Binding PlacementTarget}"
                          Placement="Bottom"
                          CornerRadius="8"
                          HorizontalAlignment="Left">
                 <StackLayout Padding="8,6">
-                    <dxco:SimpleButton Text="Call"
-                                      Icon="popupphone"
-                                      HorizontalOptions="Start"
-                                      Clicked="OnCallClick"/>
-                    <dxco:SimpleButton Text="Remove"
-                                      Icon="collectionviewdeletetask"
-                                      HorizontalOptions="Start"
-                                      Clicked="OnRemoveClick"/>
+                    <dx:DXButton 
+                        Content="Call"
+                        Icon="popupphone"
+                        Clicked="OnCallClick"
+                        ButtonType="ToolButton"
+                        IconWidth="24"
+                        IconHeight="24"
+                        FontSize="16"
+                        HorizontalContentAlignment="Start"/>
+                    <dx:DXButton 
+                        Content="Remove"
+                        Icon="collectionviewdeletetask"
+                        Clicked="OnRemoveClick"
+                        ButtonType="ToolButton"
+                        IconWidth="24"
+                        IconHeight="24"
+                        FontSize="16"
+                        HorizontalContentAlignment="Start"/>
                 </StackLayout>
-            </dxco:DXPopup>
+            </dx:DXPopup>
         </StackLayout>
     </ContentPage.Content>
 </demo:DemoPage>

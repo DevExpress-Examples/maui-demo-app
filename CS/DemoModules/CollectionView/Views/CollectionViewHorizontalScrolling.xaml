@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.CollectionViewHorizontalScrolling"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="False">
@@ -32,12 +30,12 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid BackgroundColor="{dx:ThemeColor Surface}">
-            <dxcv:DXCollectionView x:Name="collectionView"
+            <dx:DXCollectionView x:Name="collectionView"
                                    Orientation="Horizontal"
                                    ItemsSource="{Binding ItemSource}"
                                    ItemTemplate="{StaticResource Key=itemTemplate}"
                                    Margin="8">
-            </dxcv:DXCollectionView>
+            </dx:DXCollectionView>
         </Grid>
     </ContentPage.Content>
 </demo:DemoPage>

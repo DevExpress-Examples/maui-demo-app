@@ -1,8 +1,6 @@
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:views="clr-namespace:DemoCenter.Maui.Views"
@@ -36,15 +34,15 @@
                    Text="{Binding Version}"
                    FontSize="14"/>
             <dx:DXSeparator Orientation="Horizontal" Margin="16,20"/>
-            <dxcv:DXCollectionView ItemsSource="{Binding MenuItems}">
-                <dxcv:DXCollectionView.ItemTemplate>
+            <dx:DXCollectionView ItemsSource="{Binding MenuItems}">
+                <dx:DXCollectionView.ItemTemplate>
                     <DataTemplate>
                         <dx:DXButton ButtonType="Text" HorizontalContentAlignment="Fill" 
                             Command="{Binding Source={x:Reference appShell}, Path=BindingContext.OpenWebCommand}" CommandParameter="{Binding}"
                             Content="{Binding Name}" Icon="{Binding Icon}" IconWidth="24" IconHeight="24" IconIndent="16" />
                     </DataTemplate>
-                </dxcv:DXCollectionView.ItemTemplate>
-            </dxcv:DXCollectionView>
+                </dx:DXCollectionView.ItemTemplate>
+            </dx:DXCollectionView>
         </StackLayout>
     </Shell.FlyoutHeader>
 

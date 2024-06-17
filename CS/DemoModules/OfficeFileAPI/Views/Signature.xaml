@@ -1,11 +1,7 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <demo:DemoPage xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
-    xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:DemoCenter.Maui.DemoModules.OfficeFileAPI.ViewModels" x:Class="DemoCenter.Maui.Views.SignatureDemo" x:Name="SignatureView" BackgroundColor="#bcbcbc" Title="Sign PDF File">
     <ContentPage.ToolbarItems>
@@ -15,26 +11,26 @@
         <viewmodels:SignatureDemoViewModel/>
     </ContentPage.BindingContext>
     <Grid>
-        <dxe:ImageEdit Source="{Binding PdfPreview}" x:Name="previewImage" CropAreaBorderColor="Transparent" ScrimColor="Transparent" CropAreaOffset="0" MaxScaleFactor="2"/>
+        <dx:ImageEdit Source="{Binding PdfPreview}" x:Name="previewImage" CropAreaBorderColor="Transparent" ScrimColor="Transparent" CropAreaOffset="0" MaxScaleFactor="2"/>
         
         <dx:DXButton Icon="ic_signature" IconWidth="32" IconHeight="32" Command="{Binding OpenSignatureViewCommand}" HorizontalOptions="End" VerticalOptions="End" CornerRadius="16" WidthRequest="56" HeightRequest="56" Margin="0,0,25,25" Padding="0" BackgroundColor="{dx:ThemeColor Primary}">
             <Button.Shadow>
                 <Shadow Brush="Gray" Offset="4,8" Radius="10" />
             </Button.Shadow>
         </dx:DXButton>
-        <dxc:DXPopup x:Name="signatureDrawerPopup" IsOpen="{Binding IsSignatureViewOpened, Mode=TwoWay}" ScrimColor="#50505050" AllowScrim="true">
+        <dx:DXPopup x:Name="signatureDrawerPopup" IsOpen="{Binding IsSignatureViewOpened, Mode=TwoWay}" ScrimColor="#50505050" AllowScrim="true">
             <Grid RowDefinitions="*,Auto">
                 <toolkit:DrawingView IsMultiLineModeEnabled="True" Background="White" Lines="{Binding SignatureLines, Mode=TwoWay}" x:Name="signatureDrawer" HeightRequest="300" WidthRequest="350">
                     <toolkit:DrawingView.Behaviors>
                         <viewmodels:DrawingViewMVVMBehavior x:Name="drawingMvvmBehavior" DrawingAcceptedCommand="{Binding SignPdfCommand}"/>
                     </toolkit:DrawingView.Behaviors>
                 </toolkit:DrawingView>
-                <dxc:SimpleButton Text="&#8634;" Command="{Binding Source={x:Reference drawingMvvmBehavior}, Path=ClearCommand}" VerticalOptions="Start" HorizontalOptions="End" Background="Transparent" TextColor="Black" FontSize="24" HeightRequest="40" WidthRequest="40" CornerRadius="20" Padding="0" Margin="24" />
+                <dx:DXButton Content="&#8634;" Command="{Binding Source={x:Reference drawingMvvmBehavior}, Path=ClearCommand}" VerticalOptions="Start" HorizontalOptions="End" ButtonType="ToolButton" TextColor="Black" FontSize="24" HeightRequest="40" WidthRequest="40" CornerRadius="20" Padding="0" Margin="24" />
                 <HorizontalStackLayout HorizontalOptions="End" Grid.Row="1" Margin="24">
                     <dx:DXButton Content="Cancel" Command="{Binding CloseSignatureViewCommand}" Margin="4,0" />
                     <dx:DXButton Content="Sign PDF" Command="{Binding Source={x:Reference drawingMvvmBehavior}, Path=AcceptDrawingCommand}" Margin="4,0" />
                 </HorizontalStackLayout>
             </Grid>
-        </dxc:DXPopup>
+        </dx:DXPopup>
     </Grid>
 </demo:DemoPage>

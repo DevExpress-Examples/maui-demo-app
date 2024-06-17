@@ -4,7 +4,7 @@ using DemoCenter.Maui.ViewModels;
 
 namespace DemoCenter.Maui.Charts.ViewModels {
     public class AreaChartsViewModel : ChartsPageViewModelBase {
-        static readonly List<ChartItemInfoContainerBase> content = new List<ChartItemInfoContainerBase>() {
+        static readonly List<ChartItemInfoContainerBase> content = [
             new AreaChartItemInfoContainer(
                 viewModel: new RangeAreaChartViewModel(),
                 type: AreaType.Range
@@ -25,7 +25,7 @@ namespace DemoCenter.Maui.Charts.ViewModels {
                 viewModel: new StepAreaChartViewModel(),
                 type: AreaType.Step
             )
-        };
+        ];
         public override List<ChartItemInfoContainerBase> Content => content;
     }
 

@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxga="clr-namespace:DevExpress.Maui.Gauges;assembly=DevExpress.Maui.Gauges"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
              x:Class="DemoCenter.Maui.Views.RadialProgressBarReportView"
              Title="Test Results">
     <ContentPage.Resources>
         <DataTemplate x:Key="RadialProgressBar" x:DataType="vm:TestReport">
-            <dxga:RadialProgressBar EndValue="{Binding TotalTestCount}"
+            <dx:RadialProgressBar EndValue="{Binding TotalTestCount}"
                                     Value="{Binding SuccessfulTestCount}"
                                     StartAngle="180"
                                     SweepAngle="180"
@@ -19,7 +17,7 @@
                                     WidthRequest="250"
                                     Thickness="10"
                                     ValueIndicatorThickness="10">
-                <dxga:RadialProgressBar.Content>
+                <dx:RadialProgressBar.Content>
                     <Label VerticalOptions="End" HorizontalOptions="Center" HorizontalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
@@ -35,8 +33,8 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                </dxga:RadialProgressBar.Content>
-            </dxga:RadialProgressBar>
+                </dx:RadialProgressBar.Content>
+            </dx:RadialProgressBar>
         </DataTemplate>
     </ContentPage.Resources>
     <Grid Padding="16" RowDefinitions="4*, *">

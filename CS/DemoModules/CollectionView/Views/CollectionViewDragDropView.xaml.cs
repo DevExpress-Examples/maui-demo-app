@@ -1,4 +1,5 @@
-﻿using DemoCenter.Maui.DemoModules.Grid.Data;
+﻿using DemoCenter.Maui.Data;
+using DemoCenter.Maui.DemoModules.CollectionView.Data;
 using DemoCenter.Maui.ViewModels;
 using DevExpress.Maui.CollectionView;
 using Microsoft.Maui.Controls;

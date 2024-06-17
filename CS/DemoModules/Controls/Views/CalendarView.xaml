@@ -1,12 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <demo:AdaptivePage x:Class="DemoCenter.Maui.Views.CalendarView"
                    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:dx="http://schemas.devexpress.com/maui"
                    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-                   xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-                   xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-                   xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
                    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                    xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
                    x:Name="calendarView"
@@ -21,11 +17,11 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        <Style TargetType="Border" x:Key="HolidayListItemStyle">
-            <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+        <Style TargetType="dx:DXBorder" x:Key="HolidayListItemStyle">
+            <Setter Property="CornerRadius" Value="10" />
             <Setter Property="BackgroundColor" Value="{dx:ThemeColor SecondaryContainer}" />
             <Style.Triggers>
-                <DataTrigger TargetType="Border" Binding="{Binding IsHoliday}" Value="true">
+                <DataTrigger TargetType="dx:DXBorder" Binding="{Binding IsHoliday}" Value="true">
                     <Setter Property="BackgroundColor" Value="{dx:ThemeColor TertiaryContainer}" />
                 </DataTrigger>
             </Style.Triggers>
@@ -33,7 +29,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <dx:DXDockLayout BackgroundColor="{dx:ThemeColor SurfaceContainer}">
-            <dxe:DXCalendar
+            <dx:DXCalendar
                 x:Name="calendar"
                 dx:DXDockLayout.Dock="Top"
                 VerticalOptions="Start"
@@ -52,10 +48,10 @@
                        Margin="0,20"
                        TextColor="{dx:ThemeColor OnSurface}"
                        FontSize="16" />
-                <dxcv:DXCollectionView ItemsSource="{Binding SpecialDates}">
-                    <dxcv:DXCollectionView.ItemTemplate>
+                <dx:DXCollectionView ItemsSource="{Binding SpecialDates}">
+                    <dx:DXCollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Border Style="{StaticResource HolidayListItemStyle}" Margin="2">
+                            <dx:DXBorder Style="{StaticResource HolidayListItemStyle}" Margin="2">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="30" />
@@ -73,10 +69,10 @@
                                         Grid.Column="1"
                                         FontAttributes="Bold" />
                                 </Grid>
-                            </Border>
+                            </dx:DXBorder>
                         </DataTemplate>
-                    </dxcv:DXCollectionView.ItemTemplate>
-                </dxcv:DXCollectionView>
+                    </dx:DXCollectionView.ItemTemplate>
+                </dx:DXCollectionView>
             </dx:DXDockLayout>
         </dx:DXDockLayout>
     </ContentPage.Content>

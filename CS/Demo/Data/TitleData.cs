@@ -3,6 +3,7 @@
         public const string GridDataTitle = "Data Grid: Basic Features";
         public const string DataGridAdvancedTitle = "Data Grid: Advanced Features";
         public const string CollectionViewDataTitle = "Collection / List View";
+        public const string TreeViewDataTitle = "Tree View";
         public const string EditorsDataTitle = "Data Editors";
         public const string ControlsDataTitle = "Utility Controls";
         public const string DataFormDataTitle = "Data Form, Popup, & Menu";

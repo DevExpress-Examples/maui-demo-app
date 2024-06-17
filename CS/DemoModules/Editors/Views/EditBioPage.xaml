@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:helpers="clr-namespace:DemoCenter.Maui"
     x:Class="DemoCenter.Maui.Views.EditBioPage"
@@ -14,7 +12,7 @@
         <ToolbarItem Clicked="OnAccept" IconImageSource="check_24px" />
     </ContentPage.ToolbarItems>
     <VerticalStackLayout BackgroundColor="{dx:ThemeColor Surface}">
-        <dxe:MultilineEdit
+        <dx:MultilineEdit
             x:Name="bioEditor"
             Loaded="OnEditorLoaded" 
             BackgroundColor="Transparent"
