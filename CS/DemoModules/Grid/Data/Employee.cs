@@ -1,8 +1,11 @@
 using System;
+using System.Text.Json.Serialization;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.DemoModules.Grid.Data {
     public class Employee {
+        public Employee() { }
+
         public int Id { get; set; }
         public int ParentId { get; set; }
         public string FirstName { get; set; }
@@ -20,11 +23,8 @@ namespace DemoCenter.Maui.DemoModules.Grid.Data {
         public string Gender { get; set; }
         public string MaritalStatus { get; set; }
         public string FullName => FirstName + " " + LastName;
-        public string ImageData {
-            set {
-                Image = ImageSource.FromFile(value);
-            }
-        }
-        public ImageSource Image { get; set; }
+        public string ImageData { set => Image = ImageSource.FromFile(value); }
+        [JsonIgnore] public ImageSource Image { get; set; }
+        [JsonIgnore] public string Relationship => $"Id: {Id}, ParentId: {ParentId}";
     }
 }

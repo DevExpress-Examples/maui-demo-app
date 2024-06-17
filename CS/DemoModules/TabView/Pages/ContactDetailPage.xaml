@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              xmlns:local="clr-namespace:DemoCenter.Maui.Views"
              xmlns:forms="clr-namespace:DemoCenter.Maui;assembly=DemoCenter.Maui"
@@ -51,19 +49,19 @@
                 </dx:DXStackLayout>
             </dx:DXDockLayout>
 
-            <dxcv:DXCollectionView ItemsSource="{Binding CallsHistory}" AllowGroupCollapse="False">
-                <dxcv:DXCollectionView.GroupDescription>
-                    <dxcv:GroupDescription FieldName="Date" SortOrder="Descending"/>
-                </dxcv:DXCollectionView.GroupDescription>
-                <dxcv:DXCollectionView.GroupHeaderTemplate>
+            <dx:DXCollectionView ItemsSource="{Binding CallsHistory}" AllowGroupCollapse="False">
+                <dx:DXCollectionView.GroupDescription>
+                    <dx:GroupDescription FieldName="Date" SortOrder="Descending"/>
+                </dx:DXCollectionView.GroupDescription>
+                <dx:DXCollectionView.GroupHeaderTemplate>
                     <DataTemplate>
                         <VerticalStackLayout>
                             <Label Text="{Binding Value, StringFormat='{0:d}'}" Margin="0,8" TextColor="{dx:ThemeColor OnSurfaceVariant}" FontAttributes="Bold" FontSize="14"/>
                             <dx:DXSeparator/>
                         </VerticalStackLayout>
                     </DataTemplate>
-                </dxcv:DXCollectionView.GroupHeaderTemplate>
-                <dxcv:DXCollectionView.ItemTemplate>
+                </dx:DXCollectionView.GroupHeaderTemplate>
+                <dx:DXCollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout>
                             <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8" Margin="0,4">
@@ -74,8 +72,8 @@
                             <dx:DXSeparator/>
                         </VerticalStackLayout>
                     </DataTemplate>
-                </dxcv:DXCollectionView.ItemTemplate>
-            </dxcv:DXCollectionView>
+                </dx:DXCollectionView.ItemTemplate>
+            </dx:DXCollectionView>
         </dx:DXStackLayout>
     </ContentPage.Content>
 </demo:DemoPage>

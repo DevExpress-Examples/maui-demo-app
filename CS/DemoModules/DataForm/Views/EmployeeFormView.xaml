@@ -1,24 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:AdaptivePage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     x:Class="DemoCenter.Maui.Views.EmployeeFormView"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls" xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
     ios:Page.UseSafeArea="False">
 
     <ContentPage.Resources>
-        <Style TargetType="dxe:MultilineEdit">
+        <Style TargetType="dx:MultilineEdit">
             <Setter Property="ClearIconVisibility" Value="Never" />
         </Style>
-        <Style TargetType="dxe:TextEdit">
+        <Style TargetType="dx:TextEdit">
             <Setter Property="ClearIconVisibility" Value="Never" />
         </Style>
 
-        <Style TargetType="dxdf:DataFormView">
+        <Style TargetType="dx:DataFormView">
             <Setter Property="IsAutoGenerationEnabled" Value="False" />
             <Setter Property="EditorLabelFontAttributes" Value="Bold"/>
             <Setter Property="ContentPadding" Value="0"/>
@@ -32,7 +29,7 @@
             </Setter>
             <Setter Property="EditorLabelPosition">
                 <Setter.Value>
-                    <OnIdiom x:TypeArguments="dxdf:DataFormLabelPosition" Phone="Top" Tablet="Left"/>
+                    <OnIdiom x:TypeArguments="dx:DataFormLabelPosition" Phone="Top" Tablet="Left"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="CommitMode" Value="Manually" />
@@ -50,12 +47,12 @@
             <ColumnDefinition Width="0.1*"/>
         </Grid.ColumnDefinitions>
 
-        <dxdf:DataFormView x:Name="dataForm" Grid.Column="1" PickerSourceProvider="{Binding .}" BackgroundColor="Transparent">
-            <dxdf:DataFormView.ContentPadding>
+        <dx:DataFormView x:Name="dataForm" Grid.Column="1" PickerSourceProvider="{Binding .}" BackgroundColor="Transparent">
+            <dx:DataFormView.ContentPadding>
                 <OnIdiom x:TypeArguments="maui:Thickness" Phone="0,12" Tablet="0,18"/>
-            </dxdf:DataFormView.ContentPadding>
+            </dx:DataFormView.ContentPadding>
 
-            <dxdf:DataFormCustomItem x:Name="photoItem"
+            <dx:DataFormCustomItem x:Name="photoItem"
                                      FieldName="Photo"
                                      RowOrder="0"
                                      EditorWidth="0.1*"
@@ -75,70 +72,70 @@
                            WidthRequest="{StaticResource InternalPhotoFrameSizeRequest}"
                            HeightRequest="{StaticResource InternalPhotoFrameSizeRequest}"/>
                 </Border>
-            </dxdf:DataFormCustomItem>
+            </dx:DataFormCustomItem>
 
-            <dxdf:DataFormTextItem
+            <dx:DataFormTextItem
                         LabelText="First Name:"
                         FieldName="FirstName"
                         Placeholder="First name"
                         RowOrder="1"/>
 
-            <dxdf:DataFormTextItem
+            <dx:DataFormTextItem
                         LabelText="Last Name:"
                         FieldName="LastName"
                         Placeholder="Last name"
                         RowOrder="2"/>
 
-            <dxdf:DataFormDateItem
+            <dx:DataFormDateItem
                         LabelText="Birth Date:"
                         FieldName="BirthDate"
                         RowOrder="3"
                         DisplayFormat="d" />
 
-            <dxdf:DataFormComboBoxItem
+            <dx:DataFormComboBoxItem
                     LabelText="Position:"
                     FieldName="Position"
                     Placeholder="Select..."
                     RowOrder="4"/>
 
-            <dxdf:DataFormDateItem
+            <dx:DataFormDateItem
                     LabelText="Hire Date:"
                     FieldName="HireDate"
                     RowOrder="5"
                     DisplayFormat="d" />
 
-            <dxdf:DataFormMultilineItem
+            <dx:DataFormMultilineItem
                     LabelText="Notes:"
                     FieldName="Notes"
                     MinLineCount="4"
                     MaxLineCount="4"
                     RowOrder="6" />
 
-            <dxdf:DataFormTextItem
+            <dx:DataFormTextItem
                     LabelText="Address:"
                     FieldName="Address"
                     RowOrder="7">
-            </dxdf:DataFormTextItem>
+            </dx:DataFormTextItem>
 
-            <dxdf:DataFormTextItem
+            <dx:DataFormTextItem
                     LabelText="City:"
                     FieldName="City"
                     RowOrder="8">
-            </dxdf:DataFormTextItem>
+            </dx:DataFormTextItem>
 
-            <dxdf:DataFormTextItem
+            <dx:DataFormTextItem
                     LabelText="State:"
                     FieldName="State"
                     RowOrder="9">
-            </dxdf:DataFormTextItem>
+            </dx:DataFormTextItem>
 
-            <dxdf:DataFormTextItem
+            <dx:DataFormTextItem
                     LabelText="Zip Code:"
                     FieldName="Zip"
                     RowOrder="10">
-            </dxdf:DataFormTextItem>
+            </dx:DataFormTextItem>
 
-            <dxdf:DataFormMaskedItem
+            <dx:DataFormMaskedItem
                     LabelText="Home:"
                     FieldName="HomePhoneNumber"
                     Placeholder="Phone number"
@@ -146,7 +143,7 @@
                     Keyboard="Telephone"
                     Mask="+1 (000) 000-0000"/>
 
-            <dxdf:DataFormMaskedItem
+            <dx:DataFormMaskedItem
                     LabelText="Mobile:"
                     FieldName="MobilePhoneNumber"
                     Placeholder="Phone number"
@@ -154,17 +151,17 @@
                     Keyboard="Telephone"
                     Mask="+1 (000) 000-0000"/>
 
-            <dxdf:DataFormTextItem
+            <dx:DataFormTextItem
                     LabelText="Email:"
                     FieldName="Email"
                     RowOrder="13"
                     Keyboard="Email"/>
 
-            <dxdf:DataFormTextItem
+            <dx:DataFormTextItem
                     LabelText="Skype:"
                     FieldName="Skype"
                     RowOrder="14">
-            </dxdf:DataFormTextItem>
-        </dxdf:DataFormView>
+            </dx:DataFormTextItem>
+        </dx:DataFormView>
     </Grid>
 </demo:AdaptivePage>

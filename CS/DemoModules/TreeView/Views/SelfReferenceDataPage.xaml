@@ -1,0 +1,80 @@
+<demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="http://schemas.devexpress.com/maui"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+             xmlns:common="clr-namespace:DemoCenter.Maui"
+             xmlns:local="clr-namespace:DemoCenter.Maui.DemoModules.TreeView.Views"
+             xmlns:vm="clr-namespace:DemoCenter.Maui.DemoModules.TreeView.ViewModels"
+             x:Class="DemoCenter.Maui.DemoModules.TreeView.Views.SelfReferenceDataPage"
+             BackgroundColor="{dx:ThemeColor Surface}"
+             ios:Page.UseSafeArea="False">
+
+    <demo:DemoPage.Resources>
+        <DataTemplate x:Key="nodeTemplate">
+            <dx:TreeNodeView AllowExpandButton="False" Padding="16,8,0,8">
+                <dx:DXDockLayout HorizontalSpacing="12">
+                    <dx:TreeNodeExpandButton 
+                        dx:DXDockLayout.Dock="Right" 
+                        ContentRotation="-90" 
+                        CheckedContentRotation="90"
+                        AnimationDuration="0:0:0.250"/>
+                    <dx:DXImage 
+                        dx:DXDockLayout.Dock="Left" 
+                        Source="{Binding Item.Image}" 
+                        WidthRequest="40" HeightRequest="40">
+                        <Image.Clip>
+                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20" />
+                        </Image.Clip>
+                    </dx:DXImage>
+                    <dx:DXStackLayout 
+                        Orientation="Vertical" 
+                        VerticalOptions="Center" 
+                        Margin="0,0,16,0">
+                        <Label
+                            Text="{Binding Item.JobTitle}"
+                            TextColor="{dx:ThemeColor OnBackground}"
+                            FontSize="14" 
+                            FontAttributes="Bold"/>
+                        <Label 
+                            dx:DXDockLayout.Dock="Right"
+                            Text="{Binding Item.Relationship}"
+                            TextColor="{dx:ThemeColor OnBackground}"
+                            FontAttributes="Italic"
+                            FontSize="11" />
+                    </dx:DXStackLayout>
+                </dx:DXDockLayout>
+            </dx:TreeNodeView>
+        </DataTemplate>
+    </demo:DemoPage.Resources>
+    
+    <demo:DemoPage.BindingContext>
+        <vm:SelfReferenceDataViewModel/>
+    </demo:DemoPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            x:Name="sortToolbarItem"
+            IconImageSource="sort_by_alpha" 
+            Clicked="OnSortToolbarItemClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <dx:DXTreeView
+            x:Name="treeView"
+            ItemsSource="{Binding Nodes}"
+            ItemTemplate="{StaticResource nodeTemplate}"
+            AutoExpandMode="AllNodes"
+            AllowSelection="True">
+            <dx:DXTreeView.TreeDescription>
+                <dx:SelfReferenceTreeDescription KeyFieldName="Id" ParentFieldName="ParentId"/>
+            </dx:DXTreeView.TreeDescription>
+            <dx:DXTreeView.SortDescriptions>
+                <dx:TreeViewSortDescription 
+                    x:Name="sortDescription" 
+                    FieldName="JobTitle"
+                    SortOrder="Ascending"/>
+            </dx:DXTreeView.SortDescriptions>
+        </dx:DXTreeView>
+    </Grid>
+</demo:DemoPage>

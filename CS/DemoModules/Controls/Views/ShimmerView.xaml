@@ -1,56 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <demo:AdaptivePage x:Class="DemoCenter.Maui.Views.ShimmerView"
                    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:dx="http://schemas.devexpress.com/maui"
                    xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
-                   xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-                   xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-                   xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-                   xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
                    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                    xmlns:maui="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
                    xmlns:local="clr-namespace:DemoCenter.Maui.Views"
                    ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="dxc:ShimmerView" x:Key="ShimmerEffect">
+            <Style TargetType="dx:ShimmerView" x:Key="ShimmerEffect">
                 <Setter Property="WaveWidth" Value="0.7"/>
                 <Setter Property="WaveOpacity" Value="0.8"/>
                 <Setter Property="WaveDuration" Value="0:0:0.8"/>
             </Style>
 
-            <Style TargetType="Border" x:Key="ShimmerElementAction">
+            <Style TargetType="dx:DXBorder" x:Key="ShimmerElementAction">
                 <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
-                <Setter Property="StrokeShape" Value="RoundRectangle 25"/>
+                <Setter Property="CornerRadius" Value="25"/>
                 <Setter Property="WidthRequest" Value="100"/>
                 <Setter Property="HeightRequest" Value="100"/>
-                <Setter Property="StrokeThickness" Value="0"/>
+                <Setter Property="BorderThickness" Value="0"/>
             </Style>
-            <Style TargetType="Border" x:Key="ShimmerElementCard">
+            <Style TargetType="dx:DXBorder" x:Key="ShimmerElementCard">
                 <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
-                <Setter Property="StrokeShape" Value="RoundRectangle 25"/>
+                <Setter Property="CornerRadius" Value="25"/>
                 <Setter Property="WidthRequest" Value="250"/>
                 <Setter Property="HeightRequest" Value="150"/>
-                <Setter Property="StrokeThickness" Value="0"/>
+                <Setter Property="BorderThickness" Value="0"/>
             </Style>
             <Style TargetType="Ellipse" x:Key="ShimmerElementAvatar">
                 <Setter Property="Fill" Value="{dx:ThemeColor SurfaceVariant}"/>
                 <Setter Property="WidthRequest" Value="60"/>
                 <Setter Property="HeightRequest" Value="60"/>
             </Style>
-            <Style TargetType="Border" x:Key="ShimmerElementRow">
+            <Style TargetType="dx:DXBorder" x:Key="ShimmerElementRow">
                 <Setter Property="BackgroundColor" Value="{dx:ThemeColor SurfaceVariant}"/>
-                <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
+                <Setter Property="CornerRadius" Value="12"/>
                 <Setter Property="HeightRequest" Value="24"/>
-                <Setter Property="StrokeThickness" Value="0"/>
+                <Setter Property="BorderThickness" Value="0"/>
             </Style>
 
-            <Style TargetType="Border" x:Key="ElementAction">
-                <Setter Property="StrokeShape" Value="RoundRectangle 25"/>
+            <Style TargetType="dx:DXBorder" x:Key="ElementAction">
+                <Setter Property="CornerRadius" Value="25"/>
                 <Setter Property="WidthRequest" Value="100"/>
                 <Setter Property="HeightRequest" Value="90"/>
-                <Setter Property="StrokeThickness" Value="0"/>
+                <Setter Property="BorderThickness" Value="0"/>
             </Style>
             <Style TargetType="Label" x:Key="TextAction">
                 <Setter Property="TextColor" Value="{AppThemeBinding Light=#101010, Dark=#FFFFFF}"/>
@@ -95,41 +90,41 @@
         <ScrollView BackgroundColor="{dx:ThemeColor Surface}">
             <VerticalStackLayout>
 
-                <dxc:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
-                    <dxc:ShimmerView.Content>
+                <dx:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
+                    <dx:ShimmerView.Content>
                         <Grid ColumnDefinitions="*,*,*" HeightRequest="120" Margin="0,24">
                             <Grid RowDefinitions="*,Auto" Grid.Column="0" Margin="24,0,0,0">
-                                <Border Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#33FFCA67, Dark=#8AD7B08D}"/>
+                                <dx:DXBorder Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#33FFCA67, Dark=#8AD7B08D}"/>
                                 <Image Source="bed" Margin="28"/>
                                 <Label Style="{StaticResource TextAction}" Grid.Row="1" Text="Hotels"/>
                             </Grid>
 
                             <Grid RowDefinitions="*,Auto" Grid.Column="1">
-                                <Border Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#24FF4A4A, Dark=#6BFFB2B2}"/>
+                                <dx:DXBorder Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#24FF4A4A, Dark=#6BFFB2B2}"/>
                                 <Image Source="discont" Margin="28"/>
                                 <Label Style="{StaticResource TextAction}" Grid.Row="1" Text="Discount"/>
                             </Grid>
 
                             <Grid RowDefinitions="*,Auto" Grid.Column="2" Margin="0,0,24,0">
-                                <Border Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#3390D8F9, Dark=#33CDEFFF}"/>
+                                <dx:DXBorder Style="{StaticResource ElementAction}" BackgroundColor="{AppThemeBinding Light=#3390D8F9, Dark=#33CDEFFF}"/>
                                 <Image Source="map" Margin="28"/>
                                 <Label Style="{StaticResource TextAction}" Grid.Row="1" Text="Map"/>
                             </Grid>
                         </Grid>
-                    </dxc:ShimmerView.Content>
-                    <dxc:ShimmerView.LoadingView>
+                    </dx:ShimmerView.Content>
+                    <dx:ShimmerView.LoadingView>
                         <Grid ColumnDefinitions="*,*,*" HeightRequest="100" Margin="0,24">
-                            <Border Style="{StaticResource ShimmerElementAction}" Grid.Column="0" Margin="24,0,0,0"/>
-                            <Border Style="{StaticResource ShimmerElementAction}" Grid.Column="1"/>
-                            <Border Style="{StaticResource ShimmerElementAction}" Grid.Column="2" Margin="0,0,24,0"/>
+                            <dx:DXBorder Style="{StaticResource ShimmerElementAction}" Grid.Column="0" Margin="24,0,0,0"/>
+                            <dx:DXBorder Style="{StaticResource ShimmerElementAction}" Grid.Column="1"/>
+                            <dx:DXBorder Style="{StaticResource ShimmerElementAction}" Grid.Column="2" Margin="0,0,24,0"/>
                         </Grid>
-                    </dxc:ShimmerView.LoadingView>
-                </dxc:ShimmerView>
+                    </dx:ShimmerView.LoadingView>
+                </dx:ShimmerView>
 
-                <dxc:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
-                    <dxc:ShimmerView.Content>
-                        <dxcv:DXCollectionView HeightRequest="192" Orientation="Horizontal" ItemsSource="{Binding HouseItems}" IsScrollBarVisible="False">
-                            <dxcv:DXCollectionView.ItemTemplate>
+                <dx:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
+                    <dx:ShimmerView.Content>
+                        <dx:DXCollectionView HeightRequest="192" Orientation="Horizontal" ItemsSource="{Binding HouseItems}" IsScrollBarVisible="False">
+                            <dx:DXCollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <dx:DXBorder Style="{StaticResource ElementCard}" Margin="24,4,4,4">
                                         <VerticalStackLayout>
@@ -139,17 +134,17 @@
                                                 <Image HeightRequest="120"
                                                     Source="{Binding Photo}"
                                                     Aspect="AspectFill"/>
-                                                <Border
+                                                <dx:DXBorder
                                                     BackgroundColor="#8F000000"
                                                     HorizontalOptions="Start"
                                                     Margin="10"
                                                     VerticalOptions="End"
-                                                    StrokeShape="RoundRectangle 15">
-                                                    <Label Text="{Binding Price, StringFormat='$ {0:N0}'}" 
+                                                    CornerRadius="15">
+                                                    <Label Text="{Binding Price, StringFormat='$ {0:N0}'}"
                                                         FontAttributes="Bold"
                                                         TextColor="White"
                                                         Padding="12,4"/>
-                                                </Border>
+                                                </dx:DXBorder>
                                             </Grid>
                                             <Label Style="{StaticResource TextCardTitle}" Text="{Binding Description}" Margin="10,8"/>
                                             <Grid ColumnDefinitions="Auto,*" Margin="4,0">
@@ -162,30 +157,30 @@
                                         </VerticalStackLayout>
                                     </dx:DXBorder>
                                 </DataTemplate>
-                            </dxcv:DXCollectionView.ItemTemplate>
-                        </dxcv:DXCollectionView>
-                    </dxc:ShimmerView.Content>
-                    <dxc:ShimmerView.LoadingView>
-                        <dxcv:DXCollectionView 
-                            ItemsSource="{Binding HouseItems}" 
+                            </dx:DXCollectionView.ItemTemplate>
+                        </dx:DXCollectionView>
+                    </dx:ShimmerView.Content>
+                    <dx:ShimmerView.LoadingView>
+                        <dx:DXCollectionView
+                            ItemsSource="{Binding HouseItems}"
                             HeightRequest="150"
                             Orientation="Horizontal"
                             IsScrollBarVisible="False">
-                            <dxcv:DXCollectionView.ItemTemplate>
+                            <dx:DXCollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Style="{StaticResource ShimmerElementCard}" Margin="24,0,0,0"/>
+                                    <dx:DXBorder Style="{StaticResource ShimmerElementCard}" Margin="24,0,0,0"/>
                                 </DataTemplate>
-                            </dxcv:DXCollectionView.ItemTemplate>
-                        </dxcv:DXCollectionView>
-                    </dxc:ShimmerView.LoadingView>
-                </dxc:ShimmerView>
+                            </dx:DXCollectionView.ItemTemplate>
+                        </dx:DXCollectionView>
+                    </dx:ShimmerView.LoadingView>
+                </dx:ShimmerView>
 
-                <dxc:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
-                    <dxc:ShimmerView.Content>
+                <dx:ShimmerView Style="{StaticResource ShimmerEffect}" IsLoading="{Binding DealersLoading}">
+                    <dx:ShimmerView.Content>
                         <VerticalStackLayout>
                             <Label Style="{StaticResource TextHeader}" Text="Top Realtors" Margin="24"/>
-                            <dxcv:DXCollectionView ItemsSource="{Binding HumanItems}" ReduceSizeToContent="true" ItemSpacing="16">
-                                <dxcv:DXCollectionView.ItemTemplate>
+                            <dx:DXCollectionView ItemsSource="{Binding HumanItems}" ReduceSizeToContent="true" ItemSpacing="16">
+                                <dx:DXCollectionView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *" ColumnSpacing="16" RowSpacing="4" Margin="24,0">
                                             <Image Source="{Binding Photo}" WidthRequest="40" HeightRequest="40" Grid.RowSpan="2">
@@ -197,24 +192,24 @@
                                             <Label Style="{StaticResource TextUserCaption}" VerticalOptions="Start" Text="{Binding Deals}" Grid.Column="1" Grid.Row="1" />
                                         </Grid>
                                     </DataTemplate>
-                                </dxcv:DXCollectionView.ItemTemplate>
-                            </dxcv:DXCollectionView>
+                                </dx:DXCollectionView.ItemTemplate>
+                            </dx:DXCollectionView>
                         </VerticalStackLayout>
-                    </dxc:ShimmerView.Content>
-                    <dxc:ShimmerView.LoadingView>
-                        <dxcv:DXCollectionView ItemsSource="{Binding HumanItems}" ReduceSizeToContent="true" Margin="0,24" ItemSpacing="16">
-                            <dxcv:DXCollectionView.ItemTemplate>
+                    </dx:ShimmerView.Content>
+                    <dx:ShimmerView.LoadingView>
+                        <dx:DXCollectionView ItemsSource="{Binding HumanItems}" ReduceSizeToContent="true" Margin="0,24" ItemSpacing="16">
+                            <dx:DXCollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *" ColumnSpacing="16" Margin="24,0">
                                         <Ellipse Style="{StaticResource ShimmerElementAvatar}" Grid.RowSpan="2" />
-                                        <Border Style="{StaticResource ShimmerElementRow}" Grid.Column="1" />
-                                        <Border Style="{StaticResource ShimmerElementRow}" Margin="0,0,128,0" Grid.Column="1" Grid.Row="1" />
+                                        <dx:DXBorder Style="{StaticResource ShimmerElementRow}" Grid.Column="1" />
+                                        <dx:DXBorder Style="{StaticResource ShimmerElementRow}" Margin="0,0,128,0" Grid.Column="1" Grid.Row="1" />
                                     </Grid>
                                 </DataTemplate>
-                            </dxcv:DXCollectionView.ItemTemplate>
-                        </dxcv:DXCollectionView>
-                    </dxc:ShimmerView.LoadingView>
-                </dxc:ShimmerView>
+                            </dx:DXCollectionView.ItemTemplate>
+                        </dx:DXCollectionView>
+                    </dx:ShimmerView.LoadingView>
+                </dx:ShimmerView>
 
             </VerticalStackLayout>
         </ScrollView>

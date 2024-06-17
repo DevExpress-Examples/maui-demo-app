@@ -16,11 +16,11 @@ namespace DemoCenter.Maui.Data {
         static OfficeFileAPIData() {
             demoItems = new List<DemoItem>() {
                 new DemoItem() {
-                    Title = "Pdf Viewer",
+                    Title = "PDF Viewer",
                     Description="The DevExpress Pdf Viewer allow you to view and search through PDF Document",
                     Module = typeof(PdfViewerPage),
                     Icon = "pdfviewer",
-                    DemoItemStatus = DemoItemStatus.New
+                    DemoItemStatus = DemoItemStatus.Updated
                 },
                 new DemoItem() {
                     Title = "Sign PDF Files",

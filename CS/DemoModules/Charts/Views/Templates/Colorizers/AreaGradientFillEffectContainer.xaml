@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="DemoCenter.Maui.Charts.Views.AreaGradientFillEffectContainer"
              xmlns:local="clr-namespace:DemoCenter.Maui.Data">
 <ContentView.Content>
@@ -17,44 +15,44 @@
                     TextColor="{dx:ThemeColor OnSurface}"
                     BackgroundColor="{dx:ThemeColor Surface}"/>
             
-            <dxc:ChartView Grid.Row="1" AxisXNavigationMode="ScrollingAndZooming">
-                <dxc:ChartView.Series>
-                    <dxc:AreaSeries DisplayName="Price">
-                        <dxc:AreaSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.StockPrices}" ArgumentDataMember="Date">
-                                <dxc:ValueDataMember Type="Value" Member="Open"/>
-                            </dxc:SeriesDataAdapter>
-                        </dxc:AreaSeries.Data>
-                        <dxc:AreaSeries.Style>
-                            <dxc:AreaSeriesStyle Fill="#009688">
-                                <dxc:AreaSeriesStyle.FillEffect>
-                                    <dxc:TransparencyGradient BaselineAlpha="0.6" SeriesLineAlpha="0"/>
-                                </dxc:AreaSeriesStyle.FillEffect>
-                            </dxc:AreaSeriesStyle>
-                        </dxc:AreaSeries.Style>
-                        <dxc:AreaSeries.HintOptions>
-                            <dxc:SeriesCrosshairOptions PointTextPattern="{}{A$MM//dd//YYYY}: ${V$###.##}"/>
-                        </dxc:AreaSeries.HintOptions>
-                    </dxc:AreaSeries>
-                </dxc:ChartView.Series>
-                <dxc:ChartView.AxisX>
-                    <dxc:DateTimeAxisX>
-                        <dxc:DateTimeAxisX.Range>
-                            <dxc:DateTimeRange SideMargin="0" VisualMin="11/10/2019" VisualMax="02/08/2020" />
-                        </dxc:DateTimeAxisX.Range>
-                        <dxc:DateTimeAxisX.Style>
-                            <dxc:AxisStyle MajorTickmarksVisible="True" MinorTickmarksVisible="True"/>
-                        </dxc:DateTimeAxisX.Style>
-                    </dxc:DateTimeAxisX>
-                </dxc:ChartView.AxisX>
-                <dxc:ChartView.AxisY>
-                    <dxc:NumericAxisY AlwaysShowZeroLevel="False">
-                        <dxc:NumericAxisY.Label>
-                            <dxc:AxisLabel Position="Inside" TextFormat="$#"/>
-                        </dxc:NumericAxisY.Label>
-                    </dxc:NumericAxisY>
-                </dxc:ChartView.AxisY>
-             </dxc:ChartView>
+            <dx:ChartView Grid.Row="1" AxisXNavigationMode="ScrollingAndZooming">
+                <dx:ChartView.Series>
+                    <dx:AreaSeries DisplayName="Price">
+                        <dx:AreaSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.StockPrices}" ArgumentDataMember="Date">
+                                <dx:ValueDataMember Type="Value" Member="Open"/>
+                            </dx:SeriesDataAdapter>
+                        </dx:AreaSeries.Data>
+                        <dx:AreaSeries.Style>
+                            <dx:AreaSeriesStyle Fill="#009688">
+                                <dx:AreaSeriesStyle.FillEffect>
+                                    <dx:TransparencyGradient BaselineAlpha="0.6" SeriesLineAlpha="0"/>
+                                </dx:AreaSeriesStyle.FillEffect>
+                            </dx:AreaSeriesStyle>
+                        </dx:AreaSeries.Style>
+                        <dx:AreaSeries.HintOptions>
+                            <dx:SeriesCrosshairOptions PointTextPattern="{}{A$MM//dd//YYYY}: ${V$###.##}"/>
+                        </dx:AreaSeries.HintOptions>
+                    </dx:AreaSeries>
+                </dx:ChartView.Series>
+                <dx:ChartView.AxisX>
+                    <dx:DateTimeAxisX>
+                        <dx:DateTimeAxisX.Range>
+                            <dx:DateTimeRange SideMargin="0" VisualMin="11/10/2019" VisualMax="02/08/2020" />
+                        </dx:DateTimeAxisX.Range>
+                        <dx:DateTimeAxisX.Style>
+                            <dx:AxisStyle MajorTickmarksVisible="True" MinorTickmarksVisible="True"/>
+                        </dx:DateTimeAxisX.Style>
+                    </dx:DateTimeAxisX>
+                </dx:ChartView.AxisX>
+                <dx:ChartView.AxisY>
+                    <dx:NumericAxisY AlwaysShowZeroLevel="False">
+                        <dx:NumericAxisY.Label>
+                            <dx:AxisLabel Position="Inside" TextFormat="$#"/>
+                        </dx:NumericAxisY.Label>
+                    </dx:NumericAxisY>
+                </dx:ChartView.AxisY>
+             </dx:ChartView>
         </Grid>
     </ContentView.Content>
 </ContentView>

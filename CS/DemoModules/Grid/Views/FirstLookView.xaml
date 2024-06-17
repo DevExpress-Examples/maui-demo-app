@@ -1,11 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage x:Class="DemoCenter.Maui.Views.FirstLookView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
-    xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:local="clr-namespace:DemoCenter.Maui.Views"
     xmlns:vm="clr-namespace:DemoCenter.Maui.DemoModules.Grid.ViewModels"
     xmlns:u="clr-namespace:DemoCenter.Maui">
@@ -14,23 +10,23 @@
         <local:DepartmentToImageConverter x:Key="DepartmentToImageConverter"/>
     </ContentPage.Resources>
     <Grid>
-        <dxc:BottomSheet x:Name="bottomSheet" BindingContext="{vm:ExportViewModel}" UpdateSizeToContent="True" x:DataType="vm:ExportViewModel" State="{Binding BottomSheetState}" AllowedState="HalfExpanded">
+        <dx:BottomSheet x:Name="bottomSheet" BindingContext="{vm:ExportViewModel}" UpdateSizeToContent="True" x:DataType="vm:ExportViewModel" State="{Binding BottomSheetState}" AllowedState="HalfExpanded">
             <Grid>
                 <dx:DXDockLayout Margin="30,20" IsVisible="{Binding IsInExport, Converter={u:InverseBoolConverter}}">
                     <dx:DXDockLayout.Resources>
-                        <Style TargetType="Border">
+                        <Style TargetType="dx:DXBorder">
                             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=Black}"/>
                             <Setter Property="Padding" Value="5"/>
-                            <Setter Property="StrokeThickness" Value="{OnPlatform iOS=3, Android=2}"/>
-                            <Setter Property="StrokeShape" Value="RoundRectangle 5,5,5,5"/>
+                            <Setter Property="BorderThickness" Value="{OnPlatform iOS=3, Android=2}"/>
+                            <Setter Property="CornerRadius" Value="5,5,5,5"/>
                             <Setter Property="WidthRequest" Value="{OnPlatform iOS=42, Android=50}"/>
                             <Setter Property="HeightRequest" Value="{OnPlatform iOS=42, Android=50}"/>
                             <Style.Triggers>
-                                <DataTrigger TargetType="Border" Binding="{Binding IsChecked}" Value="False">
-                                    <Setter Property="Stroke" Value="{dx:ThemeColor OutlineVariant}"/>
+                                <DataTrigger TargetType="dx:DXBorder" Binding="{Binding IsChecked}" Value="False">
+                                    <Setter Property="BorderColor" Value="{dx:ThemeColor OutlineVariant}"/>
                                 </DataTrigger>
-                                <DataTrigger TargetType="Border" Binding="{Binding IsChecked}" Value="True">
-                                    <Setter Property="Stroke" Value="{dx:ThemeColor Primary}"/>
+                                <DataTrigger TargetType="dx:DXBorder" Binding="{Binding IsChecked}" Value="True">
+                                    <Setter Property="BorderColor" Value="{dx:ThemeColor Primary}"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -42,7 +38,7 @@
                             <Setter Property="Margin" Value="5"/>
                         </Style>
 
-                        <Style TargetType="dxe:CheckEdit">
+                        <Style TargetType="dx:CheckEdit">
                             <Setter Property="CheckedCheckBoxImage" Value="radiobuttonchecked"/>
                             <Setter Property="UncheckedCheckBoxImage" Value="radiobuttonunchecked"/>
                             <Setter Property="LabelFontSize" Value="14"/>
@@ -54,9 +50,9 @@
                             <RadioButton.ControlTemplate>
                                 <ControlTemplate>
                                     <VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
-                                        <Border>
+                                        <dx:DXBorder>
                                             <Image Source="pdf"/>
-                                        </Border>
+                                        </dx:DXBorder>
 
                                         <Label Text="PDF" />
                                     </VerticalStackLayout>
@@ -67,9 +63,9 @@
                             <RadioButton.ControlTemplate>
                                 <ControlTemplate>
                                     <VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
-                                        <Border>
+                                        <dx:DXBorder>
                                             <Image Source="xls"/>
-                                        </Border>
+                                        </dx:DXBorder>
 
                                         <Label Text="EXCEL"/>
                                     </VerticalStackLayout>
@@ -80,9 +76,9 @@
                             <RadioButton.ControlTemplate>
                                 <ControlTemplate>
                                     <VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
-                                        <Border>
+                                        <dx:DXBorder>
                                             <Image Source="docx"/>
-                                        </Border>
+                                        </dx:DXBorder>
 
                                         <Label Text="DOCX"/>
                                     </VerticalStackLayout>
@@ -95,27 +91,27 @@
                         <dx:DXStackLayout.Orientation>
                             <dx:OnDisplaySize ExtraSmall="Horizontal" Small="Vertical" />
                         </dx:DXStackLayout.Orientation>
-                        <dxe:CheckEdit Label="Landscape" IsChecked="{Binding LandscapeSelected}"/>
-                        <dxe:CheckEdit Label="Portrait" IsChecked="{Binding PortraitSelected}"/>
+                        <dx:CheckEdit Label="Landscape" IsChecked="{Binding LandscapeSelected}"/>
+                        <dx:CheckEdit Label="Portrait" IsChecked="{Binding PortraitSelected}"/>
                     </dx:DXStackLayout>
 
-                    <dxe:ChoiceChipGroup dx:DXDockLayout.Dock="Top" Padding="0,25" ItemsSource="{u:EnumToItemsSource EnumType={x:Type vm:PaperSize}}" SelectedItem="{Binding SelectedPaperSize}"/>
+                    <dx:ChoiceChipGroup dx:DXDockLayout.Dock="Top" Padding="0,25" ItemsSource="{u:EnumToItemsSource EnumType={x:Type vm:PaperSize}}" SelectedItem="{Binding SelectedPaperSize}"/>
 
-                    <dxc:SimpleButton HorizontalOptions="Fill" dx:DXDockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Text="Export" Icon="export_button" Command="{Binding ExportCommand}" CommandParameter="{x:Reference grid}"/>
+                    <dx:DXButton HorizontalOptions="Fill" dx:DXDockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Content="Export" Icon="export_button" Command="{Binding ExportCommand}" CommandParameter="{x:Reference grid}"/>
                 </dx:DXDockLayout>
 
                 <dx:DXDockLayout Margin="30,20" IsVisible="{Binding IsInExport}">
                     <ActivityIndicator IsRunning="True" Color="{dx:ThemeColor Primary}" dx:DXDockLayout.Dock="Top" Margin="30,80" WidthRequest="50"/>
-                    <dxc:SimpleButton HorizontalOptions="Fill" dx:DXDockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Text="Cancel Exporting" Command="{Binding CancelExportCommand}"/>
+                    <dx:DXButton HorizontalOptions="Fill" dx:DXDockLayout.Dock="Bottom" VerticalOptions="End" Margin="50,0,50,0" Content="Cancel Exporting" Command="{Binding CancelExportCommand}"/>
                 </dx:DXDockLayout>
             </Grid>
-        </dxc:BottomSheet>
+        </dx:BottomSheet>
 
-        <dxg:DataGridView x:Name="grid" ItemsSource="{Binding Path=Employees}">
-            <dxg:DataGridView.Columns>
-                <dxg:ImageColumn IsVisible="False" AllowExport="True" FieldName="Image" Caption="Photo"/>
-                <dxg:TemplateColumn Width="{OnIdiom Phone='180', Tablet='240'}" FixedStyle="Start" IsReadOnly="true" Caption="Employee" FieldName="FullName">
-                    <dxg:TemplateColumn.DisplayTemplate>
+        <dx:DataGridView x:Name="grid" ItemsSource="{Binding Path=Employees}">
+            <dx:DataGridView.Columns>
+                <dx:ImageColumn IsVisible="False" AllowExport="True" FieldName="Image" Caption="Photo"/>
+                <dx:TemplateColumn Width="{OnIdiom Phone='180', Tablet='240'}" FixedStyle="Start" IsReadOnly="true" Caption="Employee" FieldName="FullName">
+                    <dx:TemplateColumn.DisplayTemplate>
                         <DataTemplate>
                             <Grid ColumnDefinitions="Auto,*" Padding="16,8" ColumnSpacing="16" IgnoreSafeArea="True">
                                 <Image Source="{Binding Item.Image}" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" HeightRequest="40">
@@ -123,26 +119,26 @@
                                         <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20" />
                                     </Image.Clip>
                                 </Image>
-                                <Label Text="{Binding Item.FullName}" TextColor="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}" VerticalOptions="Center" Grid.Column="1" FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}" FontSize="16"/>
+                                <Label Text="{Binding Item.FullName}" TextColor="{Binding Source={RelativeSource AncestorType={x:Type dx:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}" VerticalOptions="Center" Grid.Column="1" FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dx:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}" FontSize="16"/>
                             </Grid>
                         </DataTemplate>
-                    </dxg:TemplateColumn.DisplayTemplate>
-                </dxg:TemplateColumn>
-                <dxg:TextColumn FieldName="GroupName" GroupCaptionDisplayFormat="{}{1}" IsGrouped="true" AllowExport="false">
-                    <dxg:TextColumn.GroupCaptionTemplate>
+                    </dx:TemplateColumn.DisplayTemplate>
+                </dx:TemplateColumn>
+                <dx:TextColumn FieldName="GroupName" GroupCaptionDisplayFormat="{}{1}" IsGrouped="true" AllowExport="false">
+                    <dx:TextColumn.GroupCaptionTemplate>
                         <DataTemplate>
                             <StackLayout Orientation="Horizontal">
                                 <dx:DXImage HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" TintColor="{dx:ThemeColor Primary}" Source="{Binding Converter={StaticResource DepartmentToImageConverter}}" VerticalOptions="Center"/>
-                                <Label TextColor="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}" Margin="9, 0, 0, 0" FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dxg:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}" Text="{Binding GroupText}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" FontSize="16">
+                                <Label TextColor="{Binding Source={RelativeSource AncestorType={x:Type dx:DataGridView}}, Path=ActualAppearance.GroupRowFontColor}" Margin="9, 0, 0, 0" FontFamily="{Binding Source={RelativeSource AncestorType={x:Type dx:DataGridView}}, Path=ActualAppearance.GroupRowFontFamily}" Text="{Binding GroupText}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" FontSize="16">
                                 </Label>
                             </StackLayout>
                         </DataTemplate>
-                    </dxg:TextColumn.GroupCaptionTemplate>
-                </dxg:TextColumn>
-                <dxg:TextColumn FieldName="JobTitle" MinWidth="150" Width="1.5*" />
-                <dxg:TextColumn FieldName="Phone" MinWidth="150" Width="*" />
-                <dxg:DateColumn FieldName="HireDate" MinWidth="120" Width="*" />
-            </dxg:DataGridView.Columns>
-        </dxg:DataGridView>
+                    </dx:TextColumn.GroupCaptionTemplate>
+                </dx:TextColumn>
+                <dx:TextColumn FieldName="JobTitle" MinWidth="150" Width="1.5*" />
+                <dx:TextColumn FieldName="Phone" MinWidth="150" Width="*" />
+                <dx:DateColumn FieldName="HireDate" MinWidth="120" Width="*" />
+            </dx:DataGridView.Columns>
+        </dx:DataGridView>
     </Grid>
 </local:BaseGridContentPage>

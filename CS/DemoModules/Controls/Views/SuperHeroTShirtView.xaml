@@ -1,17 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo;assembly=DemoCenter.Maui"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     x:Class="DemoCenter.Maui.Views.SuperHeroTShirtView"
     ios:Page.UseSafeArea="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ColorChipStyle" TargetType="dxe:Chip">
+            <Style x:Key="ColorChipStyle" TargetType="dx:Chip">
                 <Setter Property="SelectedBackgroundColor" Value="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
                 <Setter Property="PressedBackgroundColor" Value="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
                 <Setter Property="BorderColor" Value="{Binding Source={RelativeSource Self}, Path=BackgroundColor}" />
@@ -24,7 +21,7 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 <Setter Property="Padding" Value="5,0"/>
                 <Setter Property="IsIconVisible" Value="{Binding Source={RelativeSource Self}, Path=IsSelected}"/>
             </Style>
-            <Style x:Key="ChoiceChipGroupStyle" TargetType="dxe:ChoiceChipGroup">
+            <Style x:Key="ChoiceChipGroupStyle" TargetType="dx:ChoiceChipGroup">
                 <Setter Property="HorizontalSpacing" Value="12"/>
                 <Setter Property="Padding" Value="0,14,0,10"/>
                 <Setter Property="AllowDeselect" Value="False"/>
@@ -54,28 +51,34 @@ xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 
                     <VerticalStackLayout dx:DXDockLayout.Dock="Top" Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
                         <Label Text="PICK A COLOR" Style="{StaticResource TextStyle}"/>
-                        <dxe:ChoiceChipGroup x:Name="colorChoiceChipGroup"
+                        <dx:ChoiceChipGroup x:Name="colorChoiceChipGroup"
                                             SelectedIndex="{Binding SelectedColorIndex}"
                                             Style="{StaticResource ChoiceChipGroupStyle}">
-                            <dxe:Chip BackgroundColor="#FA5E54" Style="{StaticResource ColorChipStyle}"/>
-                            <dxe:Chip BackgroundColor="#FF8F00" Style="{StaticResource ColorChipStyle}"/>
-                            <dxe:Chip BackgroundColor="#FFD54F" Style="{StaticResource ColorChipStyle}"/>
-                            <dxe:Chip BackgroundColor="#BCCC3E" Style="{StaticResource ColorChipStyle}"/>
-                            <dxe:Chip BackgroundColor="#7BC0EF" Style="{StaticResource ColorChipStyle}"/>
-                            <dxe:Chip BackgroundColor="#4799DF" Style="{StaticResource ColorChipStyle}"/>
-                            <dxe:Chip BackgroundColor="#CD98FF" Style="{StaticResource ColorChipStyle}"/>
-                        </dxe:ChoiceChipGroup>
+                            <dx:Chip BackgroundColor="#FA5E54" Style="{StaticResource ColorChipStyle}"/>
+                            <dx:Chip BackgroundColor="#FF8F00" Style="{StaticResource ColorChipStyle}"/>
+                            <dx:Chip BackgroundColor="#FFD54F" Style="{StaticResource ColorChipStyle}"/>
+                            <dx:Chip BackgroundColor="#BCCC3E" Style="{StaticResource ColorChipStyle}"/>
+                            <dx:Chip BackgroundColor="#7BC0EF" Style="{StaticResource ColorChipStyle}"/>
+                            <dx:Chip BackgroundColor="#4799DF" Style="{StaticResource ColorChipStyle}"/>
+                            <dx:Chip BackgroundColor="#CD98FF" Style="{StaticResource ColorChipStyle}"/>
+                        </dx:ChoiceChipGroup>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout dx:DXDockLayout.Dock="Top" Style="{StaticResource ChipGroupLayoutItemContainerStyle}">
                         <Label Text="CHOOSE SIZE" Style="{StaticResource TextStyle}"/>
-                        <dxe:ChoiceChipGroup ItemsSource="{Binding Sizes}"
+                        <dx:ChoiceChipGroup ItemsSource="{Binding Sizes}"
                                                 SelectedItem="{Binding SelectedSize}"
                                                 Style="{StaticResource ChoiceChipGroupStyle}"
                                                 ChipPadding="23,10"/>
                     </VerticalStackLayout>
 
-                    <dxco:SimpleButton Text="ADD TO CART" Icon="shopping_cart" dx:DXDockLayout.Dock="Top"/>
+                    <dx:DXButton 
+                        dx:DXDockLayout.Dock="Top"
+                        Content="ADD TO CART" 
+                        Icon="shopping_cart" 
+                        FontSize="16"
+                        IconWidth="24"
+                        IconHeight="24"/>
                 </dx:DXDockLayout>
             </demo:ScrollViewFix>
        </Grid>

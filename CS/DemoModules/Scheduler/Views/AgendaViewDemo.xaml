@@ -1,0 +1,38 @@
+<demo:DemoPage xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
+            xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:dx="http://schemas.devexpress.com/maui"
+            xmlns:vm="clr-namespace:DemoCenter.Maui.ViewModels"
+            x:DataType="vm:EmployeeCalendarViewModel"
+            x:Class="DemoCenter.Maui.Views.AgendaViewDemo">
+    <demo:DemoPage.ToolbarItems>
+        <ToolbarItem Text="Today" Clicked="OnTodayClicked"/>
+    </demo:DemoPage.ToolbarItems>
+    <demo:DemoPage.BindingContext>
+        <vm:EmployeeCalendarViewModel/>
+    </demo:DemoPage.BindingContext>
+    <dx:AgendaView x:Name="agendaView" Start="{Binding Start, Mode=TwoWay}" ShowNewAppointmentButton="True" NewAppointmentButtonClicked="OnNewAppointmentClicked" Tap="OnTap">
+        <dx:AgendaView.DataStorage>
+            <dx:SchedulerDataStorage x:Name="storage">
+                <dx:SchedulerDataStorage.DataSource>
+                    <dx:DataSource AppointmentsSource="{Binding Appointments}">
+                        <dx:DataSource.AppointmentMappings>
+                            <dx:AppointmentMappings Type="AppointmentType"
+                                                       AllDay="AllDay"
+                                                       Start="Start"
+                                                       End="End"
+                                                       Id="Id"
+                                                       Description="Description"
+                                                       Location="Location"
+                                                       RecurrenceInfo="RecurrenceInfo"
+                                                       StatusId="Status"
+                                                       Subject="Subject"
+                                                       LabelId="Label"
+                                                       Reminder="ReminderInfo" />
+                        </dx:DataSource.AppointmentMappings>
+                    </dx:DataSource>
+                </dx:SchedulerDataStorage.DataSource>
+            </dx:SchedulerDataStorage>
+        </dx:AgendaView.DataStorage>
+    </dx:AgendaView>
+</demo:DemoPage>

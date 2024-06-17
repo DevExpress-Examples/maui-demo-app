@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="DemoCenter.Maui.Charts.Views.StepAreaChartContainer">
     <ContentView.Content>
         <Grid BackgroundColor="{dx:ThemeColor Surface}">
@@ -13,44 +11,44 @@
             <Label Text="{Binding ChartModel.Title}"
                    TextColor="{dx:ThemeColor OnSurface}"
                    BackgroundColor="{dx:ThemeColor Surface}"/>
-            <dxc:ChartView Grid.Row="1"
+            <dx:ChartView Grid.Row="1"
                               SelectionMode="None">
-                <dxc:ChartView.Series>
-                    <dxc:StepAreaSeries DisplayName="{Binding ChartModel.DieselPrices.DisplayName}"
+                <dx:ChartView.Series>
+                    <dx:StepAreaSeries DisplayName="{Binding ChartModel.DieselPrices.DisplayName}"
                                            MarkersVisible="true">
-                        <dxc:StepAreaSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.DieselPrices.DataSet}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:StepAreaSeries.Data>
-                        <dxc:StepAreaSeries.Label>
-                            <dxc:MarkerSeriesLabel Angle="-45"
+                        <dx:StepAreaSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.DieselPrices.DataSet}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:StepAreaSeries.Data>
+                        <dx:StepAreaSeries.Label>
+                            <dx:MarkerSeriesLabel Angle="-45"
                                                       TextPattern="{}{V$#.##}"/>
-                        </dxc:StepAreaSeries.Label>
-                        <dxc:StepAreaSeries.HintOptions>
-                            <dxc:SeriesHintOptions PointTextPattern="{}{A$LLLL yyyy}: ${V}/gallon"/>
-                        </dxc:StepAreaSeries.HintOptions>
-                    </dxc:StepAreaSeries>
-                </dxc:ChartView.Series>
-                <dxc:ChartView.AxisY>
-                    <dxc:NumericAxisY AlwaysShowZeroLevel="false">
-                        <dxc:NumericAxisY.Title>
-                            <dxc:AxisTitle Text="$/gallon"
+                        </dx:StepAreaSeries.Label>
+                        <dx:StepAreaSeries.HintOptions>
+                            <dx:SeriesHintOptions PointTextPattern="{}{A$LLLL yyyy}: ${V}/gallon"/>
+                        </dx:StepAreaSeries.HintOptions>
+                    </dx:StepAreaSeries>
+                </dx:ChartView.Series>
+                <dx:ChartView.AxisY>
+                    <dx:NumericAxisY AlwaysShowZeroLevel="false">
+                        <dx:NumericAxisY.Title>
+                            <dx:AxisTitle Text="$/gallon"
                                               Alignment="Outside"/>
-                        </dxc:NumericAxisY.Title>
-                        <dxc:NumericAxisY.Label>
-                            <dxc:AxisLabel TextFormat="#.##"/>
-                        </dxc:NumericAxisY.Label>
-                    </dxc:NumericAxisY >
-                </dxc:ChartView.AxisY>
-                <dxc:ChartView.AxisX>
-                    <dxc:DateTimeAxisX MeasureUnit="Month">
-                        <dxc:DateTimeAxisX.Label>
-                            <dxc:AxisLabel TextFormat="LLLL yyyy"/>
-                        </dxc:DateTimeAxisX.Label>
-                    </dxc:DateTimeAxisX>
-                </dxc:ChartView.AxisX>
-            </dxc:ChartView>
+                        </dx:NumericAxisY.Title>
+                        <dx:NumericAxisY.Label>
+                            <dx:AxisLabel TextFormat="#.##"/>
+                        </dx:NumericAxisY.Label>
+                    </dx:NumericAxisY >
+                </dx:ChartView.AxisY>
+                <dx:ChartView.AxisX>
+                    <dx:DateTimeAxisX MeasureUnit="Month">
+                        <dx:DateTimeAxisX.Label>
+                            <dx:AxisLabel TextFormat="LLLL yyyy"/>
+                        </dx:DateTimeAxisX.Label>
+                    </dx:DateTimeAxisX>
+                </dx:ChartView.AxisX>
+            </dx:ChartView>
         </Grid>
     </ContentView.Content>
 </ContentView>

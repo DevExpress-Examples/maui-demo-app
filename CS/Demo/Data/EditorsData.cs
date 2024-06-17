@@ -28,7 +28,6 @@ namespace DemoCenter.Maui.Data {
                     Description="Demonstrates how to use DevExpress HTML Edit control to replicate email client UI. The editor allows you to modify and format text, insert images, and add hyperlinks.",
                     Module = typeof(HtmlEditView),
                     Icon = "htmledit",
-                    DemoItemStatus = DemoItemStatus.New,
                 },
 #endif
                 new DemoItem() {
@@ -36,7 +35,6 @@ namespace DemoCenter.Maui.Data {
                     Description="Demonstrates an avatar customization page created with the help of our image editor. The editor allows you to crop, flip, and rotate images. You can save the result in PNG and JPEG formats.",
                     Module = typeof(ImageEditPickerView),
                     Icon="imageedit",
-                    DemoItemStatus = DemoItemStatus.New
                 },
                 new DemoItem() {
                     Title = "Settings Form",

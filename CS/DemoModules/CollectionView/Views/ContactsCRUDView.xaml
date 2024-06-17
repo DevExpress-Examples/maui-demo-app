@@ -1,78 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:dx="http://schemas.devexpress.com/maui"
                x:Class="DemoCenter.Maui.DemoModules.CollectionView.Views.ContactsCRUDView"
                xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-               xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-               xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
-               xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-               xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
                xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
                ios:Page.UseSafeArea="False"
                xmlns:local="clr-namespace:DemoCenter.Maui.DemoModules.CollectionView.Views"
                BackgroundColor="{dx:ThemeColor Surface}">
 
-    <Grid RowDefinitions="Auto,*">
-        <dxe:TextEdit EndIcon="collectionview_crud_search" PlaceholderText="Search contacts" TextFontSize="14"
-                        ClearIconColor="{dx:ThemeColor OnSurfaceVariant}" TextVerticalAlignment="Center"
-                        BackgroundColor="{dx:ThemeColor SurfaceContainerHighest}"
-                        BorderThickness="0" BoxPadding="20,8,10,8"
-                        PlaceholderColor="{dx:ThemeColor OnSurfaceVariant}"
-                        EndIconColor="{dx:ThemeColor OnSurfaceVariant}"
-                        FocusedBorderThickness="0" CornerRadius="19" HeightRequest="38" Margin="15,10,15,10"
-                        TextChanged="SearchTextChanged" />
-
-        <dxcv:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Contacts}" IsPullToRefreshEnabled="True"
-                               PullToRefreshCommand="{Binding RefreshDataCommand}"
-                               IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}" AllowLiveDataShaping="True"
-                               SelectionMode="None" Grid.Row="1"
-                               DetailFormTemplate="{DataTemplate local:DetailInfoPage}"
-                               DetailEditFormTemplate="{DataTemplate local:ContactEditingPage}"
-                               DetailNewItemFormTemplate="{DataTemplate local:ContactEditingPage}"
-                               DetailFormShowing="OnDetailFormShowing"
-                               ValidateAndSave="OnValidateAndSave"
-                               ItemSeparatorThickness="0"
-                               GroupItemSeparatorThickness="0"
-                               UseRippleEffect="true"
-                               Tap="ItemClick">
-            <dxcv:DXCollectionView.GroupItemAppearance>
-                <dxcv:CollectionViewGroupItemAppearance BackgroundColor="Transparent"
-                                                        TextColor="{dx:ThemeColor OnSurface}"
-                                                        FontSize="17" CaptionMargin="8,0" />
-            </dxcv:DXCollectionView.GroupItemAppearance>
-            <dxcv:DXCollectionView.SortDescriptions>
-                <dxcv:SortDescription FieldName="FirstName" SortOrder="Ascending" />
-            </dxcv:DXCollectionView.SortDescriptions>
-            <dxcv:DXCollectionView.GroupDescription>
-                <dxcv:GroupDescription FieldName="FirstName" GroupInterval="Alphabetical" />
-            </dxcv:DXCollectionView.GroupDescription>
-            <dxcv:DXCollectionView.ItemTemplate>
-                <DataTemplate>
-                    <dxe:FormItem Margin="8,4" TextFontSize="16" ShowSeparator="False" AllowTap="False"
-                        TextColor="{dx:ThemeColor OnSurface}" Detail="{Binding Company}" DetailFontSize="14" DetailColor="{dx:ThemeColor OnSurface}">
-                        <dxe:FormItem.Text>    
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="FirstName" />
-                                <Binding Path="LastName" />
-                            </MultiBinding>
-                        </dxe:FormItem.Text>
-                        <dxe:FormItem.ImageTemplate>
-                            <DataTemplate>
-                                <Image HeightRequest="40" WidthRequest="40" Margin="0,0,8,0" Source="{Binding PhotoImageSource}">
-                                    <Image.Clip>
-                                        <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20" />
-                                    </Image.Clip>
-                                </Image>
-                            </DataTemplate>
-                        </dxe:FormItem.ImageTemplate>
-                    </dxe:FormItem>
-                </DataTemplate>
-            </dxcv:DXCollectionView.ItemTemplate>
-        </dxcv:DXCollectionView>
+    <Grid>
+        <dx:DXDockLayout>
+            <dx:DXBorder 
+                dx:DXDockLayout.Dock="Top" 
+                BackgroundColor="{dx:ThemeColor SurfaceContainer}"
+                CornerRadius="100" Margin="16" Padding="16">
+                <dx:TextEdit 
+                    EndIcon="collectionview_crud_search" 
+                    IconIndent="16"
+                    PlaceholderText="Search" 
+                    TextFontSize="16"
+                    TextVerticalAlignment="Center"
+                    BackgroundColor="Transparent"
+                    BorderThickness="0" 
+                    BoxPadding="0"
+                    BoxMinHeight="0" 
+                    PlaceholderColor="{dx:ThemeColor OnSurfaceVariant}"
+                    ClearIconColor="{dx:ThemeColor OnSurfaceVariant}" 
+                    EndIconColor="{dx:ThemeColor OnSurfaceVariant}"
+                    FocusedBorderThickness="0" 
+                    TextChanged="SearchTextChanged" />
+            </dx:DXBorder>
+            <dx:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Contacts}" IsPullToRefreshEnabled="True"
+                                   PullToRefreshCommand="{Binding RefreshDataCommand}"
+                                   IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}" AllowLiveDataShaping="True"
+                                   SelectionMode="None" Grid.Row="1"
+                                   DetailFormTemplate="{DataTemplate local:DetailInfoPage}"
+                                   DetailEditFormTemplate="{DataTemplate local:ContactEditingPage}"
+                                   DetailNewItemFormTemplate="{DataTemplate local:ContactEditingPage}"
+                                   DetailFormShowing="OnDetailFormShowing"
+                                   ValidateAndSave="OnValidateAndSave"
+                                   ItemSeparatorThickness="0"
+                                   GroupItemSeparatorThickness="0"
+                                   UseRippleEffect="true"
+                                   Tap="ItemClick">
+                <dx:DXCollectionView.GroupItemAppearance>
+                    <dx:CollectionViewGroupItemAppearance BackgroundColor="Transparent"
+                                                            TextColor="{dx:ThemeColor OnSurface}"
+                                                            FontSize="17" CaptionMargin="8,0" />
+                </dx:DXCollectionView.GroupItemAppearance>
+                <dx:DXCollectionView.SortDescriptions>
+                    <dx:SortDescription FieldName="FirstName" SortOrder="Ascending" />
+                </dx:DXCollectionView.SortDescriptions>
+                <dx:DXCollectionView.GroupDescription>
+                    <dx:GroupDescription FieldName="FirstName" GroupInterval="Alphabetical" />
+                </dx:DXCollectionView.GroupDescription>
+                <dx:DXCollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <dx:FormItem Margin="8,4" TextFontSize="16" ShowSeparator="False" AllowTap="False"
+                            TextColor="{dx:ThemeColor OnSurface}" Detail="{Binding Company}" DetailFontSize="14" DetailColor="{dx:ThemeColor OnSurface}">
+                            <dx:FormItem.Text>    
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="FirstName" />
+                                    <Binding Path="LastName" />
+                                </MultiBinding>
+                            </dx:FormItem.Text>
+                            <dx:FormItem.ImageTemplate>
+                                <DataTemplate>
+                                    <Image HeightRequest="40" WidthRequest="40" Margin="0,0,8,0" Source="{Binding PhotoImageSource}">
+                                        <Image.Clip>
+                                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20" />
+                                        </Image.Clip>
+                                    </Image>
+                                </DataTemplate>
+                            </dx:FormItem.ImageTemplate>
+                        </dx:FormItem>
+                    </DataTemplate>
+                </dx:DXCollectionView.ItemTemplate>
+            </dx:DXCollectionView>
+        </dx:DXDockLayout>
         <dx:DXButton VerticalOptions="End" Clicked="AddButtonClick"
                     HorizontalOptions="End" Margin="18" Content="+"
-                    WidthRequest="56" HeightRequest="56" Padding="0" Grid.RowSpan="2"
+                    WidthRequest="56" HeightRequest="56" Padding="0"
                     FontSize="28" CornerRadius="14" FontAttributes="None">
             <dx:DXButton.Shadow>
                 <Shadow Brush="{dx:ThemeColor Shadow, Alpha=0.3}"

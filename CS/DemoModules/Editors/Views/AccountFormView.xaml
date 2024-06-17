@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:converters="clr-namespace:DemoCenter.Maui.DemoModules.Editors.Converters"
     x:Class="DemoCenter.Maui.Views.AccountFormView"
+    HideSoftInputOnTapped="True"
     ios:Page.UseSafeArea="False">
      <ContentPage.Resources>
         <ResourceDictionary>
@@ -19,7 +17,7 @@
     </ContentPage.Resources>
     <demo:ScrollViewFix Padding="{OnIdiom Phone=16, Tablet='92,36'}" BackgroundColor="{dx:ThemeColor Surface}">
         <dx:DXDockLayout StretchLastItem="False" VerticalSpacing="4">
-            <dxe:ComboBoxEdit
+            <dx:ComboBoxEdit
                 dx:DXDockLayout.Dock="Top"
                 LabelText="Box Mode"
                 BoxMode="{Binding SelectedBoxMode}"
@@ -28,7 +26,7 @@
                 ItemsSource="{Binding BoxModes}"
                 ItemTemplate="{StaticResource BoxModeComboBoxItemTemplate}"
                 ReserveBottomTextLine="True"/>
-            <dxe:TextEdit
+            <dx:TextEdit
                 dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsname"
@@ -38,7 +36,7 @@
                 AutofillContentType="Username"
                 HelpText="*Required"
                 ErrorText="Login is required"/>
-            <dxe:PasswordEdit
+            <dx:PasswordEdit
                 dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorspassword"
@@ -48,7 +46,7 @@
                 AutofillContentType="Password"
                 HelpText="*Required"
                 ErrorText="The password should contain more than 5 characters, have at least one uppercase and one lowercase letter, and one number."/>
-            <dxe:TextEdit
+            <dx:TextEdit
                 dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsemail"
@@ -62,7 +60,7 @@
                 Suffix="@devexpress.com"
                 AffixIndent="0"
                 ClearIconVisibility="Never"/>
-            <dxe:DateEdit
+            <dx:DateEdit
                 dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsage"
@@ -76,7 +74,7 @@
                 IsDateIconVisible="False"
                 ClearIconVisibility="Auto"
                 DisplayFormat="d"/>
-            <dxe:TextEdit
+            <dx:TextEdit
                 dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsphone"
@@ -88,7 +86,7 @@
                 ErrorText="Incorrect phone number"
                 HelpText="Do not include a country code"
                 Keyboard="Telephone"/>
-            <dxe:MultilineEdit
+            <dx:MultilineEdit
                 dx:DXDockLayout.Dock="Top"
                 BoxMode="{Binding SelectedBoxMode}"
                 StartIcon="editorsnotes"
@@ -99,7 +97,13 @@
                 LabelText="Notes"
                 MaxCharacterCountOverflowMode="LimitInput"
                 MaxCharacterCount="100"/>
-             <dxco:SimpleButton dx:DXDockLayout.Dock="Top" Text="SUBMIT" Clicked="OnSubmitClicked" FontAttributes="Bold" Margin="0,16,0,0"/>
+             <dx:DXButton 
+                dx:DXDockLayout.Dock="Top" 
+                Content="SUBMIT" 
+                Clicked="OnSubmitClicked" 
+                FontAttributes="Bold" 
+                Margin="0,16,0,0"
+                FontSize="16"/>
         </dx:DXDockLayout>
     </demo:ScrollViewFix>
 </demo:DemoPage>

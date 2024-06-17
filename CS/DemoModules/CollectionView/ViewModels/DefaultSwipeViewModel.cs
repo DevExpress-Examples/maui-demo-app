@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DemoCenter.Maui.Data;
 using DemoCenter.Maui.DemoModules.CollectionView.Data;
 
 namespace DemoCenter.Maui.ViewModels {

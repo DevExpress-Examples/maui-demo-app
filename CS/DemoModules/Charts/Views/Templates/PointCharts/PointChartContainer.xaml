@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="DemoCenter.Maui.Charts.Views.PointChartContainer">
     <ContentView.Resources>
-        <dxc:SeriesHintOptions x:Key="pointSeriesHintOptions"
+        <dx:SeriesHintOptions x:Key="pointSeriesHintOptions"
                                   PointTextPattern="{}{A$LLLL}: {V}°C"/>
     </ContentView.Resources>
     <ContentView.Content>
@@ -17,74 +15,74 @@
             <Label Text="{Binding ChartModel.Title}"
                    TextColor="{dx:ThemeColor OnSurface}"
                    BackgroundColor="{dx:ThemeColor Surface}"/>
-            <dxc:ChartView Grid.Row="1"
+            <dx:ChartView Grid.Row="1"
                               SelectionMode="Single"
                               SelectionKind="Point">
-                <dxc:ChartView.Series>
-                    <dxc:PointSeries DisplayName="{Binding ChartModel.NightMin.Name}"
+                <dx:ChartView.Series>
+                    <dx:PointSeries DisplayName="{Binding ChartModel.NightMin.Name}"
                                         HintOptions="{StaticResource pointSeriesHintOptions}">
-                        <dxc:PointSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.NightMin.DataSet}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:PointSeries.Data>
-                    </dxc:PointSeries>
-                    <dxc:PointSeries DisplayName="{Binding ChartModel.DayMax.Name}"
+                        <dx:PointSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.NightMin.DataSet}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:PointSeries.Data>
+                    </dx:PointSeries>
+                    <dx:PointSeries DisplayName="{Binding ChartModel.DayMax.Name}"
                                         HintOptions="{StaticResource pointSeriesHintOptions}">
-                        <dxc:PointSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.DayMax.DataSet}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:PointSeries.Data>
-                    </dxc:PointSeries>
-                </dxc:ChartView.Series>
-                <dxc:ChartView.Hint>
-                    <dxc:Hint/>
-                </dxc:ChartView.Hint>
-                <dxc:ChartView.Legend>
-                    <dxc:Legend HorizontalPosition="Center"
+                        <dx:PointSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.DayMax.DataSet}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:PointSeries.Data>
+                    </dx:PointSeries>
+                </dx:ChartView.Series>
+                <dx:ChartView.Hint>
+                    <dx:Hint/>
+                </dx:ChartView.Hint>
+                <dx:ChartView.Legend>
+                    <dx:Legend HorizontalPosition="Center"
                                    VerticalPosition="BottomOutside"
                                    Orientation="LeftToRight"/>
-                </dxc:ChartView.Legend>
-                <dxc:ChartView.AxisX>
-                    <dxc:DateTimeAxisX MeasureUnit="Month"
+                </dx:ChartView.Legend>
+                <dx:ChartView.AxisX>
+                    <dx:DateTimeAxisX MeasureUnit="Month"
                                           GridAlignment="Month"
                                           GridSpacing="2">
-                        <dxc:DateTimeAxisX.Label>
-                            <dxc:AxisLabel TextFormat="LLLL"/>
-                        </dxc:DateTimeAxisX.Label>
-                    </dxc:DateTimeAxisX>
-                </dxc:ChartView.AxisX>
-                <dxc:ChartView.AxisY>
-                    <dxc:NumericAxisY>
-                        <dxc:NumericAxisY.Range>
-                            <dxc:NumericRange SideMargin="3"/>
-                        </dxc:NumericAxisY.Range>
-                        <dxc:NumericAxisY.Label>
-                            <dxc:AxisLabel TextFormat="#°C"/>
-                        </dxc:NumericAxisY.Label>
-                        <dxc:NumericAxisY.ConstantLines>
-                            <dxc:NumericConstantLine AxisValue="{Binding ChartModel.AverageTempNight}"
+                        <dx:DateTimeAxisX.Label>
+                            <dx:AxisLabel TextFormat="LLLL"/>
+                        </dx:DateTimeAxisX.Label>
+                    </dx:DateTimeAxisX>
+                </dx:ChartView.AxisX>
+                <dx:ChartView.AxisY>
+                    <dx:NumericAxisY>
+                        <dx:NumericAxisY.Range>
+                            <dx:NumericRange SideMargin="3"/>
+                        </dx:NumericAxisY.Range>
+                        <dx:NumericAxisY.Label>
+                            <dx:AxisLabel TextFormat="#°C"/>
+                        </dx:NumericAxisY.Label>
+                        <dx:NumericAxisY.ConstantLines>
+                            <dx:NumericConstantLine AxisValue="{Binding ChartModel.AverageTempNight}"
                                                         ShowBehind="true"
                                                         VisibleInLegend="false">
-                                <dxc:NumericConstantLine.Title>
-                                    <dxc:ConstantLineTitle Text="{Binding ChartModel.AverageTempNight, StringFormat='Average annual (night): {0}°C'}"/>
-                                </dxc:NumericConstantLine.Title>
-                            </dxc:NumericConstantLine>
-                            <dxc:NumericConstantLine AxisValue="{Binding ChartModel.AverageTempDay}"
+                                <dx:NumericConstantLine.Title>
+                                    <dx:ConstantLineTitle Text="{Binding ChartModel.AverageTempNight, StringFormat='Average annual (night): {0}°C'}"/>
+                                </dx:NumericConstantLine.Title>
+                            </dx:NumericConstantLine>
+                            <dx:NumericConstantLine AxisValue="{Binding ChartModel.AverageTempDay}"
                                                         ShowBehind="true"
                                                         VisibleInLegend="false">
-                                <dxc:NumericConstantLine.Style>
-                                    <dxc:ConstantLineStyle Stroke="#c64242"/>
-                                </dxc:NumericConstantLine.Style>
-                                <dxc:NumericConstantLine.Title>
-                                    <dxc:ConstantLineTitle Text="{Binding ChartModel.AverageTempDay, StringFormat='Average annual (day): {0}°C'}"/>
-                                </dxc:NumericConstantLine.Title>
-                            </dxc:NumericConstantLine>
-                        </dxc:NumericAxisY.ConstantLines>
-                    </dxc:NumericAxisY>
-                </dxc:ChartView.AxisY>
-            </dxc:ChartView>
+                                <dx:NumericConstantLine.Style>
+                                    <dx:ConstantLineStyle Stroke="#c64242"/>
+                                </dx:NumericConstantLine.Style>
+                                <dx:NumericConstantLine.Title>
+                                    <dx:ConstantLineTitle Text="{Binding ChartModel.AverageTempDay, StringFormat='Average annual (day): {0}°C'}"/>
+                                </dx:NumericConstantLine.Title>
+                            </dx:NumericConstantLine>
+                        </dx:NumericAxisY.ConstantLines>
+                    </dx:NumericAxisY>
+                </dx:ChartView.AxisY>
+            </dx:ChartView>
         </Grid>
     </ContentView.Content>
 </ContentView>

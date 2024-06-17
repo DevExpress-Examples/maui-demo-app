@@ -1,31 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
                            x:Class="DemoCenter.Maui.Views.AutoFilterRowView"
-                           xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views"
                            xmlns:demo="clr-namespace:DemoCenter.Maui.Demo">
     <ContentPage.Content>
-        <dxg:DataGridView x:Name="dataGridView"
+        <dx:DataGridView x:Name="dataGridView"
                           EditorShowMode="Tap"
                           ItemsSource="{Binding Path=OutlookData}"
                           ShowAutoFilterRow="True">
-            <dxg:DataGridView.Columns>
-                <dxg:NumberColumn FieldName="Id" Width="60" IsReadOnly="true" AutoFilterCondition="Equals"/>
-                <dxg:ComboBoxColumn FieldName="Priority" MinWidth="140" AutoFilterCondition="Equals"/>
-                <dxg:TextColumn FieldName="From.Name" Caption="From" MinWidth="190" AutoFilterCondition="Contains"/>
-                <dxg:DateColumn FieldName="Sent" MinWidth="120"/>
-                <dxg:NumberColumn FieldName="Size" Width="110" DisplayFormat="{}{0} B"/>
-                <dxg:CheckBoxColumn FieldName="HasAttachment" EditFormCaption="Has Attachment" Width="70">
-                    <dxg:CheckBoxColumn.HeaderContentTemplate>
+            <dx:DataGridView.Columns>
+                <dx:NumberColumn FieldName="Id" Width="60" IsReadOnly="true" AutoFilterCondition="Equals"/>
+                <dx:ComboBoxColumn FieldName="Priority" MinWidth="140" AutoFilterCondition="Equals"/>
+                <dx:TextColumn FieldName="From.Name" Caption="From" MinWidth="190" AutoFilterCondition="Contains"/>
+                <dx:DateColumn FieldName="Sent" MinWidth="120"/>
+                <dx:NumberColumn FieldName="Size" Width="110" DisplayFormat="{}{0} B"/>
+                <dx:CheckBoxColumn FieldName="HasAttachment" EditFormCaption="Has Attachment" Width="70">
+                    <dx:CheckBoxColumn.HeaderContentTemplate>
                         <DataTemplate>
                             <dx:DXImage HeightRequest="24" WidthRequest="24" TintColor="{dx:ThemeColor OnSurface}" HorizontalOptions="CenterAndExpand" Source="demogridattachment" VerticalOptions="Center"/>
                         </DataTemplate>
-                    </dxg:CheckBoxColumn.HeaderContentTemplate>
-                </dxg:CheckBoxColumn>
-            </dxg:DataGridView.Columns>
-        </dxg:DataGridView>
+                    </dx:CheckBoxColumn.HeaderContentTemplate>
+                </dx:CheckBoxColumn>
+            </dx:DataGridView.Columns>
+        </dx:DataGridView>
     </ContentPage.Content>
 </local:BaseGridContentPage>
 

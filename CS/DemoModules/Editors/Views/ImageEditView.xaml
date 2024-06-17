@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:local="clr-namespace:DemoCenter.Maui.Views"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxc="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     x:Class="DemoCenter.Maui.Views.ImageEditView"
     Shell.ForegroundColor="White"
     Shell.NavBarIsVisible="False"
@@ -24,7 +21,7 @@
     </demo:DemoPage.Behaviors>
 
     <Grid>
-        <dxe:ImageEdit x:Name="editor"
+        <dx:ImageEdit x:Name="editor"
             MaxScaleFactor="3"
             CropAreaBorderThickness="1"
             CropAreaRatioX="1"
@@ -50,13 +47,13 @@
             </dx:DXImage>
         </Grid>
 
-        <dxc:DXToolbar VerticalOptions="End" ItemAlignment="Fill" BackgroundColor="{dx:ThemeNeutralColor Light=10, Dark=10}">
-            <dxc:ToolbarButton Icon="ic_rotate_left" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.RotateLeft}"/>
-            <dxc:ToolbarButton Icon="ic_rotate_right" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.RotateRight}"/>
-            <dxc:ToolbarButton Icon="{Binding Source={x:Reference editor}, Path=CropAreaShape, Converter={StaticResource frameToImage}}"  IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.SwitchCropAreaShape}"/>
-            <dxc:ToolbarButton Icon="ic_mirror_v" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.FlipHorizontal}"/>
-            <dxc:ToolbarButton Icon="ic_mirror_h" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.FlipVertical}"/>
-        </dxc:DXToolbar>
+        <dx:DXToolbar VerticalOptions="End" ItemAlignment="Fill" BackgroundColor="{dx:ThemeNeutralColor Light=10, Dark=10}">
+            <dx:ToolbarButton Icon="ic_rotate_left" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.RotateLeft}"/>
+            <dx:ToolbarButton Icon="ic_rotate_right" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.RotateRight}"/>
+            <dx:ToolbarButton Icon="{Binding Source={x:Reference editor}, Path=CropAreaShape, Converter={StaticResource frameToImage}}"  IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.SwitchCropAreaShape}"/>
+            <dx:ToolbarButton Icon="ic_mirror_v" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.FlipHorizontal}"/>
+            <dx:ToolbarButton Icon="ic_mirror_h" IconColor="{dx:ThemeNeutralColor Light=90, Dark=90}" Command="{Binding Source={x:Reference editor}, Path=Commands.FlipVertical}"/>
+        </dx:DXToolbar>
     </Grid>
 
 </demo:DemoPage>

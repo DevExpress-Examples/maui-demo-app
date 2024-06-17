@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <local:BaseGridContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                           xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+    xmlns:dx="http://schemas.devexpress.com/maui"
                            x:Class="DemoCenter.Maui.Views.CustomAppearanceView"
                            xmlns:local="clr-namespace:DemoCenter.Maui.Views">
-    <dxg:DataGridView x:Name="dataGridView" ItemsSource="{Binding}" SelectionMode="None" CustomCellAppearance="DataGridView_CustomCellAppearance">
-        <dxg:TextColumn FieldName="Country" LineBreakMode="TailTruncation" />
-        <dxg:NumberColumn FieldName="ActualSales" DisplayFormat="C0" MinWidth="135"/>
-        <dxg:NumberColumn FieldName="TargetSales" DisplayFormat="C0" MinWidth="135"/>
-        <dxg:NumberColumn FieldName="AverageMonthlySales" Caption="Monthly Sales" DisplayFormat="C0" Width="1.2*" IsVisible="{OnIdiom Phone=False, Tablet=True}">
-        </dxg:NumberColumn>
-    </dxg:DataGridView>
+    <dx:DataGridView x:Name="dataGridView" ItemsSource="{Binding}" SelectionMode="None" CustomCellAppearance="DataGridView_CustomCellAppearance">
+        <dx:TextColumn FieldName="Country" LineBreakMode="TailTruncation" />
+        <dx:NumberColumn FieldName="ActualSales" DisplayFormat="C0" MinWidth="135"/>
+        <dx:NumberColumn FieldName="TargetSales" DisplayFormat="C0" MinWidth="135"/>
+        <dx:NumberColumn FieldName="AverageMonthlySales" Caption="Monthly Sales" DisplayFormat="C0" Width="1.2*" IsVisible="{OnIdiom Phone=False, Tablet=True}">
+        </dx:NumberColumn>
+    </dx:DataGridView>
 </local:BaseGridContentPage>

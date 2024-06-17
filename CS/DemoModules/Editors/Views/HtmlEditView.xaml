@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:AdaptivePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dhe="clr-namespace:DevExpress.Maui.HtmlEditor;assembly=DevExpress.Maui.HtmlEditor"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     x:Class="DemoCenter.Maui.Views.HtmlEditView"
     ios:Page.UseSafeArea="False"
@@ -19,14 +16,14 @@
     <dx:SafeKeyboardAreaView x:Name="root">
         <Grid RowDefinitions="Auto,*">
             <VerticalStackLayout x:Name="mailAddress" BackgroundColor="{dx:ThemeColor Background}">
-                <dxe:TextEdit x:Name="sendToEdit" LabelText="To:" Margin="0,2,0,8" Text="alfred.nm@newmansystems.com" BackgroundColor="{dx:ThemeColor Background}" BoxMode="Filled" BoxPadding="16,10,16,10"/>
-                <dxe:TextEdit LabelText="Subject" Margin="0" Text="My Hotel Room" BackgroundColor="{dx:ThemeColor Background}" ClearIconVisibility="Never" CornerRadius="0" BoxMode="Filled" BoxPadding="16,6,16,10"/>
+                <dx:TextEdit x:Name="sendToEdit" LabelText="To:" Margin="0,2,0,8" Text="alfred.nm@newmansystems.com" BackgroundColor="{dx:ThemeColor Background}" BoxMode="Filled" BoxPadding="16,10,16,10"/>
+                <dx:TextEdit LabelText="Subject" Margin="0" Text="My Hotel Room" BackgroundColor="{dx:ThemeColor Background}" ClearIconVisibility="Never" CornerRadius="0" BoxMode="Filled" BoxPadding="16,6,16,10"/>
             </VerticalStackLayout>
-            <dhe:HtmlEdit x:Name="edit" Grid.Row="1" ShowToolbar="true">
-                <dhe:HtmlEdit.HtmlSource>
-                    <dhe:StringHtmlSource Text="{Binding Text, Mode=OneWay}" />
-                </dhe:HtmlEdit.HtmlSource>
-            </dhe:HtmlEdit>
+            <dx:HtmlEdit x:Name="edit" Grid.Row="1" ShowToolbar="true">
+                <dx:HtmlEdit.HtmlSource>
+                    <dx:StringHtmlSource Text="{Binding Text, Mode=OneWay}" />
+                </dx:HtmlEdit.HtmlSource>
+            </dx:HtmlEdit>
         </Grid>
     </dx:SafeKeyboardAreaView>
 </demo:AdaptivePage>

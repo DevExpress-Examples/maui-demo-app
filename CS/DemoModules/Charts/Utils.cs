@@ -1,12 +1,24 @@
 using System;
 using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
-using DevExpress.Maui.Charts;
 using Microsoft.Maui.Graphics;
-using Newtonsoft.Json.Linq;
+using DemoCenter.Maui.Data;
+using DevExpress.Maui.Charts;
+using DemoCenter.Maui.DemoModules.Grid.Data;
+using System.Collections.Generic;
 
 namespace DemoCenter.Maui {
+    [JsonSerializable(typeof(InvocesObject))]
+    [JsonSerializable(typeof(EmployeeTasksObject))]
+    [JsonSerializable(typeof(QuotesObject))]
+    [JsonSerializable(typeof(List<Employee>))]
+    [JsonSerializable(typeof(DateTimeDataSets))]
+    [JsonSerializable(typeof(QualitativeDataSets))]
+    public partial class TrimmableContext : JsonSerializerContext { }
+
     static class XmlDataDeserializer {
         public static T GetData<T>(string resourceName) {
             T data;
@@ -20,12 +32,15 @@ namespace DemoCenter.Maui {
         }
     }
     static class JsonDataDeserializer {
+        private static JsonSerializerOptions options = new JsonSerializerOptions() {
+            NumberHandling = JsonNumberHandling.AllowReadingFromString,
+            TypeInfoResolver = TrimmableContext.Default,
+        };
         public static T GetData<T>(string resourceName) {
             T data;
             System.Reflection.Assembly assembly = typeof(T).Assembly;
             using (Stream stream = assembly.GetManifestResourceStream(resourceName)) {
-                JObject jObject = JObject.Parse(new StreamReader(stream).ReadToEnd());
-                data = jObject[typeof(T).Name].ToObject<T>();
+                data = JsonSerializer.Deserialize<T>(new StreamReader(stream).ReadToEnd(), options);
             }
             return data;
         }

@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Windows.Input;
 using DemoCenter.Maui.ViewModels;
 using Microsoft.Maui.Controls;
 
-namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
+namespace DemoCenter.Maui.Data {
     public enum TaskStatus {
         Urgent = 0,
         Uncompleted = 1,
         Completed = 2
     }
-
+    public class EmployeeTasksObject {
+        public List<EmployeeTask> EmployeeTasks { get; set; }
+    }
     public class EmployeeTask : NotificationObject {
         public EmployeeTask() {
             UrgentTaskCommand = new Command(() => Status = TaskStatus.Urgent);
@@ -26,14 +30,28 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
         public DateTime DueDate { get; set; }
         public int Priority { get; set; }
 
-        public ICommand UrgentTaskCommand { get; }
-        public ICommand CompleteTaskCommand { get; }
-        public ICommand UnCompleteTaskCommand { get; }
-
-        TaskStatus status;
-        public TaskStatus Status {
-            get => this.status;
-            set => SetProperty(ref this.status, value);
+        int statusNumber;
+        public int StatusNumber { 
+            get => statusNumber; 
+            set {
+                statusNumber = value;
+                OnPropertyChanged(nameof(Status));
+                OnPropertyChanged(nameof(Completed));
+            }
         }
+
+        [JsonIgnore] public ICommand UrgentTaskCommand { get; }
+        [JsonIgnore] public ICommand CompleteTaskCommand { get; }
+        [JsonIgnore] public ICommand UnCompleteTaskCommand { get; }
+
+        [JsonIgnore] public TaskStatus Status {
+            get => StatusNumber switch {
+                0 => TaskStatus.Urgent,
+                2 => TaskStatus.Completed,
+                _ => TaskStatus.Uncompleted
+            };
+            set => SetProperty(ref statusNumber, (int)value);
+        }
+        [JsonIgnore] public bool Completed => Status == TaskStatus.Completed;
     }
 }

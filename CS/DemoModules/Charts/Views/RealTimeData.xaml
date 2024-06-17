@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage x:Class="DemoCenter.Maui.Views.RealTimeData"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              ios:Page.UseSafeArea="False">
     <ContentPage.Content>
@@ -19,45 +17,45 @@
                     Margin="0,8"
                     TextColor="{dx:ThemeColor OnSurface}"
                     BackgroundColor="{dx:ThemeColor Surface}"/>
-            <dxc:ChartView Grid.Row="1" x:Name="chart">
-                <dxc:ChartView.Series>
-                    <dxc:LineSeries DisplayName="X Axis">
-                        <dxc:LineSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding XAxisData}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:LineSeries.Data>
-                    </dxc:LineSeries>
-                    <dxc:LineSeries DisplayName="Y Axis">
-                        <dxc:LineSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding YAxisData}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:LineSeries.Data>
-                    </dxc:LineSeries>
-                    <dxc:LineSeries DisplayName="Z Axis">
-                        <dxc:LineSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ZAxisData}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:LineSeries.Data>
-                    </dxc:LineSeries>
-                </dxc:ChartView.Series>
-                <dxc:ChartView.AxisX>
-                    <dxc:DateTimeAxisX Visible="false"
+            <dx:ChartView Grid.Row="1" x:Name="chart">
+                <dx:ChartView.Series>
+                    <dx:LineSeries DisplayName="X Axis">
+                        <dx:LineSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding XAxisData}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:LineSeries.Data>
+                    </dx:LineSeries>
+                    <dx:LineSeries DisplayName="Y Axis">
+                        <dx:LineSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding YAxisData}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:LineSeries.Data>
+                    </dx:LineSeries>
+                    <dx:LineSeries DisplayName="Z Axis">
+                        <dx:LineSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ZAxisData}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:LineSeries.Data>
+                    </dx:LineSeries>
+                </dx:ChartView.Series>
+                <dx:ChartView.AxisX>
+                    <dx:DateTimeAxisX Visible="false"
                                             MeasureUnit="Millisecond">
-                    </dxc:DateTimeAxisX>
-                </dxc:ChartView.AxisX>
-                <dxc:ChartView.AxisY>
-                    <dxc:NumericAxisY AlwaysShowZeroLevel="false"
+                    </dx:DateTimeAxisX>
+                </dx:ChartView.AxisX>
+                <dx:ChartView.AxisY>
+                    <dx:NumericAxisY AlwaysShowZeroLevel="false"
                                             AutoRangeMode="VisibleValues"/>
-                </dxc:ChartView.AxisY>
-                <dxc:ChartView.Legend>
-                    <dxc:Legend HorizontalPosition="Center"
+                </dx:ChartView.AxisY>
+                <dx:ChartView.Legend>
+                    <dx:Legend HorizontalPosition="Center"
                                     VerticalPosition="BottomOutside">
-                    </dxc:Legend>
-                </dxc:ChartView.Legend>
-            </dxc:ChartView>
+                    </dx:Legend>
+                </dx:ChartView.Legend>
+            </dx:ChartView>
         </Grid>
     </ContentPage.Content>
 </demo:DemoPage>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,12 +16,12 @@ namespace DemoCenter.Maui.ViewModels {
         public LoadMoreViewModel(MailMessagesRepository repository) {
             this.random = new Random((int)DateTime.Now.Ticks);
             this.repository = repository;
-            ItemSource = new List<MailData>();
+            ItemSource = new ObservableCollection<MailData>();
             LoadData();
             LoadMoreCommand = new Command(ExecuteLoadMoreCommand);
         }
 
-        public IList<MailData> ItemSource { get; }
+        public ObservableCollection<MailData> ItemSource { get; }
 
         bool isRefreshing;
         public bool IsRefreshing {
@@ -45,7 +46,6 @@ namespace DemoCenter.Maui.ViewModels {
         void LoadData() {
             foreach (MailData mail in this.repository.MailMessages) {
                 this.currentDate = this.currentDate.AddMinutes(-1 * this.random.Next(5, 240));
-
                 ItemSource.Add(new MailData() {
                     Body = mail.Body,
                     Folders = mail.Folders,

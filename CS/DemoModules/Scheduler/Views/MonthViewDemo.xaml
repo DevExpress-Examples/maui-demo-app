@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage  xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="DemoCenter.Maui.Views.MonthViewDemo">
-    <dxsch:MonthView x:Name="monthView" Start="{Binding Start, Mode=TwoWay}" Tap="MonthView_OnTap">
-        <dxsch:MonthView.DataStorage>
-            <dxsch:SchedulerDataStorage>
-                <dxsch:SchedulerDataStorage.DataSource>
-                    <dxsch:DataSource AppointmentsSource="{Binding Appointments}">
-                        <dxsch:DataSource.AppointmentMappings>
-                            <dxsch:AppointmentMappings Type="AppointmentType"
+    <dx:MonthView x:Name="monthView" Start="{Binding Start, Mode=TwoWay}" Tap="MonthView_OnTap">
+        <dx:MonthView.DataStorage>
+            <dx:SchedulerDataStorage>
+                <dx:SchedulerDataStorage.DataSource>
+                    <dx:DataSource AppointmentsSource="{Binding Appointments}">
+                        <dx:DataSource.AppointmentMappings>
+                            <dx:AppointmentMappings Type="AppointmentType"
                                                        AllDay="AllDay"
                                                        Start="Start"
                                                        End="End"
@@ -21,10 +20,10 @@
                                                        StatusId="Status"
                                                        Subject="Subject"
                                                        LabelId="Label" />
-                        </dxsch:DataSource.AppointmentMappings>
-                    </dxsch:DataSource>
-                </dxsch:SchedulerDataStorage.DataSource>
-            </dxsch:SchedulerDataStorage>
-        </dxsch:MonthView.DataStorage>
-    </dxsch:MonthView>
+                        </dx:DataSource.AppointmentMappings>
+                    </dx:DataSource>
+                </dx:SchedulerDataStorage.DataSource>
+            </dx:SchedulerDataStorage>
+        </dx:MonthView.DataStorage>
+    </dx:MonthView>
 </demo:DemoPage>

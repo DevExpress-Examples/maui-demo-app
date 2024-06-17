@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:DemoCenter.Maui.Data"
              x:Class="DemoCenter.Maui.Charts.Views.GradientSegmentColorizerContainer">
     <ContentView.Content>
@@ -18,64 +15,64 @@
                     TextColor="{dx:ThemeColor OnSurface}"
                     BackgroundColor="{dx:ThemeColor Surface}"/>
 
-            <dxc:ChartView Grid.Row="1" SelectionKind="Series">
-                <dxc:ChartView.Series>
-                    <dxc:AreaSeries PointColorizer="{local:LightSpectorColorizerWithCustomLegend}" MarkersVisible="False">
-                        <dxc:AreaSeries.SegmentColorizer>
-                            <dxc:GradientPointBasedSegmentColorizer PointColorizer="{local:LightSpectorColorizer}"/>
-                        </dxc:AreaSeries.SegmentColorizer>
-                        <dxc:AreaSeries.FillColorizer>
-                            <dxc:SegmentBasedFillColorizer>
-                                <dxc:SegmentBasedFillColorizer.SegmentColorizer>
-                                    <dxc:GradientPointBasedSegmentColorizer PointColorizer="{local:LightSpectorColorizer}"/>
-                                </dxc:SegmentBasedFillColorizer.SegmentColorizer>
-                            </dxc:SegmentBasedFillColorizer>
-                        </dxc:AreaSeries.FillColorizer>
-                        <dxc:AreaSeries.HintOptions>
-                            <dxc:SeriesCrosshairOptions PointTextPattern="{}Wavelength: {A} nm&#10;Intensivity: {V}%" />
-                        </dxc:AreaSeries.HintOptions>
-                        <dxc:AreaSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.LightSpectorData}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value"/>
-                            </dxc:SeriesDataAdapter>
-                        </dxc:AreaSeries.Data>
-                    </dxc:AreaSeries>
-                </dxc:ChartView.Series>
-                <dxc:ChartView.AxisX>
-                    <dxc:NumericAxisX>
-                        <dxc:NumericAxisX.Title>
-                            <dxc:AxisTitle Text="Wavelength, nm" />
-                        </dxc:NumericAxisX.Title>
-                        <dxc:NumericAxisX.Style>
-                            <dxc:AxisStyle MajorTickmarksVisible="True" MinorTickmarksVisible="True"/>
-                        </dxc:NumericAxisX.Style>
-                    </dxc:NumericAxisX>
-                </dxc:ChartView.AxisX>
-                <dxc:ChartView.AxisY>
-                    <dxc:NumericAxisY>
-                        <dxc:NumericAxisY.Title>
-                            <dxc:AxisTitle Text="Intensivity, %" />
-                        </dxc:NumericAxisY.Title>
-                        <dxc:NumericAxisY.Style>
-                            <dxc:AxisStyle InterlacedVisible="True" InterlacedColor="#22DDDDDD" />
-                        </dxc:NumericAxisY.Style>
-                    </dxc:NumericAxisY>
-                </dxc:ChartView.AxisY>
-                <dxc:ChartView.Hint>
-                    <dxc:Hint>
-                        <dxc:Hint.Behavior>
-                            <dxc:CrosshairHintBehavior GroupHeaderVisible="False">
-                                <dxc:CrosshairHintBehavior.LabelPosition>
-                                    <dxc:StaticCrosshairLabelPosition HorizontalAlignment="Left" />
-                                </dxc:CrosshairHintBehavior.LabelPosition>
-                            </dxc:CrosshairHintBehavior>
-                        </dxc:Hint.Behavior>
-                    </dxc:Hint>
-                </dxc:ChartView.Hint>
-                <dxc:ChartView.Legend>
-                    <dxc:Legend />
-                </dxc:ChartView.Legend>
-            </dxc:ChartView>
+            <dx:ChartView Grid.Row="1" SelectionKind="Series">
+                <dx:ChartView.Series>
+                    <dx:AreaSeries PointColorizer="{local:LightSpectorColorizerWithCustomLegend}" MarkersVisible="False">
+                        <dx:AreaSeries.SegmentColorizer>
+                            <dx:GradientPointBasedSegmentColorizer PointColorizer="{local:LightSpectorColorizer}"/>
+                        </dx:AreaSeries.SegmentColorizer>
+                        <dx:AreaSeries.FillColorizer>
+                            <dx:SegmentBasedFillColorizer>
+                                <dx:SegmentBasedFillColorizer.SegmentColorizer>
+                                    <dx:GradientPointBasedSegmentColorizer PointColorizer="{local:LightSpectorColorizer}"/>
+                                </dx:SegmentBasedFillColorizer.SegmentColorizer>
+                            </dx:SegmentBasedFillColorizer>
+                        </dx:AreaSeries.FillColorizer>
+                        <dx:AreaSeries.HintOptions>
+                            <dx:SeriesCrosshairOptions PointTextPattern="{}Wavelength: {A} nm&#10;Intensivity: {V}%" />
+                        </dx:AreaSeries.HintOptions>
+                        <dx:AreaSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.LightSpectorData}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value"/>
+                            </dx:SeriesDataAdapter>
+                        </dx:AreaSeries.Data>
+                    </dx:AreaSeries>
+                </dx:ChartView.Series>
+                <dx:ChartView.AxisX>
+                    <dx:NumericAxisX>
+                        <dx:NumericAxisX.Title>
+                            <dx:AxisTitle Text="Wavelength, nm" />
+                        </dx:NumericAxisX.Title>
+                        <dx:NumericAxisX.Style>
+                            <dx:AxisStyle MajorTickmarksVisible="True" MinorTickmarksVisible="True"/>
+                        </dx:NumericAxisX.Style>
+                    </dx:NumericAxisX>
+                </dx:ChartView.AxisX>
+                <dx:ChartView.AxisY>
+                    <dx:NumericAxisY>
+                        <dx:NumericAxisY.Title>
+                            <dx:AxisTitle Text="Intensivity, %" />
+                        </dx:NumericAxisY.Title>
+                        <dx:NumericAxisY.Style>
+                            <dx:AxisStyle InterlacedVisible="True" InterlacedColor="#22DDDDDD" />
+                        </dx:NumericAxisY.Style>
+                    </dx:NumericAxisY>
+                </dx:ChartView.AxisY>
+                <dx:ChartView.Hint>
+                    <dx:Hint>
+                        <dx:Hint.Behavior>
+                            <dx:CrosshairHintBehavior GroupHeaderVisible="False">
+                                <dx:CrosshairHintBehavior.LabelPosition>
+                                    <dx:StaticCrosshairLabelPosition HorizontalAlignment="Left" />
+                                </dx:CrosshairHintBehavior.LabelPosition>
+                            </dx:CrosshairHintBehavior>
+                        </dx:Hint.Behavior>
+                    </dx:Hint>
+                </dx:ChartView.Hint>
+                <dx:ChartView.Legend>
+                    <dx:Legend />
+                </dx:ChartView.Legend>
+            </dx:ChartView>
         </Grid>
     </ContentView.Content>
 </ContentView>

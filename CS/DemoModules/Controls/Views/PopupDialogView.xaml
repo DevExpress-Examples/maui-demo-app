@@ -1,14 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage  xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                 x:Class="DemoCenter.Maui.DemoModules.Popup.Views.PopupDialogView"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
              xmlns:local="clr-namespace:DemoCenter.Maui"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              ios:Page.UseSafeArea="False">
 
     <ContentPage.Resources>
@@ -16,14 +13,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <resources:CollectionViewResources />
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="dxco:SimpleButton">
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="TextColor" Value="{dx:ThemeColor OnSurface}"/>
-                <Setter Property="IconColor" Value="{dx:ThemeColor OnSurface}"/>
-                <Setter Property="PressedBackgroundColor" Value="#20000000"/>
-                <Setter Property="PressedTextColor" Value="{dx:ThemeColor OnSurface}"/>
-                <Setter Property="PressedIconColor" Value="{dx:ThemeColor OnSurface}"/>
-            </Style>
             <DataTemplate x:Key="urgentItemTemplate">
                 <StackLayout Margin="0" Spacing="0"
                              BackgroundColor="{dx:ThemeColor TertiaryContainer}">
@@ -58,12 +47,12 @@
 
     <ContentPage.Content>
         <Grid BackgroundColor="{dx:ThemeColor Surface}">
-            <dxcv:DXCollectionView x:Name="collectionView"
+            <dx:DXCollectionView x:Name="collectionView"
                                    Tap="OnTap"
                                    ItemTemplate="{StaticResource itemDataTemplateSelector}"
                                    ItemsSource="{Binding ItemSource}" />
 
-            <dxco:DXPopup x:Name="popup"
+            <dx:DXPopup x:Name="popup"
                           IsOpen="{Binding IsOpenPopup}"
                           AllowScrim="True"
                           CloseOnScrimTap="True"
@@ -79,27 +68,27 @@
                     
                     <dx:DXSeparator/>
                     
-                    <dx:DXButton ButtonType="Text" Content="Pin"
+                    <dx:DXButton ButtonType="ToolButton" Content="Pin"
                         Icon="collectionviewpintotop"
                         IsVisible="{Binding ButtonPinVisible}"
                         Clicked="PinClick"/>
-                    <dx:DXButton ButtonType="Text" Content="Done"
+                    <dx:DXButton ButtonType="ToolButton" Content="Done"
                         Icon="collectionviewcompletetask"
                         IsVisible="{Binding ButtonDoneVisible}"
                         Clicked="DoneClick" />
-                    <dx:DXButton ButtonType="Text" Content="To Do"
+                    <dx:DXButton ButtonType="ToolButton" Content="To Do"
                         Icon="collectionviewuncompletetask"
                         IsVisible="{Binding ButtonToDoVisible}"
                         Clicked="ToDoClick" />
-                    <dx:DXButton ButtonType="Text" Content="Delete" 
+                    <dx:DXButton ButtonType="ToolButton" Content="Delete" 
                         Icon="collectionviewdeletetask" 
                         Clicked="DeleteClick" />
                     
                     <dx:DXSeparator/>
 
-                    <dx:DXButton ButtonType="Text" Content="Cancel" Clicked="DismissPopup"/>
+                    <dx:DXButton ButtonType="ToolButton" Content="Cancel" Clicked="DismissPopup"/>
                 </VerticalStackLayout>
-            </dxco:DXPopup>
+            </dx:DXPopup>
         </Grid>
     </ContentPage.Content>
 </demo:DemoPage>

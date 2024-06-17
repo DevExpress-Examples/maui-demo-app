@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <local:RotationHandleView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:local="clr-namespace:DemoCenter.Maui"
              x:Class="DemoCenter.Maui.Charts.Views.PopulationPyramidContainer"
              x:Name="populationPyramidContainer">
     <ContentView.Resources>
-        <dxc:SeriesHintOptions x:Key="populationPyramidSeriesHintOptions"
+        <dx:SeriesHintOptions x:Key="populationPyramidSeriesHintOptions"
                                   PointTextPattern="{}{S}, age: {A}&#10;Population: {V$#,###}"/>
     </ContentView.Resources>
     <ContentView.Content>
@@ -19,48 +17,48 @@
             <Label Text="{Binding ChartModel.Title}"
                    TextColor="{dx:ThemeColor OnSurface}"
                    BackgroundColor="{dx:ThemeColor Surface}"/>
-            <dxc:ChartView Grid.Row="1" Rotated="True">
-                <dxc:ChartView.Series>
-                    <dxc:StackedBarSeries DisplayName="{Binding ChartModel.PopulationPyramidMaleSeriesData.Name}"
+            <dx:ChartView Grid.Row="1" Rotated="True">
+                <dx:ChartView.Series>
+                    <dx:StackedBarSeries DisplayName="{Binding ChartModel.PopulationPyramidMaleSeriesData.Name}"
                                              HintOptions="{StaticResource populationPyramidSeriesHintOptions}"
                                              BarWidth="0.8">
-                        <dxc:StackedBarSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.PopulationPyramidMaleSeriesData.DataSet}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:StackedBarSeries.Data>
-                    </dxc:StackedBarSeries>
-                    <dxc:StackedBarSeries DisplayName="{Binding ChartModel.PopulationPyramidFemaleSeriesData.Name}"
+                        <dx:StackedBarSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.PopulationPyramidMaleSeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:StackedBarSeries.Data>
+                    </dx:StackedBarSeries>
+                    <dx:StackedBarSeries DisplayName="{Binding ChartModel.PopulationPyramidFemaleSeriesData.Name}"
                                              HintOptions="{StaticResource populationPyramidSeriesHintOptions}"
                                              BarWidth="0.8">
-                        <dxc:StackedBarSeries.Data>
-                            <dxc:SeriesDataAdapter DataSource="{Binding ChartModel.PopulationPyramidFemaleSeriesData.DataSet}" ArgumentDataMember="Argument">
-                                <dxc:ValueDataMember Type="Value" Member="Value" />
-                            </dxc:SeriesDataAdapter>
-                        </dxc:StackedBarSeries.Data>
-                    </dxc:StackedBarSeries>
-                </dxc:ChartView.Series>
-                <dxc:ChartView.Legend>
-                    <dxc:Legend HorizontalPosition="Right"
+                        <dx:StackedBarSeries.Data>
+                            <dx:SeriesDataAdapter DataSource="{Binding ChartModel.PopulationPyramidFemaleSeriesData.DataSet}" ArgumentDataMember="Argument">
+                                <dx:ValueDataMember Type="Value" Member="Value" />
+                            </dx:SeriesDataAdapter>
+                        </dx:StackedBarSeries.Data>
+                    </dx:StackedBarSeries>
+                </dx:ChartView.Series>
+                <dx:ChartView.Legend>
+                    <dx:Legend HorizontalPosition="Right"
                                    VerticalPosition="Top"
                                    Orientation="TopToBottom"/>
-                </dxc:ChartView.Legend>
-                <dxc:ChartView.AxisY>
-                    <dxc:NumericAxisY LabelTextFormatter="{local:PopulationPyramidAxisLabelTextFormatter}"
+                </dx:ChartView.Legend>
+                <dx:ChartView.AxisY>
+                    <dx:NumericAxisY LabelTextFormatter="{local:PopulationPyramidAxisLabelTextFormatter}"
                                          GridAlignment="100000000">
-                        <dxc:NumericAxisY.Title>
-                            <dxc:AxisTitle Text="Population, millions"/>
-                        </dxc:NumericAxisY.Title>
-                    </dxc:NumericAxisY>
-                </dxc:ChartView.AxisY>
-                <dxc:ChartView.AxisX>
-                    <dxc:QualitativeAxisX>
-                        <dxc:QualitativeAxisX.Title>
-                            <dxc:AxisTitle Alignment="Outside" Text="Age"/>
-                        </dxc:QualitativeAxisX.Title>
-                    </dxc:QualitativeAxisX>
-                </dxc:ChartView.AxisX>
-            </dxc:ChartView>
+                        <dx:NumericAxisY.Title>
+                            <dx:AxisTitle Text="Population, millions"/>
+                        </dx:NumericAxisY.Title>
+                    </dx:NumericAxisY>
+                </dx:ChartView.AxisY>
+                <dx:ChartView.AxisX>
+                    <dx:QualitativeAxisX>
+                        <dx:QualitativeAxisX.Title>
+                            <dx:AxisTitle Alignment="Outside" Text="Age"/>
+                        </dx:QualitativeAxisX.Title>
+                    </dx:QualitativeAxisX>
+                </dx:ChartView.AxisX>
+            </dx:ChartView>
         </Grid>
     </ContentView.Content>
 </local:RotationHandleView>

@@ -13,6 +13,11 @@ namespace DemoCenter.Maui.Data {
                     Module = typeof(CollectionViewData)
                 },
                 new DemoItem() {
+                    Title = TitleData.TreeViewDataTitle,
+                    Description = "TreeView",
+                    Module = typeof(TreeViewData)
+                },
+                new DemoItem() {
                     Title = TitleData.GridDataTitle,
                     Description = "Data Grid: Basic Features",
                     Module = typeof(GridData)

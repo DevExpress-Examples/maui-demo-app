@@ -1,14 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-                    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-                    xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
+                    xmlns:dx="http://schemas.devexpress.com/maui"
                     xmlns:converters="clr-namespace:DemoCenter.Maui.DemoModules.Editors.Converters"
                     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                     x:Class="DemoCenter.Maui.Demo.EditorsAndControlsResources">
 
-    <Style x:Key="SliderStyle" TargetType="dxe:DXSlider">
+    <Style x:Key="SliderStyle" TargetType="dx:DXSlider">
         <Setter Property="MinValue" Value="0"/>
         <Setter Property="MaxValue" Value="8"/>
         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
@@ -36,7 +33,7 @@
         <Setter Property="Margin" Value="8,0,20,0"/>
     </Style>
 
-    <Style x:Key="ComboBoxStyleBase" TargetType="dxe:ComboBoxEdit">
+    <Style x:Key="ComboBoxStyleBase" TargetType="dx:ComboBoxEdit">
         <Setter Property="Margin" Value="0"/>
         <Setter Property="BoxPadding" Value="12,10,12,6"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -117,14 +114,14 @@
         </Grid>
     </DataTemplate>
 
-    <Style x:Key="ColorComboBoxStyle" TargetType="dxe:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
+    <Style x:Key="ColorComboBoxStyle" TargetType="dx:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
         <Setter Property="DisplayMember" Value="Name"/>
         <Setter Property="StartIcon" Value="frame"/>
         <Setter Property="ItemsSource" Value="{Binding Colors}"/>
         <Setter Property="ItemTemplate" Value="{StaticResource ColorComboBoxItemTemplate}" />
     </Style>
 
-    <Style x:Key="BoxModeComboBoxStyle" TargetType="dxe:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
+    <Style x:Key="BoxModeComboBoxStyle" TargetType="dx:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
         <Setter Property="SelectedItem" Value="{Binding SelectedBoxMode}"/>
         <Setter Property="ItemsSource" Value="{Binding BoxModes}"/>
         <Setter Property="ItemTemplate" Value="{StaticResource BoxModeComboBoxItemTemplate}" />
@@ -132,7 +129,7 @@
         <Setter Property="StartIconColor" Value="{dx:ThemeColor OnSurfaceVariant}" />
     </Style>
 
-    <Style x:Key="CornerModeComboBoxStyle" TargetType="dxe:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
+    <Style x:Key="CornerModeComboBoxStyle" TargetType="dx:ComboBoxEdit" BasedOn="{StaticResource ComboBoxStyleBase}">
         <Setter Property="SelectedItem" Value="{Binding SelectedCornerMode}"/>
         <Setter Property="ItemsSource" Value="{Binding CornerModes}"/>
         <Setter Property="ItemTemplate" Value="{StaticResource CornerModeComboBoxItemTemplate}" />
@@ -169,7 +166,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="EditorSettingsFormStyle" TargetType="dxdf:DataFormView">
+    <Style x:Key="EditorSettingsFormStyle" TargetType="dx:DataFormView">
         <Setter Property="EditorLabelPosition" Value="Top"/>
         <Setter Property="IsAutoGenerationEnabled" Value="True"/>
         <Setter Property="CommitMode" Value="Input"/>

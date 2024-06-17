@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
              x:Class="DemoCenter.Maui.Views.RemindersDemo">
     <AbsoluteLayout>
-        <dxsch:DayView Tap="OnTap" SnapToCellsMode="Never" AbsoluteLayout.LayoutFlags="All"
+        <dx:DayView Tap="OnTap" SnapToCellsMode="Never" AbsoluteLayout.LayoutFlags="All"
                        AbsoluteLayout.LayoutBounds="0,1,1,1">
-            <dxsch:DayView.DataStorage>
-                <dxsch:SchedulerDataStorage x:Name="storage" RemindersChanged="OnRemindersChanged">
-                    <dxsch:SchedulerDataStorage.DataSource>
-                        <dxsch:DataSource AppointmentsSource="{Binding Appointments}">
-                            <dxsch:DataSource.AppointmentMappings>
-                                <dxsch:AppointmentMappings Type="AppointmentType"
+            <dx:DayView.DataStorage>
+                <dx:SchedulerDataStorage x:Name="storage" RemindersChanged="OnRemindersChanged">
+                    <dx:SchedulerDataStorage.DataSource>
+                        <dx:DataSource AppointmentsSource="{Binding Appointments}">
+                            <dx:DataSource.AppointmentMappings>
+                                <dx:AppointmentMappings Type="AppointmentType"
                                                            AllDay="AllDay"
                                                            Start="Start"
                                                            End="End"
@@ -25,12 +24,12 @@
                                                            Subject="Subject"
                                                            LabelId="Label"
                                                            TimeZoneId="TimeZoneId" />
-                            </dxsch:DataSource.AppointmentMappings>
-                        </dxsch:DataSource>
-                    </dxsch:SchedulerDataStorage.DataSource>
-                </dxsch:SchedulerDataStorage>
-            </dxsch:DayView.DataStorage>
-        </dxsch:DayView>
+                            </dx:DataSource.AppointmentMappings>
+                        </dx:DataSource>
+                    </dx:SchedulerDataStorage.DataSource>
+                </dx:SchedulerDataStorage>
+            </dx:DayView.DataStorage>
+        </dx:DayView>
         <Frame CornerRadius="28"
                Padding="3"
                Margin="22"

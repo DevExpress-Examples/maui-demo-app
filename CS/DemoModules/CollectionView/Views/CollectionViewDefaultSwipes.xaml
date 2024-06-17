@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-             xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:resources="clr-namespace:DemoCenter.Maui.DemoModules.Resources"
              xmlns:local="clr-namespace:DemoCenter.Maui"
@@ -16,86 +14,86 @@
                 <resources:CollectionViewResources/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="dxcv:SwipeItem">
+            <Style TargetType="dx:SwipeContainerItem">
                 <Setter Property="FontColor" Value="White"/>
                 <Setter Property="FontSize" Value="16"/>
             </Style>
             <DataTemplate x:Key="urgentItemTemplate">
-                <dxcv:SwipeContainer>
-                    <dxcv:SwipeContainer.ItemView>
+                <dx:SwipeContainer>
+                    <dx:SwipeContainer.ItemView>
                         <StackLayout Margin="0" Spacing="0" BackgroundColor="{dx:ThemeColor TertiaryContainer}">
                             <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}" />
                         </StackLayout>
-                    </dxcv:SwipeContainer.ItemView>
-                    <dxcv:SwipeContainer.StartSwipeItems>
-                        <dxcv:SwipeItem Command="{Binding CompleteTaskCommand}"
+                    </dx:SwipeContainer.ItemView>
+                    <dx:SwipeContainer.StartSwipeItems>
+                        <dx:SwipeContainerItem Command="{Binding CompleteTaskCommand}"
                                         Tap="OnStatusChanged"
                                         Caption="Done"
                                         BackgroundColor="#8AB850"
                                         Image="collectionviewcompletetask"/>
-                    </dxcv:SwipeContainer.StartSwipeItems>
-                    <dxcv:SwipeContainer.EndSwipeItems>
-                        <dxcv:SwipeItem Tap="OnDeleteTask"
+                    </dx:SwipeContainer.StartSwipeItems>
+                    <dx:SwipeContainer.EndSwipeItems>
+                        <dx:SwipeContainerItem Tap="OnDeleteTask"
                                         Caption="Delete"
                                         BackgroundColor="#F3A40A"
                                         Image="collectionviewdeletetask"/>
-                    </dxcv:SwipeContainer.EndSwipeItems>
-                </dxcv:SwipeContainer>
+                    </dx:SwipeContainer.EndSwipeItems>
+                </dx:SwipeContainer>
             </DataTemplate>
 
             <DataTemplate x:Key="itemTemplate">
-                <dxcv:SwipeContainer>
-                    <dxcv:SwipeContainer.ItemView>
+                <dx:SwipeContainer>
+                    <dx:SwipeContainer.ItemView>
                         <StackLayout Margin="0" Spacing="0">
                             <Label Style="{StaticResource DragDropTemplateStyle}" Text="{Binding Name}"/>
                         </StackLayout>
-                    </dxcv:SwipeContainer.ItemView>
-                    <dxcv:SwipeContainer.StartSwipeItems>
-                        <dxcv:SwipeItem Command="{Binding CompleteTaskCommand}"
+                    </dx:SwipeContainer.ItemView>
+                    <dx:SwipeContainer.StartSwipeItems>
+                        <dx:SwipeContainerItem Command="{Binding CompleteTaskCommand}"
                                         Tap="OnStatusChanged"
                                         Caption="Done"
                                         BackgroundColor="#8AB850"
                                         Image="collectionviewcompletetask"/>
-                        <dxcv:SwipeItem Command="{Binding UrgentTaskCommand}"
+                        <dx:SwipeContainerItem Command="{Binding UrgentTaskCommand}"
                                         Tap="OnStatusChanged"
                                         Caption="Pin"
                                         BackgroundColor="#F3A40A"
                                         Image="collectionviewpintotop"/>
-                    </dxcv:SwipeContainer.StartSwipeItems>
-                    <dxcv:SwipeContainer.EndSwipeItems>
-                        <dxcv:SwipeItem Tap="OnDeleteTask"
+                    </dx:SwipeContainer.StartSwipeItems>
+                    <dx:SwipeContainer.EndSwipeItems>
+                        <dx:SwipeContainerItem Tap="OnDeleteTask"
                                         Caption="Delete"
                                         BackgroundColor="#D74F67"
                                         Image="collectionviewdeletetask"/>
-                    </dxcv:SwipeContainer.EndSwipeItems>
-                </dxcv:SwipeContainer>
+                    </dx:SwipeContainer.EndSwipeItems>
+                </dx:SwipeContainer>
             </DataTemplate>
 
             <DataTemplate x:Key="strikethroughItemTemplate">
-                <dxcv:SwipeContainer x:Name="swipeView">
-                    <dxcv:SwipeContainer.ItemView>
+                <dx:SwipeContainer x:Name="swipeView">
+                    <dx:SwipeContainer.ItemView>
                         <StackLayout Margin="0" Spacing="0">
                             <Label Style="{StaticResource DragDropTemplateStyle}"
                                    Text="{Binding Name}"
                                    TextDecorations="Strikethrough"
                                    TextColor="{dx:ThemeColor OnSurfaceVariant}"/>
                         </StackLayout>
-                    </dxcv:SwipeContainer.ItemView>
-                    <dxcv:SwipeContainer.StartSwipeItems>
-                        <dxcv:SwipeItem Command="{Binding UnCompleteTaskCommand}"
+                    </dx:SwipeContainer.ItemView>
+                    <dx:SwipeContainer.StartSwipeItems>
+                        <dx:SwipeContainerItem Command="{Binding UnCompleteTaskCommand}"
                                         Tap="OnStatusChanged"
                                         Caption="To Do"
                                         BackgroundColor="#4799DF"
                                         Image="collectionviewuncompletetask"/>
-                    </dxcv:SwipeContainer.StartSwipeItems>
-                    <dxcv:SwipeContainer.EndSwipeItems>
-                        <dxcv:SwipeItem Tap="OnDeleteTask"
+                    </dx:SwipeContainer.StartSwipeItems>
+                    <dx:SwipeContainer.EndSwipeItems>
+                        <dx:SwipeContainerItem Tap="OnDeleteTask"
                                         Caption="Delete"
                                         BackgroundColor="#D74F67"
                                         Image="collectionviewdeletetask"/>
-                    </dxcv:SwipeContainer.EndSwipeItems>
+                    </dx:SwipeContainer.EndSwipeItems>
 
-                </dxcv:SwipeContainer>
+                </dx:SwipeContainer>
             </DataTemplate>
 
             <local:ItemDataTemplateSelector x:Key="itemDataTemplateSelector"
@@ -105,11 +103,11 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <dxcv:DXCollectionView x:Name="collectionView"
+        <dx:DXCollectionView x:Name="collectionView"
                                ItemTemplate="{StaticResource itemDataTemplateSelector}"
                                ItemsSource="{Binding ItemSource}"
                                UseRippleEffect="True"
                                ItemSeparatorThickness="1">
-        </dxcv:DXCollectionView>
+        </dx:DXCollectionView>
     </ContentPage.Content>
 </demo:DemoPage>

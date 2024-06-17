@@ -22,6 +22,13 @@ namespace DemoCenter.Maui.Data {
                     Icon = "calendar"
                 },
                 new DemoItem() {
+                    Title = "Agenda View",
+                    Description="This view displays appointments in a list.",
+                    Module = typeof(AgendaViewDemo),
+                    DemoItemStatus = DemoItemStatus.New,
+                    Icon = "agendaview"
+                },
+                new DemoItem() {
                     Title = "Day View",
                     Description="This scheduler view displays appointments for one or more days.",
                     Module = typeof(DayViewDemo),

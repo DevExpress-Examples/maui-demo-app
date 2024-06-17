@@ -1,17 +1,27 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using DemoCenter.Maui.Data;
 
 namespace DemoCenter.Maui.Models {
-    public class DemoItem {
+    public class DemoItem : INotifyPropertyChanged {
         string pageTitle;
         string icon;
         string controlsPageTitle;
         Type module;
         List<DemoItem> demoItems;
 
+        public DemoItem() {
+            this.demoItems = new List<DemoItem>();
+        }
+
+        public bool IconColorizationEnabled => Icon != "default_icon";
         public string Icon {
-            get => this.icon; 
+#if DEBUG
+            get => String.IsNullOrEmpty(this.icon) ? "default_icon" : this.icon;
+#else
+            get => this.icon;
+#endif
             set => this.icon = value;
         }
         public bool IsHeader { get; set; }
@@ -48,14 +58,16 @@ namespace DemoCenter.Maui.Models {
             _ => throw new ArgumentException($"Unknown {nameof(DemoItemStatus)}."),
         };
 
-        public string BadgeIcon {
-            get {
-                return DemoItemStatus switch {
-                    DemoItemStatus.Updated => "badgeupd",
-                    DemoItemStatus.New => "badgenew",
-                    _ => null,
-                };
-            }
+        public string BadgeIcon => DemoItemStatus switch {
+            DemoItemStatus.Updated => "badgeupd",
+            DemoItemStatus.New => "badgenew",
+            _ => null,
+        };
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void NotifyPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "") {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

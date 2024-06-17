@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage  xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
                 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              x:Class="DemoCenter.Maui.Views.ReceptionDesk">
-    <dxsch:WorkWeekView Start="{Binding StartDate}" ShowWorkTimeOnly="true" SnapToCellsMode="Never"
+    <dx:WorkWeekView Start="{Binding StartDate}" ShowWorkTimeOnly="true" SnapToCellsMode="Never"
                         TimeScaleInterval="01:00" TimeScaleSlotCount="6" Tap="WorkWeekView_OnTap">
-        <dxsch:WorkWeekView.DataStorage>
-            <dxsch:SchedulerDataStorage x:Name="storage">
-                <dxsch:SchedulerDataStorage.DataSource>
-                    <dxsch:DataSource AppointmentsSource="{Binding VisibleAppointments}">
-                        <dxsch:DataSource.AppointmentMappings>
-                            <dxsch:AppointmentMappings AllDay="AllDay"
+        <dx:WorkWeekView.DataStorage>
+            <dx:SchedulerDataStorage x:Name="storage">
+                <dx:SchedulerDataStorage.DataSource>
+                    <dx:DataSource AppointmentsSource="{Binding VisibleAppointments}">
+                        <dx:DataSource.AppointmentMappings>
+                            <dx:AppointmentMappings AllDay="AllDay"
                                                        End="EndTime"
                                                        Start="StartTime"
                                                        Type="Type"
@@ -22,10 +21,10 @@
                                                        StatusId="PaymentStateId"
                                                        Subject="Subject"
                                                        LabelId="IssueId" />
-                        </dxsch:DataSource.AppointmentMappings>
-                    </dxsch:DataSource>
-                </dxsch:SchedulerDataStorage.DataSource>
-            </dxsch:SchedulerDataStorage>
-        </dxsch:WorkWeekView.DataStorage>
-    </dxsch:WorkWeekView>
+                        </dx:DataSource.AppointmentMappings>
+                    </dx:DataSource>
+                </dx:SchedulerDataStorage.DataSource>
+            </dx:SchedulerDataStorage>
+        </dx:WorkWeekView.DataStorage>
+    </dx:WorkWeekView>
 </demo:DemoPage>

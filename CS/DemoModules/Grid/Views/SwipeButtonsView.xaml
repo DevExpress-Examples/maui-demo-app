@@ -1,27 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <views:BaseGridContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:views="clr-namespace:DemoCenter.Maui.Views;assembly=DemoCenter.Maui"
     x:Class="DemoCenter.Maui.Views.SwipeButtonsView">
     <ContentPage.Content>
-        <dxg:DataGridView x:Name="grid" ItemsSource="{Binding OutlookData}">
-            <dxg:DataGridView.StartSwipeItems>
-                <dxg:SwipeItem Caption="Sender Info" Tap="OnShowCustomerInfo" />
-            </dxg:DataGridView.StartSwipeItems>
-            <dxg:DataGridView.EndSwipeItems>
-                <dxg:SwipeItem Caption="Reply" Tap="OnReply" BackgroundColor="#52A9C5" FontColor="White"/>
-                <dxg:SwipeItem Caption="Remove" Tap="OnDelete" BackgroundColor="#D74F67" FontColor="White"/>
-            </dxg:DataGridView.EndSwipeItems>
-            <dxg:DataGridView.Columns>
-                <dxg:TextColumn FieldName="From.Name" Caption="From" Width="{OnIdiom Phone='110', Tablet='150', Default='150'}"/>
-                <dxg:TextColumn FieldName="Subject" />
-                <dxg:DateColumn FieldName="Sent" Width="150" IsVisible="{StaticResource IsTablet}">
+        <dx:DataGridView x:Name="grid" ItemsSource="{Binding OutlookData}">
+            <dx:DataGridView.StartSwipeItems>
+                <dx:GridSwipeItem Caption="Sender Info" Tap="OnShowCustomerInfo" />
+            </dx:DataGridView.StartSwipeItems>
+            <dx:DataGridView.EndSwipeItems>
+                <dx:GridSwipeItem Caption="Reply" Tap="OnReply" BackgroundColor="#52A9C5" FontColor="White"/>
+                <dx:GridSwipeItem Caption="Remove" Tap="OnDelete" BackgroundColor="#D74F67" FontColor="White"/>
+            </dx:DataGridView.EndSwipeItems>
+            <dx:DataGridView.Columns>
+                <dx:TextColumn FieldName="From.Name" Caption="From" Width="{OnIdiom Phone='110', Tablet='150', Default='150'}"/>
+                <dx:TextColumn FieldName="Subject" />
+                <dx:DateColumn FieldName="Sent" Width="150" IsVisible="{StaticResource IsTablet}">
                     
-                </dxg:DateColumn>
-            </dxg:DataGridView.Columns>
-        </dxg:DataGridView>
+                </dx:DateColumn>
+            </dx:DataGridView.Columns>
+        </dx:DataGridView>
     </ContentPage.Content>
 </views:BaseGridContentPage>

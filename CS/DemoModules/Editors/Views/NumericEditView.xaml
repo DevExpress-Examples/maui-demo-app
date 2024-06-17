@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
     ios:Page.UseSafeArea="False"
@@ -22,7 +19,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
-            <dxe:NumericEdit
+            <dx:NumericEdit
                 dx:DXDockLayout.Dock="Top" 
                 Value="{Binding Value}"
                 MinValue="{Binding MinValue}"
@@ -50,9 +47,9 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <dxe:NumericEdit x:Name="minValue" Grid.Column="0" LabelText="Min Value" Value="{Binding MinValue}" />
-                        <dxe:NumericEdit x:Name="maxValue" Grid.Column="1" LabelText="Max Value" Value="{Binding MaxValue}" />
-                        <dxe:NumericEdit x:Name="stepValue" Grid.Column="2" LabelText="Step Value" Value="{Binding StepValue}" />
+                        <dx:NumericEdit x:Name="minValue" Grid.Column="0" LabelText="Min Value" Value="{Binding MinValue}" />
+                        <dx:NumericEdit x:Name="maxValue" Grid.Column="1" LabelText="Max Value" Value="{Binding MaxValue}" />
+                        <dx:NumericEdit x:Name="stepValue" Grid.Column="2" LabelText="Step Value" Value="{Binding StepValue}" />
                     </Grid>
 
                     <dx:DXSeparator SideMargin="0"/>
@@ -75,7 +72,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Display Format" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit
+                        <dx:ComboBoxEdit
                             DisplayMember="Name"
                             ValueMember="Value"
                             BorderThickness="0"
@@ -88,7 +85,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Up and Down Icons Alignment" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit
+                        <dx:ComboBoxEdit
                             x:Name="alignmentComboBox"
                             DisplayMember="Name"
                             ValueMember="Value"
@@ -110,13 +107,15 @@
                     <dx:DXSeparator SideMargin="0"/>
 
                     <Grid ColumnSpacing="8" Margin="16" ColumnDefinitions="0.5*, 0.5*">
-                        <dxco:SimpleButton Text="Toggle Error"
-                                          Command="{Binding ToggleErrorCommand}"
-                                          HorizontalOptions="FillAndExpand" />
-                        <dxco:SimpleButton Text="Reset to Default"
-                                          Command="{Binding ResetToDefaultCommand}"
-                                          HorizontalOptions="FillAndExpand"
-                                           Grid.Column="1"/>
+                        <dx:DXButton 
+                            Content="Toggle Error"
+                            Command="{Binding ToggleErrorCommand}"
+                            HorizontalOptions="FillAndExpand" />
+                        <dx:DXButton 
+                            Content="Reset to Default"
+                            Command="{Binding ResetToDefaultCommand}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Column="1"/>
                     </Grid>
                 </StackLayout>
             </demo:ScrollViewFix>

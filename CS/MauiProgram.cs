@@ -18,13 +18,24 @@ namespace DemoCenter.Maui {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseDevExpress()
+                .UseDevExpress(useLocalization: false)
+                .UseDevExpressCharts()
+                .UseDevExpressCollectionView()
+                .UseDevExpressControls()
+                .UseDevExpressDataGrid()
+                .UseDevExpressEditors()
+                .UseDevExpressGauges()
+                .UseDevExpressScheduler()
+                .UseDevExpressTreeView()
                 .UseMauiCommunityToolkit()
 #if DEBUG
 
 #endif
 #if PaidDemoModules
         .UseSkiaSharp()
+        .UseDevExpressDataGridExport()
+        .UseDevExpressHtmlEditor()
+        .UseDevExpressPdf()
 #endif
                 .ConfigureMauiHandlers(handlers => {
                     handlers.AddHandler<Shell, CustomShellRenderer>();

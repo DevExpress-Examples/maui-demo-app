@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <demo:DemoPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
-    xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:viewModel="clr-namespace:DemoCenter.Maui.DemoModules.Editors.ViewModels"
     xmlns:converters="clr-namespace:DemoCenter.Maui.DemoModules.Editors.Converters"
@@ -23,7 +20,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <dx:DXDockLayout Padding="{OnIdiom Phone=0, Tablet='92,12'}" BackgroundColor="{dx:ThemeColor Surface}">
-            <dxe:ComboBoxEdit
+            <dx:ComboBoxEdit
                 dx:DXDockLayout.Dock="Top"
                 LabelText="State"
                 SelectedItem="{Binding SelectedState}"
@@ -50,7 +47,7 @@
                             <Label Text="Enable Filter" Style="{StaticResource TextStyle}"/>
                             <Switch IsToggled="{Binding EnableFilter}" Style="{DynamicResource SwitchStyle}"/>
                         </StackLayout>
-                        <dxe:ComboBoxEdit IsVisible="{Binding EnableFilter}"
+                        <dx:ComboBoxEdit IsVisible="{Binding EnableFilter}"
                                           SelectedItem="{Binding SelectedFilterCondition}"
                                           ItemsSource="{Binding FilterConditions}"
                                           Style="{StaticResource ComboBoxStyleBase}"/>
@@ -61,12 +58,12 @@
                     <Grid ColumnSpacing="0" RowSpacing="0"  RowDefinitions="auto, auto" ColumnDefinitions="0.5*, 0.5*" Margin="0,10,0,0">
                         <StackLayout Style="{StaticResource LayoutItemContainerStyle}" Grid.Column="0">
                             <Label Text="Box Mode" Style="{StaticResource TextStyle}"/>
-                            <dxe:ComboBoxEdit Style="{StaticResource BoxModeComboBoxStyle}"/>
+                            <dx:ComboBoxEdit Style="{StaticResource BoxModeComboBoxStyle}"/>
                         </StackLayout>
 
                         <StackLayout Style="{StaticResource LayoutItemContainerStyle}" Grid.Column="1">
                             <Label Text="Corner Mode" Style="{StaticResource TextStyle}"/>
-                            <dxe:ComboBoxEdit Style="{StaticResource CornerModeComboBoxStyle}"/>
+                            <dx:ComboBoxEdit Style="{StaticResource CornerModeComboBoxStyle}"/>
                         </StackLayout>
                     </Grid>
 
@@ -76,22 +73,22 @@
                         <Grid ColumnSpacing="0" RowSpacing="0"  RowDefinitions="auto, auto" ColumnDefinitions="0.5*, 0.5*">
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}">
                                 <demo:IconView Source="topleftcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <dxe:DXSlider Value="{Binding TopLeftCornerRadius}" Style="{StaticResource SliderStyle}"/>
+                                <dx:DXSlider Value="{Binding TopLeftCornerRadius}" Style="{StaticResource SliderStyle}"/>
                             </StackLayout>
 
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Column="1">
                                 <demo:IconView Source="toprightcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <dxe:DXSlider Value="{Binding TopRightCornerRadius}" Style="{StaticResource SliderStyle}"/>
+                                <dx:DXSlider Value="{Binding TopRightCornerRadius}" Style="{StaticResource SliderStyle}"/>
                             </StackLayout>
 
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Row="1">
                                 <demo:IconView Source="bottomleftcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <dxe:DXSlider Value="{Binding BottomLeftCornerRadius}" Style="{StaticResource SliderStyle}" IsEnabled="{Binding CanSetBottomCorners}"/>
+                                <dx:DXSlider Value="{Binding BottomLeftCornerRadius}" Style="{StaticResource SliderStyle}" IsEnabled="{Binding CanSetBottomCorners}"/>
                             </StackLayout>
 
                             <StackLayout Style="{StaticResource SliderItemContainerStyle}" Grid.Column="1" Grid.Row="1">
                                 <demo:IconView Source="bottomrightcornerradius" Style="{StaticResource CornerRadiusIconStyle}"/>
-                                <dxe:DXSlider Value="{Binding BottomRightCornerRadius}" Style="{StaticResource SliderStyle}" IsEnabled="{Binding CanSetBottomCorners}"/>
+                                <dx:DXSlider Value="{Binding BottomRightCornerRadius}" Style="{StaticResource SliderStyle}" IsEnabled="{Binding CanSetBottomCorners}"/>
                             </StackLayout>
                         </Grid>
                     </StackLayout>
@@ -99,7 +96,7 @@
 
                     <StackLayout Style="{StaticResource LayoutItemContainerStyle}">
                         <Label Text="Accent Color" Style="{StaticResource TextStyle}"/>
-                        <dxe:ComboBoxEdit
+                        <dx:ComboBoxEdit
                                       StartIconColor="{Binding SelectedAccentColor.Color}"
                                       SelectedItem="{Binding SelectedAccentColor}"
                                       Style="{StaticResource ColorComboBoxStyle}"/>
@@ -115,13 +112,15 @@
                     <dx:DXSeparator SideMargin="0"/>
 
                     <Grid ColumnSpacing="8" Margin="16" ColumnDefinitions="0.5*, 0.5*">
-                        <dxco:SimpleButton Text="Toggle Error"
-                                          Command="{Binding ToggleErrorCommand}"
-                                          HorizontalOptions="FillAndExpand" />
-                        <dxco:SimpleButton Text="Reset to Default"
-                                          Command="{Binding ResetToDefaultCommand}"
-                                          HorizontalOptions="FillAndExpand"
-                                           Grid.Column="1"/>
+                        <dx:DXButton 
+                            Content="Toggle Error"
+                            Command="{Binding ToggleErrorCommand}"
+                            HorizontalOptions="FillAndExpand" />
+                        <dx:DXButton 
+                            Content="Reset to Default"
+                            Command="{Binding ResetToDefaultCommand}"
+                            HorizontalOptions="FillAndExpand"
+                            Grid.Column="1"/>
                     </Grid>
                 </StackLayout>
             </demo:ScrollViewFix>

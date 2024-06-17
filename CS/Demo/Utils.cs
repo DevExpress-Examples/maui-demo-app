@@ -14,7 +14,7 @@ namespace DemoCenter.Maui {
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => !(bool)value;
     }
 
-    public class BoolToObjectConverter : IValueConverter {
+    public class BoolToObjectConverter : IValueConverter, IMarkupExtension {
         public object FalseValue { get; set; }
         public object TrueValue { get; set; }
 
@@ -25,6 +25,7 @@ namespace DemoCenter.Maui {
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
             throw new NotImplementedException();
         }
+        object IMarkupExtension.ProvideValue(IServiceProvider serviceProvider) => this;
     }
 
     public class BoolToStackOrientationConverter : IValueConverter {
@@ -150,5 +151,36 @@ namespace DemoCenter.Maui {
                 return this.propertyInfo;
             }
         }
+    }
+
+    public class EnumToBooleanConverter : IValueConverter, IMarkupExtension {
+        [Flags]
+        public enum BackConversionMode {
+            ConvertTrueValue = 1 << 0,
+            ConvertFalseValue = 1 << 1,
+            All = ConvertTrueValue | ConvertFalseValue
+        }
+
+        public string TrueValue { get; set; }
+        public string FalseValue { get; set; }
+        public BackConversionMode ConvertBackMode { get; set; } = BackConversionMode.All;
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (TrueValue != null)
+                return value?.ToString() == TrueValue;
+            if (FalseValue != null)
+                return value?.ToString() != FalseValue;
+            return false;
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (TrueValue != null && object.Equals(value, true) && ConvertBackMode.HasFlag(BackConversionMode.ConvertTrueValue)) {
+                return Enum.Parse(targetType, TrueValue);
+            }
+            if (FalseValue != null && object.Equals(value, false) && ConvertBackMode.HasFlag(BackConversionMode.ConvertFalseValue)) {
+                return Enum.Parse(targetType, FalseValue);
+            }
+            return Binding.DoNothing;
+        }
+        object IMarkupExtension.ProvideValue(IServiceProvider serviceProvider) => this;
     }
 }

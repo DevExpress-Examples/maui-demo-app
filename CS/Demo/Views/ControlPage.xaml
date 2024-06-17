@@ -1,11 +1,9 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dx="http://schemas.devexpress.com/maui"
     xmlns:demo="clr-namespace:DemoCenter.Maui.Demo"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:dx="clr-namespace:DevExpress.Maui.Core;assembly=DevExpress.Maui.Core"
-    xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
-    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
     xmlns:models="clr-namespace:DemoCenter.Maui.Models"
     xmlns:viewmodels="clr-namespace:DemoCenter.Maui.ViewModels"
     x:DataType="viewmodels:ControlViewModel"
@@ -19,16 +17,16 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <dxcv:DXCollectionView x:Name="collectionView" x:DataType="viewmodels:ControlViewModel"
+        <dx:DXCollectionView x:Name="collectionView" x:DataType="viewmodels:ControlViewModel"
             ItemsSource="{Binding DemoItems}" SelectedItem="{Binding SelectedItem}"
             SelectionMode="Single" BackgroundColor="Transparent">
-            <dxcv:DXCollectionView.ItemTemplate>
+            <dx:DXCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:DemoItem">
-                    <dxe:FormItem Margin="16,0" ImageSource="{Binding Icon}" ImageColor="{dx:ThemeColor OnSurfaceVariant}" ImageVerticalOptions="Start" 
+                    <dx:FormItem Margin="16,0" ImageSource="{Binding Icon}" ImageColor="{dx:ThemeColor OnSurfaceVariant}" ImageVerticalOptions="Start" 
                         ImageWidth="40" ImageHeight="40" ImageMargin="0,4,16,4" Text="{Binding ControlsPageTitle}" TextFontSize="16" TextFontAttributes="Bold" 
                         TextColor="{dx:ThemeColor OnSurface}" Detail="{Binding Description}" DetailFontSize="14" DetailColor="{dx:ThemeColor OnSurface}"/>
                 </DataTemplate>
-            </dxcv:DXCollectionView.ItemTemplate>
-        </dxcv:DXCollectionView>
+            </dx:DXCollectionView.ItemTemplate>
+        </dx:DXCollectionView>
     </ContentPage.Content>
 </ContentPage>
