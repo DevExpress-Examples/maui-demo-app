@@ -10,11 +10,13 @@
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/OverviewDemo.png)
 
-The **DevExpress Mobile UI for .NET MAUI** and **Xamarin.Forms** are available free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/xamarin-free).
+The **DevExpress Mobile UI for .NET MAUI** is available free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/mobile-xamarin-maui-free).
 
 ## Requirements
 
 Please register the DevExpress NuGet Gallery in Visual Studio to restore NuGet packages used in this solution. See the following topic for more information: [Get Started with DevExpress Mobile UI for .NET MAUI](https://docs.devexpress.com/MAUI/403249/get-started).
+
+> The DevExpress .NET MAUI PDF Viewer and HTML Edit controls require a DevExpress [Universal Subscription](https://www.devexpress.com/subscriptions/universal.xml). Without a valid/active license, you cannot use these controls within your .NET MAUI application.
 
 You can also refer to the following YouTube video to get started with the DevExpress .NET MAUI Controls: [Setting up a .NET MAUI Project](https://www.youtube.com/watch?v=juJvl5UicIQ).
 
