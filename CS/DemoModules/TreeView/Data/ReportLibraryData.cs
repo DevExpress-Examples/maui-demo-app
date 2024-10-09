@@ -69,7 +69,8 @@ public static class ReportLibraryData {
 }
 public class ReportLibraryNode : NotificationObject {
     public static string GetFileName(ReportLibraryNode node) {
-        if(node.IsFolder) return "";
+        if (node.IsFolder)
+            return "";
         var branch = GetPath(node);
         var path = branch.Select(x => x.Name).Where(x => x != null).ToArray();
         var fileName = @"Reports\" + string.Join(@"\", path);

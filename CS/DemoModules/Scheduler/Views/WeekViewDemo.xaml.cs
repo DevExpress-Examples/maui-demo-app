@@ -23,7 +23,7 @@ namespace DemoCenter.Maui.Views {
             Page appointmentPage = this.storage.CreateAppointmentPageOnTap(e, true);
             if (appointmentPage != null) {
                 this.inNavigation = true;
-                await NavigationService.NavigateToPage(appointmentPage);
+                await DemoNavigationService.NavigateToPage(appointmentPage);
             }
         }
     }

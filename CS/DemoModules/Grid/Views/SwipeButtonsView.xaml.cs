@@ -21,7 +21,7 @@ namespace DemoCenter.Maui.Views {
             CustomerOrdersView customerOrdersView = new CustomerOrdersView(customer) {
                 Title = customer.Name
             };
-            await NavigationService.NavigateToPage(customerOrdersView);
+            await DemoNavigationService.NavigateToPage(customerOrdersView);
         }
 
         void OnDelete(object sender, SwipeItemTapEventArgs e) {

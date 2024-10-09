@@ -36,7 +36,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
                 return Task.CompletedTask;
 
             this.inNavigation = true;
-            return NavigationService.NavigateToPage(new ContactDetailPage(contact));
+            return DemoNavigationService.NavigateToPage(new ContactDetailPage(contact));
         }
     }
 }

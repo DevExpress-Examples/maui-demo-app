@@ -31,7 +31,7 @@ namespace DemoCenter.Maui.Views {
 
         Task OpenAppointmentEditForm(Page appointmentPage) {
             inNavigation = true;
-            return NavigationService.NavigateToPage(appointmentPage);
+            return DemoNavigationService.NavigateToPage(appointmentPage);
         }
         Task OpenAppointmentEditForm(AppointmentItem appointment) {
             return OpenAppointmentEditForm(new AppointmentDetailPage(appointment, storage, true));
@@ -59,7 +59,7 @@ namespace DemoCenter.Maui.Views {
             Page appointmentPage = storage.CreateAppointmentPageOnTap(e, true);
             if (appointmentPage != null) {
                 inNavigation = true;
-                await NavigationService.NavigateToPage(appointmentPage);
+                await DemoNavigationService.NavigateToPage(appointmentPage);
             }
         }
     }

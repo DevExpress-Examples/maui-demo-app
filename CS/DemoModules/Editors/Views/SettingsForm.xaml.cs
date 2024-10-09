@@ -10,7 +10,7 @@ namespace DemoCenter.Maui.Views {
         }
 
         async void OnBioTap(object sender, EventArgs e) {
-            await NavigationService.NavigateToPage(new EditBioPage() { Settings = (SettingsFormViewModel)BindingContext });
+            await DemoNavigationService.NavigateToPage(new EditBioPage() { Settings = (SettingsFormViewModel)BindingContext });
         }
     }
 }

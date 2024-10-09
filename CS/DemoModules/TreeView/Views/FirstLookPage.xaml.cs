@@ -33,7 +33,7 @@ public partial class FirstLookPage : Demo.DemoPage {
     }
     void OnNodeTap(object sender, TreeNodeEventArgs e) {
 #if PaidDemoModules
-        if(pdfViewerContainer.Children.Count == 0) 
+        if (pdfViewerContainer.Children.Count == 0)
             return;
         var vm = (FirstLookPageViewModel)BindingContext;
         if (vm.IsSelectMode)
@@ -52,14 +52,14 @@ public partial class FirstLookPage : Demo.DemoPage {
         var vm = (FirstLookPageViewModel)BindingContext;
         if (e.OldState == true)
             vm.RemoveCheckedNode((ReportLibraryNode)e.Node.Item);
-        if(e.NewState == true)
+        if (e.NewState == true)
             vm.AddCheckedNode((ReportLibraryNode)e.Node.Item);
     }
     void OnSelectionButtonClicked(object sender, EventArgs e) {
         UpdateSelectionButton();
     }
     void UpdateSelectionButton() {
-        if(ON.iOS)
+        if (ON.iOS)
             return;
         var vm = (FirstLookPageViewModel)BindingContext;
         selectionButton.IconImageSource = vm.IsSelectMode

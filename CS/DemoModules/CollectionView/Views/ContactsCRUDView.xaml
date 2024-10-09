@@ -10,24 +10,24 @@
 
     <Grid>
         <dx:DXDockLayout>
-            <dx:DXBorder 
-                dx:DXDockLayout.Dock="Top" 
+            <dx:DXBorder
+                dx:DXDockLayout.Dock="Top"
                 BackgroundColor="{dx:ThemeColor SurfaceContainer}"
                 CornerRadius="100" Margin="16" Padding="16">
-                <dx:TextEdit 
-                    EndIcon="collectionview_crud_search" 
+                <dx:TextEdit
+                    EndIcon="collectionview_crud_search"
                     IconIndent="16"
-                    PlaceholderText="Search" 
+                    PlaceholderText="Search"
                     TextFontSize="16"
                     TextVerticalAlignment="Center"
                     BackgroundColor="Transparent"
-                    BorderThickness="0" 
+                    BorderThickness="0"
                     BoxPadding="0"
-                    BoxMinHeight="0" 
+                    BoxMinHeight="0"
                     PlaceholderColor="{dx:ThemeColor OnSurfaceVariant}"
-                    ClearIconColor="{dx:ThemeColor OnSurfaceVariant}" 
+                    ClearIconColor="{dx:ThemeColor OnSurfaceVariant}"
                     EndIconColor="{dx:ThemeColor OnSurfaceVariant}"
-                    FocusedBorderThickness="0" 
+                    FocusedBorderThickness="0"
                     TextChanged="SearchTextChanged" />
             </dx:DXBorder>
             <dx:DXCollectionView x:Name="collectionView" ItemsSource="{Binding Contacts}" IsPullToRefreshEnabled="True"
@@ -42,9 +42,10 @@
                                    ItemSeparatorThickness="0"
                                    GroupItemSeparatorThickness="0"
                                    UseRippleEffect="true"
-                                   Tap="ItemClick">
+                                   Tap="ItemClick"
+                                   AllowFixedGroupHeaders="True">
                 <dx:DXCollectionView.GroupItemAppearance>
-                    <dx:CollectionViewGroupItemAppearance BackgroundColor="Transparent"
+                    <dx:CollectionViewGroupItemAppearance BackgroundColor="{dx:ThemeColor Surface}"
                                                             TextColor="{dx:ThemeColor OnSurface}"
                                                             FontSize="17" CaptionMargin="8,0" />
                 </dx:DXCollectionView.GroupItemAppearance>
@@ -58,7 +59,7 @@
                     <DataTemplate>
                         <dx:FormItem Margin="8,4" TextFontSize="16" ShowSeparator="False" AllowTap="False"
                             TextColor="{dx:ThemeColor OnSurface}" Detail="{Binding Company}" DetailFontSize="14" DetailColor="{dx:ThemeColor OnSurface}">
-                            <dx:FormItem.Text>    
+                            <dx:FormItem.Text>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding Path="FirstName" />
                                     <Binding Path="LastName" />
