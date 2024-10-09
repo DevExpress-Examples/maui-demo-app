@@ -95,7 +95,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Data {
                     return this.image;
                 if (!this.id.HasValue || this.id is < 0 or > 20)
                     return this.image = noPhotoImageSource;
-                if(photoById.TryGetValue(this.id.Value, out var photo))
+                if (photoById.TryGetValue(this.id.Value, out var photo))
                     return this.image = ImageSource.FromFile(photo);
                 return this.image = noPhotoImageSource;
             }

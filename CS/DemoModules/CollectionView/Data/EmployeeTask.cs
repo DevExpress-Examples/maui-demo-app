@@ -31,8 +31,8 @@ namespace DemoCenter.Maui.Data {
         public int Priority { get; set; }
 
         int statusNumber;
-        public int StatusNumber { 
-            get => statusNumber; 
+        public int StatusNumber {
+            get => statusNumber;
             set {
                 statusNumber = value;
                 OnPropertyChanged(nameof(Status));
@@ -44,7 +44,8 @@ namespace DemoCenter.Maui.Data {
         [JsonIgnore] public ICommand CompleteTaskCommand { get; }
         [JsonIgnore] public ICommand UnCompleteTaskCommand { get; }
 
-        [JsonIgnore] public TaskStatus Status {
+        [JsonIgnore]
+        public TaskStatus Status {
             get => StatusNumber switch {
                 0 => TaskStatus.Urgent,
                 2 => TaskStatus.Completed,

@@ -32,7 +32,6 @@
                     VerticalOptions="Center"
                     BackgroundColor="{Binding CategoryColor}"
                     CornerRadius="40">
-                             
                     <Label Text="{Binding Initials}"
                         TextColor="White"
                         FontSize="20"
@@ -49,7 +48,7 @@
                 </dx:DXStackLayout>
             </dx:DXDockLayout>
 
-            <dx:DXCollectionView ItemsSource="{Binding CallsHistory}" AllowGroupCollapse="False">
+            <dx:DXCollectionView ItemsSource="{Binding CallsHistory}" AllowGroupCollapse="False" AllowFixedGroupHeaders="True">
                 <dx:DXCollectionView.GroupDescription>
                     <dx:GroupDescription FieldName="Date" SortOrder="Descending"/>
                 </dx:DXCollectionView.GroupDescription>

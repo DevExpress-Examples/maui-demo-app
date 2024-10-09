@@ -132,7 +132,7 @@
                                        IconTemplate="{StaticResource iconItemTemplate}"/>
 
             <DataTemplate x:Key="groupItemTemplate">
-                <StackLayout Padding="{OnIdiom Phone='16,0,18,10', Tablet='37,0,37,10'}">
+                <StackLayout Padding="{OnIdiom Phone='16,0,18,10', Tablet='37,0,37,10'}" BackgroundColor="{dx:ThemeColor Surface}">
                     <Label Margin="0,20,0,4"
                            TextColor="{dx:ThemeColor OnSurfaceVariant}"
                            Text="{Binding Value, StringFormat='{0:d}', Converter={StaticResource upperCaseConverter}}"/>
@@ -150,7 +150,8 @@
                                    Tap="ItemSelected"
                                    GroupItemSeparatorThickness="1"
                                    GroupItemSeparatorCapMargin="{OnIdiom Phone='16', Tablet='37'}"
-                                   UseRippleEffect="true">
+                                   UseRippleEffect="true"
+                                   AllowFixedGroupHeaders="True">
                 <dx:DXCollectionView.GroupDescription>
                     <dx:GroupDescription FieldName="Date" SortOrder="Descending"/>
                 </dx:DXCollectionView.GroupDescription>

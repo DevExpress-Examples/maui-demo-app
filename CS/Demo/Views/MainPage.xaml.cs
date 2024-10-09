@@ -34,7 +34,7 @@ public partial class MainPage : DemoPage {
         };
         ControlPage detailsPage = new ControlPage();
         (detailsPage.BindingContext as ControlViewModel).ApplyQueryAttributes(parameters);
-        await NavigationService.NavigateToPage(detailsPage, data.Title);
+        await DemoNavigationService.NavigateToPage(detailsPage, data.Title);
         inNavigation = false;
     }
 
@@ -45,12 +45,12 @@ public partial class MainPage : DemoPage {
         inNavigation = true;
         if (sender is DXButton dxButton) {
             var demoItem = (DemoItem)dxButton.BindingContext;
-            await NavigationService.NavigateToDemo(demoItem);
+            await DemoNavigationService.NavigateToDemo(demoItem);
         }
         inNavigation = false;
     }
 
     private async void Theme_Tapped(object sender, EventArgs e) {
-        await NavigationService.NavigateToPage(themesPage);
+        await DemoNavigationService.NavigateToPage(themesPage);
     }
 }

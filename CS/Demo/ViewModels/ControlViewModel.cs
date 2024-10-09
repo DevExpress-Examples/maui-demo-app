@@ -23,7 +23,7 @@ namespace DemoCenter.Maui.ViewModels {
 
         public ControlViewModel() {
             NavigationDemoCommand = new Command<DemoItem>(async (demoItem) => {
-                await NavigationService.NavigateToDemo(demoItem);
+                await DemoNavigationService.NavigateToDemo(demoItem);
                 SelectedItem = null;
             });
         }

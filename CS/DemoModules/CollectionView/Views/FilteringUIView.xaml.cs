@@ -32,7 +32,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
         void OnFilteringUIFormShowing(object sender, FilteringUIFormShowingEventArgs e) {
             if (e.Form is not ContentPage page)
                 return;
-            NavigationService.SetDemoPageTitleView(page, "Filters");
+            DemoNavigationService.SetDemoPageTitleView(page, "Filters");
         }
     }
 }

@@ -81,7 +81,7 @@
                                  Icon="demotabviewdetail"
                                  ButtonType="Text"
                                  Padding="12"
-                                 IconWidth="24" 
+                                 IconWidth="24"
                                  IconHeight="24"
                                  IconColor="{dx:ThemeColor Outline}"/>
                 </Grid>
@@ -134,7 +134,7 @@
                                  Icon="demotabviewdetail"
                                  ButtonType="Text"
                                  Padding="12"
-                                 IconWidth="24" 
+                                 IconWidth="24"
                                  IconHeight="24"
                                  IconColor="{dx:ThemeColor Outline}"/>
                 </Grid>
@@ -162,7 +162,8 @@
                               GroupHeaderTemplate="{StaticResource groupItemTemplate}"
                               ItemTemplate="{StaticResource contactItemTemplateSelector}"
                               ItemsSource="{Binding Recent}"
-                              TapConfirmed="ItemSelected">
+                              TapConfirmed="ItemSelected"
+                              AllowFixedGroupHeaders="True">
                 <dx:DXCollectionView.GroupDescription>
                     <dx:GroupDescription FieldName="Date" SortOrder="Descending"/>
                 </dx:DXCollectionView.GroupDescription>
@@ -177,7 +178,7 @@
                          CornerRadius="8"
                          HorizontalAlignment="Left">
                 <StackLayout Padding="8,6">
-                    <dx:DXButton 
+                    <dx:DXButton
                         Content="Call"
                         Icon="popupphone"
                         Clicked="OnCallClick"
@@ -186,7 +187,7 @@
                         IconHeight="24"
                         FontSize="16"
                         HorizontalContentAlignment="Start"/>
-                    <dx:DXButton 
+                    <dx:DXButton
                         Content="Remove"
                         Icon="collectionviewdeletetask"
                         Clicked="OnRemoveClick"

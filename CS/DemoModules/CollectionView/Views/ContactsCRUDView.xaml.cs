@@ -65,7 +65,7 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
                 }
             }
 
-            await NavigationService.NavigateToPage((Page)e.Content);
+            await DemoNavigationService.NavigateToPage((Page)e.Content);
         }
         async void OnValidateAndSave(object sender, ValidateItemEventArgs e) {
             try {
