@@ -1,0 +1,26 @@
+name: vale-validation
+on:
+  pull_request:
+    paths:
+    - README.md
+
+jobs:
+  vale:
+    name: runner / vale
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v4
+      - name: clone vale-styles repo
+        uses: actions/checkout@v4
+        with:
+          repository: DevExpress/vale-styles
+          path: vale-styles
+          ssh-key: ${{ secrets.VALE_STYLES_ACCESS_KEY }}
+      - name: copy vale rules to the root repo
+        run: shopt -s dotglob && cp -r ./vale-styles/vale/* .
+      - name: vale linter check
+        uses: DevExpress/vale-action@reviewdog
+        with:
+          files: README.md
+          fail_on_error: true
