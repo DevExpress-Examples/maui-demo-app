@@ -36,17 +36,17 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
         void CancelDeleteClick(object sender, EventArgs e) {
             popup.IsOpen = false;
         }
-        async void DeleteConfirmedClick(object sender, EventArgs e) {
+        void DeleteConfirmedClick(object sender, EventArgs e) {
             if (this.isDeleting)
                 return;
             this.isDeleting = true;
 
             try {
-                if (!await ViewModel.DeleteAsync())
+                if (!ViewModel.Delete())
                     this.isDeleting = false;
             } catch (Exception ex) {
                 this.isDeleting = false;
-                await DisplayAlert("Error", ex.Message, "OK");
+                DisplayAlert("Error", ex.Message, "OK");
             }
         }
         async void MessageClick(object sender, EventArgs e) {

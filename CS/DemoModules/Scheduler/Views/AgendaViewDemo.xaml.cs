@@ -27,7 +27,7 @@ public partial class AgendaViewDemo : Demo.DemoPage {
         Page appointmentPage = storage.CreateAppointmentPageOnTap(e, true);
         if (appointmentPage != null) {
             inNavigation = true;
-            await DemoNavigationService.NavigateToPage(appointmentPage);
+            await NavigationService.NavigateToPage(appointmentPage);
         }
     }
     async void OnNewAppointmentClicked(object sender, EventArgs e) {
@@ -36,7 +36,7 @@ public partial class AgendaViewDemo : Demo.DemoPage {
         Page appointmentPage = storage.CreateAppointmentPageOnTap(agendaView.Start, false);
         if (appointmentPage != null) {
             inNavigation = true;
-            await DemoNavigationService.NavigateToPage(appointmentPage);
+            await NavigationService.NavigateToPage(appointmentPage);
         }
     }
 }

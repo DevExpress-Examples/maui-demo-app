@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <MauiVersion>8.0.90</MauiVersion>
-  </PropertyGroup>
   <Import Project="DemoCenter.Maui.projitem" />
   <ItemGroup>
     <Content Remove="DemoModules\OfficeFileAPI\**" />
@@ -14,32 +11,14 @@
     <MauiXaml Remove="DemoModules\Editors\Views\HtmlEditView.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Maui.Charts">
-      <Version>24.2.1-alpha-24260</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.Maui.CollectionView">
-      <Version>24.2.1-alpha-24260</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.Maui.Controls">
-      <Version>24.2.1-alpha-24260</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.Maui.Core">
-      <Version>24.2.1-alpha-24260</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.Maui.DataGrid">
-      <Version>24.2.1-alpha-24260</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.Maui.Editors">
-      <Version>24.2.1-alpha-24260</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.Maui.Gauges">
-      <Version>24.2.1-alpha-24260</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.Maui.Scheduler">
-      <Version>24.2.1-alpha-24260</Version>
-    </PackageReference>
-    <PackageReference Include="DevExpress.Maui.TreeView">
-      <Version>24.2.1-alpha-24260</Version>
-    </PackageReference>
+    <PackageReference Include="DevExpress.Maui.Core" Version="24.1.*" />
+    <PackageReference Include="DevExpress.Maui.Controls" Version="24.1.*" />
+    <PackageReference Include="DevExpress.Maui.DataGrid" Version="24.1.*" />
+    <PackageReference Include="DevExpress.Maui.Charts" Version="24.1.*" />
+    <PackageReference Include="DevExpress.Maui.CollectionView" Version="24.1.*" />
+    <PackageReference Include="DevExpress.Maui.Editors" Version="24.1.*" />
+    <PackageReference Include="DevExpress.Maui.Gauges" Version="24.1.*" />
+    <PackageReference Include="DevExpress.Maui.Scheduler" Version="24.1.*" />
+    <PackageReference Include="DevExpress.Maui.TreeView" Version="24.1.*" />
   </ItemGroup>
 </Project>

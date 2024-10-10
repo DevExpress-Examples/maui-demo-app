@@ -16,11 +16,11 @@ namespace DemoCenter.Maui.DemoModules.CollectionView.Views {
             this.image.IsVisible = this.isImageVisible;
         }
 
-        async void SaveItemClick(object sender, EventArgs e) {
+        void SaveItemClick(object sender, EventArgs e) {
             if (!this.dataForm.Validate())
                 return;
             this.dataForm.Commit();
-            await ViewModel.SaveAsync();
+            ViewModel.Save();
         }
         void OnDataFormValidateProperty(object sender,
             DevExpress.Maui.DataForm.DataFormPropertyValidationEventArgs e) {

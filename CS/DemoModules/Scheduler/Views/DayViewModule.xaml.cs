@@ -25,7 +25,7 @@ namespace DemoCenter.Maui.Views {
             Page appointmentPage = dayView.DataStorage.CreateAppointmentPageOnTap(e, true);
             if (appointmentPage != null) {
                 inNavigation = true;
-                await DemoNavigationService.NavigateToPage(appointmentPage);
+                await NavigationService.NavigateToPage(appointmentPage);
             }
         }
     }

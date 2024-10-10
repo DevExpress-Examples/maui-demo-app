@@ -5,7 +5,7 @@ using DemoCenter.Maui.Models;
 using Microsoft.Maui.Controls;
 
 namespace DemoCenter.Maui.Services {
-    public static class DemoNavigationService {
+    public static class NavigationService {
         public static void SetDemoPageTitleView(Page page, string titleText) {
             Shell.SetTitleView(page, new TitleView() { Title = titleText });
         }

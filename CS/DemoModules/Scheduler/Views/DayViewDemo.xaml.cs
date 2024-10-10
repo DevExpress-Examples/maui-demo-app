@@ -28,7 +28,7 @@ namespace DemoCenter.Maui.Views {
             Page appointmentPage = storage.CreateAppointmentPageOnTap(e, true);
             if (appointmentPage != null) {
                 inNavigation = true;
-                await DemoNavigationService.NavigateToPage(appointmentPage);
+                await NavigationService.NavigateToPage(appointmentPage);
             }
         }
         async void OnItemClicked(object sender, EventArgs e) {

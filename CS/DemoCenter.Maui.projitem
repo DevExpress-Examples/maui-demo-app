@@ -6,38 +6,29 @@
 		<SingleProject>true</SingleProject>
 		<OutputType>Exe</OutputType>
 		<ApplicationTitle>DevExpress UI</ApplicationTitle>
-		<DXVer>24.2.1</DXVer>
+		<ApplicationId>com.devexpress.mauimobileui</ApplicationId>
+		<DXVer>24.1.3</DXVer>
 		<AssemblyVersion>$(DXVer)</AssemblyVersion>
 		<AssemblyFileVersion>$(DXVer)</AssemblyFileVersion>
 		<Company>Developer Express Inc.</Company>
 		<ApplicationIdGuid>06FD4F07-07FF-4FEF-A6EA-8B6FA3A99898</ApplicationIdGuid>
-		<ApplicationDisplayVersion>24.2.1</ApplicationDisplayVersion>
-		<ApplicationVersion>13</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
 		<RootNamespace>DemoCenter.Maui</RootNamespace>
 		<AssemblyName>DemoCenter.Maui</AssemblyName>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<NoWarn>CA1422;CA1416;NU1603;NU1504</NoWarn>
-		 <NoWarn>$(NoWarn);XC0023;XC0022</NoWarn>
+		<NoWarn>$(NoWarn);XC0023;XC0022</NoWarn>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
-	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
-		<ApplicationId>com.devexpress.democenter.maui</ApplicationId>
-	</PropertyGroup>
-	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
-		<ApplicationId>com.devexpress.mauimobileui</ApplicationId>
-	</PropertyGroup>
+
 
 
 	<ItemGroup>
-        <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-        <PackageReference Include="SQLite" Version="3.13.0" />
-
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
-
-		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.6" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLite" Version="3.13.0" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />

@@ -17,7 +17,7 @@ namespace DemoCenter.Maui.Views {
                 return;
             viewModel.Start = e.IntervalInfo.Start;
             inNavigation = true;
-            await DemoNavigationService.NavigateToPage(new DayViewModule(viewModel, this.monthView.DataStorage));
+            await NavigationService.NavigateToPage(new DayViewModule(viewModel, this.monthView.DataStorage));
         }
         protected override void OnAppearing() {
             base.OnAppearing();

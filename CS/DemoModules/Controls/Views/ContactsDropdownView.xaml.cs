@@ -45,7 +45,7 @@ namespace DemoCenter.Maui.DemoModules.Popup.Views {
                 return Task.CompletedTask;
 
             this.inNavigation = true;
-            return DemoNavigationService.NavigateToPage(new ContactDetailPage(contact));
+            return NavigationService.NavigateToPage(new ContactDetailPage(contact));
         }
 
         void OnRemoveClick(object sender, EventArgs e) {

@@ -189,7 +189,7 @@ namespace DemoCenter.Maui.Views {
             ON.OrientationChanged(this, (sender) => {
                 Image.WidthRequest = ON.Portrait ? 48 : 40;
                 Image.HeightRequest = ON.Portrait ? 48 : 40;
-            });
+            }); 
 
             DXDockLayout.SetDock(Image, Dock.Left);
             DXDockLayout.SetDock(label, Dock.Right);

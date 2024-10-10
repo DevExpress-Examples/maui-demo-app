@@ -40,6 +40,12 @@ namespace DemoCenter.Maui {
                 .ConfigureMauiHandlers(handlers => {
                     handlers.AddHandler<Shell, CustomShellRenderer>();
                 });
+            DevExpress.Maui.Charts.Initializer.Init();
+            DevExpress.Maui.CollectionView.Initializer.Init();
+            DevExpress.Maui.Controls.Initializer.Init();
+            DevExpress.Maui.Editors.Initializer.Init();
+            DevExpress.Maui.DataGrid.Initializer.Init();
+            DevExpress.Maui.Scheduler.Initializer.Init();
             return builder.Build();
         }
     }
