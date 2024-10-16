@@ -24,3 +24,5 @@ jobs:
         with:
           files: README.md
           fail_on_error: true
+          filter_mode: nofilter
+          reporter: github-check
