@@ -10,7 +10,7 @@
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/OverviewDemo.png)
 
-The **DevExpress Mobile UI for .NET MAUI** is available free of charge. To learn more about our offer and to reserve your copy, visit [Free DevExpress Mobile UI for Xamarin.Forms and .NET MAUI](https://www.devexpress.com/mobile-xamarin-maui-free).
+You need a [DevExpress .NET MAUI Subscription](https://www.devexpress.com/maui/) to run the example. To evaluate our controls, you can start a [free 30-day trial](https://docs.devexpress.devx/MAUI/404024/get-started/register-nuget-gallery) through the DevExpress NuGet feed.
 
 ## Requirements
 
