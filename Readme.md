@@ -10,7 +10,7 @@
 
 ![DevExpress Mobile UI for .NET MAUI](./Images/OverviewDemo.png)
 
-You need a [DevExpress .NET MAUI Subscription](https://www.devexpress.com/maui/) to run the example. To evaluate our controls, you can start a [free 30-day trial](https://docs.devexpress.devx/MAUI/404024/get-started/register-nuget-gallery) through the DevExpress NuGet feed.
+You need a [DevExpress .NET MAUI Subscription](https://www.devexpress.com/maui/) to run the example. To evaluate our controls, you can start a [free 30-day trial](https://docs.devexpress.com/MAUI/404024/get-started/register-nuget-gallery) through the DevExpress NuGet feed.
 
 ## Requirements
 
