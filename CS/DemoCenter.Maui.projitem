@@ -30,7 +30,7 @@
 		<ApplicationId>com.devexpress.mauimobileui</ApplicationId>
 	</PropertyGroup>
 
-    <Import Project="$(MSBuildThisFileDirectory)..\Packages.Build.props" />
+    <Import Project="$(MSBuildThisFileDirectory)\Packages.Build.props" />
 	<ItemGroup>
         <PackageReference Include="sqlite-net-pcl" Version="$(sqlite_net_pcl)" />
         <PackageReference Include="SQLite" Version="$(SQLite)" />
