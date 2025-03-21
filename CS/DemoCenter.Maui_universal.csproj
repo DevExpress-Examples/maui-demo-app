@@ -46,6 +46,6 @@
       <Version>24.2.*</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.Pdf.Core" Version="24.2.*" />
-    <TrimmableAssembly Include="DevExpress.Data.v24.2" />
+    <TrimmableAssembly Include="DevExpress.Data.v24.2.*" />
   </ItemGroup>
 </Project>
