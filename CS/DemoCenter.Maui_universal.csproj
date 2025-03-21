@@ -22,6 +22,6 @@
     <PackageReference Include="DevExpress.Maui.DataGrid.Export" Version="24.1.*" />
     <PackageReference Include="DevExpress.Maui.HtmlEditor" Version="24.1.*" />
     <PackageReference Include="DevExpress.Maui.Pdf" Version="24.1.*" />
-    <TrimmableAssembly Include="DevExpress.Data.v24.1" />
+    <TrimmableAssembly Include="DevExpress.Data.v24.1.*" />
   </ItemGroup>
 </Project>
