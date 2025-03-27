@@ -2,7 +2,7 @@
 using System.Threading;
 using Application = Microsoft.Maui.Controls.Application;
 using Microsoft.Maui;
-using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls; 
 
 namespace DemoCenter.Maui {
     public partial class App : Application {
