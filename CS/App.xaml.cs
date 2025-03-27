@@ -2,7 +2,7 @@
 using System.Threading;
 using Application = Microsoft.Maui.Controls.Application;
 #if PaidDemoModules
-using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls;  
 #endif
 
 namespace DemoCenter.Maui {
