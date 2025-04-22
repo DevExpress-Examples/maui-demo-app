@@ -14,7 +14,7 @@
     <MauiXaml Remove="DemoModules\Editors\Views\HtmlEditView.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Maui.Charts">
+    <PackageReference Include="DevExpress.Maui.Charts"> 
       <Version>24.2.*</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.Maui.CollectionView">
