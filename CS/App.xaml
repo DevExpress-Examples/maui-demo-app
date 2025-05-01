@@ -4,7 +4,7 @@
              android:Application.WindowSoftInputModeAdjust="Resize"
              x:Class="DemoCenter.Maui.App">
     <Application.Resources>
-        <ResourceDictionary>
+        <ResourceDictionary> 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
