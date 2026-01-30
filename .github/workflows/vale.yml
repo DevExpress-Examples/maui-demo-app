@@ -24,7 +24,7 @@ jobs:
       - name: vale linter check
         uses: DevExpress/vale-action@reviewdog
         with:
-          files: '["README.md", "readme.md", "Readme.md"]'
+          files: '["[Rr]eadme.md"]'
           fail_on_error: true
           filter_mode: nofilter
           reporter: github-check
