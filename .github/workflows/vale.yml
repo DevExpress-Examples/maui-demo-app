@@ -21,10 +21,31 @@ jobs:
           ssh-key: ${{ secrets.VALE_STYLES_ACCESS_KEY }}
       - name: copy vale rules to the root repo
         run: shopt -s dotglob && cp -r ./vale-styles/vale/* .
+
+      - name: detect README file
+        id: detect
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          found="$(find . -maxdepth 1 -type f -iname 'readme.md' -print | head -n 1 || true)"
+
+          if [[ -z "$found" ]]; then
+            echo "No README.md found in repo root. Nothing to lint."
+            echo "files=[]" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          found="${found#./}"
+
+          echo "Found README: $found"
+          echo "files=[\"$found\"]" >> "$GITHUB_OUTPUT"
+
       - name: vale linter check
+        if: steps.detect.outputs.files != '[]'
         uses: DevExpress/vale-action@reviewdog
         with:
-          files: '["[Rr]eadme.md"]'
+          files: ${{ steps.detect.outputs.files }}
           fail_on_error: true
           filter_mode: nofilter
           reporter: github-check
