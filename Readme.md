@@ -12,14 +12,6 @@
 
 You need a [DevExpress .NET MAUI Subscription](https://www.devexpress.com/maui/) to run the example. To evaluate our controls, you can start a [free 30-day trial](https://docs.devexpress.com/MAUI/404024/get-started/register-nuget-gallery) through the DevExpress NuGet feed.
 
-## Requirements
-
-Please register the DevExpress NuGet Gallery in Visual Studio to restore NuGet packages used in this solution. See the following topic for more information: [Get Started with DevExpress Mobile UI for .NET MAUI](https://docs.devexpress.com/MAUI/403249/get-started).
-
-> The DevExpress .NET MAUI PDF Viewer and HTML Edit controls require a DevExpress [Universal Subscription](https://www.devexpress.com/subscriptions/universal.xml). Without a valid/active license, you cannot use these controls within your .NET MAUI application.
-
-You can also refer to the following YouTube video to get started with the DevExpress .NET MAUI Controls: [Setting up a .NET MAUI Project](https://www.youtube.com/watch?v=juJvl5UicIQ).
-
 ## What's in this Repository
 
 The demo application within this repository illustrates what’s possible with the **DevExpress Mobile UI for .NET MAUI** (it uses our .NET MAUI Data Grid, Editors, Charts, Scheduler, Data Form, etc).
